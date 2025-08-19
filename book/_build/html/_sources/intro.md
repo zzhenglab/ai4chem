@@ -1,11 +1,41 @@
-# Welcome to your Jupyter Book
+# Welcome to CHEM 5080: AI for Chemistry
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Washington University in St. Louis  
+Fall 2025  
+Instructor: Zhiling "Zach" Zheng  
 
-Check out the content pages bundled with this sample book to see more.
+---
 
 ```{tableofcontents}
+```
+
+```{contents}
+:depth: 2
+```
+
+---
+
+```{card}  
+**Why this course?**  
+Explore how AI is reshaping chemistry—from molecular prediction to self-driving labs. If you’re a chemist curious about coding, or a coder intrigued by compounds, this is your launchpad.  
+```
+
+```{dropdown} What's in this course?
+- Hands-on coding in Jupyter/Colab  
+- Neural networks, transformers, generative models  
+- Bayesian optimization for experimenting  
+- Computer vision for microscopy and spectroscopy  
+- Building toward self-driving lab workflows  
+```
+
+```{toggle} How we'll learn  
+We’ll pair interactive lectures with live coding sessions. You’ll explore tools, visualize data, and build ML pipelines for chemistry in real time.  
+```
+
+```{card}  
+**Course Format**  
+- **When:** Tue & Thu, 1:00–2:20 PM  
+- **Where:** Cupples II Room 200  
+- **Material Delivery:** Jupyter Book + Colab notebooks  
+Bring your laptop, bring your curiosity, and prepare to experiment.  
 ```
