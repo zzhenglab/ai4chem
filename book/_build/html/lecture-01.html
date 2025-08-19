@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>AI for Chemistry Intro Notebook &#8212; My sample book</title>
+    <title>Lecture 1 - Python Primer &#8212; My sample book</title>
   
   
   
@@ -62,11 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-01';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Markdown Files" href="markdown.html" />
-    <link rel="prev" title="Lecture 01 — Test: Machine Learning in Chemistry" href="lecture-00-test.html" />
+    <link rel="prev" title="Welcome to CHEM 5080: AI for Chemistry" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,18 +165,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to CHEM 5080: AI for Chemistry
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lecture-00-test.html">Lecture 01 — Test: Machine Learning in Chemistry</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">AI for Chemistry Intro Notebook</a></li>
-
-
-<li class="toctree-l1"><a class="reference internal" href="markdown.html">Markdown Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Content with notebooks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="markdown-notebooks.html">Notebooks with MyST Markdown</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 1 - Python Primer</a></li>
 </ul>
 
     </div>
@@ -361,7 +356,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>AI for Chemistry Intro Notebook</h1>
+    <h1>Lecture 1 - Python Primer</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -371,39 +366,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">AI for Chemistry Intro Notebook</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-for-chemistry-python-and-jupyter-primer">AI for Chemistry: Python and Jupyter Primer</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-in-python">1. First steps in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-types-and-comments">2. Variables, types, and comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-loops-and-a-quick-chemistry-task">3. Lists, loops, and a quick chemistry task</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-choose-your-path">1. Setup - choose your path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meet-the-notebook">2. Meet the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-as-a-calculator">3. Python as a calculator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-gotchas">Common gotchas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-made-for-chemistry">4. Functions made for chemistry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-with-matplotlib">5. Plotting data with matplotlib</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tiny-ai-step-linear-regression-with-scikit-learn">6. A tiny AI step: linear regression with scikit-learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-simple-vectorized-chemistry-math">7. Arrays and simple vectorized chemistry math</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-estimate-solution-ph-for-a-strong-acid-by-concentration">8. Mini project: estimate solution pH for a strong acid by concentration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-estimate">Plot the estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-names-for-values">4. Variables - names for values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-chemistry-molar-mass-and-moles">5. Quick chemistry - molar mass and moles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiny-data-structures-lists-and-dictionaries">6. Tiny data structures - lists and dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-if-and-for">8. Control flow - if and for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-plot-a-beer-lambert-style-line">9. First plot - a Beer-Lambert style line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glue-reuse-values-in-text">10. Glue - reuse values in text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-task-using-pv-nrt">11. Mini task - using <span class="math notranslate nohighlight">\(PV=nRT\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">13. Check your understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">14. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-links">15. Quick links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extras">16. Optional extras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">17. What’s next</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">10. Wrap up</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#added-learning-aids">Added Learning Aids</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-background">Quick Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-checklist">Mini Checklist</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-this">Try This</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -414,380 +396,611 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ai-for-chemistry-intro-notebook">
-<h1><a class="toc-backref" href="#id1" role="doc-backlink">AI for Chemistry Intro Notebook</a><a class="headerlink" href="#ai-for-chemistry-intro-notebook" title="Permalink to this heading">#</a></h1>
-<nav class="contents" id="contents">
-<p class="topic-title">Contents</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-python-primer">
+<h1>Lecture 1 - Python Primer<a class="headerlink" href="#lecture-1-python-primer" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>Learn just enough Python to start doing chemistry right away.</p>
+</div></blockquote>
+<div class="admonition-who-is-this-for admonition">
+<p class="admonition-title">Who is this for?</p>
+<p>Absolute beginners. If you can open a notebook and type, you can follow along.</p>
+</div>
+<nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#ai-for-chemistry-intro-notebook" id="id1">AI for Chemistry Intro Notebook</a></p></li>
-<li><p><a class="reference internal" href="#ai-for-chemistry-python-and-jupyter-primer" id="id2">AI for Chemistry: Python and Jupyter Primer</a></p>
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup-choose-your-path" id="id2">1. Setup - choose your path</a></p></li>
+<li><p><a class="reference internal" href="#meet-the-notebook" id="id3">2. Meet the notebook</a></p></li>
+<li><p><a class="reference internal" href="#python-as-a-calculator" id="id4">3. Python as a calculator</a></p>
 <ul>
-<li><p><a class="reference internal" href="#what-you-will-learn" id="id3">What you will learn</a></p></li>
-<li><p><a class="reference internal" href="#first-steps-in-python" id="id4">1. First steps in Python</a></p></li>
-<li><p><a class="reference internal" href="#variables-types-and-comments" id="id5">2. Variables, types, and comments</a></p></li>
-<li><p><a class="reference internal" href="#lists-loops-and-a-quick-chemistry-task" id="id6">3. Lists, loops, and a quick chemistry task</a></p></li>
-<li><p><a class="reference internal" href="#functions-made-for-chemistry" id="id7">4. Functions made for chemistry</a></p></li>
-<li><p><a class="reference internal" href="#plotting-data-with-matplotlib" id="id8">5. Plotting data with matplotlib</a></p></li>
-<li><p><a class="reference internal" href="#a-tiny-ai-step-linear-regression-with-scikit-learn" id="id9">6. A tiny AI step: linear regression with scikit-learn</a></p></li>
-<li><p><a class="reference internal" href="#arrays-and-simple-vectorized-chemistry-math" id="id10">7. Arrays and simple vectorized chemistry math</a></p></li>
-<li><p><a class="reference internal" href="#mini-project-estimate-solution-ph-for-a-strong-acid-by-concentration" id="id11">8. Mini project: estimate solution pH for a strong acid by concentration</a></p></li>
-<li><p><a class="reference internal" href="#exercises" id="id12">9. Exercises</a></p></li>
-<li><p><a class="reference internal" href="#wrap-up" id="id13">10. Wrap up</a></p></li>
+<li><p><a class="reference internal" href="#common-gotchas" id="id5">Common gotchas</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#added-learning-aids" id="id14">Added Learning Aids</a></p>
-<ul>
-<li><p><a class="reference internal" href="#learning-goals" id="id15">Learning Goals</a></p></li>
-<li><p><a class="reference internal" href="#quick-background" id="id16">Quick Background</a></p></li>
-<li><p><a class="reference internal" href="#mini-checklist" id="id17">Mini Checklist</a></p></li>
-<li><p><a class="reference internal" href="#try-this" id="id18">Try This</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id19">Glossary</a></p></li>
-<li><p><a class="reference internal" href="#further-reading" id="id20">Further Reading</a></p></li>
-<li><p><a class="reference internal" href="#credits" id="id21">Credits</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#variables-names-for-values" id="id6">4. Variables - names for values</a></p></li>
+<li><p><a class="reference internal" href="#quick-chemistry-molar-mass-and-moles" id="id7">5. Quick chemistry - molar mass and moles</a></p></li>
+<li><p><a class="reference internal" href="#tiny-data-structures-lists-and-dictionaries" id="id8">6. Tiny data structures - lists and dictionaries</a></p></li>
+<li><p><a class="reference internal" href="#control-flow-if-and-for" id="id9">8. Control flow - if and for</a></p></li>
+<li><p><a class="reference internal" href="#first-plot-a-beer-lambert-style-line" id="id10">9. First plot - a Beer-Lambert style line</a></p></li>
+<li><p><a class="reference internal" href="#glue-reuse-values-in-text" id="id11">10. Glue - reuse values in text</a></p></li>
+<li><p><a class="reference internal" href="#mini-task-using-pv-nrt" id="id12">11. Mini task - using <span class="math notranslate nohighlight">\(PV=nRT\)</span></a></p></li>
+<li><p><a class="reference internal" href="#check-your-understanding" id="id13">13. Check your understanding</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id14">14. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#quick-links" id="id15">15. Quick links</a></p></li>
+<li><p><a class="reference internal" href="#optional-extras" id="id16">16. Optional extras</a></p></li>
+<li><p><a class="reference internal" href="#whats-next" id="id17">17. What’s next</a></p></li>
 </ul>
 </nav>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Run code cells in a notebook and switch between <strong>Code</strong> and <strong>Markdown</strong>.</p></li>
+<li><p>Use Python as a calculator for quick chemical math.</p></li>
+<li><p>Store values in <strong>variables</strong>, use <strong>lists</strong> and <strong>dictionaries</strong>.</p></li>
+<li><p>Write tiny <strong>functions</strong> to avoid repeating yourself.</p></li>
+<li><p>Make a simple <strong>plot</strong> for a chemistry relationship.</p></li>
+<li><p>Read error messages without panic.</p></li>
+</ul>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-g-3 sd-g-xs-3 sd-g-sm-3 sd-g-md-3 sd-g-lg-3 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+What you will do</div>
+<ul class="simple">
+<li><p class="sd-card-text">Compute molar masses</p></li>
+<li><p class="sd-card-text">Convert mass to moles</p></li>
+<li><p class="sd-card-text">Plot Beer-Lambert style data</p></li>
+</ul>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">Keep this page open as a reference.</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-header docutils">
+</div>
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+What you will not do</div>
+<ul class="simple">
+<li><p class="sd-card-text">Heavy theory</p></li>
+<li><p class="sd-card-text">Long scripts</p></li>
+<li><p class="sd-card-text">Package installation rabbit holes</p></li>
+</ul>
+</div>
+<div class="sd-card-footer docutils">
+<p class="sd-card-text">We keep it short and friendly.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ai-for-chemistry-python-and-jupyter-primer">
-<h1><a class="toc-backref" href="#id2" role="doc-backlink">AI for Chemistry: Python and Jupyter Primer</a><a class="headerlink" href="#ai-for-chemistry-python-and-jupyter-primer" title="Permalink to this heading">#</a></h1>
-<p>Welcome. This notebook guides you through Python basics with chemistry examples. It is designed for about 40 minutes of live demo time.</p>
-<section id="what-you-will-learn">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">What you will learn</a><a class="headerlink" href="#what-you-will-learn" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>How to run cells in Jupyter</p></li>
-<li><p>Python variables and basic math</p></li>
-<li><p>Lists, dictionaries, and loops</p></li>
-<li><p>Writing simple functions</p></li>
-<li><p>Plotting with matplotlib</p></li>
-<li><p>A tiny taste of AI for chemistry using a linear model on calibration data</p></li>
-</ol>
-<p>You can run a cell with <strong>Shift+Enter</strong>. Use <strong>A</strong> to insert a cell above and <strong>B</strong> to insert below when in command mode. Use <strong>M</strong> to change a cell to Markdown and <strong>Y</strong> to change to Code.</p>
+<section id="setup-choose-your-path">
+<span id="content-setup"></span><h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup - choose your path</a><a class="headerlink" href="#setup-choose-your-path" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Anaconda</label><div class="sd-tab-content docutils">
+<p>Install <strong>Anaconda</strong> and open <strong>JupyterLab</strong>. Create a new notebook with the Python kernel.</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Miniconda</label><div class="sd-tab-content docutils">
+<p>Install <strong>Miniconda</strong>, then in a terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>aichem<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11<span class="w"> </span>-y
+conda<span class="w"> </span>activate<span class="w"> </span>aichem
+pip<span class="w"> </span>install<span class="w"> </span>jupyter<span class="w"> </span>matplotlib<span class="w"> </span>numpy<span class="w"> </span>pandas
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>Create a new notebook.</p>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Google Colab</label><div class="sd-tab-content docutils">
+<p>Go to Colab, click <strong>New Notebook</strong>. When you see a code cell, you are ready.</p>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you already have a working notebook with , you are good to go.</p>
+</div>
+<hr class="docutils" />
 </section>
-<section id="first-steps-in-python">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. First steps in Python</a><a class="headerlink" href="#first-steps-in-python" title="Permalink to this heading">#</a></h2>
-<p>Python can work as a calculator. We will start with values that show up in chemistry.</p>
+<section id="meet-the-notebook">
+<span id="content-notebooks"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Meet the notebook</a><a class="headerlink" href="#meet-the-notebook" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A notebook has <strong>cells</strong>.</p></li>
+<li><p><strong>Code cells</strong> run Python.</p></li>
+<li><p><strong>Markdown cells</strong> hold text, titles, and math like <span class="math notranslate nohighlight">\(PV = nRT\)</span>.</p></li>
+</ul>
+<div class="admonition-handy-keys admonition">
+<p class="admonition-title">Handy keys</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code> - run cell</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> - new cell above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> - new cell below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> - turn into Markdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code> - turn into Code</p></li>
+</ul>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Tip - rename your notebook to <code class="docutils literal notranslate"><span class="pre">01_python_primer.ipynb</span></code>.</p>
+</aside>
+<hr class="docutils" />
+</section>
+<section id="python-as-a-calculator">
+<span id="content-calculator"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Python as a calculator</a><a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
+<p>Start with a code cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Avogadro&#39;s number and simple math</span>
-<span class="n">NA</span> <span class="o">=</span> <span class="mf">6.022_140_76e23</span>  <span class="c1"># exact by definition</span>
-<span class="n">moles</span> <span class="o">=</span> <span class="mf">0.015</span>
-<span class="n">particles</span> <span class="o">=</span> <span class="n">moles</span> <span class="o">*</span> <span class="n">NA</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Particles in&quot;</span><span class="p">,</span> <span class="n">moles</span><span class="p">,</span> <span class="s2">&quot;mol:&quot;</span><span class="p">,</span> <span class="n">particles</span><span class="p">)</span>
-
-<span class="c1"># Unit conversion example: grams to kilograms</span>
-<span class="n">grams</span> <span class="o">=</span> <span class="mf">18.0</span>
-<span class="n">kilograms</span> <span class="o">=</span> <span class="n">grams</span> <span class="o">/</span> <span class="mi">1000</span>
-<span class="n">kilograms</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Particles in 0.015 mol: 9.03321114e+21
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.018
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="variables-types-and-comments">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Variables, types, and comments</a><a class="headerlink" href="#variables-types-and-comments" title="Permalink to this heading">#</a></h2>
-<p>A variable is a name for a value. The <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol starts a comment that Python ignores. Use comments to explain your work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Store atomic masses for a few common elements (g/mol)</span>
-<span class="n">atomic_mass</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span>
-    <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.011</span><span class="p">,</span>
-    <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="mf">14.007</span><span class="p">,</span>
-    <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">15.999</span><span class="p">,</span>
-    <span class="s2">&quot;Na&quot;</span><span class="p">:</span> <span class="mf">22.990</span><span class="p">,</span>
-    <span class="s2">&quot;Cl&quot;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="nb">type</span><span class="p">(</span><span class="n">atomic_mass</span><span class="p">),</span> <span class="nb">list</span><span class="p">(</span><span class="n">atomic_mass</span><span class="o">.</span><span class="n">items</span><span class="p">())[:</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication, division, powers</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(dict, [(&#39;H&#39;, 1.008), (&#39;C&#39;, 12.011), (&#39;N&#39;, 14.007)])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(12, 2.5, 32)
 </pre></div>
 </div>
 </div>
 </div>
+<div class="admonition-try-it admonition">
+<p class="admonition-title">Try it</p>
+<p>Change the numbers and run again. Nothing breaks if you experiment.</p>
+</div>
+<section id="common-gotchas">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Common gotchas</a><a class="headerlink" href="#common-gotchas" title="Permalink to this heading">#</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">10/3</span></code> gives a <strong>float</strong> like <code class="docutils literal notranslate"><span class="pre">3.3333333333</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">10//3</span></code> gives <strong>integer division</strong> <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
 </section>
-<section id="lists-loops-and-a-quick-chemistry-task">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Lists, loops, and a quick chemistry task</a><a class="headerlink" href="#lists-loops-and-a-quick-chemistry-task" title="Permalink to this heading">#</a></h2>
-<p>We will compute simple molar masses for a few small molecules using a very small dictionary. This is not a full periodic table, but it is enough to get started.</p>
+</section>
+<section id="variables-names-for-values">
+<span id="content-variables"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Variables - names for values</a><a class="headerlink" href="#variables-names-for-values" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple helper that accepts a formula like H2O or CO2 with only integers for counts</span>
-<span class="c1"># This keeps things beginner friendly. It handles one or two letter symbols and positive integers.</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature_K</span> <span class="o">=</span> <span class="mf">298.15</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">0.082057</span>  <span class="c1"># L·atm·mol^-1·K^-1</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">temperature_K</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(float, float)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A variable is just a label that points to a value. You can reuse it many times.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="quick-chemistry-molar-mass-and-moles">
+<span id="content-chem-quick"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Quick chemistry - molar mass and moles</a><a class="headerlink" href="#quick-chemistry-molar-mass-and-moles" title="Permalink to this heading">#</a></h2>
+<p>Let’s compute the molar mass of carbon dioxide.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="o">=</span> <span class="mf">12.011</span>
+<span class="n">O</span> <span class="o">=</span> <span class="mf">15.999</span>
+<span class="n">M_CO2</span> <span class="o">=</span> <span class="n">C</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">O</span>
+<span class="n">M_CO2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44.009
+</pre></div>
+</div>
+</div>
+</div>
+<p>Convert mass to moles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_g</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">moles</span> <span class="o">=</span> <span class="n">mass_g</span> <span class="o">/</span> <span class="n">M_CO2</span>
+<span class="n">moles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.22722624917630485
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-5-1-water admonition">
+<p class="admonition-title">Exercise 5.1 - Water</p>
+<p>Compute the molar mass of water and the moles in 36.0 g of water.
+:class: dropdown</p>
+<p><strong>Solution</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="mf">1.008</span>
+<span class="n">O</span> <span class="o">=</span> <span class="mf">15.999</span>
+<span class="n">M_H2O</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">H</span> <span class="o">+</span> <span class="n">O</span>
+<span class="n">moles_water</span> <span class="o">=</span> <span class="mf">36.0</span> <span class="o">/</span> <span class="n">M_H2O</span>
+<span class="n">M_H2O</span><span class="p">,</span> <span class="n">moles_water</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+```{admonition} Exercise 5.2 - Mixture
+You have 2.00 g of CO2 and 3.00 g of H2O. How many total moles of molecules are present?
+:class: dropdown
 
-<span class="k">def</span><span class="w"> </span><span class="nf">molar_mass_simple</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">masses</span><span class="o">=</span><span class="n">atomic_mass</span><span class="p">):</span>
-    <span class="n">tokens</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;([A-Z][a-z]?)(\d*)&quot;</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">tokens</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Could not read formula&quot;</span><span class="p">)</span>
+**Hint** - compute each separately and add.
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="tiny-data-structures-lists-and-dictionaries">
+<span id="content-lists-dicts"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Tiny data structures - lists and dictionaries</a><a class="headerlink" href="#tiny-data-structures-lists-and-dictionaries" title="Permalink to this heading">#</a></h2>
+<p>A <strong>list</strong> holds an ordered collection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;HCl&quot;</span><span class="p">,</span> <span class="s2">&quot;HNO3&quot;</span><span class="p">,</span> <span class="s2">&quot;H2SO4&quot;</span><span class="p">]</span>
+<span class="n">acids</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">acids</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;HCl&#39;, 3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <strong>dictionary</strong> maps keys to values. Great for atomic weights.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.011</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">15.999</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="mf">14.007</span><span class="p">,</span> <span class="s2">&quot;Cl&quot;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">}</span>
+<span class="n">aw</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">],</span> <span class="s2">&quot;H&quot;</span> <span class="ow">in</span> <span class="n">aw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15.999, True)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-6-1 admonition">
+<p class="admonition-title">Exercise 6.1</p>
+<p>Build a dictionary for Na and Cl, then compute molar mass of NaCl.
+:class: dropdown</p>
+<p><strong>Solution</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aw</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Na&quot;</span><span class="p">:</span> <span class="mf">22.990</span><span class="p">,</span> <span class="s2">&quot;Cl&quot;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">})</span>
+<span class="n">M_NaCl</span> <span class="o">=</span> <span class="n">aw</span><span class="p">[</span><span class="s2">&quot;Na&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">aw</span><span class="p">[</span><span class="s2">&quot;Cl&quot;</span><span class="p">]</span>
+<span class="n">M_NaCl</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+---
+
+(content:functions)=
+## 7. Functions - your own little tools
+
+Write a function to compute molar mass from a simple formula string like `&quot;CO2&quot;` or `&quot;H2O&quot;`.
+
+````{note}
+We will accept only very simple formulas - element followed by optional one-digit count.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">molar_mass</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">atomic_weights</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="k">for</span> <span class="n">sym</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">sym</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">masses</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element </span><span class="si">{</span><span class="n">sym</span><span class="si">}</span><span class="s2"> not in mass table&quot;</span><span class="p">)</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">count</span><span class="p">)</span> <span class="k">if</span> <span class="n">count</span> <span class="k">else</span> <span class="mi">1</span>
-        <span class="n">total</span> <span class="o">+=</span> <span class="n">masses</span><span class="p">[</span><span class="n">sym</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">):</span>
+        <span class="c1"># read element symbol</span>
+        <span class="k">if</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="n">formula</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">islower</span><span class="p">():</span>
+            <span class="n">elem</span> <span class="o">=</span> <span class="n">formula</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">elem</span> <span class="o">=</span> <span class="n">formula</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># read optional count</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span> <span class="ow">and</span> <span class="n">formula</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">isdigit</span><span class="p">():</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">count</span><span class="o">*</span><span class="mi">10</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">formula</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="ow">or</span> <span class="mi">1</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">atomic_weights</span><span class="p">[</span><span class="n">elem</span><span class="p">]</span> <span class="o">*</span> <span class="n">count</span>
     <span class="k">return</span> <span class="n">total</span>
 
-<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="s2">&quot;NaCl&quot;</span><span class="p">,</span> <span class="s2">&quot;C6H12O6&quot;</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">molar_mass_simple</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+<span class="n">m_co2</span> <span class="o">=</span> <span class="n">molar_mass</span><span class="p">(</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="n">aw</span><span class="p">)</span>
+<span class="n">m_h2o</span> <span class="o">=</span> <span class="n">molar_mass</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="n">aw</span><span class="p">)</span>
+<span class="n">m_co2</span><span class="p">,</span> <span class="n">m_h2o</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H2O 18.015
-CO2 44.009
-NaCl 58.44
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(44.009, 18.015)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try-it admonition">
+<p class="admonition-title">Try it</p>
+<p>Test <code class="docutils literal notranslate"><span class="pre">&quot;C6H12O6&quot;</span></code>. Then compare with a hand calculation.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="control-flow-if-and-for">
+<span id="content-control"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Control flow - if and for</a><a class="headerlink" href="#control-flow-if-and-for" title="Permalink to this heading">#</a></h2>
+<p>Classify solutions by a simple rule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">classify_pH</span><span class="p">(</span><span class="n">pH</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pH</span> <span class="o">&lt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;acidic&quot;</span>
+    <span class="k">elif</span> <span class="n">pH</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;basic&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;neutral&quot;</span>
+
+<span class="p">[</span><span class="n">classify_pH</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">7.0</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;acidic&#39;, &#39;neutral&#39;, &#39;basic&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Loop over formulas and report molar masses.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formulas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;C6H12O6&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">formulas</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">aw</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CO2 44.009
+H2O 18.015
 C6H12O6 180.156
 </pre></div>
 </div>
 </div>
 </div>
-<section id="practice">
-<h3>Practice<a class="headerlink" href="#practice" title="Permalink to this heading">#</a></h3>
-<p>Add your own formula to the list above and run the cell. Try CH3OH or C2H5OH.</p>
+<hr class="docutils" />
 </section>
-</section>
-<section id="functions-made-for-chemistry">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">4. Functions made for chemistry</a><a class="headerlink" href="#functions-made-for-chemistry" title="Permalink to this heading">#</a></h2>
-<p>We will write a function that converts a mass of a compound to moles using its molar mass. Then we will compute the number of particles.</p>
+<section id="first-plot-a-beer-lambert-style-line">
+<span id="content-plot"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">9. First plot - a Beer-Lambert style line</a><a class="headerlink" href="#first-plot-a-beer-lambert-style-line" title="Permalink to this heading">#</a></h2>
+<p>Assume path length <span class="math notranslate nohighlight">\(b=1\)</span> cm and molar absorptivity <span class="math notranslate nohighlight">\(\epsilon=120\ \mathrm{L\ mol^{-1}\ cm^{-1}}\)</span>. Plot absorbance vs concentration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">grams_to_moles</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="n">formula</span><span class="p">):</span>
-    <span class="n">mm</span> <span class="o">=</span> <span class="n">molar_mass_simple</span><span class="p">(</span><span class="n">formula</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">grams</span> <span class="o">/</span> <span class="n">mm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">particles_from_grams</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="n">formula</span><span class="p">,</span> <span class="n">NA</span><span class="o">=</span><span class="n">NA</span><span class="p">):</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">grams_to_moles</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">NA</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">120.0</span>   <span class="c1"># L mol^-1 cm^-1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># cm</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>     <span class="c1"># mol L^-1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span>
 
-<span class="n">grams</span> <span class="o">=</span> <span class="mf">10.0</span>
-<span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;CO2&quot;</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">grams_to_moles</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-<span class="n">N</span> <span class="o">=</span> <span class="n">particles_from_grams</span><span class="p">(</span><span class="n">grams</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">grams</span><span class="si">}</span><span class="s2"> g of </span><span class="si">{</span><span class="n">formula</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> mol and </span><span class="si">{</span><span class="n">N</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2"> particles&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beer-Lambert A = ε b c&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0 g of CO2 is 0.2272 mol and 1.368e+23 particles
+<img alt="_images/456859773a87329438f657e695e864d6a90b44cdcf091d37c1f288a1cccc83fc.png" src="_images/456859773a87329438f657e695e864d6a90b44cdcf091d37c1f288a1cccc83fc.png" />
+</div>
+</div>
+<div class="admonition-exercise-9-1 admonition">
+<p class="admonition-title">Exercise 9.1</p>
+<p>Change <span class="math notranslate nohighlight">\(\epsilon\)</span> to 80 and re-run. What happens to the slope?
+:class: dropdown</p>
+<p><strong>Answer</strong> - the line is less steep because absorbance is proportional to <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="glue-reuse-values-in-text">
+<span id="content-glue"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">10. Glue - reuse values in text</a><a class="headerlink" href="#glue-reuse-values-in-text" title="Permalink to this heading">#</a></h2>
+<p>We can run a calculation and <strong>paste</strong> the result inside Markdown. This keeps your narrative and numbers in sync.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">myst_nb</span><span class="w"> </span><span class="kn">import</span> <span class="n">glue</span>
+<span class="n">MW_ethanol</span> <span class="o">=</span> <span class="n">molar_mass</span><span class="p">(</span><span class="s2">&quot;C2H6O&quot;</span><span class="p">,</span> <span class="n">aw</span><span class="p">)</span>
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;MW_ethanol&quot;</span><span class="p">,</span> <span class="n">MW_ethanol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>46.069
 </pre></div>
 </div>
 </div>
 </div>
+<p>The molar mass of ethanol is <strong><span class="pasted-text">46.069</span> g mol^-1</strong>.</p>
+<div class="admonition-why-this-helps admonition">
+<p class="admonition-title">Why this helps</p>
+<p>If you change the atomic weights or the formula later, the number in your text updates the next time you build the notebook or book.</p>
+</div>
+<hr class="docutils" />
 </section>
-<section id="plotting-data-with-matplotlib">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. Plotting data with matplotlib</a><a class="headerlink" href="#plotting-data-with-matplotlib" title="Permalink to this heading">#</a></h2>
-<p>We will create a small calibration curve for a dye using the Beer–Lambert idea: <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">ε</span> <span class="pre">*</span> <span class="pre">l</span> <span class="pre">*</span> <span class="pre">c</span></code>. In practice we collect pairs of concentration and absorbance. We will fit a straight line and use it to estimate an unknown.</p>
+<section id="mini-task-using-pv-nrt">
+<span id="content-pv-nrt"></span><h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Mini task - using <span class="math notranslate nohighlight">\(PV=nRT\)</span></a><a class="headerlink" href="#mini-task-using-pv-nrt" title="Permalink to this heading">#</a></h2>
+<p>We will compute the pressure of 0.050 mol of gas at 298 K in a 2.0 L flask.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If matplotlib is not installed in your environment, uncomment the line below</span>
-<span class="c1"># !pip install matplotlib</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">0.082057</span>  <span class="c1"># L·atm·mol^-1·K^-1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">0.050</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">298.0</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">P_atm</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">V</span>
+<span class="n">P_atm</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6113246500000001
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-11-1 admonition">
+<p class="admonition-title">Exercise 11.1</p>
+<p>Change the temperature to 350 K. What is the new pressure in atm?
+:class: dropdown</p>
+<p><strong>Solution</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mf">350.0</span>
+<span class="n">P_atm</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">V</span>
+<span class="n">P_atm</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+---
+
+## 12. Reading errors without stress
+
+Make a typo to see a helpful error.
+
+```{code-cell} ipython3
+# Remove the leading # and run to see a NameError
+# print(molar_masss(&quot;CO2&quot;, aw))
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Common message types</p>
+<ul class="simple">
+<li><p><strong>NameError</strong> - you misspelled a name or used it before defining it.</p></li>
+<li><p><strong>TypeError</strong> - you used the wrong kind of value.</p></li>
+<li><p><strong>KeyError</strong> - dictionary key not found, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Na&quot;</span></code> missing from <code class="docutils literal notranslate"><span class="pre">aw</span></code>.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+</section>
+<section id="check-your-understanding">
+<span id="content-challenges"></span><h2><a class="toc-backref" href="#id13" role="doc-backlink">13. Check your understanding</a><a class="headerlink" href="#check-your-understanding" title="Permalink to this heading">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Quiz - three quick checks<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ol class="arabic simple">
+<li><p class="sd-card-text">Which structure maps element symbols to masses?</p>
+<ul class="simple">
+<li><p class="sd-card-text">A. list</p></li>
+<li><p class="sd-card-text">B. dictionary ✅</p></li>
+<li><p class="sd-card-text">C. string</p></li>
+</ul>
+</li>
+<li><p class="sd-card-text">If <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">ε</span> <span class="pre">b</span> <span class="pre">c</span></code>, doubling <code class="docutils literal notranslate"><span class="pre">b</span></code> while <code class="docutils literal notranslate"><span class="pre">ε</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> stay constant will:</p>
+<ul class="simple">
+<li><p class="sd-card-text">A. halve absorbance</p></li>
+<li><p class="sd-card-text">B. double absorbance ✅</p></li>
+<li><p class="sd-card-text">C. do nothing</p></li>
+</ul>
+</li>
+<li><p class="sd-card-text">In <code class="docutils literal notranslate"><span class="pre">PV</span> <span class="pre">=</span> <span class="pre">nRT</span></code>, units must be consistent. If <span class="math notranslate nohighlight">\(R\)</span> is in L atm mol^-1 K^-1 and <span class="math notranslate nohighlight">\(T\)</span> is in K, what unit should <span class="math notranslate nohighlight">\(V\)</span> use?</p>
+<ul class="simple">
+<li><p class="sd-card-text">A. L ✅</p></li>
+<li><p class="sd-card-text">B. mL</p></li>
+<li><p class="sd-card-text">C. Pa</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</details><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>mL also works if you convert to L before using the formula.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="glossary">
+<span id="content-glossary"></span><h2><a class="toc-backref" href="#id14" role="doc-backlink">14. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">#</a></dt><dd><p>A name that points to a value.</p>
+</dd>
+<dt id="term-function">function<a class="headerlink" href="#term-function" title="Permalink to this term">#</a></dt><dd><p>A named block of code that returns a result.</p>
+</dd>
+<dt id="term-dictionary">dictionary<a class="headerlink" href="#term-dictionary" title="Permalink to this term">#</a></dt><dd><p>A mapping from keys to values.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+</section>
+<section id="quick-links">
+<span id="content-references"></span><h2><a class="toc-backref" href="#id15" role="doc-backlink">15. Quick links</a><a class="headerlink" href="#quick-links" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-setup"><span class="std std-ref">1. Setup - choose your path</span></a> - setup options</p></li>
+<li><p><a class="reference internal" href="#content-chem-quick"><span class="std std-ref">5. Quick chemistry - molar mass and moles</span></a> - chemistry math</p></li>
+<li><p><a class="reference internal" href="#content-plot"><span class="std std-ref">9. First plot - a Beer-Lambert style line</span></a> - first plot</p></li>
+</ul>
+<p id="index-0">For a full index see <a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a>.</p>
+<hr class="docutils" />
+</section>
+<section id="optional-extras">
+<span id="content-extras"></span><h2><a class="toc-backref" href="#id16" role="doc-backlink">16. Optional extras</a><a class="headerlink" href="#optional-extras" title="Permalink to this heading">#</a></h2>
+<div class="dropdown admonition">
+<p class="admonition-title">Try a simple interactive widget</p>
+<p>Colab and Jupyter can run widgets. If <code class="docutils literal notranslate"><span class="pre">ipywidgets</span></code> is available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install ipywidgets   # if needed</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">w</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="c1"># Make synthetic calibration data (concentration in mM, absorbance unitless)</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
-<span class="n">true_eps_l</span> <span class="o">=</span> <span class="mf">0.42</span>  <span class="c1"># slope</span>
-<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">true_eps_l</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">c</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>  <span class="c1"># small noise</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">beer_lambert</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">120.0</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A = ε b c  (ε = </span><span class="si">{</span><span class="n">epsilon</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Fit line with numpy</span>
-<span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">coeffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">fit_A</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">c</span> <span class="o">+</span> <span class="n">intercept</span>
-
-<span class="c1"># Compute R^2 by hand for learning</span>
-<span class="n">ss_res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">A</span> <span class="o">-</span> <span class="n">fit_A</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ss_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">A</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">A</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">ss_res</span><span class="o">/</span><span class="n">ss_tot</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;slope:&quot;</span><span class="p">,</span> <span class="n">slope</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept:&quot;</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R^2:&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">fit_A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;fit&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (mM)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Calibration curve&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">w</span><span class="o">.</span><span class="n">interact</span><span class="p">(</span><span class="n">beer_lambert</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="p">(</span><span class="mf">20.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># If matplotlib is not installed in your environment, uncomment the line below</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># !pip install matplotlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Make synthetic calibration data (concentration in mM, absorbance unitless)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="a-tiny-ai-step-linear-regression-with-scikit-learn">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. A tiny AI step: linear regression with scikit-learn</a><a class="headerlink" href="#a-tiny-ai-step-linear-regression-with-scikit-learn" title="Permalink to this heading">#</a></h2>
-<p>Machine learning can fit a model to data and then make predictions on new samples. We will use a very small dataset to mirror what you saw above. If scikit-learn is not installed, the first cell will install it.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment if needed</span>
-<span class="c1"># !pip install scikit-learn</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="c1"># Use the same c and A from above, or recreate them here for safety</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.00</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span> <span class="mf">0.84</span><span class="p">])</span>  <span class="c1"># a small clean set</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;slope (epsilon*l):&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;intercept:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R^2:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span>
-
-<span class="c1"># Predict concentration from a new absorbance reading by inverting the line</span>
-<span class="n">A_unknown</span> <span class="o">=</span> <span class="mf">0.50</span>
-<span class="n">pred_c</span> <span class="o">=</span> <span class="p">(</span><span class="n">A_unknown</span> <span class="o">-</span> <span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span> <span class="o">/</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted concentration for A=0.50:&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">pred_c</span><span class="p">),</span> <span class="s2">&quot;mM&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="arrays-and-simple-vectorized-chemistry-math">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. Arrays and simple vectorized chemistry math</a><a class="headerlink" href="#arrays-and-simple-vectorized-chemistry-math" title="Permalink to this heading">#</a></h2>
-<p>NumPy arrays let you apply the same math to many values at once. Here we convert several masses to moles in one step.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">masses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">9.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">,</span> <span class="mf">36.0</span><span class="p">])</span>  <span class="c1"># grams of water</span>
-<span class="n">mm_H2O</span> <span class="o">=</span> <span class="n">molar_mass_simple</span><span class="p">(</span><span class="s2">&quot;H2O&quot;</span><span class="p">)</span>
-<span class="n">moles</span> <span class="o">=</span> <span class="n">masses</span> <span class="o">/</span> <span class="n">mm_H2O</span>
-<span class="n">particles_each</span> <span class="o">=</span> <span class="n">moles</span> <span class="o">*</span> <span class="n">NA</span>
-<span class="n">masses</span><span class="p">,</span> <span class="n">moles</span><span class="p">,</span> <span class="n">particles_each</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="mini-project-estimate-solution-ph-for-a-strong-acid-by-concentration">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">8. Mini project: estimate solution pH for a strong acid by concentration</a><a class="headerlink" href="#mini-project-estimate-solution-ph-for-a-strong-acid-by-concentration" title="Permalink to this heading">#</a></h2>
-<p>For a strong monoprotic acid at 25 °C, a rough estimate treats the acid as fully dissociated. Then <code class="docutils literal notranslate"><span class="pre">[H⁺]</span> <span class="pre">≈</span> <span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">pH</span> <span class="pre">=</span> <span class="pre">-log10([H⁺])</span></code>. This breaks down at very low concentrations, but it works for a quick check.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">estimate_pH_strong_acid</span><span class="p">(</span><span class="n">conc_M</span><span class="p">):</span>
-    <span class="n">conc_M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">conc_M</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">conc_M</span><span class="p">,</span> <span class="mf">1e-14</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># guard against log of zero</span>
-    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">H</span><span class="p">)</span>
-
-<span class="n">c_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">])</span>
-<span class="n">pH_values</span> <span class="o">=</span> <span class="n">estimate_pH_strong_acid</span><span class="p">(</span><span class="n">c_values</span><span class="p">)</span>
-<span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">c_values</span><span class="p">,</span> <span class="n">pH_values</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="plot-the-estimate">
-<h3>Plot the estimate<a class="headerlink" href="#plot-the-estimate" title="Permalink to this heading">#</a></h3>
-<p>We will see the near linear trend on a log scale.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-
-<span class="n">c_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="n">pH_grid</span> <span class="o">=</span> <span class="n">estimate_pH_strong_acid</span><span class="p">(</span><span class="n">c_grid</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">c_grid</span><span class="p">,</span> <span class="n">pH_grid</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Acid concentration (M)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Estimated pH&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Strong acid pH estimate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="exercises">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">9. Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<p>Try these on your own. Add new cells as needed.</p>
-<ol class="arabic simple">
-<li><p>Extend <code class="docutils literal notranslate"><span class="pre">atomic_mass</span></code> with K and Ca, then compute the molar mass of KCl and CaCO3.</p></li>
-<li><p>Modify <code class="docutils literal notranslate"><span class="pre">molar_mass_simple</span></code> to allow parentheses for a case like Ca(OH)2. Hint: count the group, then add to the total.</p></li>
-<li><p>Create your own calibration data for a different range of concentrations and fit a line. Report slope, intercept, and R².</p></li>
-<li><p>Use the fitted line to predict the concentration of an unknown from a measured absorbance.</p></li>
-</ol>
-</section>
-<section id="wrap-up">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">10. Wrap up</a><a class="headerlink" href="#wrap-up" title="Permalink to this heading">#</a></h2>
-<p>You wrote Python code, made functions, plotted data, and built a tiny model that predicts concentration from absorbance. This is the start of using Python and simple AI ideas in chemistry.</p>
-<p>Next topics to explore later: reading CSV files with <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, more realistic models for pH, stoichiometry from balanced reactions, and an introduction to molecular descriptors.</p>
-</section>
 </section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="added-learning-aids">
-<h1><a class="toc-backref" href="#id14" role="doc-backlink">Added Learning Aids</a><a class="headerlink" href="#added-learning-aids" title="Permalink to this heading">#</a></h1>
-<section id="learning-goals">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">Learning Goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="quick-background">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">Quick Background</a><a class="headerlink" href="#quick-background" title="Permalink to this heading">#</a></h2>
-<p>Machine learning in chemistry benefits from clear data definitions, simple baselines, and careful evaluation. If your dataset is small, start with linear or tree models before you try deep models. Always keep a held out set for checking generalization.</p>
-</section>
-<section id="mini-checklist">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">Mini Checklist</a><a class="headerlink" href="#mini-checklist" title="Permalink to this heading">#</a></h2>
+<section id="whats-next">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">17. What’s next</a><a class="headerlink" href="#whats-next" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Data loaded with expected shape and units.</p></li>
-<li><p>Train, validation, and test sets created.</p></li>
-<li><p>Baseline model trained for comparison.</p></li>
-<li><p>Metrics reported with clear units where possible.</p></li>
-<li><p>Plots labeled with axis names and legends.</p></li>
+<li><p>Clean up your <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code> function to support multi-digit counts like <code class="docutils literal notranslate"><span class="pre">&quot;C12H22O11&quot;</span></code>.</p></li>
+<li><p>Read a small CSV of concentrations and plot absorbance.</p></li>
+<li><p>Move on to the next lesson once you feel comfortable with variables, lists, dictionaries, functions, and plotting.</p></li>
 </ul>
-</section>
-<section id="try-this">
-<h2><a class="toc-backref" href="#id18" role="doc-backlink">Try This</a><a class="headerlink" href="#try-this" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="glossary">
-<h2><a class="toc-backref" href="#id19" role="doc-backlink">Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
-<p><strong>Descriptor</strong>: numeric feature that represents structure or physicochemical property.<br />
-<strong>Overfitting</strong>: model performance that looks good on training data but drops on unseen data.<br />
-<strong>Regularization</strong>: penalty on model complexity to reduce overfitting.</p>
-</section>
-<section id="further-reading">
-<h2><a class="toc-backref" href="#id20" role="doc-backlink">Further Reading</a><a class="headerlink" href="#further-reading" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><em>Jupyter Book documentation</em> on MyST Markdown and code-cell blocks.</p></li>
-<li><p><em>Hands On Machine Learning</em> for model selection and validation basics.</p></li>
-<li><p><em>Chemoinformatics and Computational Chemical Biology</em> for domain examples.</p></li>
-</ul>
-</section>
-<section id="credits">
-<h2><a class="toc-backref" href="#id21" role="doc-backlink">Credits</a><a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h2>
-<p>This file was converted from a Jupyter notebook and enriched with study aids for use in a Jupyter Book.</p>
+<div class="admonition-save-your-work admonition">
+<p class="admonition-title">Save your work</p>
+<p>Click <strong>Save</strong> or press <code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>. Commit to version control if you use git.</p>
+</div>
 </section>
 </section>
 
@@ -822,22 +1035,13 @@ C6H12O6 180.156
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lecture-00-test.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 01 — Test: Machine Learning in Chemistry</p>
+        <p class="prev-next-title">Welcome to CHEM 5080: AI for Chemistry</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="markdown.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -854,39 +1058,26 @@ C6H12O6 180.156
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">AI for Chemistry Intro Notebook</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-for-chemistry-python-and-jupyter-primer">AI for Chemistry: Python and Jupyter Primer</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-will-learn">What you will learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps-in-python">1. First steps in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-types-and-comments">2. Variables, types, and comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-loops-and-a-quick-chemistry-task">3. Lists, loops, and a quick chemistry task</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice">Practice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-choose-your-path">1. Setup - choose your path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#meet-the-notebook">2. Meet the notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-as-a-calculator">3. Python as a calculator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-gotchas">Common gotchas</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-made-for-chemistry">4. Functions made for chemistry</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data-with-matplotlib">5. Plotting data with matplotlib</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tiny-ai-step-linear-regression-with-scikit-learn">6. A tiny AI step: linear regression with scikit-learn</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-and-simple-vectorized-chemistry-math">7. Arrays and simple vectorized chemistry math</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-estimate-solution-ph-for-a-strong-acid-by-concentration">8. Mini project: estimate solution pH for a strong acid by concentration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-estimate">Plot the estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-names-for-values">4. Variables - names for values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-chemistry-molar-mass-and-moles">5. Quick chemistry - molar mass and moles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tiny-data-structures-lists-and-dictionaries">6. Tiny data structures - lists and dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-flow-if-and-for">8. Control flow - if and for</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-plot-a-beer-lambert-style-line">9. First plot - a Beer-Lambert style line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glue-reuse-values-in-text">10. Glue - reuse values in text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-task-using-pv-nrt">11. Mini task - using <span class="math notranslate nohighlight">\(PV=nRT\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-your-understanding">13. Check your understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">14. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-links">15. Quick links</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-extras">16. Optional extras</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">17. What’s next</a></li>
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">10. Wrap up</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#added-learning-aids">Added Learning Aids</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning Goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-background">Quick Background</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-checklist">Mini Checklist</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-this">Try This</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">Glossary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credits">Credits</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

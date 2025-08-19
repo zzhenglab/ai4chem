@@ -1,0 +1,2108 @@
+please read below documentation for jupyter notebook first:
+
+
+(content:myst)=
+# MyST Markdown overview
+
+In addition to [Jupyter Notebook Markdown](../file-types/notebooks.ipynb),
+Jupyter Book also supports a special flavour of Markdown called **MyST (or
+Markedly Structured Text)**.
+It was designed to make it easier to create publishable computational documents written with Markdown notation.
+It is a superset of [CommonMark Markdown](https://commonmark.org/) and draws heavy inspiration from the fantastic [RMarkdown language from RStudio](https://rmarkdown.rstudio.com/).
+
+```{margin}
+For those who are familiar with Sphinx, MyST Markdown is basically
+CommonMark + Markdown extensions + Sphinx roles and directives
+```
+
+Whether you write your book's content in Jupyter notebooks (`.ipynb`) or in regular Markdown files (`.md`),
+you'll write in the same flavour of **MyST Markdown**. Jupyter Book will know how to parse both of them.
+
+This page contains a few pieces of information about MyST Markdown and how it relates to Jupyter Book.
+You can find much more information about this flavour of Markdown at
+[the Myst Parser documentation](inv:myst-parser#syntax/core).
+
+:::{admonition} Want to use RMarkdown directly?
+:class: tip
+See [](../file-types/jupytext.Rmd)
+:::
+
+## Directives and roles
+
+Roles and directives are two of the most powerful tools in Jupyter Book.
+They are kind of like *functions*, but written in a markup language.
+They both serve a similar purpose, but **roles are written in one line** whereas **directives span many lines**.
+They both accept different kinds of inputs, and what they do with those inputs depends on the specific role or directive being used.
+
+(content:myst/directives)=
+### Directives
+
+Directives customize the look, feel, and behaviour of your book.
+They are kind of like *functions*, and come in a variety of names with different behaviour.
+This section covers how to structure and use them.
+
+At its simplest, you can use directives in your book like so:
+
+````md
+```{mydirectivename}
+My directive content
+```
+````
+
+This will only work if a directive with name `mydirectivename` already exists (which it doesn't).
+There are many pre-defined directives associated with Jupyter Book.
+For example, to insert a note box into your content, you can use the following directive:
+
+````
+```{note}
+Here is a note
+```
+````
+
+This results in:
+
+```{note}
+Here is a note
+```
+
+being inserted in your built book.
+
+For more information on using directives, see the [MyST documentation](inv:myst-parser#syntax/directives).
+
+(directive-arguments)=
+#### More arguments and metadata in directives
+
+Many directives allow you to control their behaviour with extra pieces of
+information. In addition to the directive name and the directive content,
+directives allow two other configuration points:
+
+**directive arguments** - a list of words that come just after the `{directivename}`.
+
+Here's an example usage of directive arguments:
+
+````md
+```{directivename} arg1 arg2
+My directive content.
+```
+````
+
+**directive keywords** - a collection of flags or key/value pairs
+that come just underneath `{directivename}`.
+
+There are two ways to write directive keywords, either as `:key: val` pairs, or
+as `key: val` pairs enclosed by `---` lines. They both work the same way:
+
+Here's an example of directive keywords using the `:key: val` syntax:
+
+````md
+```{directivename}
+:key1: metadata1
+:key2: metadata2
+My directive content.
+```
+````
+
+and here's an example of directive keywords using the enclosing `---` syntax:
+
+````md
+```{directivename}
+---
+metadata1: metadata2
+metadata3: metadata4
+---
+My directive content.
+```
+````
+
+:::{tip}
+Remember, specifying directive keywords with `:key:` or `---` will make no difference.
+We recommend using `---` if you have many keywords you wish to specify, or if some values
+will span multiple lines. Use the `:key: val` syntax as a shorthand for just one or two
+keywords.
+:::
+
+For examples of how this is used, see the sections below.
+
+(content:myst/roles)=
+### Roles
+
+Roles are very similar to directives, but they are less complex and written
+entirely in one line. You can use a role in your book with
+this syntax:
+
+```md
+Some content {rolename}`and here is my role's content!`
+```
+
+Again, roles will only work if `rolename` is a valid role name.
+For example, the `doc` role can be used to refer to another page in your book.
+You can refer directly to another page by its relative path.
+For example, the syntax `` {doc}`../intro` `` will result in: {doc}`../intro`.
+
+```{warning}
+It is currently a requirement for roles to be on the **same line** in your source file. It will
+not be parsed correctly if it spans more than one line. Progress towards supporting roles
+that span multiple lines can be tracked [by this issue](https://github.com/executablebooks/MyST-Parser/issues/269)
+```
+
+For more information on using roles, see the [MyST documentation](inv:myst-parser#syntax/roles).
+
+## What roles and directives are available?
+
+There is currently no single list of roles / directives to use as a reference, but this
+section tries to give as much as information as possible. For those who are familiar
+with the Sphinx ecosystem, **you may use any directive / role that is available in Sphinx**.
+This is because Jupyter Book uses Sphinx to build your book, and MyST Markdown supports
+all syntax that Sphinx supports (think of it as a Markdown version of reStructuredText).
+
+:::{caution}
+If you search the internet (and the links below) for information about roles and directives,
+the documentation will generally be written with reStructuredText in mind. MyST Markdown
+is different from reStructuredText, but all of the functionality should be the same.
+See [the MyST Sphinx parser documentation](inv:myst-parser#intro/get-started) for more information about the differences between MyST and rST.
+:::
+
+For a list of directives that are available to you, there are three places to check:
+
+1. [The Sphinx directives page](inv:sphinx#usage/restructuredtext/directives)
+   has a list of directives that are available by default in Sphinx.
+2. [The reStructuredText directives page](https://docutils.sourceforge.io/docs/ref/rst/directives.html)
+   has a list of directives in the Python "docutils" module.
+3. This documentation has several additional directives that are specific to Jupyter Book.
+
+:::{admonition} What if it exists in rST but not MyST?
+:class: tip
+In some unusual cases, MyST may be incompatible with a certain role or directive.
+In this case, you can use the special `eval-rst` directive, to directly parse reStructuredText:
+
+````md
+```{eval-rst}
+.. note::
+
+   A note written in reStructuredText.
+```
+````
+
+which produces
+
+```{eval-rst}
+.. note::
+
+   A note written in reStructuredText.
+```
+:::
+
+:::{seealso}
+The MyST-Parser documentation on [how directives parse content](inv:myst-parser#syntax/directives/parsing), and its use for [including rST files into a Markdown file](inv:myst-parser#howto/include-rst), and [using `sphinx.ext.autodoc` in Markdown files](inv:myst-parser#howto/autodoc).
+:::
+
+(markdown/nesting)=
+## Nesting content blocks in Markdown
+
+If you'd like to nest content blocks inside one another in Markdown (for
+example, to put a `{note}` inside of a `{margin}`), you may do so by adding
+extra backticks (`` ` ``) to the outer-most block. This works for literal
+code blocks as well.
+
+For example, the following syntax:
+
+`````md
+````
+```
+```
+````
+`````
+
+yields
+
+````md
+```
+```
+````
+
+Thus, if you'd like to nest directives inside one another, you can take the same
+approach. For example, the following syntax:
+
+`````md
+````{margin}
+```{note}
+Here's my note!
+```
+````
+`````
+
+produces:
+
+````{margin}
+```{note}
+Here's my note!
+```
+````
+
+## Other MyST Markdown syntax
+
+In addition to roles and directives, there are numerous other kinds of syntax
+that MyST Markdown supports.
+MyST supports all syntax of CommonMark Markdown (the kind of Markdown that Jupyter notebooks use), as well as an extended syntax that is used for scientific publishing.
+
+The [MyST-Parser](inv:myst-parser#intro/get-started) is the tool that Jupyter Book uses to allow you to write your book content in MyST.
+It is also a good source of information about the MyST syntax.
+Here are some links you can use as a reference:
+
+* [CommonMark block syntax](inv:myst-parser#commonmark-block-tokens)
+* [Extended MyST block syntax in MyST](inv:myst-parser#extended-block-tokens)
+* [CommonMark in-line syntax](inv:myst-parser#commonmark-span-tokens)
+* [Extended in-line syntax in MyST](inv:myst-parser#extended-span-tokens)
+
+:::{seealso}
+For information about enabling extended MyST syntax, see [](content-blocks:myst-extensions).
+In addition, see other examples of this extended syntax (and how to enable each) throughout this documentation.
+:::
+
+## What can I create with MyST Markdown?
+
+See [](./content-blocks.md) for an introduction to what you can do with MyST Markdown
+in Jupyter Book.
+In addition, the other pages in this site cover many more use-cases for how to use directives with MyST.
+
+## Tools for writing MyST Markdown
+
+There is some support for MyST Markdown in tools across the community. Here we include
+a few prominent ones.
+
+### Jupyter interfaces
+
+While MyST Markdown does not (yet) render in traditional Jupyter interfaces, most
+of its syntax should "gracefully degrade", meaning that you can still work with
+MyST in Jupyter, and then build your book with Jupyter Book.
+
+### Jupytext and text sync
+
+For working with Jupyter notebook and Markdown files, we recommend [jupytext](https://jupytext.readthedocs.io/en/latest),
+an open source tool for two-way conversion between `.ipynb` and text files.
+Jupytext [supports the MyST Markdown format](https://jupytext.readthedocs.io/en/latest/formats-markdown.html#myst-markdown).
+
+:::{note}
+For full compatibility with `myst-parser`, it is necessary to use `jupytext>=1.6.0`.
+
+See also [](file-types:custom:jupytext).
+:::
+
+### VS Code
+
+If editing the Markdown files using VS Code, the
+[VS Code MyST Markdown extension](https://marketplace.visualstudio.com/items?itemName=ExecutableBookProject.myst-highlight)
+provides syntax highlighting and other features.
+
+
+
+---
+myst:
+  substitutions:
+    key1: "I'm a **substitution**"
+    key2: |
+      ```{note}
+      {{ key1 }}
+      ```
+    fishy: |
+      ```{image} /images/fun-fish.png
+      :alt: fishy
+      :width: 200px
+      ```
+    jinja: "[Jinja templates](https://jinja.palletsprojects.com/en/2.11.x/)"
+    repo_name: "jupyter-book"
+    repo_url: "[my repo url](https://github.com/executablebooks/jupyter-book)"
+---
+
+# Special content blocks
+
+A common use of directives and roles is to designate "special blocks" of your content.
+This allows you to include more complex information such as warnings and notes, citations, and figures.
+This section covers a few common ones.
+
+% REMOVE when version is >= 0.15
+:::{admonition} Upgrading from `sphinx-panels`
+Previous versions of Jupyter Book used `sphinx-panels` to define major UI elements.
+These now use [Sphinx Design instead](https://sphinx-design.readthedocs.io).
+Documentation for these UI elements is now in [](components.md).
+See [the migration guide](https://sphinx-design.readthedocs.io/en/latest/get_started.html#migrating-from-sphinx-panels) and [this migration discussion issue](https://github.com/executablebooks/sphinx-design/issues/51) for more information.
+:::
+
+(content-blocks:myst-extensions)=
+## MyST syntax extensions
+
+{term}`MyST Markdown` has a base syntax that it supports, and additional syntax can be enabled to add extra functionality.
+By default, Jupyter Book enables a few extra syntax pieces for MyST in order to more closely resemble the Markdown experience in Jupyter Notebooks and interfaces.
+These extensions are:
+
+`dollarmath`
+: To support `$$` and `$` syntax for math blocks. See [](./math.md).
+
+`linkify`
+: To auto-detect HTML-like links in your markdown and convert them to hyperlinks.
+
+`substitution`
+: To allow you to define markdown "variables" and substitute text in using them. See [](content:substitutions).
+
+`colon_fence`
+: To allow you to use `:::` fences for admonitions, in order to make them easier to render in interfaces that do not support MyST. See [](admonitions:colons).
+
+To enable your own syntax extensions, use the following configuration pattern:
+
+```yaml
+parse:
+  myst_enable_extensions:
+    - extension-1
+    - extension-2
+```
+
+Note that this will **override** the default Jupyter Book extension list.
+You should include all of the extensions that you want to be enabled.
+
+:::{seealso}
+For a list of syntax extensions in MyST, see [the MyST documentation](https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html).
+:::
+
+(content:admonitions)=
+## Notes, warnings, and other admonitions
+
+Let's say you wish to highlight a particular block of text that exists slightly apart from the narrative of your page.
+You can use the **`{note}`** directive for this.
+
+For example:
+
+````{example}
+```{note}
+Here is a note!
+```
+````
+
+````{margin} A note on nesting
+You can nest admonitions (and other content blocks) inside one another. For example:
+
+:::{note}
+Here's a note block inside a margin block
+:::
+
+See {ref}`markdown/nesting` for instructions to do this.
+````
+
+There are a number of similarly-styled blocks of text. For example, here is a `{warning}`
+block:
+
+`````{warning}
+Here's a warning! It was created with:
+````
+```{warning}
+```
+````
+`````
+
+You can also create **dropdown admonitions** by adding a `dropdown` class to an admonition.
+For example:
+
+:::{note}
+:class: dropdown
+Here's a dropdown note!
+See [](components:dropdowns) for more details.
+:::
+
+For a complete list of admonitions, see [the `sphinx-book-theme` documentation](https://sphinx-book-theme.readthedocs.io/en/stable/reference/kitchen-sink/admonitions.html).
+
+### Blocks of text with custom titles
+
+You can also choose the title of your message box by using the
+**`{admonition}`** directive. For example:
+
+````{example}
+```{admonition} Here's your admonition
+Here's the admonition content
+```
+````
+
+If you'd like to **style these blocks**, then use the `:class:` option. For
+example:
+
+``````{example}
+`````{admonition} This admonition was styled...
+:class: tip
+With a tip class!
+`````
+``````
+
+(admonitions:colons)=
+### Markdown-friendly directives with `:::`
+
+The admonition syntax above utilises the general [directives syntax](content:myst/directives).
+However, if you're using an interface that does not support {term}`MyST Markdown`, it will render as a raw literal block.
+Many directives contain markdown inside, and if you'd like this markdown to render "normally", you may also use `:::` fences rather than ` ``` ` fences to define the directive. As a result, the contents of the directive will be rendered as markdown.
+
+
+For example:
+
+````{example}
+
+:::{note}
+This text is **standard** _Markdown_
+:::
+````
+
+Similar to normal directives, these admonitions can also be nested:
+
+`````{example}
+
+::::{important}
+:::{note}
+This text is **standard** _Markdown_
+:::
+::::
+`````
+
+:::{note}
+You can use this syntax for any kind of directive, though it is generally recommended to use only with directives that contain pure markdown in their content.
+:::
+
+### Insert code cell outputs into admonitions
+
+If you'd like to insert the outputs of running code *inside* admonition
+blocks, we recommend using [`glue` functionality](content:executable:output-insert).
+For example, we'll insert one of the outputs that was glued into the book from the [storing code outputs page](./executable/output-insert.md).
+
+For example:
+
+````{example}
+
+```{note}
+Here's my figure:
+
+```{glue} sorted_means_fig
+:doc: executable/output-insert.md
+```
+
+````
+
+See [](content:executable:output-insert) for more information on how to use `glue` to insert your outputs directly into your content.
+
+:::{tip}
+To hide code input and output that generated the variable you are inserting, use the `remove_cell` tag.
+See [](../interactive/hiding.md) for more information and other tag options.
+:::
+
+(content-blocks:html-admonitions)=
+### HTML admonitions
+
+A drawback of admonition syntax is that it will not render in interfaces that do not support this syntax (e.g., GitHub). If you'd like to use admonitions that are defined *purely with HTML*, MyST can parse them via the `html_admonitions` extension. To use it, first enable it with the following configuration:
+
+```yaml
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - html_admonition
+```
+
+Then, you may define admonitions in your book like so:
+
+````{example}
+```html
+<div class="admonition note" name="html-admonition" style="background: lightgreen; padding: 10px">
+<p class="title">This is the **title**</p>
+This is the *content*
+</div>
+```
+````
+
+See [](inv:myst-parser#syntax/html-admonition) for more information about HTML admonitions.
+
+(content-blocks:warning-headers-admonitions)=
+### Do not embed headings inside admonitions
+
+You should **not** embed headings (lines starting with `#`) inside of admonitions, dropdowns, or other content blocks such as this.
+Sphinx (and thus Jupyter Book) uses headings to define the major top-level sections of a document.
+For this reason, nesting a heading within a block will cause unpredictable breakage of the document structure.
+
+`````{admonition} Do not do this
+:class: warning
+For example, **do not do this**:
+
+````
+```{note}
+## This heading is inside an admonition, and will mess things up!
+
+Don't do this!
+```
+````
+`````
+
+To achieve a similar effect, write some **bold text** instead of using a markdown header.
+
+(content/definition-lists)=
+
+## Definition lists
+
+Definition lists are enabled by defining the following setting in your `_config.yml`:
+
+```yaml
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - deflist
+```
+
+Definition lists utilise the [markdown-it-py deflist plugin](https://markdown-it-py.readthedocs.io/en/latest/plugins.html), which itself is based on the [Pandoc definition list specification](http://johnmacfarlane.net/pandoc/README.html#definition-lists).
+
+Here's an example:
+
+````{example}
+Term 1
+: Definition
+
+Term 2
+: Definition
+````
+
+From the [Pandoc documentation](https://pandoc.org/MANUAL.html#definition-lists):
+
+> Each term must fit on one line, which may optionally be followed by a blank line, and must be followed by one or more definitions.
+> A definition begins with a colon or tilde, which may be indented one or two spaces.
+>
+> A term may have multiple definitions, and each definition may consist of one or more block elements (paragraphs, code blocks, lists, etc.)
+
+Here is a more complex example, demonstrating some of these features:
+
+```{example}
+Term *with Markdown*
+: Definition [with reference](content/definition-lists)
+
+  A second paragraph
+: A second definition
+
+Term 2
+  ~ Definition 2a
+  ~ Definition 2b
+
+Term 3
+:     A code block
+: > A quote
+: A final definition, that can even include images:
+
+  <img src="../images/fun-fish.png" alt="fishy" width="200px">
+```
+
+## Quotations and epigraphs
+
+Quotations and epigraphs provide ways to highlight information given by others.
+
+### Quotations
+
+**Regular quotations** are controlled with standard Markdown syntax, i.e., by
+inserting a caret (`>`) symbol in front of one or more lines of text. For example:
+
+````{example}
+> Here is a cool quotation.
+>
+> From me, Jo the Jovyan
+````
+
+### Epigraphs
+
+**Epigraphs** draw more attention to a quote and highlight its author. You should
+keep these relatively short so that they don't take up too much vertical space. Here's
+how an epigraph looks:
+
+`````{example}
+```{epigraph}
+Here is a cool quotation.
+
+From me, Jo the Jovyan
+```
+`````
+
+You can provide an **attribution** to an epigraph by adding `--` to the final line, followed by the quote author. For example:
+
+`````{example}
+```{epigraph}
+Here is a cool quotation.
+
+-- Jo the Jovyan
+```
+`````
+
+(content-blocks:glossaries)=
+## Glossaries
+
+Glossaries allow you to define terms in a glossary so you can then link back to it
+throughout your content. You can create a glossary with the following
+syntax:
+
+````{example}
+```{glossary}
+Term one
+  An indented explanation of term 1
+
+A second term
+  An indented explanation of term2
+```
+````
+
+To reference terms in your glossary, use the `{term}` role. For example,
+`` {term}`Term one` `` becomes {term}`Term one` and `` {term}`A second term` ``
+becomes {term}`A second term`.
+
+:::{note}
+Glossary terms are automatically added to [your book's index page](content:indexes).
+:::
+
+(content:indexes)=
+## Indexes
+
+Indexes allow you to define index items (terms, phrases, keywords, etc) that are collected in a single page, with links back to their location in your content.
+This is called the **General Index**.
+
+```{index} General Index
+```
+
+When you build your book, a general index page will automatically be generated.
+
+### Reference your general index
+
+To create a reference / link to your general index, use the `genindex` keyword.
+For example:
+
+- `` {ref}`using a ref role <genindex>` ``: {ref}`using a ref role <genindex>`
+- `[using markdown link syntax](genindex)`: [using markdown link syntax](genindex)
+- `[](genindex)`: [](genindex) (to demonstrate the title of the general index)
+
+
+### The `{index}` directive
+
+You can add items to your general index with the `{index}` directive.
+It has the following syntax:
+
+````md
+```{index} Entry name
+```
+````
+
+This will not insert anything into your final page's content, but will add a link to this section in your general index.
+For example"
+
+````{example}
+```{index} index directive
+```
+````
+
+You can [find this term in the index](genindex).
+
+#### Add a label to your `{index}` directive
+
+You can customize the name for an index entry by setting the `:name:` parameter.
+For example:
+
+````{example}
+```{index} Index names
+:name: index-names
+```
+````
+
+You can then reference this index in your book.
+For example:
+
+- `` {ref}`See index names <index-names>` ``: {ref}`See index names <index-names>`
+- `[See index names](index-names)`: [See index names](index-names)
+
+#### Create more complex index entries
+
+The Sphinx [*Index-generating markup*](https://www.sphinx-doc.org/en/master/usage/restructuredtext/directives.html?highlight=index#index-generating-markup) page describes the full range of indexing possibilities.
+This includes the ability to construct nested headings using the `;` separator to represent a change in index level:
+
+````md
+```{index} single: Jupyter Book ; installation
+```
+````
+
+Multiple index entry terms can be created from a single reference.
+For example, we can create entries `references ; index terms` and `index terms ; references` from the following entry:
+
+````md
+```{index} double: references ; index terms
+```
+````
+
+Readers can be directed towards alternative index terms within the index itself by using `see` or `seealso`, as in the following example which adds an entry for `citations` to also refer to `bibliographies`:
+
+````md
+```{index} seealso: citations ; bibliographies
+```
+````
+
+### Create index entries with other extensions
+
+You can also create index entries through the use of other Sphinx extensions.
+For example, any term you define [in a Glossary](content-blocks:glossaries) will also be inserted into the index.
+
+### Add the general index to your table of contents
+
+To add your general index to your book's table of contents, take the following steps:
+
+- Create a file in the root of your book called `genindex.md`.
+- It **must have a title** but the rest can be blank.
+  The title will actually be replaced with `Index` when your book is built, but it is needed in your source file to avoid errors.
+- Add an entry for this page in [your table of contents](structure:book).
+  For example:
+
+  ```yaml
+  format: jb-book
+  root: index
+  chapters:
+  - file: path/to/chapter1
+  - file: path/to/chapter2
+  - file: genindex
+  ```
+
+(content:substitutions)=
+## Substitutions and variables in markdown
+
+Substitutions allow you to define **variables** in the front-matter of your page, and then **insert** those variables into your content throughout.
+
+To use a substitution, first add front-matter content to the top of a page like so:
+
+````yaml
+---
+myst:
+  substitutions:
+    key1: "I'm a **substitution**"
+    key2: |
+      ```{note}
+      {{ key1 }}
+      ```
+    fishy: |
+      ```{image} img/fun-fish.png
+      :alt: fishy
+      :width: 200px
+      ```
+---
+````
+
+You can use these substitutions inline or as blocks, and you can even nest substitutions in other substitutions (but circular references are prohibited):
+
+```{example}
+Inline: {{ key1 }}
+
+Block level:
+
+{{ key2 }}
+
+```
+
+You can also insert substitutions inside of other markdown structures like tables:
+
+````{example}
+| col1     | col2      |
+| -------- | --------- |
+| {{key2}} | {{fishy}} |
+````
+
+:::{seealso}
+For more information about Substitutions, see [](inv:myst-parser#syntax/substitutions).
+:::
+
+### Define substitutions for your whole book
+
+You can also define book-level substitution variables with the following configuration:
+
+```yaml
+parse:
+  myst_substitutions:
+    key: value
+```
+
+These substitutions will be available throughout your book. For example, the global substitution key `my-global-substitution` is defined in this book's `_config.yml` file, and it produces: {{ sub3 }}.
+
+### Formatting substitutions
+
+MyST substitutions use {{ jinja }} in order to substitute in key / values. This means that you can apply any standard Jinja formatting to your substitutions. For example, you can **replace text in your substitutions** like so:
+
+```{example}
+The original key1: {{ key1 }}
+
+{{ key1 | replace("a substitution", "the best substitution")}}
+```
+
+### Using substitutions in links
+
+If you'd like to use substitutions to insert and modify **links** in your book, here are two options to explore:
+
+1. **Define the entire markdown link as a variable**. For example:
+   ```yaml
+   substitutions:
+     repo_url: [my repo url](https://github.com/executablebooks/jupyter-book)
+   ```
+
+   ```{example}
+   Here's my link: {{ repo_url }}
+   ```
+2. Use Jinja features to insert the variable.
+   Because substitutions use {{ jinja }}, you also have access to **Python formatting** operations in your substitution.
+   For example:
+   ```yaml
+   substitutions:
+     repo_name: jupyter-book
+   ```
+   ```{example}
+   Here's my link: {{ '[my repo: `{repo}`](https://github.com/executablebooks/{repo})'.format(repo=repo_name) }}
+   ```
+
+## Citations and cross-references
+
+You can add citations and cross-references to your book. See
+{doc}`citations` for more information on how to do this.
+
+## Figures
+
+You can thoroughly customise the look of figures in your book. See {doc}`figures` for
+more information.
+
+## Sidebar content
+
+You can also use MyST to control various aspects of the page layout. For more
+information on this, see {doc}`layout`.
+
+## Footnotes
+
+You can include footnotes in your book using standard Markdown syntax.
+This will include a numbered reference to the footnote in-line, and append the footnote
+to a list of footnotes at the bottom of the page.
+
+To create a footnote, first insert a reference in-line with this syntax: `[^mylabel]`.
+Then, define the text for that label like so:
+
+```md
+[^mylabel]: My footnote text.
+```
+
+You can define `[^mylabel]` anywhere in the page, though its definition will always
+be placed at the bottom of your built page. For example, here's a footnote [^mynote]
+and here's another one [^mynote2]. You can click either of them to see the footnotes
+at the bottom of this page.
+
+[^mynote]: Here's the text of my first note.
+[^mynote2]: And the text of my second note.
+            Note that
+            [you can include Markdown footnote definitions](https://executablebooks.org).
+
+
+# Components and UI elements
+
+In addition to special types of content, Jupyter Book also comes with a few extensions that provide flexible ways to structure chunks of content.
+
+:::{seealso}
+Many of these are provided by [the `sphinx-design` extension](https://sphinx-design.readthedocs.io/en/latest/index.html).
+This is inspired heavily by [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/) and many Bootstrap classes can be used as a part of these components.
+See the [sphinx-design documentation](https://sphinx-design.readthedocs.io/en/latest/index.html) for more details.
+:::
+
+% REMOVE when version is >= 0.14
+:::{admonition} Upgrading from `sphinx-panels`
+Previous versions of Jupyter Book used `sphinx-panels` to define major UI elements.
+These now use [Sphinx Design instead](https://sphinx-design.readthedocs.io).
+Documentation for these UI elements is now in [](components.md).
+See [the migration guide](https://sphinx-design.readthedocs.io/en/latest/get_started.html#migrating-from-sphinx-panels) and [this migration discussion issue](https://github.com/executablebooks/sphinx-design/issues/51) for more information.
+:::
+
+## Grids
+
+Grids allow you to structure arbitrary chunks of content in a grid-like system.
+You can also control things like the width of columns, the "gutters" between columns, etc.
+
+To generate a grid, use the ` ```{grid} ` wrapper directive along with ` ```{grid-item} ` directives inside.
+
+For example:
+
+```{example}
+
+::::{grid}
+:gutter: 2
+
+:::{grid-item}
+:outline:
+A
+:::
+:::{grid-item}
+:outline:
+B
+:::
+:::{grid-item}
+:outline:
+C
+:::
+:::{grid-item}
+:outline:
+D
+:::
+
+::::
+```
+
+### Control columns of a grid
+
+You can control how many columns are in each grid item with the `:columns:` option.
+Grids are split into 12 units of length, and this can be used to split up items as you wish. For example:
+
+````{example}
+
+::::{grid}
+
+:::{grid-item}
+:outline:
+:columns: 3
+A
+:::
+:::{grid-item}
+:outline:
+:columns: 9
+B
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+C
+:::
+:::{grid-item}
+:outline:
+:columns: 6
+D
+:::
+
+::::
+
+````
+
+### Create grids of cards
+
+There is a short-hand for adding grids made up of cards, by using the `{grid-item-card}` directive. For example:
+
+```{example}
+
+::::{grid}
+:gutter: 3
+
+:::{grid-item-card} One!
+Here's the first card.
+:::
+
+:::{grid-item-card} Two!
+Here's the second card.
+:::
+
+:::{grid-item-card} Three!
+Here's the third card.
+:::
+::::
+```
+
+See [](content/cards) for more information about styling cards.
+
+### Learn more about grids
+
+For more information about grids, see the {doc}`Sphinx Design documentation <sd:index>`.
+
+(content/cards)=
+## Cards
+
+Cards provide an easy way for you to content into a standard "header", "body", "footer" structure that has a similar alignment and visual style.
+It is useful for creating galleries or high-visibility collections of links and information.
+Cards use the [sphinx-design extension](https://sphinx-design.readthedocs.io) and are based off of [Bootstrap CSS](https://getbootstrap.com/docs/5.0/components/card/).
+
+Cards have four main sections, and uses special characters to separate certain sections:
+
+- **A card title**: The argument given to the directive.
+- **A card header**: Any content that precedes a line with `^^^`.
+- **A card footer**: Any content that comes after a line with `+++`.
+- **A card body**: Any content that comes in between `^^^` and `+++`.
+
+Here is an example card (note the use of `^^^` and `+++` to separate the header, body, and footer):
+
+:::{example}
+
+````{card} Card 1 title
+
+Card header 1
+^^^
+Card body 1
++++
+Card footer 1
+````
+:::
+
+
+```{note}
+Card headers and footers are optional.
+If you don't include `^^^` or `+++` in your card, they will not show up.
+```
+
+You can embed all kinds of content inside of cards. For example:
+
+`````{example}
+````{card}
+Content of the top card.
+
+{bdg-primary}`example-badge`
+
+````
+
+````{card}
+
+```{button-ref} content/cards
+:class: stretched-link
+
+Clickable bottom card
+```
+
+````
+`````
+
+### Learn more about cards
+
+See the [Sphinx Design card styling documentation](https://sphinx-design.readthedocs.io/en/sbt-theme/cards.html) for more information.
+
+
+(components:dropdowns)=
+## Dropdowns
+
+Dropdowns allow you to hide content behind a title and a button.
+There are two kinds of dropdowns in Jupyter Book:
+
+### The `{dropdown}` directive
+
+Use the `{dropdown}` directive to create a clickable dropdown with a title.
+
+For example:
+
+````{example}
+```{dropdown} Here's my dropdown
+And here's my dropdown content
+```
+````
+
+(content/toggle-admonitions)=
+### Dropdown admonitions
+
+You can also hide the body of your admonition blocks so that users must click a button to reveal their content.
+This is helpful if you'd like to include some text that isn't immediately visible to the user.
+
+To turn an admonition into a dropdown, add the `dropdown` class to them. For example:
+
+`````{example}
+```{note}
+:class: dropdown
+The note body will be hidden!
+```
+`````
+
+You can use this in conjunction with `{admonition}` directives to include your
+own titles and stylings. For example:
+
+
+````{example}
+
+```{admonition} Click here!
+:class: tip, dropdown
+Here's what's inside!
+```
+
+````
+
+:::{important}
+Admonition dropdowns require JavaScript to be enabled on the browser which they are viewed.
+By contrast, the [dropdown directive](content/cards) below works purely *via* HTML+CSS.
+:::
+
+
+(components:tabs)=
+## Tab content
+
+You can also produce [**tabbed content**](inv:sd#sd-tabs).
+This allows you to display a variety of tabbed content blocks that users can click on.
+
+To do so, create a `{tab-set}` wrapper directive, and put `{tab-item}` directives inside.
+
+For example:
+
+`````{example}
+````{tab-set}
+```{tab-item} Tab 1 title
+My first tab
+```
+
+```{tab-item} Tab 2 title
+My second tab with `some code`!
+```
+````
+`````
+
+This can be used to show off many different view of the same content, such as providing multiple language examples.
+For example:
+
+`````{tab-set}
+````{tab-item} c++
+
+```{code-block} c++
+
+int main(const int argc, const char **argv) {
+  return 0;
+}
+```
+````
+
+````{tab-item} python
+
+```{code-block} python
+
+def main():
+    return
+```
+````
+
+````{tab-item} java
+
+```{code-block} java
+
+class Main {
+    public static void main(String[] args) {
+    }
+}
+```
+````
+
+````{tab-item} julia
+
+```{code-block} julia
+
+function main()
+end
+```
+````
+
+````{tab-item} fortran
+
+```{code-block} fortran
+
+PROGRAM main
+END PROGRAM main
+```
+````
+`````
+
+### Learn more about tabs
+
+See the [`sphinx-design` tabs documentation](inv:sd#sd-tabs) for more information on how to use this.
+
+(custom-div-blocks)=
+## Custom `<div>` blocks
+
+You can add custom `div` blocks along with whatever classes you'd like using
+the `{div}` directive. The `{div}` directive will wrap everything inside in a single `<div>` with the classes you provide. For example:
+
+````md
+```{div} my-class
+**Some content.**
+```
+````
+
+Will result in the following HTML when your book is built:
+
+```html
+<div class="my-class">
+  <strong>Some content.</strong>
+</div>
+```
+
+This can be useful if you'd like to style your book with [custom CSS or JavaScript](custom-assets).
+
+
+---
+jupytext:
+  formats: ipynb,md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+(content:references)=
+# References and cross-references
+
+Because `jupyter-book` is built on top of {term}`Sphinx`,
+there are many ways to reference content within your book (or even across other books, or Sphinx websites).
+
+Referencing is accomplished with **roles** or with **markdown link syntax**, depending on your use-case.
+There are a few ways to reference content from your book, depending on what kind of content you'd like to reference.
+
+:::{seealso}
+If you're getting started, check out [](../tutorials/references.md) for more information.
+:::
+
+(content:references:labels)=
+## Reference section labels
+
+Labels are a way to add tags to parts of your content so that you can reference them
+later on. This is helpful if you want to quickly insert links to other
+parts of your book. Labels can be added before major elements of a page,
+such as titles or figures.
+
+To add a label, use the following pattern **before** the element you wish
+to label:
+
+```md
+(my-label)=
+# The thing to label
+```
+
+For example, we've added the following label above the header for this section with:
+
+```md
+(content:references:labels)=
+## Reference section labels
+```
+
+You can insert cross-references to labels in your content with two kinds of syntax:
+
+- `` {ref}`label-text` ``
+- `[](label-text)`
+
+For example, the syntax `` {ref}`content:references:labels` `` or `[](content:references:labels)` results in a link to this section like so: {ref}`content:references:labels`.
+
+(references:figures)=
+## Reference figures
+
+To reference a figure in your book, first add a figure and ensure that it has both a `name` as well as a caption associated with it:
+
+````{example}
+```{figure} ../images/cool.jpg
+:name: my-fig-ref
+
+My figure title.
+```
+````
+
+Then, reference the figure by its `:name:` value. For example:
+
+| source                                         | result                                   |
+|------------------------------------------------|------------------------------------------|
+| `` Here is {ref}`my-fig-ref` ``               | Here is {ref}`my-fig-ref`               |
+| `` Here is {ref}`My cool fig <my-fig-ref>` `` | Here is {ref}`My cool fig <my-fig-ref>`              |
+| `` Here is [](my-fig-ref) ``               | Here is [](my-fig-ref)               |
+| `` Here is [My cool fig](my-fig-ref) `` | Here is [My cool fig](my-fig-ref)              |
+| `` Here is {numref}`my-fig-ref` ``            | Here is {numref}`my-fig-ref`            |
+| `` Here is {numref}`Custom Figure %s text <my-fig-ref>` `` | Here is {numref}`Custom Figure %s text <my-fig-ref>` |
+
+(references:tables)=
+## Reference tables
+
+To reference a table, first create a table and ensure that it has a `:name:` and a title:
+
+````{example}
+```{table} My table title
+:name: my-table-ref
+
+| header 1 | header 2 |
+|---|---|
+| 3 | 4 |
+```
+````
+
+Here are several ways to reference this content:
+
+| source                                         | result                                   |
+|------------------------------------------------|------------------------------------------|
+| `` Here is {ref}`my-table-ref` ``               | Here is {ref}`my-table-ref`               |
+| `` Here is {ref}`My cool table <my-table-ref>` `` | Here is {ref}`My cool table <my-table-ref>`              |
+| `` Here is [](my-table-ref) ``               | Here is [](my-table-ref)               |
+| `` Here is [My cool table](my-table-ref) `` | Here is [My cool table](my-table-ref)              |
+| `` Here is {numref}`my-table-ref` ``            | Here is {numref}`my-table-ref`            |
+| `` Here is {numref}`Custom Table %s text <my-table-ref>` `` | Here is {numref}`Custom Table %s text <my-table-ref>` |
+
+
+## Reference content files
+
+To reference other files of book content, use the `{doc}` role, or link directly to another file with Markdown link syntax. For example:
+
+| source                                         | result                                   |
+|------------------------------------------------|------------------------------------------|
+| `` Here is {doc}`../file-types/myst-notebooks.md` ``               | Here is {doc}`../file-types/myst-notebooks`               |
+| `` Here is {doc}`A different page <../file-types/myst-notebooks.md>` `` | Here is {doc}`A different page <../file-types/myst-notebooks>`              |
+| `` Here is [](../file-types/myst-notebooks.md) ``               | Here is [](../file-types/myst-notebooks.md)               |
+| `` Here is [A different page](../file-types/myst-notebooks.md) `` | Here is [A different page](../file-types/myst-notebooks.md)              |
+
+## Reference equations
+
+To reference equations, first insert an equation with a label like so:
+
+````{example}
+```{math}
+:label: my-math-ref
+w_{t+1} = (1 + r_{t+1}) s(w_t) + y_{t+1}
+```
+````
+
+To reference equations, use the `{eq}` role. It will automatically insert the number of the equation.
+Note that you cannot modify the text of equation links.
+
+For example:
+
+- `` See Equation {eq}`my-math-ref` `` results in: See Equation {eq}`my-math-ref`
+- `` See Equation [](my-math-ref) `` results in: See Equation [](my-math-ref).
+
+
+(references:custom-text)=
+## Choose the reference text
+
+If you'd like to choose the text of the rendered reference link, use the following pattern:
+
+```md
+{someref}`your text here <reference-target>`
+```
+
+Above, `reference-target` is the reference to which you are referring, and `your text here` will be the displayed text on the page.
+
+For example, see the following references:
+
+```{example}
+- {ref}`Here's another references section <content:references:labels>`
+- {doc}`Here's the code outputs section <code-outputs>`
+```
+
+## Number your references
+
+You can add **numbered references** to [tables](references:tables), [figures](references:figures), or [sections](references:numbered-sections).
+To add a numbered reference to a table or figure, use the `{numref}` role.
+
+### Use custom text with numbered references
+
+If you are [using custom text](references:custom-text) with your references, use `%s` as a placeholder for the number.
+
+```{example}
+Here's {numref}`Custom Table %s text <my-table-ref>`.
+```
+
+See more examples in the sections linked above.
+
+(references:numbered-sections)=
+### Reference numbered sections
+
+To reference numbered sections, you should first [enable numbered sections in your Table of Contents](toc/numbering).
+Then, you may use the `{numref}` role in the same way that you use it for Figures or Tables.
+
+(references:markdown-syntax)=
+## Reference with markdown link syntax
+
+If you wish to use Markdown style syntax, then MyST Markdown will try to find a reference from any of the above reference types (and more!).
+
+This has an advantage, in that you can use nested markdown syntax in your text, for example:
+
+```{example}
+
+- [A **bolded _reference_** to a page](./myst.md)
+- [A reference to a header](content:references:labels)
+```
+
+Leaving the title empty will mean the reference uses the target as text, for example:
+
+```{example}
+[](./myst.md)
+```
+
+:::{admonition} Internal vs. External URLs
+:class: tip
+You can control how MyST Markdown distinguishes between internal references and external URLs in your `_config.yml`.
+For example,
+
+```yaml
+parse:
+   myst_url_schemes: [mailto, http, https]
+```
+
+means that `[Jupyter Book](https://jupyterbook.org)` will be recognised as a URL, but `[Citations](content:citations)` will not:
+
+* [Jupyter Book](https://jupyterbook.org)
+* [Citations](content:citations)
+
+:::
+
+
+## Check for missing references
+
+You can check for missing references when building a Jupyter Book.
+To do so, use the following options:
+
+```bash
+jupyter-book build -W -n --keep-going docs/
+```
+
+This will check for missing references (`-n`) and turn them into errors (`-W`),
+but will still attempt to run the full build (`--keep-going`),
+so that you can see all errors in one run.
+
+
+
+Figures
+MyST Markdown also lets you include figures in your page. Figures are like images, except that they are easier to reference elsewhere in your book, and they include things like captions. To include a figure, use this syntax:
+
+```{figure} ../images/C-3PO_droid.png
+---
+height: 150px
+name: directive-fig
+---
+Here is my figure caption!
+```
+
+
+
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+(content:executable:output-insert)=
+# Store code outputs and insert into content
+
+You often wish to run analyses in one notebook and insert them in your
+documents elsewhere. For example, if you'd like to include a figure,
+or if you want to cite an analysis that you have run.
+
+```{warning}
+Currently, `glue` only works with Python.
+```
+
+```{seealso}
+There have been changes in `jupyter-book>=0.14` in the way `glue`
+works. Please [see this page for more details](explain:migration).
+
+One of the major updates is that `glue` references between documents
+now require to use `:doc:`. An example is [available here](explain:migration:glue)
+
+```
+
+The `glue` tool from [MyST-NB](https://myst-nb.readthedocs.io/)
+allows you to add a key to variables in a notebook,
+then display those variables in your book by referencing the key.
+
+It follows a two-step process:
+
+* **Glue a variable to a name**. Do this by using
+  the `myst_nb.glue` function on a variable
+  that you'd like to reuse elsewhere in the book. You'll give the variable
+  a name that can be referenced later.
+* **Reference that variable from your page's content**. Then, when you are
+  writing your content, insert the variable into your text by using a
+  `{glue:}` role.
+
+We'll cover each step in more detail below.
+
+:::{margin}
+For more information about roles, see [](../myst.md).
+:::
+
+(glue/gluing)=
+## Gluing variables in your notebook
+
+You can use `myst_nb.glue()` to assign the value of a variable to
+a key of your choice. `glue` will store all of the information that is normally used to **display**
+that variable (i.e., whatever happens when you display the variable by putting it at the end of a
+code cell). Choose a key that you will remember, as you will use it later.
+
+The following code glues a variable inside the notebook to the key `"cool_text"`:
+
+```{code-cell} ipython3
+from myst_nb import glue
+my_variable = "here is some text!"
+glue("cool_text", my_variable)
+```
+
+You can then insert it into your text. Adding
+`` {glue:}`cool_text` `` to your content results in the
+following: {glue:}`cool_text`.
+
+### Gluing numbers, plots, math, and tables
+
+You can glue anything in your notebook (or page) and display it later with `{glue:}`. Here
+we'll show how to glue and paste **numbers and images**. We'll simulate some
+data and run a simple bootstrap on it. We'll hide most of this process below,
+to focus on the glueing part.
+
+```{code-cell} ipython3
+:tags: [hide-cell]
+
+# Simulate some data and bootstrap the mean of the data
+import numpy as np
+np.set_printoptions(legacy="1.25")
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+n_points = 10000
+n_boots = 1000
+mean, sd = (3, .2)
+data = sd*np.random.randn(n_points) + mean
+bootstrap_indices = np.random.randint(0, n_points, n_points*n_boots).reshape((n_boots, n_points))
+```
+
+In the cell below, `data` contains our data, and `bootstrap_indices` is a collection of sample indices in each bootstrap. Below we'll calculate a few statistics of interest, and
+**`glue()`** them into the notebook.
+
+```{code-cell} ipython3
+# Calculate the mean of a bunch of random samples
+means = data[bootstrap_indices].mean(0)
+# Calculate the 95% confidence interval for the mean
+clo, chi = np.percentile(means, [2.5, 97.5])
+
+# Store the values in our notebook
+glue("boot_mean", means.mean())
+glue("boot_clo", clo)
+glue("boot_chi", chi)
+```
+
+By default, `glue` will display the value of the variable you are gluing. This
+is useful for sanity-checking its value at glue-time. If you'd like to **prevent display**,
+use the `display=False` option. Note that below, we also *overwrite* the value of
+`boot_chi` (but using the same value):
+
+```{code-cell} ipython3
+glue("boot_chi_notdisplayed", chi, display=False)
+```
+
+You can also glue visualizations, such as Matplotlib figures (here we use `display=False` to ensure that the figure isn't plotted twice):
+
+```{code-cell} ipython3
+# Visualize the histogram with the intervals
+fig, ax = plt.subplots()
+ax.hist(means)
+for ln in [clo, chi]:
+    ax.axvline(ln, ls='--', c='r')
+ax.set_title("Bootstrap distribution and 95% CI")
+
+# And a wider figure to show a timeseries
+fig2, ax = plt.subplots(figsize=(6, 2))
+ax.plot(np.sort(means), lw=3, c='r')
+ax.set_axis_off()
+
+glue("boot_fig", fig, display=False)
+glue("sorted_means_fig", fig2, display=False)
+```
+
+The same can be done for `DataFrame`s (or other table-like objects) as well.
+
+```{code-cell} ipython3
+bootstrap_subsets = data[bootstrap_indices][:3, :5].T
+df = pd.DataFrame(bootstrap_subsets, columns=["first", "second", "third"])
+glue("df_tbl", df)
+```
+
+```{tip}
+Since we are going to paste this figure into our document at a later point,
+you may wish to remove the output here, using the `remove-output` tag
+(see {ref}`hiding/remove-content`).
+```
+
++++
+
+(glue/pasting)=
+
+## Pasting glued variables into your page
+
+Once you have glued variables to their names, you can then **paste**
+those variables into your text in your book anywhere you like (even on other pages).
+These variables can be pasted using one of the roles or directives in the `glue` *family*.
+
++++
+
+### The `glue` role/directive
+
+The simplest role and directive is `glue:any`,
+which pastes the glued output in-line or as a block respectively,
+with no additional formatting.
+Simply add this:
+
+````
+```{glue:} your-key
+```
+````
+
+For example, we'll paste the plot we generated above with the following text:
+
+````md
+```{glue:} boot_fig
+```
+````
+
+Here's how it looks:
+
+```{glue:} boot_fig
+```
+
+Or we can paste in-line objects like so:
+
+```md
+In-line text; {glue:}`boot_mean`, and a figure: {glue:}`boot_fig`.
+```
+
+In-line text; {glue:}`boot_mean`, and a figure: {glue:}`boot_fig`.
+
+```{tip}
+We recommend using wider, shorter figures when plotting in-line, with a ratio
+around 6x2. For example, here's an in-line figure of sorted means
+from our bootstrap: {glue:}`sorted_means_fig`.
+It can be used to make a visual point that isn't too complex! For more
+ideas, check out [how sparklines are used](https://en.wikipedia.org/wiki/Sparkline).
+```
+
+Next we'll cover some more specific pasting functionality, which gives you more
+control over how the pasted outputs look in your pages.
+
++++
+
+## Controlling the pasted outputs
+
+You can control the pasted outputs by using a sub-command of `{glue:}`. These are used like so:
+`` {glue:subcommand}`key` ``. These subcommands allow you to control more of the look, feel, and
+content of the pasted output.
+
+```{tip}
+When you use `{glue:}` you are actually using shorthand for `{glue:any}`. This is a
+generic command that doesn't make many assumptions about what you are gluing.
+```
+
++++
+
+### The `glue:text` role
+
+The `glue:text` role is specific to text outputs.
+For example, the following text:
+
+```md
+The mean of the bootstrapped distribution was {glue:text}`boot_mean` (95% confidence interval {glue:text}`boot_clo`/{glue:text}`boot_chi`).
+```
+
+Is rendered as:
+The mean of the bootstrapped distribution was {glue:text}`boot_mean` (95% confidence interval {glue:text}`boot_clo`/{glue:text}`boot_chi`)
+
+```{note}
+`glue:text` only works with glued variables that contain a `text/plain` output.
+```
+
+With `glue:text` we can **add formatting to the output**.
+This is particularly useful if you are displaying numbers and
+want to round the results. To add formatting, use this syntax:
+
+* `` {glue:text}`mykey:formatstring` ``
+
+For example, ``My rounded mean: {glue:text}`boot_mean:.2f` `` will be rendered like this: My rounded mean: {glue:text}`boot_mean:.2f` (95% CI: {glue:text}`boot_clo:.2f`/{glue:text}`boot_chi:.2f`).
+
++++
+
+### The `glue:figure` directive
+
+With `glue:figure` you can apply more formatting to figure-like objects,
+such as giving them a caption and referenceable label. For example,
+
+````md
+```{glue:figure} boot_fig
+:figwidth: 300px
+:name: "fig-boot"
+
+This is a **caption**, with an embedded `{glue:text}` element: {glue:text}`boot_mean:.2f`!
+```
+````
+
+produces the following figure:
+
+```{glue:figure} boot_fig
+:figwidth: 300px
+:name: "fig-boot"
+
+This is a **caption**, with an embedded `{glue:text}` element: {glue:text}`boot_mean:.2f`!
+```
+
+Later, the code
+
+```md
+Here is a {ref}`reference to the figure <fig-boot>`
+```
+
+can be used to reference the figure.
+
+Here is a {ref}`reference to the figure <fig-boot>`
+
++++
+
+Here's a table:
+
+````md
+```{glue:figure} df_tbl
+:figwidth: 300px
+:name: "tbl:df"
+
+A caption for a pandas table.
+```
+
+````
+
+which gets rendered as
+
+```{glue:figure} df_tbl
+:figwidth: 300px
+:name: "tbl:df"
+
+A caption for a pandas table.
+```
+
++++
+
+### The `glue:math` directive
+
+The `glue:math` directive is specific to LaTeX math outputs
+(glued variables that contain a `text/latex` MIME type),
+and works similarly to the [Sphinx math directive](https://www.sphinx-doc.org/en/1.8/usage/restructuredtext/directives.html#math).
+For example, with this code we glue an equation:
+
+```{code-cell} ipython3
+import sympy as sym
+f = sym.Function('f')
+y = sym.Function('y')
+n = sym.symbols(r'\alpha')
+f = y(n)-2*y(n-1/sym.pi)-5*y(n-2)
+glue("sym_eq", sym.rsolve(f,y(n),[1,4]))
+```
+
+and now we can use the following code:
+
+````md
+```{glue:math} sym_eq
+:label: eq-sym
+```
+````
+
+to insert the equation here:
+
+```{glue:math} sym_eq
+:label: eq-sym
+```
+
+% TODO: figure out why this isn't working
+% Which we then reference as Equation {eq}`eq-sym`.
+
+```{note}
+`glue:math` only works with glued variables that contain a `text/latex` output.
+```
+
++++
+
+## Advanced `glue` use-cases
+
+Here are a few more specific and advanced uses of the `glue` submodule.
+
+### Pasting into tables
+
+In addition to pasting blocks of outputs, or in-line with text, you can also paste directly
+into tables. This allows you to compose complex collections of structured data using outputs
+that were generated in other cells or other notebooks. For example, the following Markdown table:
+
+````md
+| name                            |       plot                    | mean                      | ci                                                |
+|:-------------------------------:|:-----------------------------:|---------------------------|---------------------------------------------------|
+| histogram and raw text          | {glue:}`boot_fig`             | {glue:}`boot_mean`          | {glue:}`boot_clo`-{glue:}`boot_chi`                   |
+| sorted means and formatted text | {glue:}`sorted_means_fig`     | {glue:text}`boot_mean:.3f` | {glue:text}`boot_clo:.3f`-{glue:text}`boot_chi:.3f` |
+````
+
+Results in:
+
+| name                            |       plot                  | mean                      | ci                                                |
+|:-------------------------------:|:---------------------------:|---------------------------|---------------------------------------------------|
+| histogram and raw text          | {glue:}`boot_fig`             | {glue:}`boot_mean`          | {glue:}`boot_clo`-{glue:}`boot_chi`                   |
+| sorted means and formatted text | {glue:}`sorted_means_fig`     | {glue:text}`boot_mean:.3f` | {glue:text}`boot_clo:.3f`-{glue:text}`boot_chi:.3f` |
+
+
+
+
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+(content:code-outputs)=
+
+# Formatting code outputs
+
+The formatting of code outputs is highly configurable.
+Below we give examples of how to format particular outputs and even insert outputs into other locations of the document.
+
+The [MyST cheat sheet](myst_cheatsheet) provides a [list of `code-cell` tags available](myst_cheatsheet:code-cell:tags)
+
+:::{seealso}
+The [MyST-NB documentation](inv:myst-nb#render/output/customise), for how to fully customize the output renderer.
+:::
+
+(content:code-outputs:library-outputs)=
+## Library output formatting
+
+Many libraries support their own HTML output formatting, and this generally carries over to Jupyter Book outputs as well.
+
+For example, the following cell uses Pandas to format cells based on their values:
+
+```{code-cell} ipython3
+:tags: [hide-input]
+
+import numpy as np
+import pandas as pd
+
+np.random.seed(24)
+df = pd.DataFrame({'A': np.linspace(1, 10, 10)})
+df = pd.concat([df, pd.DataFrame(np.random.randn(10, 4), columns=list('BCDE'))],
+               axis=1)
+df.iloc[3, 3] = np.nan
+df.iloc[0, 2] = np.nan
+
+def color_negative_red(val):
+    """
+    Takes a scalar and returns a string with
+    the css property `'color: red'` for negative
+    strings, black otherwise.
+    """
+    color = 'red' if val < 0 else 'black'
+    return 'color: %s' % color
+
+def highlight_max(s):
+    '''
+    highlight the maximum in a Series yellow.
+    '''
+    is_max = s == s.max()
+    return ['background-color: yellow' if v else '' for v in is_max]
+
+df.style.\
+    applymap(color_negative_red).\
+    apply(highlight_max).\
+    set_table_attributes('style="font-size: 10px"')
+```
+
+See the [Pandas Styling docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html) for more information about styling DataFrames, and check out the documentation of your library of choice to see if they support similar features.
+
+(content:code-outputs:scrolling)=
+## Scrolling cell outputs
+
+The traditional Jupyter Notebook interface allows you to toggle **output scrolling**
+for your cells. This allows you to visualize part of a long output without it taking up
+the entire page.
+
+You can trigger this behavior in Jupyter Book by adding the following
+tag to a cell's metadata:
+
+```json
+{
+    "tags": [
+        "scroll-output",
+    ]
+}
+```
+
+For example, the following cell has a long output, but will be scrollable in the book:
+
+```{code-cell} ipython3
+:tags: [scroll-output]
+
+for ii in range(40):
+    print(f"this is output line {ii}")
+```
+
+When writing MyST markdown documents you may use `:tags: ["scroll-output"]` as an option
+to the `code-cell` directive such as:
+
+````
+```{code-cell} ipython3
+:tags: [scroll-output]
+
+for ii in range(40):
+    print(f"this is output line {ii}")
+```
+````
+
+(content:code-outputs:images)=
+## Images
+
+For any image types output by the code, we can apply formatting *via* cell metadata.
+Then for the image we can apply all the variables of the standard [image directive](https://docutils.sourceforge.io/docs/ref/rst/directives.html#image):
+
+```{margin}
+Units of length are: 'em', 'ex', 'px', 'in', 'cm', 'mm', 'pt', 'pc'
+```
+
+- **width**: length or percentage (%) of the current line width
+- **height**: length
+- **scale**: integer percentage (the "%" symbol is optional)
+- **align**: "top", "middle", "bottom", "left", "center", or "right"
+- **classes**: space separated strings
+- **alt**: string
+
+We can also set a caption (which is rendered as [CommonMark](https://commonmark.org/)) and name by which to reference the figure. The code
+
+````md
+```{code-cell} ipython3
+---
+mystnb:
+  image:
+    width: 200px
+    alt: fun-fish
+    classes: shadow bg-primary
+  figure:
+    caption: |
+      Hey everyone its **party** time!
+    name: fun-fish
+---
+from IPython.display import Image
+Image("../images/fun-fish.png")
+```
+````
+
+produces the following code cell and figure:
+
+```{code-cell} ipython3
+---
+mystnb:
+  image:
+    width: 300px
+    alt: fun-fish
+    classes: shadow bg-primary
+  figure:
+    caption: |
+      Hey everyone its **party** time!
+    name: fun-fish
+---
+from IPython.display import Image
+Image("../images/fun-fish.png")
+```
+
+Now we can link to the image from anywhere in our documentation: [swim to the fish](fun-fish)
+
+:::{seealso}
+[](jupyter-cell-tags)
+:::
+
+(content:code-outputs:markdown)=
+## Markdown
+
+Markdown output is parsed by MyST-Parser, currently with the parsing set to strictly [CommonMark](https://commonmark.org/).
+
+The parsed Markdown is then integrated into the wider context of the document. This means it is possible, for example, to include internal references:
+
+```{code-cell} ipython3
+from IPython.display import display, Markdown
+display(Markdown('**_some_ markdown** and an [internal reference](render/output/markdown)!'))
+```
+
+and even internal images can be rendered, as the code below exemplifies:
+
+```{code-cell} ipython3
+display(Markdown('![figure](../images/logo-wide.svg)'))
+```
+
+(content:code-outputs:ansi)=
+## ANSI outputs
+
+By default, the standard output/error streams and text/plain MIME outputs may contain ANSI escape sequences to change the text and background colors.
+
+```{code-cell} ipython3
+import sys
+print("BEWARE: \x1b[1;33;41mugly colors\x1b[m!", file=sys.stderr)
+print("AB\x1b[43mCD\x1b[35mEF\x1b[1mGH\x1b[4mIJ\x1b[7m"
+      "KL\x1b[49mMN\x1b[39mOP\x1b[22mQR\x1b[24mST\x1b[27mUV")
+```
+
+This uses the built-in {py:class}`~myst-nb:myst_nb.core.lexers.AnsiColorLexer` [pygments lexer](https://pygments.org/).
+You can change the lexer used in the `_config.yml`, for example to turn off lexing:
+
+```yaml
+sphinx:
+  config:
+    nb_render_text_lexer: "none"
+```
+
+The following code shows the 8 basic ANSI colors it is based on.
+Each of the 8 colors has an “intense” variation, which is used for bold text.
+
+```{code-cell} ipython3
+text = " XYZ "
+formatstring = "\x1b[{}m" + text + "\x1b[m"
+
+print(
+    " " * 6
+    + " " * len(text)
+    + "".join("{:^{}}".format(bg, len(text)) for bg in range(40, 48))
+)
+for fg in range(30, 38):
+    for bold in False, True:
+        fg_code = ("1;" if bold else "") + str(fg)
+        print(
+            " {:>4} ".format(fg_code)
+            + formatstring.format(fg_code)
+            + "".join(
+                formatstring.format(fg_code + ";" + str(bg)) for bg in range(40, 48)
+            )
+        )
+```
+
+:::{note}
+ANSI also supports a set of 256 indexed colors.
+This is currently not supported, but we hope to introduce it at a later date
+(raise an issue on the repository if you require it!).
+:::
+
+(content:code-outputs:priority)=
+## Render priority
+
+When Jupyter executes a code cell it can produce multiple outputs, and each of these outputs can contain multiple [MIME media types](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) to use with different output formats (like HTML or LaTeX).
+
+MyST-NB stores a default priority dictionary for most of the common [output builders](https://www.sphinx-doc.org/en/master/usage/builders/index.html), which you can also update in your `_config.yml`.
+For example, this is the default priority list for HTML:
+
+```yaml
+sphinx:
+  config:
+    nb_mime_priority_overrides: [
+      ['html', 'application/vnd.jupyter.widget-view+json', 10],
+      ['html', 'application/javascript', 20],
+      ['html', 'text/html', 30],
+      ['html', 'image/svg+xml', 40],
+      ['html', 'image/png', 50],
+      ['html', 'image/gif', 60],
+      ['html', 'image/jpeg', 70],
+      ['html', 'text/markdown', 80],
+      ['html', 'text/latex', 90],
+      ['html', 'text/plain', 100]
+    ]
+```
+
+
+
+here is end of the documentation.
+
+
+
+now you job is to help to write an vivid md. file for AI for chemistry class first class intro to python, it should be aim for students with no prior python experience, go step by step teach them interactively the code and function, below are some exampels, you should be longer and more detailed than that, try to use make different intereative features to make this clas vivid: for code, dont use too long or complciated, focus on more box and explainiantion outside just code, and more clickable points.
+
+

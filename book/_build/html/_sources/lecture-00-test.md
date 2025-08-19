@@ -21,19 +21,9 @@ Welcome to our test lecture showcasing **MyST Markdown** features used in *Jupyt
 
 ## 1. Learning Goals
 
-```{admonition}
-:class: tip
-- Describe how supervised, unsupervised, and reinforcement learning differ.
-- Use linear regression to predict molecular properties.
-- Evaluate model performance with $R^{2}$ and MAE.
-```
 
-````{margin}
-```{admonition} Fun fact
-:class: note
-The term **“chemoinformatics”** was coined in 1998 to describe the emerging intersection of chemistry and information science.
-```
-````
+123
+
 
 ## 2. Background: Why ML?
 
@@ -83,10 +73,8 @@ plt.show()
 
 ### 3.3 Exercise
 
-```{admonition}
-:class: warning
-Train a polynomial regression model that fits the same data better than the straight line above. Try degrees 2–4 and compare MAE values.
-```
+1234
+
 
 ## 4. Sidebar notes
 
@@ -96,13 +84,6 @@ Train a polynomial regression model that fits the same data better than the stra
 
 ## 5. Embedding an image
 
-```{figure}
----
-height: 150px
-name: fig-benzene
----
-A benzene molecule used as a toy example.
-```
 
 ## 6. Hidden *output* example
 
@@ -114,10 +95,7 @@ print('Training complete! Accuracy = 0.95')
 
 ## 7. Conclusion
 
-```{admonition}
-:class: success
-Machine learning becomes most powerful in chemistry when coupled to domain knowledge and rigorous validation.
-```
+1111
 
 ---
 
