@@ -37,6 +37,21 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Dec 2 & 4** – Final project presentations  
 ```
 
+```{admonition} Assignments & Project Submissions  
+:class: tip
+| Date | Assignment / Project | Status |
+|------|----------------------|--------|
+| Sept 7 | **Assignment 1 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Sept 21 | **Assignment 2 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Oct 5 | **Project 1 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Oct 19 | **Project 1 Evaluation due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Oct 26 | **Assignment 3 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Nov 9 | **Assignment 4 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Nov 30 | **Assignment 5 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| Dec 7 | **Project 2 Evaluations due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+```
+
+
 
 ```{dropdown} Course Materials
 - All resources provided via this Jupyter Book  
@@ -68,8 +83,13 @@ By the end of this course, you will be able to:
 
 
 ```{dropdown} Academic Policies
-- **Integrity**: Cite all sources (including AI tools). Generative AI may be used for syntax checks or brainstorming but not for submitting work.  
+- **Integrity**: Cite all sources (including AI tools).  
 - **Recording**: No unauthorized recording or distribution of course materials.  
 - **Accommodations**: Students needing accommodations should contact Disability Resources.  
 - **Equity & Support**: University policies on harassment, reporting, and academic resources apply.  
+```
+
+```{dropdown} Acknowledgements
+We thank **Professor Robert Wexler** for his guidance in building this website and for helpful discussions on the course content.  
+We also acknowledge **Bingcui Guo**, whose contributions were tremendously valuable in discussing the material and in testing the code.  
 ```
