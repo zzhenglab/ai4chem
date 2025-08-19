@@ -41,14 +41,14 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 :class: tip
 | Date | Assignment / Project | Status |
 |------|----------------------|--------|
-| Sept 7 | **Assignment 1 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Sept 21 | **Assignment 2 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Oct 5 | **Project 1 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Oct 19 | **Project 1 Evaluation due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Oct 26 | **Assignment 3 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Nov 9 | **Assignment 4 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Nov 30 | **Assignment 5 due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| Dec 7 | **Project 2 Evaluations due** | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| **Sept 7** | Assignment 1 due | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
+| **Sept 21** | Assignment 2 due | |
+| **Oct 5** | Project 1 due |  |
+| **Oct 19** | Project 1 Evaluation due |  |
+| **Oct 26** | Assignment 3 due |  |
+| **Nov 9** | Assignment 4 due |  |
+| **Nov 30** | Assignment 5 due |  |
+| **Dec 7** | Project 2 Evaluations due |  |
 ```
 
 
@@ -67,8 +67,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 By the end of this course, you will be able to:
 - Select and apply ML techniques for chemical problems.  
 - Visualize and interpret chemical data.  
-- Implement neural networks for molecular prediction.  
-- Use computer vision for microscopy and spectroscopy data.  
+- Implement code for reaction optimization.  
+- Use computer vision for chemical data.  
 - Experiment with generative and transformer-based models.  
 ```
 
