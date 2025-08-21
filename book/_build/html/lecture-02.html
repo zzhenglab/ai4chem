@@ -1,0 +1,2227 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 2 - Pandas and Plotting &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-02';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Lecture 1 - Python Primer" href="lecture-01.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to CHEM 5080: AI for Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 2 - Pandas and Plotting</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flecture-02.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture-02.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 2 - Pandas and Plotting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-plot-a-beer-lambert-style-line">1. First plot - a Beer-Lambert style line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-each-plotting-call-means">1.1 What each plotting call means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-examples">1.2 Mini examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-troubleshooting">1.3 Quick troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-gallery-of-plot-types">2. Quick gallery of plot types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-essentials">3. Pandas essentials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas-and-why-pd">3.1 What is pandas and why <code class="docutils literal notranslate"><span class="pre">pd</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dataframe-and-why-do-people-name-it-df">3.2 What is a DataFrame and why do people name it <code class="docutils literal notranslate"><span class="pre">df</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-and-columns">3.2 Selecting rows and columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-columns-sorting-missing-values">3.3 New columns, sorting, missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">3.4 Groupby</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-a-csv">4. Read a CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-csv-to-plots">5. From CSV to plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-and-clean">5.1 Inspect and clean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-of-absorbance-vs-concentration">5.2 Scatter of absorbance vs concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-straight-line">5.3 Fit a straight line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-concentration-and-show-a-bar-chart-with-error-bars">5.4 Group by concentration and show a bar chart with error bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#violin-plot-by-concentration">5.5 Violin plot by concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmap-of-a-pivot-table">5.6 Heatmap of a pivot table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-a-figure">5.7 Save a figure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-from-raw-to-a-one-page-report">6. Mini project: from raw to a one-page report</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-pandas-and-plotting">
+<h1>Lecture 2 - Pandas and Plotting<a class="headerlink" href="#lecture-2-pandas-and-plotting" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>Data in, plots out. You will learn the core pandas objects and a gallery of plot types.</p>
+</div></blockquote>
+<div class="admonition-who-is-this-for admonition">
+<p class="admonition-title">Who is this for?</p>
+<p>If you finished Lecture 1 or are comfortable running cells, you are ready.</p>
+</div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#first-plot-a-beer-lambert-style-line" id="id2">1. First plot - a Beer-Lambert style line</a></p></li>
+<li><p><a class="reference internal" href="#quick-gallery-of-plot-types" id="id3">2. Quick gallery of plot types</a></p></li>
+<li><p><a class="reference internal" href="#pandas-essentials" id="id4">3. Pandas essentials</a></p></li>
+<li><p><a class="reference internal" href="#read-a-csv" id="id5">4. Read a CSV</a></p></li>
+<li><p><a class="reference internal" href="#from-csv-to-plots" id="id6">5. From CSV to plots</a></p></li>
+<li><p><a class="reference internal" href="#mini-project-from-raw-to-a-one-page-report" id="id7">6. Mini project: from raw to a one-page report</a></p></li>
+</ul>
+</nav>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand what pandas is (<code class="docutils literal notranslate"><span class="pre">pd</span></code>) and what a <strong>DataFrame</strong> is (<code class="docutils literal notranslate"><span class="pre">df</span></code>), plus the usual naming conventions.</p></li>
+<li><p>Read a CSV into a pandas <strong>DataFrame</strong> and inspect it.</p></li>
+<li><p>Work with <strong>Series</strong> and <strong>DataFrame</strong>: select rows and columns, filter, group, summarize.</p></li>
+<li><p>Make common plots with Matplotlib: line, scatter, bar, histogram, box, violin, heatmap, function plots, error bars.</p></li>
+<li><p>Combine pandas and plotting to explore real data.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="first-plot-a-beer-lambert-style-line">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. First plot - a Beer-Lambert style line</a><a class="headerlink" href="#first-plot-a-beer-lambert-style-line" title="Link to this heading">#</a></h2>
+<p>Assume path length <span class="math notranslate nohighlight">\(b=1\)</span> cm and molar absorptivity <span class="math notranslate nohighlight">\(\epsilon=120\ \mathrm{L\ mol^{-1}\ cm^{-1}}\)</span>. Plot absorbance vs concentration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports used throughout this lecture</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">120.0</span>   <span class="c1"># L mol^-1 cm^-1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span>           <span class="c1"># cm</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>     <span class="c1"># mol L^-1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">b</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beer-Lambert A = ε b c&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c85d7c77a430cff853b209e272d34e8aa3134eac49eea520e746293e21d9eaae.png" src="_images/c85d7c77a430cff853b209e272d34e8aa3134eac49eea520e746293e21d9eaae.png" />
+</div>
+</div>
+<section id="what-each-plotting-call-means">
+<h3>1.1 What each plotting call means<a class="headerlink" href="#what-each-plotting-call-means" title="Link to this heading">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(w,</span> <span class="pre">h))</span></code></strong><br />
+Start a new blank figure. Use it when you do not want a new plot to draw on top of an old one.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">figsize</span></code> is width and height in inches. Example: <code class="docutils literal notranslate"><span class="pre">(6,</span> <span class="pre">4)</span></code>.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.plot(x,</span> <span class="pre">y,</span> <span class="pre">marker=&quot;o&quot;,</span> <span class="pre">linestyle=&quot;-&quot;,</span> <span class="pre">linewidth=1,</span> <span class="pre">label=&quot;text&quot;)</span></code></strong><br />
+Draw a line plot of <code class="docutils literal notranslate"><span class="pre">y</span></code> vs <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marker=&quot;o&quot;</span></code> puts a circle at each data point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> can be <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;--&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;:&quot;</span></code>, or <code class="docutils literal notranslate"><span class="pre">&quot;-.&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> controls line thickness.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> sets the name shown in a legend.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.xlabel(&quot;text&quot;)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylabel(&quot;text&quot;)</span></code></strong><br />
+Label the horizontal and vertical axes. You can include math with <code class="docutils literal notranslate"><span class="pre">$...$</span></code>, for example <code class="docutils literal notranslate"><span class="pre">mol</span> <span class="pre">L$^{-1}$</span></code>.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.title(&quot;text&quot;)</span></code></strong><br />
+Add a title to the axes.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.grid(True)</span></code></strong><br />
+Show a grid to make reading values easier.</p>
+<ul class="simple">
+<li><p>You can target one axis with <code class="docutils literal notranslate"><span class="pre">plt.grid(axis=&quot;y&quot;)</span></code>.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.xlim(left,</span> <span class="pre">right)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylim(bottom,</span> <span class="pre">top)</span></code></strong><br />
+Set the visible range for each axis. Use these to zoom in or to force the origin to be visible.</p>
+<ul class="simple">
+<li><p>Example: <code class="docutils literal notranslate"><span class="pre">plt.xlim(0,</span> <span class="pre">c.max())</span></code>.</p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code></strong><br />
+Show a legend for any lines that have a <code class="docutils literal notranslate"><span class="pre">label=</span></code>.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;name.png&quot;,</span> <span class="pre">dpi=150,</span> <span class="pre">bbox_inches=&quot;tight&quot;)</span></code></strong><br />
+Save the current figure to a file.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">dpi</span></code> controls sharpness for raster formats.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bbox_inches=&quot;tight&quot;</span></code> trims extra margins.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="mini-examples">
+<h3>1.2 Mini examples<a class="headerlink" href="#mini-examples" title="Link to this heading">#</a></h3>
+<p><strong>1) Basic line with markers</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>         <span class="c1"># line plus markers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;y = 2x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f4aa2f03c3bbd6978e6457aaf2e467b7d21a1eb1b7c8a31cc334c8f530bfea3a.png" src="_images/f4aa2f03c3bbd6978e6457aaf2e467b7d21a1eb1b7c8a31cc334c8f530bfea3a.png" />
+</div>
+</div>
+<p><strong>2) Change style and set limits</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time, s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;distance, m&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dashed line with square markers&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 25.0)
+</pre></div>
+</div>
+<img alt="_images/29aa27c22fa7cc21d8963c6815188fe46d2f66fb7f21ae04359574ed85f3c413.png" src="_images/29aa27c22fa7cc21d8963c6815188fe46d2f66fb7f21ae04359574ed85f3c413.png" />
+</div>
+</div>
+<p><strong>3) Two lines and a legend</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.020</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>   <span class="c1"># mol L^-1</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">120.0</span>                   <span class="c1"># L mol^-1 cm^-1</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="mf">1.0</span>                          <span class="c1"># cm</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="mf">2.0</span>                          <span class="c1"># cm</span>
+
+<span class="n">A1</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">b1</span> <span class="o">*</span> <span class="n">c</span>
+<span class="n">A2</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">b2</span> <span class="o">*</span> <span class="n">c</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A1</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;b = 1.0 cm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;b = 2.0 cm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Beer-Lambert: effect of path length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x22a6fb3c1a0&gt;
+</pre></div>
+</div>
+<img alt="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" src="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" />
+</div>
+</div>
+<p><strong>4) Save the figure to a file</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;beer_lambert_example.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="s2">&quot;Saved file: beer_lambert_example.png&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Saved file: beer_lambert_example.png&#39;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="quick-troubleshooting">
+<h3>1.3 Quick troubleshooting<a class="headerlink" href="#quick-troubleshooting" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>New plot drew on top of the old one<br />
+→ Call <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> before the new <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>.</p></li>
+<li><p>Empty figure in some environments<br />
+→ In classic Jupyter, add <code class="docutils literal notranslate"><span class="pre">%matplotlib</span> <span class="pre">inline</span></code> near the top of the notebook.</p></li>
+<li><p>Labels cut off when saving<br />
+→ Use <code class="docutils literal notranslate"><span class="pre">bbox_inches=&quot;tight&quot;</span></code> in <code class="docutils literal notranslate"><span class="pre">plt.savefig(...)</span></code>.</p></li>
+</ul>
+<div class="admonition-exercise-9-1 admonition">
+<p class="admonition-title">Exercise 9.1</p>
+<p>Change <span class="math notranslate nohighlight">\(\epsilon\)</span> to 80 and re-run. What happens to the slope?
+:class: dropdown</p>
+<p><strong>Answer</strong> - the line is less steep because absorbance is proportional to <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Common message types</p>
+<ul class="simple">
+<li><p><strong>NameError</strong> - you misspelled a name or used it before defining it.</p></li>
+<li><p><strong>TypeError</strong> - you used the wrong kind of value.</p></li>
+<li><p><strong>KeyError</strong> - dictionary key not found, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;Na&quot;</span></code> missing from <code class="docutils literal notranslate"><span class="pre">aw</span></code>.</p></li>
+</ul>
+</div>
+<div class="admonition-save-your-work admonition">
+<p class="admonition-title">Save your work</p>
+<p>Click <strong>Save</strong> or press <code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>. Commit to version control if you use git.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="quick-gallery-of-plot-types">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Quick gallery of plot types</a><a class="headerlink" href="#quick-gallery-of-plot-types" title="Link to this heading">#</a></h2>
+<p>We will generate small arrays and plot them. Run each cell and read the comments.</p>
+<div class="admonition-parameters-to-know-for-line-plots admonition">
+<p class="admonition-title">Parameters to know for line plots</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.plot(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">marker</span></code> shape of points, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;o&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;s&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;^&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> line pattern, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;--&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;:&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;-.&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> thickness in points</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label</span></code> text used in <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> transparency from 0 to 1</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;sin(x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Line plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x22a00bf4410&gt;
+</pre></div>
+</div>
+<img alt="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" src="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-scatter admonition">
+<p class="admonition-title">Parameters to know for scatter</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.scatter(x,</span> <span class="pre">y,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">s</span></code> marker size in points squared</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">marker</span></code> marker shape</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> transparency</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> colors for points; pass a single color or an array mapped to a colormap</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmap</span></code> colormap used when <code class="docutils literal notranslate"><span class="pre">c</span></code> is numeric</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/494a30b293b6d13816e97481ae3b3e3490e99280e94e35104efbef3643cd2064.png" src="_images/494a30b293b6d13816e97481ae3b3e3490e99280e94e35104efbef3643cd2064.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-bar-charts admonition">
+<p class="admonition-title">Parameters to know for bar charts</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.bar(x,</span> <span class="pre">height,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code> bar thickness</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">yerr</span></code> vertical error bars</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capsize</span></code> length of error bar caps</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">align</span></code> <code class="docutils literal notranslate"><span class="pre">&quot;center&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;edge&quot;</span></code></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]</span>
+<span class="n">heights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">heights</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar chart&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bb7238f17e93e08cc434a3a6396ec0adb85a84ab0331d6f9311aeda7ab028dc3.png" src="_images/bb7238f17e93e08cc434a3a6396ec0adb85a84ab0331d6f9311aeda7ab028dc3.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-histograms admonition">
+<p class="admonition-title">Parameters to know for histograms</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.hist(data,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bins</span></code> number of bins or bin edges</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range</span></code> lower and upper bound for bins</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">density=True</span></code> to show a probability density instead of counts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha</span></code> transparency when overlaying multiple histograms</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/891e3f6e8e0ccd4a3b5bddc81f3588b425d4d6edb500eef925c74c41441a981b.png" src="_images/891e3f6e8e0ccd4a3b5bddc81f3588b425d4d6edb500eef925c74c41441a981b.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-box-plots admonition">
+<p class="admonition-title">Parameters to know for box plots</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.boxplot(data,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">labels</span></code> names under each box</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">showmeans=True</span></code> to mark the mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">whis</span></code> whisker length as a factor of IQR or a percentile</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">group2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">([</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;g1&quot;</span><span class="p">,</span> <span class="s2">&quot;g2&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Box plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_55320\2700000940.py:5: MatplotlibDeprecationWarning: The &#39;labels&#39; parameter of boxplot() has been renamed &#39;tick_labels&#39; since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot([group1, group2], labels=[&quot;g1&quot;, &quot;g2&quot;])
+</pre></div>
+</div>
+<img alt="_images/214984557b553aa28cd340aa9052c28d49cd481fc9bfd65d9a753799f52be55f.png" src="_images/214984557b553aa28cd340aa9052c28d49cd481fc9bfd65d9a753799f52be55f.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-violin-plots admonition">
+<p class="admonition-title">Parameters to know for violin plots</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.violinplot(data,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">showmeans</span></code>, <code class="docutils literal notranslate"><span class="pre">showmedians</span></code>, <code class="docutils literal notranslate"><span class="pre">showextrema</span></code> toggles for guides</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">widths</span></code> overall width of violins</p></li>
+<li><p>Input is a list of arrays or a 2D array by column</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">],</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Violin plot&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8bf40c0b13cc198c04bf9ce532346d20b12fb01e57b7c01d2ab635c941715ea1.png" src="_images/8bf40c0b13cc198c04bf9ce532346d20b12fb01e57b7c01d2ab635c941715ea1.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-heatmaps-with-imshow admonition">
+<p class="admonition-title">Parameters to know for heatmaps with imshow</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.imshow(Z,</span> <span class="pre">...)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">origin=&quot;lower&quot;</span></code> puts row 0 at the bottom</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aspect=&quot;auto&quot;</span></code> lets axes scale independently</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extent=[xmin,</span> <span class="pre">xmax,</span> <span class="pre">ymin,</span> <span class="pre">ymax]</span></code> maps array indices to axis coordinates</p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">plt.colorbar(label=&quot;...&quot;)</span></code> to show a scale</p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Heatmap with imshow</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">81</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;intensity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heatmap style with imshow&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Heatmap style with imshow&#39;)
+</pre></div>
+</div>
+<img alt="_images/874384dc7a5c69ab5e2f95e9f30943067d70a8dab654d7a18a8686d92da8e794.png" src="_images/874384dc7a5c69ab5e2f95e9f30943067d70a8dab654d7a18a8686d92da8e794.png" />
+</div>
+</div>
+<div class="admonition-parameters-to-know-for-error-bars admonition">
+<p class="admonition-title">Parameters to know for error bars</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.errorbar(x,</span> <span class="pre">y,</span> <span class="pre">yerr=...,</span> <span class="pre">fmt=&quot;o-&quot;)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">yerr</span></code> vertical errors; pass a scalar, array, or 2D array for asymmetric errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xerr</span></code> horizontal errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fmt</span></code> sets marker and line style together, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;o-&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;s:&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">capsize</span></code> adds small caps at error bar tips when used with bar, or via kwargs in <code class="docutils literal notranslate"><span class="pre">errorbar</span></code></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Error bars</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">])</span>
+<span class="n">yerr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.18</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Line with error bars&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c6619b2035032d14976bd692ff2115b0b8062c96ba57e77b74b105596977509b.png" src="_images/c6619b2035032d14976bd692ff2115b0b8062c96ba57e77b74b105596977509b.png" />
+</div>
+</div>
+</section>
+<section id="pandas-essentials">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Pandas essentials</a><a class="headerlink" href="#pandas-essentials" title="Link to this heading">#</a></h2>
+<section id="what-is-pandas-and-why-pd">
+<h3>3.1 What is pandas and why <code class="docutils literal notranslate"><span class="pre">pd</span></code>?<a class="headerlink" href="#what-is-pandas-and-why-pd" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p><strong>pandas</strong> is a Python library for working with tabular data. It gives you two core objects:</p>
+<ul class="simple">
+<li><p><strong>Series</strong>: one labeled column of data.</p></li>
+<li><p><strong>DataFrame</strong>: a table made of many Series sharing the same row index.</p></li>
+</ul>
+<p>By convention we write <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>. The short alias <code class="docutils literal notranslate"><span class="pre">pd</span></code> saves typing and you will see it in almost every example online and in documentation.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports used throughout this lecture</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="what-is-a-dataframe-and-why-do-people-name-it-df">
+<h3>3.2 What is a DataFrame and why do people name it <code class="docutils literal notranslate"><span class="pre">df</span></code>?<a class="headerlink" href="#what-is-a-dataframe-and-why-do-people-name-it-df" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>A <strong>DataFrame</strong> is a 2D table with labeled rows and columns. It keeps:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.values</span></code> - the actual numbers or strings as a NumPy array-like</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.index</span></code> - row labels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.columns</span></code> - column names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code> - data type of each column</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code> is not a special keyword. It is just a common variable name for “this DataFrame”.
+You can name it <code class="docutils literal notranslate"><span class="pre">data</span></code>, <code class="docutils literal notranslate"><span class="pre">table</span></code>, or anything else. We will use <code class="docutils literal notranslate"><span class="pre">df</span></code> because it is short and familiar.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build a small DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;compound&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;NH3&quot;</span><span class="p">,</span> <span class="s2">&quot;CH4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;molar_mass&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">44.0095</span><span class="p">,</span> <span class="mf">18.0153</span><span class="p">,</span> <span class="mf">17.0305</span><span class="p">,</span> <span class="mf">16.0430</span><span class="p">],</span>
+        <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;liquid&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Inspect the table</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shape:&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>        <span class="c1"># (rows, columns)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Dtypes:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>  <span class="c1"># data types per column</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Head:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>    <span class="c1"># first 5 rows</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shape: (4, 3)
+
+Dtypes:
+ compound       object
+molar_mass    float64
+state          object
+dtype: object
+
+Head:
+   compound  molar_mass   state
+0      CO2     44.0095     gas
+1      H2O     18.0153  liquid
+2      NH3     17.0305     gas
+3      CH4     16.0430     gas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-key-ideas admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>Select one column: <code class="docutils literal notranslate"><span class="pre">df[&quot;molar_mass&quot;]</span></code> gives a <strong>Series</strong>.</p></li>
+<li><p>Select several columns: <code class="docutils literal notranslate"><span class="pre">df[[&quot;compound&quot;,</span> <span class="pre">&quot;state&quot;]]</span></code> gives a <strong>DataFrame</strong>.</p></li>
+<li><p>Filter rows: <code class="docutils literal notranslate"><span class="pre">df[df[&quot;state&quot;]</span> <span class="pre">==</span> <span class="pre">&quot;gas&quot;]</span></code></p></li>
+<li><p>Location by labels vs positions:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.loc[rows,</span> <span class="pre">cols]</span></code> uses labels, e.g. <code class="docutils literal notranslate"><span class="pre">df.loc[1:3,</span> <span class="pre">[&quot;compound&quot;,</span> <span class="pre">&quot;molar_mass&quot;]]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.iloc[r,</span> <span class="pre">c]</span></code> uses integer positions, e.g. <code class="docutils literal notranslate"><span class="pre">df.iloc[0:2,</span> <span class="pre">0:2]</span></code></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A quick select, filter, and compute</span>
+<span class="n">gases</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;gas&quot;</span><span class="p">]</span>
+<span class="n">mass_ratio</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">mass_ratio_to_water</span> <span class="o">=</span> <span class="n">mass_ratio</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>molar_mass</th>
+      <th>state</th>
+      <th>mass_ratio_to_water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CO2</td>
+      <td>44.0095</td>
+      <td>gas</td>
+      <td>2.442896</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>18.0153</td>
+      <td>liquid</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NH3</td>
+      <td>17.0305</td>
+      <td>gas</td>
+      <td>0.945335</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH4</td>
+      <td>16.0430</td>
+      <td>gas</td>
+      <td>0.890521</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(  compound  molar_mass   state  mass_ratio_to_water
+ 0      CO2     44.0095     gas             2.442896
+ 1      H2O     18.0153  liquid             1.000000
+ 2      NH3     17.0305     gas             0.945335
+ 3      CH4     16.0430     gas             0.890521,
+ (4, 4),
+ compound                object
+ molar_mass             float64
+ state                   object
+ mass_ratio_to_water    float64
+ dtype: object,
+ RangeIndex(start=0, stop=4, step=1),
+ Index([&#39;compound&#39;, &#39;molar_mass&#39;, &#39;state&#39;, &#39;mass_ratio_to_water&#39;], dtype=&#39;object&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try admonition">
+<p class="admonition-title">Try</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> below.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 4 entries, 0 to 3
+Data columns (total 4 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   compound             4 non-null      object 
+ 1   molar_mass           4 non-null      float64
+ 2   state                4 non-null      object 
+ 3   mass_ratio_to_water  4 non-null      float64
+dtypes: float64(2), object(2)
+memory usage: 260.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>molar_mass</th>
+      <th>mass_ratio_to_water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>23.774575</td>
+      <td>1.319688</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13.513959</td>
+      <td>0.750138</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>16.043000</td>
+      <td>0.890521</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>16.783625</td>
+      <td>0.931632</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>17.522900</td>
+      <td>0.972668</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>24.513850</td>
+      <td>1.360724</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>44.009500</td>
+      <td>2.442896</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Add a new row for O2 with molar mass 31.998 and state “gas”. Hint: <code class="docutils literal notranslate"><span class="pre">pd.concat</span></code> with a tiny DataFrame.</p>
+</div>
+</section>
+<section id="selecting-rows-and-columns">
+<h3>3.2 Selecting rows and columns<a class="headerlink" href="#selecting-rows-and-columns" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">[]</span></code> for a single column, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for names, <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> for positions, and boolean masks for filters.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span>           <span class="c1"># column by name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    44.0095
+1    18.0153
+2    17.0305
+3    16.0430
+Name: molar_mass, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;compound&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">]]</span>  <span class="c1"># multiple columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>state</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CO2</td>
+      <td>gas</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>liquid</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NH3</td>
+      <td>gas</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH4</td>
+      <td>gas</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gases</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;gas&quot;</span><span class="p">]</span>
+<span class="n">gases</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>molar_mass</th>
+      <th>state</th>
+      <th>mass_ratio_to_water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CO2</td>
+      <td>44.0095</td>
+      <td>gas</td>
+      <td>2.442896</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NH3</td>
+      <td>17.0305</td>
+      <td>gas</td>
+      <td>0.945335</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH4</td>
+      <td>16.0430</td>
+      <td>gas</td>
+      <td>0.890521</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_loc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">,</span> <span class="s2">&quot;molar_mass&quot;</span><span class="p">]]</span>
+<span class="n">df_loc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>molar_mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>18.0153</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NH3</td>
+      <td>17.0305</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CH4</td>
+      <td>16.0430</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_iloc</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df_iloc</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>molar_mass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CO2</td>
+      <td>44.0095</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>18.0153</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition-try admonition">
+<p class="admonition-title">Try</p>
+<p>Filter rows where <code class="docutils literal notranslate"><span class="pre">molar_mass</span> <span class="pre">&gt;</span> <span class="pre">20</span></code>, then select only <code class="docutils literal notranslate"><span class="pre">compound</span></code> and <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code>.</p>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Sort by <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code> descending and show the top 3 rows.</p>
+</div>
+</section>
+<section id="new-columns-sorting-missing-values">
+<h3>3.3 New columns, sorting, missing values<a class="headerlink" href="#new-columns-sorting-missing-values" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>You can compute new columns from old ones. Handle missing values with <code class="docutils literal notranslate"><span class="pre">isna</span></code>, <code class="docutils literal notranslate"><span class="pre">fillna</span></code>, or <code class="docutils literal notranslate"><span class="pre">dropna</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;mass_ratio_to_water&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;compound&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>compound</th>
+      <th>molar_mass</th>
+      <th>state</th>
+      <th>mass_ratio_to_water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>CH4</td>
+      <td>16.0430</td>
+      <td>gas</td>
+      <td>0.890521</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NH3</td>
+      <td>17.0305</td>
+      <td>gas</td>
+      <td>0.945335</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>H2O</td>
+      <td>18.0153</td>
+      <td>liquid</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>CO2</td>
+      <td>44.0095</td>
+      <td>gas</td>
+      <td>2.442896</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">df2</span><span class="o">.</span><span class="n">fillna</span><span class="p">({</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">:</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(compound               0
+ molar_mass             1
+ state                  0
+ mass_ratio_to_water    0
+ dtype: int64,
+   compound  molar_mass   state  mass_ratio_to_water
+ 0      CO2     44.0095     gas             2.442896
+ 1      H2O     18.0153  liquid             1.000000
+ 2      NH3     26.0226     gas             0.945335
+ 3      CH4     16.0430     gas             0.890521)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try admonition">
+<p class="admonition-title">Try</p>
+<p>Create a boolean column <code class="docutils literal notranslate"><span class="pre">is_gas</span></code> from <code class="docutils literal notranslate"><span class="pre">state</span></code>.</p>
+</div>
+</section>
+<section id="groupby">
+<h3>3.4 Groupby<a class="headerlink" href="#groupby" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Group rows that share a key and summarize.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;liquid&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;gas&quot;</span><span class="p">,</span> <span class="s2">&quot;liquid&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;molar_mass&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">44.01</span><span class="p">,</span> <span class="mf">18.02</span><span class="p">,</span> <span class="mf">17.03</span><span class="p">,</span> <span class="mf">16.04</span><span class="p">,</span> <span class="mf">46.07</span><span class="p">]</span>
+<span class="p">})</span>
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;state&quot;</span><span class="p">)[</span><span class="s2">&quot;molar_mass&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>gas</th>
+      <td>3</td>
+      <td>25.693333</td>
+      <td>15.870420</td>
+    </tr>
+    <tr>
+      <th>liquid</th>
+      <td>2</td>
+      <td>32.045000</td>
+      <td>19.834345</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">df</span></code>, compute mean molar mass by state. Then add <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> to the aggregation.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="read-a-csv">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Read a CSV</a><a class="headerlink" href="#read-a-csv" title="Link to this heading">#</a></h2>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Use one of the three options. If you have trouble, use Option C to generate the file inside the notebook.</p>
+</div>
+<p><strong>Option A. Upload in Colab</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Copy and paste below code. It runs at google Colab only</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
+<span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>  <span class="c1"># choose a CSV</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">uploaded</span><span class="p">[</span><span class="s2">&quot;sample_beer_lambert.csv&quot;</span><span class="p">]))</span>  <span class="c1"># change name if needed</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Option B. Load from a URL</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/tree/main/book/_data/sample_beer_lambert.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/tree/main/book/_data/sample_beer_lambert.csv&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\parsers\readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">385</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">286</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:189,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">187</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">189</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:495,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:604,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">604</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">605</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:533,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">532</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">533</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:466,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">464</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">465</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">466</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">467</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\urllib\request.py:613,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span> <span class="k">def</span><span class="w"> </span><span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">613</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Option C. Create a CSV inside the notebook</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv_text</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;concentration_mol_L,replicate,absorbance_A</span>
+<span class="s2">0.000000,1,0.0050</span>
+<span class="s2">0.000000,2,-0.0032</span>
+<span class="s2">0.000000,3,0.0017</span>
+<span class="s2">0.002000,1,0.2448</span>
+<span class="s2">0.002000,2,0.2401</span>
+<span class="s2">0.002000,3,0.2405</span>
+<span class="s2">0.004000,1,0.4949</span>
+<span class="s2">0.004000,2,0.4831</span>
+<span class="s2">0.004000,3,0.4839</span>
+<span class="s2">0.006000,1,0.7199</span>
+<span class="s2">0.006000,2,0.7337</span>
+<span class="s2">0.006000,3,0.7272</span>
+<span class="s2">0.008000,1,0.9507</span>
+<span class="s2">0.008000,2,0.9576</span>
+<span class="s2">0.008000,3,0.9511</span>
+<span class="s2">0.010000,1,1.2017</span>
+<span class="s2">0.010000,2,1.1917</span>
+<span class="s2">0.010000,3,1.1927</span>
+<span class="s2">0.012000,1,1.4496</span>
+<span class="s2">0.012000,2,1.4409</span>
+<span class="s2">0.012000,3,1.4486</span>
+<span class="s2">0.014000,1,1.6745</span>
+<span class="s2">0.014000,2,1.6754</span>
+<span class="s2">0.014000,3,1.6719</span>
+<span class="s2">0.016000,1,1.9118</span>
+<span class="s2">0.016000,2,1.9155</span>
+<span class="s2">0.016000,3,1.9102</span>
+<span class="s2">0.018000,1,2.1632</span>
+<span class="s2">0.018000,2,2.1603</span>
+<span class="s2">0.018000,3,2.1607</span>
+<span class="s2">0.020000,1,2.3984</span>
+<span class="s2">0.020000,2,2.4021</span>
+<span class="s2">0.020000,3,2.4011</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sample_beer_lambert.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">csv_text</span><span class="p">)</span>
+
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sample_beer_lambert.csv&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>If your file uses semicolons, call <code class="docutils literal notranslate"><span class="pre">pd.read_csv(&quot;file.csv&quot;,</span> <span class="pre">sep=&quot;;&quot;)</span></code>. If it uses comma decimals, add <code class="docutils literal notranslate"><span class="pre">decimal=&quot;,&quot;</span></code>.</p>
+</div>
+<hr class="docutils" />
+</section>
+<section id="from-csv-to-plots">
+<span id="l2-csv-plots"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">5. From CSV to plots</a><a class="headerlink" href="#from-csv-to-plots" title="Link to this heading">#</a></h2>
+<section id="inspect-and-clean">
+<h3>5.1 Inspect and clean<a class="headerlink" href="#inspect-and-clean" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Always inspect, then remove impossible values.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df_csv</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(),</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-try admonition">
+<p class="admonition-title">Try</p>
+<p>Count rows per concentration with <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> on <code class="docutils literal notranslate"><span class="pre">concentration_mol_L</span></code>.</p>
+</div>
+</section>
+<section id="scatter-of-absorbance-vs-concentration">
+<h3>5.2 Scatter of absorbance vs concentration<a class="headerlink" href="#scatter-of-absorbance-vs-concentration" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Scatter shows the spread around the line.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CSV data: absorbance vs concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Add light jitter to concentration to reduce overlap. Hint: add <code class="docutils literal notranslate"><span class="pre">np.random.normal(0,</span> <span class="pre">2e-5,</span> <span class="pre">size=...)</span></code> to x values.</p>
+</div>
+</section>
+<section id="fit-a-straight-line">
+<h3>5.3 Fit a straight line<a class="headerlink" href="#fit-a-straight-line" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Fit <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">b</span></code>. Expect <code class="docutils literal notranslate"><span class="pre">m</span></code> near ε b.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">b0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">yline</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">xline</span> <span class="o">+</span> <span class="n">b0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span> <span class="n">yline</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;fit: A = </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> c + </span><span class="si">{</span><span class="n">b0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Compute residuals <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">-</span> <span class="pre">(m*x</span> <span class="pre">+</span> <span class="pre">b0)</span></code> and plot a histogram with 20 bins.</p>
+</div>
+</section>
+<section id="group-by-concentration-and-show-a-bar-chart-with-error-bars">
+<h3>5.4 Group by concentration and show a bar chart with error bars<a class="headerlink" href="#group-by-concentration-and-show-a-bar-chart-with-error-bars" title="Link to this heading">#</a></h3>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Summarize replicates per concentration.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">)[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">summary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">centers</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">errs</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">centers</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="n">means</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">errs</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;mean absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bar chart with error bars&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Replace bars with a scatter plot of means and vertical error bars using <code class="docutils literal notranslate"><span class="pre">plt.errorbar</span></code>.</p>
+</div>
+</section>
+<section id="violin-plot-by-concentration">
+<h3>5.5 Violin plot by concentration<a class="headerlink" href="#violin-plot-by-concentration" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">showextrema</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">showmedians</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Violin plot by concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="heatmap-of-a-pivot-table">
+<h3>5.6 Heatmap of a pivot table<a class="headerlink" href="#heatmap-of-a-pivot-table" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;replicate&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="n">pivot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pivot</span><span class="o">.</span><span class="n">index</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pivot</span><span class="o">.</span><span class="n">columns</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;replicate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Heatmap of pivot table&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-a-figure">
+<h3>5.7 Save a figure<a class="headerlink" href="#save-a-figure" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;To save&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;scatter_absorbance_vs_conc.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="s2">&quot;Saved: scatter_absorbance_vs_conc.png&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="mini-project-from-raw-to-a-one-page-report">
+<span id="l2-miniproject"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Mini project: from raw to a one-page report</a><a class="headerlink" href="#mini-project-from-raw-to-a-one-page-report" title="Link to this heading">#</a></h2>
+<div class="admonition-read admonition">
+<p class="admonition-title">Read</p>
+<p>Use the steps below as a checklist. Fill in the TODOs. Solutions are provided in dropdowns.</p>
+</div>
+<p><strong>Step 1. Load data</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: read sample_beer_lambert.csv into dfp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">dfp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;sample_beer_lambert.csv&quot;</span><span class="p">)</span>
+<span class="n">dfp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step 2. Clean</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: keep absorbance between -0.05 and 3.0, reset index</span>
+<span class="n">dfp</span> <span class="o">=</span> <span class="n">dfp</span><span class="p">[</span><span class="n">dfp</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">)]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dfp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step 3. Fit a line and report slope, intercept</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">dfp</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dfp</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">m</span><span class="p">,</span> <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;slope m = </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, intercept b = </span><span class="si">{</span><span class="n">b0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step 4. Make two figures</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 1: scatter + fit</span>
+<span class="n">xline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">yline</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="n">xline</span> <span class="o">+</span> <span class="n">b0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span> <span class="n">yline</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;fit: A = </span><span class="si">{</span><span class="n">m</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> c + </span><span class="si">{</span><span class="n">b0</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear fit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figure1_scatter_fit.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="s2">&quot;Saved: figure1_scatter_fit.png&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Figure 2: bar with error bars</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">dfp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">)[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">])</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">errs</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">centers</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">errs</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;mean absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean and spread by concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figure2_bar_error.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="s2">&quot;Saved: figure2_bar_error.png&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-practice admonition">
+<p class="admonition-title">Practice</p>
+<p>Add a third figure: violin plot by concentration.</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Optional solution - violin</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">dfp</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">)]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dfp</span><span class="p">[</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">showextrema</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">showmedians</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;concentration, mol L$^{-1}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;absorbance, A&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Violin plot by concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;figure3_violin.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="s2">&quot;Saved: figure3_violin.png&quot;</span>
+</pre></div>
+</div>
+</div>
+</details><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+---
+
+## 7. Quick reference
+
+```{admonition} Pandas
+- `import pandas as pd`  → library alias
+- `df = pd.read_csv(&quot;file.csv&quot;)`, `df.to_csv(&quot;out.csv&quot;, index=False)`
+- Inspect: `df.head()`, `df.info()`, `df.describe()`, `df.shape`, `df.dtypes`
+- Select: `df[&quot;col&quot;]`, `df.loc[rows, cols]`, `df.iloc[r, c]`
+- Filter: `df[df[&quot;col&quot;] &gt; 0]`
+- Group: `df.groupby(&quot;key&quot;)[&quot;val&quot;].agg([&quot;mean&quot;, &quot;std&quot;])`
+</pre></div>
+</div>
+<div class="admonition-plots admonition">
+<p class="admonition-title">Plots</p>
+<ul class="simple">
+<li><p>Start a new figure: <code class="docutils literal notranslate"><span class="pre">plt.figure(...)</span></code></p></li>
+<li><p>Line, scatter, bar: <code class="docutils literal notranslate"><span class="pre">plt.plot(x,</span> <span class="pre">y)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.scatter(x,</span> <span class="pre">y)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.bar(labels,</span> <span class="pre">values)</span></code></p></li>
+<li><p>Distribution and 2D: <code class="docutils literal notranslate"><span class="pre">plt.hist(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.violinplot(list_of_arrays)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.imshow(matrix)</span></code></p></li>
+<li><p>Labels and title: <code class="docutils literal notranslate"><span class="pre">plt.xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylabel</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.title</span></code></p></li>
+<li><p>Grid and legend: <code class="docutils literal notranslate"><span class="pre">plt.grid(True)</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code></p></li>
+<li><p>Save: <code class="docutils literal notranslate"><span class="pre">plt.savefig(&quot;name.png&quot;,</span> <span class="pre">dpi=150,</span> <span class="pre">bbox_inches=&quot;tight&quot;)</span></code></p></li>
+<li><p>Useful kwargs to remember: <code class="docutils literal notranslate"><span class="pre">marker</span></code>, <code class="docutils literal notranslate"><span class="pre">linestyle</span></code>, <code class="docutils literal notranslate"><span class="pre">linewidth</span></code>, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, <code class="docutils literal notranslate"><span class="pre">bins</span></code>, <code class="docutils literal notranslate"><span class="pre">yerr</span></code>, <code class="docutils literal notranslate"><span class="pre">capsize</span></code>, <code class="docutils literal notranslate"><span class="pre">extent</span></code>, <code class="docutils literal notranslate"><span class="pre">aspect</span></code></p></li>
+</ul>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-01.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 1 - Python Primer</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-plot-a-beer-lambert-style-line">1. First plot - a Beer-Lambert style line</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-each-plotting-call-means">1.1 What each plotting call means</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-examples">1.2 Mini examples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-troubleshooting">1.3 Quick troubleshooting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-gallery-of-plot-types">2. Quick gallery of plot types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-essentials">3. Pandas essentials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-pandas-and-why-pd">3.1 What is pandas and why <code class="docutils literal notranslate"><span class="pre">pd</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-dataframe-and-why-do-people-name-it-df">3.2 What is a DataFrame and why do people name it <code class="docutils literal notranslate"><span class="pre">df</span></code>?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-and-columns">3.2 Selecting rows and columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-columns-sorting-missing-values">3.3 New columns, sorting, missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby">3.4 Groupby</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-a-csv">4. Read a CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-csv-to-plots">5. From CSV to plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-and-clean">5.1 Inspect and clean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-of-absorbance-vs-concentration">5.2 Scatter of absorbance vs concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-a-straight-line">5.3 Fit a straight line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-by-concentration-and-show-a-bar-chart-with-error-bars">5.4 Group by concentration and show a bar chart with error bars</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#violin-plot-by-concentration">5.5 Violin plot by concentration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heatmap-of-a-pivot-table">5.6 Heatmap of a pivot table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-a-figure">5.7 Save a figure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-project-from-raw-to-a-one-page-report">6. Mini project: from raw to a one-page report</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

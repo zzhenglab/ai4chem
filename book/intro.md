@@ -37,18 +37,18 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Dec 2 & 4** – Final project presentations  
 ```
 
-```{admonition} Assignments & Project Submissions  
+```{admonition} Assignments & Project Submissions (Canvas)  
 :class: tip
-| Date | Assignment / Project | Status |
-|------|----------------------|--------|
-| **Sept 7** | Assignment 1 due | [Submit](https://forms.cloud.microsoft/r/85rRG8pseb) |
-| **Sept 21** | Assignment 2 due | |
-| **Oct 5** | Project 1 due |  |
-| **Oct 19** | Project 1 Evaluation due |  |
-| **Oct 26** | Assignment 3 due |  |
-| **Nov 9** | Assignment 4 due |  |
-| **Nov 30** | Assignment 5 due |  |
-| **Dec 7** | Project 2 Evaluations due |  |
+| Date | Assignment / Project  |
+|------|----------------------|
+| **Sept 7** | Assignment 1 due |  
+| **Sept 21** | Assignment 2 due | 
+| **Oct 5** | Project 1 due |  
+| **Oct 19** | Project 1 Evaluation due |  
+| **Oct 26** | Assignment 3 due |  
+| **Nov 9** | Assignment 4 due |  
+| **Nov 30** | Assignment 5 due |  
+| **Dec 7** | Project 2 Evaluations due |  
 ```
 
 

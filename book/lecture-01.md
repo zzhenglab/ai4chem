@@ -66,7 +66,7 @@ We keep it short and friendly.
 
 Right-click the badge below and select “**Open link in new tab**”
 
-[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1h9Mott1rGHXHo9MpmTKND-SiMk5t2u2H?usp=sharing)
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)
 
 Log in to your Google account. Then in the top left menu, go to **File** > **Save a copy** in Drive to keep your own editable version.
 
@@ -313,15 +313,15 @@ M_H2O = 2*H + O
 moles_water = 36.0 / M_H2O
 M_H2O, moles_water
 ```
+
+
+
+```{admonition} 
 ```
 
-```{admonition} Exercise 5.2 - Mixture
-You have 2.00 g of CO2 and 3.00 g of H2O. How many total moles of molecules are present?
-```
 
-```{dropdown} Hint
-Compute moles for each compound, then add them.
-```
+
+
 ---
 
 
@@ -639,155 +639,6 @@ If you see `KeyError: 'Na'`, add the element to `aw` first.
 ```
 ---
 
-## 9. First plot - a Beer-Lambert style line
-
-Assume path length $b=1$ cm and molar absorptivity $\epsilon=120\ \mathrm{L\ mol^{-1}\ cm^{-1}}$. Plot absorbance vs concentration.
-
-```{code-cell} ipython3
-import numpy as np
-import matplotlib.pyplot as plt
-
-epsilon = 120.0   # L mol^-1 cm^-1
-b = 1.0           # cm
-c = np.linspace(0, 0.02, 21)     # mol L^-1
-A = epsilon * b * c
-
-plt.plot(c, A, marker="o")
-plt.xlabel("concentration, mol L$^{-1}$")
-plt.ylabel("absorbance, A")
-plt.title("Beer-Lambert A = ε b c")
-plt.grid(True)
-```
-
-### 9.A What each plotting call means
-
-**`plt.figure(figsize=(w, h))`**  
-Start a new blank figure. Use it when you do not want a new plot to draw on top of an old one.  
-- `figsize` is width and height in inches. Example: `(6, 4)`.
-
-**`plt.plot(x, y, marker="o", linestyle="-", linewidth=1, label="text")`**  
-Draw a line plot of `y` vs `x`.  
-- `marker="o"` puts a circle at each data point.  
-- `linestyle` can be `"-"`, `"--"`, `":"`, or `"-."`.  
-- `linewidth` controls line thickness.  
-- `label` sets the name shown in a legend.
-
-**`plt.xlabel("text")`, `plt.ylabel("text")`**  
-Label the horizontal and vertical axes. You can include math with `$...$`, for example `mol L$^{-1}$`.
-
-**`plt.title("text")`**  
-Add a title to the axes.
-
-**`plt.grid(True)`**  
-Show a grid to make reading values easier.  
-- You can target one axis with `plt.grid(axis="y")`.
-
-**`plt.xlim(left, right)`, `plt.ylim(bottom, top)`**  
-Set the visible range for each axis. Use these to zoom in or to force the origin to be visible.  
-- Example: `plt.xlim(0, c.max())`.
-
-**`plt.legend()`**  
-Show a legend for any lines that have a `label=`.
-
-**`plt.savefig("name.png", dpi=150, bbox_inches="tight")`**  
-Save the current figure to a file.  
-- `dpi` controls sharpness for raster formats.  
-- `bbox_inches="tight"` trims extra margins.
-
----
-
-### 9.B Mini examples
-
-**1) Basic line with markers**
-
-```{code-cell} ipython3
-import numpy as np
-import matplotlib.pyplot as plt
-
-x = np.linspace(0, 10, 11)
-y = 2 * x
-
-plt.figure(figsize=(6, 4))
-plt.plot(x, y, marker="o")         # line plus markers
-plt.xlabel("x")
-plt.ylabel("y")
-plt.title("y = 2x")
-plt.grid(True)
-```
-
-**2) Change style and set limits**
-
-```{code-cell} ipython3
-plt.figure(figsize=(6, 4))
-plt.plot(x, y, linestyle="--", marker="s", linewidth=2)
-plt.xlabel("time, s")
-plt.ylabel("distance, m")
-plt.title("Dashed line with square markers")
-plt.grid(axis="y")
-plt.xlim(0, 10)
-plt.ylim(0, 25)
-```
-
-**3) Two lines and a legend**
-
-```{code-cell} ipython3
-c = np.linspace(0.0, 0.020, 21)   # mol L^-1
-epsilon = 120.0                   # L mol^-1 cm^-1
-b1 = 1.0                          # cm
-b2 = 2.0                          # cm
-
-A1 = epsilon * b1 * c
-A2 = epsilon * b2 * c
-
-plt.figure(figsize=(6, 4))
-plt.plot(c, A1, marker="o", label="b = 1.0 cm")
-plt.plot(c, A2, marker="x", linestyle=":", label="b = 2.0 cm")
-plt.xlabel("concentration, mol L$^{-1}$")
-plt.ylabel("absorbance, A")
-plt.title("Beer-Lambert: effect of path length")
-plt.grid(True)
-plt.legend()
-```
-
-**4) Save the figure to a file**
-
-```{code-cell} ipython3
-plt.savefig("beer_lambert_example.png", dpi=150, bbox_inches="tight")
-"Saved file: beer_lambert_example.png"
-```
-
----
-
-### 9.C Quick troubleshooting
-
-- New plot drew on top of the old one  
-  → Call `plt.figure()` before the new `plt.plot(...)`.
-- Empty figure in some environments  
-  → In classic Jupyter, add `%matplotlib inline` near the top of the notebook.
-- Labels cut off when saving  
-  → Use `bbox_inches="tight"` in `plt.savefig(...)`.
-
-
-```{admonition} Exercise 9.1
-Change $\epsilon$ to 80 and re-run. What happens to the slope?
-:class: dropdown
-
-**Answer** - the line is less steep because absorbance is proportional to $\epsilon$.
-```
-
-
-```{admonition} Common message types
-:class: tip
-- **NameError** - you misspelled a name or used it before defining it.
-- **TypeError** - you used the wrong kind of value.
-- **KeyError** - dictionary key not found, e.g. `"Na"` missing from `aw`.
-```
-
-
-```{admonition} Save your work
-Click **Save** or press `Ctrl+S`. Commit to version control if you use git.
-```
----
 
 ## 10. Glossary
 
@@ -839,4 +690,137 @@ error
 
 operator
   A symbol that performs an action on values. Examples: `+`, `-`, `*`, `/`, `**`.
+```
+
+---
+## 11. In-class activity
+
+Work in groups of 2 to 3. Each challenge is about 5 minutes. These are new scenarios that mirror what you practiced, and each task is self-contained. Stay within Sections 1 to 8.
+
+### 11.1 Ethanol mass to moles
+Compute the moles of ethanol C2H6O in 9.2 g using only arithmetic and variables.
+
+```python
+
+# Atomic weights (g mol^-1)
+C = 12.011
+H = 1.008
+O = 15.999
+
+# Molar mass of ethanol: C2H6O
+M_ethanol = ...   # TODO
+
+# Mass to moles
+mass_g = 9.2
+moles = ...       # TODO
+
+print("M_ethanol =", M_ethanol, "g mol^-1")
+print("moles in", mass_g, "g =", moles)
+```
+```{dropdown} Hint
+Use Section 3 for arithmetic and Section 5 for n = m / M.
+```
+
+
+### 11.2 Classify pH values in a list
+Given several pH readings "2.5", "7.0", "8.1", "6.9", "7.3", print a line for each saying acidic, basic, or neutral. Do not define a helper function.
+
+```python
+
+pH_values = ... #TODO
+
+for ... in ...:            # TODO
+    if ...:               # TODO
+        status = "acidic"
+    elif ...:             # TODO
+        status = "basic"
+    else:
+        status = "neutral"
+    print(pH, "->", status)
+```
+```{dropdown} Hint
+See Section 7.2 for for-loops and Section 7.1 for if / elif / else.
+```
+---
+
+### 11.3 Molar mass from a counts dictionary
+Compute the molar mass of glucose using a small dictionary of atomic weights and a counts dictionary. Do not reuse any earlier functions.
+
+```python
+
+# Atomic weights
+aw = {"H": 1.008, "C": 12.011, "O": 15.999}
+
+# Counts for C6H12O6
+counts = {"C": 6, "H": 12, "O": 6}
+
+M_glucose = 0.0
+for elem, n in ...:       # TODO
+    M_glucose = ...       # TODO 
+
+print("M_glucose =", M_glucose, "g mol^-1")
+```
+```{dropdown} Hint
+Section 6.4 covers dictionaries and Section 8.2 shows looping over dict items to build a sum.
+```
+
+### 11.4 Read leading integer from a string, then convert C to K
+A temperature string has digits followed by a letter, for example "25C" or "298K". Read the leading digits using a while-loop and convert Celsius to Kelvin. If the unit is K, leave it as is.
+
+```python
+s = "25C"   # try "298K" too
+
+# Parse leading integer value
+i = 0
+value = 0
+while i < len(s) and s[i].isdigit():
+    value = value * 10 + int(s[i])
+    i += 1
+
+unit = s[i:]  # the rest of the string, e.g. "C" or "K"
+
+if ...:                         # TODO
+    temp_K = ...                # TODO
+else:
+    temp_K = value
+
+print("Parsed:", value, unit)
+print("Temperature in K:", temp_K)
+```
+```{dropdown} Hint
+Section 7.3 shows isdigit with a while-loop. Section 8.1 has the C to K relation.
+```
+---
+
+### 11.5 Which sample has more moles
+You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -> count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.
+
+```python
+aw = {"H": 1.008, "C": 12.011, "O": 15.999, "N": 14.007}
+
+mixture = [
+    (2.00, "CO2", {"C": 1, "O": 2}),
+    (3.00, "H2O", {"H": 2, "O": 1}),
+    (4.00, "NH3", {"N": 1, "H": 3}),
+]
+
+max_moles = -1.0
+winner = None
+
+for mass_g, name, counts in ...:         # TODO
+    # Compute molar mass from counts
+    M = 0.0
+    for elem, n in ...:                  # TODO
+        M = ...                          # TODO
+    n_moles = ...                        # TODO
+
+    if ...:                              # TODO
+        max_moles = n_moles
+        winner = name
+
+print("Largest moles:", winner, "with", max_moles, "mol")
+```
+
+```{dropdown} Hint
+Section 6.1 lists and tuples, Section 6.4 dictionaries, Section 7.2 for-loops, Section 5.2 for moles = mass / M.
 ```
