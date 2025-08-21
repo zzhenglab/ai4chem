@@ -545,7 +545,7 @@ df_csv.head()
 ```{code-cell} ipython3
 import pandas as pd
 
-url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/tree/main/book/_data/sample_beer_lambert.csv"
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/sample_beer_lambert.csv"
 df = pd.read_csv(url)
 df.head()
 ```
@@ -554,39 +554,40 @@ df.head()
 
 ```{code-cell} ipython3
 csv_text = """concentration_mol_L,replicate,absorbance_A
-0.000000,1,0.0050
-0.000000,2,-0.0032
-0.000000,3,0.0017
-0.002000,1,0.2448
-0.002000,2,0.2401
-0.002000,3,0.2405
-0.004000,1,0.4949
-0.004000,2,0.4831
-0.004000,3,0.4839
-0.006000,1,0.7199
-0.006000,2,0.7337
-0.006000,3,0.7272
-0.008000,1,0.9507
-0.008000,2,0.9576
-0.008000,3,0.9511
-0.010000,1,1.2017
-0.010000,2,1.1917
-0.010000,3,1.1927
-0.012000,1,1.4496
-0.012000,2,1.4409
-0.012000,3,1.4486
-0.014000,1,1.6745
-0.014000,2,1.6754
-0.014000,3,1.6719
-0.016000,1,1.9118
-0.016000,2,1.9155
-0.016000,3,1.9102
-0.018000,1,2.1632
-0.018000,2,2.1603
-0.018000,3,2.1607
-0.020000,1,2.3984
-0.020000,2,2.4021
-0.020000,3,2.4011
+0,1,0.005
+0,2,-0.0032
+0,3,0.0017
+0.002,1,0.2448
+0.002,2,0.2401
+0.002,3,0.2105
+0.004,1,0.4949
+0.004,2,0.4331
+0.004,3,0.4839
+0.006,1,0.7199
+0.006,2,0.7337
+0.006,3,0.7272
+0.008,1,0.8507
+0.008,2,0.8576
+0.008,3,0.8811
+0.01,1,1.2017
+0.01,2,1.2917
+0.01,3,1.1927
+0.012,1,1.4496
+0.012,2,1.4109
+0.012,3,1.4486
+0.014,1,1.6345
+0.014,2,1.6754
+0.014,3,1.6719
+0.016,1,1.9118
+0.016,2,1.9155
+0.016,3,1.9102
+0.018,1,2.3632
+0.018,2,2.2603
+0.018,3,2.1607
+0.02,1,2.3984
+0.02,2,2.3021
+0.02,3,2.4011
+
 """
 
 with open("sample_beer_lambert.csv", "w") as f:
@@ -756,102 +757,8 @@ plt.savefig("scatter_absorbance_vs_conc.png", dpi=150, bbox_inches="tight")
 
 ---
 
-(l2-miniproject)=
-## 6. Mini project: from raw to a one-page report
 
-```{admonition} Read
-Use the steps below as a checklist. Fill in the TODOs. Solutions are provided in dropdowns.
-```
-
-**Step 1. Load data**
-
-```{code-cell} ipython3
-# TODO: read sample_beer_lambert.csv into dfp
-import pandas as pd
-dfp = pd.read_csv("sample_beer_lambert.csv")
-dfp.head()
-```
-
-**Step 2. Clean**
-
-```{code-cell} ipython3
-# TODO: keep absorbance between -0.05 and 3.0, reset index
-dfp = dfp[dfp["absorbance_A"].between(-0.05, 3.0)].reset_index(drop=True)
-dfp.head()
-```
-
-**Step 3. Fit a line and report slope, intercept**
-
-```{code-cell} ipython3
-import numpy as np
-x = dfp["concentration_mol_L"].to_numpy()
-y = dfp["absorbance_A"].to_numpy()
-m, b0 = np.polyfit(x, y, 1)
-print(f"slope m = {m:.2f}, intercept b = {b0:.3f}")
-```
-
-**Step 4. Make two figures**
-
-```{code-cell} ipython3
-# Figure 1: scatter + fit
-xline = np.linspace(x.min(), x.max(), 100)
-yline = m * xline + b0
-plt.figure(figsize=(6, 4))
-plt.scatter(x, y, label="data")
-plt.plot(xline, yline, label=f"fit: A = {m:.1f} c + {b0:.3f}")
-plt.xlabel("concentration, mol L$^{-1}$")
-plt.ylabel("absorbance, A")
-plt.title("Linear fit")
-plt.grid(True)
-plt.legend()
-plt.savefig("figure1_scatter_fit.png", dpi=150, bbox_inches="tight")
-"Saved: figure1_scatter_fit.png"
-```
-
-```{code-cell} ipython3
-# Figure 2: bar with error bars
-summary = (
-    dfp.groupby("concentration_mol_L")["absorbance_A"]
-      .agg(["mean", "std"])
-      .reset_index()
-)
-centers = summary["concentration_mol_L"].astype(str).to_list()
-means = summary["mean"].to_numpy()
-errs = summary["std"].to_numpy()
-
-plt.figure(figsize=(6, 4))
-plt.bar(centers, means, yerr=errs, capsize=3)
-plt.xlabel("concentration, mol L$^{-1}$")
-plt.ylabel("mean absorbance, A")
-plt.title("Mean and spread by concentration")
-plt.grid(axis="y")
-plt.savefig("figure2_bar_error.png", dpi=150, bbox_inches="tight")
-"Saved: figure2_bar_error.png"
-```
-
-```{admonition} Practice
-Add a third figure: violin plot by concentration.
-```
-
-```{dropdown} Optional solution - violin
-```python
-groups = [grp["absorbance_A"].to_numpy() for _, grp in dfp.groupby("concentration_mol_L")]
-labels = [f"{c:.3f}" for c in sorted(dfp["concentration_mol_L"].unique())]
-plt.figure(figsize=(6, 4))
-plt.violinplot(groups, showmeans=True, showextrema=True, showmedians=True)
-plt.xticks(range(1, len(labels) + 1), labels, rotation=45)
-plt.xlabel("concentration, mol L$^{-1}$")
-plt.ylabel("absorbance, A")
-plt.title("Violin plot by concentration")
-plt.grid(True)
-plt.savefig("figure3_violin.png", dpi=150, bbox_inches="tight")
-"Saved: figure3_violin.png"
-```
-```
-
----
-
-## 7. Quick reference
+## 6. Quick reference
 
 ```{admonition} Pandas
 - `import pandas as pd`  → library alias
