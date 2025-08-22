@@ -34,26 +34,23 @@ Absolute beginners. If you can open a notebook and type, you can follow along.
 - Write tiny **functions** to avoid repeating yourself.
 - Make a simple **plot** for a chemistry relationship.
 - Read error messages without panic.
-
 ::::{grid}
 :gutter: 3
 
-:::{grid-item-card} What you will do
+:::{grid-item-card} Section 1–9
 ^^^
-- Compute molar masses
-- Convert mass to moles
-- Plot Beer-Lambert style data
+- Recommended reading before class (especially notes and tips)  
+- We will review together during lecture (bring your questions!)  
 +++
-Keep this page open as a reference.
+Keep this page open for reference.
 :::
 
-:::{grid-item-card} What you will not do
+:::{grid-item-card} Section 10
 ^^^
-- Heavy theory
-- Long scripts
-- Package installation rabbit holes
+- In-class activity  
+- Work with your neighbor to solve  
 +++
-We keep it short and friendly.
+Kept short and friendly.
 :::
 ::::
 
@@ -640,7 +637,7 @@ If you see `KeyError: 'Na'`, add the element to `aw` first.
 ---
 
 
-## 10. Glossary
+## 9. Glossary
 
 ```{glossary}
 variable
@@ -693,7 +690,7 @@ operator
 ```
 
 ---
-## 11. In-class activity
+## 10. In-class activity
 
 Work in groups of 2 to 3. Each challenge is about 5 minutes. These are new scenarios that mirror what you practiced, and each task is self-contained. Stay within Sections 1 to 8.
 
