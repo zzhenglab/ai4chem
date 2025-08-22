@@ -35,7 +35,8 @@ If you finished Lecture 1 or are comfortable running cells, you are ready.
 
 ---
 
-
+Below is the Interactive Version:
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 
 ## 1. First plot - a Beer-Lambert style line
 
@@ -846,7 +847,7 @@ figsize
 
 ---
 
-## 8. End-of-chapter activities
+## 8. In-class activity
 
 Each task mirrors what you practiced. Fill in `...` and later compare with the solutions in Section 9. Keep your edits near the `# TO DO:` lines.
 
@@ -858,7 +859,7 @@ Read a CSV, preview structure, and count rows where a chosen column is greater t
 import pandas as pd
 
 # Path to a CSV
-path = "sample_beer_lambert.csv"  # or another CSV
+path = ... # "sample_beer_lambert.csv" we see in section 4
 
 df = ...  # TO DO: read the CSV with pd.read_csv(path)
 print(df.head())
@@ -885,8 +886,8 @@ Make a scatter of one column vs another, then adjust style parameters.
 import matplotlib.pyplot as plt
 
 # Choose columns to plot
-xcol = ...         # TO DO: e.g., "concentration_mol_L"
-ycol = ...         # TO DO: e.g., "absorbance_A"
+xcol = ...         # TO DO: e.g.,concentration
+ycol = ...         # TO DO: e.g.,absorbance
 
 # Style controls — change and re-run
 point_size =  ...  # TO DO: e.g., 30
@@ -894,7 +895,8 @@ alpha_val  =  ...  # TO DO: e.g., 0.8
 marker_sym =  ...  # TO DO: e.g., "o"
 
 plt.figure(figsize=(6, 4))
-plt.scatter(df[xcol], df[ycol], s=point_size, alpha=alpha_val, marker=marker_sym)
+plt.scatter(..., ..., s=..., alpha=..., marker=...)  # TO DO: e.g.,point_size, alpha_val, marker_sym
+
 plt.xlabel(xcol)
 plt.ylabel(ycol)
 plt.title("Scatter: y vs x with style tweaks")
@@ -912,8 +914,8 @@ See Section 2 for `plt.scatter` plus `s`, `alpha`, and `marker`.
 Group by a key and plot group means with standard deviation as error bars.
 
 ```python
-key_col = ...    # TO DO: e.g., "concentration_mol_L"
-val_col = ...    # TO DO: e.g., "absorbance_A"
+key_col = ...    # TO DO
+val_col = ...    # TO DO
 
 summary = (
     df.groupby(key_col)[val_col]
@@ -955,25 +957,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Option A — read the provided CSV
-path = "organic_synthesis_yields.csv"
+path = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_synthesis_yields.csv" 
 
-# Option B — generate inside the notebook if the file is missing
-# Uncomment to generate:
-# rng = np.random.default_rng(42)
-# n = 180
-# temperature_C = rng.choice(np.arange(40, 121, 5), size=n, replace=True, p=np.linspace(2, 1, 17) / np.linspace(2, 1, 17).sum())
-# time_min = rng.choice(np.arange(10, 241, 10), size=n, replace=True, p=np.linspace(2, 1, 24) / np.linspace(2, 1, 24).sum())
-# temp_scale = (temperature_C - 30) / 60.0
-# time_scale = time_min / 180.0
-# base = 100 * (1 - np.exp(-temp_scale)) * (1 - np.exp(-time_scale))
-# noise_normal = rng.normal(0, 7, size=n)
-# noise_neg = -rng.gamma(shape=1.2, scale=4, size=n)
-# yield_percent = np.clip(np.round(base + noise_normal + noise_neg, 1), 3, 96)
-# df_new = pd.DataFrame({"reaction_id": np.arange(1, n + 1),
-#                        "temperature_C": temperature_C,
-#                        "time_min": time_min,
-#                        "yield_percent": yield_percent}).sample(frac=1, random_state=123).reset_index(drop=True)
-# df_new.to_csv("organic_synthesis_yields.csv", index=False)
+
 
 df_y = ...  # TO DO: pd.read_csv(path)
 df_y.head()
@@ -982,7 +968,7 @@ df_y.head()
 ```python
 # 2) Scatter temperature vs yield
 plt.figure(figsize=(6, 4))
-plt.scatter(..., ..., alpha=0.7)  # TO DO: x=df_y["temperature_C"], y=df_y["yield_percent"]
+plt.scatter(..., ..., alpha=0.7)  # TO DO: SEE NEXT TWO LINES
 plt.xlabel("temperature, C")
 plt.ylabel("yield, %")
 plt.title("Yield vs temperature")
@@ -992,7 +978,7 @@ plt.grid(True)
 # 3) Color by time
 plt.figure(figsize=(6, 4))
 plt.scatter(df_y["temperature_C"], df_y["yield_percent"],
-            c=..., cmap=..., alpha=0.8)  # TO DO: c=df_y["time_min"], choose a cmap like "viridis"
+            c=..., cmap=..., alpha=0.8)  # TO DO: C = see next line
 plt.colorbar(label="time, min")
 plt.xlabel("temperature, C")
 plt.ylabel("yield, %")
@@ -1017,7 +1003,7 @@ plt.grid(False)
 ```python
 # 5) Histogram of yields
 plt.figure(figsize=(6, 4))
-plt.hist(df_y["yield_percent"], bins=..., alpha=0.9)  # TO DO: try 15, 25, 40
+plt.... # TO DO: try 15, 25, 40 for yield in histgram
 plt.xlabel("yield, %")
 plt.ylabel("count")
 plt.title("Yield distribution")
@@ -1036,191 +1022,25 @@ Bin `temperature_C` into categories and compare yield distributions across bins.
 
 ```python
 # Define bins and labels for temperature
-bins = ...    # TO DO: e.g., [40, 60, 80, 100, 120]
-labels = ...  # TO DO: e.g., ["40-60", "60-80", "80-100", "100-120"]
+bins = ...    # TO DO: e.g., 40, 60, 80, 100, 120
+labels = ...  # TO DO: e.g., "40-60", "60-80", "80-100", "100-120"
 
-df_y = df_y.copy()
+df_y = ... # TO DO: make a copy
 df_y["temp_bin"] = pd.cut(..., bins=bins, labels=labels, include_lowest=True)  # TO DO: column is df_y["temperature_C"]
 
 # Build groups for violin or box plot
-groups = [grp["yield_percent"].to_numpy() for _, grp in ...]  # TO DO: df_y.groupby("temp_bin")
+groups = [grp["yield_percent"].to_numpy() for _, grp in ...]  # TO DO
 
 plt.figure(figsize=(6, 4))
 # Choose one:
 # plt.boxplot(groups, labels=labels, showmeans=True)
 plt.violinplot(groups, showmeans=True)
-plt.xticks(range(1, len(labels) + 1), labels)
+plt.xticks(...) # TO DO: use range from 1 to len(labels) + 1 for labels
 plt.ylabel("yield, %")
-plt.title("Yield by temperature bin")
-plt.grid(True)
+plt.title(...)
+plt.grid(...)
 ```
 
 ```{dropdown} Hint
 Use `pd.cut` to form bins. For violins, pass a list of arrays in the same order as your labels.
-```
-
----
-
-## 9. Solutions
-
-Search for `# TO DO:` in each block above and compare to the full code here.
-
-### Solution 8.1
-
-```{code-cell} ipython3
-import pandas as pd
-
-path = "sample_beer_lambert.csv"
-# TO DO: read the CSV
-df = pd.read_csv(path)
-
-print(df.head())
-print(df.info())
-print(df.describe())
-
-# TO DO: boolean mask and count
-mask = df["absorbance_A"] > 0
-count_positive = mask.sum()
-print("rows with condition:", count_positive)
-```
-
----
-
-### Solution 8.2
-
-```{code-cell} ipython3
-import matplotlib.pyplot as plt
-
-xcol = "concentration_mol_L"
-ycol = "absorbance_A"
-
-# TO DO: style controls
-point_size = 30
-alpha_val  = 0.8
-marker_sym = "o"
-
-plt.figure(figsize=(6, 4))
-plt.scatter(df[xcol], df[ycol], s=point_size, alpha=alpha_val, marker=marker_sym)
-plt.xlabel(xcol)
-plt.ylabel(ycol)
-plt.title("Scatter: y vs x with style tweaks")
-plt.grid(True)
-```
-
----
-
-### Solution 8.3
-
-```{code-cell} ipython3
-key_col = "concentration_mol_L"
-val_col = "absorbance_A"
-
-summary = (
-    df.groupby(key_col)[val_col]
-      .agg(["mean", "std", "count"])
-      .reset_index()
-)
-
-x = summary[key_col].to_numpy()
-y = summary["mean"].to_numpy()
-# TO DO: standard deviation array
-yerr = summary["std"].to_numpy()
-
-plt.figure(figsize=(6, 4))
-plt.errorbar(x, y, yerr=yerr, fmt="o-")
-plt.xlabel(key_col)
-plt.ylabel(f"mean {val_col}")
-plt.title("Group means with error bars")
-plt.grid(True)
-```
-
----
-
-### Solution 8.4
-
-```{code-cell} ipython3
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Use provided file if present
-path = "organic_synthesis_yields.csv"
-
-# TO DO: read CSV
-df_y = pd.read_csv(path)
-df_y.head()
-```
-
-```{code-cell} ipython3
-# TO DO: scatter temperature vs yield
-plt.figure(figsize=(6, 4))
-plt.scatter(df_y["temperature_C"], df_y["yield_percent"], alpha=0.7)
-plt.xlabel("temperature, C")
-plt.ylabel("yield, %")
-plt.title("Yield vs temperature")
-plt.grid(True)
-```
-
-```{code-cell} ipython3
-# TO DO: color by time, choose a colormap
-plt.figure(figsize=(6, 4))
-plt.scatter(df_y["temperature_C"], df_y["yield_percent"],
-            c=df_y["time_min"], cmap="viridis", alpha=0.8)
-plt.colorbar(label="time, min")
-plt.xlabel("temperature, C")
-plt.ylabel("yield, %")
-plt.title("Yield vs temperature colored by time")
-plt.grid(True)
-```
-
-```{code-cell} ipython3
-# TO DO: pivot and heatmap
-pivot = df_y.pivot_table(index="temperature_C", columns="time_min",
-                         values="yield_percent", aggfunc="mean")
-plt.figure(figsize=(7, 5))
-plt.imshow(pivot.to_numpy(), aspect="auto", origin="lower")
-plt.colorbar(label="yield, %")
-plt.yticks(range(pivot.shape[0]), pivot.index)
-plt.xticks(range(pivot.shape[1]), pivot.columns, rotation=45)
-plt.xlabel("time, min")
-plt.ylabel("temperature, C")
-plt.title("Mean yield heatmap")
-plt.grid(False)
-```
-
-```{code-cell} ipython3
-# TO DO: histogram with chosen bins
-plt.figure(figsize=(6, 4))
-plt.hist(df_y["yield_percent"], bins=25, alpha=0.9)
-plt.xlabel("yield, %")
-plt.ylabel("count")
-plt.title("Yield distribution")
-plt.grid(True)
-```
-
----
-
-### Solution 8.5
-
-```{code-cell} ipython3
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-
-# TO DO: define bins and labels
-bins = [40, 60, 80, 100, 120]
-labels = ["40-60", "60-80", "80-100", "100-120"]
-
-df_y = df_y.copy()
-df_y["temp_bin"] = pd.cut(df_y["temperature_C"], bins=bins, labels=labels, include_lowest=True)
-
-# TO DO: build groups and draw plot
-groups = [grp["yield_percent"].to_numpy() for _, grp in df_y.groupby("temp_bin")]
-
-plt.figure(figsize=(6, 4))
-plt.violinplot(groups, showmeans=True)
-plt.xticks(range(1, len(labels) + 1), labels)
-plt.ylabel("yield, %")
-plt.title("Yield by temperature bin")
-plt.grid(True)
 ```

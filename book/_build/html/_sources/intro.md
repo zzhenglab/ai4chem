@@ -23,9 +23,9 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 
 
 ---
-
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing) 
 ```{admonition} Weekly Schedule
-- **Aug 26 & 28** – Intro + Python basics  
+- **Aug 26 & 28** – Intro + Python basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing) 
 - **Sept 2 & 4** – Molecular representations  
 - **Sept 9 & 11** – Classification & regression  
 - **Sept 16 & 18** – Supervised deep learning  
