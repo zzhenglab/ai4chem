@@ -396,20 +396,12 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">6. Quick reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">7. Glossary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-chapter-activities">8. End-of-chapter activities</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">8. In-class activity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-inspect-a-csv">8.1 Read and inspect a CSV</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-with-style-controls">8.2 Scatter with style controls</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-summarize-and-draw-error-bars">8.3 Group, summarize, and draw error bars</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dataset-organic-synthesis-yields">8.4 New dataset — organic synthesis yields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-violin-by-binned-temperature">8.5 Box and violin by binned temperature</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
 </ul>
 </li>
 </ul>
@@ -442,8 +434,7 @@ document.write(`
 <li><p><a class="reference internal" href="#from-csv-to-plots" id="id6">5. From CSV to plots</a></p></li>
 <li><p><a class="reference internal" href="#quick-reference" id="id7">6. Quick reference</a></p></li>
 <li><p><a class="reference internal" href="#glossary" id="id8">7. Glossary</a></p></li>
-<li><p><a class="reference internal" href="#end-of-chapter-activities" id="id9">8. End-of-chapter activities</a></p></li>
-<li><p><a class="reference internal" href="#solutions" id="id10">9. Solutions</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id9">8. In-class activity</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -455,8 +446,10 @@ document.write(`
 <li><p>Make common plots with Matplotlib: line, scatter, bar, histogram, box, violin, heatmap, function plots, error bars.</p></li>
 <li><p>Combine pandas and plotting to explore real data.</p></li>
 </ul>
-</section>
 <hr class="docutils" />
+<p>Below is the Interactive Version:
+<a class="reference external" href="https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
+</section>
 <section id="first-plot-a-beer-lambert-style-line">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">1. First plot - a Beer-Lambert style line</a><a class="headerlink" href="#first-plot-a-beer-lambert-style-line" title="Permalink to this heading">#</a></h2>
 <p>Assume path length <span class="math notranslate nohighlight">\(b=1\)</span> cm and molar absorptivity <span class="math notranslate nohighlight">\(\epsilon=120\ \mathrm{L\ mol^{-1}\ cm^{-1}}\)</span>. Plot absorbance vs concentration.</p>
@@ -587,7 +580,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d69bcf03a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2ab8a89e430&gt;
 </pre></div>
 </div>
 <img alt="_images/afb83d3508f4ca96fe72007bbb60a1d58103cfc19dd5d314130928c41ecfcc52.png" src="_images/afb83d3508f4ca96fe72007bbb60a1d58103cfc19dd5d314130928c41ecfcc52.png" />
@@ -673,7 +666,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d69bdb37f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2ab8a95bca0&gt;
 </pre></div>
 </div>
 <img alt="_images/64a60014c4a36464824ef10ef811e400e918dab22346c93ab7ccae452d630db0.png" src="_images/64a60014c4a36464824ef10ef811e400e918dab22346c93ab7ccae452d630db0.png" />
@@ -1935,7 +1928,7 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d69d2cae80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2ab8be62820&gt;
 </pre></div>
 </div>
 <img alt="_images/22e452d95b06f1650f889f3af8d4291d25fc59c4cbc8a245c702ae73387e3f2e.png" src="_images/22e452d95b06f1650f889f3af8d4291d25fc59c4cbc8a245c702ae73387e3f2e.png" />
@@ -2299,8 +2292,8 @@ Name: molar_mass, dtype: float64
 </dl>
 </section>
 <hr class="docutils" />
-<section id="end-of-chapter-activities">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. End-of-chapter activities</a><a class="headerlink" href="#end-of-chapter-activities" title="Permalink to this heading">#</a></h2>
+<section id="in-class-activity">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p>Each task mirrors what you practiced. Fill in <code class="docutils literal notranslate"><span class="pre">...</span></code> and later compare with the solutions in Section 9. Keep your edits near the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> lines.</p>
 <section id="read-and-inspect-a-csv">
 <h3>8.1 Read and inspect a CSV<a class="headerlink" href="#read-and-inspect-a-csv" title="Permalink to this heading">#</a></h3>
@@ -2308,7 +2301,7 @@ Name: molar_mass, dtype: float64
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="c1"># Path to a CSV</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;sample_beer_lambert.csv&quot;</span>  <span class="c1"># or another CSV</span>
+<span class="n">path</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># &quot;sample_beer_lambert.csv&quot; we see in section 4</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># TO DO: read the CSV with pd.read_csv(path)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -2338,8 +2331,8 @@ Hint<div class="sd-summary-down docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Choose columns to plot</span>
-<span class="n">xcol</span> <span class="o">=</span> <span class="o">...</span>         <span class="c1"># TO DO: e.g., &quot;concentration_mol_L&quot;</span>
-<span class="n">ycol</span> <span class="o">=</span> <span class="o">...</span>         <span class="c1"># TO DO: e.g., &quot;absorbance_A&quot;</span>
+<span class="n">xcol</span> <span class="o">=</span> <span class="o">...</span>         <span class="c1"># TO DO: e.g.,concentration</span>
+<span class="n">ycol</span> <span class="o">=</span> <span class="o">...</span>         <span class="c1"># TO DO: e.g.,absorbance</span>
 
 <span class="c1"># Style controls — change and re-run</span>
 <span class="n">point_size</span> <span class="o">=</span>  <span class="o">...</span>  <span class="c1"># TO DO: e.g., 30</span>
@@ -2347,7 +2340,8 @@ Hint<div class="sd-summary-down docutils">
 <span class="n">marker_sym</span> <span class="o">=</span>  <span class="o">...</span>  <span class="c1"># TO DO: e.g., &quot;o&quot;</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">xcol</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">ycol</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">point_size</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_val</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker_sym</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">s</span><span class="o">=...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=...</span><span class="p">,</span> <span class="n">marker</span><span class="o">=...</span><span class="p">)</span>  <span class="c1"># TO DO: e.g.,point_size, alpha_val, marker_sym</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xcol</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ycol</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter: y vs x with style tweaks&quot;</span><span class="p">)</span>
@@ -2368,8 +2362,8 @@ Hint<div class="sd-summary-down docutils">
 <section id="group-summarize-and-draw-error-bars">
 <h3>8.3 Group, summarize, and draw error bars<a class="headerlink" href="#group-summarize-and-draw-error-bars" title="Permalink to this heading">#</a></h3>
 <p>Group by a key and plot group means with standard deviation as error bars.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO: e.g., &quot;concentration_mol_L&quot;</span>
-<span class="n">val_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO: e.g., &quot;absorbance_A&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO</span>
+<span class="n">val_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO</span>
 
 <span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">key_col</span><span class="p">)[</span><span class="n">val_col</span><span class="p">]</span>
@@ -2415,25 +2409,9 @@ Hint<div class="sd-summary-down docutils">
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="c1"># Option A — read the provided CSV</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;organic_synthesis_yields.csv&quot;</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_synthesis_yields.csv&quot;</span> 
 
-<span class="c1"># Option B — generate inside the notebook if the file is missing</span>
-<span class="c1"># Uncomment to generate:</span>
-<span class="c1"># rng = np.random.default_rng(42)</span>
-<span class="c1"># n = 180</span>
-<span class="c1"># temperature_C = rng.choice(np.arange(40, 121, 5), size=n, replace=True, p=np.linspace(2, 1, 17) / np.linspace(2, 1, 17).sum())</span>
-<span class="c1"># time_min = rng.choice(np.arange(10, 241, 10), size=n, replace=True, p=np.linspace(2, 1, 24) / np.linspace(2, 1, 24).sum())</span>
-<span class="c1"># temp_scale = (temperature_C - 30) / 60.0</span>
-<span class="c1"># time_scale = time_min / 180.0</span>
-<span class="c1"># base = 100 * (1 - np.exp(-temp_scale)) * (1 - np.exp(-time_scale))</span>
-<span class="c1"># noise_normal = rng.normal(0, 7, size=n)</span>
-<span class="c1"># noise_neg = -rng.gamma(shape=1.2, scale=4, size=n)</span>
-<span class="c1"># yield_percent = np.clip(np.round(base + noise_normal + noise_neg, 1), 3, 96)</span>
-<span class="c1"># df_new = pd.DataFrame({&quot;reaction_id&quot;: np.arange(1, n + 1),</span>
-<span class="c1">#                        &quot;temperature_C&quot;: temperature_C,</span>
-<span class="c1">#                        &quot;time_min&quot;: time_min,</span>
-<span class="c1">#                        &quot;yield_percent&quot;: yield_percent}).sample(frac=1, random_state=123).reset_index(drop=True)</span>
-<span class="c1"># df_new.to_csv(&quot;organic_synthesis_yields.csv&quot;, index=False)</span>
+
 
 <span class="n">df_y</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># TO DO: pd.read_csv(path)</span>
 <span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2441,7 +2419,7 @@ Hint<div class="sd-summary-down docutils">
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2) Scatter temperature vs yield</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># TO DO: x=df_y[&quot;temperature_C&quot;], y=df_y[&quot;yield_percent&quot;]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>  <span class="c1"># TO DO: SEE NEXT TWO LINES</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield vs temperature&quot;</span><span class="p">)</span>
@@ -2451,7 +2429,7 @@ Hint<div class="sd-summary-down docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3) Color by time</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span>
-            <span class="n">c</span><span class="o">=...</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>  <span class="c1"># TO DO: c=df_y[&quot;time_min&quot;], choose a cmap like &quot;viridis&quot;</span>
+            <span class="n">c</span><span class="o">=...</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>  <span class="c1"># TO DO: C = see next line</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;time, min&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
@@ -2475,7 +2453,7 @@ Hint<div class="sd-summary-down docutils">
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5) Histogram of yields</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=...</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>  <span class="c1"># TO DO: try 15, 25, 40</span>
+<span class="n">plt</span><span class="o">....</span> <span class="c1"># TO DO: try 15, 25, 40 for yield in histgram</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield distribution&quot;</span><span class="p">)</span>
@@ -2493,23 +2471,23 @@ Hint<div class="sd-summary-down docutils">
 <h3>8.5 Box and violin by binned temperature<a class="headerlink" href="#box-and-violin-by-binned-temperature" title="Permalink to this heading">#</a></h3>
 <p>Bin <code class="docutils literal notranslate"><span class="pre">temperature_C</span></code> into categories and compare yield distributions across bins.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define bins and labels for temperature</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO: e.g., [40, 60, 80, 100, 120]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># TO DO: e.g., [&quot;40-60&quot;, &quot;60-80&quot;, &quot;80-100&quot;, &quot;100-120&quot;]</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO: e.g., 40, 60, 80, 100, 120</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># TO DO: e.g., &quot;40-60&quot;, &quot;60-80&quot;, &quot;80-100&quot;, &quot;100-120&quot;</span>
 
-<span class="n">df_y</span> <span class="o">=</span> <span class="n">df_y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_y</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># TO DO: make a copy</span>
 <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temp_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># TO DO: column is df_y[&quot;temperature_C&quot;]</span>
 
 <span class="c1"># Build groups for violin or box plot</span>
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="o">...</span><span class="p">]</span>  <span class="c1"># TO DO: df_y.groupby(&quot;temp_bin&quot;)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="o">...</span><span class="p">]</span>  <span class="c1"># TO DO</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="c1"># Choose one:</span>
 <span class="c1"># plt.boxplot(groups, labels=labels, showmeans=True)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="c1"># TO DO: use range from 1 to len(labels) + 1 for labels</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield by temperature bin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
@@ -2522,304 +2500,6 @@ Hint<div class="sd-summary-down docutils">
 <p class="sd-card-text">Use <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to form bins. For violins, pass a list of arrays in the same order as your labels.</p>
 </div>
 </details></section>
-</section>
-<hr class="docutils" />
-<section id="solutions">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
-<p>Search for <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> in each block above and compare to the full code here.</p>
-<section id="solution-8-1">
-<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;sample_beer_lambert.csv&quot;</span>
-<span class="c1"># TO DO: read the CSV</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-
-<span class="c1"># TO DO: boolean mask and count</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="n">count_positive</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows with condition:&quot;</span><span class="p">,</span> <span class="n">count_positive</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   concentration_mol_L  replicate  absorbance_A
-0                0.000          1        0.0050
-1                0.000          2       -0.0032
-2                0.000          3        0.0017
-3                0.002          1        0.2448
-4                0.002          2        0.2401
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 33 entries, 0 to 32
-Data columns (total 3 columns):
- #   Column               Non-Null Count  Dtype  
----  ------               --------------  -----  
- 0   concentration_mol_L  33 non-null     float64
- 1   replicate            33 non-null     int64  
- 2   absorbance_A         33 non-null     float64
-dtypes: float64(2), int64(1)
-memory usage: 920.0 bytes
-None
-       concentration_mol_L  replicate  absorbance_A
-count            33.000000  33.000000     33.000000
-mean              0.010000   2.000000      1.196403
-std               0.006423   0.829156      0.781941
-min               0.000000   1.000000     -0.003200
-25%               0.004000   1.000000      0.494900
-50%               0.010000   2.000000      1.201700
-75%               0.016000   3.000000      1.910200
-max               0.020000   3.000000      2.401100
-rows with condition: 32
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="solution-8-2">
-<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="n">xcol</span> <span class="o">=</span> <span class="s2">&quot;concentration_mol_L&quot;</span>
-<span class="n">ycol</span> <span class="o">=</span> <span class="s2">&quot;absorbance_A&quot;</span>
-
-<span class="c1"># TO DO: style controls</span>
-<span class="n">point_size</span> <span class="o">=</span> <span class="mi">30</span>
-<span class="n">alpha_val</span>  <span class="o">=</span> <span class="mf">0.8</span>
-<span class="n">marker_sym</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">xcol</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">ycol</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">point_size</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_val</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker_sym</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xcol</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ycol</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter: y vs x with style tweaks&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/b8b4cb6d93b5f73acce8ca291cc5c41f26d250a3cb24cc0f35aca39af4b44c3f.png" src="_images/b8b4cb6d93b5f73acce8ca291cc5c41f26d250a3cb24cc0f35aca39af4b44c3f.png" />
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="solution-8-3">
-<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="s2">&quot;concentration_mol_L&quot;</span>
-<span class="n">val_col</span> <span class="o">=</span> <span class="s2">&quot;absorbance_A&quot;</span>
-
-<span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">key_col</span><span class="p">)[</span><span class="n">val_col</span><span class="p">]</span>
-      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
-      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="n">key_col</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="c1"># TO DO: standard deviation array</span>
-<span class="n">yerr</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">key_col</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean </span><span class="si">{</span><span class="n">val_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Group means with error bars&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/9509abaa57014654d08bf211c3fa6b7bb2fa4515af32fa6e19f374aae1ed6edf.png" src="_images/9509abaa57014654d08bf211c3fa6b7bb2fa4515af32fa6e19f374aae1ed6edf.png" />
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="solution-8-4">
-<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># Use provided file if present</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;organic_synthesis_yields.csv&quot;</span>
-
-<span class="c1"># TO DO: read CSV</span>
-<span class="n">df_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;organic_synthesis_yields.csv&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># TO DO: read CSV</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">df_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1664</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1666</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1670</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>         <span class="c1"># Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">859</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">handle</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>         <span class="c1"># Binary mode</span>
-<span class="g g-Whitespace">    </span><span class="mi">868</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;organic_synthesis_yields.csv&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: scatter temperature vs yield</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield vs temperature&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: color by time, choose a colormap</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span>
-            <span class="n">c</span><span class="o">=</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;time_min&quot;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;time, min&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield vs temperature colored by time&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: pivot and heatmap</span>
-<span class="n">pivot</span> <span class="o">=</span> <span class="n">df_y</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;time_min&quot;</span><span class="p">,</span>
-                         <span class="n">values</span><span class="o">=</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">pivot</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">pivot</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time, min&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean yield heatmap&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: histogram with chosen bins</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield distribution&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="solution-8-5">
-<h3>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="c1"># TO DO: define bins and labels</span>
-<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;40-60&quot;</span><span class="p">,</span> <span class="s2">&quot;60-80&quot;</span><span class="p">,</span> <span class="s2">&quot;80-100&quot;</span><span class="p">,</span> <span class="s2">&quot;100-120&quot;</span><span class="p">]</span>
-
-<span class="n">df_y</span> <span class="o">=</span> <span class="n">df_y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temp_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># TO DO: build groups and draw plot</span>
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">df_y</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;temp_bin&quot;</span><span class="p">)]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield by temperature bin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 
@@ -2906,20 +2586,12 @@ rows with condition: 32
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">6. Quick reference</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">7. Glossary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#end-of-chapter-activities">8. End-of-chapter activities</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">8. In-class activity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-inspect-a-csv">8.1 Read and inspect a CSV</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-with-style-controls">8.2 Scatter with style controls</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-summarize-and-draw-error-bars">8.3 Group, summarize, and draw error bars</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dataset-organic-synthesis-yields">8.4 New dataset — organic synthesis yields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-violin-by-binned-temperature">8.5 Box and violin by binned temperature</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
 </ul>
 </li>
 </ul>
