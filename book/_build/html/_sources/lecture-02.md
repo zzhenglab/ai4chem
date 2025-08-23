@@ -35,8 +35,12 @@ If you finished Lecture 1 or are comfortable running cells, you are ready.
 
 ---
 
-Below is the Interactive Version:
+Below is the Interactive Colab Version:
 [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
+
+Please also check out
+https://matplotlib.org/stable/gallery/index.html
+for more documentation
 
 ## 1. First plot - a Beer-Lambert style line
 
