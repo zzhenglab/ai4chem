@@ -313,10 +313,6 @@ M_H2O, moles_water
 
 
 
-```{admonition} 
-```
-
-
 
 
 ---
