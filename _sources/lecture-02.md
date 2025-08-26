@@ -507,23 +507,7 @@ df2.isna().sum(), df2.fillna({"molar_mass": df2["molar_mass"].mean()})
 Create a boolean column `is_gas` from `state`.
 ```
 
-### 3.4 Groupby
 
-```{admonition} Read
-Group rows that share a key and summarize.
-```
-
-```{code-cell} ipython3
-data = pd.DataFrame({
-    "state": ["gas", "liquid", "gas", "gas", "liquid"],
-    "molar_mass": [44.01, 18.02, 17.03, 16.04, 46.07]
-})
-data.groupby("state")["molar_mass"].agg(["count", "mean", "std"])
-```
-
-```{admonition} Practice
-On `df`, compute mean molar mass by state. Then add `min` and `max` to the aggregation.
-```
 
 
 ---
