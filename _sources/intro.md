@@ -41,7 +41,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 :class: tip
 | Date | Assignment / Project  |
 |------|----------------------|
-| **Sept 7** | Assignment 1 due |  
+| **Sept 7** | [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) 
+ Assignment 1 due |  
 | **Sept 21** | Assignment 2 due | 
 | **Oct 5** | Project 1 due |  
 | **Oct 19** | Project 1 Evaluation due |  

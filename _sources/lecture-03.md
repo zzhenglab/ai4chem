@@ -28,10 +28,31 @@ kernelspec:
 - Make small edits: replace atoms, neutralize groups, split salts, add a methyl group with a graph edit.
 - Query PubChem after you can edit molecules locally, then round-trip to SMILES and files.
 
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) 
 ---
 
 
-## 1. SMILES step by step
+## 1. SMILES
+
+**What is SMILES?**
+
+SMILES (Simplified Molecular Input Line Entry System) is a compact way to describe a molecule using only a line of text. It turns molecular structures into strings that are easy for both humans and computers to read.
+
+Each atom is represented by its atomic symbol: `C` for carbon, `O` for oxygen, etc.
+
+Bonds are shown with symbols: single bonds are implicit, `=` is a double bond, `#` is a triple bond.
+
+Branches are placed in parentheses: `CC(O)C` means a side group on the middle carbon.
+
+Ring structures use numbers to show where the ring closes: `C1CCCCC1` is cyclohexane.
+
+Charges, isotopes, and stereochemistry can also be encoded.
+
+Because it’s text, SMILES is great for storing, comparing, and searching molecules in code and databases. RDKit can take a SMILES string, reconstruct the molecule, and let you visualize or analyze it.
+
+For more information: *J. Chem. Inf. Comput. Sci.* 1988, 28 (1), 31–36 [![Read](https://img.shields.io/badge/Read-Paper-blue)](https://pubs.acs.org/doi/10.1021/ci00057a005)
+
+Now, let's get started!
 
 If you use Colab, run the install cell below first.
 
@@ -204,6 +225,14 @@ Search online SMILES for these and print them:
 - pyridine
 ```
 
+```{admonition} Try
+Search online SMILES for these and print them:
+- isopropyl alcohol
+- benzoate anion
+- cyclopropane
+- pyridine
+```
+
 ---
 
 ## 2. RDKit quick start
@@ -316,7 +345,69 @@ After graph edits, call `Chem.SanitizeMol` to check valence and aromaticity.
 
 ---
 
-## 4. PubChem after you can edit
+## 3.4 Why use `EditableMol` instead of just SMILES edits?
+
+Text edits to SMILES can hit the wrong atom or make an invalid string. `EditableMol` lets you target an atom index, keep valence correct, and apply the same change across many molecules in a repeatable way.
+
+Now consider below example:
+**add a methyl group to atom index 2 across 7 inputs**
+
+```{code-cell} ipython3
+smiles_list = [  
+    "c1ccccc1",            # benzene
+    "Oc1ccccc1",           # phenol
+    "Nc1ccccc1",           # aniline
+    "Clc1ccccc1",          # chlorobenzene
+    "c1ccncc1",            # pyridine
+    "O=C(O)c1ccccc1",      # benzoic acid
+    "OCCc1ccccc1",         # benzyl alcohol
+]  
+```
+
+```{code-cell} ipython3
+def add_methyl(smi):  
+    mol = Chem.MolFromSmiles(smi)  # parse SMILES to molecule
+    if mol is None or mol.GetNumAtoms() < 3:  # quick guard for bad/short inputs
+        return None  # signal failure
+    em = Chem.EditableMol(mol)  # enter editable graph mode
+    c_idx = em.AddAtom(Chem.Atom("C"))  # add the methyl carbon
+    for _ in range(3):  # add three hydrogens
+        h = em.AddAtom(Chem.Atom("H"))  # create a hydrogen atom
+        em.AddBond(c_idx, h, Chem.BondType.SINGLE)  # connect H to C
+    em.AddBond(2, c_idx, Chem.BondType.SINGLE)  # attach methyl C to atom index 2
+    newmol = em.GetMol()  # exit edit mode
+    Chem.SanitizeMol(newmol)  # check valence/aromaticity
+    return newmol  # return edited molecule
+```
+
+```{code-cell} ipython3
+for smi in smiles_list:  # iterate over the 7 SMILES
+    mol2 = add_methyl(smi)  # attempt the methyl add
+    out = Chem.MolToSmiles(mol2) if mol2 else "failed"  # convert to output SMILES or flag
+    print("IN :", smi)  # show input
+    print("---------------------")  
+    print("OUT:", out)  # show output
+    print("---------------------")
+```
+
+```{code-cell} ipython3
+mols_in  = [Chem.MolFromSmiles(s) for s in smiles_list]  # make inputs as mols
+mols_out = [add_methyl(s) for s in smiles_list]  # make edited outputs
+
+Draw.MolsToGridImage(  # draw a grid to compare
+    mols_in + mols_out,  # originals then edits
+    molsPerRow=5,  # how many per row
+    subImgSize=(200,180),  # image size
+    legends=["in"]*len(mols_in)+["out"]*len(mols_out),  # labels
+    useSVG=True  # SVG for crisp display
+)  # end drawing
+```
+
+---
+
+
+
+## 4. PubChem and URL
 
 
 ```note
@@ -333,19 +424,36 @@ except Exception:
     %pip -q install requests
     import requests
 
-from urllib.parse import quote_plus  # for safe URL encoding
+from urllib.parse import quote_plus  
+```
+Instead of going to [PubChem’s main site](https://pubchem.ncbi.nlm.nih.gov) and manually searching for a compound, we can also use a **direct URL** to query PubChem’s REST API. This allows us to send structured requests and retrieve data in machine-readable formats such as JSON, XML, or plain text. 
+
+The figure below illustrates the general workflow of PUG-REST: provide an input (like a compound name), choose an operation (for example, retrieving a CID), and specify the output format. Using URLs in this way not only automates lookups but also integrates PubChem data smoothly into code and analysis.
+
+
+
+
+![PubChem PUG-REST Figure](https://iupac.github.io/WFChemCookbook/_images/pubchem_pugrest_fig1.jpg)
+
+Here are some example URLs you can click and explore directly in a browser:
+- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON): Returns the PubChem Compound ID (CID) for aspirin.
+- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON): Returns the standardized IUPAC name.
+- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON): Returns the canonical SMILES string representation.
+
+
+```{note}
+The key idea is that PubChem is not only a website but also a programmatic data service. A well-formed URL acts like a query to their database.
 ```
 
-```[note]
-Why encode? Names can contain spaces or symbols. `quote_plus("acetic acid")` -> `acetic+acid`.  
-Unencoded spaces can cause HTTP 400 errors.
-```
+If you are interested in learning more about PubChem URL, please read:
+- [IUPAC FAIR Chemistry Cookbook guide](https://iupac.github.io/WFChemCookbook/datasources/pubchem_pugrest1.html)
+
 
 ---
 
 ### 4.2 Resolve a **name** to a CID
 
-```python
+```{code-cell} ipython3
 import requests
 from urllib.parse import quote_plus
 
@@ -369,6 +477,17 @@ print("CID:", cid)
 
 ```{note}
 CID is PubChem’s numeric identifier for a molecule. Taking the first hit is simple and works well for common drugs.
+Try to copy and paste the output URL from above copy to your browser and hit enter to see what it looks like!
+```
+Essentially, we first get the JSON format from the URL
+```{code-cell} ipython3
+r = requests.get(url, timeout=30)
+data = r.json()
+data
+```
+Then we use `data.get()` to search for `"IdentifierList"`
+```{code-cell} ipython3
+print(data.get("IdentifierList", {}))
 ```
 
 ---
@@ -377,7 +496,7 @@ CID is PubChem’s numeric identifier for a molecule. Taking the first hit is si
 
 #### 4.3.1 Get the **IUPAC name**
 
-```python
+```{code-cell} ipython3
 fields = "IUPACName"
 url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{fields}/JSON"
 print("URL:", url)
@@ -394,21 +513,25 @@ print("IUPAC:", props.get("IUPACName"))
 The IUPAC name is the standardized systematic name for the compound, defined by the International Union of Pure and Applied Chemistry.
 ```
 
+Let's break it down again:
+```{code-cell} ipython3
+data["PropertyTable"]
+```
+```{code-cell} ipython3
+data["PropertyTable"]["Properties"]
+```
+```{code-cell} ipython3
+data["PropertyTable"]["Properties"][0]
+```
+
+
 ---
 
 #### 4.3.2 Get the **Canonical SMILES**
 
-```python
-fields = "CanonicalSMILES"
-url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{fields}/JSON"
-print("URL:", url)
-
-r = requests.get(url, timeout=30)
-r.raise_for_status()
-data = r.json()
-
-props = data["PropertyTable"]["Properties"][0]
-print("Canonical SMILES:", props.get("CanonicalSMILES"))
+Now, we can even condense everything within one line:
+```{code-cell} ipython3
+print("Canonical SMILES:", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/CanonicalSMILES/TXT").text.strip())
 ```
 
 ```{note}
@@ -419,18 +542,9 @@ It provides a unique representation but does not retain stereochemistry.
 ---
 
 #### 4.3.3 Get the **Isomeric SMILES**
-
-```python
-fields = "IsomericSMILES"
-url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{fields}/JSON"
-print("URL:", url)
-
-r = requests.get(url, timeout=30)
-r.raise_for_status()
-data = r.json()
-
-props = data["PropertyTable"]["Properties"][0]
-print("Isomeric SMILES:", props.get("IsomericSMILES"))
+Similar:
+```{code-cell} ipython3
+print("Isomeric SMILES:", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IsomericSMILES/TXT").text.strip())
 ```
 
 ```{note}
@@ -443,78 +557,73 @@ This is useful for distinguishing molecules that have the same atoms but differe
 ### 4.4 Make it safe: minimal error handling
 
 ```{code-cell} ipython3
-def safe_get(url, timeout=30):
-    """Return JSON for a URL or raise a friendly ValueError."""
-    try:
-        r = requests.get(url, timeout=timeout)
-        r.raise_for_status()
-        return r.json()
-    except requests.exceptions.HTTPError as e:
-        raise ValueError(f"HTTP error from PubChem. URL was:\n{url}\nMessage: {e}") from e
-    except requests.exceptions.RequestException as e:
-        raise ValueError(f"Network error while contacting PubChem: {e}") from e
+import requests  # HTTP client
+from urllib.parse import quote_plus  # safe URL encoding
+
+def safe_get_json(url, timeout=30):  # fetch JSON safely
+    r = requests.get(url, timeout=timeout)  # send request
+    r.raise_for_status()  # raise if HTTP error
+    return r.json()  # parse and return JSON
+
+def safe_get_text(url, timeout=30):  # fetch plain text safely
+    r = requests.get(url, timeout=timeout)  # send request
+    r.raise_for_status()  # raise if HTTP error
+    return r.text  # return raw text
 ```
 
 ```note
-If students see HTTP 400, print the URL and check if the name was encoded.  
+If you see HTTP 400, print the URL and check if the name was encoded.  
 Timeouts keep notebooks from hanging.
 ```
 
 ---
 
-### 4.5 Function: by **name**
+## 4.5 Function: by **name** 
 
 ```{code-cell} ipython3
-def pubchem_smiles_by_name(name, isomeric=True):
-    """
-    Look up a compound by common name. Returns a dict with CID, SMILES, and IUPAC.
-    
-    name: string like "ibuprofen" or "acetic acid"
-    isomeric: True -> IsomericSMILES; False -> CanonicalSMILES
-    """
-    fields = "CanonicalSMILES,IsomericSMILES,CID,IUPACName"
-    encoded = quote_plus(str(name).strip())
-    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{encoded}/property/{fields}/JSON"
-    data = safe_get(url)
-    try:
-        p = data["PropertyTable"]["Properties"][0]
-    except (KeyError, IndexError) as e:
-        raise ValueError(f"No results found for name: {name}") from e
-
-    smiles = p.get("IsomericSMILES") if isomeric else p.get("CanonicalSMILES")
-    return {"name": name, "cid": p["CID"], "smiles": smiles, "iupac": p.get("IUPACName", "")}
+def pubchem_smiles_by_name(name, isomeric=True):  # look up by common name
+    nm = str(name).strip()  # clean input
+    if not nm:  # empty string check
+        raise ValueError("Empty name")  # clear message
+    enc = quote_plus(nm)  # URL encode the name
+    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"  # choose field
+    # get SMILES as plain text
+    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/property/{kind}/TXT"  # TXT endpoint
+    smiles = safe_get_text(smi_url).strip()  # fetch and strip whitespace
+    # get CID via JSON
+    cid_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/cids/JSON"  # CID list
+    cid_list = safe_get_json(cid_url).get("IdentifierList", {}).get("CID", [])  # pick from JSON
+    if not cid_list:  # handle no hits
+        raise ValueError(f"No CID found for name: {nm}")  # message
+    cid = int(cid_list[0])  # first hit
+    # get IUPAC name as text
+    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/TXT"  # TXT endpoint
+    iupac = safe_get_text(iupac_url).strip()  # fetch IUPAC
+    return {"name": nm, "cid": cid, "smiles": smiles, "iupac": iupac}  # result dict
 ```
 
 **Example**
 
 ```{code-cell} ipython3
-pubchem_smiles_by_name("ibuprofen")
-```
-
-```note
-This picks the first PubChem hit. That is fine for common compounds in an intro class.  
-For ambiguous names you could add a second step that lists all hits.
+pubchem_smiles_by_name("ibuprofen")  # quick demo
 ```
 
 ---
 
-### 4.6 Function: by **CID**
+## 4.6 Function: by **CID** 
 
 ```{code-cell} ipython3
-def pubchem_smiles_by_cid(cid, isomeric=True):
-    """
-    Look up a compound by PubChem CID (integer). Returns a dict with SMILES and IUPAC.
-    """
-    fields = "CanonicalSMILES,IsomericSMILES,IUPACName"
-    url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{int(cid)}/property/{fields}/JSON"
-    data = safe_get(url)
+def pubchem_smiles_by_cid(cid, isomeric=True):  # look up by CID
     try:
-        p = data["PropertyTable"]["Properties"][0]
-    except (KeyError, IndexError) as e:
-        raise ValueError(f"No results found for CID: {cid}") from e
-
-    smiles = p.get("IsomericSMILES") if isomeric else p.get("CanonicalSMILES")
-    return {"cid": int(cid), "smiles": smiles, "iupac": p.get("IUPACName", "")}
+        cid_int = int(str(cid).strip())  # coerce to int
+    except ValueError:
+        raise ValueError(f"Bad CID: {cid}")  # clear message
+    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"  # choose field
+    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid_int}/property/{kind}/TXT"  # TXT endpoint
+    smiles = safe_get_text(smi_url).strip()  # fetch SMILES
+    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid_int}/property/IUPACName/TXT"  # TXT endpoint
+    iupac = safe_get_text(iupac_url).strip()  # fetch IUPAC
+    return {"cid": cid_int, "smiles": smiles, "iupac": iupac}  # result dict
 ```
 
 **Example**
@@ -523,74 +632,25 @@ def pubchem_smiles_by_cid(cid, isomeric=True):
 pubchem_smiles_by_cid(2244)  # aspirin
 ```
 
-```note
-Using `int(cid)` helps catch strings like "2244 " early.
-```
-
 ---
 
-### 4.7 Use with RDKit (optional, short)
+## 4.7 Use with RDKit (short)
 
 ```{code-cell} ipython3
-from rdkit import Chem
-from rdkit.Chem import Draw
+from rdkit import Chem  # RDKit core
+from rdkit.Chem import Draw  # drawing
 
-res = pubchem_smiles_by_name("acetaminophen")
-mol = Chem.MolFromSmiles(res["smiles"])
-Draw.MolToImage(mol, size=(180, 180))
+res = pubchem_smiles_by_name("acetaminophen")  # fetch SMILES by name
+mol = Chem.MolFromSmiles(res["smiles"])  # make molecule
+Draw.MolToImage(mol, size=(180, 180))  # draw image
 ```
 
-```note
-If `MolFromSmiles` returns `None`, print the SMILES and check for copy errors.  
-If depiction warns about kekulization on fused aromatics, pass `kekulize=False` to the drawing call.
-```
-
----
-
-### 4.8 All together: one helper that accepts either **name** or **CID**
-
-```{code-cell} ipython3
-def pubchem_smiles(query, isomeric=True):
-    """
-    Look up SMILES from PubChem by name or CID.
-    - If query is an int (or digits), uses CID.
-    - Otherwise, uses name.
-    Returns a dict with keys: 'cid', 'smiles', and 'iupac'. Includes 'name' when searching by name.
-    """
-    # Decide route
-    if isinstance(query, int) or (isinstance(query, str) and query.strip().isdigit()):
-        cid = int(query)
-        return pubchem_smiles_by_cid(cid, isomeric=isomeric)
-    else:
-        return pubchem_smiles_by_name(str(query), isomeric=isomeric)
-
-# Examples
-print(pubchem_smiles("ibuprofen"))  # by name
-print(pubchem_smiles(2244))         # by CID (aspirin)
-```
-
-```note
-Teach students to try `pubchem_smiles("acetic acid")` and `pubchem_smiles("sodium chloride")`.  
-These show why URL encoding matters and how salts look in SMILES.
+```{note}
+If `MolFromSmiles` gives `None`, print the SMILES string and check for copy issues.
 ```
 
 ---
 
-### 4.9 Quick fixes for common errors
-
-- **HTTPError: 400 Bad Request**  
-  Use `quote_plus(name)`. Print the URL to see what was sent.
-- **No results**  
-  Check spelling. Try a different name or use a CID.
-- **Timeout**  
-  Try again. Classroom Wi-Fi can be slow. You can increase `timeout=60` in `safe_get`.
-- **Multiple matches**  
-  In an intro class, use the first result. For an advanced class, add a route that lists CIDs and lets students pick.
-
-```note
-If you want to keep the very first lesson short, skip 4.8 and just teach 4.5 (by name) first.  
-Add 4.6 (by CID) and 4.8 (combined) in a later exercise.
-```
 
 
 ## 5. Save and export
@@ -732,10 +792,10 @@ pd.DataFrame(rows)
 Replace Cl with F in `Clc1ccc(cc1)C(=O)O` and print the result SMILES.
 
 ```python
-find = Chem.MolFromSmiles(... )  # TO DO: "Cl"
-put  = Chem.MolFromSmiles(... )  # TO DO: "F"
-mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
+find = Chem.MolFromSmiles(... )  # TO DO
+put  = Chem.MolFromSmiles(... )  # TO DO
+mol  = ... # TO DO
+out  = ... # TO DO
 print(Chem.MolToSmiles(out))
 ```
 
@@ -748,161 +808,38 @@ Add a methyl at atom index 2 of benzene.
 ```python
 mol = Chem.MolFromSmiles("c1ccccc1")
 em = Chem.EditableMol(mol)
-
-idx_C = em.AddAtom(Chem.Atom("C"))
-idx_H1 = em.AddAtom(Chem.Atom("H"))
-idx_H2 = em.AddAtom(Chem.Atom("H"))
-idx_H3 = em.AddAtom(Chem.Atom("H"))
-
-em.AddBond(..., idx_C, order=Chem.BondType.SINGLE)  # TO DO: use 2
-em.AddBond(idx_C, idx_H1, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H2, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
-
-mol2 = em.GetMol()
-Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
+# TO DO: add code
+Draw.MolToImage(..., size=(350, 250))
 ```
 
 ---
 
-### 8.5 Split a salt and keep the largest fragment
+### 8.5 PubChem lookup to SMILES and drawing
+
+We often get inputs in different formats. Some may be PubChem CIDs (just digits) while others are SMILES strings.
+
+Tasks:
+1) For each name in `["446157", "2244", "CCO", "482752", "c1ccccc1"]`
+2) Print a line: `name: ... CID=... SMILES=...`.
+3) Draw each molecule.
+
 
 ```python
-mix = Chem.MolFromSmiles("C[NH+](C)C.Cl-")
-frags = Chem.GetMolFrags(mix, asMols=True, sanitizeFrags=True)
-keep = max(frags, key=lambda m: m.GetNumAtoms())
-print("fragments:", [Chem.MolToSmiles(f) for f in frags])
-print("kept:", Chem.MolToSmiles(keep))
+    mixed = [...]
+
+for ... in ...:
+    if ...:  # looks like CID
+      ...
+    else: 
+      ... 
+    print(...)
+    mol = Chem.MolFromSmiles(...)
+    display(Draw.MolToImage(mol, size=(100, 100)))
+
 ```
 
+```{note} Hint:
+Try `isdigit()` to distinguish between cid-like input and SMILES
+```
 ---
 
-### 8.6 E and Z check
-
-Draw both and print double bond stereo flags.
-
-```python
-s_e = ...  # TO DO: "Cl/C=C/Cl"
-s_z = ...  # TO DO: "Cl/C=C\\Cl"
-
-for s in [s_e, s_z]:
-    m = Chem.MolFromSmiles(s)
-    display(Draw.MolToImage(m, size=(300, 220)))
-    flags = [b.GetStereo() for b in m.GetBonds() if b.GetBondType().name == "DOUBLE"]
-    print(s, flags)
-```
-
----
-
-## 9. Solutions
-
-Open after you try Section 8.
-
-### Solution 8.1
-
-```{code-cell} ipython3
-from rdkit import Chem
-from rdkit.Chem import Draw
-
-smi = "O=C(O)c1ccccc1Cl"
-
-mol = Chem.MolFromSmiles(smi)
-display(Draw.MolToImage(mol, size=(350, 250), includeAtomNumbers=True))
-
-num_rings = Chem.GetSSSR(mol)
-print("rings:", num_rings)
-
-for b in mol.GetBonds():
-    print("bond", b.GetIdx(), b.GetBeginAtomIdx(), "-", b.GetEndAtomIdx(), "order", int(b.GetBondTypeAsDouble()))
-```
-
-### Solution 8.2
-
-```{code-cell} ipython3
-import pandas as pd
-from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-
-names = ["caffeine", "acetaminophen", "ibuprofen"]
-rows = []
-for nm in names:
-    info = pubchem_smiles_by_name(nm)
-    smi = info["smiles"]
-    m = Chem.MolFromSmiles(smi)
-    rows.append({
-        "name": nm,
-        "smiles": smi,
-        "MolWt": Descriptors.MolWt(m),
-        "LogP": Crippen.MolLogP(m),
-        "HBD": rdMolDescriptors.CalcNumHBD(m),
-        "HBA": rdMolDescriptors.CalcNumHBA(m),
-        "TPSA": rdMolDescriptors.CalcTPSA(m)
-    })
-
-pd.DataFrame(rows)
-```
-
-### Solution 8.3
-
-```{code-cell} ipython3
-find = Chem.MolFromSmiles("Cl")
-put  = Chem.MolFromSmiles("F")
-mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-print(Chem.MolToSmiles(out))
-Draw.MolToImage(out, size=(350, 250))
-```
-
-### Solution 8.4
-
-```{code-cell} ipython3
-mol = Chem.MolFromSmiles("c1ccccc1")
-em = Chem.EditableMol(mol)
-
-idx_C = em.AddAtom(Chem.Atom("C"))
-idx_H1 = em.AddAtom(Chem.Atom("H"))
-idx_H2 = em.AddAtom(Chem.Atom("H"))
-idx_H3 = em.AddAtom(Chem.Atom("H"))
-
-em.AddBond(2, idx_C, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H1, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H2, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
-
-mol2 = em.GetMol()
-Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
-```
-
-### Solution 8.5
-
-```{code-cell} ipython3
-mix = Chem.MolFromSmiles("C[NH+](C)C.Cl-")
-frags = Chem.GetMolFrags(mix, asMols=True, sanitizeFrags=True)
-keep = max(frags, key=lambda m: m.GetNumAtoms())
-print("fragments:", [Chem.MolToSmiles(f) for f in frags])
-print("kept:", Chem.MolToSmiles(keep))
-```
-
-### Solution 8.6
-
-```{code-cell} ipython3
-s_e = "Cl/C=C/Cl"
-s_z = "Cl/C=C\\Cl"
-
-for s in [s_e, s_z]:
-    m = Chem.MolFromSmiles(s)
-    display(Draw.MolToImage(m, size=(300, 220)))
-    flags = [b.GetStereo() for b in m.GetBonds() if b.GetBondType().name == "DOUBLE"]
-    print(s, flags)
-```
-
----
-
-## 10. Save your work
-
-```{admonition} Save
-- Keep a CSV of PubChem pulls and computed properties if you plan to model.  
-- Save key molecules to SDF and PNG.  
-- Store edited SMILES with `Chem.MolToSmiles` for reproducibility.
-```

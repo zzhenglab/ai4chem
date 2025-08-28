@@ -36,26 +36,37 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-names = ["aspirin", "acetaminophen", "ibuprofen"]  # example list
+import pandas as pd
+from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 
+names = ["caffeine", "acetaminophen", "ibuprofen"]
+rows = []
 for nm in names:
-    info = pubchem_smiles(nm, isomeric=True)  # unified helper from Section 4.8
-    cid = info["cid"]
+    info = pubchem_smiles_by_name(nm)
     smi = info["smiles"]
-    print(f"{nm}: CID={cid} SMILES={smi}")
     m = Chem.MolFromSmiles(smi)
-    display(Draw.MolToImage(m, size=(260, 200)))
+    rows.append({
+        "name": nm,
+        "smiles": smi,
+        "MolWt": Descriptors.MolWt(m),
+        "LogP": Crippen.MolLogP(m),
+        "HBD": rdMolDescriptors.CalcNumHBD(m),
+        "HBA": rdMolDescriptors.CalcNumHBA(m),
+        "TPSA": rdMolDescriptors.CalcTPSA(m)
+    })
+
+pd.DataFrame(rows)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[45][39m[32m, line 4[39m
-[32m      1[39m names = [[33m"[39m[33maspirin[39m[33m"[39m, [33m"[39m[33macetaminophen[39m[33m"[39m, [33m"[39m[33mibuprofen[39m[33m"[39m]  [38;5;66;03m# example list[39;00m
-[32m      3[39m [38;5;28;01mfor[39;00m nm [38;5;129;01min[39;00m names:
-[32m----> [39m[32m4[39m     info = [43mpubchem_smiles[49m(nm, isomeric=[38;5;28;01mTrue[39;00m)  [38;5;66;03m# unified helper from Section 4.8[39;00m
-[32m      5[39m     cid = info[[33m"[39m[33mcid[39m[33m"[39m]
-[32m      6[39m     smi = info[[33m"[39m[33msmiles[39m[33m"[39m]
+[36mCell[39m[36m [39m[32mIn[11][39m[32m, line 7[39m
+[32m      5[39m rows = []
+[32m      6[39m [38;5;28;01mfor[39;00m nm [38;5;129;01min[39;00m names:
+[32m----> [39m[32m7[39m     info = [43mpubchem_smiles_by_name[49m(nm)
+[32m      8[39m     smi = info[[33m"[39m[33msmiles[39m[33m"[39m]
+[32m      9[39m     m = Chem.MolFromSmiles(smi)
 
-[31mNameError[39m: name 'pubchem_smiles' is not defined
+[31mNameError[39m: name 'pubchem_smiles_by_name' is not defined
 
