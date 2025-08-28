@@ -414,6 +414,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-violin-by-binned-temperature">8.5 Box and violin by binned temperature</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -445,6 +453,7 @@ document.write(`
 <li><p><a class="reference internal" href="#quick-reference" id="id7">6. Quick reference</a></p></li>
 <li><p><a class="reference internal" href="#glossary" id="id8">7. Glossary</a></p></li>
 <li><p><a class="reference internal" href="#in-class-activity" id="id9">8. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id10">9. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -593,7 +602,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15e3b0d41a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25cca6741a0&gt;
 </pre></div>
 </div>
 <img alt="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" src="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" />
@@ -679,7 +688,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15e4c078410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25cdb5f8410&gt;
 </pre></div>
 </div>
 <img alt="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" src="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" />
@@ -793,7 +802,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_99604\2700000940.py:5: MatplotlibDeprecationWarning: The &#39;labels&#39; parameter of boxplot() has been renamed &#39;tick_labels&#39; since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_96520\2700000940.py:5: MatplotlibDeprecationWarning: The &#39;labels&#39; parameter of boxplot() has been renamed &#39;tick_labels&#39; since Matplotlib 3.9; support for the old name will be dropped in 3.11.
   plt.boxplot([group1, group2], labels=[&quot;g1&quot;, &quot;g2&quot;])
 </pre></div>
 </div>
@@ -1877,7 +1886,7 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15e4e3e1950&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25cdd961950&gt;
 </pre></div>
 </div>
 <img alt="_images/428c4789c148598ace978baaabf98b7c1601167b09b56ac3103ec5d22e88792b.png" src="_images/428c4789c148598ace978baaabf98b7c1601167b09b56ac3103ec5d22e88792b.png" />
@@ -2434,6 +2443,337 @@ Name: molar_mass, dtype: float64
 </div>
 </details></section>
 </section>
+<section id="solutions">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<p>Search for <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> in each block above and compare to the full code here.</p>
+<section id="solution-8-1">
+<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;sample_beer_lambert.csv&quot;</span>
+<span class="c1"># TO DO: read the CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+
+<span class="c1"># TO DO: boolean mask and count</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">count_positive</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rows with condition:&quot;</span><span class="p">,</span> <span class="n">count_positive</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   concentration_mol_L  replicate  absorbance_A
+0                0.000          1        0.0050
+1                0.000          2       -0.0032
+2                0.000          3        0.0017
+3                0.002          1        0.2448
+4                0.002          2        0.2401
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 33 entries, 0 to 32
+Data columns (total 3 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   concentration_mol_L  33 non-null     float64
+ 1   replicate            33 non-null     int64  
+ 2   absorbance_A         33 non-null     float64
+dtypes: float64(2), int64(1)
+memory usage: 924.0 bytes
+None
+       concentration_mol_L  replicate  absorbance_A
+count            33.000000  33.000000     33.000000
+mean              0.010000   2.000000      1.196403
+std               0.006423   0.829156      0.781941
+min               0.000000   1.000000     -0.003200
+25%               0.004000   1.000000      0.494900
+50%               0.010000   2.000000      1.201700
+75%               0.016000   3.000000      1.910200
+max               0.020000   3.000000      2.401100
+rows with condition: 32
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-8-2">
+<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">xcol</span> <span class="o">=</span> <span class="s2">&quot;concentration_mol_L&quot;</span>
+<span class="n">ycol</span> <span class="o">=</span> <span class="s2">&quot;absorbance_A&quot;</span>
+
+<span class="c1"># TO DO: style controls</span>
+<span class="n">point_size</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">alpha_val</span>  <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">marker_sym</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">xcol</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="n">ycol</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">point_size</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_val</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker_sym</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xcol</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ycol</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter: y vs x with style tweaks&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1dec0e386532566b4d38ee455039cdc713438c933770fd4f33273eba1cf7c359.png" src="_images/1dec0e386532566b4d38ee455039cdc713438c933770fd4f33273eba1cf7c359.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-8-3">
+<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="s2">&quot;concentration_mol_L&quot;</span>
+<span class="n">val_col</span> <span class="o">=</span> <span class="s2">&quot;absorbance_A&quot;</span>
+
+<span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">key_col</span><span class="p">)[</span><span class="n">val_col</span><span class="p">]</span>
+      <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">])</span>
+      <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="n">key_col</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="c1"># TO DO: standard deviation array</span>
+<span class="n">yerr</span> <span class="o">=</span> <span class="n">summary</span><span class="p">[</span><span class="s2">&quot;std&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">yerr</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">key_col</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mean </span><span class="si">{</span><span class="n">val_col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Group means with error bars&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d72bee302a8c618e93db1919912b570d244b5d6fd43b9f939c3088f30952455e.png" src="_images/d72bee302a8c618e93db1919912b570d244b5d6fd43b9f939c3088f30952455e.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-8-4">
+<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Use provided file if present</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_synthesis_yields.csv&quot;</span> 
+
+<span class="c1"># TO DO: read CSV</span>
+<span class="n">df_y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="n">df_y</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>reaction_id</th>
+      <th>temperature_C</th>
+      <th>time_min</th>
+      <th>yield_percent</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>63</td>
+      <td>80</td>
+      <td>50</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>177</td>
+      <td>70</td>
+      <td>170</td>
+      <td>28.6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>34</td>
+      <td>65</td>
+      <td>180</td>
+      <td>22.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>167</td>
+      <td>105</td>
+      <td>230</td>
+      <td>51.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>94</td>
+      <td>65</td>
+      <td>130</td>
+      <td>24.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: scatter temperature vs yield</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield vs temperature&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/40622b0fc3a39c2e7ece6feb079c4331cf3e1c2b742438c491ebf0b44a840e2d.png" src="_images/40622b0fc3a39c2e7ece6feb079c4331cf3e1c2b742438c491ebf0b44a840e2d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: color by time, choose a colormap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span>
+            <span class="n">c</span><span class="o">=</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;time_min&quot;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;time, min&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield vs temperature colored by time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3a727554dddfccc0799f076582150d50a4862dee5ae9e12f814b7c67833b1439.png" src="_images/3a727554dddfccc0799f076582150d50a4862dee5ae9e12f814b7c67833b1439.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: pivot and heatmap</span>
+<span class="n">pivot</span> <span class="o">=</span> <span class="n">df_y</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;time_min&quot;</span><span class="p">,</span>
+                         <span class="n">values</span><span class="o">=</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">pivot</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">pivot</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">pivot</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time, min&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;temperature, C&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Mean yield heatmap&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dc51cf5a70e69329639dcd88ca4a68773b1b76d1d07ee98b3dbb7a1443fbe3df.png" src="_images/dc51cf5a70e69329639dcd88ca4a68773b1b76d1d07ee98b3dbb7a1443fbe3df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: histogram with chosen bins</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield distribution&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c37a87789943ec714f1d65b2b32f50b75ea8b53c41aefc82b6e69f062c4587f0.png" src="_images/c37a87789943ec714f1d65b2b32f50b75ea8b53c41aefc82b6e69f062c4587f0.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-8-5">
+<h3>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># TO DO: define bins and labels</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;40-60&quot;</span><span class="p">,</span> <span class="s2">&quot;60-80&quot;</span><span class="p">,</span> <span class="s2">&quot;80-100&quot;</span><span class="p">,</span> <span class="s2">&quot;100-120&quot;</span><span class="p">]</span>
+
+<span class="n">df_y</span> <span class="o">=</span> <span class="n">df_y</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temp_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df_y</span><span class="p">[</span><span class="s2">&quot;temperature_C&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">include_lowest</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># TO DO: build groups and draw plot</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;yield_percent&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">df_y</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;temp_bin&quot;</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="n">showmeans</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">labels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;yield, %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Yield by temperature bin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_96520\742241996.py:13: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  groups = [grp[&quot;yield_percent&quot;].to_numpy() for _, grp in df_y.groupby(&quot;temp_bin&quot;)]
+</pre></div>
+</div>
+<img alt="_images/375ca59fcc9f11420f89cf49244b3867c58e5333c66f0b2623a6f3274d62da38.png" src="_images/375ca59fcc9f11420f89cf49244b3867c58e5333c66f0b2623a6f3274d62da38.png" />
+</div>
+</div>
+<p>In case you are curious how <code class="docutils literal notranslate"><span class="pre">&quot;organic_synthesis_yields.csv&quot;</span></code> is prepared (it’s synthesized dataset of synthesis!), here is the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">temperature_C</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">time_min</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">241</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">temp_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature_C</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span>
+<span class="n">time_scale</span> <span class="o">=</span> <span class="n">time_min</span> <span class="o">/</span> <span class="mf">180.0</span>
+<span class="n">base</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">temp_scale</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">time_scale</span><span class="p">))</span>
+<span class="n">noise_normal</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">noise_neg</span> <span class="o">=</span> <span class="o">-</span><span class="n">rng</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">yield_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="n">noise_normal</span> <span class="o">+</span> <span class="n">noise_neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">96</span><span class="p">)</span>
+<span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;reaction_id&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                       <span class="s2">&quot;temperature_C&quot;</span><span class="p">:</span> <span class="n">temperature_C</span><span class="p">,</span>
+                       <span class="s2">&quot;time_min&quot;</span><span class="p">:</span> <span class="n">time_min</span><span class="p">,</span>
+                       <span class="s2">&quot;yield_percent&quot;</span><span class="p">:</span> <span class="n">yield_percent</span><span class="p">})</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_new</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;organic_synthesis_yields.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2525,6 +2865,14 @@ Name: molar_mass, dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-summarize-and-draw-error-bars">8.3 Group, summarize, and draw error bars</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-dataset-organic-synthesis-yields">8.4 New dataset — organic synthesis yields</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-and-violin-by-binned-temperature">8.5 Box and violin by binned temperature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
 </ul>
 </li>
 </ul>
