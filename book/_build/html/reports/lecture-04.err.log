@@ -1,0 +1,125 @@
+Traceback (most recent call last):
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic%20ligands%20inventory.xlsx"
+df = pd.read_excel(url)
+df.head()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\compat\_optional.py:135[39m, in [36mimport_optional_dependency[39m[34m(name, extra, errors, min_version)[39m
+[32m    134[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m135[39m     module = [43mimportlib[49m[43m.[49m[43mimport_module[49m[43m([49m[43mname[49m[43m)[49m
+[32m    136[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88[39m, in [36mimport_module[39m[34m(name, package)[39m
+[32m     87[39m         level += [32m1[39m
+[32m---> [39m[32m88[39m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[43m.[49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1387[39m, in [36m_gcd_import[39m[34m(name, package, level)[39m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1360[39m, in [36m_find_and_load[39m[34m(name, import_)[39m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1324[39m, in [36m_find_and_load_unlocked[39m[34m(name, import_)[39m
+
+[31mModuleNotFoundError[39m: No module named 'openpyxl'
+
+During handling of the above exception, another exception occurred:
+
+[31mImportError[39m                               Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[15][39m[32m, line 4[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m      3[39m url = [33m"[39m[33mhttps://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic[39m[38;5;132;01m%20li[39;00m[33mgands[39m[38;5;132;01m%20i[39;00m[33mnventory.xlsx[39m[33m"[39m
+[32m----> [39m[32m4[39m df = [43mpd[49m[43m.[49m[43mread_excel[49m[43m([49m[43murl[49m[43m)[49m
+[32m      5[39m df.head()
+
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_base.py:495[39m, in [36mread_excel[39m[34m(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)[39m
+[32m    493[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(io, ExcelFile):
+[32m    494[39m     should_close = [38;5;28;01mTrue[39;00m
+[32m--> [39m[32m495[39m     io = [43mExcelFile[49m[43m([49m
+[32m    496[39m [43m        [49m[43mio[49m[43m,[49m
+[32m    497[39m [43m        [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m    498[39m [43m        [49m[43mengine[49m[43m=[49m[43mengine[49m[43m,[49m
+[32m    499[39m [43m        [49m[43mengine_kwargs[49m[43m=[49m[43mengine_kwargs[49m[43m,[49m
+[32m    500[39m [43m    [49m[43m)[49m
+[32m    501[39m [38;5;28;01melif[39;00m engine [38;5;129;01mand[39;00m engine != io.engine:
+[32m    502[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[32m    503[39m         [33m"[39m[33mEngine should not be specified when passing [39m[33m"[39m
+[32m    504[39m         [33m"[39m[33man ExcelFile - ExcelFile already has the engine set[39m[33m"[39m
+[32m    505[39m     )
+
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_base.py:1567[39m, in [36mExcelFile.__init__[39m[34m(self, path_or_buffer, engine, storage_options, engine_kwargs)[39m
+[32m   1564[39m [38;5;28mself[39m.engine = engine
+[32m   1565[39m [38;5;28mself[39m.storage_options = storage_options
+[32m-> [39m[32m1567[39m [38;5;28mself[39m._reader = [38;5;28;43mself[39;49m[43m.[49m[43m_engines[49m[43m[[49m[43mengine[49m[43m][49m[43m([49m
+[32m   1568[39m [43m    [49m[38;5;28;43mself[39;49m[43m.[49m[43m_io[49m[43m,[49m
+[32m   1569[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
+[32m   1570[39m [43m    [49m[43mengine_kwargs[49m[43m=[49m[43mengine_kwargs[49m[43m,[49m
+[32m   1571[39m [43m[49m[43m)[49m
+
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_openpyxl.py:552[39m, in [36mOpenpyxlReader.__init__[39m[34m(self, filepath_or_buffer, storage_options, engine_kwargs)[39m
+[32m    534[39m [38;5;129m@doc[39m(storage_options=_shared_docs[[33m"[39m[33mstorage_options[39m[33m"[39m])
+[32m    535[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m__init__[39m(
+[32m    536[39m     [38;5;28mself[39m,
+[32m   (...)[39m[32m    539[39m     engine_kwargs: [38;5;28mdict[39m | [38;5;28;01mNone[39;00m = [38;5;28;01mNone[39;00m,
+[32m    540[39m ) -> [38;5;28;01mNone[39;00m:
+[32m    541[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m    542[39m [33;03m    Reader using openpyxl engine.[39;00m
+[32m    543[39m 
+[32m   (...)[39m[32m    550[39m [33;03m        Arbitrary keyword arguments passed to excel engine.[39;00m
+[32m    551[39m [33;03m    """[39;00m
+[32m--> [39m[32m552[39m     [43mimport_optional_dependency[49m[43m([49m[33;43m"[39;49m[33;43mopenpyxl[39;49m[33;43m"[39;49m[43m)[49m
+[32m    553[39m     [38;5;28msuper[39m().[34m__init__[39m(
+[32m    554[39m         filepath_or_buffer,
+[32m    555[39m         storage_options=storage_options,
+[32m    556[39m         engine_kwargs=engine_kwargs,
+[32m    557[39m     )
+
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\compat\_optional.py:138[39m, in [36mimport_optional_dependency[39m[34m(name, extra, errors, min_version)[39m
+[32m    136[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+[32m    137[39m     [38;5;28;01mif[39;00m errors == [33m"[39m[33mraise[39m[33m"[39m:
+[32m--> [39m[32m138[39m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(msg)
+[32m    139[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[32m    141[39m [38;5;66;03m# Handle submodules: if we have submodule, grab parent module from sys.modules[39;00m
+
+[31mImportError[39m: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+

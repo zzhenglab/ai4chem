@@ -10,11 +10,23 @@ kernelspec:
   language: python
   name: python3
 ---
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.4
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 
-# Lecture 3 - SMILES and RDKit
+# Lecture 4 - PubChem, REST API, and CAS Numbers
 
-> Start with the SMILES language, practice tiny steps, then use RDKit to draw, edit, and analyze molecules. Finish with PubChem lookups.
-
+> This lecture builds carefully from the basics of PubChem URLs to more advanced lookups.  
+> We use **short code blocks** with lots of comments and notes. At the end, we connect this with a real dataset of ligands using CAS numbers.  
 
 ```{contents}
 :local:
@@ -23,387 +35,265 @@ kernelspec:
 
 ## Learning goals
 
-- Read SMILES strings with confidence: atoms, bonds, branches, rings, aromaticity, charges, simple stereochemistry.
-- Use RDKit to parse SMILES, draw structures, add hydrogens, and compute basic properties.
-- Make small edits: replace atoms, neutralize groups, split salts, add a methyl group with a graph edit.
-- Query PubChem after you can edit molecules locally, then round-trip to SMILES and files.
+- Understand PubChem as a data service (PUG-REST).  
+- Learn to form URLs that return JSON or text data.  
+- Resolve names to CIDs step by step.  
+- Retrieve IUPAC names and SMILES representations.  
+- Build reusable helper functions with error handling.  
+- Practice with multiple compounds.  
+- Use a real Excel sheet of ligands with CAS numbers to query PubChem.  
 
-[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) 
 ---
 
+## 1. PubChem PUG-REST Basics
 
-## 1. SMILES
+PubChem is not only a website — it provides an API called **PUG-REST**.  
 
-**What is SMILES?**
+- **Input**: name, CID, InChIKey, SMILES, or CAS number.  
+- **Operation**: what property you want (CID, IUPAC, SMILES, etc.).  
+- **Output**: JSON, XML, or TXT.  
 
-SMILES (Simplified Molecular Input Line Entry System) is a compact way to describe a molecule using only a line of text. It turns molecular structures into strings that are easy for both humans and computers to read.
+Think of the URL as:  
 
-Each atom is represented by its atomic symbol: `C` for carbon, `O` for oxygen, etc.
+```
+https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/<input type>/<input value>/<operation>/<output format>
+```
 
-Bonds are shown with symbols: single bonds are implicit, `=` is a double bond, `#` is a triple bond.
+```{note}
+Always read the URL as:  
+1. Base: `https://pubchem.ncbi.nlm.nih.gov/rest/pug`  
+2. Section: `compound` (since we work with compounds)  
+3. Identifier type: `name`, `cid`, `smiles`, `cas`  
+4. Action: what property to fetch  
+5. Format: `JSON`, `XML`, `TXT`  
+```
 
-Branches are placed in parentheses: `CC(O)C` means a side group on the middle carbon.
+---
 
-Ring structures use numbers to show where the ring closes: `C1CCCCC1` is cyclohexane.
-
-Charges, isotopes, and stereochemistry can also be encoded.
-
-Because it’s text, SMILES is great for storing, comparing, and searching molecules in code and databases. RDKit can take a SMILES string, reconstruct the molecule, and let you visualize or analyze it.
-
-For more information: *J. Chem. Inf. Comput. Sci.* 1988, 28 (1), 31–36 [![Read](https://img.shields.io/badge/Read-Paper-blue)](https://pubs.acs.org/doi/10.1021/ci00057a005)
-
-Now, let's get started!
-
-If you use Colab, run the install cell below first.
+## 2. Setup
 
 ```{code-cell} ipython3
-# Install only if needed
 try:
-    import rdkit
-    from rdkit import Chem
-    from rdkit.Chem import Draw, Descriptors, Crippen, rdMolDescriptors
+    import requests
 except Exception:
-    %pip install rdkit
-```
+    %pip install requests
+    import requests
 
-
-### 1.1 Atoms
-
-- Organic set without brackets: `B C N O P S F Cl Br I`.  
-- Hydrogens are usually implicit.  
-- Charges or unusual valence use brackets.
-
-
-
-
-```{code-cell} ipython3
-# Plain strings to focus on notation
-ethanol = "CCO"         # C-C-O
-mol_1 = Chem.MolFromSmiles(ethanol)
-Draw.MolToImage(mol_1)
-```
-
-
-```{code-cell} ipython3
-acetic = "CC(=O)O"      # C-C with a double bonded O and an OH
-benzene = "c1ccccc1"    # aromatic ring
-
-mol_2 = Chem.MolFromSmiles(acetic)
-mol_3 = Chem.MolFromSmiles(benzene)
-
-# Draw both molecules side by side
-Draw.MolsToImage([mol_2, mol_3], molsPerRow=2, subImgSize=(100,100))
-```
-
-
-```{code-cell} ipython3
-charged1 = "[NH4+]"     # ammonium
-charged2 = "C(=O)[O-]"  # carboxylate
-mol_c1 = Chem.MolFromSmiles(charged1)
-mol_c2 = Chem.MolFromSmiles(charged2)
-
-Draw.MolsToImage([mol_c1, mol_c2], molsPerRow=1, subImgSize=(100,100))
-
-```
-
-### 1.2 Bonds
-
-- Single is implied.  
-- `=` is double.  
-- `#` is triple.
-
-```{code-cell} ipython3
-single = "CC"
-double = "C=C"
-triple = "C#N"
-
-mols = [Chem.MolFromSmiles(bond) for bond in [single, double, triple]]
-
-Draw.MolsToImage(mols, molsPerRow=1, subImgSize=(100,100))
-
-
-```
-
-### 1.3 Branches
-
-- Parentheses create side branches.
-
-```{code-cell} ipython3
-isopropanol_a = "CC(O)CC"
-isopropanol_b = "CC(C)OC"    # same structure, different order
-print(isopropanol_a, isopropanol_b)
-
-mol_a = Chem.MolFromSmiles(isopropanol_a)
-mol_b = Chem.MolFromSmiles(isopropanol_b)
-
-Draw.MolsToImage([mol_a, mol_b], molsPerRow=2, subImgSize=(100,100))
-
-
-```
-
-### 1.4 Rings
-
-- Numbers open and close rings.  
-- Same digit appears twice to close that ring.
-
-```{code-cell} ipython3
-cyclohexane = "C1CCCCC1"
-benzene = "c1ccccc1"
-naphthalene = "c1cccc2c1cccc2"
-
-mols = [Chem.MolFromSmiles(ring) for ring in [cyclohexane, benzene, naphthalene]]
-
-Draw.MolsToImage(mols, molsPerRow=3, subImgSize=(100,100))
-
-```
-
-### 1.5 Aromatic vs aliphatic
-
-- Aromatic atoms are lower case.  
-- Aliphatic are upper case.
-
-```{code-cell} ipython3
-
-mol_aromatic = Chem.MolFromSmiles("c1ccccc1")
-mol_aliphatic = Chem.MolFromSmiles("C1CCCCC1")
-
-Draw.MolsToImage([ mol_aromatic, mol_aliphatic], molsPerRow=3, subImgSize=(100,100))
-```
-
-```{note}
-What the digits mean:
-A number marks a ring connection. The same digit appears twice on the two atoms that are bonded to each other to close that ring.
-For fused systems, you can reuse different digits to show where each ring closes.
-```
-
-```{code-cell} ipython3
-ring1 = Chem.MolFromSmiles("C1CCC2CCCCC2C1")
-ring2 = Chem.MolFromSmiles("C1CC(C)C1")
-ring3 = Chem.MolFromSmiles("c1ccc(C2CCCCC2)cc1")
-ring4 = Chem.MolFromSmiles("c1ccc(-c2ccc3ccccc3c2)cc1")
-ring5 = Chem.MolFromSmiles("C1=CC2C=COC2=C1")
-ring6 = Chem.MolFromSmiles("CC(C)c1cccc(C2CC2)c1")
-
-Draw.MolsToImage([ring1,ring2, ring3, ring4, ring5, ring6], ubImgSize=(100,100))
-```
-
-
-
-
-### 1.6 Charges and salts
-
-- Use `.` to separate parts in a salt.  
-- Place charge in brackets on the atom.
-
-```{code-cell} ipython3
-salt = "C[NH+](C)C.[Cl-]"    # trimethylammonium chloride
-Draw.MolToImage(Chem.MolFromSmiles(salt ), molsPerRow=1, subImgSize=(100,100))
-
-```
-
-### 1.7 Simple stereochemistry
-
-- E and Z for alkenes use slashes.  
-- `Cl/C=C/Cl` is E. `Cl/C=C\Cl` is Z.
-
-```{code-cell} ipython3
-
-
-mol_E = Chem.MolFromSmiles("Cl/C=C/Cl")
-mol_Z = Chem.MolFromSmiles("Cl/C=C\\Cl")
-
-Draw.MolsToImage([ mol_E, mol_Z], molsPerRow=3, subImgSize=(100,100))
-
-
-```
-
-```{admonition} Try
-Search online SMILES for these and print them:
-- isopropyl alcohol
-- benzoate anion
-- cyclopropane
-- pyridine
-```
-
-```{admonition} Try
-Search online SMILES for these and print them:
-- isopropyl alcohol
-- benzoate anion
-- cyclopropane
-- pyridine
+from urllib.parse import quote_plus
 ```
 
 ---
 
-## 2. RDKit quick start
+## 3. From Name → CID
 
-
-
-```{code-cell} ipython3
-from rdkit import Chem
-from rdkit.Chem import Draw, Descriptors, Crippen, rdMolDescriptors
-
-smi = "CC(=O)OC1=CC=CC=C1C(=O)O"  # aspirin
-mol = Chem.MolFromSmiles(smi)
-Draw.MolToImage(mol, size=(350, 250))
-```
+### 3.1 Form the URL
 
 ```{code-cell} ipython3
-# Add hydrogens for clarity
-mol_H = Chem.AddHs(mol)
-Draw.MolToImage(mol_H, size=(350, 250))
-```
-
-```{code-cell} ipython3
-# Quick properties in one place
-mw = Descriptors.MolWt(mol)
-logp = Crippen.MolLogP(mol)
-hbd = rdMolDescriptors.CalcNumHBD(mol)
-hba = rdMolDescriptors.CalcNumHBA(mol)
-tpsa = rdMolDescriptors.CalcTPSA(mol)
-print("MolWt", round(mw,2), "LogP", round(logp,2), "HBD", hbd, "HBA", hba, "TPSA", round(tpsa,1))
+name = "acetaminophen"
+url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{quote_plus(name)}/cids/JSON"
+print(url)
 ```
 
 ```{note}
-**MolWt** → The molecular weight (molar mass) of the compound, measured in grams per mole.
+Try pasting this URL into your browser. You should see a JSON object with `"CID"`.  
+```
 
-**LogP** → The logarithm of the partition coefficient (octanol/water); higher values mean more lipophilic (hydrophobic).
+### 3.2 Request and Parse
 
-**HBD** (Hydrogen Bond Donors) → Atoms (often OH or NH groups) that can donate a hydrogen in hydrogen bonding.
+```{code-cell} ipython3
+r = requests.get(url, timeout=30)
+data = r.json()
+print(data)
+```
 
-**HBA** (Hydrogen Bond Acceptors) → Atoms (such as oxygen or nitrogen) that can accept a hydrogen bond.
+Break it down:  
 
-**TPSA** (Topological Polar Surface Area) → A measure of the molecule’s polar area, correlated with solubility and permeability.
+```{code-cell} ipython3
+print(data.keys())
+print(data.get("IdentifierList", {}))
 ```
 
 ```{code-cell} ipython3
-# Show atom numbers to plan edits
-img = Draw.MolToImage(mol, size=(350, 250), includeAtomNumbers=True)
-img
-```
-
-```{admonition} Practice
-Change `smi` to caffeine or acetaminophen. Compare MolWt and TPSA.
+cid_list = data.get("IdentifierList", {}).get("CID", [])
+cid = cid_list[0]
+print("CID:", cid)
 ```
 
 ---
 
-## 3. Small edits in RDKit
+## 4. From CID → Properties
 
-We will avoid pattern languages here. We will use plain molecules to find and replace common pieces.
+### 4.1 IUPAC Name
 
-### 3.1 Replace atom type by matching a small molecule
+```{code-cell} ipython3
+cid = 2244  # aspirin
+url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/JSON"
+r = requests.get(url, timeout=30)
+data = r.json()
+print(data)
+```
 
-Replace all chlorine atoms with fluorine in an aryl chloride.
+```{code-cell} ipython3
+props = data["PropertyTable"]["Properties"][0]
+print("IUPAC Name:", props["IUPACName"])
+```
+
+### 4.2 Canonical vs Isomeric SMILES
+
+```{code-cell} ipython3
+print("Canonical:", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/CanonicalSMILES/TXT").text.strip())
+print("Isomeric :", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IsomericSMILES/TXT").text.strip())
+```
+
+```{note}
+- Canonical SMILES → standardized, but no stereochemistry.  
+- Isomeric SMILES → includes stereochemistry/isotopes.  
+```
+
+---
+
+## 5. Safer Functions
+
+```{code-cell} ipython3
+def safe_get_json(url, timeout=30):
+    r = requests.get(url, timeout=timeout)
+    r.raise_for_status()
+    return r.json()
+
+def safe_get_text(url, timeout=30):
+    r = requests.get(url, timeout=timeout)
+    r.raise_for_status()
+    return r.text.strip()
+```
+
+---
+
+## 6. Convenience Functions
+
+### 6.1 By Name
+
+```{code-cell} ipython3
+def pubchem_smiles_by_name(name, isomeric=True):
+    enc = quote_plus(name.strip())
+    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"
+    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/property/{kind}/TXT"
+    smiles = safe_get_text(smi_url)
+
+    cid_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/cids/JSON"
+    cid_list = safe_get_json(cid_url).get("IdentifierList", {}).get("CID", [])
+    if not cid_list:
+        raise ValueError("No CID found")
+    cid = cid_list[0]
+
+    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/TXT"
+    iupac = safe_get_text(iupac_url)
+    return {"name": name, "cid": cid, "smiles": smiles, "iupac": iupac}
+```
+
+```{code-cell} ipython3
+pubchem_smiles_by_name("ibuprofen")
+```
+
+### 6.2 By CID
+
+```{code-cell} ipython3
+def pubchem_smiles_by_cid(cid, isomeric=True):
+    cid = int(cid)
+    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"
+    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{kind}/TXT"
+    smiles = safe_get_text(smi_url)
+    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/TXT"
+    iupac = safe_get_text(iupac_url)
+    return {"cid": cid, "smiles": smiles, "iupac": iupac}
+```
+
+```{code-cell} ipython3
+pubchem_smiles_by_cid(2244)
+```
+
+---
+
+## 7. Integration with RDKit
 
 ```{code-cell} ipython3
 from rdkit import Chem
 from rdkit.Chem import Draw
 
-qry = Chem.MolFromSmiles("Cl")     # what to find
-rep = Chem.MolFromSmiles("F")      # what to place
-mol = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-
-out = Chem.ReplaceSubstructs(mol, qry, rep, replaceAll=True)[0]
-Draw.MolToImage(out, size=(350, 250))
+res = pubchem_smiles_by_name("acetaminophen")
+mol = Chem.MolFromSmiles(res["smiles"])
+Draw.MolToImage(mol, size=(200,200))
 ```
 
-### 3.2 Neutralize a carboxylate
-
-```{code-cell} ipython3
-mol = Chem.MolFromSmiles("CC(=O)[O-]")
-find = Chem.MolFromSmiles("[O-]")  # anionic oxygen as a molecule
-put  = Chem.MolFromSmiles("O")
-mol_neutral = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-Draw.MolToImage(mol_neutral, size=(320, 220))
-```
-
-### 3.3 Add a methyl group with a graph edit
-
-```{code-cell} ipython3
-mol = Chem.MolFromSmiles("c1ccccc1")  # benzene
-em = Chem.EditableMol(mol)
-
-idx_C = em.AddAtom(Chem.Atom("C"))
-idx_H1 = em.AddAtom(Chem.Atom("H"))
-idx_H2 = em.AddAtom(Chem.Atom("H"))
-idx_H3 = em.AddAtom(Chem.Atom("H"))
-
-em.AddBond(2, idx_C, order=Chem.BondType.SINGLE)  # attach at atom index 2
-em.AddBond(idx_C, idx_H1, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H2, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
-
-mol2 = em.GetMol()
-Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
-```
-
-```{admonition} Tip
-After graph edits, call `Chem.SanitizeMol` to check valence and aromaticity.
+```{admonition} Try
+Compare the RDKit drawings for Canonical vs Isomeric SMILES of ibuprofen.  
 ```
 
 ---
 
-## 3.4 Why use `EditableMol` instead of just SMILES edits?
+## 8. Case Study: CAS Numbers from Excel
 
-Text edits to SMILES can hit the wrong atom or make an invalid string. `EditableMol` lets you target an atom index, keep valence correct, and apply the same change across many molecules in a repeatable way.
+We have an inventory file:  
 
-Now consider below example:
-**add a methyl group to atom index 2 across 7 inputs**
+📂 [organic ligands inventory.xlsx](https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic%20ligands%20inventory.xlsx)
+
+### 8.1 Load with pandas
 
 ```{code-cell} ipython3
-smiles_list = [  
-    "c1ccccc1",            # benzene
-    "Oc1ccccc1",           # phenol
-    "Nc1ccccc1",           # aniline
-    "Clc1ccccc1",          # chlorobenzene
-    "c1ccncc1",            # pyridine
-    "O=C(O)c1ccccc1",      # benzoic acid
-    "OCCc1ccccc1",         # benzyl alcohol
-]  
+import pandas as pd
+
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic%20ligands%20inventory.xlsx"
+df = pd.read_excel(url)
+df.head()
+```
+
+### 8.2 Query PubChem by CAS
+
+PubChem accepts CAS numbers too.  
+
+```{code-cell} ipython3
+def pubchem_from_cas(cas, isomeric=True):
+    enc = quote_plus(str(cas))
+    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"
+    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/property/{kind}/TXT"
+    smiles = safe_get_text(smi_url)
+    cid_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/cids/JSON"
+    cid_list = safe_get_json(cid_url).get("IdentifierList", {}).get("CID", [])
+    cid = cid_list[0] if cid_list else None
+    return {"cas": cas, "cid": cid, "smiles": smiles}
 ```
 
 ```{code-cell} ipython3
-def add_methyl(smi):  
-    mol = Chem.MolFromSmiles(smi)  # parse SMILES to molecule
-    if mol is None or mol.GetNumAtoms() < 3:  # quick guard for bad/short inputs
-        return None  # signal failure
-    em = Chem.EditableMol(mol)  # enter editable graph mode
-    c_idx = em.AddAtom(Chem.Atom("C"))  # add the methyl carbon
-    for _ in range(3):  # add three hydrogens
-        h = em.AddAtom(Chem.Atom("H"))  # create a hydrogen atom
-        em.AddBond(c_idx, h, Chem.BondType.SINGLE)  # connect H to C
-    em.AddBond(2, c_idx, Chem.BondType.SINGLE)  # attach methyl C to atom index 2
-    newmol = em.GetMol()  # exit edit mode
-    Chem.SanitizeMol(newmol)  # check valence/aromaticity
-    return newmol  # return edited molecule
+example_cas = df.loc[0,"CAS"]
+pubchem_from_cas(example_cas)
 ```
 
-```{code-cell} ipython3
-for smi in smiles_list:  # iterate over the 7 SMILES
-    mol2 = add_methyl(smi)  # attempt the methyl add
-    out = Chem.MolToSmiles(mol2) if mol2 else "failed"  # convert to output SMILES or flag
-    print("IN :", smi)  # show input
-    print("---------------------")  
-    print("OUT:", out)  # show output
-    print("---------------------")
-```
+### 8.3 Enrich the Dataset
 
 ```{code-cell} ipython3
-mols_in  = [Chem.MolFromSmiles(s) for s in smiles_list]  # make inputs as mols
-mols_out = [add_methyl(s) for s in smiles_list]  # make edited outputs
+rows = []
+for cas in df["CAS"].head(5):  # try first 5
+    try:
+        rows.append(pubchem_from_cas(cas))
+    except Exception as e:
+        rows.append({"cas": cas, "cid": None, "smiles": None})
 
-Draw.MolsToGridImage(  # draw a grid to compare
-    mols_in + mols_out,  # originals then edits
-    molsPerRow=5,  # how many per row
-    subImgSize=(200,180),  # image size
-    legends=["in"]*len(mols_in)+["out"]*len(mols_out),  # labels
-    useSVG=True  # SVG for crisp display
-)  # end drawing
+pd.DataFrame(rows)
 ```
 
 ---
+
+## 9. Exercises
+
+```{admonition} Try
+1. For each CAS in the first 10 rows, fetch CID and SMILES.  
+2. Add MW and Purity from Excel into the same DataFrame.  
+3. Use RDKit to compute LogP and TPSA for each compound.  
+4. Compare experimental MW from Excel vs computed MW.  
+```
+
+---
+
+
 
 
 
