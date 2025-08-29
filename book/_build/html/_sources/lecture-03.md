@@ -591,9 +591,9 @@ from rdkit.Chem import PandasTools
 
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_ligands_inventory_smiles.xlsx"
 
-df = pd.read_csv(url)
+df = pd.read_excel(url, engine="openpyxl")
 df = df[['Compound ID','smiles','MW']]
-df = df.rename(columns={'MW'})
+
 
 PandasTools.AddMoleculeColumnToFrame(df, smilesCol='smiles', molCol='Mol')
 df.head()
