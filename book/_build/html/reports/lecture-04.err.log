@@ -36,90 +36,59 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
+items = ["446157", "2244", "CCO", "482752", "c1ccccc1"]
 
-url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic%20ligands%20inventory.xlsx"
-df = pd.read_excel(url)
-df.head()
+for q in items:
+    if q.isdigit():
+        info = pubchem_by_cid(int(q))
+        smi, cid = info["smiles"], info["cid"]
+    elif Chem is not None and Chem.MolFromSmiles(q):
+        smi, cid = q, None
+    else:
+        info = pubchem_by_name(q)
+        smi, cid = info["smiles"], info["cid"]
+    print(f"input={q} CID={cid} SMILES={smi}")
+    if Chem is not None:
+        m = Chem.MolFromSmiles(smi)
+        display(Draw.MolToImage(m, size=(220, 180)))
 ------------------
 
+----- stdout -----
+input=446157 CID=446157 SMILES=CC(C)C1=NC(=NC(=C1/C=C/[C@H](C[C@H](CC(=O)O)O)O)C2=CC=C(C=C2)F)N(C)S(=O)(=O)C
+----- stdout -----
+input=2244 CID=2244 SMILES=CC(=O)OC1=CC=CC=C1C(=O)O
+----- stdout -----
+input=CCO CID=None SMILES=CCO
+------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\compat\_optional.py:135[39m, in [36mimport_optional_dependency[39m[34m(name, extra, errors, min_version)[39m
-[32m    134[39m [38;5;28;01mtry[39;00m:
-[32m--> [39m[32m135[39m     module = [43mimportlib[49m[43m.[49m[43mimport_module[49m[43m([49m[43mname[49m[43m)[49m
-[32m    136[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
+[31mHTTPError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[32][39m[32m, line 5[39m
+[32m      3[39m [38;5;28;01mfor[39;00m q [38;5;129;01min[39;00m items:
+[32m      4[39m     [38;5;28;01mif[39;00m q.isdigit():
+[32m----> [39m[32m5[39m         info = [43mpubchem_by_cid[49m[43m([49m[38;5;28;43mint[39;49m[43m([49m[43mq[49m[43m)[49m[43m)[49m
+[32m      6[39m         smi, cid = info[[33m"[39m[33msmiles[39m[33m"[39m], info[[33m"[39m[33mcid[39m[33m"[39m]
+[32m      7[39m     [38;5;28;01melif[39;00m Chem [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m Chem.MolFromSmiles(q):
 
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88[39m, in [36mimport_module[39m[34m(name, package)[39m
-[32m     87[39m         level += [32m1[39m
-[32m---> [39m[32m88[39m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[43m.[49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+[36mCell[39m[36m [39m[32mIn[11][39m[32m, line 7[39m, in [36mpubchem_by_cid[39m[34m(cid, isomeric)[39m
+[32m      5[39m smiles = safe_get_text(smi_url)
+[32m      6[39m iupac_url = [33mf[39m[33m"[39m[33mhttps://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/[39m[38;5;132;01m{[39;00mcid[38;5;132;01m}[39;00m[33m/property/IUPACName/TXT[39m[33m"[39m
+[32m----> [39m[32m7[39m iupac = [43msafe_get_text[49m[43m([49m[43miupac_url[49m[43m)[49m
+[32m      8[39m inchikey_url = [33mf[39m[33m"[39m[33mhttps://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/[39m[38;5;132;01m{[39;00mcid[38;5;132;01m}[39;00m[33m/property/InChIKey/TXT[39m[33m"[39m
+[32m      9[39m inchikey = safe_get_text(inchikey_url)
 
-[36mFile [39m[32m<frozen importlib._bootstrap>:1387[39m, in [36m_gcd_import[39m[34m(name, package, level)[39m
+[36mCell[39m[36m [39m[32mIn[9][39m[32m, line 8[39m, in [36msafe_get_text[39m[34m(url, timeout)[39m
+[32m      6[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msafe_get_text[39m(url, timeout=[32m30[39m):
+[32m      7[39m     r = requests.get(url, timeout=timeout)
+[32m----> [39m[32m8[39m     [43mr[49m[43m.[49m[43mraise_for_status[49m[43m([49m[43m)[49m
+[32m      9[39m     [38;5;28;01mreturn[39;00m r.text.strip()
 
-[36mFile [39m[32m<frozen importlib._bootstrap>:1360[39m, in [36m_find_and_load[39m[34m(name, import_)[39m
+[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\requests\models.py:1026[39m, in [36mResponse.raise_for_status[39m[34m(self)[39m
+[32m   1021[39m     http_error_msg = (
+[32m   1022[39m         [33mf[39m[33m"[39m[38;5;132;01m{[39;00m[38;5;28mself[39m.status_code[38;5;132;01m}[39;00m[33m Server Error: [39m[38;5;132;01m{[39;00mreason[38;5;132;01m}[39;00m[33m for url: [39m[38;5;132;01m{[39;00m[38;5;28mself[39m.url[38;5;132;01m}[39;00m[33m"[39m
+[32m   1023[39m     )
+[32m   1025[39m [38;5;28;01mif[39;00m http_error_msg:
+[32m-> [39m[32m1026[39m     [38;5;28;01mraise[39;00m HTTPError(http_error_msg, response=[38;5;28mself[39m)
 
-[36mFile [39m[32m<frozen importlib._bootstrap>:1324[39m, in [36m_find_and_load_unlocked[39m[34m(name, import_)[39m
-
-[31mModuleNotFoundError[39m: No module named 'openpyxl'
-
-During handling of the above exception, another exception occurred:
-
-[31mImportError[39m                               Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[15][39m[32m, line 4[39m
-[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
-[32m      3[39m url = [33m"[39m[33mhttps://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic[39m[38;5;132;01m%20li[39;00m[33mgands[39m[38;5;132;01m%20i[39;00m[33mnventory.xlsx[39m[33m"[39m
-[32m----> [39m[32m4[39m df = [43mpd[49m[43m.[49m[43mread_excel[49m[43m([49m[43murl[49m[43m)[49m
-[32m      5[39m df.head()
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_base.py:495[39m, in [36mread_excel[39m[34m(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)[39m
-[32m    493[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28misinstance[39m(io, ExcelFile):
-[32m    494[39m     should_close = [38;5;28;01mTrue[39;00m
-[32m--> [39m[32m495[39m     io = [43mExcelFile[49m[43m([49m
-[32m    496[39m [43m        [49m[43mio[49m[43m,[49m
-[32m    497[39m [43m        [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
-[32m    498[39m [43m        [49m[43mengine[49m[43m=[49m[43mengine[49m[43m,[49m
-[32m    499[39m [43m        [49m[43mengine_kwargs[49m[43m=[49m[43mengine_kwargs[49m[43m,[49m
-[32m    500[39m [43m    [49m[43m)[49m
-[32m    501[39m [38;5;28;01melif[39;00m engine [38;5;129;01mand[39;00m engine != io.engine:
-[32m    502[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
-[32m    503[39m         [33m"[39m[33mEngine should not be specified when passing [39m[33m"[39m
-[32m    504[39m         [33m"[39m[33man ExcelFile - ExcelFile already has the engine set[39m[33m"[39m
-[32m    505[39m     )
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_base.py:1567[39m, in [36mExcelFile.__init__[39m[34m(self, path_or_buffer, engine, storage_options, engine_kwargs)[39m
-[32m   1564[39m [38;5;28mself[39m.engine = engine
-[32m   1565[39m [38;5;28mself[39m.storage_options = storage_options
-[32m-> [39m[32m1567[39m [38;5;28mself[39m._reader = [38;5;28;43mself[39;49m[43m.[49m[43m_engines[49m[43m[[49m[43mengine[49m[43m][49m[43m([49m
-[32m   1568[39m [43m    [49m[38;5;28;43mself[39;49m[43m.[49m[43m_io[49m[43m,[49m
-[32m   1569[39m [43m    [49m[43mstorage_options[49m[43m=[49m[43mstorage_options[49m[43m,[49m
-[32m   1570[39m [43m    [49m[43mengine_kwargs[49m[43m=[49m[43mengine_kwargs[49m[43m,[49m
-[32m   1571[39m [43m[49m[43m)[49m
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\io\excel\_openpyxl.py:552[39m, in [36mOpenpyxlReader.__init__[39m[34m(self, filepath_or_buffer, storage_options, engine_kwargs)[39m
-[32m    534[39m [38;5;129m@doc[39m(storage_options=_shared_docs[[33m"[39m[33mstorage_options[39m[33m"[39m])
-[32m    535[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34m__init__[39m(
-[32m    536[39m     [38;5;28mself[39m,
-[32m   (...)[39m[32m    539[39m     engine_kwargs: [38;5;28mdict[39m | [38;5;28;01mNone[39;00m = [38;5;28;01mNone[39;00m,
-[32m    540[39m ) -> [38;5;28;01mNone[39;00m:
-[32m    541[39m [38;5;250m    [39m[33;03m"""[39;00m
-[32m    542[39m [33;03m    Reader using openpyxl engine.[39;00m
-[32m    543[39m 
-[32m   (...)[39m[32m    550[39m [33;03m        Arbitrary keyword arguments passed to excel engine.[39;00m
-[32m    551[39m [33;03m    """[39;00m
-[32m--> [39m[32m552[39m     [43mimport_optional_dependency[49m[43m([49m[33;43m"[39;49m[33;43mopenpyxl[39;49m[33;43m"[39;49m[43m)[49m
-[32m    553[39m     [38;5;28msuper[39m().[34m__init__[39m(
-[32m    554[39m         filepath_or_buffer,
-[32m    555[39m         storage_options=storage_options,
-[32m    556[39m         engine_kwargs=engine_kwargs,
-[32m    557[39m     )
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\compat\_optional.py:138[39m, in [36mimport_optional_dependency[39m[34m(name, extra, errors, min_version)[39m
-[32m    136[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
-[32m    137[39m     [38;5;28;01mif[39;00m errors == [33m"[39m[33mraise[39m[33m"[39m:
-[32m--> [39m[32m138[39m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(msg)
-[32m    139[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
-[32m    141[39m [38;5;66;03m# Handle submodules: if we have submodule, grab parent module from sys.modules[39;00m
-
-[31mImportError[39m: Missing optional dependency 'openpyxl'.  Use pip or conda to install openpyxl.
+[31mHTTPError[39m: 503 Server Error: PUGREST.ServerBusy for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/482752/property/IUPACName/TXT
 
