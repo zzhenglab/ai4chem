@@ -754,7 +754,7 @@ for b in mol.GetBonds():
 
 ### 8.2 Make a small properties table
 
-Use names `["caffeine", "acetaminophen", "ibuprofen"]`. For each, fetch SMILES from PubChem, then compute MolWt, LogP, HBD, HBA, and TPSA.
+Use smiles `["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]`. For each, compute MolWt, LogP, HBD, HBA, and TPSA.
 
 ```python
 import pandas as pd
@@ -763,12 +763,10 @@ from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 names = ...  # TO DO
 rows = []
 for nm in names:
-    info = ...  # TO DO: pubchem_smiles_by_name
-    smi = info["smiles"]
-    m = Chem.MolFromSmiles(smi)
+    ...  #TO DO
+
     rows.append({
-        "name": nm,
-        "smiles": smi,
+        "smiles": ...,
         "MolWt": ...,
         "LogP": ...,
         "HBD": ...,
@@ -920,15 +918,12 @@ for b in mol.GetBonds():
 import pandas as pd
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 
-names = ["caffeine", "acetaminophen", "ibuprofen"]
+names = ["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]
 rows = []
 for nm in names:
-    info = pubchem_smiles_by_name(nm)
-    smi = info["smiles"]
-    m = Chem.MolFromSmiles(smi)
+    m = Chem.MolFromSmiles(nm)
     rows.append({
-        "name": nm,
-        "smiles": smi,
+        "smiles": nm,
         "MolWt": Descriptors.MolWt(m),
         "LogP": Crippen.MolLogP(m),
         "HBD": rdMolDescriptors.CalcNumHBD(m),
@@ -1011,7 +1006,7 @@ df
 
 
 
-### 8.6 Canonicalize your structures
+### Solution 8.6
 
 ```{code-cell} ipython3
 def canonicalize_smiles(smiles):
