@@ -809,14 +809,12 @@ Draw.MolToImage(..., size=(350, 250))
 
 
 Images to inspect:
-
 ```{code-cell} ipython3
 :tags: [hide-input]
 from IPython.display import Image, display
 # Show provided images for reference
-display(Image(url="https://cactus.nci.nih.gov/chemical/structure/CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O/image"))
-display(Image(url="https://cactus.nci.nih.gov/chemical/structure/C1=CC(=C(C=C1I)C(=O)O)O/image"))
-display(Image(url="https://cactus.nci.nih.gov/chemical/structure/C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3/image"))
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-3-structures.png"))
+
 ```
 
 
@@ -829,9 +827,9 @@ display(Image(url="https://cactus.nci.nih.gov/chemical/structure/C1=CC=C(C=C1)C2
 
 ```python
 # Paste the SMILES you obtained from PubChem Draw structure
-smi1 = "..."  # for image 1
-smi2 = "..."  # for image 2
-smi3 = "..."  # for image 3
+smi1 = "..."  # smiles for image 1
+smi2 = "..."  # smiles for image 2
+smi3 = "..."  # smiles for image 3
 
 m1 = Chem.MolFromSmiles(smi1)
 m2 = Chem.MolFromSmiles(smi2)
@@ -862,29 +860,6 @@ df = pd.DataFrame([
 
 df
 ```
-
-### 8.6 Canonicalize your structures
-
-```python
-def canonicalize_smiles(smiles):
-    m = Chem.MolFromSmiles(smiles)
-    return Chem.MolToSmiles(m) if m is not None else None
-
-for s in smiles:
-    print(s, " -> ", canonicalize_smiles(s))
-```
-
-```python
-# Watching the output, can you find the atom we selected in the caffeine molecule?
-caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
-patt = Chem.MolFromSmarts("C=O")
-match = caffeine.GetSubstructMatch(patt)
-sel = match[0] if match else None
-print("Selected atom index:", sel)
-Draw.MolToImage(caffeine, size=(320,240), includeAtomNumbers=True,
-                highlightAtoms=[sel] if sel is not None else [])
-```
-
 
 ---
 
@@ -1004,26 +979,3 @@ df = pd.DataFrame([
 df
 ```
 
-
-
-### Solution 8.6
-
-```{code-cell} ipython3
-def canonicalize_smiles(smiles):
-    m = Chem.MolFromSmiles(smiles)
-    return Chem.MolToSmiles(m) if m is not None else None
-
-for s in smiles:
-    print(s, " -> ", canonicalize_smiles(s))
-```
-
-```{code-cell} ipython3
-# Watching the output, can you find the atom we selected in the caffeine molecule?
-caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
-patt = Chem.MolFromSmarts("C=O")
-match = caffeine.GetSubstructMatch(patt)
-sel = match[0] if match else None
-print("Selected atom index:", sel)
-Draw.MolToImage(caffeine, size=(320,240), includeAtomNumbers=True,
-                highlightAtoms=[sel] if sel is not None else [])
-```
