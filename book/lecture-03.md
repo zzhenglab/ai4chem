@@ -467,6 +467,24 @@ This gives us a long string of `0`s and 1s that represents the molecule.
 That's said, Morgan fingerprints are a special kind of barcode. They look around each atom in the molecule and record the neighborhood (atoms directly attached, then atoms two steps away, etc.). The “radius” tells how far you look from each atom. Radius 2 means: “look two bonds away.” Morgan fingerprints are popular because they do a good job at capturing local environments around atom.
 
 
+```{code-cell} ipython3
+from rdkit.Chem import rdFingerprintGenerator
+mfpgen = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=512)
+
+methane = Chem.MolFromSmiles("C") # replace with other SMILES strings to see how it changes!
+caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
+fp_me = mfpgen.GetFingerprint(methane)
+fp_caff = mfpgen.GetFingerprint(caffeine)
+
+from rdkit import DataStructs
+print(fp_me.ToBitString())
+print("----------------")
+print(fp_caff.ToBitString())
+
+
+```
+
+
 We can then measure how similar two fingerprints are with the **Tanimoto coefficient**.
 
 It is one of the most common metrics for comparing chemical fingerprints and it measures how similar two molecules are by comparing their structural features represented as bit-vectors.
@@ -557,7 +575,7 @@ Draw.MolsToGridImage([mol_carboxy, scaf_c , mol_hydroxamate, scaf_h ],
                      legends=["mol_c", "scaffold_c", "mol_hydroxamate", "scaffold_h"],
                      molsPerRow=2, subImgSize=(180,180))
 ```
-
+Both of the two molecules above share the same benzene scaffold substructure.
 
 ```{code-cell} ipython3
 from rdkit.Chem.Scaffolds import MurckoScaffold
@@ -613,6 +631,7 @@ def canonicalize(smiles):
 
 df['canonical_smiles'] = df['smiles'].apply(canonicalize)
 ```
+Now we create a new collum 'canonical_smiles' with the canonicalized smiles.
 
 ```{code-cell} ipython3
 from rdkit.ML.Descriptors.MoleculeDescriptors import MolecularDescriptorCalculator
@@ -620,7 +639,7 @@ from rdkit.ML.Descriptors.MoleculeDescriptors import MolecularDescriptorCalculat
 desc_names = ['MolWt','TPSA','MolLogP','NumHAcceptors','NumHDonors']
 calc = MolecularDescriptorCalculator(desc_names)
 
-df_desc = df['Mol'].apply(lambda m: calc.CalcDescriptors(m) if m else [None]*len(desc_names))
+df_desc = df['Mol'].apply(calc.CalcDescriptors)
 df_desc = pd.DataFrame(df_desc.tolist(), columns=desc_names)
 
 df_all = pd.concat([df[['Compound ID','MW','canonical_smiles']], df_desc], axis=1)
@@ -640,33 +659,16 @@ print("Number of rows after cleaning:", len(df_clean))
 ```
 
 ```{code-cell} ipython3
-ax = df_clean['MolWt'].hist(bins=40)
-ax.set_xlabel("Molecular Weight (g/mol)")
-ax.set_ylabel("Count")
-ax.figure
+import matplotlib.pyplot as plt
+
+plt.hist(df_clean['MolWt'], bins=40)
+plt.xlabel("Molecular Weight (g/mol)")
+plt.ylabel("Count")
+plt.show()
 ```
 
 ```{note}
 Cleaning removes molecules that failed parsing. Histograms allow you to inspect the distribution of properties—are most molecules small and drug-like, or large and polar?
-```
-
-### 5.4 Split salts and keep largest fragment
-
-```{code-cell} ipython3
-def largest_fragment(smi):
-    m = Chem.MolFromSmiles(smi)
-    if not m: return None
-    frags = Chem.GetMolFrags(m, asMols=True, sanitizeFrags=True)
-    frags = sorted(frags, key=lambda x: x.GetNumHeavyAtoms(), reverse=True)
-    return Chem.MolToSmiles(frags[0]) if frags else None
-
-df_all['largest_frag'] = df_all['canonical_smiles'].apply(largest_fragment)
-df_all[['canonical_smiles','largest_frag']].head()
-```
-
-```{note}
-Many datasets include salts like hydrochlorides or sodium complexes.  
-Keeping only the largest fragment helps standardize molecules for analysis and avoids inflated molecular weights due to counterions.
 ```
 
 
@@ -690,7 +692,6 @@ Keeping only the largest fragment helps standardize molecules for analysis and a
 - Hydrogens: `Chem.AddHs`
 - Properties: `Descriptors.MolWt`, `Crippen.MolLogP`, `CalcNumHBA/HBD`, `CalcTPSA`
 - Replace piece with piece: `Chem.ReplaceSubstructs(mol, findMol, repMol)`
-- Salt split: `Chem.GetMolFrags(..., asMols=True)`
 - Graph edit: `Chem.EditableMol`
 - Save: `Chem.MolToSmiles`, `SDWriter`, PNG via `MolToImage(...).save(...)`
 ```
@@ -843,139 +844,13 @@ Draw.MolsToGridImage([m1, m2, m3], legends=["img1","img2","img3"], molsPerRow=3,
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 import pandas as pd
 
-def props(m):
-    return dict(
-        MolWt=Descriptors.MolWt(m),
-        LogP=Crippen.MolLogP(m),
-        HBD=rdMolDescriptors.CalcNumHBD(m),
-        HBA=rdMolDescriptors.CalcNumHBA(m),
-        TPSA=rdMolDescriptors.CalcTPSA(m)
-    )
+    ... # TO DO: get MolWt=..., LogP=...,HBD=...,HBA=..., TPSA=...
 
 df = pd.DataFrame([
-    {"name":"img1","smiles":smi1, **props(m1)},
-    {"name":"img2","smiles":smi2, **props(m2)},
-    {"name":"img3","smiles":smi3, **props(m3)}
+    {"name":"img1","smiles":smi1, ...},
+    {"name":"img2","smiles":smi2, ...},
+    {"name":"img3","smiles":smi3, ...}
 ]).round(3)
 
 df
 ```
-
----
-
-
-
-## 9. Solutions
-
-Open after you try Section 8.
-
-### Solution 8.1
-
-```{code-cell} ipython3
-from rdkit import Chem
-from rdkit.Chem import Draw
-
-smi = "O=C(O)c1ccccc1Cl"
-
-mol = Chem.MolFromSmiles(smi)
-display(Draw.MolToImage(mol, size=(350, 250), includeAtomNumbers=True))
-
-num_rings = Chem.GetSSSR(mol)
-print("rings:", num_rings)
-
-for b in mol.GetBonds():
-    print("bond", b.GetIdx(), b.GetBeginAtomIdx(), "-", b.GetEndAtomIdx(), "order", int(b.GetBondTypeAsDouble()))
-```
-
-### Solution 8.2
-
-```{code-cell} ipython3
-import pandas as pd
-from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-
-names = ["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]
-rows = []
-for nm in names:
-    m = Chem.MolFromSmiles(nm)
-    rows.append({
-        "smiles": nm,
-        "MolWt": Descriptors.MolWt(m),
-        "LogP": Crippen.MolLogP(m),
-        "HBD": rdMolDescriptors.CalcNumHBD(m),
-        "HBA": rdMolDescriptors.CalcNumHBA(m),
-        "TPSA": rdMolDescriptors.CalcTPSA(m)
-    })
-
-pd.DataFrame(rows)
-```
-
-### Solution 8.3
-
-```{code-cell} ipython3
-find = Chem.MolFromSmiles("Cl")
-put  = Chem.MolFromSmiles("F")
-mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-print(Chem.MolToSmiles(out))
-Draw.MolToImage(out, size=(350, 250))
-```
-
-### Solution 8.4
-
-```{code-cell} ipython3
-mol = Chem.MolFromSmiles("c1ccccc1")
-em = Chem.EditableMol(mol)
-
-idx_C = em.AddAtom(Chem.Atom("C"))
-idx_H1 = em.AddAtom(Chem.Atom("H"))
-idx_H2 = em.AddAtom(Chem.Atom("H"))
-idx_H3 = em.AddAtom(Chem.Atom("H"))
-
-em.AddBond(2, idx_C, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H1, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H2, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
-
-mol2 = em.GetMol()
-Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
-```
-
-### Solution 8.5
-
-
-```{code-cell} ipython3
-# Paste the SMILES you obtained from PubChem Draw structure
-smi1 = "CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O"  # for image 1
-smi2 = "C1=CC(=C(C=C1I)C(=O)O)O"  # for image 2
-smi3 = "C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3"  # for image 3
-
-m1 = Chem.MolFromSmiles(smi1)
-m2 = Chem.MolFromSmiles(smi2)
-m3 = Chem.MolFromSmiles(smi3)
-
-Draw.MolsToGridImage([m1, m2, m3], legends=["img1","img2","img3"], molsPerRow=3, subImgSize=(220,200), useSVG=True)
-```
-```{code-cell} ipython3
-# Compute quick properties for the three molecules
-from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-import pandas as pd
-
-def props(m):
-    return dict(
-        MolWt=Descriptors.MolWt(m),
-        LogP=Crippen.MolLogP(m),
-        HBD=rdMolDescriptors.CalcNumHBD(m),
-        HBA=rdMolDescriptors.CalcNumHBA(m),
-        TPSA=rdMolDescriptors.CalcTPSA(m)
-    )
-
-df = pd.DataFrame([
-    {"name":"img1","smiles":smi1, **props(m1)},
-    {"name":"img2","smiles":smi2, **props(m2)},
-    {"name":"img3","smiles":smi3, **props(m3)}
-]).round(3)
-
-df
-```
-

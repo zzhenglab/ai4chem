@@ -67,7 +67,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-03';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 4 - PubChem + CIR" href="lecture-04.html" />
     <link rel="prev" title="Lecture 2 - Pandas and Plotting" href="lecture-02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,7 +173,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3 - SMILES and RDKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - PubChem + CIR</a></li>
 </ul>
 
     </div>
@@ -400,7 +398,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-and-add-molecule-column">5.1 Load dataset and add molecule column</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canonicalize-smiles-and-compute-descriptors">5.2 Canonicalize SMILES and compute descriptors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-and-visualize">5.3 Clean and visualize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-salts-and-keep-largest-fragment">5.4 Split salts and keep largest fragment</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">6. Quick reference</a></li>
@@ -411,16 +408,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-chlorine-with-fluorine">8.3 Replace chlorine with fluorine</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.4 Add a methyl group with a graph edit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canonicalize-your-structures">8.6 Canonicalize your structures</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-6">Solution 8.6</a></li>
 </ul>
 </li>
 </ul>
@@ -452,7 +439,6 @@ document.write(`
 <li><p><a class="reference internal" href="#quick-reference" id="id10">6. Quick reference</a></p></li>
 <li><p><a class="reference internal" href="#glossary" id="id11">7. Glossary</a></p></li>
 <li><p><a class="reference internal" href="#in-class-activity" id="id12">8. In-class activity</a></p></li>
-<li><p><a class="reference internal" href="#solutions" id="id13">9. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -1047,6 +1033,31 @@ Fingerprints encode the presence or absence of atom environments in a binary vec
 <p>If the answer is yes, the bit is <code class="docutils literal notranslate"><span class="pre">1</span></code>. If not, it’s <code class="docutils literal notranslate"><span class="pre">0</span></code>.
 This gives us a long string of <code class="docutils literal notranslate"><span class="pre">0</span></code>s and 1s that represents the molecule.</p>
 <p>That’s said, Morgan fingerprints are a special kind of barcode. They look around each atom in the molecule and record the neighborhood (atoms directly attached, then atoms two steps away, etc.). The “radius” tells how far you look from each atom. Radius 2 means: “look two bonds away.” Morgan fingerprints are popular because they do a good job at capturing local environments around atom.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdFingerprintGenerator</span>
+<span class="n">mfpgen</span> <span class="o">=</span> <span class="n">rdFingerprintGenerator</span><span class="o">.</span><span class="n">GetMorganGenerator</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fpSize</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
+
+<span class="n">methane</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span> <span class="c1"># replace with other SMILES strings to see how it changes!</span>
+<span class="n">caffeine</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cn1cnc2c1c(=O)n(C)c(=O)n2C&quot;</span><span class="p">)</span>
+<span class="n">fp_me</span> <span class="o">=</span> <span class="n">mfpgen</span><span class="o">.</span><span class="n">GetFingerprint</span><span class="p">(</span><span class="n">methane</span><span class="p">)</span>
+<span class="n">fp_caff</span> <span class="o">=</span> <span class="n">mfpgen</span><span class="o">.</span><span class="n">GetFingerprint</span><span class="p">(</span><span class="n">caffeine</span><span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataStructs</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fp_me</span><span class="o">.</span><span class="n">ToBitString</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fp_caff</span><span class="o">.</span><span class="n">ToBitString</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+----------------
+10000000000000000000000000000000010000000000000000001000000000000000000000000000000000000000000000000000000000000000000001000000000000000010000000000000000000001000000000000000000100000000000000000000000000000000000000000000000000000010000000000000000000000001000000000000000000000001000000000000000000000000000000100000000000000010000001000000000000000000100000000000000000000010000001000000000000001000000000000000100010010000100000000000000000000000000000000001000000000000000000000000000001000000000010000000
+</pre></div>
+</div>
+</div>
+</div>
 <p>We can then measure how similar two fingerprints are with the <strong>Tanimoto coefficient</strong>.</p>
 <p>It is one of the most common metrics for comparing chemical fingerprints and it measures how similar two molecules are by comparing their structural features represented as bit-vectors.</p>
 <p>In terms of the formula, if we have two bit-vectors <strong>A</strong> and <strong>B</strong>:</p>
@@ -1148,6 +1159,7 @@ Phenol is much less similar since it only shares a benzene ring fragment with ca
 <img alt="_images/f8b77a9528856534e60cfbb67d961d2f5f473691bb4b43eac31e4ca7f0e457e0.png" src="_images/f8b77a9528856534e60cfbb67d961d2f5f473691bb4b43eac31e4ca7f0e457e0.png" />
 </div>
 </div>
+<p>Both of the two molecules above share the same benzene scaffold substructure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Scaffolds</span><span class="w"> </span><span class="kn">import</span> <span class="n">MurckoScaffold</span>
@@ -1226,35 +1238,35 @@ Different analogs may have the same core scaffold but different substituents tha
       <td>2-Methylimidazole</td>
       <td>CC1=NC=CN1</td>
       <td>82.106</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000164F4F...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000263FFA...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1-Ethyl-3-vinylimidazolium bromide</td>
       <td>C=C[N+]1=CN(CC)C=C1.[Br-]</td>
       <td>203.083</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000164F4F...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000263FFA...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1-Methyl-1,4-diazabicyclo[2.2.2]octan-1-iumchl...</td>
       <td>[Cl-].N12CC[N+](C)(CC1)CC2</td>
       <td>162.660</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000164F4F...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000263FFA...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Oxazole-4-carboxylic acid</td>
       <td>O=C(C1=COC=N1)O</td>
       <td>113.072</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000164F4F...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000263FFA...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>3-Ethyl-2-methylbenzo[d]thiazol-3-ium iodide</td>
       <td>CC[N+]1=C(C)SC2=CC=CC=C21.[I-]</td>
       <td>305.184</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000164F4F...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x00000263FFB...</td>
     </tr>
   </tbody>
 </table>
@@ -1279,6 +1291,7 @@ This makes it easy to compute descriptors row by row or draw molecules inline.</
 </div>
 </div>
 </div>
+<p>Now we create a new collum ‘canonical_smiles’ with the canonicalized smiles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.ML.Descriptors.MoleculeDescriptors</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularDescriptorCalculator</span>
@@ -1286,7 +1299,7 @@ This makes it easy to compute descriptors row by row or draw molecules inline.</
 <span class="n">desc_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MolWt&#39;</span><span class="p">,</span><span class="s1">&#39;TPSA&#39;</span><span class="p">,</span><span class="s1">&#39;MolLogP&#39;</span><span class="p">,</span><span class="s1">&#39;NumHAcceptors&#39;</span><span class="p">,</span><span class="s1">&#39;NumHDonors&#39;</span><span class="p">]</span>
 <span class="n">calc</span> <span class="o">=</span> <span class="n">MolecularDescriptorCalculator</span><span class="p">(</span><span class="n">desc_names</span><span class="p">)</span>
 
-<span class="n">df_desc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">calc</span><span class="o">.</span><span class="n">CalcDescriptors</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span> <span class="k">else</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">desc_names</span><span class="p">))</span>
+<span class="n">df_desc</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calc</span><span class="o">.</span><span class="n">CalcDescriptors</span><span class="p">)</span>
 <span class="n">df_desc</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_desc</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">desc_names</span><span class="p">)</span>
 
 <span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Compound ID&#39;</span><span class="p">,</span><span class="s1">&#39;MW&#39;</span><span class="p">,</span><span class="s1">&#39;canonical_smiles&#39;</span><span class="p">]],</span> <span class="n">df_desc</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1406,96 +1419,22 @@ For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;MolWt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Molecular Weight (g/mol)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">figure</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_clean</span><span class="p">[</span><span class="s1">&#39;MolWt&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Molecular Weight (g/mol)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef408c2df6ffb948754897bafd5c4a86b40ba7f5e7e1631300f497b5c71eae56.png" src="_images/ef408c2df6ffb948754897bafd5c4a86b40ba7f5e7e1631300f497b5c71eae56.png" />
-<img alt="_images/ef408c2df6ffb948754897bafd5c4a86b40ba7f5e7e1631300f497b5c71eae56.png" src="_images/ef408c2df6ffb948754897bafd5c4a86b40ba7f5e7e1631300f497b5c71eae56.png" />
+<img alt="_images/d46a5fb2f902c56a0b8da77c731bc0eff8eaec0f8883c5d4c28c73658ab37754.png" src="_images/d46a5fb2f902c56a0b8da77c731bc0eff8eaec0f8883c5d4c28c73658ab37754.png" />
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Cleaning removes molecules that failed parsing. Histograms allow you to inspect the distribution of properties—are most molecules small and drug-like, or large and polar?</p>
-</div>
-</section>
-<section id="split-salts-and-keep-largest-fragment">
-<h3>5.4 Split salts and keep largest fragment<a class="headerlink" href="#split-salts-and-keep-largest-fragment" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">largest_fragment</span><span class="p">(</span><span class="n">smi</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">m</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
-    <span class="n">frags</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetMolFrags</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">asMols</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sanitizeFrags</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">frags</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">frags</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">GetNumHeavyAtoms</span><span class="p">(),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">frags</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">frags</span> <span class="k">else</span> <span class="kc">None</span>
-
-<span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;largest_frag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_all</span><span class="p">[</span><span class="s1">&#39;canonical_smiles&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">largest_fragment</span><span class="p">)</span>
-<span class="n">df_all</span><span class="p">[[</span><span class="s1">&#39;canonical_smiles&#39;</span><span class="p">,</span><span class="s1">&#39;largest_frag&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>canonical_smiles</th>
-      <th>largest_frag</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>Cc1ncc[nH]1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>C=C[n+]1ccn(CC)c1.[Br-]</td>
-      <td>C=C[n+]1ccn(CC)c1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C[N+]12CCN(CC1)CC2.[Cl-]</td>
-      <td>C[N+]12CCN(CC1)CC2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>O=C(O)c1cocn1</td>
-      <td>O=C(O)c1cocn1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>CC[n+]1c(C)sc2ccccc21.[I-]</td>
-      <td>CC[n+]1c(C)sc2ccccc21</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Many datasets include salts like hydrochlorides or sodium complexes.<br />
-Keeping only the largest fragment helps standardize molecules for analysis and avoids inflated molecular weights due to counterions.</p>
 </div>
 </section>
 </section>
@@ -1522,7 +1461,6 @@ Keeping only the largest fragment helps standardize molecules for analysis and a
 <li><p>Hydrogens: <code class="docutils literal notranslate"><span class="pre">Chem.AddHs</span></code></p></li>
 <li><p>Properties: <code class="docutils literal notranslate"><span class="pre">Descriptors.MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">Crippen.MolLogP</span></code>, <code class="docutils literal notranslate"><span class="pre">CalcNumHBA/HBD</span></code>, <code class="docutils literal notranslate"><span class="pre">CalcTPSA</span></code></p></li>
 <li><p>Replace piece with piece: <code class="docutils literal notranslate"><span class="pre">Chem.ReplaceSubstructs(mol,</span> <span class="pre">findMol,</span> <span class="pre">repMol)</span></code></p></li>
-<li><p>Salt split: <code class="docutils literal notranslate"><span class="pre">Chem.GetMolFrags(...,</span> <span class="pre">asMols=True)</span></code></p></li>
 <li><p>Graph edit: <code class="docutils literal notranslate"><span class="pre">Chem.EditableMol</span></code></p></li>
 <li><p>Save: <code class="docutils literal notranslate"><span class="pre">Chem.MolToSmiles</span></code>, <code class="docutils literal notranslate"><span class="pre">SDWriter</span></code>, PNG via <code class="docutils literal notranslate"><span class="pre">MolToImage(...).save(...)</span></code></p></li>
 </ul>
@@ -1634,15 +1572,13 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 <span class="c1"># Show provided images for reference</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://cactus.nci.nih.gov/chemical/structure/CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O/image&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://cactus.nci.nih.gov/chemical/structure/C1=CC(=C(C=C1I)C(=O)O)O/image&quot;</span><span class="p">))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://cactus.nci.nih.gov/chemical/structure/C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3/image&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-3-structures.png&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_html"><img src="https://cactus.nci.nih.gov/chemical/structure/CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O/image"/></div><div class="output text_html"><img src="https://cactus.nci.nih.gov/chemical/structure/C1=CC(=C(C=C1I)C(=O)O)O/image"/></div><div class="output text_html"><img src="https://cactus.nci.nih.gov/chemical/structure/C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3/image"/></div></div>
+<div class="output text_html"><img src="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-3-structures.png"/></div></div>
 </div>
 <ol class="arabic simple">
 <li><p>Go to <strong><a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a></strong>.</p></li>
@@ -1651,9 +1587,9 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
 <li><p>Use the SMILES in the cell below to draw with RDKit and compute basic properties.</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paste the SMILES you obtained from PubChem Draw structure</span>
-<span class="n">smi1</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># for image 1</span>
-<span class="n">smi2</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># for image 2</span>
-<span class="n">smi3</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># for image 3</span>
+<span class="n">smi1</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># smiles for image 1</span>
+<span class="n">smi2</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># smiles for image 2</span>
+<span class="n">smi3</span> <span class="o">=</span> <span class="s2">&quot;...&quot;</span>  <span class="c1"># smiles for image 3</span>
 
 <span class="n">m1</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi1</span><span class="p">)</span>
 <span class="n">m2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi2</span><span class="p">)</span>
@@ -1666,371 +1602,16 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">props</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">MolWt</span><span class="o">=</span><span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">LogP</span><span class="o">=</span><span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">HBD</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">HBA</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">TPSA</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="p">)</span>
+    <span class="o">...</span> <span class="c1"># TO DO: get MolWt=..., LogP=...,HBD=...,HBA=..., TPSA=...</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img1&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi1</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m1</span><span class="p">)},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img2&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi2</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m2</span><span class="p">)},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img3&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi3</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m3</span><span class="p">)}</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img1&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi1</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img2&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi2</span><span class="p">,</span> <span class="o">...</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img3&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi3</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
 <span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">df</span>
 </pre></div>
-</div>
-</section>
-<section id="canonicalize-your-structures">
-<h3>8.6 Canonicalize your structures<a class="headerlink" href="#canonicalize-your-structures" title="Permalink to this heading">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">canonicalize_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
-
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot; -&gt; &quot;</span><span class="p">,</span> <span class="n">canonicalize_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Watching the output, can you find the atom we selected in the caffeine molecule?</span>
-<span class="n">caffeine</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cn1cnc2c1c(=O)n(C)c(=O)n2C&quot;</span><span class="p">)</span>
-<span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s2">&quot;C=O&quot;</span><span class="p">)</span>
-<span class="n">match</span> <span class="o">=</span> <span class="n">caffeine</span><span class="o">.</span><span class="n">GetSubstructMatch</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span>
-<span class="n">sel</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected atom index:&quot;</span><span class="p">,</span> <span class="n">sel</span><span class="p">)</span>
-<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">caffeine</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">240</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">highlightAtoms</span><span class="o">=</span><span class="p">[</span><span class="n">sel</span><span class="p">]</span> <span class="k">if</span> <span class="n">sel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[])</span>
-</pre></div>
-</div>
-</section>
-</section>
-<hr class="docutils" />
-<section id="solutions">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
-<p>Open after you try Section 8.</p>
-<section id="solution-8-1">
-<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
-
-<span class="n">smi</span> <span class="o">=</span> <span class="s2">&quot;O=C(O)c1ccccc1Cl&quot;</span>
-
-<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
-
-<span class="n">num_rings</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetSSSR</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rings:&quot;</span><span class="p">,</span> <span class="n">num_rings</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetBonds</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bond&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">GetIdx</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">GetBeginAtomIdx</span><span class="p">(),</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">GetEndAtomIdx</span><span class="p">(),</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">GetBondTypeAsDouble</span><span class="p">()))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/03383324338a0142402b187a79e56b14a50160ae3a08e7ff36f3658c8394377e.png" src="_images/03383324338a0142402b187a79e56b14a50160ae3a08e7ff36f3658c8394377e.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x00000164F5D574C0&gt;
-bond 0 0 - 1 order 2
-bond 1 1 - 2 order 1
-bond 2 1 - 3 order 1
-bond 3 3 - 4 order 1
-bond 4 4 - 5 order 1
-bond 5 5 - 6 order 1
-bond 6 6 - 7 order 1
-bond 7 7 - 8 order 1
-bond 8 8 - 9 order 1
-bond 9 8 - 3 order 1
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="solution-8-2">
-<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
-
-<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cn1cnc2N(C)C(=O)N(C)C(=O)c12&quot;</span><span class="p">,</span> <span class="s2">&quot;CC(=O)Nc1ccc(O)cc1&quot;</span><span class="p">,</span> <span class="s2">&quot;CC(C)Cc1ccc(cc1)C(C)C(O)=O&quot;</span><span class="p">]</span>
-<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">nm</span><span class="p">)</span>
-    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
-        <span class="s2">&quot;smiles&quot;</span><span class="p">:</span> <span class="n">nm</span><span class="p">,</span>
-        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="s2">&quot;HBD&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="s2">&quot;HBA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="p">})</span>
-
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>smiles</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>HBD</th>
-      <th>HBA</th>
-      <th>TPSA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Cn1cnc2N(C)C(=O)N(C)C(=O)c12</td>
-      <td>194.194</td>
-      <td>-1.0293</td>
-      <td>0</td>
-      <td>6</td>
-      <td>61.82</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>CC(=O)Nc1ccc(O)cc1</td>
-      <td>151.165</td>
-      <td>1.3506</td>
-      <td>2</td>
-      <td>2</td>
-      <td>49.33</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>CC(C)Cc1ccc(cc1)C(C)C(O)=O</td>
-      <td>206.285</td>
-      <td>3.0732</td>
-      <td>1</td>
-      <td>1</td>
-      <td>37.30</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="solution-8-3">
-<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cl&quot;</span><span class="p">)</span>
-<span class="n">put</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
-<span class="n">mol</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Clc1ccc(cc1)C(=O)O&quot;</span><span class="p">)</span>
-<span class="n">out</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">ReplaceSubstructs</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">find</span><span class="p">,</span> <span class="n">put</span><span class="p">,</span> <span class="n">replaceAll</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
-<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O=C(O)c1ccc(F)cc1
-</pre></div>
-</div>
-<img alt="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" src="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" />
-</div>
-</div>
-</section>
-<section id="solution-8-4">
-<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">)</span>
-<span class="n">em</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">EditableMol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
-
-<span class="n">idx_C</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span>
-<span class="n">idx_H1</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
-<span class="n">idx_H2</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
-<span class="n">idx_H3</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
-
-<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">idx_C</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H2</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H3</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
-
-<span class="n">mol2</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">GetMol</span><span class="p">()</span>
-<span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">mol2</span><span class="p">)</span>
-<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" src="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" />
-</div>
-</div>
-</section>
-<section id="solution-8-5">
-<h3>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paste the SMILES you obtained from PubChem Draw structure</span>
-<span class="n">smi1</span> <span class="o">=</span> <span class="s2">&quot;CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O&quot;</span>  <span class="c1"># for image 1</span>
-<span class="n">smi2</span> <span class="o">=</span> <span class="s2">&quot;C1=CC(=C(C=C1I)C(=O)O)O&quot;</span>  <span class="c1"># for image 2</span>
-<span class="n">smi3</span> <span class="o">=</span> <span class="s2">&quot;C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3&quot;</span>  <span class="c1"># for image 3</span>
-
-<span class="n">m1</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi1</span><span class="p">)</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi2</span><span class="p">)</span>
-<span class="n">m3</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi3</span><span class="p">)</span>
-
-<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">([</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">,</span> <span class="n">m3</span><span class="p">],</span> <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;img1&quot;</span><span class="p">,</span><span class="s2">&quot;img2&quot;</span><span class="p">,</span><span class="s2">&quot;img3&quot;</span><span class="p">],</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span><span class="mi">200</span><span class="p">),</span> <span class="n">useSVG</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/01f431e3cdf0cd7c0be2c1f100f0d38117765ff0fa7b846d37f2c4f44b1115ba.svg" src="_images/01f431e3cdf0cd7c0be2c1f100f0d38117765ff0fa7b846d37f2c4f44b1115ba.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute quick properties for the three molecules</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">props</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">MolWt</span><span class="o">=</span><span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">LogP</span><span class="o">=</span><span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">HBD</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">HBA</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
-        <span class="n">TPSA</span><span class="o">=</span><span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-    <span class="p">)</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img1&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi1</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m1</span><span class="p">)},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img2&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi2</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m2</span><span class="p">)},</span>
-    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;img3&quot;</span><span class="p">,</span><span class="s2">&quot;smiles&quot;</span><span class="p">:</span><span class="n">smi3</span><span class="p">,</span> <span class="o">**</span><span class="n">props</span><span class="p">(</span><span class="n">m3</span><span class="p">)}</span>
-<span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-      <th>smiles</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>HBD</th>
-      <th>HBA</th>
-      <th>TPSA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>img1</td>
-      <td>CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O</td>
-      <td>262.312</td>
-      <td>5.269</td>
-      <td>1</td>
-      <td>3</td>
-      <td>44.95</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>img2</td>
-      <td>C1=CC(=C(C=C1I)C(=O)O)O</td>
-      <td>264.018</td>
-      <td>1.695</td>
-      <td>2</td>
-      <td>2</td>
-      <td>57.53</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>img3</td>
-      <td>C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3</td>
-      <td>252.273</td>
-      <td>1.770</td>
-      <td>2</td>
-      <td>2</td>
-      <td>58.20</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-<section id="solution-8-6">
-<h3>Solution 8.6<a class="headerlink" href="#solution-8-6" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">canonicalize_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
-
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot; -&gt; &quot;</span><span class="p">,</span> <span class="n">canonicalize_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot; -&gt; &quot;</span><span class="p">,</span> <span class="n">canonicalize_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;smiles&#39; is not defined
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Watching the output, can you find the atom we selected in the caffeine molecule?</span>
-<span class="n">caffeine</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cn1cnc2c1c(=O)n(C)c(=O)n2C&quot;</span><span class="p">)</span>
-<span class="n">patt</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s2">&quot;C=O&quot;</span><span class="p">)</span>
-<span class="n">match</span> <span class="o">=</span> <span class="n">caffeine</span><span class="o">.</span><span class="n">GetSubstructMatch</span><span class="p">(</span><span class="n">patt</span><span class="p">)</span>
-<span class="n">sel</span> <span class="o">=</span> <span class="n">match</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">None</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selected atom index:&quot;</span><span class="p">,</span> <span class="n">sel</span><span class="p">)</span>
-<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">caffeine</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">320</span><span class="p">,</span><span class="mi">240</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                <span class="n">highlightAtoms</span><span class="o">=</span><span class="p">[</span><span class="n">sel</span><span class="p">]</span> <span class="k">if</span> <span class="n">sel</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">[])</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -2074,15 +1655,6 @@ bond 9 8 - 3 order 1
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 2 - Pandas and Plotting</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="lecture-04.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 4 - PubChem + CIR</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -2129,7 +1701,6 @@ bond 9 8 - 3 order 1
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-and-add-molecule-column">5.1 Load dataset and add molecule column</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canonicalize-smiles-and-compute-descriptors">5.2 Canonicalize SMILES and compute descriptors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-and-visualize">5.3 Clean and visualize</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-salts-and-keep-largest-fragment">5.4 Split salts and keep largest fragment</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">6. Quick reference</a></li>
@@ -2140,16 +1711,6 @@ bond 9 8 - 3 order 1
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-chlorine-with-fluorine">8.3 Replace chlorine with fluorine</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.4 Add a methyl group with a graph edit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#canonicalize-your-structures">8.6 Canonicalize your structures</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-6">Solution 8.6</a></li>
 </ul>
 </li>
 </ul>

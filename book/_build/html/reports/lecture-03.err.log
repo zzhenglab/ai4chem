@@ -22,22 +22,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-def canonicalize_smiles(smiles):
-    m = Chem.MolFromSmiles(smiles)
-    return Chem.MolToSmiles(m) if m is not None else None
+methane = Chem.MolFromSmiles("C") # replace with other SMILES strings to see how it changes!
+caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
+fp_me = mfpgen.GetFingerprint(methane)
+fp_caff = mfpgen.GetFingerprint(caffeine)
 
-for s in smiles:
-    print(s, " -> ", canonicalize_smiles(s))
+from rdkit import DataStructs
+print(fp_me.ToBitString())
+print("----------------")
+print(fp_caff.ToBitString())
 ------------------
 
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mNameError[0m                                 Traceback (most recent call last)
-Cell [1;32mIn[41], line 5[0m
-[0;32m      2[0m     m [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles(smiles)
-[0;32m      3[0m     [38;5;28;01mreturn[39;00m Chem[38;5;241m.[39mMolToSmiles(m) [38;5;28;01mif[39;00m m [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m
-[1;32m----> 5[0m [38;5;28;01mfor[39;00m s [38;5;129;01min[39;00m [43msmiles[49m:
-[0;32m      6[0m     [38;5;28mprint[39m(s, [38;5;124m"[39m[38;5;124m -> [39m[38;5;124m"[39m, canonicalize_smiles(s))
+Cell [1;32mIn[25], line 3[0m
+[0;32m      1[0m methane [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles([38;5;124m"[39m[38;5;124mC[39m[38;5;124m"[39m) [38;5;66;03m# replace with other SMILES strings to see how it changes![39;00m
+[0;32m      2[0m caffeine [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles([38;5;124m"[39m[38;5;124mCn1cnc2c1c(=O)n(C)c(=O)n2C[39m[38;5;124m"[39m)
+[1;32m----> 3[0m fp_me [38;5;241m=[39m [43mmfpgen[49m[38;5;241m.[39mGetFingerprint(methane)
+[0;32m      4[0m fp_caff [38;5;241m=[39m mfpgen[38;5;241m.[39mGetFingerprint(caffeine)
+[0;32m      6[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mrdkit[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m DataStructs
 
-[1;31mNameError[0m: name 'smiles' is not defined
+[1;31mNameError[0m: name 'mfpgen' is not defined
 

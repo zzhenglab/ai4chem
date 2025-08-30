@@ -18,7 +18,7 @@ kernelspec:
 
 
 
-
+---
 
 
 
@@ -50,15 +50,12 @@ for b in mol.GetBonds():
 import pandas as pd
 from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 
-names = ["caffeine", "acetaminophen", "ibuprofen"]
+names = ["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]
 rows = []
 for nm in names:
-    info = pubchem_smiles_by_name(nm)
-    smi = info["smiles"]
-    m = Chem.MolFromSmiles(smi)
+    m = Chem.MolFromSmiles(nm)
     rows.append({
-        "name": nm,
-        "smiles": smi,
+        "smiles": nm,
         "MolWt": Descriptors.MolWt(m),
         "LogP": Crippen.MolLogP(m),
         "HBD": rdMolDescriptors.CalcNumHBD(m),
@@ -103,19 +100,39 @@ Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
 
 ### Solution 8.5
 
-```{code-cell} ipython3
-mixed = ["446157", "2244", "CCO", "482752", "c1ccccc1"]
 
-for q in mixed:
-    if q.isdigit():  # looks like CID
-        info = pubchem_smiles_by_cid(int(q))
-        smi, cid = info["smiles"], info["cid"]
-    elif Chem.MolFromSmiles(q):  # parses as SMILES
-        smi, cid = q, None
-    else:  # treat as name
-        info = pubchem_smiles_by_name(q)
-        smi, cid = info["smiles"], info["cid"]
-    print(f"input={q} CID={cid} SMILES={smi}")
-    mol = Chem.MolFromSmiles(smi)
-    display(Draw.MolToImage(mol, size=(260, 200)))
+```{code-cell} ipython3
+# Paste the SMILES you obtained from PubChem Draw structure
+smi1 = "CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O"  # for image 1
+smi2 = "C1=CC(=C(C=C1I)C(=O)O)O"  # for image 2
+smi3 = "C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3"  # for image 3
+
+m1 = Chem.MolFromSmiles(smi1)
+m2 = Chem.MolFromSmiles(smi2)
+m3 = Chem.MolFromSmiles(smi3)
+
+Draw.MolsToGridImage([m1, m2, m3], legends=["img1","img2","img3"], molsPerRow=3, subImgSize=(220,200), useSVG=True)
 ```
+```{code-cell} ipython3
+# Compute quick properties for the three molecules
+from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+import pandas as pd
+
+def props(m):
+    return dict(
+        MolWt=Descriptors.MolWt(m),
+        LogP=Crippen.MolLogP(m),
+        HBD=rdMolDescriptors.CalcNumHBD(m),
+        HBA=rdMolDescriptors.CalcNumHBA(m),
+        TPSA=rdMolDescriptors.CalcTPSA(m)
+    )
+
+df = pd.DataFrame([
+    {"name":"img1","smiles":smi1, **props(m1)},
+    {"name":"img2","smiles":smi2, **props(m2)},
+    {"name":"img3","smiles":smi3, **props(m3)}
+]).round(3)
+
+df
+```
+
