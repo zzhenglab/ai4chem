@@ -404,279 +404,273 @@ Draw.MolsToGridImage(  # draw a grid to compare
 ```
 
 ---
+## 4. Canonicalization and similarity
 
+### 4.1 Canonicalization
 
+SMILES strings are compact and easy to use, but there is a catch: they are not guaranteed to be unique.  
+The same molecule can be written with different SMILES depending on how the atoms are traversed. This makes it difficult to compare molecules directly.
 
-## 4. PubChem and URL
-
-
-```note
-Goal: given a common name or a PubChem CID, get a SMILES string you can feed into RDKit.
-```
-
-### 4.1 Install and imports
+In the example below we take three different SMILES notations, each of which corresponds to the molecule we have on quiz.  
+Although the strings differ, the structures are identical once interpreted by RDKit.
 
 ```{code-cell} ipython3
-# Install requests if you do not have it
-try:
-    import requests
-except Exception:
-    %pip -q install requests
-    import requests
+from rdkit import Chem
+from rdkit.Chem import Draw
 
-from urllib.parse import quote_plus  
-```
-Instead of going to [PubChem’s main site](https://pubchem.ncbi.nlm.nih.gov) and manually searching for a compound, we can also use a **direct URL** to query PubChem’s REST API. This allows us to send structured requests and retrieve data in machine-readable formats such as JSON, XML, or plain text. 
+# Three equivalent SMILES
+smile1 = "OCC=CCC(OC)CCC"
+smile2 = "COC(CCC)CC=CCO"
+smile3 = "CCCC(OC)CC=CCO"
 
-The figure below illustrates the general workflow of PUG-REST: provide an input (like a compound name), choose an operation (for example, retrieving a CID), and specify the output format. Using URLs in this way not only automates lookups but also integrates PubChem data smoothly into code and analysis.
-
-
-
-
-![PubChem PUG-REST Figure](https://iupac.github.io/WFChemCookbook/_images/pubchem_pugrest_fig1.jpg)
-
-Here are some example URLs you can click and explore directly in a browser:
-- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON): Returns the PubChem Compound ID (CID) for aspirin.
-- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON): Returns the standardized IUPAC name.
-- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON): Returns the canonical SMILES string representation.
-
-
-```{note}
-The key idea is that PubChem is not only a website but also a programmatic data service. A well-formed URL acts like a query to their database.
-```
-
-If you are interested in learning more about PubChem URL, please read:
-- [IUPAC FAIR Chemistry Cookbook guide](https://iupac.github.io/WFChemCookbook/datasources/pubchem_pugrest1.html)
-
-
----
-
-### 4.2 Resolve a **name** to a CID
-
-```{code-cell} ipython3
-import requests
-from urllib.parse import quote_plus
-
-name = "acetaminophen"
-
-# Step 1: resolve the name to one or more PubChem CIDs
-url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{quote_plus(name)}/cids/JSON"
-print("URL:", url)  # helps debug if you get HTTP 400
-
-r = requests.get(url, timeout=30)
-r.raise_for_status()
-data = r.json()
-
-cid_list = data.get("IdentifierList", {}).get("CID", [])
-if not cid_list:
-    raise ValueError(f"No CID found for {name}")
-
-cid = cid_list[0]  # take the first hit
-print("CID:", cid)
+smiles_list = [smile1, smile2, smile3]
+mols = [Chem.MolFromSmiles(s) for s in smiles_list]
+Draw.MolsToGridImage(mols, molsPerRow=3, subImgSize=(170,170),
+                     legends=[f"form {i+1}" for i in range(len(mols))])
 ```
 
 ```{note}
-CID is PubChem’s numeric identifier for a molecule. Taking the first hit is simple and works well for common drugs.
-Try to copy and paste the output URL from above copy to your browser and hit enter to see what it looks like!
-```
-Essentially, we first get the JSON format from the URL
-```{code-cell} ipython3
-r = requests.get(url, timeout=30)
-data = r.json()
-data
-```
-Then we use `data.get()` to search for `"IdentifierList"`
-```{code-cell} ipython3
-print(data.get("IdentifierList", {}))
+Different SMILES strings can represent the same molecule. This is useful for flexibility, but problematic if we want a **unique key** for each compound.  
+Canonicalization generates a standard SMILES for each molecule, which allows unambiguous comparisons and avoids duplicates.
 ```
 
----
-
-### 4.3 Get properties from the CID
-
-#### 4.3.1 Get the **IUPAC name**
-
 ```{code-cell} ipython3
-fields = "IUPACName"
-url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/{fields}/JSON"
-print("URL:", url)
+def canonicalize_smiles(smiles):
+    m = Chem.MolFromSmiles(smiles)
+    return Chem.MolToSmiles(m) if m is not None else None
 
-r = requests.get(url, timeout=30)
-r.raise_for_status()
-data = r.json()
-
-props = data["PropertyTable"]["Properties"][0]
-print("IUPAC:", props.get("IUPACName"))
+for s in smiles_list:
+    print(s, " -> ", canonicalize_smiles(s))
 ```
 
 ```{note}
-The IUPAC name is the standardized systematic name for the compound, defined by the International Union of Pure and Applied Chemistry.
+Canonicalization is not universal: RDKit and Open Babel may output different canonical strings for the same molecule.  
+The important part is consistency within your workflow—use the same toolkit throughout.
 ```
 
-Let's break it down again:
+### 4.2 Morgan fingerprints and Tanimoto
+
+Another way to compare molecules is not by SMILES text but by molecular features.  
+Fingerprints encode the presence or absence of atom environments in a binary vector. Morgan fingerprints (circular fingerprints) are widely used.
+
+So, what is a fingerprint?
+
+- Think of a fingerprint as a barcode for a molecule.
+
+- Each bar (or bit) in the barcode answers a yes/no question: Does the molecule contain this feature?
+
+Example features: “*Does it have a benzene ring?*”, “*Does it have an OH group?*”, “*Does it have a nitrogen atom with three bonds?*”
+
+If the answer is yes, the bit is `1`. If not, it’s `0`.
+This gives us a long string of `0`s and 1s that represents the molecule.
+
+That's said, Morgan fingerprints are a special kind of barcode. They look around each atom in the molecule and record the neighborhood (atoms directly attached, then atoms two steps away, etc.). The “radius” tells how far you look from each atom. Radius 2 means: “look two bonds away.” Morgan fingerprints are popular because they do a good job at capturing local environments around atom.
+
+
 ```{code-cell} ipython3
-data["PropertyTable"]
-```
-```{code-cell} ipython3
-data["PropertyTable"]["Properties"]
-```
-```{code-cell} ipython3
-data["PropertyTable"]["Properties"][0]
+from rdkit.Chem import rdFingerprintGenerator
+mfpgen = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=512)
+
+methane = Chem.MolFromSmiles("C") # replace with other SMILES strings to see how it changes!
+caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
+fp_me = mfpgen.GetFingerprint(methane)
+fp_caff = mfpgen.GetFingerprint(caffeine)
+
+from rdkit import DataStructs
+print(fp_me.ToBitString())
+print("----------------")
+print(fp_caff.ToBitString())
+
+
 ```
 
+
+We can then measure how similar two fingerprints are with the **Tanimoto coefficient**.
+
+It is one of the most common metrics for comparing chemical fingerprints and it measures how similar two molecules are by comparing their structural features represented as bit-vectors.
+
+In terms of the formula, if we have two bit-vectors **A** and **B**:
+
+- **a** = number of bits set to 1 in **A**  
+- **b** = number of bits set to 1 in **B**  
+- **c** = number of common bits set to 1 in both **A** and **B**  
+
+Then the **Tanimoto similarity** is:
+
+$$
+T(A,B) = \frac{c}{a + b - c}
+$$
 
 ---
 
-#### 4.3.2 Get the **Canonical SMILES**
 
-Now, we can even condense everything within one line:
+- The numerator **c** counts the shared features (substructures present in both molecules).  
+- The denominator counts **all unique features** across both molecules, subtracting the overlap.  
+- The result ranges between **0 and 1**:  
+  - `0` → no similarity at all.  
+  - `1` → identical fingerprints.  
+
+---
+
+Suppose we compare **caffeine** and **theobromine** with Morgan fingerprints.
+
+- Caffeine has about 250 “on” bits (features).  
+- Theobromine has about 240 “on” bits.  
+- They share about 180 bits.  
+
+$$
+T = \frac{180}{250 + 240 - 180} = \frac{180}{310} \approx 0.58
+$$
+
+This means caffeine and theobromine share **58% of their features**.
+
+By contrast, comparing caffeine with **phenol** may yield ~0.15, showing much weaker similarity.
+
+
+
+```{note}
+- Tanimoto is equivalent to the **Jaccard index** used in other fields.  
+- Other similarity measures exist (Dice, Cosine, Hamming), but Tanimoto remains the standard in cheminformatics.  
+- Choice of fingerprint (Morgan, MACCS, topological) influences the score.  
+```
+
+
 ```{code-cell} ipython3
-print("Canonical SMILES:", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/CanonicalSMILES/TXT").text.strip())
+from rdkit.Chem import rdFingerprintGenerator
+from rdkit.DataStructs import FingerprintSimilarity
+
+caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
+theobromine = Chem.MolFromSmiles("Cn1c(=O)c2[nH]c(nc2n(C)c1=O)C")
+phenol = Chem.MolFromSmiles("c1ccccc1O")
+
+mfpgen = rdFingerprintGenerator.GetMorganGenerator(radius=2, fpSize=1024)
+
+fp_caff = mfpgen.GetFingerprint(caffeine)
+fp_theo = mfpgen.GetFingerprint(theobromine)
+fp_phenol = mfpgen.GetFingerprint(phenol)
+
+print("Caffeine vs theobromine:", round(FingerprintSimilarity(fp_caff, fp_theo),3))
+print("Caffeine vs phenol     :", round(FingerprintSimilarity(fp_caff, fp_phenol),3))
 ```
 
 ```{note}
-Canonical SMILES is a normalized form of the molecule's SMILES string.  
-It provides a unique representation but does not retain stereochemistry.
+Notice how caffeine and theobromine have a high similarity because they share a xanthine core.  
+Phenol is much less similar since it only shares a benzene ring fragment with caffeine.
+```
+
+### 4.3 Bemis–Murcko scaffold
+
+To simplify molecules further we can extract their **scaffolds**, which keep the core ring system and linkers but discard side chains.
+
+```{code-cell} ipython3
+from rdkit.Chem.Scaffolds import MurckoScaffold
+
+mol_carboxy = Chem.MolFromSmiles("O=C(O)c1ccc(C(=O)O)cc1")
+mol_hydroxamate = Chem.MolFromSmiles("O=C(O)c1ccc(C(=O)NO)cc1")
+
+scaf_c = MurckoScaffold.GetScaffoldForMol(mol_carboxy )
+scaf_h = MurckoScaffold.GetScaffoldForMol(mol_hydroxamate)
+
+Draw.MolsToGridImage([mol_carboxy, scaf_c , mol_hydroxamate, scaf_h ],
+                     legends=["mol_c", "scaffold_c", "mol_hydroxamate", "scaffold_h"],
+                     molsPerRow=2, subImgSize=(180,180))
+```
+Both of the two molecules above share the same benzene scaffold substructure.
+
+```{code-cell} ipython3
+from rdkit.Chem.Scaffolds import MurckoScaffold
+
+
+scaf_caff = MurckoScaffold.GetScaffoldForMol(caffeine)
+scaf_theo = MurckoScaffold.GetScaffoldForMol(theobromine)
+
+Draw.MolsToGridImage([caffeine, scaf_caff, theobromine, scaf_theo],
+                     legends=["caffeine", "caffeine scaffold", "theobromine", "theobromine scaffold"],
+                     molsPerRow=2, subImgSize=(180,180))
+```
+
+
+```{note}
+Scaffolds are useful in medicinal chemistry to group compounds into families.  
+Different analogs may have the same core scaffold but different substituents that tune activity or solubility.
 ```
 
 ---
 
-#### 4.3.3 Get the **Isomeric SMILES**
-Similar:
+## 5. RDKit with pandas
+
+Large datasets are often stored as tables. Pandas can manage these datasets, while RDKit enriches them with molecular objects and descriptors.
+
+### 5.1 Load dataset and add molecule column
+
 ```{code-cell} ipython3
-print("Isomeric SMILES:", requests.get(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IsomericSMILES/TXT").text.strip())
+import pandas as pd
+from rdkit.Chem import PandasTools
+
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_ligands_inventory_smiles.xlsx"
+
+df = pd.read_excel(url, engine="openpyxl")
+df = df[['Compound ID','smiles','MW']]
+
+
+PandasTools.AddMoleculeColumnToFrame(df, smilesCol='smiles', molCol='Mol')
+df.head()
 ```
 
 ```{note}
-Isomeric SMILES includes stereochemistry and isotopic information if PubChem has it.  
-This is useful for distinguishing molecules that have the same atoms but different spatial arrangements.
+Adding a `Mol` column converts SMILES to RDKit molecules directly in the DataFrame.  
+This makes it easy to compute descriptors row by row or draw molecules inline.
 ```
 
----
-
-### 4.4 Make it safe: minimal error handling
+### 5.2 Canonicalize SMILES and compute descriptors
 
 ```{code-cell} ipython3
-import requests  # HTTP client
-from urllib.parse import quote_plus  # safe URL encoding
+def canonicalize(smiles):
+    m = Chem.MolFromSmiles(smiles)
+    return Chem.MolToSmiles(m) if m else None
 
-def safe_get_json(url, timeout=30):  # fetch JSON safely
-    r = requests.get(url, timeout=timeout)  # send request
-    r.raise_for_status()  # raise if HTTP error
-    return r.json()  # parse and return JSON
-
-def safe_get_text(url, timeout=30):  # fetch plain text safely
-    r = requests.get(url, timeout=timeout)  # send request
-    r.raise_for_status()  # raise if HTTP error
-    return r.text  # return raw text
+df['canonical_smiles'] = df['smiles'].apply(canonicalize)
 ```
-
-```note
-If you see HTTP 400, print the URL and check if the name was encoded.  
-Timeouts keep notebooks from hanging.
-```
-
----
-
-## 4.5 Function: by **name** 
+Now we create a new collum 'canonical_smiles' with the canonicalized smiles.
 
 ```{code-cell} ipython3
-def pubchem_smiles_by_name(name, isomeric=True):  # look up by common name
-    nm = str(name).strip()  # clean input
-    if not nm:  # empty string check
-        raise ValueError("Empty name")  # clear message
-    enc = quote_plus(nm)  # URL encode the name
-    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"  # choose field
-    # get SMILES as plain text
-    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/property/{kind}/TXT"  # TXT endpoint
-    smiles = safe_get_text(smi_url).strip()  # fetch and strip whitespace
-    # get CID via JSON
-    cid_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{enc}/cids/JSON"  # CID list
-    cid_list = safe_get_json(cid_url).get("IdentifierList", {}).get("CID", [])  # pick from JSON
-    if not cid_list:  # handle no hits
-        raise ValueError(f"No CID found for name: {nm}")  # message
-    cid = int(cid_list[0])  # first hit
-    # get IUPAC name as text
-    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid}/property/IUPACName/TXT"  # TXT endpoint
-    iupac = safe_get_text(iupac_url).strip()  # fetch IUPAC
-    return {"name": nm, "cid": cid, "smiles": smiles, "iupac": iupac}  # result dict
-```
+from rdkit.ML.Descriptors.MoleculeDescriptors import MolecularDescriptorCalculator
 
-**Example**
+desc_names = ['MolWt','TPSA','MolLogP','NumHAcceptors','NumHDonors']
+calc = MolecularDescriptorCalculator(desc_names)
 
-```{code-cell} ipython3
-pubchem_smiles_by_name("ibuprofen")  # quick demo
-```
+df_desc = df['Mol'].apply(calc.CalcDescriptors)
+df_desc = pd.DataFrame(df_desc.tolist(), columns=desc_names)
 
----
-
-## 4.6 Function: by **CID** 
-
-```{code-cell} ipython3
-def pubchem_smiles_by_cid(cid, isomeric=True):  # look up by CID
-    try:
-        cid_int = int(str(cid).strip())  # coerce to int
-    except ValueError:
-        raise ValueError(f"Bad CID: {cid}")  # clear message
-    kind = "IsomericSMILES" if isomeric else "CanonicalSMILES"  # choose field
-    smi_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid_int}/property/{kind}/TXT"  # TXT endpoint
-    smiles = safe_get_text(smi_url).strip()  # fetch SMILES
-    iupac_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{cid_int}/property/IUPACName/TXT"  # TXT endpoint
-    iupac = safe_get_text(iupac_url).strip()  # fetch IUPAC
-    return {"cid": cid_int, "smiles": smiles, "iupac": iupac}  # result dict
-```
-
-**Example**
-
-```{code-cell} ipython3
-pubchem_smiles_by_cid(2244)  # aspirin
-```
-
----
-
-## 4.7 Use with RDKit (short)
-
-```{code-cell} ipython3
-from rdkit import Chem  # RDKit core
-from rdkit.Chem import Draw  # drawing
-
-res = pubchem_smiles_by_name("acetaminophen")  # fetch SMILES by name
-mol = Chem.MolFromSmiles(res["smiles"])  # make molecule
-Draw.MolToImage(mol, size=(180, 180))  # draw image
+df_all = pd.concat([df[['Compound ID','MW','canonical_smiles']], df_desc], axis=1)
+df_all.head()
 ```
 
 ```{note}
-If `MolFromSmiles` gives `None`, print the SMILES string and check for copy issues.
+Descriptors such as TPSA and LogP are common in QSAR modeling and drug-likeness rules.  
+For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds.
 ```
 
----
-
-
-
-## 5. Save and export
+### 5.3 Clean and visualize
 
 ```{code-cell} ipython3
-mol = Chem.MolFromSmiles("CC(=O)OC1=CC=CC=C1C(=O)O")
-print("canonical:", Chem.MolToSmiles(mol))
-print("isomeric:", Chem.MolToSmiles(mol, isomericSmiles=True))
+df_clean = df_all.dropna()
+print("Number of rows after cleaning:", len(df_clean))
 ```
 
 ```{code-cell} ipython3
-# SDF with 2D coordinates
-m = Chem.AddHs(mol)
-from rdkit.Chem import AllChem
-AllChem.Compute2DCoords(m)
-w = Chem.SDWriter("molecule.sdf")
-w.write(m); w.close()
-"Saved molecule.sdf"
+import matplotlib.pyplot as plt
+
+plt.hist(df_clean['MolWt'], bins=40)
+plt.xlabel("Molecular Weight (g/mol)")
+plt.ylabel("Count")
+plt.show()
 ```
 
-```{code-cell} ipython3
-# PNG depiction
-img = Draw.MolToImage(mol, size=(400, 300))
-img.save("molecule.png")
-"Saved molecule.png"
+```{note}
+Cleaning removes molecules that failed parsing. Histograms allow you to inspect the distribution of properties—are most molecules small and drug-like, or large and polar?
 ```
+
 
 ---
 
@@ -698,7 +692,6 @@ img.save("molecule.png")
 - Hydrogens: `Chem.AddHs`
 - Properties: `Descriptors.MolWt`, `Crippen.MolLogP`, `CalcNumHBA/HBD`, `CalcTPSA`
 - Replace piece with piece: `Chem.ReplaceSubstructs(mol, findMol, repMol)`
-- Salt split: `Chem.GetMolFrags(..., asMols=True)`
 - Graph edit: `Chem.EditableMol`
 - Save: `Chem.MolToSmiles`, `SDWriter`, PNG via `MolToImage(...).save(...)`
 ```
@@ -712,7 +705,7 @@ SMILES
   Text line notation for molecules. Example: ethanol is CCO.
 
 aromatic
-  Conjugated ring system represented with lower case atom symbols in SMILES, for example c1ccccc1.
+  Conjugated ring system shown with lower case atom symbols in SMILES, for example c1ccccc1.
 
 CID
   PubChem Compound ID for a unique compound record.
@@ -725,8 +718,10 @@ descriptor
 
 EditableMol
   RDKit object that exposes low level atom and bond editing.
-```
 
+Bemis–Murcko scaffold
+  The ring system and linkers that form a molecule's core framework.
+```
 ---
 
 ## 8. In-class activity
@@ -760,7 +755,7 @@ for b in mol.GetBonds():
 
 ### 8.2 Make a small properties table
 
-Use names `["caffeine", "acetaminophen", "ibuprofen"]`. For each, fetch SMILES from PubChem, then compute MolWt, LogP, HBD, HBA, and TPSA.
+Use smiles `["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]`. For each, compute MolWt, LogP, HBD, HBA, and TPSA.
 
 ```python
 import pandas as pd
@@ -769,12 +764,10 @@ from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 names = ...  # TO DO
 rows = []
 for nm in names:
-    info = ...  # TO DO: pubchem_smiles_by_name
-    smi = info["smiles"]
-    m = Chem.MolFromSmiles(smi)
+    ...  #TO DO
+
     rows.append({
-        "name": nm,
-        "smiles": smi,
+        "smiles": ...,
         "MolWt": ...,
         "LogP": ...,
         "HBD": ...,
@@ -812,34 +805,52 @@ em = Chem.EditableMol(mol)
 Draw.MolToImage(..., size=(350, 250))
 ```
 
----
 
-### 8.5 PubChem lookup to SMILES and drawing
+### 8.5 Retrieve SMILES from PubChem Draw structure, then analyze
 
-We often get inputs in different formats. Some may be PubChem CIDs (just digits) while others are SMILES strings.
 
-Tasks:
-1) For each name in `["446157", "2244", "CCO", "482752", "c1ccccc1"]`
-2) Print a line: `name: ... CID=... SMILES=...`.
-3) Draw each molecule.
+Images to inspect:
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+# Show provided images for reference
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-3-structures.png"))
+
+```
+
+
+1. Go to **https://pubchem.ncbi.nlm.nih.gov/**.  
+2. Click **Draw structure**.  
+3. Paste draw the structure above, then copy the SMILES.  
+4. Use the SMILES in the cell below to draw with RDKit and compute basic properties.
+
 
 
 ```python
-    mixed = [...]
+# Paste the SMILES you obtained from PubChem Draw structure
+smi1 = "..."  # smiles for image 1
+smi2 = "..."  # smiles for image 2
+smi3 = "..."  # smiles for image 3
 
-for ... in ...:
-    if ...:  # looks like CID
-      ...
-    else: 
-      ... 
-    print(...)
-    mol = Chem.MolFromSmiles(...)
-    display(Draw.MolToImage(mol, size=(100, 100)))
+m1 = Chem.MolFromSmiles(smi1)
+m2 = Chem.MolFromSmiles(smi2)
+m3 = Chem.MolFromSmiles(smi3)
 
+Draw.MolsToGridImage([m1, m2, m3], legends=["img1","img2","img3"], molsPerRow=3, subImgSize=(220,200), useSVG=True)
 ```
 
-```{note} Hint:
-Try `isdigit()` to distinguish between cid-like input and SMILES
-```
----
+```python
+# Compute quick properties for the three molecules
+from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+import pandas as pd
 
+    ... # TO DO: get MolWt=..., LogP=...,HBD=...,HBA=..., TPSA=...
+
+df = pd.DataFrame([
+    {"name":"img1","smiles":smi1, ...},
+    {"name":"img2","smiles":smi2, ...},
+    {"name":"img3","smiles":smi3, ...}
+]).round(3)
+
+df
+```
