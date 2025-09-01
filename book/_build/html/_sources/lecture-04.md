@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 4 - PubChem + CIR
+# Lecture 4 - Chemical Structure Identifier
 
 ```{contents}
 :local:
@@ -28,8 +28,11 @@ kernelspec:
 - Build small helper functions with error handling and fallbacks.  
 - Practice with a real Excel sheet of ligands that contains CAS numbers.  
 - Create a tiny widget that accepts name or SMILES or CAS and returns a summary and a GIF.  
+  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 
 ---
+
+
 
 ## 1. PubChem PUG-REST Basics
 
@@ -104,6 +107,9 @@ Here is a summary:
 - **Output**: JSON, XML, or TXT.  
 
 Here are some example URLs you can click and explore directly in a browser:
+
+- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/property/SMILES/TXT](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/property/SMILES/TXT): Returns the SMILES string for aspirin.
+- [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/SMILES/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/SMILES/JSON): Returns the SMILES string for a compound with PubChem CID 2244.
 - [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/aspirin/cids/JSON): Returns the PubChem Compound ID (CID) for aspirin.
 - [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON): Returns the standardized IUPAC name.
 - [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON): Returns the canonical SMILES string representation.
