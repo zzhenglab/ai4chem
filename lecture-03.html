@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-03';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 4 - Chemical Structure Identifier" href="lecture-04.html" />
     <link rel="prev" title="Lecture 2 - Pandas and Plotting" href="lecture-02.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,7 +184,6 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3 - SMILES and RDKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
 </ul>
 
     </div>
@@ -423,6 +421,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -452,6 +457,7 @@ document.write(`
 <li><p><a class="reference internal" href="#quick-reference" id="id11">6. Quick reference</a></p></li>
 <li><p><a class="reference internal" href="#glossary" id="id12">7. Glossary</a></p></li>
 <li><p><a class="reference internal" href="#in-class-activity" id="id13">8. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id14">9. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -1252,35 +1258,35 @@ Different analogs may have the same core scaffold but different substituents tha
       <td>2-Methylimidazole</td>
       <td>CC1=NC=CN1</td>
       <td>82.106</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001F60B9...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001BD81A...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1-Ethyl-3-vinylimidazolium bromide</td>
       <td>C=C[N+]1=CN(CC)C=C1.[Br-]</td>
       <td>203.083</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001F60B9...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001BD81A...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1-Methyl-1,4-diazabicyclo[2.2.2]octan-1-iumchl...</td>
       <td>[Cl-].N12CC[N+](C)(CC1)CC2</td>
       <td>162.660</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001F60B9...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001BD81A...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Oxazole-4-carboxylic acid</td>
       <td>O=C(C1=COC=N1)O</td>
       <td>113.072</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001F60B9...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001BD81A...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>3-Ethyl-2-methylbenzo[d]thiazol-3-ium iodide</td>
       <td>CC[N+]1=C(C)SC2=CC=CC=C21.[I-]</td>
       <td>305.184</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001F60B9...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001BD81A...</td>
     </tr>
   </tbody>
 </table>
@@ -1629,6 +1635,181 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </div>
 </section>
 </section>
+<section id="solutions">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<p>Open after you try Section 8.</p>
+<section id="solution-8-1">
+<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">smi</span> <span class="o">=</span> <span class="s2">&quot;O=C(O)c1ccccc1Cl&quot;</span>
+
+<span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="n">num_rings</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetSSSR</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rings:&quot;</span><span class="p">,</span> <span class="n">num_rings</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">mol</span><span class="o">.</span><span class="n">GetBonds</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bond&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">GetIdx</span><span class="p">(),</span> <span class="n">b</span><span class="o">.</span><span class="n">GetBeginAtomIdx</span><span class="p">(),</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">GetEndAtomIdx</span><span class="p">(),</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">GetBondTypeAsDouble</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" src="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x000001BD83559EC0&gt;
+bond 0 0 - 1 order 2
+bond 1 1 - 2 order 1
+bond 2 1 - 3 order 1
+bond 3 3 - 4 order 1
+bond 4 4 - 5 order 1
+bond 5 5 - 6 order 1
+bond 6 6 - 7 order 1
+bond 7 7 - 8 order 1
+bond 8 8 - 9 order 1
+bond 9 8 - 3 order 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-8-2">
+<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cn1cnc2N(C)C(=O)N(C)C(=O)c12&quot;</span><span class="p">,</span> <span class="s2">&quot;CC(=O)Nc1ccc(O)cc1&quot;</span><span class="p">,</span> <span class="s2">&quot;CC(C)Cc1ccc(cc1)C(C)C(O)=O&quot;</span><span class="p">]</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nm</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">nm</span><span class="p">)</span>
+    <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s2">&quot;smiles&quot;</span><span class="p">:</span> <span class="n">nm</span><span class="p">,</span>
+        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;HBD&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;HBA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>smiles</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>HBD</th>
+      <th>HBA</th>
+      <th>TPSA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cn1cnc2N(C)C(=O)N(C)C(=O)c12</td>
+      <td>194.194</td>
+      <td>-1.0293</td>
+      <td>0</td>
+      <td>6</td>
+      <td>61.82</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CC(=O)Nc1ccc(O)cc1</td>
+      <td>151.165</td>
+      <td>1.3506</td>
+      <td>2</td>
+      <td>2</td>
+      <td>49.33</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CC(C)Cc1ccc(cc1)C(C)C(O)=O</td>
+      <td>206.285</td>
+      <td>3.0732</td>
+      <td>1</td>
+      <td>1</td>
+      <td>37.30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="solution-8-3">
+<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cl&quot;</span><span class="p">)</span>
+<span class="n">put</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">)</span>
+<span class="n">mol</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Clc1ccc(cc1)C(=O)O&quot;</span><span class="p">)</span>
+<span class="n">out</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">ReplaceSubstructs</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">find</span><span class="p">,</span> <span class="n">put</span><span class="p">,</span> <span class="n">replaceAll</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O=C(O)c1ccc(F)cc1
+</pre></div>
+</div>
+<img alt="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" src="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" />
+</div>
+</div>
+</section>
+<section id="solution-8-4">
+<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">)</span>
+<span class="n">em</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">EditableMol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
+
+<span class="n">idx_C</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">))</span>
+<span class="n">idx_H1</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
+<span class="n">idx_H2</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
+<span class="n">idx_H3</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">AddAtom</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">Atom</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">))</span>
+
+<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">idx_C</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H2</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">AddBond</span><span class="p">(</span><span class="n">idx_C</span><span class="p">,</span> <span class="n">idx_H3</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">Chem</span><span class="o">.</span><span class="n">BondType</span><span class="o">.</span><span class="n">SINGLE</span><span class="p">)</span>
+
+<span class="n">mol2</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">GetMol</span><span class="p">()</span>
+<span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">mol2</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">mol2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">),</span> <span class="n">includeAtomNumbers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" src="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1669,15 +1850,6 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 2 - Pandas and Plotting</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="lecture-04.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 4 - Chemical Structure Identifier</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1735,6 +1907,13 @@ c) Print the list of bonds with begin and end atom indices and bond orders.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-chlorine-with-fluorine">8.3 Replace chlorine with fluorine</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.4 Add a methyl group with a graph edit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
 </ul>
 </li>
 </ul>
