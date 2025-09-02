@@ -731,9 +731,8 @@ Each task mirrors the examples above. Fill in the `...` lines. Work in pairs. So
 ### 8.1 Read a SMILES and inspect
 
 Given `smi = "O=C(O)c1ccccc1Cl"`.  
-a) Draw with atom numbers.  
-b) Count number of rings.  
-c) Print the list of bonds with begin and end atom indices and bond orders.
+a) Count number of rings.  
+bc) Print the list of bonds with begin and end atom indices and bond orders.
 
 ```python
 from rdkit import Chem
