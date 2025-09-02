@@ -91,11 +91,9 @@ except Exception:
 
 Instead of going to [PubChem’s main site](https://pubchem.ncbi.nlm.nih.gov) and manually searching for a compound, we can also use a **direct URL** to query PubChem’s REST API. This allows us to send structured requests and retrieve data in machine-readable formats such as JSON, XML, or plain text. 
 
+Other latest features of PubChem can be found in  *Nucleic Acids Research*, 2025, 53 (D1), D1516–D1525. [![Read](https://img.shields.io/badge/Read-Paper-blue)](https://academic.oup.com/nar/article/53/D1/D1516/7903365?login=false) 
+
 The figure below illustrates the general workflow of PUG-REST: provide an input (like a compound name), choose an operation (for example, retrieving a CID), and specify the output format. Using URLs in this way not only automates lookups but also integrates PubChem data smoothly into code and analysis.
-
-
-
-
 
 
 ![PubChem PUG-REST Figure](https://iupac.github.io/WFChemCookbook/_images/pubchem_pugrest_fig1.jpg)
@@ -114,6 +112,8 @@ Here are some example URLs you can click and explore directly in a browser:
 - [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/IUPACName/JSON): Returns the standardized IUPAC name.
 - [https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON](https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2244/property/CanonicalSMILES/JSON): Returns the canonical SMILES string representation.
 
+
+For more information on how to use PUG-REST URL, please see [![Read](https://img.shields.io/badge/Open-Website-green)](https://pubchem.ncbi.nlm.nih.gov/docs/pug-rest) 
 
 
 
@@ -398,26 +398,6 @@ print("CAS:", cir_get("aspirin", "cas"))
 ```
 
 
-### 4.1 Simple fallback for SMILES
-
-```{code-cell} ipython3
-def get_smiles_with_fallback(query):
-    # Try PubChem first
-    try:
-        if str(query).isdigit():
-            smi = safe_get_text(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/{int(query)}/property/IsomericSMILES/TXT")
-        else:
-            smi = safe_get_text(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{quote_plus(str(query))}/property/IsomericSMILES/TXT")
-        if smi:
-            return smi
-    except Exception:
-        pass
-    # Fallback to CIR
-    return cir_get(query, "smiles")
-
-print(get_smiles_with_fallback("ibuprofen"))
-```
-
 ---
 
 ## 5. Mini widget
@@ -425,64 +405,51 @@ print(get_smiles_with_fallback("ibuprofen"))
 Enter a **name or CID or SMILES or CAS** and show a quick summary. Generates a small GIF from a PNG depiction so it can be shared easily.
 
 ```{code-cell} ipython3
-def to_small_gif_from_png_bytes(png_bytes, out_size=(240,240)):
-    try:
-        im = PILImage.open(BytesIO(png_bytes)).convert("RGBA")
-        im = im.resize(out_size)
-        # two-frame GIF blink to satisfy the GIF requirement
-        bio = BytesIO()
-        im.save(bio, format="GIF", save_all=True, append_images=[im], duration=600, loop=0)
-        return bio.getvalue()
-    except Exception as e:
-        return None
-
 def quick_summary(query, source="PubChem"):
     q = str(query).strip()
     summary = {"query": q, "source": source}
     try:
-        if source == "PubChem":
+        if source == "PubChem":  # deafault PubChem
             if q.isdigit():
                 info = pubchem_by_cid(int(q))
             else:
                 info = pubchem_by_name(q)
             summary.update(info)
             png = pubchem_png_by_cid(summary["cid"], size=300)
-            gif_bytes = to_small_gif_from_png_bytes(png)
-            summary["gif"] = gif_bytes
-        else:
-            smi = get_smiles_with_fallback(q)
-            summary["smiles"] = smi
-            summary["inchikey"] = cir_get(q, "stdinchikey")
-            summary["iupac"] = cir_get(q, "iupac_name")
-            img = cir_get(q, "image")
-            summary["gif"] = to_small_gif_from_png_bytes(img) if img else None
+            summary["image"] = png    
+        else: #use CIR
+            summary["smiles"] = cir_by_name(q, "smiles")
+            summary["inchikey"] = cir_by_name(q, "stdinchikey")
+            summary["iupac"] = cir_by_name(q, "iupac_name")
+            img = cir_by_name(q, "image")
+            summary["image"] = img if img else None
         return summary
     except Exception as e:
         summary["error"] = str(e)
         return summary
 
+def run_fetch(b):
+    with out:
+        clear_output()
+        res = quick_summary(inp.value, source=src.value)
+        if "error" in res:
+             print("Error:", res["error"])
+             return
+        print("Source:", res.get("source"))
+        print("CID:", res.get("cid"))
+        print("IUPAC:", res.get("iupac"))
+        print("SMILES:", res.get("smiles"))
+        print("InChIKey:", res.get("inchikey"))
+        if res.get("image"):
+            display(Image(data=res["image"]))
+        else:
+            print("No image available")
+                
 if widgets is not None:
     inp = widgets.Text(value="aspirin", description="Query:", layout=widgets.Layout(width="60%"))
     src = widgets.ToggleButtons(options=["PubChem","CIR"], description="Source:")
     btn = widgets.Button(description="Fetch", button_style="primary")
     out = widgets.Output()
-
-    def run_fetch(b):
-        with out:
-            clear_output()
-            res = quick_summary(inp.value, source=src.value)
-            if "error" in res:
-                print("Error:", res["error"])
-                return
-            print("Source:", res.get("source"))
-            print("CID:", res.get("cid"))
-            print("IUPAC:", res.get("iupac"))
-            print("SMILES:", res.get("smiles"))
-            print("InChIKey:", res.get("inchikey"))
-            if res.get("gif"):
-                display(Image(data=res["gif"]))
-            else:
-                print("No image available")
     btn.on_click(run_fetch)
     display(widgets.HBox([inp, src, btn]), out)
 else:
@@ -621,11 +588,11 @@ Given `targets = ["caffeine", "ibuprofen", "acetaminophen"]`
 - Get InChIKey from PubChem and from CIR.  
 - Report whether they match.
 
-```{code-cell} ipython3
+```python
 targets = ["caffeine", "ibuprofen", "acetaminophen"]
 for t in targets:
-    pc_key = pubchem_by_name(t)["inchikey"]
-    cir_key = cir_get(t, "stdinchikey")
+    pc_key = ... #TO DO
+    cir_key = ... #TO DO
     print(f"{t:14s} PubChem={pc_key}  CIR={cir_key}  match={pc_key==cir_key}")
 ```
 
@@ -633,27 +600,8 @@ for t in targets:
 
 Use names `["caffeine", "acetaminophen", "ibuprofen"]`. For each, fetch SMILES from PubChem, then compute MolWt, LogP, HBD, HBA, and TPSA.
 
-```{code-cell} ipython3
-if Chem is not None:
-    import pandas as pd
-    rows = []
-    names = ["caffeine", "acetaminophen", "ibuprofen"]
-    for nm in names:
-        info = pubchem_by_name(nm)
-        smi = info["smiles"]
-        m = Chem.MolFromSmiles(smi)
-        rows.append({
-            "name": nm,
-            "smiles": smi,
-            "MolWt": Descriptors.MolWt(m),
-            "LogP": Crippen.MolLogP(m),
-            "HBD": rdMolDescriptors.CalcNumHBD(m),
-            "HBA": rdMolDescriptors.CalcNumHBA(m),
-            "TPSA": rdMolDescriptors.CalcTPSA(m)
-        })
-    pd.DataFrame(rows)
-else:
-    print("RDKit is not available here.")
+```python
+#TO DO
 ```
 
 ### 9.3 Get a quick GHS note from PUG-View
@@ -661,129 +609,26 @@ else:
 - For CID 2244 retrieve GHS section text.  
 - Print the first 8 lines.
 
-```{code-cell} ipython3
-hits = pug_view_find_sections(2244, "GHS")
-print(pug_view_text_from_hit(hits[0], max_lines=8))
+```python
+#TO DO
 ```
 
-### 9.4 Replace chlorine with fluorine
 
-Replace Cl with F in `Clc1ccc(cc1)C(=O)O` and print the result SMILES.
-
-```{code-cell} ipython3
-if Chem is not None:
-    find = Chem.MolFromSmiles("Cl")   # TO DO
-    put  = Chem.MolFromSmiles("F")    # TO DO
-    mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-    out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-    print(Chem.MolToSmiles(out))
-else:
-    print("RDKit is not available here.")
-```
-
-### 9.5 Build a one-liner resolver
+### 9.4 Build a one-liner resolver
 
 - Input list `["446157", "2244", "CCO", "482752", "c1ccccc1"]`  
 - If it is digits treat as CID else try SMILES else treat as name.  
 - Print `input=# CID=# SMILES=...` and draw if RDKit is available.
 
-```{code-cell} ipython3
+```python
 items = ["446157", "2244", "CCO", "482752", "c1ccccc1"]
 
 for q in items:
-    if q.isdigit():
-        info = pubchem_by_cid(int(q))
-        smi, cid = info["smiles"], info["cid"]
-    elif Chem is not None and Chem.MolFromSmiles(q):
-        smi, cid = q, None
-    else:
-        info = pubchem_by_name(q)
-        smi, cid = info["smiles"], info["cid"]
-    print(f"input={q} CID={cid} SMILES={smi}")
-    if Chem is not None:
-        m = Chem.MolFromSmiles(smi)
-        display(Draw.MolToImage(m, size=(220, 180)))
+    if ...
+    ...#TO DO
+    print(f"input={...} CID={...} SMILES={...}")
 ```
 
 
----
-
-## 10. Solutions
-
-### Solution 9.1
-
-```{code-cell} ipython3
-targets = ["caffeine", "ibuprofen", "acetaminophen"]
-for t in targets:
-    pc_key = pubchem_by_name(t)["inchikey"]
-    cir_key = cir_get(t, "stdinchikey")
-    print(f"{t:14s} PubChem={pc_key}  CIR={cir_key}  match={pc_key==cir_key}")
-```
-
-### Solution 9.2
-
-```{code-cell} ipython3
-if Chem is not None:
-    import pandas as pd
-    rows = []
-    names = ["caffeine", "acetaminophen", "ibuprofen"]
-    for nm in names:
-        info = pubchem_by_name(nm)
-        smi = info["smiles"]
-        m = Chem.MolFromSmiles(smi)
-        rows.append({
-            "name": nm,
-            "smiles": smi,
-            "MolWt": Descriptors.MolWt(m),
-            "LogP": Crippen.MolLogP(m),
-            "HBD": rdMolDescriptors.CalcNumHBD(m),
-            "HBA": rdMolDescriptors.CalcNumHBA(m),
-            "TPSA": rdMolDescriptors.CalcTPSA(m)
-        })
-    pd.DataFrame(rows)
-else:
-    print("RDKit is not available here.")
-```
-
-### Solution 9.3
-
-```{code-cell} ipython3
-hits = pug_view_find_sections(2244, "GHS")
-print(pug_view_text_from_hit(hits[0], max_lines=8))
-```
-
-### Solution 9.4
-
-```{code-cell} ipython3
-if Chem is not None:
-    find = Chem.MolFromSmiles("Cl")
-    put  = Chem.MolFromSmiles("F")
-    mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-    out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-    print(Chem.MolToSmiles(out))
-    Draw.MolToImage(out, size=(300, 220))
-else:
-    print("RDKit is not available here.")
-```
-
-### Solution 9.5
-
-```{code-cell} ipython3
-items = ["446157", "2244", "CCO", "482752", "c1ccccc1"]
-
-for q in items:
-    if q.isdigit():
-        info = pubchem_by_cid(int(q))
-        smi, cid = info["smiles"], info["cid"]
-    elif Chem is not None and Chem.MolFromSmiles(q):
-        smi, cid = q, None
-    else:
-        info = pubchem_by_name(q)
-        smi, cid = info["smiles"], info["cid"]
-    print(f"input={q} CID={cid} SMILES={smi}")
-    if Chem is not None:
-        m = Chem.MolFromSmiles(smi)
-        display(Draw.MolToImage(m, size=(220, 180)))
-```
 
 
