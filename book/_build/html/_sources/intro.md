@@ -27,7 +27,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 ```{admonition} Weekly Schedule
 - **Aug 26 & 28** – Intro + Python basics - [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) 
-- **Sept 9 & 11** – Classification & regression  
+- **Sept 9 & 11** – Classification & regression   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) 
 - **Sept 16 & 18** – Supervised deep learning  
 - **Sept 23 & 25** – Molecular property & reaction prediction  
 - **Sept 30 & Oct 2** – Unsupervised learning 
@@ -41,7 +41,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 :class: tip
 | Date | Assignment / Project  |
 |------|----------------------|
-| **Sept 7** | Assignment 1 due [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) |  
+| **Sept 7** | Assignment 1 due [![Colab](https://img.shields.io/badge/Open-Colab-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) |  
 | **Sept 21** | Assignment 2 due | 
 | **Oct 5** | Project 1 due |  
 | **Oct 19** | Project 1 Evaluation due |  
