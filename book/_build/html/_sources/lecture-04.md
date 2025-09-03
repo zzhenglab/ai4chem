@@ -629,6 +629,18 @@ for q in items:
     print(f"input={...} CID={...} SMILES={...}")
 ```
 
+### 9.5 Process dataset
+
+Load dataset "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv". 
+
+Examine the dataset structure using `df.head()` and select the SMILES strings from first 5 rows to query CIR (see section 4) to get **number of freely rotatable bonds**.
 
 
 
+```python
+#TO DO
+```
+
+```{Hint}
+https://cactus.nci.nih.gov/chemical/structure/your_input/rotor_count
+```
