@@ -395,6 +395,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-9-5">Solution 9.5</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">10. In-class activity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-with-two-features">10.1 Linear Regression with two features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-across-splits">10.2 Ridge across splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pka-regression-two-ways">10.3 pKa regression two ways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pka-to-classification">10.4 pKa to classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tuning-on-toxicity">10.5 Threshold tuning on toxicity</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -433,7 +441,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" src="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x00000299D398B3C0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x00000191F4D9B2C0&gt;
 bond 0 0 - 1 order 2
 bond 1 1 - 2 order 1
 bond 2 1 - 3 order 1
@@ -709,8 +717,8 @@ bond 9 8 - 3 order 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;caffeine&quot;</span><span class="p">,</span> <span class="s2">&quot;ibuprofen&quot;</span><span class="p">,</span> <span class="s2">&quot;acetaminophen&quot;</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
@@ -807,6 +815,192 @@ bond 9 8 - 3 order 1
 </div>
 </section>
 </section>
+<section id="in-class-activity">
+<h1>10. In-class activity<a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h1>
+<section id="linear-regression-with-two-features">
+<h2>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Link to this heading">#</a></h2>
+<p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Q1 starter</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2:  </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ridge-across-splits">
+<h2>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Link to this heading">#</a></h2>
+<p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">splits</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>  <span class="c1"># corresponds to 60/40, 70/30, 80/20, 90/10</span>
+<span class="n">r2_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">splits</span><span class="p">:</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">r2_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">60</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">90</span><span class="p">],</span> <span class="n">r2_scores</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Train %&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;R² (test)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Effect of train/test split on Ridge Regression accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pka-regression-two-ways">
+<h2>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Link to this heading">#</a></h2>
+<p>Build Ridge regression for <strong>pKa</strong> and for <strong>exp(pKa)</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Keep rows with a valid pKa</span>
+<span class="n">df_pka</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">,</span> <span class="s2">&quot;pKa&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_pka</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_pka</span><span class="p">[</span><span class="s2">&quot;pKa&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test R2:  </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parity plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True pKa&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Predicted pKa&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parity plot for pKa regression (Ridge)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pka-to-classification">
+<h2>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Link to this heading">#</a></h2>
+<p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
+<ul class="simple">
+<li><p>Option A: acidic if pKa ≤ 7</p></li>
+<li><p>Option B: median split on pKa</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Clean pKa subset</span>
+<span class="n">df_pka</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">,</span> <span class="s2">&quot;pKa&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_pka</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">pka_vals</span> <span class="o">=</span> <span class="n">df_pka</span><span class="p">[</span><span class="s2">&quot;pKa&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># ---- Helper to run classification and plot ----</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_classification</span><span class="p">(</span><span class="n">y_cls</span><span class="p">,</span> <span class="n">rule_name</span><span class="p">):</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y_cls</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_cls</span>
+    <span class="p">)</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">y_proba</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">acc</span>  <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="n">prec</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">rec</span>  <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f1</span>   <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">auc</span>  <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;--- </span><span class="si">{</span><span class="n">rule_name</span><span class="si">}</span><span class="s2"> ---&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy:  </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">prec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall:    </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1:        </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC:       </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># ROC plot</span>
+    <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thr</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ROC Curve for pKa classification (</span><span class="si">{</span><span class="n">rule_name</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ---- Rule A: acidic if pKa ≤ 7 ----</span>
+<span class="n">y_cls_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">pka_vals</span> <span class="o">&lt;=</span> <span class="mf">7.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">run_classification</span><span class="p">(</span><span class="n">y_cls_A</span><span class="p">,</span> <span class="s2">&quot;Rule A (pKa ≤ 7 = acidic)&quot;</span><span class="p">)</span>
+
+<span class="c1"># ---- Rule B: median split ----</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">pka_vals</span><span class="p">)</span>
+<span class="n">y_cls_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">pka_vals</span> <span class="o">&lt;=</span> <span class="n">median_val</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">run_classification</span><span class="p">(</span><span class="n">y_cls_B</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Rule B (≤ median pKa = acidic, median=</span><span class="si">{</span><span class="n">median_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="threshold-tuning-on-toxicity">
+<h2>10.5 Threshold tuning on toxicity<a class="headerlink" href="#threshold-tuning-on-toxicity" title="Link to this heading">#</a></h2>
+<p>Using the toxicity classifier from Section 5, scan thresholds <code class="docutils literal notranslate"><span class="pre">0.2</span></code> to <code class="docutils literal notranslate"><span class="pre">0.8</span></code> in steps of <code class="docutils literal notranslate"><span class="pre">0.05</span></code>. Find the smallest threshold with <strong>recall ≥ 0.80</strong> and report the corresponding <strong>precision</strong> and <strong>F1</strong>. Plot the metric curves vs threshold.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Starter</span>
+<span class="n">ths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">rec_list</span><span class="p">,</span> <span class="n">prec_list</span><span class="p">,</span> <span class="n">f1_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="n">best_t</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ths</span><span class="p">:</span>
+    <span class="n">pred_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_proba</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_t</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_t</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">pred_t</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">rec_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">);</span> <span class="n">prec_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="n">f1_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">best_t</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span> <span class="o">&gt;=</span> <span class="mf">0.80</span><span class="p">:</span>
+        <span class="n">best_t</span> <span class="o">=</span> <span class="n">t</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First threshold with recall &gt;= 0.80:&quot;</span><span class="p">,</span> <span class="n">best_t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">rec_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Recall&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">prec_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Precision&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">f1_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;F1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Threshold tuning on toxicity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -868,6 +1062,14 @@ bond 9 8 - 3 order 1
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-9-3">Solution 9.3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-9-4">Solution 9.4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-9-5">Solution 9.5</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">10. In-class activity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-with-two-features">10.1 Linear Regression with two features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ridge-across-splits">10.2 Ridge across splits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pka-regression-two-ways">10.3 pKa regression two ways</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pka-to-classification">10.4 pKa to classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-tuning-on-toxicity">10.5 Threshold tuning on toxicity</a></li>
 </ul>
 </li>
 </ul>
