@@ -21,6 +21,9 @@ kernelspec:
 - Make train, validation, and test splits.
 - Fit a simple regression model and a simple classification model.
 - Read and compare common metrics in each case.
+  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing) 
+
+
 
 
 ```{code-cell} ipython3
@@ -88,11 +91,6 @@ df_oxidation_raw
 ```
 
 
-
-Which columns could act as the target `y`? Which would be regression tasks and which would be classification tasks?
-
-
-
 ```{admonition} Think-pair-share
 ⏰
 **Exercise 1.1**
@@ -100,7 +98,7 @@ Which columns could act as the target `y`? Which would be regression tasks and w
 
 Discuss with your neighbor: which collumn(s) can be target **y**?
 
-which are regression tasks and which are classification tasks?
+Which are regression tasks and which are classification tasks?
 ```
 
 
@@ -157,9 +155,9 @@ We test on **held-out** data to estimate generalization. A common split is 80 pe
 ```
 
 
-### 3.2 Splitting the data
+### 3.2 Splitting the data and train
 
-Before training, we need to separate the input features (X) from the target (y). Then we split into training and test sets to evaluate how well the model generalizes.
+Before training, we need to separate the input features (`X`) from the target (`y`). Then we split into training and test sets to evaluate how well the model generalizes.
 
 
 
@@ -206,7 +204,7 @@ plt.legend()
 plt.show()
 ```
 
-### 3.3 Fit linear regression and read metrics
+
 
 
 Blue points are the training set and red points are the test set. We can see that the split looks balanced and the test set covers a different range of values.
@@ -233,30 +231,6 @@ print("R2:", r2)
 ```
 
 Below are metrics, with formulas:
-
-- **Mean Squared Error (MSE)**  
-  $
-  \mathrm{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-  $
-  Squares large errors and makes them stand out.
-
-- **Mean Absolute Error (MAE)**  
-  $
-  \mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n} \lvert y_i - \hat{y}_i \rvert
-  $
-  Average absolute difference. Easy to interpret in target units.
-
-- **Coefficient of Determination \(R^2\)**  
-  $
-  R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2}
-  $
-  Share of variance explained by the model.  
-  $R^2=1$ perfect, $R^2=0$ same as predicting the mean, $R^2<0$ worse than the mean.
-
-
-
-
-**Metrics explained:**
 
 - **Mean Squared Error (MSE):**  
  $
@@ -288,7 +262,7 @@ Below are metrics, with formulas:
 
 Change the test_size=0.2 to 0.1 and random_state=42 to 7 to see any difference in resulting MSE, MAE and R2.
 
-now you can use `reg` to make predictions
+Now you can use `reg` to make predictions
 
 
 
@@ -311,8 +285,9 @@ print("Predicted value:", ys_new_pred)
 A residual plot should look centered around zero without obvious patterns. A parity plot compares predicted to true values and should line up near the 45 degree line.
 ```
 
+After training, we compare the predicted outputs with the true labels from the test set. 
 
-we can also verfify how good our prediction towards the actual ones"""
+This allows us to verify how close the model’s predictions are to the actual values.
 
 
 ```{code-cell} ipython3
@@ -337,8 +312,7 @@ plt.show()
 
 ### 3.3 How split choice affects accuracy
 
-
-Besdies, we can look at how spliting influence the accuracy.
+Besides, we can examine how different splitting strategies influence the accuracy.
 
 
 ```{code-cell} ipython3
@@ -402,13 +376,13 @@ for test_size, seed in [(0.2, 15), (0.2, 42), (0.1, 42),(0.1, 7)]:
 ### 3.4 Learning curves
 
 
-A random seed is just a number you give to a random number generator so it always produces the same sequence of “random” results.
+A random `seed` is simply a number provided to a random number generator to ensure that it produces the same sequence of “random” results each time.
 
-functions like train_test_split shuffle the rows before splitting into train and test sets. If you don’t set a random_state (the seed), every run could give you a slightly different split and therefore different accuracy values. So:
+For example, functions such as `train_test_split` shuffle the dataset before dividing it into training and testing sets. If you do not specify a `random_state` (the seed), every run may produce a slightly different split. This variation can lead to different accuracy values across runs.
 
-Same seed → same split → same results
+**Same seed → same split → same results**
 
-Different seed → different split → possibly different accuracy
+**Different seed → different split → possibly different accuracy**
 
 
 ```{code-cell} ipython3
@@ -469,11 +443,25 @@ plt.show()
 
 ### 3.5 Regularization: Lasso and Ridge
 
-How `.fit(X, y)` works:
-- The model sees inputs `X` and the target `y`.
-- It picks parameters to minimize a loss.
-- Linear Regression uses squared error.  
-- Lasso and Ridge add a penalty term controlled by `alpha` to discourage large coefficients.
+Now, instead of using **Linear Regression**, we can also experiment with other models such as **Lasso Regression**. These alternatives add regularization, which helps prevent overfitting by penalizing overly complex models.  
+
+So, how does `.fit(X, y)` work?  
+
+When you call `model.fit(X, y)`, the following steps occur:  
+
+1. **Model receives the data**  
+   - **X**: the feature matrix (input variables).  
+   - **y**: the target values (labels you want the model to predict).  
+
+2. **Optimization process**  
+   - **Linear Regression**: finds the line, plane, or hyperplane that minimizes the **Mean Squared Error (MSE)** between predictions and true values.  
+   - **Ridge Regression**: minimizes MSE but adds an **L2 penalty** (squares of the coefficients) to shrink coefficients and control variance.  
+   - **Lasso Regression**: minimizes MSE but adds an **L1 penalty** (absolute values of the coefficients), which can drive some coefficients exactly to zero, effectively performing **feature selection**.  
+
+This optimization is usually solved through iterative algorithms that adjust coefficients until the cost function reaches its minimum.  
+
+
+Now, instead of linear regression, we can also try other, such as lasso regression.
 
 
 ```{admonition} Losses
@@ -494,34 +482,6 @@ How `.fit(X, y)` works:
   $
 ```
 
-Now, instead of linear regression, we can also try other, such as lasso regression.
-
-Recall that When you call model.fit(X, y) for linear regression,
-
-**Model sees the data**:
-
-X: the features (inputs)
-
-y: the labels (outputs you want to predict)
-
-**Optimization happens**:
-
-Linear Regression tries to find the line/plane/hyperplane that minimizes MSE.
-
-Ridge/Lasso do the same, but with extra penalty (regularization).
-
-Model learns coefficients (weights):
-
-linear:
-$\hat{y} = w_1x_1 + w_2x_2 + \dots + w_px_p + b$
-
-$\text{Loss} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2$
-
-
-lasso:
-$\hat{y} = w_1x_1 + w_2x_2 + \dots + w_px_p + b$
-
-$\text{Loss} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^p |w_j|$
 
 
 
@@ -552,13 +512,19 @@ print("MAE:", mae)
 print("R2:", r2)
 ```
 
+You can see here that, in fact, **Linear Regression performs slightly better than Lasso Regression**, which shows that a more complex model is not always the better choice.  
 
-You can see here in fact linear regression is slightly better lasso, meaning that not in all case the more complex function the better.
+The prediction rule for Linear Regression is:  
 
-$\hat{y} = w_1x_1 + w_2x_2 + \dots + w_px_p + b$
+$$
+\hat{y} = w_1x_1 + w_2x_2 + \dots + w_px_p + b
+$$
 
-we will also look at rigidge regression
-$\text{Loss} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^p w_j^2$
+We will also look at **Ridge Regression**, which adds an L2 penalty to the loss function:  
+
+$$
+\text{Loss} = \frac{1}{n}\sum_{i=1}^n (y_i - \hat{y}_i)^2 + \alpha \sum_{j=1}^p w_j^2
+$$
 
 
 ```{code-cell} ipython3
@@ -589,18 +555,25 @@ print("MSE:", mse)
 print("MAE:", mae)
 print("R2:", r2)
 ```
+We can see here that the models have very similar performance.  
 
-  We can see here they pretty much have a very similar performance.
-
-  Now, what about fitting out values, like solubility?
-
+Now, what about predicting actual values such as **solubility**?  
 
 ---
 
 
 ## 4. Another regression target: solubility in log space
 
-Let's first try doing exactly same as we did before using `x` features to predict solubility `y` collum.
+Let’s try doing the same process by defining the following molecular descriptors as our input features (**X**):  
+
+- `molwt` (molecular weight)  
+- `logp` (partition coefficient)  
+- `tpsa` (topological polar surface area)  
+- `numrings` (number of rings)  
+
+Our target (**y**) will be the **solubility** column.  
+
+
 
 
 
@@ -659,13 +632,21 @@ print("MAE:", mae_lasso)
 print("R2:", r2_lasso)
 print("--------------")
 ```
-As you can see, this is really bad fitting. Why?
-Solubility often spans orders of magnitude. Taking `log10` of the target can stabilize the range and produce a more linear relation with descriptors.
+The results here are very poor, with a strongly negative $R^2$ value.  
+
+
+
 
 ```{admonition} Stabilize with logs
 Targets like solubility are commonly modeled as `logS`. Taking logs reduces the influence of extreme values and can improve fit quality.
 ```
+So instead of fitting the solubility values directly, we transform them using:  
 
+$$
+y' = \log_{10}(\text{Solubility})
+$$
+
+This way, we predict $y'$ (log-scaled solubility) rather than the raw solubility. 
 
 ```{code-cell} ipython3
 # 1. Select features (X) and target (y)
@@ -747,11 +728,17 @@ df_clf_tox
 Map text labels to numbers so that the model can learn from them. Keep an eye on class balance.
 ```
 
-We will:
+We will perform the following steps:  
 
-Map labels to numbers: toxic -> `1`, non_toxic -> `0`.
+1. **Map labels to numeric values**  
+   - `toxic` → 1  
+   - `non_toxic` → 0  
 
-Keep four features: `MolWt`, `LogP`, `TPSA`, `NumRings`.
+2. **Select features for training**  
+   - `MolWt` (Molecular Weight)  
+   - `LogP` (Partition Coefficient)  
+   - `TPSA` (Topological Polar Surface Area)  
+   - `NumRings` (Number of Rings)  
 
 
 ```{code-cell} ipython3
@@ -773,14 +760,14 @@ y = y[mask_finite]
 X[:3], y[:10]
 ```
 
-```{admonition} Stratification
-Use `stratify=y` in the split to keep label proportions similar in train and test.
+When splitting the data into training and test sets, we will use **stratification**.  
+
+
+```{admonition} Why stratification
+Stratification ensures that the proportion of labels (toxic vs non-toxic) remains approximately the same in both the training and test sets. This prevents issues where one split might have many more examples of one class than the other, which could bias model evaluation.  
 ```
 
 
-Train-test split with stratification
-
-Stratification keeps label balance similar in both splits.
 
 
 ```{code-cell} ipython3
@@ -795,10 +782,10 @@ print("Test class balance:", y_test.mean().round(3))
 
 
 
-The name LogisticRegression is a bit misleading. Even though it has "regression" in the name, it is not used for predicting continuous values.
+The name **LogisticRegression** can be a bit misleading. Even though it contains the word *regression*, it is **not** used for predicting continuous values.  
 
 ```{admonition} Difference
-Logistic Regression → for classification (e.g., spam vs. not spam, toxic vs. not toxic). It outputs probabilities between 0 and 1, then assigns classes.
+Logistic Regression → for classification (e.g., spam vs. not spam, toxic vs. not toxic). It outputs probabilities between `0` and `1`. A threshold (commonly `0.5`) is then applied to assign class labels.  
 
 Linear Regression → for regression (predicting continuous numbers, like prices, scores, or temperatures).
 ```
@@ -856,7 +843,7 @@ $$
 **AUC**: area under the ROC curve. Measures ranking of positives vs negatives over all thresholds.  
 ```
 
-Now we can exame metrics"""
+Now we can exame metrics:
 
 
 ```{code-cell} ipython3
@@ -882,27 +869,17 @@ print(f"AUC:       {auc:.3f}")
 Inspect the mix of true vs predicted labels and visualize how sensitivity and specificity trade off across thresholds.
 ```
 
-What each metric means
+By default, most classifiers (such as Logistic Regression) use a threshold of **0.5**:  
+- If predicted probability ≥ 0.5 → class = 1 (toxic)  
+- If predicted probability < 0.5 → class = 0 (non-toxic)  
 
-Accuracy: fraction of correct predictions.
+However, we can **change the threshold** depending on the problem:  
+- Lowering the threshold (e.g., 0.3) increases sensitivity (recall), catching more positives but with more false positives.  
+- Raising the threshold (e.g., 0.7) increases precision, reducing false positives but possibly missing some true positives.  
 
-Accuracy = TP + TN / (TP + FP + TN + FN)
-
-Precision: among predicted toxic, how many are truly toxic.
-
-Precision = TP + FP / (TP + FP + TN + FN)
-
-Recall: among truly toxic, how many we caught.
-
-Recall = TP + FN / (TP + FP + TN + FN)
-
-F1: harmonic mean of precision and recall.
-
-F1 = 2⋅ (Precision+Recall)/ Precision⋅Recall
-
-AUC: area under the ROC curve. Measures ranking of positives vs negatives over all thresholds.
-
-Now we can also Change the classification threshold:
+This trade-off is important in real-world settings. For example:  
+- In medical screening, we may prefer higher recall (catch all possible cases).  
+- In spam filtering, we may prefer higher precision (avoid marking valid emails as spam).  
 
 
 ```{code-cell} ipython3
@@ -945,8 +922,10 @@ print(f"F1: {f1_score(y_test, pred):.3f}")
 print(f"AUC: {roc_auc_score(y_test, proba):.3f}")
 ```
 
+Depending on how you set the classification threshold, the evaluation metrics will change.  
 
-Depending on how you decide therehold, the values will be different. If you use threhold = 0.5 you will get exact same result as we had before.
+- If you use a **threshold = 0.5**, you will obtain exactly the same results as before (the default behavior).  
+- Adjusting the threshold upward or downward will shift the balance between **precision** and **recall**, leading to different values for accuracy, F1 score, and other metrics.  
 
 
 
@@ -994,15 +973,11 @@ Now, let's think about this:
 
 So far we treated melting point (MP) as a continuous variable and built regression models. Another approach is to discretize MP into categories and reframe the task as classification. This can be useful if we only need a decision (e.g., low vs. medium vs. high melting point) rather than an exact temperature.
 
-Step 1. Define Class Boundaries
+We split melting points into three bins:  
+> **Class 0 (Low):** MP ≤ 100 °C  
+> **Class 1 (Medium):** 100 < MP ≤ 200 °C  
+> **Class 2 (High):** MP > 200 °C  
 
-We split melting points into three bins:
-
-> Class 0 (low): MP ≤ 100 °C
-
-> Class 1 (medium): 100 < MP ≤ 200 °C
-
-> Class 2 (high): MP > 200 °C
 
 This creates a categorical target suitable for classification models.
 
@@ -1034,9 +1009,13 @@ X_train,  y_train
 The logistic model extends naturally to more than two classes. Scikit-learn handles this under the hood.
 ```
 
-Now we can Train Logistic Regression
+Now we can train a **Logistic Regression** model on the melting point classification task.  
 
-Logistic regression can be extended to multiple classes. With the multinomial setting, the model learns separate decision boundaries for each class.
+Logistic Regression is not limited to binary problems — it can be extended to handle **multiple classes**.  
+- In the **multinomial** setting, the model learns separate decision boundaries for each class.  
+- Each class receives its own probability, and the model assigns the label with the highest probability.  
+
+This allows us to predict whether a compound falls into **low**, **medium**, or **high** melting point categories. 
 
 
 ```{code-cell} ipython3
@@ -1064,26 +1043,22 @@ print(f"F1:        {f1:.3f}")
 For multiple classes there are different ways to average metrics across classes. **Macro** gives each class equal weight, **micro** aggregates counts, and **weighted** weights by class frequency.
 ```
 
-Note: When you move from binary classification to multi-class classification, metrics like precision, recall, and F1 can’t be defined in just one way — you need to decide how to average them across multiple classes. That’s where terms like macro, micro, and weighted come in.
+Note: When moving from **binary classification** to **multi-class classification**, metrics like precision, recall, and F1 score cannot be defined in just one way.  
+You need to decide **how to average** them across multiple classes. This is where strategies such as **macro**, **micro**, and **weighted** averaging come into play.  
 
-**Macro averaging**:
+### Macro Averaging  
+- Compute the metric (precision, recall, or F1) **for each class separately**.  
+- Take the **simple, unweighted average** across all classes.  
+- Every class contributes equally, regardless of how many samples it has.  
 
-Compute precision (or recall, or F1) for each class separately.
+**Example:**  
+Suppose we have 3 classes:  
+- Class 0: 500 samples  
+- Class 1: 100 samples  
+- Class 2: 50 samples  
 
-Then take the simple (unweighted) average across classes.
-
-This way, every class counts equally, no matter how many samples it has.
-
-Example:
-Suppose you have 3 classes:
-
-Class 0 has 500 samples
-
-Class 1 has 100 samples
-
-Class 2 has 50 samples
-
-If the model does very well on class 0 (the big class) but very poorly on class 2 (the small class), macro averaging will punish the model because class 2’s F1 still contributes equally to the average.
+If the model performs very well on **Class 0** (the large class) but very poorly on **Class 2** (the small class), **macro averaging** will penalize the model.  
+This is because each class’s F1 score contributes equally to the final average, even though the class sizes are different.  
 
 
 ```{code-cell} ipython3
@@ -1134,251 +1109,8 @@ plt.show()
 
 ---
 
-## 7. In-class activity
 
-Work in pairs. Five short questions. The first two are very easy warmups. Every task sticks to the models and descriptors used above. Fill in the blanks, then check your work in the solution section.
-
-### 7.1 Linear Regression with two features
-
-Use only `MolWt` and `TPSA` to predict **Melting Point** with Linear Regression. Use a 90/10 split and report **MSE**, **MAE**, and **R²**.
-
-```python
-
-# Q1 starter
-
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-
-X = df_reg_mp[["MolWt", "TPSA"]]
-y = df_reg_mp["Melting Point"]
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.10, random_state=0
-)
-
-reg = LinearRegression().fit(X_train, y_train)
-y_pred = reg.predict(X_test)
-
-print(f"MSE: {mean_squared_error(y_test, y_pred):.3f}")
-print(f"MAE: {mean_absolute_error(y_test, y_pred):.3f}")
-print(f"R2:  {r2_score(y_test, y_pred):.3f}")
-```
-
-### 7.2 Ridge across splits
-
-Train a Ridge model (`alpha=1.0`) for **Melting Point** using `MolWt, LogP, TPSA, NumRings`. Compare test **R²** for train sizes 60, 70, 80, 90 percent with `random_state=42`. Plot **R²** vs train percent.
-
-```python
-
-# Q2 revised
-
-
-X = df_reg_mp[["MolWt", "LogP", "TPSA", "NumRings"]].values
-y = df_reg_mp["Melting Point"].values
-
-splits = [0.4, 0.3, 0.2, 0.1]  # corresponds to 60/40, 70/30, 80/20, 90/10
-r2_scores = []
-
-for t in splits:
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=t, random_state=42
-    )
-    model = Ridge(alpha=1.0).fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    r2_scores.append(r2_score(y_test, y_pred))
-
-# Plot results
-plt.figure(figsize=(6,4))
-plt.plot([60,70,80,90], r2_scores, "o-", lw=2)
-plt.xlabel("Train %")
-plt.ylabel("R² (test)")
-plt.title("Effect of train/test split on Ridge Regression accuracy")
-plt.show()
-```
-
-### 7.3 pKa regression two ways
-
-Build Ridge regression for **pKa** and for **exp(pKa)** using the same four descriptors. Report **R²** and **MSE** for each.
-
-```python
-
-# Q3 final
-
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import Ridge
-from sklearn.metrics import r2_score, mean_squared_error
-import matplotlib.pyplot as plt
-
-# Keep rows with a valid pKa
-df_pka = df[["MolWt", "LogP", "TPSA", "NumRings", "pKa"]].dropna()
-
-X = df_pka[["MolWt", "LogP", "TPSA", "NumRings"]].values
-y = df_pka["pKa"].values
-
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.20, random_state=42
-)
-
-model = Ridge(alpha=1.0).fit(X_train, y_train)
-y_pred = model.predict(X_test)
-
-print(f"Test R2:  {r2_score(y_test, y_pred):.3f}")
-print(f"Test MSE: {mean_squared_error(y_test, y_pred):.3f}")
-
-# Parity plot
-plt.figure(figsize=(5,4))
-plt.scatter(y_test, y_pred, alpha=0.6)
-lims = [min(y_test.min(), y_pred.min()), max(y_test.max(), y_pred.max())]
-plt.plot(lims, lims, "k--")
-plt.xlabel("True pKa")
-plt.ylabel("Predicted pKa")
-plt.title("Parity plot for pKa regression (Ridge)")
-plt.show()
-```
-
-### 7.4 pKa to classification
-
-Turn **pKa** into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.
-
-- Option A: acidic if pKa ≤ 7  
-- Option B: median split on pKa
-
-```python
-
-# Clean pKa subset
-df_pka = df[["MolWt", "LogP", "TPSA", "NumRings", "pKa"]].dropna()
-X = df_pka[["MolWt", "LogP", "TPSA", "NumRings"]].values
-pka_vals = df_pka["pKa"].values
-
-# ---- Helper to run classification and plot ----
-def run_classification(y_cls, rule_name):
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y_cls, test_size=0.20, random_state=42, stratify=y_cls
-    )
-
-    clf = LogisticRegression(max_iter=1000)
-    clf.fit(X_train, y_train)
-
-    y_pred = clf.predict(X_test)
-    y_proba = clf.predict_proba(X_test)[:, 1]
-
-    acc  = accuracy_score(y_test, y_pred)
-    prec = precision_score(y_test, y_pred, zero_division=0)
-    rec  = recall_score(y_test, y_pred, zero_division=0)
-    f1   = f1_score(y_test, y_pred, zero_division=0)
-    auc  = roc_auc_score(y_test, y_proba)
-
-    print(f"--- {rule_name} ---")
-    print(f"Accuracy:  {acc:.3f}")
-    print(f"Precision: {prec:.3f}")
-    print(f"Recall:    {rec:.3f}")
-    print(f"F1:        {f1:.3f}")
-    print(f"AUC:       {auc:.3f}")
-    print()
-
-    # ROC plot
-    fpr, tpr, thr = roc_curve(y_test, y_proba)
-    plt.figure(figsize=(5,4))
-    plt.plot(fpr, tpr, lw=2, label=f"AUC = {auc:.3f}")
-    plt.plot([0,1],[0,1], "k--", lw=1)
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
-    plt.title(f"ROC Curve for pKa classification ({rule_name})")
-    plt.legend()
-    plt.show()
-
-# ---- Rule A: acidic if pKa ≤ 7 ----
-y_cls_A = (pka_vals <= 7.0).astype(int)
-run_classification(y_cls_A, "Rule A (pKa ≤ 7 = acidic)")
-
-# ---- Rule B: median split ----
-median_val = np.median(pka_vals)
-y_cls_B = (pka_vals <= median_val).astype(int)
-run_classification(y_cls_B, f"Rule B (≤ median pKa = acidic, median={median_val:.2f})")
-```
-
-### 7.5 Threshold tuning on toxicity
-
-Using the toxicity classifier from Section 5, scan thresholds `0.2` to `0.8` in steps of `0.05`. Find the smallest threshold with **recall ≥ 0.80** and report the corresponding **precision** and **F1**. Plot the metric curves vs threshold.
-
-```python
-# Starter
-ths = np.arange(0.20, 0.81, 0.05)
-rec_list, prec_list, f1_list = [], [], []
-best_t = None
-
-for t in ths:
-    pred_t = (y_proba >= t).astype(int)
-    r = recall_score(y_test, pred_t)
-    p = precision_score(y_test, pred_t, zero_division=0)
-    f = f1_score(y_test, pred_t, zero_division=0)
-    rec_list.append(r); prec_list.append(p); f1_list.append(f)
-    if best_t is None and r >= 0.80:
-        best_t = t
-
-print("First threshold with recall >= 0.80:", best_t)
-
-plt.figure(figsize=(7,5))
-plt.plot(ths, rec_list, marker="o", label="Recall")
-plt.plot(ths, prec_list, marker="o", label="Precision")
-plt.plot(ths, f1_list, marker="o", label="F1")
-plt.xlabel("Threshold")
-plt.ylabel("Score")
-plt.title("Threshold tuning on toxicity")
-plt.legend()
-plt.grid(True)
-plt.show()
-```
-
----
-
-## 8. Solutions
-
-```{admonition} How to use
-Run these cells only after you have attempted the in-class questions above.
-```
-
-### 8.1 Solution for 7.1
-
-```{code-cell} ipython3
-# Atomic weights (g mol^-1)
-# Solution relies on the code provided in Q1 exactly as given there.
-# Nothing else needed beyond running the starter block in Q1.
-```
-
-> The printed MSE, MAE, and R² from your run are the answer. Values depend on the random split.
-
-### 8.2 Solution for 7.2
-
-```{code-cell} ipython3
-# Use the Q2 block exactly as written above to produce the plot and R² values.
-# The numeric outputs printed form the answer.
-```
-
-### 8.3 Solution for 7.3
-
-```{code-cell} ipython3
-# The Q3 block prints R² and MSE and draws a parity plot.
-# If you also try exp(pKa), set y = np.exp(df_pka["pKa"].values) and repeat.
-```
-
-### 8.4 Solution for 7.4
-
-```{code-cell} ipython3
-# Run the two calls to run_classification defined in Q4 to print metrics and ROC for each rule.
-```
-
-### 8.5 Solution for 7.5
-
-```{code-cell} ipython3
-# After fitting the toxicity model in Section 5, run the threshold scan block.
-# Report the first threshold with recall >= 0.80 and its precision and F1 (read from the lists or recompute at best_t).
-```
-
----
-
-## 9. Quick reference
+## 8. Quick reference
 
 ```{admonition} Model recipes
 - **LinearRegression**: `fit(X_train, y_train)` then `predict(X_test)`
@@ -1400,7 +1132,7 @@ Run these cells only after you have attempted the in-class questions above.
 
 ---
 
-## 10. Glossary
+## 9. Glossary
 
 ```{glossary}
 supervised learning
@@ -1433,3 +1165,85 @@ macro averaging
 parity plot
   Scatter of predicted vs true values. Ideal points lie on the diagonal.
 ```
+
+
+---
+
+## 10. In-class activity
+
+
+### 10.1 Linear Regression with two features
+
+Use only `MolWt` and `TPSA` to predict **Melting Point** with Linear Regression. Use a 90/10 split and report **MSE**, **MAE**, and **R²**.
+
+```python
+X = df_reg_mp[["MolWt", "TPSA"]]
+y = df_reg_mp["Melting Point"]
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=..., random_state=...
+)
+
+... #TO DO
+
+print(f"MSE: {mean_squared_error(y_test, y_pred):.3f}")
+print(f"MAE: {mean_absolute_error(y_test, y_pred):.3f}")
+print(f"R2:  {r2_score(y_test, y_pred):.3f}")
+```
+
+### 10.2 Ridge across splits
+
+Train a Ridge model (`alpha=1.0`) for **Melting Point** using `MolWt, LogP, TPSA, NumRings`. Compare test **R²** for train sizes 60, 70, 80, 90 percent with `random_state=42`. Plot **R²** vs train percent.
+
+```python
+X = ... #TO DO
+y = ... #TO DO
+
+splits = [...]  # corresponds to 60/40, 70/30, 80/20, 90/10
+r2_scores = [] # empty, no need to modify
+
+for t in splits:
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=t, random_state=... ... #TO DO
+    )
+    model = Ridge(alpha=1.0).fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    r2_scores.append(r2_score(y_test, y_pred))
+
+# Plot results
+plt.figure(figsize=(6,4))
+plt.plot([60,70,80,90], r2_scores, "o-", lw=2)
+plt.xlabel("Train %")
+plt.ylabel("R² (test)")
+plt.title("Effect of train/test split on Ridge Regression accuracy")
+plt.show()
+```
+
+### 10.3 pKa regression two ways
+
+Build Ridge regression for **pKa** using the same four descriptors. Report **R²** and **MSE** for each.
+
+```python
+... #TO DO
+```
+
+### 10.4 pKa to classification
+
+Turn **pKa** into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.
+
+- Option A: acidic if pKa ≤ 7  
+- Option B: median split on pKa
+
+```python
+... #TO DO
+```
+
+### 10.5 Threshold tuning on toxicity
+
+Using the toxicity classifier from Section 5, scan thresholds `0.2` to `0.8` in steps of `0.05`. Find the smallest threshold with **recall ≥ 0.80** and report the corresponding **precision** and **F1**. Plot the metric curves vs threshold.
+If needed, you can use ChatGPT to work on this question.
+
+```python
+... #TO DO
+```
+---
