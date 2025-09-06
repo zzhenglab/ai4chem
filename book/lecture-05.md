@@ -96,7 +96,7 @@ df_oxidation_raw
 **Exercise 1.1**
 
 
-Discuss with your neighbor: which collumn(s) can be target **y**?
+Which column(s) can be target **y**?
 
 Which are regression tasks and which are classification tasks?
 ```
@@ -386,59 +386,72 @@ For example, functions such as `train_test_split` shuffle the dataset before div
 
 
 ```{code-cell} ipython3
-# ---- Learning curves: how training size changes accuracy ----
-from sklearn.model_selection import ShuffleSplit, learning_curve
+from sklearn.model_selection import train_test_split, learning_curve
 from sklearn.linear_model import LinearRegression
 import numpy as np
 import matplotlib.pyplot as plt
 
-reg = LinearRegression()
-cv = ShuffleSplit(n_splits=20, test_size=0.2, random_state=42)
+seeds = [0, 1, 2, 3, 4]
 train_sizes = np.linspace(0.1, 0.9, 9)
 
-# R2 learning curve
-train_sizes_abs, train_scores_r2, test_scores_r2 = learning_curve(
-    estimator=reg, X=X, y=y,
-    train_sizes=train_sizes, cv=cv,
-    scoring="r2", shuffle=True, random_state=42
-)
-train_mean_r2 = train_scores_r2.mean(axis=1)
-train_std_r2  = train_scores_r2.std(axis=1)
-test_mean_r2  = test_scores_r2.mean(axis=1)
-test_std_r2   = test_scores_r2.std(axis=1)
+# Storage for test scores
+test_scores_r2_all = []
+test_scores_mae_all = []
 
+for seed in seeds:
+    # Fixed train-test split per seed
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=seed)
+
+    # R²
+    train_sizes_abs, train_scores_r2, test_scores_r2 = learning_curve(
+        estimator=LinearRegression(), 
+        X=X_train, y=y_train,
+        train_sizes=train_sizes, 
+        scoring="r2", 
+        shuffle=False
+    )
+    test_scores_r2_all.append(test_scores_r2.mean(axis=1))
+
+    # MAE
+    _, train_scores_mae, test_scores_mae = learning_curve(
+        estimator=LinearRegression(), 
+        X=X_train, y=y_train,
+        train_sizes=train_sizes, 
+        scoring="neg_mean_absolute_error", 
+        shuffle=False
+    )
+    test_scores_mae_all.append(-test_scores_mae.mean(axis=1))
+
+# Convert to arrays
+test_scores_r2_all = np.array(test_scores_r2_all)
+test_scores_mae_all = np.array(test_scores_mae_all)
+
+# Mean and std across seeds
+test_mean_r2 = test_scores_r2_all.mean(axis=0)
+test_std_r2  = test_scores_r2_all.std(axis=0)
+test_mean_mae = test_scores_mae_all.mean(axis=0)
+test_std_mae  = test_scores_mae_all.std(axis=0)
+
+# Plot R²
 plt.figure(figsize=(7,5))
-plt.plot(train_sizes_abs, train_mean_r2, "o-", label="Train R2")
-plt.fill_between(train_sizes_abs, train_mean_r2-train_std_r2, train_mean_r2+train_std_r2, alpha=0.2)
-plt.plot(train_sizes_abs, test_mean_r2, "o-", label="CV R2")
-plt.fill_between(train_sizes_abs, test_mean_r2-test_std_r2, test_mean_r2+test_std_r2, alpha=0.2)
+plt.plot(train_sizes_abs, test_mean_r2, "o-", label="Test R2")
+plt.fill_between(train_sizes_abs, test_mean_r2 - test_std_r2, test_mean_r2 + test_std_r2, alpha=0.2)
 plt.xlabel("Training set size")
 plt.ylabel("R2")
-plt.title("Learning curve for Linear Regression (R2)")
+plt.title("Test R2 across seeds")
 plt.legend()
 plt.show()
 
-# MAE learning curve (lower is better)
-train_sizes_abs, train_scores_mae, test_scores_mae = learning_curve(
-    estimator=reg, X=X, y=y,
-    train_sizes=train_sizes, cv=cv,
-    scoring="neg_mean_absolute_error", shuffle=True, random_state=42
-)
-train_mean_mae = -train_scores_mae.mean(axis=1)
-train_std_mae  =  train_scores_mae.std(axis=1)
-test_mean_mae  = -test_scores_mae.mean(axis=1)
-test_std_mae   =  test_scores_mae.std(axis=1)
-
+# Plot MAE
 plt.figure(figsize=(7,5))
-plt.plot(train_sizes_abs, train_mean_mae, "o-", label="Train MAE")
-plt.fill_between(train_sizes_abs, train_mean_mae-train_std_mae, train_mean_mae+train_std_mae, alpha=0.2)
-plt.plot(train_sizes_abs, test_mean_mae, "o-", label="CV MAE")
-plt.fill_between(train_sizes_abs, test_mean_mae-test_std_mae, test_mean_mae+test_std_mae, alpha=0.2)
+plt.plot(train_sizes_abs, test_mean_mae, "o-", label="Test MAE")
+plt.fill_between(train_sizes_abs, test_mean_mae - test_std_mae, test_mean_mae + test_std_mae, alpha=0.2)
 plt.xlabel("Training set size")
 plt.ylabel("MAE")
-plt.title("Learning curve for Linear Regression (MAE)")
+plt.title("Test MAE across seeds")
 plt.legend()
 plt.show()
+
 ```
 
 ### 3.5 Regularization: Lasso and Ridge
