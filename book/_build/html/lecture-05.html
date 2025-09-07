@@ -410,8 +410,22 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-regression-and-classification">
 <h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#what-is-supervised-learning" id="id2">1. What is supervised learning</a></p></li>
+<li><p><a class="reference internal" href="#data-preview-and-descriptor-engineering" id="id3">2. Data preview and descriptor engineering</a></p></li>
+<li><p><a class="reference internal" href="#regression-workflow-on-melting-point" id="id4">3. Regression workflow on melting point</a></p></li>
+<li><p><a class="reference internal" href="#another-regression-target-solubility-in-log-space" id="id5">4. Another regression target: solubility in log space</a></p></li>
+<li><p><a class="reference internal" href="#binary-classification-toxicity" id="id6">5. Binary classification: toxicity</a></p></li>
+<li><p><a class="reference internal" href="#from-regression-to-classes-melting-point-bins" id="id7">6. From regression to classes: melting point bins</a></p></li>
+<li><p><a class="reference internal" href="#quick-reference" id="id8">8. Quick reference</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id9">9. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id10">10. In-class activity</a></p></li>
+</ul>
+</nav>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tell classification from regression by the target type.</p></li>
 <li><p>Load small chemistry-like datasets with SMILES and simple text features.</p></li>
@@ -491,7 +505,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </section>
 <section id="what-is-supervised-learning">
-<h2>1. What is supervised learning<a class="headerlink" href="#what-is-supervised-learning" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Permalink to this heading">#</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <ul class="simple">
@@ -508,7 +522,7 @@ Note: you may need to restart the kernel to use updated packages.
 </ul>
 </section>
 <section id="data-preview-and-descriptor-engineering">
-<h2>2. Data preview and descriptor engineering<a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Permalink to this heading">#</a></h2>
 <p>We will read a small CSV from a public repository and compute a handful of molecular descriptors from SMILES. These lightweight features are enough to practice the full workflow.</p>
 <div class="admonition-tip admonition">
 <p class="admonition-title">Tip</p>
@@ -944,7 +958,7 @@ Note: you may need to restart the kernel to use updated packages.
 </section>
 <hr class="docutils" />
 <section id="regression-workflow-on-melting-point">
-<h2>3. Regression workflow on melting point<a class="headerlink" href="#regression-workflow-on-melting-point" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Permalink to this heading">#</a></h2>
 <p>We start with a single property, the <strong>Melting Point</strong>, and use four descriptors as features.</p>
 <p>Now let’s first look at regression, we will focus one property prediction at a time. first create a new df”””</p>
 <div class="cell docutils container">
@@ -1649,7 +1663,7 @@ R2: 0.8741026174988968
 </section>
 <hr class="docutils" />
 <section id="another-regression-target-solubility-in-log-space">
-<h2>4. Another regression target: solubility in log space<a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Permalink to this heading">#</a></h2>
 <p>Let’s try doing the same process by defining the following molecular descriptors as our input features (<strong>X</strong>):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">molwt</span></code> (molecular weight)</p></li>
@@ -1833,7 +1847,7 @@ R2: 0.95879044442042
 </section>
 <hr class="docutils" />
 <section id="binary-classification-toxicity">
-<h2>5. Binary classification: toxicity<a class="headerlink" href="#binary-classification-toxicity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Permalink to this heading">#</a></h2>
 <p>We turn to a yes or no outcome, using the same four descriptors. Logistic Regression outputs probabilities. A threshold converts those into class predictions.</p>
 <p>We will build a binary classifier for <strong>Toxicity</strong> using the pre-built table:</p>
 <div class="cell docutils container">
@@ -2054,7 +2068,10 @@ R2: 0.95879044442042
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train shape: (460, 4)  Test shape: (115, 4)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train shape:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (460, 4)  Test shape: (115, 4)
 Train class balance: 0.824  1 = toxic
 Test class balance: 0.826
 </pre></div>
@@ -2169,7 +2186,9 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.957
-Precision: 0.979
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision: 0.979
 Recall:    0.968
 F1:        0.974
 AUC:       0.992
@@ -2297,7 +2316,7 @@ AUC: 0.992
 </section>
 <hr class="docutils" />
 <section id="from-regression-to-classes-melting-point-bins">
-<h2>6. From regression to classes: melting point bins<a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s think about this:
 <strong>Can regression question be turning into classificiation?</strong></p>
 <blockquote>
@@ -2491,7 +2510,7 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2>8. Quick reference<a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-model-recipes admonition">
 <p class="admonition-title">Model recipes</p>
 <ul class="simple">
@@ -2519,7 +2538,7 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2>9. Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
 <dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Permalink to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
 </dd>
@@ -2545,7 +2564,7 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2>10. In-class activity<a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <section id="linear-regression-with-two-features">
 <h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Permalink to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>

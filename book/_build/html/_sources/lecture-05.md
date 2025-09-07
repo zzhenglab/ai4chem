@@ -13,6 +13,11 @@ kernelspec:
 
 # Lecture 5 - Regression and Classification
 
+```{contents}
+:local:
+:depth: 1
+```
+
 
 ## Learning goals
 

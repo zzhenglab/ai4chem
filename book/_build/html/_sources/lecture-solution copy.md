@@ -16,128 +16,6 @@ kernelspec:
 
 
 
-
-
----
-
-
-
-## 9. Solutions
-
-Open after you try Section 8.
-
-### Solution 8.1
-
-```{code-cell} ipython3
-from rdkit import Chem
-from rdkit.Chem import Draw
-
-smi = "O=C(O)c1ccccc1Cl"
-
-mol = Chem.MolFromSmiles(smi)
-display(Draw.MolToImage(mol, size=(350, 250), includeAtomNumbers=True))
-
-num_rings = Chem.GetSSSR(mol)
-print("rings:", num_rings)
-
-for b in mol.GetBonds():
-    print("bond", b.GetIdx(), b.GetBeginAtomIdx(), "-", b.GetEndAtomIdx(), "order", int(b.GetBondTypeAsDouble()))
-```
-
-### Solution 8.2
-
-```{code-cell} ipython3
-import pandas as pd
-from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-
-names = ["Cn1cnc2N(C)C(=O)N(C)C(=O)c12", "CC(=O)Nc1ccc(O)cc1", "CC(C)Cc1ccc(cc1)C(C)C(O)=O"]
-rows = []
-for nm in names:
-    m = Chem.MolFromSmiles(nm)
-    rows.append({
-        "smiles": nm,
-        "MolWt": Descriptors.MolWt(m),
-        "LogP": Crippen.MolLogP(m),
-        "HBD": rdMolDescriptors.CalcNumHBD(m),
-        "HBA": rdMolDescriptors.CalcNumHBA(m),
-        "TPSA": rdMolDescriptors.CalcTPSA(m)
-    })
-
-pd.DataFrame(rows)
-```
-
-### Solution 8.3
-
-```{code-cell} ipython3
-find = Chem.MolFromSmiles("Cl")
-put  = Chem.MolFromSmiles("F")
-mol  = Chem.MolFromSmiles("Clc1ccc(cc1)C(=O)O")
-out  = Chem.ReplaceSubstructs(mol, find, put, replaceAll=True)[0]
-print(Chem.MolToSmiles(out))
-Draw.MolToImage(out, size=(350, 250))
-```
-
-### Solution 8.4
-
-```{code-cell} ipython3
-mol = Chem.MolFromSmiles("c1ccccc1")
-em = Chem.EditableMol(mol)
-
-idx_C = em.AddAtom(Chem.Atom("C"))
-idx_H1 = em.AddAtom(Chem.Atom("H"))
-idx_H2 = em.AddAtom(Chem.Atom("H"))
-idx_H3 = em.AddAtom(Chem.Atom("H"))
-
-em.AddBond(2, idx_C, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H1, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H2, order=Chem.BondType.SINGLE)
-em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
-
-mol2 = em.GetMol()
-Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
-```
-
-### Solution 8.5
-
-
-```{code-cell} ipython3
-# Paste the SMILES you obtained from PubChem Draw structure
-smi1 = "CC1=CC=CC=C1N=NC2=C(C=CC3=CC=CC=C32)O"  # for image 1
-smi2 = "C1=CC(=C(C=C1I)C(=O)O)O"  # for image 2
-smi3 = "C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3"  # for image 3
-
-m1 = Chem.MolFromSmiles(smi1)
-m2 = Chem.MolFromSmiles(smi2)
-m3 = Chem.MolFromSmiles(smi3)
-
-Draw.MolsToGridImage([m1, m2, m3], legends=["img1","img2","img3"], molsPerRow=3, subImgSize=(220,200), useSVG=True)
-```
-```{code-cell} ipython3
-# Compute quick properties for the three molecules
-from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-import pandas as pd
-
-def props(m):
-    return dict(
-        MolWt=Descriptors.MolWt(m),
-        LogP=Crippen.MolLogP(m),
-        HBD=rdMolDescriptors.CalcNumHBD(m),
-        HBA=rdMolDescriptors.CalcNumHBA(m),
-        TPSA=rdMolDescriptors.CalcTPSA(m)
-    )
-
-df = pd.DataFrame([
-    {"name":"img1","smiles":smi1, **props(m1)},
-    {"name":"img2","smiles":smi2, **props(m2)},
-    {"name":"img3","smiles":smi3, **props(m3)}
-]).round(3)
-
-df
-```
-
-
-
 ## 10. In-class activity
 
 
@@ -327,3 +205,98 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+
+
+
+
+
+
+
+
+
+
+## 11. Solutions
+
+### 11.1 Solution Q1
+
+```{code-cell} ipython3
+# Log target
+df_reg_mp = df_reg_mp.copy()
+y_log = np.log10(df_reg_mp["Solubility_mol_per_L"] + 1e-6)
+
+# Features and split
+X = df_reg_mp[["MolWt","LogP","TPSA","NumRings"]].values
+X_tr, X_te, y_tr, y_te = train_test_split(X, y_log, test_size=0.2, random_state=15)
+
+# Plots
+plt.figure(figsize=(5,3))
+plt.hist(y_log, bins=30, alpha=0.85)
+plt.xlabel("log10(Solubility + 1e-6)"); plt.ylabel("Count"); plt.title("Log-solubility")
+plt.show()
+
+pd.plotting.scatter_matrix(df_reg_mp[["MolWt","LogP","TPSA","NumRings"]], figsize=(5.5,5.5))
+plt.suptitle("Descriptor scatter matrix", y=1.02); plt.show()
+```
+
+### 11.2 Solution Q2
+
+```{code-cell} ipython3
+cv = KFold(n_splits=5, shuffle=True, random_state=1)
+alphas = np.logspace(-2, 3, 12)
+means = [cross_val_score(Ridge(alpha=a), X_tr, y_tr, cv=cv, scoring="r2").mean() for a in alphas]
+best_a = float(alphas[int(np.argmax(means))])
+ridge_best = Ridge(alpha=best_a).fit(X_tr, y_tr)
+print(f"best alpha={best_a:.4f}  CV mean R2={max(means):.3f}")
+```
+
+### 11.3 Solution Q3
+
+```{code-cell} ipython3
+y_hat = ridge_best.predict(X_te)
+print(f"Test MSE={mean_squared_error(y_te,y_hat):.4f}  "
+      f"MAE={mean_absolute_error(y_te,y_hat):.4f}  "
+      f"R2={r2_score(y_te,y_hat):.3f}")
+
+plt.figure(figsize=(4.2,4))
+plt.scatter(y_te, y_hat, alpha=0.7)
+lims = [min(y_te.min(), y_hat.min()), max(y_te.max(), y_hat.max())]
+plt.plot(lims, lims, "k--", lw=1)
+plt.xlabel("True log-solubility"); plt.ylabel("Predicted"); plt.title("Parity — Ridge"); plt.show()
+
+resid = y_te - y_hat
+plt.figure(figsize=(4.2,4))
+plt.scatter(y_hat, resid, alpha=0.7); plt.axhline(0, color="k", ls=":")
+plt.xlabel("Predicted"); plt.ylabel("Residual"); plt.title("Residuals — Ridge"); plt.show()
+```
+
+### 11.4 Solution Q4
+
+```{code-cell} ipython3
+X_new = np.array([
+    [135.0,  2.0,  9.2, 2],   # Molecule A
+    [301.0,  0.5, 17.7, 2]    # Molecule B
+])  # descriptors: [MolWt, LogP, TPSA, NumRings]
+
+y_new = ridge_best.predict(X_new)
+print(pd.DataFrame({
+    "MolWt": X_new[:,0], "LogP": X_new[:,1], "TPSA": X_new[:,2], "NumRings": X_new[:,3],
+    "Predicted log10(solubility)": y_new
+}))
+```
+
+### 11.5 Solution Q5
+
+```{code-cell} ipython3
+feat = ["MolWt","LogP","TPSA","NumRings"]
+
+coef_ser = pd.Series(ridge_best.coef_, index=feat).sort_values(key=np.abs, ascending=False)
+print("Ridge coefficients:\n", coef_ser)
+coef_ser.plot(kind="barh"); plt.gca().invert_yaxis()
+plt.xlabel("Coefficient"); plt.title("Ridge coefficients"); plt.show()
+
+perm = permutation_importance(ridge_best, X_te, y_te, scoring="r2", n_repeats=30, random_state=1)
+perm_ser = pd.Series(perm.importances_mean, index=feat).sort_values()
+perm_ser.plot(kind="barh"); plt.xlabel("Mean decrease in R²"); plt.title("Permutation importance on test"); plt.show()
+```
+
+---
