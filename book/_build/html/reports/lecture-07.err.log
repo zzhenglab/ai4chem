@@ -1,78 +1,56 @@
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
     asyncio.get_running_loop()
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^
 RuntimeError: no running event loop
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-    ~~~~~~~~~^
-        nb,
-        ^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
     return loop.run_until_complete(inner)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
     return future.result()
-           ~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-        cell, index, execution_count=self.code_cells_executed + 1
-    )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# If you are on Colab, you may need:
-# %pip install scikit-learn pandas matplotlib
-
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import warnings
-warnings.filterwarnings("ignore", message="X does not have valid feature names")
-warnings.filterwarnings("ignore", message="X has feature names")
-
-# Optional RDKit for descriptors (used in Lectures 5 and 6)
-try:
-    from rdkit import Chem
-    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, Draw
-except Exception:
-    print("RDKit not available. Descriptor drawing will be skipped.")
-    Chem = None
-
-from sklearn.model_selection import train_test_split, KFold, StratifiedKFold, cross_val_score, GridSearchCV
-from sklearn.metrics import (
-    mean_squared_error, mean_absolute_error, r2_score,
-    accuracy_score, precision_score, recall_score, f1_score,
-    confusion_matrix, roc_auc_score, roc_curve
+rf_clf = RandomForestClassifier(
+    n_estimators=300,
+    max_depth=None,
+    min_samples_leaf=3,
+    max_features="sqrt",
+    random_state=0,
+    n_jobs=-1
 )
-from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, plot_tree, export_text
-from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-from sklearn.inspection import permutation_importance, PartialDependenceDisplay
-from sklearn.tree import cost_complexity_pruning_path
+rf_clf.fit(X_train, y_train)
+
+print("OOB score:", rf_clf.oob_score_)
+acc = accuracy_score(y_test, rf_clf.predict(X_test))
+print("Test accuracy:", acc)
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mImportError[39m                               Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 28[39m
-[32m     26[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mensemble[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m RandomForestRegressor, RandomForestClassifier
-[32m     27[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01minspection[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m permutation_importance, PartialDependenceDisplay
-[32m---> [39m[32m28[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mtree[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m cost_complexity_pruning_path
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [1;32mIn[26], line 11[0m
+[0;32m      1[0m rf_clf [38;5;241m=[39m RandomForestClassifier(
+[0;32m      2[0m     n_estimators[38;5;241m=[39m[38;5;241m300[39m,
+[0;32m      3[0m     max_depth[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m   (...)[0m
+[0;32m      7[0m     n_jobs[38;5;241m=[39m[38;5;241m-[39m[38;5;241m1[39m
+[0;32m      8[0m )
+[0;32m      9[0m rf_clf[38;5;241m.[39mfit(X_train, y_train)
+[1;32m---> 11[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mOOB score:[39m[38;5;124m"[39m, [43mrf_clf[49m[38;5;241;43m.[39;49m[43moob_score_[49m)
+[0;32m     12[0m acc [38;5;241m=[39m accuracy_score(y_test, rf_clf[38;5;241m.[39mpredict(X_test))
+[0;32m     13[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mTest accuracy:[39m[38;5;124m"[39m, acc)
 
-[31mImportError[39m: cannot import name 'cost_complexity_pruning_path' from 'sklearn.tree' (C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\tree\__init__.py)
+[1;31mAttributeError[0m: 'RandomForestClassifier' object has no attribute 'oob_score_'
 
