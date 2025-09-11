@@ -386,7 +386,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning-with-min-samples-leaf">8.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oob-sanity-check">8.3 OOB sanity check</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-agreement-on-melting-point">8.4 Feature importance agreement on melting point</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-tree-visualization-and-split-rules">8.5 Small tree visualization and split rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-on-rf">8.5 CV on RF</a></li>
 </ul>
             </nav>
         </div>
@@ -540,6 +540,33 @@ document.write(`
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">small_tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;non_toxic&quot;</span><span class="p">,</span><span class="s2">&quot;toxic&quot;</span><span class="p">],</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Small Decision Tree (max_depth=2)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Extract split rules programmatically for the top two levels</span>
+<span class="n">feat_idx</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">feature</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">threshold</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_left</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_right</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">node_rule</span><span class="p">(</span><span class="n">node_id</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">feat_idx</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">thresh</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feat_names</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="si">}</span><span class="s2"> &lt;= </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ?&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Left child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Left child is a leaf&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Right child is a leaf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>Expect OOB to track test accuracy closely. Small differences are normal.</p>
 </section>
 <hr class="docutils" />
@@ -579,32 +606,64 @@ document.write(`
 <p>Look for agreement on the top features. Disagreements can signal correlation or overfitting in the training trees.</p>
 </section>
 <hr class="docutils" />
-<section id="small-tree-visualization-and-split-rules">
-<h2>8.5 Small tree visualization and split rules<a class="headerlink" href="#small-tree-visualization-and-split-rules" title="Link to this heading">#</a></h2>
-<p>Fit a very small classifier tree and print its first two rules in plain language.</p>
+<section id="cv-on-rf">
+<h2>8.5 CV on RF<a class="headerlink" href="#cv-on-rf" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_tree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_clf</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_clf</span><span class="p">[</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;toxic&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;non_toxic&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">small_tree</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feat_names</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;non_toxic&quot;</span><span class="p">,</span><span class="s2">&quot;toxic&quot;</span><span class="p">],</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Small Decision Tree (max_depth=2)&quot;</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1"># CV setup</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">],</span>
+    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s2">&quot;min_samples_leaf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+    <span class="s2">&quot;max_features&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sqrt&quot;</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">rf_base</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">rf_base</span><span class="p">,</span>
+    <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;roc_auc&quot;</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">return_train_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best params:&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best CV AUC: </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Refit on full training data already done by refit=True</span>
+<span class="n">rf_best</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="c1"># Test metrics</span>
+<span class="n">y_hat</span> <span class="o">=</span> <span class="n">rf_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_proba</span> <span class="o">=</span> <span class="n">rf_best</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test AUC: </span><span class="si">{</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_proba</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ROC plot</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thr</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;FPR&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;TPR&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC curve - RF with CV-tuned hyperparameters&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Extract split rules programmatically for the top two levels</span>
-<span class="n">feat_idx</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">feature</span>
-<span class="n">thresh</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">threshold</span>
-<span class="n">left</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_left</span>
-<span class="n">right</span> <span class="o">=</span> <span class="n">small_tree</span><span class="o">.</span><span class="n">tree_</span><span class="o">.</span><span class="n">children_right</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">node_rule</span><span class="p">(</span><span class="n">node_id</span><span class="p">):</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">feat_idx</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">thresh</span><span class="p">[</span><span class="n">node_id</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feat_names</span><span class="p">[</span><span class="n">f</span><span class="p">]</span><span class="si">}</span><span class="s2"> &lt;= </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> ?&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Left child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Left child is a leaf&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Right child is a leaf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -663,7 +722,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning-with-min-samples-leaf">8.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oob-sanity-check">8.3 OOB sanity check</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-agreement-on-melting-point">8.4 Feature importance agreement on melting point</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-tree-visualization-and-split-rules">8.5 Small tree visualization and split rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cv-on-rf">8.5 CV on RF</a></li>
 </ul>
   </nav></div>
 

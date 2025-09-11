@@ -139,6 +139,33 @@ plt.legend()
 plt.show()
 ```
 
+
+```{code-cell} ipython3
+
+small_tree = DecisionTreeClassifier(max_depth=2, random_state=0).fit(X_train, y_train)
+
+plt.figure(figsize=(7,5))
+plot_tree(small_tree, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True)
+plt.title("Small Decision Tree (max_depth=2)")
+plt.show()
+
+# Extract split rules programmatically for the top two levels
+feat_idx = small_tree.tree_.feature
+thresh = small_tree.tree_.threshold
+left = small_tree.tree_.children_left
+right = small_tree.tree_.children_right
+
+def node_rule(node_id):
+    f = feat_idx[node_id]
+    t = thresh[node_id]
+    return f"{feat_names[f]} <= {t:.3f} ?"
+
+print("Root rule:", node_rule(0))
+print("Left child rule:", node_rule(left[0]) if left[0] != -1 else "Left child is a leaf")
+print("Right child rule:", node_rule(right[0]) if right[0] != -1 else "Right child is a leaf")
+
+```
+
 Expect OOB to track test accuracy closely. Small differences are normal.
 
 ---
@@ -178,32 +205,67 @@ Look for agreement on the top features. Disagreements can signal correlation or 
 
 ---
 
-### 8.5 Small tree visualization and split rules
+### 8.5 CV on RF
 
-Fit a very small classifier tree and print its first two rules in plain language.
+
 
 ```{code-cell} ipython3
-small_tree = DecisionTreeClassifier(max_depth=2, random_state=0).fit(X_train, y_train)
 
-plt.figure(figsize=(7,5))
-plot_tree(small_tree, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True)
-plt.title("Small Decision Tree (max_depth=2)")
+# Data
+X = df_clf[["MolWt", "LogP", "TPSA", "NumRings"]]
+y = df_clf["Toxicity"].str.lower().map({"toxic":1, "non_toxic":0}).astype(int)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=15, stratify=y
+)
+
+# CV setup
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
+
+param_grid = {
+    "n_estimators": [200, 400],
+    "max_depth": [None, 6, 10],
+    "min_samples_leaf": [1, 2, 3, 5],
+    "max_features": ["sqrt", 0.8],
+}
+
+rf_base = RandomForestClassifier(
+    oob_score=False, random_state=0, n_jobs=-1
+)
+
+grid = GridSearchCV(
+    rf_base,
+    param_grid=param_grid,
+    scoring="roc_auc",
+    cv=cv,
+    n_jobs=-1,
+    refit=True,
+    return_train_score=False,
+)
+
+grid.fit(X_train, y_train)
+
+print("Best params:", grid.best_params_)
+print(f"Best CV AUC: {grid.best_score_:.3f}")
+
+# Refit on full training data already done by refit=True
+rf_best = grid.best_estimator_
+
+# Test metrics
+y_hat = rf_best.predict(X_test)
+y_proba = rf_best.predict_proba(X_test)[:, 1]
+print(f"Test Accuracy: {accuracy_score(y_test, y_hat):.3f}")
+print(f"Test AUC: {roc_auc_score(y_test, y_proba):.3f}")
+
+# ROC plot
+fpr, tpr, thr = roc_curve(y_test, y_proba)
+plt.plot(fpr, tpr, lw=2)
+plt.plot([0, 1], [0, 1], "k--")
+plt.xlabel("FPR")
+plt.ylabel("TPR")
+plt.title("ROC curve - RF with CV-tuned hyperparameters")
 plt.show()
 
-# Extract split rules programmatically for the top two levels
-feat_idx = small_tree.tree_.feature
-thresh = small_tree.tree_.threshold
-left = small_tree.tree_.children_left
-right = small_tree.tree_.children_right
-
-def node_rule(node_id):
-    f = feat_idx[node_id]
-    t = thresh[node_id]
-    return f"{feat_names[f]} <= {t:.3f} ?"
-
-print("Root rule:", node_rule(0))
-print("Left child rule:", node_rule(left[0]) if left[0] != -1 else "Left child is a leaf")
-print("Right child rule:", node_rule(right[0]) if right[0] != -1 else "Right child is a leaf")
 ```
 
 Read the rules as binary questions. Samples that satisfy a rule go left. Others go right.

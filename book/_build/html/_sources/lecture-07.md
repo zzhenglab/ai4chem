@@ -57,6 +57,7 @@ from sklearn.metrics import (
 from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.inspection import permutation_importance
+from sklearn.model_selection import GridSearchCV, KFold, train_test_split
 import warnings
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 warnings.filterwarnings("ignore", message="X has feature names")
@@ -1019,6 +1020,9 @@ plt.show()
 
 ### 7.3 OOB sanity check
 
+- Train a `DecisionTreeClassifier(max_depth=2)` on toxicity
+- Use `plot_tree` to draw it and write down the two split rules in plain language
+
 - Train `RandomForestClassifier` with `oob_score=True` on toxicity
 - Compare OOB score to test accuracy over seeds `[0, 7, 21, 42]`
 
@@ -1035,11 +1039,31 @@ plt.show()
 # TO DO
 ```
 
-### 7.5 Small tree visualization
+### 7.5 Hyperparameter search with cross validation
 
-- Fit a `DecisionTreeClassifier(max_depth=2)` on toxicity
-- Use `plot_tree` to draw it and write down the two split rules in plain language
+Use `GridSearchCV` on `RandomForestClassifier` for toxicity
 
+Split once into train and test as usual, but perform 5-fold CV only on the training fold
+
+Search over:
+
+`n_estimators`: [200, 400]
+
+`max_depth`: [None, 6, 10]
+
+`min_samples_leaf`: [1, 2, 3, 5]
+
+`max_features`: ["sqrt", 0.8]
+
+Use `scoring="roc_auc"` for the CV score
+
+After the search, refit the best model on the full training data
+
+Report: ****best params**, **CV AUC**, **test Accuracy** and **test AUC**
+
+Plot ROC curve for the final model
+
+Hint: This may take more than 30 s to run since it searches for quite a few hyperparameters
 ```python
 # TO DO
 ```
