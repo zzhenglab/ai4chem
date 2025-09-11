@@ -15,50 +15,67 @@ kernelspec:
 
 ```{contents}
 :local:
-:depth: 2
+:depth: 1
 ```
 
-## 1. Setup and data
+## Learning goals
+
+- Explain the intuition of **decision trees** for regression and classification.
+- Read **Gini** and **entropy** for splits and **MSE** for regression splits.
+- Grow a tree step by step and inspect internal structures: nodes, depth, leaf counts.
+- Control tree growth with `max_depth`, `min_samples_leaf`, `min_samples_split`.
+- Visualize a fitted tree and feature importance.
+- Train a **Random Forest** and compare to a single tree.
+- Use **out of bag (OOB)** score for quick validation.
+- Put it all together in a short end-to-end workflow.
+
+  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1Mkzv1qh9t9tL9w6m4C2U1Qw3W2c2W8bR?usp=sharing)
+
+---
+
+## 0. Setup
 
 ```{code-cell} ipython3
 :tags: [hide-input]
-# If you are on Colab, you may need:
-# %pip install scikit-learn pandas matplotlib
-
+# 0. Setup
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import warnings
-warnings.filterwarnings("ignore", message="X does not have valid feature names")
-warnings.filterwarnings("ignore", message="X has feature names")
 
-# Optional RDKit for descriptors (used in Lectures 5 and 6)
 try:
     from rdkit import Chem
-    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, Draw
+    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
 except Exception:
-    print("RDKit not available. Descriptor drawing will be skipped.")
     Chem = None
 
-from sklearn.model_selection import train_test_split, KFold, StratifiedKFold, cross_val_score, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import (
     mean_squared_error, mean_absolute_error, r2_score,
     accuracy_score, precision_score, recall_score, f1_score,
     confusion_matrix, roc_auc_score, roc_curve
 )
-from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, plot_tree, export_text
+from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, plot_tree
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
-from sklearn.inspection import permutation_importance, PartialDependenceDisplay
-from sklearn.tree import cost_complexity_pruning_path
+from sklearn.inspection import permutation_importance
+import warnings
+warnings.filterwarnings("ignore", message="X does not have valid feature names")
+warnings.filterwarnings("ignore", message="X has feature names")
 ```
 
-We will reuse the C–H oxidation dataset and the same four lightweight descriptors: `MolWt`, `LogP`, `TPSA`, `NumRings`.
+## 1. Decision tree
+
+### 1.1 Load data and build descriptors
+
+We will reuse the same dataset to keep the context consistent. If RDKit is available, we compute four descriptors; otherwise we fallback to numeric columns that are already present.
 
 ```{code-cell} ipython3
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
 df_raw = pd.read_csv(url)
+df_raw.head()
+```
 
-def calc_desc(smiles):
+```{code-cell} ipython3
+def calc_descriptors(smiles):
     if Chem is None:
         return pd.Series({"MolWt": np.nan, "LogP": np.nan, "TPSA": np.nan, "NumRings": np.nan})
     m = Chem.MolFromSmiles(smiles)
@@ -68,26 +85,35 @@ def calc_desc(smiles):
         "MolWt": Descriptors.MolWt(m),
         "LogP": Crippen.MolLogP(m),
         "TPSA": rdMolDescriptors.CalcTPSA(m),
-        "NumRings": rdMolDescriptors.CalcNumRings(m)
+        "NumRings": rdMolDescriptors.CalcNumRings(m),
     })
 
-desc_df = df_raw["SMILES"].apply(calc_desc)
-df = pd.concat([df_raw, desc_df], axis=1)
-
-feat = ["MolWt", "LogP", "TPSA", "NumRings"]
-X_all = df[feat]
-print("Rows:", len(df))
-X_all.describe().round(2)
+desc = df_raw["SMILES"].apply(calc_descriptors)
+df = pd.concat([df_raw, desc], axis=1)
+df.head(3)
 ```
 
-```{admonition} What we will predict
-- **Regression** target: `Melting Point`  
-- **Classification** target: `Toxicity` mapped to 1 for toxic and 0 for non_toxic
+```{admonition} Features
+We will use `MolWt`, `LogP`, `TPSA`, `NumRings` as base features. They worked well in earlier lectures and are fast to compute.
 ```
 
 ---
+### 1.2 What is a decision tree
 
-## 2. Decision trees - intuition and API
+
+A tree splits the feature space into rectangles by asking simple questions like `LogP <= 1.3`. Each split tries to make the target inside each branch more pure.
+
+- For **classification**, purity is measured by **Gini** or **entropy**.
+- For **regression**, it is common to use **MSE** reduction.
+
+```{admonition} Purity
+- Gini for a node with class probs \(p_k\): \(1 - \sum_k p_k^2\)
+- Entropy: \(-\sum_k p_k \log_2 p_k\)
+- Regression impurity at a node: mean squared error to the node mean
+```
+
+
+
 
 ```{admonition} Idea
 A decision tree learns a sequence of questions like `MolWt <= 200.5`. Each split aims to make child nodes purer.
@@ -108,602 +134,900 @@ Trees handle different feature scales naturally, and they do not require standar
 - **Node** is a point where a question is asked.  
 - **Leaf** holds a simple prediction.  
 - **Impurity** is a measure of how mixed a node is. Lower is better.
-```
+ > For regression, impurity at a node is measured by mean squared error to the node mean.
+ > For classification, it is measured by **Gini** for a node with class probs $p_k$: $(1 - \sum_k p_k^2$ or **Entropy**: $-\sum_k p_k \log_2 p_k\$
 
+```
 ---
 
-## 3. Tree regression on Melting Point
+### 1.3 Tiny classification example: one split
 
-### 3.1 Prepare `X` and `y`
+We start with toxicity as a binary label to see a single split and the data shape at each step.
 
-```{code-cell} ipython3
-X = df[feat]
-y = df["Melting Point"]
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=42)
-
-X_tr.shape, X_te.shape, y_tr.shape, y_te.shape
-```
-
-### 3.2 Fit a tiny stump to see one split
+We will split the dataset into train and test parts. Stratification (`stratify = y`) keeps the class ratio similar in both parts, which is important when classes are imbalanced.
 
 ```{code-cell} ipython3
-tree_stump = DecisionTreeRegressor(max_depth=1, random_state=0)
-tree_stump.fit(X_tr, y_tr)
+df_clf = df[["MolWt", "LogP", "TPSA", "NumRings", "Toxicity"]].dropna()
+label_map = {"toxic": 1, "non_toxic": 0}
+y = df_clf["Toxicity"].str.lower().map(label_map).astype(int)
+X = df_clf[["MolWt", "LogP", "TPSA", "NumRings"]]
 
-print("Train R2:", r2_score(y_tr, tree_stump.predict(X_tr)).round(3))
-print("Test  R2:", r2_score(y_te, tree_stump.predict(X_te)).round(3))
-print("Importances:", dict(zip(feat, np.round(tree_stump.feature_importances_, 3))))
-```
-
-```{code-cell} ipython3
-plt.figure(figsize=(8,4))
-plot_tree(tree_stump, feature_names=feat, filled=True, rounded=True)
-plt.title("DecisionTreeRegressor depth=1")
-plt.show()
-
-print(export_text(tree_stump, feature_names=feat))
-```
-
-### 3.3 Increase depth and watch train vs test
-
-```{code-cell} ipython3
-depths = list(range(1, 11))
-r2_tr, r2_te = [], []
-
-for d in depths:
-    m = DecisionTreeRegressor(max_depth=d, random_state=0)
-    m.fit(X_tr, y_tr)
-    r2_tr.append(r2_score(y_tr, m.predict(X_tr)))
-    r2_te.append(r2_score(y_te, m.predict(X_te)))
-
-plt.figure(figsize=(6,4))
-plt.plot(depths, r2_tr, "o-", label="Train R2")
-plt.plot(depths, r2_te, "o-", label="Test R2")
-plt.xlabel("max_depth"); plt.ylabel("R2"); plt.title("Depth sweep - regression")
-plt.legend(); plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-### 3.4 Choose a reasonable depth and inspect fit
-
-```{code-cell} ipython3
-best_depth = 4
-tree_reg = DecisionTreeRegressor(max_depth=best_depth, random_state=0).fit(X_tr, y_tr)
-
-y_hat = tree_reg.predict(X_te)
-plt.figure(figsize=(5,4))
-plt.scatter(y_te, y_hat, alpha=0.6)
-lims = [min(y_te.min(), y_hat.min()), max(y_te.max(), y_hat.max())]
-plt.plot(lims, lims, "k--")
-plt.xlabel("True MP"); plt.ylabel("Predicted MP")
-plt.title("Parity plot - tree regression")
-plt.show()
-
-pd.Series(tree_reg.feature_importances_, index=feat).round(3)
-```
-
----
-
-## 4. Tree classification on Toxicity
-
-### 4.1 Encode label and split
-
-```{code-cell} ipython3
-lab_map = {"toxic": 1, "non_toxic": 0}
-y_cls = df["Toxicity"].str.lower().map(lab_map)
-
-mask = y_cls.notna() & X.notna().all(axis=1)
-Xc = X.loc[mask]; yc = y_cls.loc[mask].astype(int)
-
-Xc_tr, Xc_te, yc_tr, yc_te = train_test_split(
-    Xc, yc, test_size=0.2, random_state=42, stratify=yc
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
 )
-Xc_tr.shape, yc_tr.value_counts(normalize=True).round(3)
-```
 
-### 4.2 Depth 1 then sweep `max_depth`
+X_train.shape
+```
+As you remember, we have total 575 data points and 80% goes to training samples.
+
+You can glance at the first few rows to get a feel for the feature scales. Trees do not require scaling, but it is still useful context.
+
+
 
 ```{code-cell} ipython3
-clf_stump = DecisionTreeClassifier(max_depth=1, random_state=0).fit(Xc_tr, yc_tr)
-proba = clf_stump.predict_proba(Xc_te)[:,1]
-pred  = (proba >= 0.5).astype(int)
+X_train.head()
+```
 
-print("Accuracy:", accuracy_score(yc_te, pred).round(3))
-print("Precision:", precision_score(yc_te, pred).round(3))
-print("Recall:", recall_score(yc_te, pred).round(3))
-print("AUC:", roc_auc_score(yc_te, proba).round(3))
+
+We will grow a stump: a tree with `max_depth=1`. This forces one split. It helps you see how a split is chosen and how samples are divided.
+
+```{admonition} Stump
+
+The tree considers possible thresholds on each feature.
+For each candidate threshold it computes an impurity score on the left and right child nodes. We use Gini impurity, which gets smaller when a node contains mostly one class.
+It picks the feature and threshold that bring the largest impurity decrease.
 ```
 
 ```{code-cell} ipython3
-depths = list(range(1, 11))
-accs, aucs = [], []
-for d in depths:
-    m = DecisionTreeClassifier(max_depth=d, random_state=0).fit(Xc_tr, yc_tr)
-    pr = m.predict_proba(Xc_te)[:,1]
-    pd_ = (pr >= 0.5).astype(int)
-    accs.append(accuracy_score(yc_te, pd_))
-    aucs.append(roc_auc_score(yc_te, pr))
+stump = DecisionTreeClassifier(max_depth=1, criterion="gini", random_state=0)
+stump.fit(X_train, y_train)
 
-fig, ax = plt.subplots(1,2, figsize=(10,4))
-ax[0].plot(depths, accs, "o-"); ax[0].set_xlabel("max_depth"); ax[0].set_ylabel("Accuracy"); ax[0].grid(True, alpha=0.3)
-ax[1].plot(depths, aucs, "o-"); ax[1].set_xlabel("max_depth"); ax[1].set_ylabel("AUC"); ax[1].grid(True, alpha=0.3)
-plt.suptitle("Depth sweep - classification")
+print("Feature used at root:", stump.tree_.feature[0])
+print("Threshold at root:", stump.tree_.threshold[0])
+print("n_nodes:", stump.tree_.node_count)
+print("children_left:", stump.tree_.children_left[:3])
+print("children_right:", stump.tree_.children_right[:3])
+```
+
+The model stores feature indices internally. Mapping that index back to the column name makes the split human readable.
+
+```{code-cell} ipython3
+# Map index to name for readability
+feat_names = X_train.columns.tolist()
+root_feat = feat_names[stump.tree_.feature[0]]
+thr = stump.tree_.threshold[0]
+print(f"Root rule: {root_feat} <= {thr:.3f}?")
+```
+
+Read the rule as: if the condition is true, the sample goes to the left leaf, otherwise to the right leaf.
+
+
+```{admonition} How good is one split
+A single split is intentionally simple. It may already capture a strong signal if one feature provides a clean separation. We will check test performance with standard metrics.
+> Precision of class k: among items predicted as k, how many were truly k
+> Recall of class k: among true items of k, how many did we catch
+> F1 is the harmonic mean of precision and recall
+> Support is the number of true samples for each class
+It picks the feature and threshold that bring the largest impurity decrease.
+```
+
+```{code-cell} ipython3
+# Evaluate stump
+from sklearn.metrics import classification_report
+y_pred = stump.predict(X_test)
+print(classification_report(y_test, y_pred, digits=3))
+cm = confusion_matrix(y_test, y_pred)
+cm
+```
+
+
+Use the confusion matrix to see the error pattern.
+
+In this case:
+`FP` are non toxic predicted as toxic
+`FN` are toxic predicted as non toxic
+
+Which side is larger tells you which type of mistake the one split is making more often.
+
+Now, let's visualize the rule.
+The tree plot below shows the root node with its split, the Gini impurity at each node, the sample counts, and the class distribution. Filled colors hint at the majority class in each leaf.
+
+```{code-cell} ipython3
+# Visualize stump
+plt.figure(figsize=(5,5))
+plot_tree(stump, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True, impurity=True)
 plt.show()
 ```
 
+We can also visualize `max_depth=2` to see the difference:
 ```{code-cell} ipython3
-d_pick = 4
-clf_d = DecisionTreeClassifier(max_depth=d_pick, random_state=0).fit(Xc_tr, yc_tr)
-cm = confusion_matrix(yc_te, clf_d.predict(Xc_te))
-plt.figure(figsize=(4,4))
-plt.imshow(cm, cmap="Blues"); plt.title(f"Confusion matrix - depth={d_pick}")
-plt.xlabel("Predicted"); plt.ylabel("True")
-for i in range(cm.shape[0]):
-    for j in range(cm.shape[1]):
-        plt.text(j, i, cm[i, j], ha="center", va="center")
-plt.colorbar(fraction=0.046, pad=0.04)
+stump2 = DecisionTreeClassifier(max_depth=2, criterion="gini", random_state=0)
+stump2.fit(X_train, y_train)
+
+plt.figure(figsize=(5,5))
+plot_tree(stump2, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True, impurity=True)
 plt.show()
 ```
 
 ---
 
-## 5. Overfitting and regularization
+### 1.4 Grow deeper and control overfitting
 
-Trees can overfit easily when depth is large or when leaves are tiny. You will see:
-- **Very high train R2 or train accuracy**
-- **Noticeably lower test R2 or test accuracy**
+Trees can fit noise if we let them grow without limits. We control growth using a few simple knobs.
 
-You can reduce variance by:
-- Limiting depth with `max_depth`
-- Requiring more samples in leaves using `min_samples_leaf`
-- Requiring more samples to split using `min_samples_split`
-- Cost complexity pruning using `ccp_alpha`
-
-### 5.1 Bias vs variance picture using depth curves
-
-We already plotted train vs test curves with a depth sweep for regression and classification. The gap between train and test curves grows when the model overfits. Pick a region where the test curve plateaus and the gap is small.
-
-### 5.2 Minimum leaf size
+- `max_depth`: limit the number of levels
+- `min_samples_split`: a node needs at least this many samples to split
+- `min_samples_leaf`: each leaf must have at least this many samples
 
 ```{code-cell} ipython3
-leaf_sizes = [1, 2, 5, 10, 20, 40, 80]
-r2_leaf = []
-for leaf in leaf_sizes:
-    m = DecisionTreeRegressor(min_samples_leaf=leaf, random_state=0).fit(X_tr, y_tr)
-    r2_leaf.append(r2_score(y_te, m.predict(X_te)))
+def fit_eval_tree(max_depth=None, min_leaf=1):
+    clf = DecisionTreeClassifier(
+        max_depth=max_depth, min_samples_leaf=min_leaf, random_state=0
+    )
+    clf.fit(X_train, y_train)
+    acc = accuracy_score(y_test, clf.predict(X_test))
+    return clf, acc
 
-pd.DataFrame({"min_samples_leaf": leaf_sizes, "test_R2": np.round(r2_leaf, 3)})
+depths = [1, 2, 3, 4, 5, None]  # None means grow until pure or exhausted
+scores = []
+for d in depths:
+    _, acc = fit_eval_tree(max_depth=d, min_leaf=3)
+    scores.append(acc)
+
+pd.DataFrame({"max_depth": [str(d) for d in depths], "Accuracy": np.round(scores,3)})
 ```
-
-### 5.3 Cost complexity pruning path
-
-Scikit-learn can compute a sequence of pruned trees controlled by `ccp_alpha`. Larger `ccp_alpha` means stronger pruning.
-
+Here, we hold `min_samples_leaf = 3` and vary `max_depth`. This shows the classic underfit to overfit trend.
 ```{code-cell} ipython3
-# Start from a relatively deep tree
-deep_tree = DecisionTreeRegressor(random_state=0).fit(X_tr, y_tr)
-path = cost_complexity_pruning_path(deep_tree, X_tr, y_tr)
-ccp_alphas = path.ccp_alphas
-
-# Train along the path
-r2_te_alpha, r2_tr_alpha = [], []
-for a in ccp_alphas:
-    m = DecisionTreeRegressor(random_state=0, ccp_alpha=a).fit(X_tr, y_tr)
-    r2_tr_alpha.append(r2_score(y_tr, m.predict(X_tr)))
-    r2_te_alpha.append(r2_score(y_te, m.predict(X_te)))
-
-plt.figure(figsize=(6,4))
-plt.plot(ccp_alphas, r2_tr_alpha, marker="o", label="Train R2")
-plt.plot(ccp_alphas, r2_te_alpha, marker="o", label="Test R2")
-plt.xlabel("ccp_alpha"); plt.ylabel("R2"); plt.title("Pruning curve")
-plt.legend(); plt.grid(True, alpha=0.3)
+plt.plot([str(d) for d in depths], scores, marker="o")
+plt.xlabel("max_depth")
+plt.ylabel("Accuracy (test)")
+plt.title("Tree depth vs test accuracy")
+plt.grid(True)
 plt.show()
 ```
 
 ```{admonition} Takeaway
-Trees do not have to be deep to work well. A small amount of pruning or a modest leaf size can improve test performance and stability.
+Shallow trees underfit. Very deep trees often overfit. Start small, add depth only if validation improves.
+```
+
+Now, let's try sweep leaf size at several depths.
+
+We will try a small grid. This lets you see **both** knobs together.
+
+```{code-cell} ipython3
+def fit_acc_leaves(max_depth=None, min_leaf=1):
+    clf = DecisionTreeClassifier(
+        max_depth=max_depth, min_samples_leaf=min_leaf, random_state=0
+    )
+    clf.fit(X_train, y_train)
+    acc_test = accuracy_score(y_test, clf.predict(X_test))
+    n_leaves = clf.get_n_leaves()  # simple and reliable
+    return acc_test, n_leaves
+
+leaf_sizes = [1, 3, 5, 10, 20]
+depths = [1, 2, 3, 4, 5, None]
+
+rows = []
+for leaf in leaf_sizes:
+    for d in depths:
+        acc, leaves = fit_acc_leaves(max_depth=d, min_leaf=leaf)
+        rows.append({
+            "min_samples_leaf": leaf,
+            "max_depth": str(d),
+            "acc_test": acc,
+            "n_leaves": leaves
+        })
+
+df_grid = pd.DataFrame(rows).sort_values(
+    ["min_samples_leaf","max_depth"]
+).reset_index(drop=True)
+df_grid
+```
+Now, we plot test accuracy vs depth for each leaf size.
+
+Higher min_samples_leaf tends to smooth the curves and reduce the train minus test gap.
+
+```{admonition} Hyperparamter
+Higher `min_samples_leaf` tends to smooth the curves and reduce the train minus test gap.
+```
+
+
+```{code-cell} ipython3
+plt.figure()
+for leaf in leaf_sizes:
+    sub = df_grid[df_grid["min_samples_leaf"]==leaf]
+    plt.plot(sub["max_depth"], sub["acc_test"], marker="o", label=f"leaf={leaf}")
+plt.xlabel("max_depth")
+plt.ylabel("Accuracy (test)")
+plt.title("Depth vs test accuracy at different min_samples_leaf")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+```
+Finally, let's look at what happen if we fix depth and vary leaf size:
+
+Pick a moderate depth (`4`), then look at how leaf size alone affects accuracy and model size.
+
+```{code-cell} ipython3
+
+fixed_depth = 4
+rows = []
+for leaf in leaf_sizes:
+    clf = DecisionTreeClassifier(
+        max_depth=fixed_depth, min_samples_leaf=leaf, random_state=0
+    ).fit(X_train, y_train)
+
+    rows.append({
+        "min_samples_leaf": leaf,
+        "acc_train": accuracy_score(y_train, clf.predict(X_train)),
+        "acc_test":  accuracy_score(y_test,  clf.predict(X_test)),
+        "n_nodes":   clf.tree_.node_count,
+        "n_leaves":  clf.get_n_leaves(),
+    })
+
+df_leaf = pd.DataFrame(rows).sort_values("min_samples_leaf").reset_index(drop=True)
+df_leaf[["min_samples_leaf","acc_train","acc_test","n_nodes","n_leaves"]]
+
+```
+
+```{code-cell} ipython3
+plt.figure()
+plt.plot(df_leaf["min_samples_leaf"], df_leaf["acc_train"], marker="o", label="Train")
+plt.plot(df_leaf["min_samples_leaf"], df_leaf["acc_test"],  marker="o", label="Test")
+plt.xlabel("min_samples_leaf")
+plt.ylabel("Accuracy")
+plt.title(f"Effect of min_samples_leaf at max_depth={fixed_depth}")
+plt.grid(True)
+plt.legend()
+plt.show()
+
+```
+
+```{code-cell} ipython3
+plt.figure()
+plt.plot(df_leaf["min_samples_leaf"], df_leaf["n_leaves"], marker="o")
+plt.xlabel("min_samples_leaf")
+plt.ylabel("Number of leaves")
+plt.title(f"Model size vs min_samples_leaf at max_depth={fixed_depth}")
+plt.grid(True)
+plt.show()
+```
+
+```{admonition} Underfitting vs. Overfitting
+Higher `min_samples_leaf` tends to smooth the curves and reduce the train minus test gap.
+
+
+- **Underfitting**  
+  Happens when the model is too simple to capture meaningful patterns.  
+  Signs:
+  - Both training and test accuracy are low.
+  - The decision boundary looks crude.
+  - Increasing model capacity (like depth) improves results.
+
+- **Overfitting**  
+  Happens when the model is too complex and memorizes noise in the training set.  
+  Signs:
+  - Training accuracy is very high (often near 100%).
+  - Test accuracy lags behind.
+  - Model has many small leaves with very few samples.
+  - Predictions fluctuate wildly for minor changes in input.
+
+The goal is **good generalization**: high performance on unseen data, not just on the training set.
+
 ```
 
 ---
 
-## 6. Random Forests
+### 1.5 Model-based importance: Gini importance  
 
-A Random Forest builds many trees on bootstrap samples and averages their predictions. Each split considers a random subset of features, which decorrelates trees.
+As we learned in lecture 6, ML models not only make predictions but also provide insight into which features were most useful. 
 
-### 6.1 Regression with OOB estimate
+There are two main ways we can measure this: **Gini importance** (model-based) and **permutation importance** (data-based). Both give us different perspectives on feature relevance.
+
+
+When fitting a tree, each split reduces impurity (measured by Gini or entropy). A feature’s importance is computed as:
+
+- The total decrease in impurity that results from splits on that feature
+- Normalized so that all features sum to `1`
+
+This is fast and built-in, but it reflects **how the model used the features** during training. It may overstate the importance of high-cardinality or correlated features.
 
 ```{code-cell} ipython3
-rf_reg = RandomForestRegressor(
-    n_estimators=300,
-    random_state=0,
-    oob_score=True,
-    n_jobs=-1,
+tree_clf = DecisionTreeClassifier(max_depth=4, min_samples_leaf=3, random_state=0).fit(X_train, y_train)
+
+imp = pd.Series(tree_clf.feature_importances_, index=feat_names).sort_values(ascending=False)
+imp
+```
+
+```{code-cell} ipython3
+imp.plot(kind="barh")
+plt.title("Gini importance (tree)")
+plt.gca().invert_yaxis()
+plt.show()
+
+```
+This bar chart above ranks features by how much they reduced impurity in the training process. The top feature is the one the tree found most useful for splitting. However, keep in mind this is internal to the model and may not reflect true predictive power on unseen data.
+
+
+
+---
+
+### 1.6 Data-based importance: Permutation importance
+Permutation importance takes a different approach. Instead of looking inside the model, it asks: What happens if I scramble a feature’s values on the test set? If accuracy drops, that feature was important. If accuracy stays the same, the model did not really depend on it.
+
+Steps:
+
+> 1. Shuffle one feature column at a time in the test set.
+> 2. Measure the drop in accuracy.
+> 3. Repeat many times and average to reduce randomness.
+
+
+```{code-cell} ipython3
+
+perm = permutation_importance(
+    tree_clf, X_test, y_test, scoring="accuracy", n_repeats=20, random_state=0
 )
-rf_reg.fit(X_tr, y_tr)
+perm_ser = pd.Series(perm.importances_mean, index=feat_names).sort_values()
+perm_ser.plot(kind="barh")
+plt.title("Permutation importance (test)")
+plt.show()
 
-print("OOB R2:", getattr(rf_reg, "oob_score_", None))
-print("Test R2:", r2_score(y_te, rf_reg.predict(X_te)).round(3))
 ```
 
+Here, the bars show how much accuracy falls when each feature is disrupted. This provides a more honest reflection of **predictive value on unseen data**. Features that looked strong in Gini importance may shrink here if they were just splitting on quirks of the training set.
+
+
+```{admonition} Comparing the two methods
+Gini importance (tree-based):
+> Easy to compute.
+> Biased toward features with many possible split points.
+> Reflects training behavior, not necessarily generalization.
+
+
+
+Permutation importance (test-based):
+> More computationally expensive (requires multiple shuffles).
+> Directly tied to model performance on new data.
+> Can reveal when the model “thought” a feature was important but it doesn’t hold up in practice.
+```
+
+
+---
+
+## 2. Regression trees on Melting Point
+
+So far we used trees for **classification**. Now we switch to a **regression target**: the **melting point** of molecules. The mechanics are similar, but instead of predicting a discrete class, the tree predicts a continuous value.
+
 ```{code-cell} ipython3
-# n_estimators curve
-ests = [20, 50, 100, 200, 300, 500]
+df_reg = df[["MolWt", "LogP", "TPSA", "NumRings", "Melting Point"]].dropna()
+Xr = df_reg[["MolWt", "LogP", "TPSA", "NumRings"]]
+yr = df_reg["Melting Point"]
+
+Xr_train, Xr_test, yr_train, yr_test = train_test_split(
+    Xr, yr, test_size=0.2, random_state=42
+)
+
+Xr_train.head(2), yr_train.head(3)
+```
+
+Just like before, we can grow a stump (·max_depth=1·) to see a single split.
+Instead of class impurity, the split criterion is reduction in variance of the target.
+
+
+```{code-cell} ipython3
+reg_stump = DecisionTreeRegressor(max_depth=1, random_state=0)
+reg_stump.fit(Xr_train, yr_train)
+print("Root feature:", Xr_train.columns[reg_stump.tree_.feature[0]])
+print("Root threshold:", reg_stump.tree_.threshold[0])
+```
+
+```{admonition} What can we learn from Root Feature output?
+This tells us the first cut is on `MolW`. Samples with weight below ~246 g/mol are grouped separately from heavier ones.
+
+```
+
+Let’s vary max_depth and track R² on the test set.
+Remember: 
+> R² = 1 means perfect prediction,
+> R² = 0 means the model is no better than the mean.
+
+
+Below, we pick `depth = 3`, `leaf size = 5`. This is a good trade-off.
+
+```{code-cell} ipython3
+# Evaluate shallow vs deeper
+depths = [1, 2, 3, 4, 6, 8, None]
 r2s = []
-for n in ests:
-    m = RandomForestRegressor(n_estimators=n, random_state=0, n_jobs=-1).fit(X_tr, y_tr)
-    r2s.append(r2_score(y_te, m.predict(X_te)))
+for d in depths:
+    reg = DecisionTreeRegressor(max_depth=d, min_samples_leaf=5, random_state=0).fit(Xr_train, yr_train)
+    yhat = reg.predict(Xr_test)
+    r2s.append(r2_score(yr_test, yhat))
 
-plt.figure(figsize=(6,4))
-plt.plot(ests, r2s, "o-")
-plt.xlabel("n_estimators"); plt.ylabel("Test R2"); plt.title("Forest size vs R2")
-plt.grid(True, alpha=0.3); plt.show()
+pd.DataFrame({"max_depth": [str(d) for d in depths], "R2_test": np.round(r2s,3)})
 ```
 
 ```{code-cell} ipython3
-# Importance and permutation importance
-imp_rf = pd.Series(rf_reg.feature_importances_, index=feat).sort_values(ascending=True)
-imp_rf.plot(kind="barh", figsize=(5,3)); plt.title("RF regression - feature importance"); plt.show()
-
-perm = permutation_importance(rf_reg, X_te, y_te, scoring="r2", n_repeats=20, random_state=0)
-pd.Series(perm.importances_mean, index=feat).sort_values().plot(kind="barh", figsize=(5,3))
-plt.title("Permutation importance - drop in R2"); plt.xlabel("Mean decrease in R2"); plt.show()
+plt.plot([str(d) for d in depths], r2s, marker="o")
+plt.xlabel("max_depth")
+plt.ylabel("R2 on test")
+plt.title("Regression tree depth vs R2")
+plt.grid(True)
+plt.show()
 ```
+This mirrors the classification case: shallow trees underfit, very deep trees overfit.
+
+
+
+
+Points close to the dashed line = good predictions. Scatter away from the line = errors. Here, predictions track well but show some spread at high melting points.
+```{code-cell} ipython3
+# Diagnostics for a chosen depth
+reg = DecisionTreeRegressor(max_depth=3, min_samples_leaf=5, random_state=0).fit(Xr_train, yr_train)
+yhat = reg.predict(Xr_test)
+
+print(f"MSE={mean_squared_error(yr_test, yhat):.3f}")
+print(f"MAE={mean_absolute_error(yr_test, yhat):.3f}")
+print(f"R2={r2_score(yr_test, yhat):.3f}")
+
+# Parity
+plt.scatter(yr_test, yhat, alpha=0.6)
+lims = [min(yr_test.min(), yhat.min()), max(yr_test.max(), yhat.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: tree regressor")
+plt.show()
+
+# Residuals
+res = yr_test - yhat
+plt.scatter(yhat, res, alpha=0.6)
+plt.axhline(0, color="k", linestyle="--")
+plt.xlabel("Predicted")
+plt.ylabel("Residual")
+plt.title("Residual plot: tree regressor")
+plt.show()
+```
+Similar to the example we see on the linear regression, residuals (true – predicted) should scatter around zero. If you see patterns (e.g., always underpredicting high values), the model may be biased. Here, residuals are fairly centered but not perfectly homoscedastic.
+
 
 ```{code-cell} ipython3
-# Partial dependence for one feature
-fig = plt.figure(figsize=(5,4))
-PartialDependenceDisplay.from_estimator(rf_reg, X, ["MolWt"], ax=plt.gca())
-plt.title("Partial dependence - MolWt (RF regression)")
+# Visualize a small regression tree
+plt.figure(figsize=(15,10))
+plot_tree(reg, feature_names=Xr_train.columns, filled=True, impurity=True, rounded=True, proportion=False)
 plt.show()
 ```
 
-### 6.2 Classification with ROC
+```{admonition} Regression tree vs classifier tree
+A regression tree is structured the same as a classifier tree, but each leaf stores an *average target value* instead of a class distribution.
+
+```
+---
+
+## 3. Random Forest: bagging many trees
+
+
+
+Decision trees are intuitive but unstable: a small change in data can produce a very different tree. To make trees more reliable and accurate, we use **ensembles** — groups of models working together. The most widely used ensemble of trees is the **Random Forest**.
+
+Eseentially, a random forest grows **many decision trees**, each trained on a slightly different view of the data, and then combines their predictions:
+
+- **Bootstrap sampling (bagging)**:  
+  Each tree sees a different random subset of the training rows, sampled *with replacement*. About one-third of rows are left out for that tree (these are the **out-of-bag samples**).
+  
+- **Feature subsampling**:  
+  At each split, the tree does not see all features — only a random subset, controlled by `max_features`. This prevents trees from always picking the same strong predictor and encourages diversity.
+
+Each tree may be a weak learner, but when you **average many diverse trees**, the variance cancels out. This makes forests much more stable and accurate than single trees, especially on noisy data.
+
+---
+
+Here are some helpful aspect of forests:
+
+- **Single deep tree** → low bias, high variance (overfit easily).  
+- **Forest of many deep trees** → still low bias, but variance shrinks when you average.  
+- **Built-in validation**: out-of-bag samples allow you to estimate performance without needing a separate validation set.  
+
+In practice, random forests are a strong default: robust, interpretable at the feature level, and requiring little parameter tuning.
+
+### 3.1 Classification forest on toxicity
+We now build a forest to classify molecules as toxic vs non-toxic.  
+We set:
+- `n_estimators=300`: number of trees.  
+- `max_features="sqrt"`: common heuristic for classification.  
+- `min_samples_leaf=3`: prevent leaves with only 1 or 2 samples.  
 
 ```{code-cell} ipython3
 rf_clf = RandomForestClassifier(
-    n_estimators=400,
+    n_estimators=300,
+    max_depth=None,
+    min_samples_leaf=3,
+    max_features="sqrt",
+    oob_score=True,          # enable OOB estimation, if you dont specify, the default RF will not give you oob
     random_state=0,
-    oob_score=True,
-    n_jobs=-1,
+    n_jobs=-1
 )
-rf_clf.fit(Xc_tr, yc_tr)
+rf_clf.fit(X_train, y_train)
 
-proba = rf_clf.predict_proba(Xc_te)[:,1]
-pred  = (proba >= 0.5).astype(int)
-print("OOB accuracy:", getattr(rf_clf, "oob_score_", None))
-print("Test accuracy:", accuracy_score(yc_te, pred).round(3))
-print("Test AUC:", roc_auc_score(yc_te, proba).round(3))
+print("OOB score:", rf_clf.oob_score_)
+acc = accuracy_score(y_test, rf_clf.predict(X_test))
+print("Test accuracy:", acc)
+```
+Here, **Out-of-Bag (OOB) Score** gives an internal validation accuracy, while **test accuracy** confirms performance on held-out data.
+
+
+```{admonition} How the OOB score is calculated
+1. For each training point, collect predictions only from the trees that did **not** see that point during training (its out-of-bag trees).
+2. Aggregate those predictions (majority vote for classification, mean for regression).
+3. Compare aggregated predictions against the true labels.
+4. The accuracy (or R² for regression) across all training samples is the **OOB score**.
 ```
 
+Forests average over many trees, so feature importance is more reliable than from a single tree. We can view both Gini importance and permutation importance.
 ```{code-cell} ipython3
-# ROC
-fpr, tpr, thr = roc_curve(yc_te, proba)
-plt.figure(figsize=(5,4))
-plt.plot(fpr, tpr, lw=2, label=f"AUC={roc_auc_score(yc_te, proba):.3f}")
-plt.plot([0,1],[0,1], "k--")
-plt.xlabel("FPR"); plt.ylabel("TPR"); plt.title("ROC - RF classifier"); plt.legend(); plt.show()
-```
-
-```{code-cell} ipython3
-# Classification importances
-pd.Series(rf_clf.feature_importances_, index=feat).sort_values().plot(kind="barh", figsize=(5,3))
-plt.title("RF classification - feature importance"); plt.show()
-```
-
-```{admonition} Why forests help
-A single deep tree can fit noise. Averaging many diverse trees reduces variance and often boosts test performance.
-```
-
----
-
-## 7. Tuning and validation
-
-We will use CV to pick hyperparameters for both tree and forest models. Keep grids compact so the run is quick in class.
-
-### 7.1 Decision tree regression grid
-
-```{code-cell} ipython3
-param_grid_dt = {
-    "max_depth": [3, 4, 5, 6, None],
-    "min_samples_leaf": [1, 2, 5, 10],
-    "min_samples_split": [2, 5, 10]
-}
-
-dt = DecisionTreeRegressor(random_state=0)
-cv = KFold(n_splits=4, shuffle=True, random_state=1)
-grid_dt = GridSearchCV(dt, param_grid_dt, cv=cv, scoring="r2", n_jobs=-1)
-grid_dt.fit(X_tr, y_tr)
-
-best_dt = grid_dt.best_estimator_
-print("Best params:", grid_dt.best_params_)
-print("CV mean R2:", grid_dt.best_score_.round(3))
-print("Test R2:", r2_score(y_te, best_dt.predict(X_te)).round(3))
-```
-
-### 7.2 Random forest regression grid
-
-```{code-cell} ipython3
-param_grid_rf = {
-    "n_estimators": [200, 300],
-    "max_depth": [None, 6, 10],
-    "min_samples_leaf": [1, 2, 5],
-    "max_features": ["auto", "sqrt"]
-}
-
-rf = RandomForestRegressor(random_state=0, n_jobs=-1)
-grid_rf = GridSearchCV(rf, param_grid_rf, cv=cv, scoring="r2", n_jobs=-1)
-grid_rf.fit(X_tr, y_tr)
-
-best_rf = grid_rf.best_estimator_
-print("Best params:", grid_rf.best_params_)
-print("CV mean R2:", grid_rf.best_score_.round(3))
-print("Test R2:", r2_score(y_te, best_rf.predict(X_te)).round(3))
-```
-
-### 7.3 Decision tree classification grid
-
-```{code-cell} ipython3
-param_grid_dtc = {
-    "max_depth": [2, 3, 4, 6, None],
-    "min_samples_leaf": [1, 2, 5, 10]
-}
-
-dtc = DecisionTreeClassifier(random_state=0)
-cv_c = StratifiedKFold(n_splits=4, shuffle=True, random_state=1)
-grid_dtc = GridSearchCV(dtc, param_grid_dtc, cv=cv_c, scoring="roc_auc", n_jobs=-1)
-grid_dtc.fit(Xc_tr, yc_tr)
-
-best_dtc = grid_dtc.best_estimator_
-print("Best params:", grid_dtc.best_params_)
-print("CV mean AUC:", grid_dtc.best_score_.round(3))
-print("Test AUC:", roc_auc_score(yc_te, best_dtc.predict_proba(Xc_te)[:,1]).round(3))
-```
-
-### 7.4 Random forest classification grid
-
-```{code-cell} ipython3
-param_grid_rfc = {
-    "n_estimators": [200, 400],
-    "max_depth": [None, 6, 10],
-    "min_samples_leaf": [1, 2, 5],
-    "max_features": ["auto", "sqrt"]
-}
-
-rfc = RandomForestClassifier(random_state=0, n_jobs=-1)
-grid_rfc = GridSearchCV(rfc, param_grid_rfc, cv=cv_c, scoring="roc_auc", n_jobs=-1)
-grid_rfc.fit(Xc_tr, yc_tr)
-
-best_rfc = grid_rfc.best_estimator_
-proba_best = best_rfc.predict_proba(Xc_te)[:,1]
-print("Best params:", grid_rfc.best_params_)
-print("CV mean AUC:", grid_rfc.best_score_.round(3))
-print("Test AUC:", roc_auc_score(yc_te, proba_best).round(3))
-```
-
----
-
-## 8. Interpretability and diagnostics
-
-This section groups useful tools for understanding models and diagnosing issues.
-
-### 8.1 Compare a single tree to a forest
-
-```{code-cell} ipython3
-tree_r = DecisionTreeRegressor(max_depth=6, random_state=0).fit(X_tr, y_tr)
-rf_r   = RandomForestRegressor(n_estimators=300, random_state=0, n_jobs=-1).fit(X_tr, y_tr)
-
-print("Tree test R2:", r2_score(y_te, tree_r.predict(X_te)).round(3))
-print("Forest test R2:", r2_score(y_te, rf_r.predict(X_te)).round(3))
-```
-
-### 8.2 Inspect one tree from a forest
-
-```{code-cell} ipython3
-one_tree = best_rf.estimators_[0] if 'best_rf' in globals() else rf_r.estimators_[0]
-plt.figure(figsize=(10,5))
-plot_tree(one_tree, feature_names=feat, filled=True, rounded=True, max_depth=3)
-plt.title("One tree from the Random Forest - top 3 levels")
+imp_rf = pd.Series(rf_clf.feature_importances_, index=feat_names).sort_values()
+imp_rf.plot(kind="barh")
+plt.title("Random Forest Gini importance")
 plt.show()
 
-print(export_text(one_tree, feature_names=feat, max_depth=3))
-```
-
-### 8.3 Importance choices
-
-- `feature_importances_` is based on impurity reduction and can prefer variables with many possible splits.
-- `permutation_importance` measures performance drop when a feature is shuffled. Use it on a held out split.
-
-### 8.4 Partial dependence
-
-Use `PartialDependenceDisplay.from_estimator` on a fitted forest to show the average effect of a feature while marginalizing others. Good for monotonic trends and rough response shapes.
-
----
-
-## 9. In-class activities
-
-Each task is short and uses the chapter material. Fill in the `...` lines where shown.
-
-### Q1. Tree regression - sweep `min_samples_leaf`
-
-Use `DecisionTreeRegressor` on Melting Point with `min_samples_leaf` in `[1, 2, 5, 10, 20, 40]` and `max_depth=None`. Plot test R2 vs `min_samples_leaf` on a log-x scale.
-
-```python
-# Starter
-# values = [1, 2, 5, 10, 20, 40]
-# r2s = []
-# for v in values:
-#     m = DecisionTreeRegressor(min_samples_leaf=v, random_state=0).fit(X_tr, y_tr)
-#     r2s.append(r2_score(y_te, m.predict(X_te)))
-# plt.plot(values, r2s, "o-"); plt.xscale("log")
-# plt.xlabel("min_samples_leaf"); plt.ylabel("Test R2"); plt.title("Leaf size sweep")
-# plt.show()
-```
-
-### Q2. Tree classification - threshold tuning
-
-Train a depth 4 tree on toxicity. Scan thresholds from `0.2` to `0.8` in steps of `0.05`. Find the smallest threshold with **recall ≥ 0.80** and report the corresponding **precision** and **F1**.
-
-```python
-# Starter
-# clf = DecisionTreeClassifier(max_depth=4, random_state=0).fit(Xc_tr, yc_tr)
-# proba = clf.predict_proba(Xc_te)[:,1]
-# ths = np.arange(0.20, 0.81, 0.05)
-# rec_list, prec_list, f1_list = [], [], []
-# best_t = None
-# for t in ths:
-#     pred_t = (proba >= t).astype(int)
-#     r = recall_score(yc_te, pred_t)
-#     p = precision_score(yc_te, pred_t, zero_division=0)
-#     f = f1_score(yc_te, pred_t, zero_division=0)
-#     rec_list.append(r); prec_list.append(p); f1_list.append(f)
-#     if best_t is None and r >= 0.80:
-#         best_t = t
-# print("First threshold with recall >= 0.80:", best_t)
-```
-
-### Q3. Forest regression - n_estimators curve
-
-Train `RandomForestRegressor` with `n_estimators` in `[50, 100, 200, 300, 500]` and record test R2. Plot R2 vs `n_estimators`.
-
-```python
-# Starter
-# ns = [50, 100, 200, 300, 500]
-# r2s = []
-# for n in ns:
-#     m = RandomForestRegressor(n_estimators=n, random_state=0, n_jobs=-1).fit(X_tr, y_tr)
-#     r2s.append(r2_score(y_te, m.predict(X_te)))
-# plt.plot(ns, r2s, "o-"); plt.xlabel("n_estimators"); plt.ylabel("Test R2"); plt.title("R2 vs forest size")
-# plt.show()
-```
-
-### Q4. Forest classification - permutation importance
-
-Train `RandomForestClassifier` with `n_estimators=300` on toxicity. Compute permutation importance on the test split with the `roc_auc` scorer and plot.
-
-```python
-# Starter
-# rfc = RandomForestClassifier(n_estimators=300, random_state=0, n_jobs=-1).fit(Xc_tr, yc_tr)
-# perm = permutation_importance(rfc, Xc_te, yc_te, scoring="roc_auc", n_repeats=20, random_state=0)
-# pd.Series(perm.importances_mean, index=feat).sort_values().plot(kind="barh")
-# plt.title("Permutation importance (AUC drop)")
-# plt.show()
-```
-
-### Q5. End to end - small forest grid
-
-Use GridSearchCV to tune a small forest for Melting Point with:
-- `n_estimators`: `[200, 300]`
-- `max_depth`: `[None, 6, 10]`
-- `min_samples_leaf`: `[1, 2, 5]`
-- `max_features`: `["auto", "sqrt"]`
-
-Report best params, CV mean R2, and test R2. Predict for three SMILES of your choice after computing descriptors.
-
-```python
-# Starter
-# param_grid = {...}
-# rf = RandomForestRegressor(random_state=0, n_jobs=-1)
-# grid = GridSearchCV(rf, param_grid, cv=KFold(n_splits=4, shuffle=True, random_state=1), scoring="r2", n_jobs=-1)
-# grid.fit(X_tr, y_tr)
-# best_rf = grid.best_estimator_
-# print(grid.best_params_, grid.best_score_)
-# print("Test R2:", r2_score(y_te, best_rf.predict(X_te)))
-```
-
----
-
-## 10. Solutions to in-class activities
-
-### Solution Q1
-
-```{code-cell} ipython3
-values = [1, 2, 5, 10, 20, 40]
-r2s = []
-for v in values:
-    m = DecisionTreeRegressor(min_samples_leaf=v, random_state=0).fit(X_tr, y_tr)
-    r2s.append(r2_score(y_te, m.predict(X_te)))
-plt.figure(figsize=(6,4))
-plt.plot(values, r2s, "o-"); plt.xscale("log")
-plt.xlabel("min_samples_leaf"); plt.ylabel("Test R2"); plt.title("Leaf size sweep")
-plt.grid(True, alpha=0.3); plt.show()
-pd.DataFrame({"min_samples_leaf": values, "test_R2": np.round(r2s,3)})
-```
-
-### Solution Q2
-
-```{code-cell} ipython3
-clf = DecisionTreeClassifier(max_depth=4, random_state=0).fit(Xc_tr, yc_tr)
-proba = clf.predict_proba(Xc_te)[:,1]
-ths = np.arange(0.20, 0.81, 0.05)
-rec_list, prec_list, f1_list = [], [], []
-best_t = None
-for t in ths:
-    pred_t = (proba >= t).astype(int)
-    r = recall_score(yc_te, pred_t)
-    p = precision_score(yc_te, pred_t, zero_division=0)
-    f = f1_score(yc_te, pred_t, zero_division=0)
-    rec_list.append(r); prec_list.append(p); f1_list.append(f)
-    if best_t is None and r >= 0.80:
-        best_t = t
-
-print("First threshold with recall >= 0.80:", best_t)
-plt.figure(figsize=(7,5))
-plt.plot(ths, rec_list, marker="o", label="Recall")
-plt.plot(ths, prec_list, marker="o", label="Precision")
-plt.plot(ths, f1_list, marker="o", label="F1")
-plt.xlabel("Threshold"); plt.ylabel("Score"); plt.title("Threshold tuning on toxicity (tree)")
-plt.legend(); plt.grid(True, alpha=0.3); plt.show()
-```
-
-### Solution Q3
-
-```{code-cell} ipython3
-ns = [50, 100, 200, 300, 500]
-r2s = []
-for n in ns:
-    m = RandomForestRegressor(n_estimators=n, random_state=0, n_jobs=-1).fit(X_tr, y_tr)
-    r2s.append(r2_score(y_te, m.predict(X_te)))
-plt.figure(figsize=(6,4))
-plt.plot(ns, r2s, "o-")
-plt.xlabel("n_estimators"); plt.ylabel("Test R2"); plt.title("R2 vs forest size")
-plt.grid(True, alpha=0.3); plt.show()
-pd.DataFrame({"n_estimators": ns, "test_R2": np.round(r2s,3)})
-```
-
-### Solution Q4
-
-```{code-cell} ipython3
-rfc_sol = RandomForestClassifier(n_estimators=300, random_state=0, n_jobs=-1).fit(Xc_tr, yc_tr)
-perm = permutation_importance(rfc_sol, Xc_te, yc_te, scoring="roc_auc", n_repeats=20, random_state=0)
-pd.Series(perm.importances_mean, index=feat).sort_values().plot(kind="barh", figsize=(5,3))
-plt.title("Permutation importance (AUC drop)"); plt.xlabel("Mean decrease in AUC")
+perm_rf = permutation_importance(rf_clf, X_test, y_test, scoring="accuracy", n_repeats=20, random_state=0)
+pd.Series(perm_rf.importances_mean, index=feat_names).sort_values().plot(kind="barh")
+plt.title("Random Forest permutation importance (test)")
 plt.show()
 ```
 
-### Solution Q5
+### 3.2 Regression forest on Melting Point
+Next we apply the same idea for regression. The forest predicts a continuous value (melting point) by averaging predictions from many regression trees.
+```{code-cell} ipython3
+rf_reg = RandomForestRegressor(
+    n_estimators=400,
+    max_depth=None,
+    min_samples_leaf=3,
+    max_features="sqrt",
+    oob_score=True,
+    random_state=0,
+    n_jobs=-1
+)
+rf_reg.fit(Xr_train, yr_train)
+
+print("OOB R2:", rf_reg.oob_score_)
+yhat_rf = rf_reg.predict(Xr_test)
+print(f"Test R2: {r2_score(yr_test, yhat_rf):.3f}")
+print(f"Test MAE: {mean_absolute_error(yr_test, yhat_rf):.3f}")
+```
+
+Parity and feature importance plots help check performance.
 
 ```{code-cell} ipython3
-param_grid = {
-    "n_estimators": [200, 300],
-    "max_depth": [None, 6, 10],
-    "min_samples_leaf": [1, 2, 5],
-    "max_features": ["auto", "sqrt"]
-}
-rf = RandomForestRegressor(random_state=0, n_jobs=-1)
-grid = GridSearchCV(rf, param_grid, cv=KFold(n_splits=4, shuffle=True, random_state=1), scoring="r2", n_jobs=-1)
-grid.fit(X_tr, y_tr)
+# Parity plot
+plt.scatter(yr_test, yhat_rf, alpha=0.6)
+lims = [min(yr_test.min(), yhat_rf.min()), max(yr_test.max(), yhat_rf.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Random Forest regressor")
+plt.show()
 
-best_rf_final = grid.best_estimator_
-print("Best params:", grid.best_params_)
-print("CV mean R2:", grid.best_score_.round(3))
-print("Test R2:", r2_score(y_te, best_rf_final.predict(X_te)).round(3))
-
-# Predict three sample SMILES if RDKit is available
-smiles_three = ["C(F)(F)(F)CC=CCO", "C1CCCC(COC)C1", "CC(CBr)CCl"]
-if Chem is not None:
-    desc = pd.DataFrame([calc_desc(s) for s in smiles_three])[feat]
-    preds = best_rf_final.predict(desc)
-    print(pd.DataFrame({"SMILES": smiles_three, "Predicted MP": preds.round(1)}))
-else:
-    print("RDKit not available. Skipping SMILES prediction.")
+# Feature importance
+pd.Series(rf_reg.feature_importances_, index=Xr_train.columns).sort_values().plot(kind="barh")
+plt.title("Random Forest importance (regression)")
+plt.show()
 ```
+
+---
+## 4. Ensembles
+
+Ensembles combine multiple models to improve stability and accuracy. Here we expand on trees with forests, simple averaging, voting, and boosting, and add **visual comparisons** to show their differences.
+
+---
+
+### 4.1 Experiment: single tree vs random forest
+
+We repeat training several times with different random seeds for the train/test split. For each split:
+- Fit a single unpruned tree.
+- Fit a random forest with 300 trees.
+- Record the test R² for both.
+
+```{code-cell} ipython3
+splits = [1, 7, 21, 42, 77]
+rows = []
+for seed in splits:
+    X_tr, X_te, y_tr, y_te = train_test_split(Xr, yr, test_size=0.2, random_state=seed)
+    t = DecisionTreeRegressor(max_depth=None, min_samples_leaf=3, random_state=seed).fit(X_tr, y_tr)
+    f = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=seed, n_jobs=-1).fit(X_tr, y_tr)
+    r2_t = r2_score(y_te, t.predict(X_te))
+    r2_f = r2_score(y_te, f.predict(X_te))
+    rows.append({"seed": seed, "Tree_R2": r2_t, "Forest_R2": r2_f})
+
+df_cmp = pd.DataFrame(rows).round(3)
+df_cmp
+```
+
+```{code-cell} ipython3
+plt.plot(df_cmp["seed"], df_cmp["Tree_R2"], "o-", label="Tree")
+plt.plot(df_cmp["seed"], df_cmp["Forest_R2"], "o-", label="Forest")
+plt.xlabel("random_state")
+plt.ylabel("R2 on test")
+plt.title("Stability across splits")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
+```{admonition} Why forests are often a safe and strong default model
+- **Single tree**: R² jumps up and down depending on the seed. Sometimes the tree performs decently, sometimes it collapses.  
+- **Random forest**: R² is consistently higher and more stable. By averaging across 300 trees trained on different bootstrap samples and feature subsets, the forest cancels out randomness.  
+Forests trade a bit of interpretability for much more reliability.
+```
+
+---
+
+### 4.2 Simple Ensembles by Model Averaging
+
+Random forests are powerful, but ensembling can be simpler. Even just **averaging two different models** can improve performance.
+
+```{code-cell} ipython3
+from sklearn.linear_model import LinearRegression
+
+tree = DecisionTreeRegressor(max_depth=4).fit(Xr_train, yr_train)
+lin  = LinearRegression().fit(Xr_train, yr_train)
+
+pred_tree = tree.predict(Xr_test)
+pred_lin  = lin.predict(Xr_test)
+pred_avg = (pred_tree + pred_lin) / 2.0
+
+df_avg = pd.DataFrame({
+    "True": yr_test,
+    "Tree": pred_tree,
+    "Linear": pred_lin,
+    "Average": pred_avg
+}).head(10)
+df_avg
+```
+
+```{code-cell} ipython3
+print("Tree R2:", r2_score(yr_test, pred_tree))
+print("Linear R2:", r2_score(yr_test, pred_lin))
+print("Averaged R2:", r2_score(yr_test, pred_avg))
+```
+
+```{code-cell} ipython3
+plt.scatter(yr_test, pred_tree, alpha=0.5, label="Tree")
+plt.scatter(yr_test, pred_lin, alpha=0.5, label="Linear")
+plt.scatter(yr_test, pred_avg, alpha=0.5, label="Average")
+lims = [min(yr_test.min(), pred_tree.min(), pred_lin.min()), max(yr_test.max(), pred_tree.max(), pred_lin.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Tree vs Linear vs Average")
+plt.legend()
+plt.show()
+```
+
+```{admonition} Difference
+- **Tree**: captures nonlinear shapes but may overfit.  
+- **Linear**: very stable but may underfit.  
+- **Average**: balances the two, smoother than tree, more flexible than linear regression.  
+```
+
+---
+
+### 4.3 Simple Ensembles by Voting
+
+Voting is most common for classification. Each model votes for a class.  
+- **Hard voting**: majority wins.  
+- **Soft voting**: average predicted probabilities.
+
+```{code-cell} ipython3
+from sklearn.ensemble import VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+
+vote_clf_soft = VotingClassifier(
+    estimators=[
+        ("lr", LogisticRegression(max_iter=500, random_state=0)),
+        ("svc", SVC(probability=True, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+    ],
+    voting="soft"
+).fit(X_train, y_train)
+
+print("Soft Voting classifier accuracy:", accuracy_score(y_test, vote_clf_soft.predict(X_test)))
+
+
+vote_clf_hard = VotingClassifier(
+    estimators=[
+        ("lr", LogisticRegression(max_iter=500, random_state=0)),
+        ("svc", SVC(probability=True, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+    ],
+    voting="hard"
+).fit(X_train, y_train)
+
+print("Hard Voting classifier accuracy:", accuracy_score(y_test, vote_clf_hard.predict(X_test)))
+
+```
+
+Compare voting against individual models:
+
+```{code-cell} ipython3
+acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
+
+pd.DataFrame({
+    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
+    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+})
+```
+
+```{admonition} Difference
+- **Individual models**: Logistic regression handles linear patterns, SVM picks margins, random forest handles nonlinear rules.  
+- **Voting ensemble**: combines their strengths, reducing the chance of one weak model dominating.  
+```
+
+---
+
+### 4.4 (Optional Topic) Boosting: a different ensemble structure
+
+Boosting is sequential: each tree corrects the mistakes of the last. Sometimes it can be stronger than bagging, but needs careful tuning.
+
+```{code-cell} ipython3
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import mean_absolute_error
+
+gb_reg = GradientBoostingRegressor(
+    n_estimators=300,
+    learning_rate=0.05,
+    max_depth=3,
+    random_state=0
+).fit(Xr_train, yr_train)
+
+yhat_gb = gb_reg.predict(Xr_test)
+print(f"Gradient Boosting R2: {r2_score(yr_test, yhat_gb):.3f}")
+print(f"Gradient Boosting MAE: {mean_absolute_error(yr_test, yhat_gb):.2f}")
+```
+
+Compare **Random Forest vs Gradient Boosting** directly:
+
+```{code-cell} ipython3
+rf_reg = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=0, n_jobs=-1).fit(Xr_train, yr_train)
+yhat_rf = rf_reg.predict(Xr_test)
+
+pd.DataFrame({
+    "Model": ["RandomForest", "GradientBoosting"],
+    "R2": [r2_score(yr_test, yhat_rf), r2_score(yr_test, yhat_gb)],
+    "MAE": [mean_absolute_error(yr_test, yhat_rf), mean_absolute_error(yr_test, yhat_gb)]
+}).round(3)
+```
+
+```{code-cell} ipython3
+plt.scatter(yr_test, yhat_rf, alpha=0.5, label="RandomForest")
+plt.scatter(yr_test, yhat_gb, alpha=0.5, label="GradientBoosting")
+lims = [min(yr_test.min(), yhat_rf.min(), yhat_gb.min()), max(yr_test.max(), yhat_rf.max(), yhat_gb.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: RF vs GB")
+plt.legend()
+plt.show()
+```
+
+```{admonition} Compare
+- **Random forest**: reduces variance by averaging many deep trees. Stable and easy to tune.  
+- **Boosting**: reduces bias by sequentially correcting mistakes. Often achieves higher accuracy but requires careful parameter tuning.  
+```
+
+---
+
+## 5. End-to-end recipe for random forest
+
+Now, let's put everything we learn for trees and forests together. Below is a standard workflow for toxicity with a forest. Similar to what we learned from last lecture but handled with RF model.
+
+```{code-cell} ipython3
+# 1) Data
+X = df_clf[["MolWt", "LogP", "TPSA", "NumRings"]]
+y = df_clf["Toxicity"].str.lower().map(label_map).astype(int)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=15, stratify=y
+)
+
+# 2) Model
+rf = RandomForestClassifier(
+    n_estimators=400, max_depth=None, max_features="sqrt",
+    min_samples_leaf=3, oob_score=True, random_state=15, n_jobs=-1
+).fit(X_train, y_train)
+
+# 3) Evaluate
+y_hat = rf.predict(X_test)
+y_proba = rf.predict_proba(X_test)[:,1]
+print(f"OOB score: {rf.oob_score_:.3f}")
+print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")
+print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")
+```
+Additional plots demonstrating the performance:
+
+```{code-cell} ipython3
+# Confusion matrix and ROC
+cm = confusion_matrix(y_test, y_hat)
+plt.imshow(cm, cmap="Blues"); plt.title("Confusion Matrix"); plt.xlabel("Pred"); plt.ylabel("True")
+for i in range(2):
+    for j in range(2):
+        plt.text(j, i, cm[i,j], ha="center", va="center")
+plt.colorbar(fraction=0.046, pad=0.04)
+plt.show()
+
+fpr, tpr, thr = roc_curve(y_test, y_proba)
+plt.plot(fpr, tpr, lw=2); plt.plot([0,1],[0,1],"k--")
+plt.xlabel("FPR"); plt.ylabel("TPR"); plt.title("ROC curve")
+plt.show()
+```
+
+---
+
+## 6. Quick reference
+
+```{admonition} Common options
+- DecisionTreeClassifier/Regressor: `max_depth`, `min_samples_leaf`, `min_samples_split`, `criterion`, `random_state`
+- RandomForestClassifier/Regressor: add `n_estimators`, `max_features`, `oob_score`, `n_jobs`
+- Use `feature_importances_` for built-in importance and `permutation_importance` for model-agnostic view
+```
+```{admonition} When to use
+- Tree: simple rules, quick to interpret on small depth
+- Forest: stronger accuracy, more stable, less sensitive to a single split
+```
+
+---
+
+## 7. In-class activities
+
+### 7.1 Tree vs Forest on log-solubility
+
+- Create `y_log = log10(Solubility_mol_per_L + 1e-6)`
+- Use features `[MolWt, LogP, TPSA, NumRings]`
+- Train a `DecisionTreeRegressor(max_depth=4, min_samples_leaf=5)` and a `RandomForestRegressor(n_estimators=300, min_samples_leaf=5)`
+- Report test **R2** for both and draw both parity plots
+
+```python
+# TO DO
+```
+
+### 7.2 Pruning with `min_samples_leaf`
+
+- Fix `max_depth=None` for `DecisionTreeClassifier` on toxicity
+- Sweep `min_samples_leaf` in `[1, 2, 3, 5, 8, 12, 20]`
+- Plot test **accuracy** vs `min_samples_leaf`
+
+```python
+# TO DO
+```
+
+### 7.3 OOB sanity check
+
+- Train `RandomForestClassifier` with `oob_score=True` on toxicity
+- Compare OOB score to test accuracy over seeds `[0, 7, 21, 42]`
+
+```python
+# TO DO
+```
+
+### 7.4 Feature importance agreement
+
+- On melting point, compute forest `feature_importances_` and `permutation_importance`
+- Plot both and comment where they agree or disagree
+
+```python
+# TO DO
+```
+
+### 7.5 Small tree visualization
+
+- Fit a `DecisionTreeClassifier(max_depth=2)` on toxicity
+- Use `plot_tree` to draw it and write down the two split rules in plain language
+
+```python
+# TO DO
+```
+
+---

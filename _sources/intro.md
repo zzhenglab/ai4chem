@@ -37,12 +37,14 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Dec 2 & 4** – Final project presentations  
 ```
 
+
+
 ```{admonition} Assignments & Project Submissions (Canvas)  
 :class: tip
 | Date | Assignment / Project  |
 |------|----------------------|
 | **Sept 7** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1Zel7MlJgwcndDsBfqsk7LFYpdZpJRH3g?usp=sharing) |  
-| **Sept 21** | Assignment 2 due | 
+| **Sept 21** | Assignment 2 due | [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) 
 | **Oct 5** | Project 1 due |  
 | **Oct 19** | Project 1 Evaluation due |  
 | **Oct 26** | Assignment 3 due |  
