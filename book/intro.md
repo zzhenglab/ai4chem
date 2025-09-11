@@ -28,9 +28,9 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Aug 26 & 28** – Intro + Python basics - [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 9 & 11** – Classification & regression  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
-- **Sept 16 & 18** – Supervised deep learning  
+- **Sept 16 & 18** – Supervised machine learning  
 - **Sept 23 & 25** – Molecular property & reaction prediction  
-- **Sept 30 & Oct 2** – Unsupervised learning 
+- **Sept 30 & Oct 2** – Unsupervised learning  methods
 - **Oct 21 & 23** – Generative models for molecules  
 - **Nov 4 & 6** – Transformers & large language models  
 - **Nov 25** – Self-driving labs  

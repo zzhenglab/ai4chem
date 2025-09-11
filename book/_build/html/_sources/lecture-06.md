@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 6 - Supervised Learning
+# Lecture 6 - Cross-Validation
 
 ```{contents}
 :local:
@@ -20,9 +20,7 @@ kernelspec:
 
 ## Learning goals
 
-- Recognize when to try Random Forest, SVM, KNN, and Decision Trees.
 - Use **KFold** and **cross_val_score** for fair evaluation.
-- Spot **overfitting** and control model complexity.
 - Tune hyperparameters with **GridSearchCV**.
 - Explain predictions using **feature importance** and **permutation importance**.
 

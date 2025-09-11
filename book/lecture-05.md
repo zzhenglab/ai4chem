@@ -1255,15 +1255,6 @@ Turn **pKa** into a binary label and train Logistic Regression with the same des
 ... #TO DO
 ```
 
-### 10.5 Threshold tuning on toxicity
-
-Using the toxicity classifier from Section 5, scan thresholds `0.2` to `0.8` in steps of `0.05`. Find the smallest threshold with **recall ≥ 0.80** and report the corresponding **precision** and **F1**. Plot the metric curves vs threshold.
-If needed, you can use ChatGPT to work on this question.
-
-```python
-... #TO DO
-```
----
 
 
 
@@ -1421,37 +1412,3 @@ median_val = np.median(pka_vals)
 y_cls_B = (pka_vals <= median_val).astype(int)
 run_classification(y_cls_B, f"Rule B (≤ median pKa = acidic, median={median_val:.2f})")
 ```
-
-### 10.5 Threshold tuning on toxicity
-
-Using the toxicity classifier from Section 5, scan thresholds `0.2` to `0.8` in steps of `0.05`. Find the smallest threshold with **recall ≥ 0.80** and report the corresponding **precision** and **F1**. Plot the metric curves vs threshold.
-
-```{code-cell} ipython3
-# Starter
-ths = np.arange(0.20, 0.81, 0.05)
-rec_list, prec_list, f1_list = [], [], []
-best_t = None
-
-for t in ths:
-    pred_t = (y_proba >= t).astype(int)
-    r = recall_score(y_test, pred_t)
-    p = precision_score(y_test, pred_t, zero_division=0)
-    f = f1_score(y_test, pred_t, zero_division=0)
-    rec_list.append(r); prec_list.append(p); f1_list.append(f)
-    if best_t is None and r >= 0.80:
-        best_t = t
-
-print("First threshold with recall >= 0.80:", best_t)
-
-plt.figure(figsize=(7,5))
-plt.plot(ths, rec_list, marker="o", label="Recall")
-plt.plot(ths, prec_list, marker="o", label="Precision")
-plt.plot(ths, f1_list, marker="o", label="F1")
-plt.xlabel("Threshold")
-plt.ylabel("Score")
-plt.title("Threshold tuning on toxicity")
-plt.legend()
-plt.grid(True)
-plt.show()
-```
-

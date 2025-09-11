@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 3 - SMILES and RDKit &#8212; My sample book</title>
   
@@ -14,49 +15,53 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-03';</script>
@@ -73,23 +78,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +121,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +142,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +160,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -187,7 +176,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3 - SMILES and RDKit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
 </ul>
 
     </div>
@@ -203,7 +192,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -212,14 +201,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -344,10 +333,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -355,14 +344,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -384,7 +373,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles">1. SMILES</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atoms">1.1 Atoms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonds">1.2 Bonds</a></li>
@@ -421,7 +410,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-a-smiles-and-inspect">8.1 Read a SMILES and inspect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-small-properties-table">8.2 Make a small properties table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-chlorine-with-fluorine">8.3 Replace chlorine with fluorine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.4 Add a methyl group with a graph edit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.4 Add a methyl group with a graph edit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
 </ul>
 </li>
@@ -441,31 +430,31 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-3-smiles-and-rdkit">
-<h1>Lecture 3 - SMILES and RDKit<a class="headerlink" href="#lecture-3-smiles-and-rdkit" title="Link to this heading">#</a></h1>
+<h1>Lecture 3 - SMILES and RDKit<a class="headerlink" href="#lecture-3-smiles-and-rdkit" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>Start with the SMILES language, practice tiny steps, then use RDKit to draw, edit, and analyze molecules. Finish with PubChem lookups.</p>
 </div></blockquote>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#learning-goals" id="id3">Learning goals</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id4">Colab</a></p></li>
-<li><p><a class="reference internal" href="#smiles" id="id5">1. SMILES</a></p></li>
-<li><p><a class="reference internal" href="#rdkit-quick-start" id="id6">2. RDKit quick start</a></p></li>
-<li><p><a class="reference internal" href="#small-edits-in-rdkit" id="id7">3. Small edits in RDKit</a></p></li>
-<li><p><a class="reference internal" href="#why-use-editablemol-instead-of-just-smiles-edits" id="id8">3.4 Why use <code class="docutils literal notranslate"><span class="pre">EditableMol</span></code> instead of just SMILES edits?</a></p></li>
-<li><p><a class="reference internal" href="#canonicalization-and-similarity" id="id9">4. Canonicalization and similarity</a></p></li>
-<li><p><a class="reference internal" href="#rdkit-with-pandas" id="id10">5. RDKit with pandas</a></p></li>
-<li><p><a class="reference internal" href="#quick-reference" id="id11">6. Quick reference</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id12">7. Glossary</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity" id="id13">8. In-class activity</a></p></li>
-<li><p><a class="reference internal" href="#solutions" id="id14">9. Solutions</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#colab" id="id3">Colab</a></p></li>
+<li><p><a class="reference internal" href="#smiles" id="id4">1. SMILES</a></p></li>
+<li><p><a class="reference internal" href="#rdkit-quick-start" id="id5">2. RDKit quick start</a></p></li>
+<li><p><a class="reference internal" href="#small-edits-in-rdkit" id="id6">3. Small edits in RDKit</a></p></li>
+<li><p><a class="reference internal" href="#why-use-editablemol-instead-of-just-smiles-edits" id="id7">3.4 Why use <code class="docutils literal notranslate"><span class="pre">EditableMol</span></code> instead of just SMILES edits?</a></p></li>
+<li><p><a class="reference internal" href="#canonicalization-and-similarity" id="id8">4. Canonicalization and similarity</a></p></li>
+<li><p><a class="reference internal" href="#rdkit-with-pandas" id="id9">5. RDKit with pandas</a></p></li>
+<li><p><a class="reference internal" href="#quick-reference" id="id10">6. Quick reference</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id11">7. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id12">8. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id13">9. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Read SMILES strings with confidence: atoms, bonds, branches, rings, aromaticity, charges, simple stereochemistry.</p></li>
 <li><p>Use RDKit to parse SMILES, draw structures, add hydrogens, and compute basic properties.</p></li>
@@ -473,11 +462,11 @@ document.write(`
 <li><p>Query PubChem after you can edit molecules locally, then round-trip to SMILES and files.</p></li>
 </ul>
 </section>
-<section id="id1">
-<h2><a class="reference external" href="https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="colab">
+<h2><a class="reference external" href="https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a><a class="headerlink" href="#colab" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="smiles">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">1. SMILES</a><a class="headerlink" href="#smiles" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. SMILES</a><a class="headerlink" href="#smiles" title="Permalink to this heading">#</a></h2>
 <p><strong>What is SMILES?</strong></p>
 <p>SMILES (Simplified Molecular Input Line Entry System) is a compact way to describe a molecule using only a line of text. It turns molecular structures into strings that are easy for both humans and computers to read.</p>
 <p>Each atom is represented by its atomic symbol: <code class="docutils literal notranslate"><span class="pre">C</span></code> for carbon, <code class="docutils literal notranslate"><span class="pre">O</span></code> for oxygen, etc.</p>
@@ -503,7 +492,7 @@ document.write(`
 </div>
 </div>
 <section id="atoms">
-<h3>1.1 Atoms<a class="headerlink" href="#atoms" title="Link to this heading">#</a></h3>
+<h3>1.1 Atoms<a class="headerlink" href="#atoms" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Organic set without brackets: <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">C</span> <span class="pre">N</span> <span class="pre">O</span> <span class="pre">P</span> <span class="pre">S</span> <span class="pre">F</span> <span class="pre">Cl</span> <span class="pre">Br</span> <span class="pre">I</span></code>.</p></li>
 <li><p>Hydrogens are usually implicit.</p></li>
@@ -519,7 +508,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/17cbd820e91dbefd5c82141c3683d00a2c9b3e3c703d7b3c869aa2eb21ac0d4c.png" src="_images/17cbd820e91dbefd5c82141c3683d00a2c9b3e3c703d7b3c869aa2eb21ac0d4c.png" />
+<img alt="_images/3700266cb5efb966ba81a784e88c40a967e8acf46902aca9a4f6c973cb444598.png" src="_images/3700266cb5efb966ba81a784e88c40a967e8acf46902aca9a4f6c973cb444598.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -536,7 +525,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/007f34e868844dd5b8602a913ef87796ce3dc214ff308fac8298a09bac9ff05a.png" src="_images/007f34e868844dd5b8602a913ef87796ce3dc214ff308fac8298a09bac9ff05a.png" />
+<img alt="_images/e025a1c7344c06b753996dd31e30d1c24a6ff0954b95b2e16e3948ace4e9a861.png" src="_images/e025a1c7344c06b753996dd31e30d1c24a6ff0954b95b2e16e3948ace4e9a861.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -551,12 +540,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/121231efd81fcb2e20f68282c051e0281ea4e934f2b937c3d1db99aac58d1ee8.png" src="_images/121231efd81fcb2e20f68282c051e0281ea4e934f2b937c3d1db99aac58d1ee8.png" />
+<img alt="_images/02e7e87c0d700b1353a845eeea384f2831beec4d8ae714b55340de57322233ea.png" src="_images/02e7e87c0d700b1353a845eeea384f2831beec4d8ae714b55340de57322233ea.png" />
 </div>
 </div>
 </section>
 <section id="bonds">
-<h3>1.2 Bonds<a class="headerlink" href="#bonds" title="Link to this heading">#</a></h3>
+<h3>1.2 Bonds<a class="headerlink" href="#bonds" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Single is implied.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> is double.</p></li>
@@ -575,12 +564,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/307fe369a26d5bc6a27ccbbc0c50412f380a8c8613db00262c71442d9c6677b1.png" src="_images/307fe369a26d5bc6a27ccbbc0c50412f380a8c8613db00262c71442d9c6677b1.png" />
+<img alt="_images/8aaf3276af27bc104e2476c8a51a1739e66f7d44d250555aca8c0b3bdc767cca.png" src="_images/8aaf3276af27bc104e2476c8a51a1739e66f7d44d250555aca8c0b3bdc767cca.png" />
 </div>
 </div>
 </section>
 <section id="branches">
-<h3>1.3 Branches<a class="headerlink" href="#branches" title="Link to this heading">#</a></h3>
+<h3>1.3 Branches<a class="headerlink" href="#branches" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Parentheses create side branches.</p></li>
 </ul>
@@ -601,12 +590,12 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CC(O)CC CC(C)OC
 </pre></div>
 </div>
-<img alt="_images/ccda69934ec24937b6187bf2611d93d74836be8375a1661a3c607c2045a53665.png" src="_images/ccda69934ec24937b6187bf2611d93d74836be8375a1661a3c607c2045a53665.png" />
+<img alt="_images/b23a1009368ebfa6580f0588ddfb8d9816d29baf38908d687f1d5560cc0e5189.png" src="_images/b23a1009368ebfa6580f0588ddfb8d9816d29baf38908d687f1d5560cc0e5189.png" />
 </div>
 </div>
 </section>
 <section id="rings">
-<h3>1.4 Rings<a class="headerlink" href="#rings" title="Link to this heading">#</a></h3>
+<h3>1.4 Rings<a class="headerlink" href="#rings" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Numbers open and close rings.</p></li>
 <li><p>Same digit appears twice to close that ring.</p></li>
@@ -624,12 +613,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3238285e95424198a096071f2478091ac6fec527be34b9de33d7105356caa585.png" src="_images/3238285e95424198a096071f2478091ac6fec527be34b9de33d7105356caa585.png" />
+<img alt="_images/69d9374a895f1e1a91b9c789b833d4a8b1b17181eaff61f8891a84a93d080c1c.png" src="_images/69d9374a895f1e1a91b9c789b833d4a8b1b17181eaff61f8891a84a93d080c1c.png" />
 </div>
 </div>
 </section>
 <section id="aromatic-vs-aliphatic">
-<h3>1.5 Aromatic vs aliphatic<a class="headerlink" href="#aromatic-vs-aliphatic" title="Link to this heading">#</a></h3>
+<h3>1.5 Aromatic vs aliphatic<a class="headerlink" href="#aromatic-vs-aliphatic" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Aromatic atoms are lower case.</p></li>
 <li><p>Aliphatic are upper case.</p></li>
@@ -644,7 +633,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ee57abd57ca4d2baf6045dd24bafad85b6912868d924f6e0f0d5e910a05a5bb6.png" src="_images/ee57abd57ca4d2baf6045dd24bafad85b6912868d924f6e0f0d5e910a05a5bb6.png" />
+<img alt="_images/74014d58b64323ce4e47c5c660bb7e7c1f8d11ddf9b3913720a8f193afe1b102.png" src="_images/74014d58b64323ce4e47c5c660bb7e7c1f8d11ddf9b3913720a8f193afe1b102.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -667,12 +656,12 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d1aedf29a9d6efb7f88179168080e12ec44141e8e709865c2a9ed21bddbca68c.png" src="_images/d1aedf29a9d6efb7f88179168080e12ec44141e8e709865c2a9ed21bddbca68c.png" />
+<img alt="_images/e215deb5138d6aa171250922c8fbbec25c9b157ea985cc4e400265308ef5a616.png" src="_images/e215deb5138d6aa171250922c8fbbec25c9b157ea985cc4e400265308ef5a616.png" />
 </div>
 </div>
 </section>
 <section id="charges-and-salts">
-<h3>1.6 Charges and salts<a class="headerlink" href="#charges-and-salts" title="Link to this heading">#</a></h3>
+<h3>1.6 Charges and salts<a class="headerlink" href="#charges-and-salts" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">.</span></code> to separate parts in a salt.</p></li>
 <li><p>Place charge in brackets on the atom.</p></li>
@@ -685,12 +674,12 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af72544af30e323af17a477967e7be9cd7f73c9d827ccc3b4cec7755245dad47.png" src="_images/af72544af30e323af17a477967e7be9cd7f73c9d827ccc3b4cec7755245dad47.png" />
+<img alt="_images/7c185d31c25c26f2e2168cea02c4849ea9125acd8c087ae89f132e7c94b2c922.png" src="_images/7c185d31c25c26f2e2168cea02c4849ea9125acd8c087ae89f132e7c94b2c922.png" />
 </div>
 </div>
 </section>
 <section id="simple-stereochemistry">
-<h3>1.7 Simple stereochemistry<a class="headerlink" href="#simple-stereochemistry" title="Link to this heading">#</a></h3>
+<h3>1.7 Simple stereochemistry<a class="headerlink" href="#simple-stereochemistry" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>E and Z for alkenes use slashes.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Cl/C=C/Cl</span></code> is E. <code class="docutils literal notranslate"><span class="pre">Cl/C=C\Cl</span></code> is Z.</p></li>
@@ -705,7 +694,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/459975233cd8913ab757705808ff8990d77a219c905b650ae01ed8c46c6a10ec.png" src="_images/459975233cd8913ab757705808ff8990d77a219c905b650ae01ed8c46c6a10ec.png" />
+<img alt="_images/b157c4caa780ff1d6b1e0328b6368f80d3fde4b381f7e15a42fa890792ffade4.png" src="_images/b157c4caa780ff1d6b1e0328b6368f80d3fde4b381f7e15a42fa890792ffade4.png" />
 </div>
 </div>
 <div class="admonition-try admonition">
@@ -732,7 +721,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </section>
 <hr class="docutils" />
 <section id="rdkit-quick-start">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">2. RDKit quick start</a><a class="headerlink" href="#rdkit-quick-start" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. RDKit quick start</a><a class="headerlink" href="#rdkit-quick-start" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
@@ -745,7 +734,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0b244388fd46aa368caee33600535024aba671cd2d87d9b2991e0d7e9ba37ee.png" src="_images/e0b244388fd46aa368caee33600535024aba671cd2d87d9b2991e0d7e9ba37ee.png" />
+<img alt="_images/7eb1c6f841fd0f5426fbab65a1d96ab878e862448d251c2556dc4c58ffccf007.png" src="_images/7eb1c6f841fd0f5426fbab65a1d96ab878e862448d251c2556dc4c58ffccf007.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -757,7 +746,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/94ea06b951da92be7ef3a18488fc9bf4bfaaa6acd9c946d7918c77ee69866d71.png" src="_images/94ea06b951da92be7ef3a18488fc9bf4bfaaa6acd9c946d7918c77ee69866d71.png" />
+<img alt="_images/8a9ff657e17bc9a15377b858ad9d15f1263d7fad741c9e0d6b80589e2bd67730.png" src="_images/8a9ff657e17bc9a15377b858ad9d15f1263d7fad741c9e0d6b80589e2bd67730.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -795,7 +784,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0b244388fd46aa368caee33600535024aba671cd2d87d9b2991e0d7e9ba37ee.png" src="_images/e0b244388fd46aa368caee33600535024aba671cd2d87d9b2991e0d7e9ba37ee.png" />
+<img alt="_images/7eb1c6f841fd0f5426fbab65a1d96ab878e862448d251c2556dc4c58ffccf007.png" src="_images/7eb1c6f841fd0f5426fbab65a1d96ab878e862448d251c2556dc4c58ffccf007.png" />
 </div>
 </div>
 <div class="admonition-practice admonition">
@@ -805,10 +794,10 @@ For fused systems, you can reuse different digits to show where each ring closes
 </section>
 <hr class="docutils" />
 <section id="small-edits-in-rdkit">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">3. Small edits in RDKit</a><a class="headerlink" href="#small-edits-in-rdkit" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Small edits in RDKit</a><a class="headerlink" href="#small-edits-in-rdkit" title="Permalink to this heading">#</a></h2>
 <p>We will avoid pattern languages here. We will use plain molecules to find and replace common pieces.</p>
 <section id="replace-atom-type-by-matching-a-small-molecule">
-<h3>3.1 Replace atom type by matching a small molecule<a class="headerlink" href="#replace-atom-type-by-matching-a-small-molecule" title="Link to this heading">#</a></h3>
+<h3>3.1 Replace atom type by matching a small molecule<a class="headerlink" href="#replace-atom-type-by-matching-a-small-molecule" title="Permalink to this heading">#</a></h3>
 <p>Replace all chlorine atoms with fluorine in an aryl chloride.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -825,12 +814,12 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" src="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" />
+<img alt="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" src="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" />
 </div>
 </div>
 </section>
 <section id="neutralize-a-carboxylate">
-<h3>3.2 Neutralize a carboxylate<a class="headerlink" href="#neutralize-a-carboxylate" title="Link to this heading">#</a></h3>
+<h3>3.2 Neutralize a carboxylate<a class="headerlink" href="#neutralize-a-carboxylate" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CC(=O)[O-]&quot;</span><span class="p">)</span>
@@ -842,12 +831,12 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c830c8f543f1ff01bdf8936713c61d629e106732a4e22bcb14c2d8933beca490.png" src="_images/c830c8f543f1ff01bdf8936713c61d629e106732a4e22bcb14c2d8933beca490.png" />
+<img alt="_images/f9ea8b3295cbd2cfd08e324bb98acce1884c20e90df29fd505caba3e2dae1a9a.png" src="_images/f9ea8b3295cbd2cfd08e324bb98acce1884c20e90df29fd505caba3e2dae1a9a.png" />
 </div>
 </div>
 </section>
 <section id="add-a-methyl-group-with-a-graph-edit">
-<h3>3.3 Add a methyl group with a graph edit<a class="headerlink" href="#add-a-methyl-group-with-a-graph-edit" title="Link to this heading">#</a></h3>
+<h3>3.3 Add a methyl group with a graph edit<a class="headerlink" href="#add-a-methyl-group-with-a-graph-edit" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">)</span>  <span class="c1"># benzene</span>
@@ -870,7 +859,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" src="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" />
+<img alt="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" src="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" />
 </div>
 </div>
 <div class="admonition-tip admonition">
@@ -881,7 +870,7 @@ For fused systems, you can reuse different digits to show where each ring closes
 </section>
 <hr class="docutils" />
 <section id="why-use-editablemol-instead-of-just-smiles-edits">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">3.4 Why use <code class="docutils literal notranslate"><span class="pre">EditableMol</span></code> instead of just SMILES edits?</a><a class="headerlink" href="#why-use-editablemol-instead-of-just-smiles-edits" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">3.4 Why use <code class="docutils literal notranslate"><span class="pre">EditableMol</span></code> instead of just SMILES edits?</a><a class="headerlink" href="#why-use-editablemol-instead-of-just-smiles-edits" title="Permalink to this heading">#</a></h2>
 <p>Text edits to SMILES can hit the wrong atom or make an invalid string. <code class="docutils literal notranslate"><span class="pre">EditableMol</span></code> lets you target an atom index, keep valence correct, and apply the same change across many molecules in a repeatable way.</p>
 <p>Now consider below example:
 <strong>add a methyl group to atom index 2 across 7 inputs</strong></p>
@@ -980,15 +969,14 @@ OUT: [H]C([H])([H])C(CO)c1ccccc1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/53996e732bd6a8177b95fa825d8342d221f338aebbeec9371b41a632a6b6064b.svg" src="_images/53996e732bd6a8177b95fa825d8342d221f338aebbeec9371b41a632a6b6064b.svg" />
-</div>
+<img alt="_images/c1d8b847818cf863fd9a4d251a84c52dd6614ca94f951a20b08593a257572142.svg" src="_images/c1d8b847818cf863fd9a4d251a84c52dd6614ca94f951a20b08593a257572142.svg" /></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="canonicalization-and-similarity">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">4. Canonicalization and similarity</a><a class="headerlink" href="#canonicalization-and-similarity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">4. Canonicalization and similarity</a><a class="headerlink" href="#canonicalization-and-similarity" title="Permalink to this heading">#</a></h2>
 <section id="canonicalization">
-<h3>4.1 Canonicalization<a class="headerlink" href="#canonicalization" title="Link to this heading">#</a></h3>
+<h3>4.1 Canonicalization<a class="headerlink" href="#canonicalization" title="Permalink to this heading">#</a></h3>
 <p>SMILES strings are compact and easy to use, but there is a catch: they are not guaranteed to be unique.<br />
 The same molecule can be written with different SMILES depending on how the atoms are traversed. This makes it difficult to compare molecules directly.</p>
 <p>In the example below we take three different SMILES notations, each of which corresponds to the molecule we have on quiz.<br />
@@ -1011,7 +999,7 @@ Although the strings differ, the structures are identical once interpreted by RD
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/915360b2af8fc7c41fa3c2290220d4dbaad117dda069e4db8bdb1193dcccddb1.png" src="_images/915360b2af8fc7c41fa3c2290220d4dbaad117dda069e4db8bdb1193dcccddb1.png" />
+<img alt="_images/d5d8af680445946d634e1c7db1d97cf296eeb3d73098ab8b6d999a18e2889fb4.png" src="_images/d5d8af680445946d634e1c7db1d97cf296eeb3d73098ab8b6d999a18e2889fb4.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -1045,7 +1033,7 @@ The important part is consistency within your workflow—use the same toolkit th
 </div>
 </section>
 <section id="morgan-fingerprints-and-tanimoto">
-<h3>4.2 Morgan fingerprints and Tanimoto<a class="headerlink" href="#morgan-fingerprints-and-tanimoto" title="Link to this heading">#</a></h3>
+<h3>4.2 Morgan fingerprints and Tanimoto<a class="headerlink" href="#morgan-fingerprints-and-tanimoto" title="Permalink to this heading">#</a></h3>
 <p>Another way to compare molecules is not by SMILES text but by molecular features.<br />
 Fingerprints encode the presence or absence of atom environments in a binary vector. Morgan fingerprints (circular fingerprints) are widely used.</p>
 <p>So, what is a fingerprint?</p>
@@ -1161,7 +1149,7 @@ Phenol is much less similar since it only shares a benzene ring fragment with ca
 </div>
 </section>
 <section id="bemismurcko-scaffold">
-<h3>4.3 Bemis–Murcko scaffold<a class="headerlink" href="#bemismurcko-scaffold" title="Link to this heading">#</a></h3>
+<h3>4.3 Bemis–Murcko scaffold<a class="headerlink" href="#bemismurcko-scaffold" title="Permalink to this heading">#</a></h3>
 <p>To simplify molecules further we can extract their <strong>scaffolds</strong>, which keep the core ring system and linkers but discard side chains.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1180,7 +1168,7 @@ Phenol is much less similar since it only shares a benzene ring fragment with ca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/234ddcc9dfe23bcbfca43f2cf683f1bcbd43a3b23303a67b4a4b16395f533dc1.png" src="_images/234ddcc9dfe23bcbfca43f2cf683f1bcbd43a3b23303a67b4a4b16395f533dc1.png" />
+<img alt="_images/f8b77a9528856534e60cfbb67d961d2f5f473691bb4b43eac31e4ca7f0e457e0.png" src="_images/f8b77a9528856534e60cfbb67d961d2f5f473691bb4b43eac31e4ca7f0e457e0.png" />
 </div>
 </div>
 <p>Both of the two molecules above share the same benzene scaffold substructure.</p>
@@ -1199,7 +1187,7 @@ Phenol is much less similar since it only shares a benzene ring fragment with ca
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96237a0e7ccd608f8ac24ec4508242144e89460f17bbf3bf1b01d5570a65c902.png" src="_images/96237a0e7ccd608f8ac24ec4508242144e89460f17bbf3bf1b01d5570a65c902.png" />
+<img alt="_images/dd9d030d77a751ae547ac001d1b565a9e7e87dac38c914343822239f7d711a01.png" src="_images/dd9d030d77a751ae547ac001d1b565a9e7e87dac38c914343822239f7d711a01.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -1211,10 +1199,10 @@ Different analogs may have the same core scaffold but different substituents tha
 </section>
 <hr class="docutils" />
 <section id="rdkit-with-pandas">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">5. RDKit with pandas</a><a class="headerlink" href="#rdkit-with-pandas" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">5. RDKit with pandas</a><a class="headerlink" href="#rdkit-with-pandas" title="Permalink to this heading">#</a></h2>
 <p>Large datasets are often stored as tables. Pandas can manage these datasets, while RDKit enriches them with molecular objects and descriptors.</p>
 <section id="load-dataset-and-add-molecule-column">
-<h3>5.1 Load dataset and add molecule column<a class="headerlink" href="#load-dataset-and-add-molecule-column" title="Link to this heading">#</a></h3>
+<h3>5.1 Load dataset and add molecule column<a class="headerlink" href="#load-dataset-and-add-molecule-column" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -1262,35 +1250,35 @@ Different analogs may have the same core scaffold but different substituents tha
       <td>2-Methylimidazole</td>
       <td>CC1=NC=CN1</td>
       <td>82.106</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000002808DA...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001A37B9...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1-Ethyl-3-vinylimidazolium bromide</td>
       <td>C=C[N+]1=CN(CC)C=C1.[Br-]</td>
       <td>203.083</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000002808DA...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001A37B9...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1-Methyl-1,4-diazabicyclo[2.2.2]octan-1-iumchl...</td>
       <td>[Cl-].N12CC[N+](C)(CC1)CC2</td>
       <td>162.660</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000002808DA...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001A37B9...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Oxazole-4-carboxylic acid</td>
       <td>O=C(C1=COC=N1)O</td>
       <td>113.072</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000002808DA...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001A37B9...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>3-Ethyl-2-methylbenzo[d]thiazol-3-ium iodide</td>
       <td>CC[N+]1=C(C)SC2=CC=CC=C21.[I-]</td>
       <td>305.184</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000002808DA...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x000001A37B9...</td>
     </tr>
   </tbody>
 </table>
@@ -1303,7 +1291,7 @@ This makes it easy to compute descriptors row by row or draw molecules inline.</
 </div>
 </section>
 <section id="canonicalize-smiles-and-compute-descriptors">
-<h3>5.2 Canonicalize SMILES and compute descriptors<a class="headerlink" href="#canonicalize-smiles-and-compute-descriptors" title="Link to this heading">#</a></h3>
+<h3>5.2 Canonicalize SMILES and compute descriptors<a class="headerlink" href="#canonicalize-smiles-and-compute-descriptors" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">canonicalize</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
@@ -1427,7 +1415,7 @@ For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds
 </div>
 </section>
 <section id="clean-and-visualize">
-<h3>5.3 Clean and visualize<a class="headerlink" href="#clean-and-visualize" title="Link to this heading">#</a></h3>
+<h3>5.3 Clean and visualize<a class="headerlink" href="#clean-and-visualize" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clean</span> <span class="o">=</span> <span class="n">df_all</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1453,7 +1441,7 @@ For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8b8d9fa2f4049e6fc749ef2224ac35494ae5420ce9b6921d6cb0f6c3b8a10a5e.png" src="_images/8b8d9fa2f4049e6fc749ef2224ac35494ae5420ce9b6921d6cb0f6c3b8a10a5e.png" />
+<img alt="_images/d46a5fb2f902c56a0b8da77c731bc0eff8eaec0f8883c5d4c28c73658ab37754.png" src="_images/d46a5fb2f902c56a0b8da77c731bc0eff8eaec0f8883c5d4c28c73658ab37754.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -1464,7 +1452,7 @@ For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-smiles admonition">
 <p class="admonition-title">SMILES</p>
 <ul class="simple">
@@ -1492,30 +1480,30 @@ For example, Lipinski’s rule-of-five uses MolWt, LogP, HBD, and HBA thresholds
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-SMILES">SMILES<a class="headerlink" href="#term-SMILES" title="Link to this term">#</a></dt><dd><p>Text line notation for molecules. Example: ethanol is CCO.</p>
+<dt id="term-SMILES">SMILES<a class="headerlink" href="#term-SMILES" title="Permalink to this term">#</a></dt><dd><p>Text line notation for molecules. Example: ethanol is CCO.</p>
 </dd>
-<dt id="term-aromatic">aromatic<a class="headerlink" href="#term-aromatic" title="Link to this term">#</a></dt><dd><p>Conjugated ring system shown with lower case atom symbols in SMILES, for example c1ccccc1.</p>
+<dt id="term-aromatic">aromatic<a class="headerlink" href="#term-aromatic" title="Permalink to this term">#</a></dt><dd><p>Conjugated ring system shown with lower case atom symbols in SMILES, for example c1ccccc1.</p>
 </dd>
-<dt id="term-CID">CID<a class="headerlink" href="#term-CID" title="Link to this term">#</a></dt><dd><p>PubChem Compound ID for a unique compound record.</p>
+<dt id="term-CID">CID<a class="headerlink" href="#term-CID" title="Permalink to this term">#</a></dt><dd><p>PubChem Compound ID for a unique compound record.</p>
 </dd>
-<dt id="term-sanitize">sanitize<a class="headerlink" href="#term-sanitize" title="Link to this term">#</a></dt><dd><p>RDKit process that checks valence, aromaticity, and stereochemistry.</p>
+<dt id="term-sanitize">sanitize<a class="headerlink" href="#term-sanitize" title="Permalink to this term">#</a></dt><dd><p>RDKit process that checks valence, aromaticity, and stereochemistry.</p>
 </dd>
-<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Link to this term">#</a></dt><dd><p>Computed molecular property such as molecular weight or LogP.</p>
+<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Permalink to this term">#</a></dt><dd><p>Computed molecular property such as molecular weight or LogP.</p>
 </dd>
-<dt id="term-EditableMol">EditableMol<a class="headerlink" href="#term-EditableMol" title="Link to this term">#</a></dt><dd><p>RDKit object that exposes low level atom and bond editing.</p>
+<dt id="term-EditableMol">EditableMol<a class="headerlink" href="#term-EditableMol" title="Permalink to this term">#</a></dt><dd><p>RDKit object that exposes low level atom and bond editing.</p>
 </dd>
-<dt id="term-BemisMurcko-scaffold">Bemis–Murcko scaffold<a class="headerlink" href="#term-BemisMurcko-scaffold" title="Link to this term">#</a></dt><dd><p>The ring system and linkers that form a molecule’s core framework.</p>
+<dt id="term-BemisMurcko-scaffold">Bemis–Murcko scaffold<a class="headerlink" href="#term-BemisMurcko-scaffold" title="Permalink to this term">#</a></dt><dd><p>The ring system and linkers that form a molecule’s core framework.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">8. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p>Each task mirrors the examples above. Fill in the <code class="docutils literal notranslate"><span class="pre">...</span></code> lines. Work in pairs. Solutions are in Section 9.</p>
 <section id="read-a-smiles-and-inspect">
-<h3>8.1 Read a SMILES and inspect<a class="headerlink" href="#read-a-smiles-and-inspect" title="Link to this heading">#</a></h3>
+<h3>8.1 Read a SMILES and inspect<a class="headerlink" href="#read-a-smiles-and-inspect" title="Permalink to this heading">#</a></h3>
 <p>Given <code class="docutils literal notranslate"><span class="pre">smi</span> <span class="pre">=</span> <span class="pre">&quot;O=C(O)c1ccccc1Cl&quot;</span></code>.<br />
 a) Count number of rings.<br />
 bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
@@ -1537,7 +1525,7 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </section>
 <hr class="docutils" />
 <section id="make-a-small-properties-table">
-<h3>8.2 Make a small properties table<a class="headerlink" href="#make-a-small-properties-table" title="Link to this heading">#</a></h3>
+<h3>8.2 Make a small properties table<a class="headerlink" href="#make-a-small-properties-table" title="Permalink to this heading">#</a></h3>
 <p>Use smiles <code class="docutils literal notranslate"><span class="pre">[&quot;Cn1cnc2N(C)C(=O)N(C)C(=O)c12&quot;,</span> <span class="pre">&quot;CC(=O)Nc1ccc(O)cc1&quot;,</span> <span class="pre">&quot;CC(C)Cc1ccc(cc1)C(C)C(O)=O&quot;]</span></code>. For each, compute MolWt, LogP, HBD, HBA, and TPSA.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
@@ -1562,7 +1550,7 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </section>
 <hr class="docutils" />
 <section id="replace-chlorine-with-fluorine">
-<h3>8.3 Replace chlorine with fluorine<a class="headerlink" href="#replace-chlorine-with-fluorine" title="Link to this heading">#</a></h3>
+<h3>8.3 Replace chlorine with fluorine<a class="headerlink" href="#replace-chlorine-with-fluorine" title="Permalink to this heading">#</a></h3>
 <p>Replace Cl with F in <code class="docutils literal notranslate"><span class="pre">Clc1ccc(cc1)C(=O)O</span></code> and print the result SMILES.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="o">...</span> <span class="p">)</span>  <span class="c1"># TO DO</span>
 <span class="n">put</span>  <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="o">...</span> <span class="p">)</span>  <span class="c1"># TO DO</span>
@@ -1573,8 +1561,8 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </div>
 </section>
 <hr class="docutils" />
-<section id="id2">
-<h3>8.4 Add a methyl group with a graph edit<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3>8.4 Add a methyl group with a graph edit<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Add a methyl at atom index 2 of benzene.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">)</span>
 <span class="n">em</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">EditableMol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>
@@ -1584,13 +1572,13 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </div>
 </section>
 <section id="retrieve-smiles-from-pubchem-draw-structure-then-analyze">
-<h3>8.5 Retrieve SMILES from PubChem Draw structure, then analyze<a class="headerlink" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze" title="Link to this heading">#</a></h3>
+<h3>8.5 Retrieve SMILES from PubChem Draw structure, then analyze<a class="headerlink" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze" title="Permalink to this heading">#</a></h3>
 <p>Images to inspect:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -1639,10 +1627,10 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </section>
 </section>
 <section id="solutions">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <p>Open after you try Section 8.</p>
 <section id="solution-8-1">
-<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Link to this heading">#</a></h3>
+<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
@@ -1662,8 +1650,8 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" src="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x000002808F55E740&gt;
+<img alt="_images/03383324338a0142402b187a79e56b14a50160ae3a08e7ff36f3658c8394377e.png" src="_images/03383324338a0142402b187a79e56b14a50160ae3a08e7ff36f3658c8394377e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x000001A37C67FB40&gt;
 bond 0 0 - 1 order 2
 bond 1 1 - 2 order 1
 bond 2 1 - 3 order 1
@@ -1680,7 +1668,7 @@ bond 9 8 - 3 order 1
 </div>
 </section>
 <section id="solution-8-2">
-<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Link to this heading">#</a></h3>
+<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -1764,7 +1752,7 @@ bond 9 8 - 3 order 1
 </div>
 </section>
 <section id="solution-8-3">
-<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Link to this heading">#</a></h3>
+<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;Cl&quot;</span><span class="p">)</span>
@@ -1780,12 +1768,12 @@ bond 9 8 - 3 order 1
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O=C(O)c1ccc(F)cc1
 </pre></div>
 </div>
-<img alt="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" src="_images/96a64de8ab6de3cba9bdeb085779432c65dde405ede31f9884814f235d701bda.png" />
+<img alt="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" src="_images/938bce7d2eb13141726dbb37227bf5d09d04d4d0dcac93c73c0070ca3ca0255e.png" />
 </div>
 </div>
 </section>
 <section id="solution-8-4">
-<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Link to this heading">#</a></h3>
+<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">)</span>
@@ -1808,7 +1796,7 @@ bond 9 8 - 3 order 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" src="_images/740e404a58d6f2880b124dcd97f5809abd087f30f63ec0cb3b8dfbdd52f45e1f.png" />
+<img alt="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" src="_images/d8f33fbe32319c81663fc65dab63042f8a4ec76d89dd04e590f805eeb3df1017.png" />
 </div>
 </div>
 </section>
@@ -1842,7 +1830,7 @@ bond 9 8 - 3 order 1
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1872,7 +1860,6 @@ bond 9 8 - 3 order 1
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1880,7 +1867,7 @@ bond 9 8 - 3 order 1
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles">1. SMILES</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#atoms">1.1 Atoms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonds">1.2 Bonds</a></li>
@@ -1917,7 +1904,7 @@ bond 9 8 - 3 order 1
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-a-smiles-and-inspect">8.1 Read a SMILES and inspect</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-small-properties-table">8.2 Make a small properties table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replace-chlorine-with-fluorine">8.3 Replace chlorine with fluorine</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.4 Add a methyl group with a graph edit</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">8.4 Add a methyl group with a graph edit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-smiles-from-pubchem-draw-structure-then-analyze">8.5 Retrieve SMILES from PubChem Draw structure, then analyze</a></li>
 </ul>
 </li>
@@ -1952,7 +1939,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1976,8 +1963,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
