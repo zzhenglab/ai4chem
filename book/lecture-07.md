@@ -211,6 +211,16 @@ A single split is intentionally simple. It may already capture a strong signal i
 It picks the feature and threshold that bring the largest impurity decrease.
 ```
 
+Use the confusion matrix to see the error pattern.
+
+In this case:
+`FP` are non toxic predicted as toxic
+`FN` are toxic predicted as non toxic
+
+Which side is larger tells you which type of mistake the one split is making more often.
+
+
+
 ```{code-cell} ipython3
 # Evaluate stump
 from sklearn.metrics import classification_report
@@ -220,14 +230,10 @@ cm = confusion_matrix(y_test, y_pred)
 cm
 ```
 
+```{admonition} ⏰ **Exercise 1.3**
+Refit the stump with `criterion="entropy"` and `max_depth=1`, then print the root rule again. Compare precision, recall, F1, and the confusion matrix to the Gini stump.
+```
 
-Use the confusion matrix to see the error pattern.
-
-In this case:
-`FP` are non toxic predicted as toxic
-`FN` are toxic predicted as non toxic
-
-Which side is larger tells you which type of mistake the one split is making more often.
 
 Now, let's visualize the rule.
 The tree plot below shows the root node with its split, the Gini impurity at each node, the sample counts, and the class distribution. Filled colors hint at the majority class in each leaf.
@@ -478,7 +484,14 @@ plt.show()
 Here, the bars show how much accuracy falls when each feature is disrupted. This provides a more honest reflection of **predictive value on unseen data**. Features that looked strong in Gini importance may shrink here if they were just splitting on quirks of the training set.
 
 
-```{admonition} Comparing the two methods
+
+
+```{admonition} ⏰ **Exercise 1.6**
+Compute permutation importance on the test set with `scoring="roc_auc"` and again with `scoring="f1"`. 
+Any difference?
+```
+
+When we compare the two methods, we will see the difference is:
 Gini importance (tree-based):
 > Easy to compute.
 > Biased toward features with many possible split points.
@@ -490,7 +503,6 @@ Permutation importance (test-based):
 > More computationally expensive (requires multiple shuffles).
 > Directly tied to model performance on new data.
 > Can reveal when the model “thought” a feature was important but it doesn’t hold up in practice.
-```
 
 
 ---
@@ -589,7 +601,9 @@ plt.title("Residual plot: tree regressor")
 plt.show()
 ```
 Similar to the example we see on the linear regression, residuals (true – predicted) should scatter around zero. If you see patterns (e.g., always underpredicting high values), the model may be biased. Here, residuals are fairly centered but not perfectly homoscedastic.
-
+```{admonition} ⏰ **Exercise 2**
+Train two regression trees with `max_depth=6` using `min_samples_leaf=5`. Report R² and MAE for both and show the two parity plots. 
+```
 
 ```{code-cell} ipython3
 # Visualize a small regression tree
