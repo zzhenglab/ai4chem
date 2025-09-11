@@ -234,11 +234,20 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 
 ```{code-cell} ipython3
 # Visualize stump
-plt.figure(figsize=(7,7))
+plt.figure(figsize=(5,5))
 plot_tree(stump, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True, impurity=True)
 plt.show()
 ```
 
+We can also visualize `max_depth=2` to see the difference:
+```{code-cell} ipython3
+stump2 = DecisionTreeClassifier(max_depth=2, criterion="gini", random_state=0)
+stump2.fit(X_train, y_train)
+
+plt.figure(figsize=(5,5))
+plot_tree(stump2, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True, impurity=True)
+plt.show()
+```
 
 ---
 
@@ -524,7 +533,7 @@ Remember:
 > R² = 0 means the model is no better than the mean.
 
 
-Below, we pick `depth = 4`, `leaf size = 5`. This is a good trade-off.
+Below, we pick `depth = 3`, `leaf size = 5`. This is a good trade-off.
 
 ```{code-cell} ipython3
 # Evaluate shallow vs deeper
@@ -554,7 +563,7 @@ This mirrors the classification case: shallow trees underfit, very deep trees ov
 Points close to the dashed line = good predictions. Scatter away from the line = errors. Here, predictions track well but show some spread at high melting points.
 ```{code-cell} ipython3
 # Diagnostics for a chosen depth
-reg = DecisionTreeRegressor(max_depth=4, min_samples_leaf=5, random_state=0).fit(Xr_train, yr_train)
+reg = DecisionTreeRegressor(max_depth=3, min_samples_leaf=5, random_state=0).fit(Xr_train, yr_train)
 yhat = reg.predict(Xr_test)
 
 print(f"MSE={mean_squared_error(yr_test, yhat):.3f}")
@@ -634,6 +643,7 @@ rf_clf = RandomForestClassifier(
     max_depth=None,
     min_samples_leaf=3,
     max_features="sqrt",
+    oob_score=True,          # enable OOB estimation, if you dont specify, the default RF will not give you oob
     random_state=0,
     n_jobs=-1
 )
@@ -705,10 +715,18 @@ plt.show()
 ```
 
 ---
+## 4. Ensembles
 
-## 4. Compare single tree vs forest
+Ensembles combine multiple models to improve stability and accuracy. Here we expand on trees with forests, simple averaging, voting, and boosting, and add **visual comparisons** to show their differences.
 
-We look at stability across several random splits. This loop keeps code short but shows the lists of scores so students can inspect them.
+---
+
+### 4.1 Experiment: single tree vs random forest
+
+We repeat training several times with different random seeds for the train/test split. For each split:
+- Fit a single unpruned tree.
+- Fit a random forest with 300 trees.
+- Record the test R² for both.
 
 ```{code-cell} ipython3
 splits = [1, 7, 21, 42, 77]
@@ -721,11 +739,11 @@ for seed in splits:
     r2_f = r2_score(y_te, f.predict(X_te))
     rows.append({"seed": seed, "Tree_R2": r2_t, "Forest_R2": r2_f})
 
-pd.DataFrame(rows).round(3)
+df_cmp = pd.DataFrame(rows).round(3)
+df_cmp
 ```
 
 ```{code-cell} ipython3
-df_cmp = pd.DataFrame(rows)
 plt.plot(df_cmp["seed"], df_cmp["Tree_R2"], "o-", label="Tree")
 plt.plot(df_cmp["seed"], df_cmp["Forest_R2"], "o-", label="Forest")
 plt.xlabel("random_state")
@@ -736,15 +754,175 @@ plt.grid(True)
 plt.show()
 ```
 
-```{admonition} Observation
-Forests tend to give higher and more stable test performance than a single deep tree.
+```{admonition} Why forests are often a safe and strong default model
+- **Single tree**: R² jumps up and down depending on the seed. Sometimes the tree performs decently, sometimes it collapses.  
+- **Random forest**: R² is consistently higher and more stable. By averaging across 300 trees trained on different bootstrap samples and feature subsets, the forest cancels out randomness.  
+Forests trade a bit of interpretability for much more reliability.
 ```
 
 ---
 
-## 7. End-to-end recipe
+### 4.2 Simple Ensembles by Model Averaging
 
-Short workflow for toxicity with a forest.
+Random forests are powerful, but ensembling can be simpler. Even just **averaging two different models** can improve performance.
+
+```{code-cell} ipython3
+from sklearn.linear_model import LinearRegression
+
+tree = DecisionTreeRegressor(max_depth=4).fit(Xr_train, yr_train)
+lin  = LinearRegression().fit(Xr_train, yr_train)
+
+pred_tree = tree.predict(Xr_test)
+pred_lin  = lin.predict(Xr_test)
+pred_avg = (pred_tree + pred_lin) / 2.0
+
+df_avg = pd.DataFrame({
+    "True": yr_test,
+    "Tree": pred_tree,
+    "Linear": pred_lin,
+    "Average": pred_avg
+}).head(10)
+df_avg
+```
+
+```{code-cell} ipython3
+print("Tree R2:", r2_score(yr_test, pred_tree))
+print("Linear R2:", r2_score(yr_test, pred_lin))
+print("Averaged R2:", r2_score(yr_test, pred_avg))
+```
+
+```{code-cell} ipython3
+plt.scatter(yr_test, pred_tree, alpha=0.5, label="Tree")
+plt.scatter(yr_test, pred_lin, alpha=0.5, label="Linear")
+plt.scatter(yr_test, pred_avg, alpha=0.5, label="Average")
+lims = [min(yr_test.min(), pred_tree.min(), pred_lin.min()), max(yr_test.max(), pred_tree.max(), pred_lin.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Tree vs Linear vs Average")
+plt.legend()
+plt.show()
+```
+
+```{admonition} Difference
+- **Tree**: captures nonlinear shapes but may overfit.  
+- **Linear**: very stable but may underfit.  
+- **Average**: balances the two, smoother than tree, more flexible than linear regression.  
+```
+
+---
+
+### 4.3 Simple Ensembles by Voting
+
+Voting is most common for classification. Each model votes for a class.  
+- **Hard voting**: majority wins.  
+- **Soft voting**: average predicted probabilities.
+
+```{code-cell} ipython3
+from sklearn.ensemble import VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+
+vote_clf_soft = VotingClassifier(
+    estimators=[
+        ("lr", LogisticRegression(max_iter=500, random_state=0)),
+        ("svc", SVC(probability=True, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+    ],
+    voting="soft"
+).fit(X_train, y_train)
+
+print("Soft Voting classifier accuracy:", accuracy_score(y_test, vote_clf_soft.predict(X_test)))
+
+
+vote_clf_hard = VotingClassifier(
+    estimators=[
+        ("lr", LogisticRegression(max_iter=500, random_state=0)),
+        ("svc", SVC(probability=True, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+    ],
+    voting="hard"
+).fit(X_train, y_train)
+
+print("Hard Voting classifier accuracy:", accuracy_score(y_test, vote_clf_hard.predict(X_test)))
+
+```
+
+Compare voting against individual models:
+
+```{code-cell} ipython3
+acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
+
+pd.DataFrame({
+    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
+    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+})
+```
+
+```{admonition} Difference
+- **Individual models**: Logistic regression handles linear patterns, SVM picks margins, random forest handles nonlinear rules.  
+- **Voting ensemble**: combines their strengths, reducing the chance of one weak model dominating.  
+```
+
+---
+
+### 4.4 (Optional Topic) Boosting: a different ensemble structure
+
+Boosting is sequential: each tree corrects the mistakes of the last. Sometimes it can be stronger than bagging, but needs careful tuning.
+
+```{code-cell} ipython3
+from sklearn.ensemble import GradientBoostingRegressor
+from sklearn.metrics import mean_absolute_error
+
+gb_reg = GradientBoostingRegressor(
+    n_estimators=300,
+    learning_rate=0.05,
+    max_depth=3,
+    random_state=0
+).fit(Xr_train, yr_train)
+
+yhat_gb = gb_reg.predict(Xr_test)
+print(f"Gradient Boosting R2: {r2_score(yr_test, yhat_gb):.3f}")
+print(f"Gradient Boosting MAE: {mean_absolute_error(yr_test, yhat_gb):.2f}")
+```
+
+Compare **Random Forest vs Gradient Boosting** directly:
+
+```{code-cell} ipython3
+rf_reg = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=0, n_jobs=-1).fit(Xr_train, yr_train)
+yhat_rf = rf_reg.predict(Xr_test)
+
+pd.DataFrame({
+    "Model": ["RandomForest", "GradientBoosting"],
+    "R2": [r2_score(yr_test, yhat_rf), r2_score(yr_test, yhat_gb)],
+    "MAE": [mean_absolute_error(yr_test, yhat_rf), mean_absolute_error(yr_test, yhat_gb)]
+}).round(3)
+```
+
+```{code-cell} ipython3
+plt.scatter(yr_test, yhat_rf, alpha=0.5, label="RandomForest")
+plt.scatter(yr_test, yhat_gb, alpha=0.5, label="GradientBoosting")
+lims = [min(yr_test.min(), yhat_rf.min(), yhat_gb.min()), max(yr_test.max(), yhat_rf.max(), yhat_gb.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: RF vs GB")
+plt.legend()
+plt.show()
+```
+
+```{admonition} Compare
+- **Random forest**: reduces variance by averaging many deep trees. Stable and easy to tune.  
+- **Boosting**: reduces bias by sequentially correcting mistakes. Often achieves higher accuracy but requires careful parameter tuning.  
+```
+
+---
+
+## 5. End-to-end recipe for random forest
+
+Now, let's put everything we learn for trees and forests together. Below is a standard workflow for toxicity with a forest. Similar to what we learned from last lecture but handled with RF model.
 
 ```{code-cell} ipython3
 # 1) Data
@@ -768,6 +946,7 @@ print(f"OOB score: {rf.oob_score_:.3f}")
 print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")
 print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")
 ```
+Additional plots demonstrating the performance:
 
 ```{code-cell} ipython3
 # Confusion matrix and ROC
@@ -787,7 +966,7 @@ plt.show()
 
 ---
 
-## 8. Quick reference
+## 6. Quick reference
 
 ```{admonition} Common options
 - DecisionTreeClassifier/Regressor: `max_depth`, `min_samples_leaf`, `min_samples_split`, `criterion`, `random_state`
@@ -801,9 +980,9 @@ plt.show()
 
 ---
 
-## 9. In-class activities
+## 7. In-class activities
 
-### 9.1 Tree vs Forest on log-solubility
+### 7.1 Tree vs Forest on log-solubility
 
 - Create `y_log = log10(Solubility_mol_per_L + 1e-6)`
 - Use features `[MolWt, LogP, TPSA, NumRings]`
@@ -814,7 +993,7 @@ plt.show()
 # TO DO
 ```
 
-### 9.2 Pruning with `min_samples_leaf`
+### 7.2 Pruning with `min_samples_leaf`
 
 - Fix `max_depth=None` for `DecisionTreeClassifier` on toxicity
 - Sweep `min_samples_leaf` in `[1, 2, 3, 5, 8, 12, 20]`
@@ -824,7 +1003,7 @@ plt.show()
 # TO DO
 ```
 
-### 9.3 OOB sanity check
+### 7.3 OOB sanity check
 
 - Train `RandomForestClassifier` with `oob_score=True` on toxicity
 - Compare OOB score to test accuracy over seeds `[0, 7, 21, 42]`
@@ -833,7 +1012,7 @@ plt.show()
 # TO DO
 ```
 
-### 9.4 Feature importance agreement
+### 7.4 Feature importance agreement
 
 - On melting point, compute forest `feature_importances_` and `permutation_importance`
 - Plot both and comment where they agree or disagree
@@ -842,7 +1021,7 @@ plt.show()
 # TO DO
 ```
 
-### 9.5 Small tree visualization
+### 7.5 Small tree visualization
 
 - Fit a `DecisionTreeClassifier(max_depth=2)` on toxicity
 - Use `plot_tree` to draw it and write down the two split rules in plain language

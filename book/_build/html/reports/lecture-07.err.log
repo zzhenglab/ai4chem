@@ -22,35 +22,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-rf_clf = RandomForestClassifier(
-    n_estimators=300,
-    max_depth=None,
-    min_samples_leaf=3,
-    max_features="sqrt",
-    random_state=0,
-    n_jobs=-1
-)
-rf_clf.fit(X_train, y_train)
+acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
 
-print("OOB score:", rf_clf.oob_score_)
-acc = accuracy_score(y_test, rf_clf.predict(X_test))
-print("Test accuracy:", acc)
+pd.DataFrame({
+    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
+    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+})
 ------------------
 
 
-[1;31m---------------------------------------------------------------------------[0m
-[1;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [1;32mIn[26], line 11[0m
-[0;32m      1[0m rf_clf [38;5;241m=[39m RandomForestClassifier(
-[0;32m      2[0m     n_estimators[38;5;241m=[39m[38;5;241m300[39m,
-[0;32m      3[0m     max_depth[38;5;241m=[39m[38;5;28;01mNone[39;00m,
-[1;32m   (...)[0m
-[0;32m      7[0m     n_jobs[38;5;241m=[39m[38;5;241m-[39m[38;5;241m1[39m
-[0;32m      8[0m )
-[0;32m      9[0m rf_clf[38;5;241m.[39mfit(X_train, y_train)
-[1;32m---> 11[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mOOB score:[39m[38;5;124m"[39m, [43mrf_clf[49m[38;5;241;43m.[39;49m[43moob_score_[49m)
-[0;32m     12[0m acc [38;5;241m=[39m accuracy_score(y_test, rf_clf[38;5;241m.[39mpredict(X_test))
-[0;32m     13[0m [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mTest accuracy:[39m[38;5;124m"[39m, acc)
+[1;36m  Cell [1;32mIn[36], line 7[1;36m[0m
+[1;33m    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test), accuracy_score(y_test, vote_clf_soft.predict(X_test))][0m
+[1;37m                                                                                                                                                     ^[0m
+[1;31mSyntaxError[0m[1;31m:[0m closing parenthesis ']' does not match opening parenthesis '('
 
-[1;31mAttributeError[0m: 'RandomForestClassifier' object has no attribute 'oob_score_'
 
