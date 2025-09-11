@@ -414,7 +414,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning-with-min-samples-leaf">7.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oob-sanity-check">7.3 OOB sanity check</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-agreement">7.4 Feature importance agreement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-tree-visualization">7.5 Small tree visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-search-with-cross-validation">7.5 Hyperparameter search with cross validation</a></li>
 </ul>
 </li>
 </ul>
@@ -2330,7 +2330,9 @@ Averaged R2: 0.869699219889096
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soft Voting classifier accuracy: 0.9478260869565217
-Hard Voting classifier accuracy: 0.9565217391304348
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hard Voting classifier accuracy: 0.9565217391304348
 </pre></div>
 </div>
 </div>
@@ -2631,6 +2633,8 @@ AUC: 0.955
 <section id="oob-sanity-check">
 <h3>7.3 OOB sanity check<a class="headerlink" href="#oob-sanity-check" title="Link to this heading">#</a></h3>
 <ul class="simple">
+<li><p>Train a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier(max_depth=2)</span></code> on toxicity</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> to draw it and write down the two split rules in plain language</p></li>
 <li><p>Train <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> with <code class="docutils literal notranslate"><span class="pre">oob_score=True</span></code> on toxicity</p></li>
 <li><p>Compare OOB score to test accuracy over seeds <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">7,</span> <span class="pre">21,</span> <span class="pre">42]</span></code></p></li>
 </ul>
@@ -2648,12 +2652,19 @@ AUC: 0.955
 </pre></div>
 </div>
 </section>
-<section id="small-tree-visualization">
-<h3>7.5 Small tree visualization<a class="headerlink" href="#small-tree-visualization" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>Fit a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier(max_depth=2)</span></code> on toxicity</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> to draw it and write down the two split rules in plain language</p></li>
-</ul>
+<section id="hyperparameter-search-with-cross-validation">
+<h3>7.5 Hyperparameter search with cross validation<a class="headerlink" href="#hyperparameter-search-with-cross-validation" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> on <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> for toxicity</p>
+<p>Split once into train and test as usual, but perform 5-fold CV only on the training fold</p>
+<p>Search over:</p>
+<p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>: [200, 400]</p>
+<p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>: [None, 6, 10]</p>
+<p><code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>: [1, 2, 3, 5]</p>
+<p><code class="docutils literal notranslate"><span class="pre">max_features</span></code>: [“sqrt”, 0.8]</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">scoring=&quot;roc_auc&quot;</span></code> for the CV score</p>
+<p>After the search, refit the best model on the full training data</p>
+<p>Report: **<strong>best params</strong>, <strong>CV AUC</strong>, <strong>test Accuracy</strong> and <strong>test AUC</strong></p>
+<p>Plot ROC curve for the final model</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
 </pre></div>
 </div>
@@ -2748,7 +2759,7 @@ AUC: 0.955
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pruning-with-min-samples-leaf">7.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oob-sanity-check">7.3 OOB sanity check</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-agreement">7.4 Feature importance agreement</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-tree-visualization">7.5 Small tree visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-search-with-cross-validation">7.5 Hyperparameter search with cross validation</a></li>
 </ul>
 </li>
 </ul>
