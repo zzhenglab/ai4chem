@@ -107,8 +107,8 @@ A tree splits the feature space into rectangles by asking simple questions like 
 - For **regression**, it is common to use **MSE** reduction.
 
 ```{admonition} Purity
-- Gini for a node with class probs \(p_k\): \(1 - \sum_k p_k^2\)
-- Entropy: \(-\sum_k p_k \log_2 p_k\)
+- Gini for a node with class probs $p_k$: $1 - \sum_k p_k^2$
+- Entropy:  $-\sum_k p_k \log_2 p_k$
 - Regression impurity at a node: mean squared error to the node mean
 ```
 
@@ -135,7 +135,7 @@ Trees handle different feature scales naturally, and they do not require standar
 - **Leaf** holds a simple prediction.  
 - **Impurity** is a measure of how mixed a node is. Lower is better.
  > For regression, impurity at a node is measured by mean squared error to the node mean.
- > For classification, it is measured by **Gini** for a node with class probs $p_k$: $(1 - \sum_k p_k^2$ or **Entropy**: $-\sum_k p_k \log_2 p_k\$
+ > For classification, it is measured by **Gini** for a node with class probs or **Entropy**.
 
 ```
 ---
