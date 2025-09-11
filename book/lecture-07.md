@@ -29,7 +29,7 @@ kernelspec:
 - Use **out of bag (OOB)** score for quick validation.
 - Put it all together in a short end-to-end workflow.
 
-  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1Mkzv1qh9t9tL9w6m4C2U1Qw3W2c2W8bR?usp=sharing)
+  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)
 
 ---
 

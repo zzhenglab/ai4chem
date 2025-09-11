@@ -36,32 +36,39 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Log target
-df_reg_mp = df_reg_mp.copy()
-y_log = np.log10(df_reg_mp["Solubility_mol_per_L"] + 1e-6)
+# Create target: log10(solubility + 1e-6) to avoid log(0)
+# If your dataframe already has a numeric solubility column named 'Solubility_mol_per_L', reuse it.
+df_sol = df.copy()
+df_sol["y_log"] = np.log10(df_sol["Solubility_mol_per_L"] + 1e-6)
 
-# Features and split
-X = df_reg_mp[["MolWt","LogP","TPSA","NumRings"]].values
-X_tr, X_te, y_tr, y_te = train_test_split(X, y_log, test_size=0.2, random_state=15)
+Xs = df_sol[["MolWt", "LogP", "TPSA", "NumRings"]].dropna()
+ys = df_sol.loc[Xs.index, "y_log"]
 
-# Plots
-plt.figure(figsize=(5,3))
-plt.hist(y_log, bins=30, alpha=0.85)
-plt.xlabel("log10(Solubility + 1e-6)"); plt.ylabel("Count"); plt.title("Log-solubility")
-plt.show()
+Xs_train, Xs_test, ys_train, ys_test = train_test_split(
+    Xs, ys, test_size=0.2, random_state=42
+)
 
-pd.plotting.scatter_matrix(df_reg_mp[["MolWt","LogP","TPSA","NumRings"]], figsize=(5.5,5.5))
-plt.suptitle("Descriptor scatter matrix", y=1.02); plt.show()
+# Models
+tree_sol = DecisionTreeRegressor(max_depth=4, min_samples_leaf=5, random_state=0).fit(Xs_train, ys_train)
+rf_sol   = RandomForestRegressor(n_estimators=300, min_samples_leaf=5, random_state=0, n_jobs=-1).fit(Xs_train, ys_train)
+
+# Scores
+yhat_tree = tree_sol.predict(Xs_test)
+yhat_rf   = rf_sol.predict(Xs_test)
+
+print(f"Tree R2:   {r2_score(ys_test, yhat_tree):.3f}")
+print(f"Forest R2: {r2_score(ys_test, yhat_rf):.3f}")
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
-[32m      1[39m [38;5;66;03m# Log target[39;00m
-[32m----> [39m[32m2[39m df_reg_mp = [43mdf_reg_mp[49m.copy()
-[32m      3[39m y_log = np.log10(df_reg_mp[[33m"[39m[33mSolubility_mol_per_L[39m[33m"[39m] + [32m1e-6[39m)
-[32m      5[39m [38;5;66;03m# Features and split[39;00m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 3[39m
+[32m      1[39m [38;5;66;03m# Create target: log10(solubility + 1e-6) to avoid log(0)[39;00m
+[32m      2[39m [38;5;66;03m# If your dataframe already has a numeric solubility column named 'Solubility_mol_per_L', reuse it.[39;00m
+[32m----> [39m[32m3[39m df_sol = [43mdf[49m.copy()
+[32m      4[39m df_sol[[33m"[39m[33my_log[39m[33m"[39m] = np.log10(df_sol[[33m"[39m[33mSolubility_mol_per_L[39m[33m"[39m] + [32m1e-6[39m)
+[32m      6[39m Xs = df_sol[[[33m"[39m[33mMolWt[39m[33m"[39m, [33m"[39m[33mLogP[39m[33m"[39m, [33m"[39m[33mTPSA[39m[33m"[39m, [33m"[39m[33mNumRings[39m[33m"[39m]].dropna()
 
-[31mNameError[39m: name 'df_reg_mp' is not defined
+[31mNameError[39m: name 'df' is not defined
 
