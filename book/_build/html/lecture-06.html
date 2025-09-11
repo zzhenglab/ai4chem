@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-06';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 7 - Decision Trees and Random Forests" href="lecture-07.html" />
     <link rel="prev" title="Lecture 5 - Regression and Classification" href="lecture-05.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -185,6 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 6 - Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
 </ul>
 
     </div>
@@ -411,6 +413,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-interpret-ridge-with-coefficients-and-permutation-importance">Q5. Interpret Ridge with coefficients and permutation importance</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">11. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">11.1 Solution Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">11.2 Solution Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">11.3 Solution Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">11.4 Solution Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">11.5 Solution Q5</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -437,6 +447,7 @@ document.write(`
 <li><p><a class="reference internal" href="#glossary" id="id9">8. Glossary</a></p></li>
 <li><p><a class="reference internal" href="#quick-reference" id="id10">9. Quick reference</a></p></li>
 <li><p><a class="reference internal" href="#inclass-activity" id="id11">10. In‑class activity</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id12">11. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -1196,9 +1207,7 @@ For example, we can predict two molecules’s melting point by listing their des
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best alpha: 30 (mean R² = 0.833)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test R² = 0.818
+Test R² = 0.818
 Linear Regression Test R² = 0.816
 </pre></div>
 </div>
@@ -1524,6 +1533,147 @@ dtype: float64
 <span class="c1"># perm_ser.plot(kind=&quot;barh&quot;); ...</span>
 </pre></div>
 </div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solutions">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<section id="solution-q1">
+<h3>11.1 Solution Q1<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Log target</span>
+<span class="n">df_reg_mp</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_log</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Solubility_mol_per_L&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">)</span>
+
+<span class="c1"># Features and split</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_log</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_log</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;log10(Solubility + 1e-6)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Log-solubility&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Descriptor scatter matrix&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3ade42a869662442893fa34351be2a4933cd4312213f73a2fd05084ef8a6f692.png" src="_images/3ade42a869662442893fa34351be2a4933cd4312213f73a2fd05084ef8a6f692.png" />
+<img alt="_images/bc9f8070cc3eebdcc189a3046eba2d64baf6368500c4a3de9424b713e51b5598.png" src="_images/bc9f8070cc3eebdcc189a3046eba2d64baf6368500c4a3de9424b713e51b5598.png" />
+</div>
+</div>
+</section>
+<section id="solution-q2">
+<h3>11.2 Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">a</span><span class="p">),</span> <span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span><span class="p">]</span>
+<span class="n">best_a</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">alphas</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">means</span><span class="p">))])</span>
+<span class="n">ridge_best</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_a</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;best alpha=</span><span class="si">{</span><span class="n">best_a</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  CV mean R2=</span><span class="si">{</span><span class="nb">max</span><span class="p">(</span><span class="n">means</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>best alpha=1.8738  CV mean R2=0.968
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q3">
+<h3>11.3 Solution Q3<a class="headerlink" href="#solution-q3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MSE=</span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;MAE=</span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_hat</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True log-solubility&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parity — Ridge&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">resid</span> <span class="o">=</span> <span class="n">y_te</span> <span class="o">-</span> <span class="n">y_hat</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">resid</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Residual&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Residuals — Ridge&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test MSE=0.0160  MAE=0.1024  R2=0.970
+</pre></div>
+</div>
+<img alt="_images/c17c780964c3bd2393dfe1c3bc464510c8c619a5ffb1c9abee274b7c00876a84.png" src="_images/c17c780964c3bd2393dfe1c3bc464510c8c619a5ffb1c9abee274b7c00876a84.png" />
+<img alt="_images/09e5082a65c400c82f645abe932b97b9759aa9a460a974f9ea2db1c69274b537.png" src="_images/09e5082a65c400c82f645abe932b97b9759aa9a460a974f9ea2db1c69274b537.png" />
+</div>
+</div>
+</section>
+<section id="solution-q4">
+<h3>11.4 Solution Q4<a class="headerlink" href="#solution-q4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">135.0</span><span class="p">,</span>  <span class="mf">2.0</span><span class="p">,</span>  <span class="mf">9.2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>   <span class="c1"># Molecule A</span>
+    <span class="p">[</span><span class="mf">301.0</span><span class="p">,</span>  <span class="mf">0.5</span><span class="p">,</span> <span class="mf">17.7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>    <span class="c1"># Molecule B</span>
+<span class="p">])</span>  <span class="c1"># descriptors: [MolWt, LogP, TPSA, NumRings]</span>
+
+<span class="n">y_new</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">X_new</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">X_new</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">X_new</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">X_new</span><span class="p">[:,</span><span class="mi">3</span><span class="p">],</span>
+    <span class="s2">&quot;Predicted log10(solubility)&quot;</span><span class="p">:</span> <span class="n">y_new</span>
+<span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   MolWt  LogP  TPSA  NumRings  Predicted log10(solubility)
+0  135.0   2.0   9.2       2.0                    -1.195502
+1  301.0   0.5  17.7       2.0                    -0.501762
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q5">
+<h3>11.5 Solution Q5<a class="headerlink" href="#solution-q5" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]</span>
+
+<span class="n">coef_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">ridge_best</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">feat</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ridge coefficients:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">coef_ser</span><span class="p">)</span>
+<span class="n">coef_ser</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Coefficient&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ridge coefficients&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">perm</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span><span class="n">ridge_best</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_te</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;r2&quot;</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">perm_ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">perm</span><span class="o">.</span><span class="n">importances_mean</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">feat</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<span class="n">perm_ser</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean decrease in R²&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Permutation importance on test&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ridge coefficients:
+ LogP       -0.437668
+NumRings   -0.002761
+TPSA       -0.000699
+MolWt       0.000260
+dtype: float64
+</pre></div>
+</div>
+<img alt="_images/bfaaa5a02eb717b2ec739fff482fa179e7d8398fcf42c479ca837996cdac1def.png" src="_images/bfaaa5a02eb717b2ec739fff482fa179e7d8398fcf42c479ca837996cdac1def.png" />
+<img alt="_images/c544f6385c1968c5d3b7e44c1d1ba339e6b863ab85b4abc1676c107926737a95.png" src="_images/c544f6385c1968c5d3b7e44c1d1ba339e6b863ab85b4abc1676c107926737a95.png" />
+</div>
+</div>
 <hr class="docutils" />
 </section>
 </section>
@@ -1567,6 +1717,15 @@ dtype: float64
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 5 - Regression and Classification</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="lecture-07.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 7 - Decision Trees and Random Forests</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1613,6 +1772,14 @@ dtype: float64
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-evaluate-ridge-on-test-and-draw-diagnostics">Q3. Evaluate Ridge on test and draw diagnostics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-predict-two-new-molecules-ridge">Q4. Predict two new molecules (Ridge)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-interpret-ridge-with-coefficients-and-permutation-importance">Q5. Interpret Ridge with coefficients and permutation importance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">11. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">11.1 Solution Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">11.2 Solution Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">11.3 Solution Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">11.4 Solution Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">11.5 Solution Q5</a></li>
 </ul>
 </li>
 </ul>
