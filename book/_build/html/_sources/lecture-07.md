@@ -26,7 +26,6 @@ kernelspec:
 - Control tree growth with `max_depth`, `min_samples_leaf`, `min_samples_split`.
 - Visualize a fitted tree and feature importance.
 - Train a **Random Forest** and compare to a single tree.
-- Use **out of bag (OOB)** score for quick validation.
 - Put it all together in a short end-to-end workflow.
 
   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)
@@ -961,6 +960,56 @@ print(f"OOB score: {rf.oob_score_:.3f}")
 print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")
 print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")
 ```
+
+
+In addition to just fit model with trainset using either default or pre-defined `n_estimators` and `max_depth`, as we learned from last lecture, a more solid way will be search/tune for possible combinations of hyperparamters during the cross validation. 
+
+As you see below, it will take longer time to run (since it surveys 2 x 2 x 2 = 8 combinations in total and is more computationally expensive) but result in better performance.  
+```{code-cell} ipython3
+from sklearn.model_selection import KFold, GridSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, roc_auc_score, classification_report
+
+# Data
+X = df_clf[["MolWt", "LogP", "TPSA", "NumRings"]]
+y = df_clf["Toxicity"].str.lower().map(label_map).astype(int)
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# KFold CV search
+cv = KFold(n_splits=5, shuffle=True, random_state=15)
+
+rf = RandomForestClassifier(random_state=15, n_jobs=-1)
+param_grid = {
+    "n_estimators": [50, 500],
+    "max_depth": [None, 20],
+    "min_samples_leaf": [1, 3],
+}
+
+gs = GridSearchCV(
+    estimator=rf,
+    param_grid=param_grid,
+    scoring="roc_auc",
+    cv=cv,
+    n_jobs=-1,
+    refit=True,
+)
+
+gs.fit(X_train, y_train)
+best_rf = gs.best_estimator_
+print("Best params:", gs.best_params_)
+print(f"Best CV AUC: {gs.best_score_:.3f}")
+
+# Test evaluation
+y_hat = best_rf.predict(X_test)
+y_proba = best_rf.predict_proba(X_test)[:, 1]
+print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")
+print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")
+print(classification_report(y_test, y_hat, digits=3))
+```
+
 Additional plots demonstrating the performance:
 
 ```{code-cell} ipython3
@@ -1018,11 +1067,12 @@ plt.show()
 # TO DO
 ```
 
-### 7.3 OOB sanity check
+### 7.3 Toxicity prediction
 
 - Train a `DecisionTreeClassifier(max_depth=2)` on toxicity
 - Use `plot_tree` to draw it and write down the two split rules in plain language
 
+Optional:
 - Train `RandomForestClassifier` with `oob_score=True` on toxicity
 - Compare OOB score to test accuracy over seeds `[0, 7, 21, 42]`
 
