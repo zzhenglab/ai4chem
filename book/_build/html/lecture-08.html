@@ -382,7 +382,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparamter-tuning">1.7 Hyperparamter tuning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-scaling-matters-for-neural-nets">2. Why scaling matters for neural nets</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemical-property-prediction">2. Neural nets for chemical property prediction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-choice-melting-point">2.1 Target choice: melting point</a></li>
 </ul>
 </li>
@@ -435,7 +435,7 @@ document.write(`
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
 <li><p><a class="reference internal" href="#setup" id="id2">0. Setup</a></p></li>
 <li><p><a class="reference internal" href="#what-is-a-neural-network" id="id3">1. What is a neural network</a></p></li>
-<li><p><a class="reference internal" href="#why-scaling-matters-for-neural-nets" id="id4">2. Why scaling matters for neural nets</a></p></li>
+<li><p><a class="reference internal" href="#neural-nets-for-chemical-property-prediction" id="id4">2. Neural nets for chemical property prediction</a></p></li>
 <li><p><a class="reference internal" href="#regression-with-mlp-on-log-solubility" id="id5">3. Regression with MLP on log-solubility</a></p></li>
 <li><p><a class="reference internal" href="#classification-with-mlp-on-toxicity" id="id6">4. Classification with MLP on toxicity</a></p></li>
 <li><p><a class="reference internal" href="#peek-inside-the-network" id="id7">5. Peek inside the network</a></p></li>
@@ -1401,8 +1401,8 @@ Layer 4 weight shape: (4, 1)   bias shape: (1,)
 </section>
 </section>
 <hr class="docutils" />
-<section id="why-scaling-matters-for-neural-nets">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Why scaling matters for neural nets</a><a class="headerlink" href="#why-scaling-matters-for-neural-nets" title="Permalink to this heading">#</a></h2>
+<section id="neural-nets-for-chemical-property-prediction">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Neural nets for chemical property prediction</a><a class="headerlink" href="#neural-nets-for-chemical-property-prediction" title="Permalink to this heading">#</a></h2>
 <p>We reuse the same CSV from earlier lectures and compute four quick descriptors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2247,7 +2247,7 @@ Output is a single number (regression).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [0.0428731  0.19957425 0.33522397]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [0.0162133  0.0698143  0.08883192]
 </pre></div>
 </div>
 </div>
@@ -2307,7 +2307,7 @@ Parameter Group 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.773470878601074
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.248042106628418
 </pre></div>
 </div>
 </div>
@@ -2351,7 +2351,7 @@ We plot the loss to see if the model is learning.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/499de698392e47d79ab1c50f4e63b5f45dcc9494fcbe36791745d8df6fbed1ac.png" src="_images/499de698392e47d79ab1c50f4e63b5f45dcc9494fcbe36791745d8df6fbed1ac.png" />
+<img alt="_images/e689122c6078062e5fa9218bff16ccf98a2391607ae025fc91c809b64eb11b7b.png" src="_images/e689122c6078062e5fa9218bff16ccf98a2391607ae025fc91c809b64eb11b7b.png" />
 </div>
 </div>
 <p>Let’s break down what happened above step by step:</p>
@@ -2403,11 +2403,11 @@ This means the network predictions are getting closer to the true labels.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 0.01884358
-R2: 0.9650768332682692
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 0.01884647
+R2: 0.9650714752868342
 </pre></div>
 </div>
-<img alt="_images/c31cc3cafae7d75e98082b08fdb3cf1db5bc61e2dc0f9038483cabfc65e378f2.png" src="_images/c31cc3cafae7d75e98082b08fdb3cf1db5bc61e2dc0f9038483cabfc65e378f2.png" />
+<img alt="_images/4f937fd2b3178bbea1ffdf1f2f98a6999c706fc4fd055bb193e835179a49c2cb.png" src="_images/4f937fd2b3178bbea1ffdf1f2f98a6999c706fc4fd055bb193e835179a49c2cb.png" />
 </div>
 </div>
 <p>This suggests our customized NN achieve a good performance on this task  :D</p>
@@ -2702,7 +2702,7 @@ R2: 0.9650768332682692
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparamter-tuning">1.7 Hyperparamter tuning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-scaling-matters-for-neural-nets">2. Why scaling matters for neural nets</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemical-property-prediction">2. Neural nets for chemical property prediction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#target-choice-melting-point">2.1 Target choice: melting point</a></li>
 </ul>
 </li>

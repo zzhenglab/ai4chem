@@ -756,7 +756,7 @@ if hasattr(best_clf, "loss_curve_") and len(best_clf.loss_curve_) > 0:
 
 ---
 
-## 2. Why scaling matters for neural nets
+## 2. Neural nets for chemical property prediction
 
 We reuse the same CSV from earlier lectures and compute four quick descriptors.
 
