@@ -798,7 +798,7 @@ perm_ser = pd.Series(perm.importances_mean, index=feat).sort_values()
 perm_ser.plot(kind="barh"); plt.xlabel("Mean decrease in R²"); plt.title("Permutation importance on test"); plt.show()
 ```
 
----
+
 
 
 
