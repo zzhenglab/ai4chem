@@ -69,12 +69,14 @@ warnings.filterwarnings("ignore", message="X has feature names")
 We will reuse the same dataset to keep the context consistent. If RDKit is available, we compute four descriptors; otherwise we fallback to numeric columns that are already present.
 
 ```{code-cell} ipython3
+:tags: [hide-input]
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
 df_raw = pd.read_csv(url)
 df_raw.head()
 ```
 
 ```{code-cell} ipython3
+:tags: [hide-input]
 def calc_descriptors(smiles):
     if Chem is None:
         return pd.Series({"MolWt": np.nan, "LogP": np.nan, "TPSA": np.nan, "NumRings": np.nan})
@@ -1117,5 +1119,3 @@ Hint: This may take more than 30 s to run since it searches for quite a few hype
 ```python
 # TO DO
 ```
-
----

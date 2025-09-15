@@ -1,0 +1,1605 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 8 - Neural Networks &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-08b';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to CHEM 5080: AI for Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flecture-08b.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture-08b.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 8 - Neural Networks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-neural-network">1. What is a neural network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors-in-pytorch-a-2-minute-tour">2. Tensors in PyTorch: a 2-minute tour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-neural-net-on-a-toy-regression">3. A first neural net on a toy regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-tiny-dataset">3.1 Make a tiny dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-tensors-and-check-shapes">3.2 Convert to tensors and check shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-network">3.3 Define a small network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-and-optimizer">3.4 Loss and optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-manual-training-step-by-hand">3.5 One manual training step (by hand)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-training-loop">3.6 Mini training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-predictions">3.7 Visualize predictions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemistry-regression-on-melting-point">4. Neural nets for chemistry: regression on Melting Point</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-and-build-feature-matrix">4.1 Load data and build feature matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validation-test-split">4.2 Train, validation, test split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-features">4.3 Standardize features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-tensors-and-peek-at-shapes">4.4 Wrap tensors and peek at shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-neat-dataset-and-dataloader">4.5 A neat <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-regression-mlp-and-inspect-parameters">4.6 Define a small regression MLP and inspect parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-forward-pass-to-check-shapes">4.7 One forward pass to check shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-optimizer-and-a-clear-training-loop">4.8 Loss, optimizer, and a clear training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-learning-curves">4.9 Plot learning curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-on-test-and-draw-parity-plot">4.10 Evaluate on test and draw parity plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemistry-classification-on-toxicity">5. Neural nets for chemistry: classification on Toxicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-labels-and-splits">5.1 Prepare labels and splits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-classifier">5.2 Define a small classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-forward-pass-and-shapes">5.3 Single forward pass and shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-cross-entropy">5.4 Train with Cross-Entropy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-curves">5.5 Learning curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-metrics-accuracy-and-auc">5.6 Test metrics: Accuracy and AUC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-notes">6. Practical notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-models">7. Saving and loading models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">8. Quick reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-compare-to-scikit-learn-mlp">9. Optional: compare to scikit-learn MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-5-questions">10. In-class activity (5 questions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-width-vs-depth-on-melting-point">Q1. Width vs depth on Melting Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-weight-decay-on-melting-point">Q2. Weight decay on Melting Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-calibration-for-toxicity">Q3. Calibration for Toxicity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-swap-activation">Q4. Swap activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-predict-new-molecules-melting-point">Q5. Predict new molecules (Melting Point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">11. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">11.1 Solution Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">11.2 Solution Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">11.3 Solution Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">11.4 Solution Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">11.5 Solution Q5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">12. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13. Wrap-up</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-8-neural-networks">
+<h1>Lecture 8 - Neural Networks<a class="headerlink" href="#lecture-8-neural-networks" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id2">0. Setup</a></p></li>
+<li><p><a class="reference internal" href="#what-is-a-neural-network" id="id3">1. What is a neural network</a></p></li>
+<li><p><a class="reference internal" href="#tensors-in-pytorch-a-2-minute-tour" id="id4">2. Tensors in PyTorch: a 2-minute tour</a></p></li>
+<li><p><a class="reference internal" href="#a-first-neural-net-on-a-toy-regression" id="id5">3. A first neural net on a toy regression</a></p></li>
+<li><p><a class="reference internal" href="#neural-nets-for-chemistry-regression-on-melting-point" id="id6">4. Neural nets for chemistry: regression on Melting Point</a></p></li>
+<li><p><a class="reference internal" href="#neural-nets-for-chemistry-classification-on-toxicity" id="id7">5. Neural nets for chemistry: classification on Toxicity</a></p></li>
+<li><p><a class="reference internal" href="#practical-notes" id="id8">6. Practical notes</a></p></li>
+<li><p><a class="reference internal" href="#saving-and-loading-models" id="id9">7. Saving and loading models</a></p></li>
+<li><p><a class="reference internal" href="#quick-reference" id="id10">8. Quick reference</a></p></li>
+<li><p><a class="reference internal" href="#optional-compare-to-scikit-learn-mlp" id="id11">9. Optional: compare to scikit-learn MLP</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity-5-questions" id="id12">10. In-class activity (5 questions)</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id13">11. Solutions</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id14">12. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#wrap-up" id="id15">13. Wrap-up</a></p></li>
+</ul>
+</nav>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Build intuition for neurons, layers, activation functions, loss, and optimization.</p></li>
+<li><p>Create a first neural network for a toy regression, then for chemistry data.</p></li>
+<li><p>Use PyTorch tensors, <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>, <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>, and a simple training loop.</p></li>
+<li><p>Track shapes at each step and visualize learning curves.</p></li>
+<li><p>Compare to models from Lectures 5-7 and connect ideas like splits and metrics.</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="setup">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<p>We start light, then switch to the C-H dataset you used in earlier lectures.<br />
+If RDKit is missing, code will skip molecule drawings but still compute with the CSV.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0. Setup</span>
+<span class="o">%</span><span class="k">pip</span> -q install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+<span class="o">%</span><span class="k">pip</span> -q install pandas numpy matplotlib scikit-learn
+
+<span class="c1"># RDKit is optional for descriptors already stored in the CSV</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="what-is-a-neural-network">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. What is a neural network</a><a class="headerlink" href="#what-is-a-neural-network" title="Permalink to this heading">#</a></h2>
+<div class="admonition-picture-in-words admonition">
+<p class="admonition-title">Picture in words</p>
+<p>A <strong>neuron</strong> computes <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">w·x</span> <span class="pre">+</span> <span class="pre">b</span></code>, then applies a <strong>nonlinearity</strong> <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">σ(z)</span></code>.
+A <strong>layer</strong> stacks many neurons.
+A <strong>network</strong> stacks layers.
+Training finds weights <code class="docutils literal notranslate"><span class="pre">w,</span> <span class="pre">b</span></code> that minimize a <strong>loss</strong> on your data.</p>
+</div>
+<p><strong>Key pieces</strong></p>
+<ul class="simple">
+<li><p><strong>Activation</strong>: ReLU, Sigmoid, Tanh.</p></li>
+<li><p><strong>Loss</strong>: MSE for regression, Cross-Entropy for classification.</p></li>
+<li><p><strong>Optimizer</strong>: Gradient descent variants (SGD, Adam).</p></li>
+<li><p><strong>Epoch</strong>: one pass over the training set.</p></li>
+</ul>
+<p>We will not jump into a large script. We will build the pipeline in tiny steps, check shapes, and talk through each part.</p>
+</section>
+<hr class="docutils" />
+<section id="tensors-in-pytorch-a-2-minute-tour">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Tensors in PyTorch: a 2-minute tour</a><a class="headerlink" href="#tensors-in-pytorch-a-2-minute-tour" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scalars, vectors, matrices</span>
+<span class="n">t_scalar</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="n">t_vec</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+<span class="n">t_mat</span>    <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]])</span>
+
+<span class="n">t_scalar</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">t_vec</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">t_mat</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-tip admonition">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">.shape</span></code> often. In deep learning, many bugs are shape bugs.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic ops</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">2.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">],[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]])</span>
+<span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">@</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-2-1 admonition">
+<p class="admonition-title">Exercise 2.1</p>
+<p>Create a 3x4 tensor of ones, multiply by 2, then compute its mean.
+Confirm the shape at each step.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="a-first-neural-net-on-a-toy-regression">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. A first neural net on a toy regression</a><a class="headerlink" href="#a-first-neural-net-on-a-toy-regression" title="Permalink to this heading">#</a></h2>
+<p>Before touching chemistry, we learn the loop on a simple function: <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">sin(x)</span></code> with noise. One input, one output. This shows how a network learns a curve.</p>
+<section id="make-a-tiny-dataset">
+<h3>3.1 Make a tiny dataset<a class="headerlink" href="#make-a-tiny-dataset" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">x_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x_np</span><span class="p">)</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">x_np</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_np</span><span class="p">,</span> <span class="n">y_np</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y = sin(x) + noise&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Toy regression&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-to-tensors-and-check-shapes">
+<h3>3.2 Convert to tensors and check shapes<a class="headerlink" href="#convert-to-tensors-and-check-shapes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x_np</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># (N, 1)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_np</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># (N, 1)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-a-small-network">
+<h3>3.3 Define a small network<a class="headerlink" href="#define-a-small-network" title="Permalink to this heading">#</a></h3>
+<p>We choose a compact multilayer perceptron (MLP): <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">-&gt;</span> <span class="pre">64</span> <span class="pre">-&gt;</span> <span class="pre">64</span> <span class="pre">-&gt;</span> <span class="pre">1</span></code> with ReLU.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TinyRegressor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">TinyRegressor</span><span class="p">()</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loss-and-optimizer">
+<h3>3.4 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-manual-training-step-by-hand">
+<h3>3.5 One manual training step (by hand)<a class="headerlink" href="#one-manual-training-step-by-hand" title="Permalink to this heading">#</a></h3>
+<p>We do a single gradient step to see each operation. This is not a full loop yet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>           <span class="c1"># forward</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1"># scalar tensor</span>
+<span class="n">loss_item_before</span> <span class="o">=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>             <span class="c1"># compute gradients</span>
+<span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>                  <span class="c1"># update weights</span>
+
+<span class="n">loss_item_before</span><span class="p">,</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-checkpoint admonition">
+<p class="admonition-title">Checkpoint</p>
+<p>You saw forward, loss, backward, step. This is the basic learning step.
+Repeat many times over mini-batches to train.</p>
+</div>
+</section>
+<section id="mini-training-loop">
+<h3>3.6 Mini training loop<a class="headerlink" href="#mini-training-loop" title="Permalink to this heading">#</a></h3>
+<p>We train for a few epochs and track training loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">TinyRegressor</span><span class="p">()</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">)</span>
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+
+<span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>
+    <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+    <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;train MSE&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-predictions">
+<h3>3.7 Visualize predictions<a class="headerlink" href="#visualize-predictions" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Fit on toy regression&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-3-1 admonition">
+<p class="admonition-title">Exercise 3.1</p>
+<p>Change hidden width from 64 to 16. Retrain and compare the training loss and the curve.
+Which model underfits or overfits more on this toy?</p>
+</div>
+<div class="admonition-exercise-3-2 admonition">
+<p class="admonition-title">Exercise 3.2</p>
+<p>Try <code class="docutils literal notranslate"><span class="pre">Tanh</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ReLU</span></code>. Keep architecture the same.
+Is convergence slower or faster with the default learning rate?</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="neural-nets-for-chemistry-regression-on-melting-point">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Neural nets for chemistry: regression on Melting Point</a><a class="headerlink" href="#neural-nets-for-chemistry-regression-on-melting-point" title="Permalink to this heading">#</a></h2>
+<p>We now switch to a familiar table. As in Lectures 5-7, we will use four simple descriptors as features.</p>
+<section id="load-data-and-build-feature-matrix">
+<h3>4.1 Load data and build feature matrix<a class="headerlink" href="#load-data-and-build-feature-matrix" title="Permalink to this heading">#</a></h3>
+<div class="admonition-data admonition">
+<p class="admonition-title">Data</p>
+<p><code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">NumRings</span></code> will be our <code class="docutils literal notranslate"><span class="pre">X</span></code>.
+Target <code class="docutils literal notranslate"><span class="pre">y</span></code> will be <code class="docutils literal notranslate"><span class="pre">Melting</span> <span class="pre">Point</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># If RDKit available, we can recompute. Otherwise reuse stored numeric columns where present.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">descriptors_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRings</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+    <span class="p">})</span>
+
+<span class="c1"># Compute once if needed</span>
+<span class="n">desc</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">descriptors_from_smiles</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">desc</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">use_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
+<span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">use_cols</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_reg</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-validation-test-split">
+<h3>4.2 Train, validation, test split<a class="headerlink" href="#train-validation-test-split" title="Permalink to this heading">#</a></h3>
+<p>In Lecture 6, you learned why validation is helpful for picking settings. We will do a 60-20-20 split.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_all</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">y_all</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">X_trainval</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span>  <span class="n">y_train</span><span class="p">,</span>  <span class="n">y_val</span>  <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_trainval</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># 0.25 of 0.8 = 0.2</span>
+
+<span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_val</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standardize-features">
+<h3>4.3 Standardize features<a class="headerlink" href="#standardize-features" title="Permalink to this heading">#</a></h3>
+<p>Most neural nets train more smoothly when inputs are standardized.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">Xtr</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Xva</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Xte</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">ytr</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">yva</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">yte</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="wrap-tensors-and-peek-at-shapes">
+<h3>4.4 Wrap tensors and peek at shapes<a class="headerlink" href="#wrap-tensors-and-peek-at-shapes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xtr_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xtr</span><span class="p">)</span>
+<span class="n">Xva_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xva</span><span class="p">)</span>
+<span class="n">Xte_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span>
+<span class="n">ytr_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">ytr</span><span class="p">)</span>
+<span class="n">yva_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">yva</span><span class="p">)</span>
+<span class="n">yte_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">yte</span><span class="p">)</span>
+
+<span class="n">Xtr_t</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">ytr_t</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="a-neat-dataset-and-dataloader">
+<h3>4.5 A neat <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code><a class="headerlink" href="#a-neat-dataset-and-dataloader" title="Permalink to this heading">#</a></h3>
+<p>We will create small batches for stable gradients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArrayDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">else</span> <span class="n">X</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">else</span> <span class="n">y</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="n">train_ds</span> <span class="o">=</span> <span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">)</span>
+<span class="n">val_ds</span>   <span class="o">=</span> <span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xva</span><span class="p">,</span> <span class="n">yva</span><span class="p">)</span>
+<span class="n">test_ds</span>  <span class="o">=</span> <span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xte</span><span class="p">,</span> <span class="n">yte</span><span class="p">)</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">val_loader</span>   <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-4-1 admonition">
+<p class="admonition-title">Exercise 4.1</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">batch_size</span></code> to 16 and 256.
+Observe the training curve. Which setting is noisier per epoch? Which converges faster in wall time?</p>
+</div>
+</section>
+<section id="define-a-small-regression-mlp-and-inspect-parameters">
+<h3>4.6 Define a small regression MLP and inspect parameters<a class="headerlink" href="#define-a-small-regression-mlp-and-inspect-parameters" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MPRegressor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">d_hidden</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span> <span class="n">d_hidden</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_hidden</span><span class="p">,</span> <span class="n">d_hidden</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">mp_model</span> <span class="o">=</span> <span class="n">MPRegressor</span><span class="p">(</span><span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">d_hidden</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">mp_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span> <span class="n">mp_model</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-forward-pass-to-check-shapes">
+<h3>4.7 One forward pass to check shapes<a class="headerlink" href="#one-forward-pass-to-check-shapes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_loader</span><span class="p">))</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">mp_model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+<span class="n">pred</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yb</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loss-optimizer-and-a-clear-training-loop">
+<h3>4.8 Loss, optimizer, and a clear training loop<a class="headerlink" href="#loss-optimizer-and-a-clear-training-loop" title="Permalink to this heading">#</a></h3>
+<p>We will compute validation loss each epoch to watch for overfitting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_regression</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">):</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+
+    <span class="n">hist</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># train</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">batch_losses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">batch_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">batch_losses</span><span class="p">))</span>
+
+        <span class="c1"># validate</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">v_losses</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">pv</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
+                <span class="n">v_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="n">yv</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_losses</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">  train MSE=</span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  val MSE=</span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hist</span>
+
+<span class="n">mp_model</span> <span class="o">=</span> <span class="n">MPRegressor</span><span class="p">()</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="n">train_regression</span><span class="p">(</span><span class="n">mp_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-learning-curves">
+<h3>4.9 Plot learning curves<a class="headerlink" href="#plot-learning-curves" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;MSE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Learning curves: Melting Point&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluate-on-test-and-draw-parity-plot">
+<h3>4.10 Evaluate on test and draw parity plot<a class="headerlink" href="#evaluate-on-test-and-draw-parity-plot" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_pred_te</span> <span class="o">=</span> <span class="n">mp_model</span><span class="p">(</span><span class="n">Xte_t</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">y_pred_te</span><span class="p">)</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">y_pred_te</span><span class="p">)</span>
+<span class="n">r2</span>  <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">y_pred_te</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test MSE=</span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  MAE=</span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  R2=</span><span class="si">{</span><span class="n">r2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">y_pred_te</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_pred_te</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_pred_te</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True MP&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Predicted MP&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parity: NN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-4-2 admonition">
+<p class="admonition-title">Exercise 4.2</p>
+<p>Add a <strong>Dropout(p=0.1)</strong> layer after the first ReLU. Retrain with the same settings.
+Compare validation MSE and test R2. Does Dropout help a little here?</p>
+</div>
+<div class="admonition-exercise-4-3 admonition">
+<p class="admonition-title">Exercise 4.3</p>
+<p>Reduce <code class="docutils literal notranslate"><span class="pre">d_hidden</span></code> from 64 to 16. Retrain and compare.
+Which setting gives better generalization on this target?</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="neural-nets-for-chemistry-classification-on-toxicity">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Neural nets for chemistry: classification on Toxicity</a><a class="headerlink" href="#neural-nets-for-chemistry-classification-on-toxicity" title="Permalink to this heading">#</a></h2>
+<p>We reuse the same four descriptors. Now the target is binary: toxic vs non_toxic.</p>
+<section id="prepare-labels-and-splits">
+<h3>5.1 Prepare labels and splits<a class="headerlink" href="#prepare-labels-and-splits" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y_txt</span> <span class="o">=</span> <span class="n">df_clf</span><span class="p">[</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">y_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_txt</span> <span class="o">==</span> <span class="s2">&quot;toxic&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># 1 toxic, 0 non_toxic</span>
+<span class="n">X_all</span> <span class="o">=</span> <span class="n">df_clf</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">X_trainval</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_bin</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_bin</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span>  <span class="n">y_train</span><span class="p">,</span>  <span class="n">y_val</span>  <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_trainval</span><span class="p">,</span> <span class="n">y_trainval</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_trainval</span><span class="p">)</span>
+
+<span class="n">scaler_c</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">Xtr</span> <span class="o">=</span> <span class="n">scaler_c</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Xva</span> <span class="o">=</span> <span class="n">scaler_c</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">Xte</span> <span class="o">=</span> <span class="n">scaler_c</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">ytr</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="n">yva</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="n">yte</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="n">train_loader_c</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">val_loader_c</span>   <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xva</span><span class="p">,</span> <span class="n">yva</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-a-small-classifier">
+<h3>5.2 Define a small classifier<a class="headerlink" href="#define-a-small-classifier" title="Permalink to this heading">#</a></h3>
+<p>Outputs logits of shape <code class="docutils literal notranslate"><span class="pre">(batch,</span> <span class="pre">2)</span></code>. We will use <code class="docutils literal notranslate"><span class="pre">nn.CrossEntropyLoss</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ToxicityMLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">d_hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span> <span class="n">d_hidden</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_hidden</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># logits</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ToxicityMLP</span><span class="p">()</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">clf</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span> <span class="n">clf</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="single-forward-pass-and-shapes">
+<h3>5.3 Single forward pass and shapes<a class="headerlink" href="#single-forward-pass-and-shapes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">train_loader_c</span><span class="p">))</span>
+<span class="n">logits</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>   <span class="c1"># (B, 2)</span>
+<span class="n">proba</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># probabilities</span>
+<span class="n">logits</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">proba</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">yb</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-with-cross-entropy">
+<h3>5.4 Train with Cross-Entropy<a class="headerlink" href="#train-with-cross-entropy" title="Permalink to this heading">#</a></h3>
+<p>We also compute validation accuracy per epoch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_classifier</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">):</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+    <span class="n">train_hist</span><span class="p">,</span> <span class="n">val_hist</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">train_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">losses</span><span class="p">))</span>
+
+        <span class="c1"># simple val accuracy</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">n_correct</span><span class="p">,</span> <span class="n">n_total</span><span class="p">,</span> <span class="n">v_losses</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[]</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">lv</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
+                <span class="n">v_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">lv</span><span class="p">,</span> <span class="n">yv</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+                <span class="n">pred</span> <span class="o">=</span> <span class="n">lv</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">n_correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="n">yv</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                <span class="n">n_total</span>   <span class="o">+=</span> <span class="n">yv</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">val_hist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">v_losses</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">epoch</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2">  train CE=</span><span class="si">{</span><span class="n">train_hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  val CE=</span><span class="si">{</span><span class="n">val_hist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  val acc=</span><span class="si">{</span><span class="n">n_correct</span><span class="o">/</span><span class="n">n_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="n">train_hist</span><span class="p">,</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="n">val_hist</span><span class="p">}</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">ToxicityMLP</span><span class="p">()</span>
+<span class="n">hist_c</span> <span class="o">=</span> <span class="n">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">train_loader_c</span><span class="p">,</span> <span class="n">val_loader_c</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">5e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="learning-curves">
+<h3>5.5 Learning curves<a class="headerlink" href="#learning-curves" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist_c</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train CE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist_c</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;val CE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross-Entropy&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Classification learning curves&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="test-metrics-accuracy-and-auc">
+<h3>5.6 Test metrics: Accuracy and AUC<a class="headerlink" href="#test-metrics-accuracy-and-auc" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">logits_te</span> <span class="o">=</span> <span class="n">clf</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xte</span><span class="p">))</span>
+    <span class="n">proba_te</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits_te</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">pred_te</span>   <span class="o">=</span> <span class="n">logits_te</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">pred_te</span><span class="p">)</span>
+<span class="n">auc</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">proba_te</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test Accuracy=</span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  AUC=</span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-5-1 admonition">
+<p class="admonition-title">Exercise 5.1</p>
+<p>Add a second hidden layer with <code class="docutils literal notranslate"><span class="pre">ReLU</span></code>. Keep the same total parameter count by reducing widths.
+Does AUC change on the test split?</p>
+</div>
+<div class="admonition-exercise-5-2 admonition">
+<p class="admonition-title">Exercise 5.2</p>
+<p>Set learning rate to <code class="docutils literal notranslate"><span class="pre">1e-2</span></code> and then <code class="docutils literal notranslate"><span class="pre">1e-4</span></code>. Train for the same epochs.
+Report validation CE after epoch 100. Which rate is better here?</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="practical-notes">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Practical notes</a><a class="headerlink" href="#practical-notes" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Normalization</strong>: Standardize inputs. We reused <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> from Lecture 6.</p></li>
+<li><p><strong>Initialization</strong>: PyTorch initializes layers reasonably, but very deep nets may need care.</p></li>
+<li><p><strong>Learning rate</strong>: If loss does not decrease, lower it. If training is slow, try higher but watch for divergence.</p></li>
+<li><p><strong>Batch size</strong>: Small batches add noise that may help generalization.</p></li>
+<li><p><strong>Regularization</strong>: Dropout is easy. Weight decay via <code class="docutils literal notranslate"><span class="pre">Adam(...,</span> <span class="pre">weight_decay=1e-4)</span></code> can help.</p></li>
+</ul>
+<div class="admonition-link-to-earlier-lectures admonition">
+<p class="admonition-title">Link to earlier lectures</p>
+<p>Train/val/test split, parity plots, and metrics come from Lectures 5-7. The same diagnostics help with neural nets.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="saving-and-loading-models">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. Saving and loading models</a><a class="headerlink" href="#saving-and-loading-models" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">mp_model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span> <span class="s2">&quot;mp_regressor.pt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load into a fresh instance</span>
+<span class="n">mp2</span> <span class="o">=</span> <span class="n">MPRegressor</span><span class="p">()</span>
+<span class="n">mp2</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;mp_regressor.pt&quot;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
+<span class="n">mp2</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="quick-reference">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<div class="admonition-pytorch-recipe admonition">
+<p class="admonition-title">PyTorch recipe</p>
+<ol class="arabic simple">
+<li><p>Prepare <code class="docutils literal notranslate"><span class="pre">X,</span> <span class="pre">y</span></code> as float tensors (long for class labels).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> with a batch size.</p></li>
+<li><p>Define <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> with layers and activations.</p></li>
+<li><p>Choose loss and optimizer.</p></li>
+<li><p>Loop: <code class="docutils literal notranslate"><span class="pre">zero_grad</span> <span class="pre">-&gt;</span> <span class="pre">forward</span> <span class="pre">-&gt;</span> <span class="pre">loss</span> <span class="pre">-&gt;</span> <span class="pre">backward</span> <span class="pre">-&gt;</span> <span class="pre">step</span></code>.</p></li>
+<li><p>Track validation loss and stop if it rises for too long.</p></li>
+</ol>
+</div>
+<div class="admonition-common-layers admonition">
+<p class="admonition-title">Common layers</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nn.Linear(d_in,</span> <span class="pre">d_out)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nn.ReLU()</span></code>, <code class="docutils literal notranslate"><span class="pre">nn.Tanh()</span></code>, <code class="docutils literal notranslate"><span class="pre">nn.Sigmoid()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nn.Dropout(p)</span></code></p></li>
+</ul>
+</div>
+</section>
+<hr class="docutils" />
+<section id="optional-compare-to-scikit-learn-mlp">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. Optional: compare to scikit-learn MLP</a><a class="headerlink" href="#optional-compare-to-scikit-learn-mlp" title="Permalink to this heading">#</a></h2>
+<p>This gives you a quick baseline. It hides some details but is useful for sanity checks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+
+<span class="n">mlp</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span><span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">64</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">mlp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;sklearn MLP  R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  MAE=</span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="in-class-activity-5-questions">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">10. In-class activity (5 questions)</a><a class="headerlink" href="#in-class-activity-5-questions" title="Permalink to this heading">#</a></h2>
+<p>Each task can be done with the code above and small edits.</p>
+<section id="q1-width-vs-depth-on-melting-point">
+<h3>Q1. Width vs depth on Melting Point<a class="headerlink" href="#q1-width-vs-depth-on-melting-point" title="Permalink to this heading">#</a></h3>
+<p>Train two regression MLPs:</p>
+<ul class="simple">
+<li><p>Model A: <code class="docutils literal notranslate"><span class="pre">d_hidden=16</span></code>, 2 hidden layers</p></li>
+<li><p>Model B: <code class="docutils literal notranslate"><span class="pre">d_hidden=64</span></code>, 1 hidden layer</p></li>
+</ul>
+<p>Use the same split as Section 4. Report <strong>validation MSE</strong> at the end of training and <strong>test R2</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: build two MPRegressor variants and compare hist[&quot;val&quot;][-1] and R2 on test</span>
+</pre></div>
+</div>
+</section>
+<section id="q2-weight-decay-on-melting-point">
+<h3>Q2. Weight decay on Melting Point<a class="headerlink" href="#q2-weight-decay-on-melting-point" title="Permalink to this heading">#</a></h3>
+<p>Repeat Section 4 with <code class="docutils literal notranslate"><span class="pre">weight_decay=1e-4</span></code> in Adam. Keep everything else the same.
+Report test <strong>MAE</strong> and compare to the no-decay setting.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: train_regression but create optimizer with weight decay</span>
+</pre></div>
+</div>
+</section>
+<section id="q3-calibration-for-toxicity">
+<h3>Q3. Calibration for Toxicity<a class="headerlink" href="#q3-calibration-for-toxicity" title="Permalink to this heading">#</a></h3>
+<p>For the classifier, collect <code class="docutils literal notranslate"><span class="pre">proba_te</span></code>.
+Compute accuracy at thresholds <code class="docutils literal notranslate"><span class="pre">0.3,</span> <span class="pre">0.5,</span> <span class="pre">0.7</span></code>.
+Plot the three points on a simple threshold vs accuracy line.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: use proba_te and vary threshold to get predictions, then accuracy_score</span>
+</pre></div>
+</div>
+</section>
+<section id="q4-swap-activation">
+<h3>Q4. Swap activation<a class="headerlink" href="#q4-swap-activation" title="Permalink to this heading">#</a></h3>
+<p>Replace ReLU with Tanh in the regression model and repeat training.
+Report final validation MSE and test R2.
+Is convergence slower?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: define MPRegressor with Tanh and train</span>
+</pre></div>
+</div>
+</section>
+<section id="q5-predict-new-molecules-melting-point">
+<h3>Q5. Predict new molecules (Melting Point)<a class="headerlink" href="#q5-predict-new-molecules-melting-point" title="Permalink to this heading">#</a></h3>
+<p>Given two descriptor rows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[135.0,</span> <span class="pre">2.0,</span> <span class="pre">9.2,</span> <span class="pre">2]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[301.0,</span> <span class="pre">0.5,</span> <span class="pre">17.7,</span> <span class="pre">2]</span></code></p></li>
+</ul>
+<p>Use the trained regression model and the same <code class="docutils literal notranslate"><span class="pre">scaler</span></code> to predict MP.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO: transform with scaler, run model.eval() and predict</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solutions">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<section id="solution-q1">
+<h3>11.1 Solution Q1<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MPRegressorA</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MPRegressorB</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">mA</span><span class="p">,</span> <span class="n">mB</span> <span class="o">=</span> <span class="n">MPRegressorA</span><span class="p">(),</span> <span class="n">MPRegressorB</span><span class="p">()</span>
+<span class="n">histA</span> <span class="o">=</span> <span class="n">train_regression</span><span class="p">(</span><span class="n">mA</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">histB</span> <span class="o">=</span> <span class="n">train_regression</span><span class="p">(</span><span class="n">mB</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">eval_r2</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">yp</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">Xte_t</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">yp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A: val MSE=</span><span class="si">{</span><span class="n">histA</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  test R2=</span><span class="si">{</span><span class="n">eval_r2</span><span class="p">(</span><span class="n">mA</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B: val MSE=</span><span class="si">{</span><span class="n">histB</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  test R2=</span><span class="si">{</span><span class="n">eval_r2</span><span class="p">(</span><span class="n">mB</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q2">
+<h3>11.2 Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">train_regression_wd</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">wd</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+    <span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="n">wd</span><span class="p">)</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_epochs</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">tloss</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">),</span> <span class="n">yb</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">();</span> <span class="n">tloss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tloss</span><span class="p">))</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">();</span> <span class="n">vloss</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">xv</span><span class="p">,</span> <span class="n">yv</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">vloss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">xv</span><span class="p">),</span> <span class="n">yv</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+        <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vloss</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">hist</span>
+
+<span class="n">m_wd</span> <span class="o">=</span> <span class="n">MPRegressor</span><span class="p">()</span>
+<span class="n">hist_wd</span> <span class="o">=</span> <span class="n">train_regression_wd</span><span class="p">(</span><span class="n">m_wd</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">wd</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">m_wd</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_pred_te</span> <span class="o">=</span> <span class="n">m_wd</span><span class="p">(</span><span class="n">Xte_t</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With weight decay  MAE=</span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_te</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q3">
+<h3>11.3 Solution Q3<a class="headerlink" href="#solution-q3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">acc_at_thresh</span><span class="p">(</span><span class="n">proba</span><span class="p">,</span> <span class="n">y_true</span><span class="p">,</span> <span class="n">thr</span><span class="p">):</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">proba</span> <span class="o">&gt;=</span> <span class="n">thr</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">)</span>
+
+<span class="c1"># Reuse proba_te from Section 5.6 after clf is trained</span>
+<span class="n">thr_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]</span>
+<span class="n">accs</span> <span class="o">=</span> <span class="p">[</span><span class="n">acc_at_thresh</span><span class="p">(</span><span class="n">proba_te</span><span class="p">,</span> <span class="n">yte</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thr_list</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">t</span><span class="p">,</span><span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">thr_list</span><span class="p">,</span> <span class="n">accs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;threshold=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  acc=</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thr_list</span><span class="p">,</span> <span class="n">accs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;threshold&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;accuracy&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Threshold vs accuracy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q4">
+<h3>11.4 Solution Q4<a class="headerlink" href="#solution-q4" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MPRegressorTanh</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">d_hidden</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_in</span><span class="p">,</span> <span class="n">d_hidden</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_hidden</span><span class="p">,</span> <span class="n">d_hidden</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">m_tanh</span> <span class="o">=</span> <span class="n">MPRegressorTanh</span><span class="p">()</span>
+<span class="n">hist_tanh</span> <span class="o">=</span> <span class="n">train_regression</span><span class="p">(</span><span class="n">m_tanh</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">max_epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+
+<span class="n">m_tanh</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">ypt</span> <span class="o">=</span> <span class="n">m_tanh</span><span class="p">(</span><span class="n">Xte_t</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tanh val MSE=</span><span class="si">{</span><span class="n">hist_tanh</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  test R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">ypt</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-q5">
+<h3>11.5 Solution Q5<a class="headerlink" href="#solution-q5" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_desc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">135.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                     <span class="p">[</span><span class="mf">301.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">17.7</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">new_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">new_desc</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">mp_model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">new_scaled</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;MolWt&quot;</span><span class="p">:[</span><span class="mf">135.0</span><span class="p">,</span><span class="mf">301.0</span><span class="p">],</span>
+    <span class="s2">&quot;LogP&quot;</span><span class="p">:[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span>
+    <span class="s2">&quot;TPSA&quot;</span><span class="p">:[</span><span class="mf">9.2</span><span class="p">,</span><span class="mf">17.7</span><span class="p">],</span>
+    <span class="s2">&quot;NumRings&quot;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span>
+    <span class="s2">&quot;Pred_MP&quot;</span><span class="p">:</span><span class="n">preds</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="glossary">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">12. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-neuron">neuron<a class="headerlink" href="#term-neuron" title="Permalink to this term">#</a></dt><dd><p>Computes a weighted sum plus bias and passes it through a nonlinearity.</p>
+</dd>
+<dt id="term-activation">activation<a class="headerlink" href="#term-activation" title="Permalink to this term">#</a></dt><dd><p>Function applied to a neuron output. ReLU, Tanh, Sigmoid.</p>
+</dd>
+<dt id="term-loss">loss<a class="headerlink" href="#term-loss" title="Permalink to this term">#</a></dt><dd><p>A number that measures mismatch between predictions and targets.</p>
+</dd>
+<dt id="term-optimizer">optimizer<a class="headerlink" href="#term-optimizer" title="Permalink to this term">#</a></dt><dd><p>An algorithm that updates weights to reduce the loss. Adam, SGD.</p>
+</dd>
+<dt id="term-epoch">epoch<a class="headerlink" href="#term-epoch" title="Permalink to this term">#</a></dt><dd><p>One full pass through the training data.</p>
+</dd>
+<dt id="term-batch-size">batch size<a class="headerlink" href="#term-batch-size" title="Permalink to this term">#</a></dt><dd><p>Number of samples per gradient update.</p>
+</dd>
+<dt id="term-Dropout">Dropout<a class="headerlink" href="#term-Dropout" title="Permalink to this term">#</a></dt><dd><p>Randomly zeros hidden units during training to reduce overfitting.</p>
+</dd>
+<dt id="term-weight-decay">weight decay<a class="headerlink" href="#term-weight-decay" title="Permalink to this term">#</a></dt><dd><p>L2 penalty on weights controlled by the optimizer.</p>
+</dd>
+<dt id="term-Cross-Entropy">Cross-Entropy<a class="headerlink" href="#term-Cross-Entropy" title="Permalink to this term">#</a></dt><dd><p>Loss used for classification with logits.</p>
+</dd>
+<dt id="term-MSE">MSE<a class="headerlink" href="#term-MSE" title="Permalink to this term">#</a></dt><dd><p>Mean squared error, common for regression.</p>
+</dd>
+</dl>
+</section>
+<hr class="docutils" />
+<section id="wrap-up">
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">13. Wrap-up</a><a class="headerlink" href="#wrap-up" title="Permalink to this heading">#</a></h2>
+<p>You built two neural networks:</p>
+<ul class="simple">
+<li><p>A regressor for Melting Point with 4 simple descriptors.</p></li>
+<li><p>A classifier for Toxicity with the same inputs.</p></li>
+</ul>
+<p>Along the way you tracked shapes, watched loss curves, and reused plots and metrics from earlier lectures. The same habits carry into deeper models and molecular representations later in the course.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-neural-network">1. What is a neural network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tensors-in-pytorch-a-2-minute-tour">2. Tensors in PyTorch: a 2-minute tour</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-neural-net-on-a-toy-regression">3. A first neural net on a toy regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-tiny-dataset">3.1 Make a tiny dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-tensors-and-check-shapes">3.2 Convert to tensors and check shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-network">3.3 Define a small network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-and-optimizer">3.4 Loss and optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-manual-training-step-by-hand">3.5 One manual training step (by hand)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-training-loop">3.6 Mini training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-predictions">3.7 Visualize predictions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemistry-regression-on-melting-point">4. Neural nets for chemistry: regression on Melting Point</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-data-and-build-feature-matrix">4.1 Load data and build feature matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-validation-test-split">4.2 Train, validation, test split</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standardize-features">4.3 Standardize features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-tensors-and-peek-at-shapes">4.4 Wrap tensors and peek at shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-neat-dataset-and-dataloader">4.5 A neat <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-regression-mlp-and-inspect-parameters">4.6 Define a small regression MLP and inspect parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-forward-pass-to-check-shapes">4.7 One forward pass to check shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-optimizer-and-a-clear-training-loop">4.8 Loss, optimizer, and a clear training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-learning-curves">4.9 Plot learning curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-on-test-and-draw-parity-plot">4.10 Evaluate on test and draw parity plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-nets-for-chemistry-classification-on-toxicity">5. Neural nets for chemistry: classification on Toxicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-labels-and-splits">5.1 Prepare labels and splits</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-small-classifier">5.2 Define a small classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-forward-pass-and-shapes">5.3 Single forward pass and shapes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-with-cross-entropy">5.4 Train with Cross-Entropy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-curves">5.5 Learning curves</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-metrics-accuracy-and-auc">5.6 Test metrics: Accuracy and AUC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-notes">6. Practical notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-loading-models">7. Saving and loading models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quick-reference">8. Quick reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-compare-to-scikit-learn-mlp">9. Optional: compare to scikit-learn MLP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-5-questions">10. In-class activity (5 questions)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-width-vs-depth-on-melting-point">Q1. Width vs depth on Melting Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-weight-decay-on-melting-point">Q2. Weight decay on Melting Point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-calibration-for-toxicity">Q3. Calibration for Toxicity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-swap-activation">Q4. Swap activation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-predict-new-molecules-melting-point">Q5. Predict new molecules (Melting Point)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">11. Solutions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">11.1 Solution Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">11.2 Solution Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">11.3 Solution Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">11.4 Solution Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">11.5 Solution Q5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">12. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wrap-up">13. Wrap-up</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

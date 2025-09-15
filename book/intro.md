@@ -31,9 +31,17 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 16 & 18** – Supervised machine learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)  
 - **Sept 23 & 25** – Molecular property & reaction prediction  
 - **Sept 30 & Oct 2** – Unsupervised learning  methods
+- **Oct 7** - Fall Break
+- **Oct 9** – Bayesian optimization
+- **Oct 14** - No Class
+- **Oct 16** – Active learning 
 - **Oct 21 & 23** – Generative models for molecules  
-- **Nov 4 & 6** – Transformers & large language models  
+- **Oct 28 & 30** – Computer vision techniques   
+- **Nov 4 & 6** – Transformers & large language models 
+- **Nov 11 & 13** – Multimodal models and literature data mining
+- **Nov 18 & 20** – Multi-agent AI in chemistry labs   
 - **Nov 25** – Self-driving labs  
+- **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
 ```
 
