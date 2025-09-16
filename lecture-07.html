@@ -2344,9 +2344,7 @@ Averaged R2: 0.869699219889096
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soft Voting classifier accuracy: 0.9652173913043478
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hard Voting classifier accuracy: 0.9565217391304348
+Hard Voting classifier accuracy: 0.9565217391304348
 </pre></div>
 </div>
 </div>
@@ -2355,32 +2353,62 @@ Averaged R2: 0.869699219889096
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acc_lr</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
-<span class="n">acc_svc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 <span class="n">acc_rf</span>  <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-    <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;LogReg&quot;</span><span class="p">,</span> <span class="s2">&quot;SVC&quot;</span><span class="p">,</span> <span class="s2">&quot;RandomForest&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Hard&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Soft&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">acc_lr</span><span class="p">,</span> <span class="n">acc_svc</span><span class="p">,</span> <span class="n">acc_rf</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_hard</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)),</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_soft</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))]</span>
+    <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;LogReg&quot;</span><span class="p">,</span> <span class="s2">&quot;RandomForest&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Hard&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Soft&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">acc_lr</span><span class="p">,</span> <span class="n">acc_rf</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_hard</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)),</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_soft</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">acc_lr</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">acc_svc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">acc_rf</span>  <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;LogReg&quot;</span><span class="p">,</span> <span class="s2">&quot;SVC&quot;</span><span class="p">,</span> <span class="s2">&quot;RandomForest&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Hard&quot;</span><span class="p">,</span> <span class="s2">&quot;Voting-Soft&quot;</span><span class="p">],</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="s2">&quot;Accuracy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">acc_lr</span><span class="p">,</span> <span class="n">acc_svc</span><span class="p">,</span> <span class="n">acc_rf</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_hard</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)),</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">vote_clf_soft</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))]</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="p">})</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;SVC&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LogReg</td>
+      <td>0.956522</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>RandomForest</td>
+      <td>0.939130</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Voting-Hard</td>
+      <td>0.956522</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Voting-Soft</td>
+      <td>0.965217</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="admonition-difference admonition">
 <p class="admonition-title">Difference</p>
@@ -2412,6 +2440,12 @@ Averaged R2: 0.869699219889096
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient Boosting R2: 0.856
+Gradient Boosting MAE: 16.17
+</pre></div>
+</div>
+</div>
 </div>
 <p>Compare <strong>Random Forest vs Gradient Boosting</strong> directly:</p>
 <div class="cell docutils container">
@@ -2427,6 +2461,46 @@ Averaged R2: 0.869699219889096
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>R2</th>
+      <th>MAE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>RandomForest</td>
+      <td>0.826</td>
+      <td>16.777</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>GradientBoosting</td>
+      <td>0.856</td>
+      <td>16.172</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2441,6 +2515,9 @@ Averaged R2: 0.869699219889096
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" src="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" />
 </div>
 </div>
 <div class="admonition-compare admonition">
@@ -2478,6 +2555,13 @@ Averaged R2: 0.869699219889096
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OOB score: </span><span class="si">{</span><span class="n">rf</span><span class="o">.</span><span class="n">oob_score_</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_proba</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OOB score: 0.939
+Accuracy: 0.922
+AUC: 0.955
 </pre></div>
 </div>
 </div>
@@ -2531,6 +2615,22 @@ Averaged R2: 0.869699219889096
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params: {&#39;max_depth&#39;: None, &#39;min_samples_leaf&#39;: 3, &#39;n_estimators&#39;: 500}
+Best CV AUC: 0.972
+Accuracy: 0.948
+AUC: 0.982
+              precision    recall  f1-score   support
+
+           0      0.850     0.850     0.850        20
+           1      0.968     0.968     0.968        95
+
+    accuracy                          0.948       115
+   macro avg      0.909     0.909     0.909       115
+weighted avg      0.948     0.948     0.948       115
+</pre></div>
+</div>
+</div>
 </div>
 <p>Additional plots demonstrating the performance:</p>
 <div class="cell docutils container">
@@ -2550,6 +2650,10 @@ Averaged R2: 0.869699219889096
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" src="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" />
+<img alt="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" src="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" />
 </div>
 </div>
 </section>

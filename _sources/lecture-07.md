@@ -869,12 +869,11 @@ Compare voting against individual models:
 
 ```{code-cell} ipython3
 acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
-acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
 acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
 
 pd.DataFrame({
-    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
-    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+    "Model": ["LogReg", "RandomForest", "Voting-Hard", "Voting-Soft"],
+    "Accuracy": [acc_lr, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
 })
 ```
 
