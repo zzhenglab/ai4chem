@@ -591,21 +591,50 @@ summarize_mlp(mlp_deep_2);    draw_full_mlp_structure(mlp_deep_2, Xtr, "deep (8,
 We can plot a decision surface to see the boundary and compare all these three models.
 
 ```{code-cell} ipython3
-# grid
-xx, yy = np.meshgrid(np.linspace(X_toy[:,0].min()-0.5, X_toy[:,0].max()+0.5, 200),
-                     np.linspace(X_toy[:,1].min()-0.5, X_toy[:,1].max()+0.5, 200))
-grid = np.c_[xx.ravel(), yy.ravel()]
-zz = mlp.predict_proba(grid)[:,1].reshape(xx.shape)
+import numpy as np
+import matplotlib.pyplot as plt
 
-plt.figure(figsize=(5,4.5))
-cs = plt.contourf(xx, yy, zz, levels=20, alpha=0.7, cmap="coolwarm")
-plt.colorbar(cs, label="P(class=1)")
-plt.scatter(Xtr[:,0], Xtr[:,1], c=ytr, cmap="coolwarm", s=12, edgecolor="k", alpha=0.7, label="train")
-plt.scatter(Xte[:,0], Xte[:,1], c=yte, cmap="coolwarm", s=18, marker="^", edgecolor="k", label="test")
-plt.legend(loc="lower right")
-plt.gca().set_aspect("equal")
-plt.title("MLP decision surface")
+# square limits from the first two columns
+lim = np.abs(np.vstack([Xtr[:, :2], Xte[:, :2]])).max()
+pad = 0.5
+xs = np.linspace(-lim - pad, lim + pad, 300)
+ys = np.linspace(-lim - pad, lim + pad, 300)
+xx, yy = np.meshgrid(xs, ys)
+
+# 2D grid for the first two features
+grid2 = np.c_[xx.ravel(), yy.ravel()]
+
+# fill the remaining features with training means (raw space)
+if Xtr.shape[1] > 2:
+    rest_means = Xtr[:, 2:].mean(axis=0)                 # shape (3,)
+    rest = np.tile(rest_means, (grid2.shape[0], 1))      # shape (N, 3)
+    grid_full = np.hstack([grid2, rest])                 # shape (N, 5)
+else:
+    grid_full = grid2
+
+# probabilities for both models
+zz_shallow = mlp.predict_proba(grid_full)[:, 1].reshape(xx.shape)
+zz_deep    = mlp_deep.predict_proba(grid_full)[:, 1].reshape(xx.shape)
+zz_deep_2  = mlp_deep_2.predict_proba(grid_full)[:, 1].reshape(xx.shape)
+
+# plot side by side
+fig, axes = plt.subplots(1, 3, figsize=(12,5), sharex=True, sharey=True)
+
+for ax, zz, title in zip(
+    axes,
+    [zz_shallow, zz_deep, zz_deep_2],
+    ["Shallow MLP (5 hidden)", "Deep MLP (8,5,3 hidden)", "Deep MLP (8, 4, 6, 4)"]
+):
+    cs = ax.contourf(xx, yy, zz, levels=20, alpha=0.4, cmap="coolwarm")  # 50% transparency
+    ax.scatter(Xtr[:,0], Xtr[:,1], c=ytr, cmap="coolwarm", s=3,  alpha=0.7, label="train")
+    ax.scatter(Xte[:,0], Xte[:,1], c=yte, cmap="coolwarm", s=3, marker="^", label="test")
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_title(title)
+
+fig.colorbar(cs, ax=axes, label="P(class=1)")
+axes[0].legend(loc="lower right")
 plt.show()
+
 ```
 
 

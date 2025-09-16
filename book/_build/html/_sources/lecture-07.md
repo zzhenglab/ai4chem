@@ -837,13 +837,14 @@ Voting is most common for classification. Each model votes for a class.
 ```{code-cell} ipython3
 from sklearn.ensemble import VotingClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
+
 
 vote_clf_soft = VotingClassifier(
     estimators=[
         ("lr", LogisticRegression(max_iter=500, random_state=0)),
-        ("svc", SVC(probability=True, random_state=0)),
-        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+        ("lr2", LogisticRegression(max_iter=11000, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1)),
+        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0, n_jobs=-1))
     ],
     voting="soft"
 ).fit(X_train, y_train)
@@ -854,14 +855,14 @@ print("Soft Voting classifier accuracy:", accuracy_score(y_test, vote_clf_soft.p
 vote_clf_hard = VotingClassifier(
     estimators=[
         ("lr", LogisticRegression(max_iter=500, random_state=0)),
-        ("svc", SVC(probability=True, random_state=0)),
-        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1))
+        ("lr2", LogisticRegression(max_iter=11000, random_state=0)),
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1)),
+        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0, n_jobs=-1))
     ],
     voting="hard"
 ).fit(X_train, y_train)
 
 print("Hard Voting classifier accuracy:", accuracy_score(y_test, vote_clf_hard.predict(X_test)))
-
 ```
 
 Compare voting against individual models:

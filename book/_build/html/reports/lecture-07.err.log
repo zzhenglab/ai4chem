@@ -36,20 +36,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-reg_stump = DecisionTreeRegressor(max_depth=1, random_state=0)
-reg_stump.fit(Xr_train, yr_train)
-print("Root feature:", Xr_train.columns[reg_stump.tree_.feature[0]])
-print("Root threshold:", reg_stump.tree_.threshold[0])
+acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
+acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
+
+pd.DataFrame({
+    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
+    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+})
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[21][39m[32m, line 2[39m
-[32m      1[39m reg_stump = DecisionTreeRegressor(max_depth=[32m1[39m, random_state=[32m0[39m)
-[32m----> [39m[32m2[39m reg_stump.fit([43mXr_train[49m, yr_train)
-[32m      3[39m [38;5;28mprint[39m([33m"[39m[33mRoot feature:[39m[33m"[39m, Xr_train.columns[reg_stump.tree_.feature[[32m0[39m]])
-[32m      4[39m [38;5;28mprint[39m([33m"[39m[33mRoot threshold:[39m[33m"[39m, reg_stump.tree_.threshold[[32m0[39m])
+[36mCell[39m[36m [39m[32mIn[37][39m[32m, line 2[39m
+[32m      1[39m acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=[32m500[39m, random_state=[32m0[39m).fit(X_train,y_train).predict(X_test))
+[32m----> [39m[32m2[39m acc_svc = accuracy_score(y_test, [43mSVC[49m(probability=[38;5;28;01mTrue[39;00m, random_state=[32m0[39m).fit(X_train,y_train).predict(X_test))
+[32m      3[39m acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=[32m100[39m, random_state=[32m0[39m, n_jobs=-[32m1[39m).fit(X_train,y_train).predict(X_test))
+[32m      5[39m pd.DataFrame({
+[32m      6[39m     [33m"[39m[33mModel[39m[33m"[39m: [[33m"[39m[33mLogReg[39m[33m"[39m, [33m"[39m[33mSVC[39m[33m"[39m, [33m"[39m[33mRandomForest[39m[33m"[39m, [33m"[39m[33mVoting-Hard[39m[33m"[39m, [33m"[39m[33mVoting-Soft[39m[33m"[39m],
+[32m      7[39m     [33m"[39m[33mAccuracy[39m[33m"[39m: [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
+[32m      8[39m })
 
-[31mNameError[39m: name 'Xr_train' is not defined
+[31mNameError[39m: name 'SVC' is not defined
 
