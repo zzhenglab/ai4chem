@@ -44,8 +44,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['try:', '    import torch, torch.nn as nn, torch.utils.data as tud', '    from torch.utils.data import Dataset, DataLoader', 'except Exception:', '    try:']
+['from sklearn.model_selection import GridSearchCV, StratifiedKFold', 'from sklearn.metrics import accuracy_score', '', '', 'def make_layer_choices(n_choices=20, min_layers=2, max_layers=5,']
 ...
-['import pandas as pd', 'import matplotlib.pyplot as plt', 'from sklearn.model_selection import train_test_split', 'from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, roc_auc_score, roc_curve, accuracy_score, precision_score, recall_score, f1_score', 'from sklearn.preprocessing import StandardScaler']
+['    plt.xlabel("epoch"); plt.ylabel("training loss")', '    plt.title("Best model: training loss")', '    plt.grid(alpha=0.3)', '    plt.tight_layout()', '    plt.show()']
 -------------------
 

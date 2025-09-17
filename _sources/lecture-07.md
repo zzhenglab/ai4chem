@@ -57,6 +57,11 @@ from sklearn.tree import DecisionTreeRegressor, DecisionTreeClassifier, plot_tre
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.inspection import permutation_importance
 from sklearn.model_selection import GridSearchCV, KFold, train_test_split
+from sklearn.linear_model import LinearRegression, Lasso, Ridge, LogisticRegression, lasso_path
+from sklearn.model_selection import train_test_split, KFold, GridSearchCV
+from sklearn.metrics import accuracy_score, roc_auc_score, roc_curve
+from sklearn.ensemble import RandomForestClassifier
+
 import warnings
 warnings.filterwarnings("ignore", message="X does not have valid feature names")
 warnings.filterwarnings("ignore", message="X has feature names")
@@ -695,38 +700,60 @@ plt.show()
 ### 3.2 Regression forest on Melting Point
 Next we apply the same idea for regression. The forest predicts a continuous value (melting point) by averaging predictions from many regression trees.
 ```{code-cell} ipython3
-rf_reg = RandomForestRegressor(
+# Reload mp dataset so X and y are updated
+df_reg_mp = df[["MolWt", "LogP", "TPSA", "NumRings", "Melting Point"]].dropna()
+Xr_mp = df_reg_mp[["MolWt", "LogP", "TPSA", "NumRings"]]
+yr_mp = df_reg_mp["Melting Point"]
+
+Xr_mp_train, Xr_mp_test, yr_mp_train, yr_mp_test = train_test_split(
+    Xr_mp, yr_mp, test_size=0.2, random_state=0
+)
+
+# Random Forest (mp-specific)
+rf_reg_mp = RandomForestRegressor(
     n_estimators=400,
     max_depth=None,
-    min_samples_leaf=3,
     max_features="sqrt",
-    oob_score=True,
     random_state=0,
     n_jobs=-1
 )
-rf_reg.fit(Xr_train, yr_train)
+rf_reg_mp.fit(Xr_mp_train, yr_mp_train)
 
-print("OOB R2:", rf_reg.oob_score_)
-yhat_rf = rf_reg.predict(Xr_test)
-print(f"Test R2: {r2_score(yr_test, yhat_rf):.3f}")
-print(f"Test MAE: {mean_absolute_error(yr_test, yhat_rf):.3f}")
+yhat_rf_mp = rf_reg_mp.predict(Xr_mp_test)
+print("Random Forest (mp)")
+print(f"Test R2: {r2_score(yr_mp_test, yhat_rf_mp):.3f}")
+print(f"Test MAE: {mean_absolute_error(yr_mp_test, yhat_rf_mp):.3f}")
+
+# Lasso baseline (mp-specific), fixed alpha=0.1 with scaling
+lasso_reg_mp = Lasso(alpha=0.1, random_state=0, max_iter=500)
+lasso_reg_mp.fit(Xr_mp_train, yr_mp_train)
+
+yhat_lasso_mp = lasso_reg_mp.predict(Xr_mp_test)
+print("\nLasso (mp, alpha=0.1)")
+print(f"Test R2: {r2_score(yr_mp_test, yhat_lasso_mp):.3f}")
+print(f"Test MAE: {mean_absolute_error(yr_mp_test, yhat_lasso_mp):.3f}")
+
 ```
 
 Parity and feature importance plots help check performance.
 
 ```{code-cell} ipython3
-# Parity plot
-plt.scatter(yr_test, yhat_rf, alpha=0.6)
-lims = [min(yr_test.min(), yhat_rf.min()), max(yr_test.max(), yhat_rf.max())]
+# --- Parity plot for mp RF ---
+plt.scatter(yr_mp_test, yhat_rf_mp, alpha=0.6)
+lims = [min(yr_mp_test.min(), yhat_rf_mp.min()), max(yr_mp_test.max(), yhat_rf_mp.max())]
 plt.plot(lims, lims, "k--")
-plt.xlabel("True")
-plt.ylabel("Predicted")
-plt.title("Parity plot: Random Forest regressor")
+plt.xlabel("True Melting Point")
+plt.ylabel("Predicted Melting Point")
+plt.title("Parity plot: Random Forest regressor (mp)")
 plt.show()
 
-# Feature importance
-pd.Series(rf_reg.feature_importances_, index=Xr_train.columns).sort_values().plot(kind="barh")
-plt.title("Random Forest importance (regression)")
+# --- Feature importance for mp RF ---
+pd.Series(rf_reg_mp.feature_importances_, index=Xr_mp_train.columns) \
+    .sort_values() \
+    .plot(kind="barh")
+
+plt.title("Random Forest importance (mp regression)")
+plt.xlabel("Importance")
 plt.show()
 ```
 
@@ -1119,3 +1146,259 @@ Hint: This may take more than 30 s to run since it searches for quite a few hype
 ```python
 # TO DO
 ```
+---
+
+
+
+
+
+## 8. Solutions
+
+
+### Q1
+
+Goal: predict log-solubility and compare a small tree to a forest.
+
+```{code-cell} ipython3
+# Create target: log10(solubility + 1e-6) to avoid log(0)
+# If your dataframe already has a numeric solubility column named 'Solubility_mol_per_L', reuse it.
+df_sol = df.copy()
+df_sol["y_log"] = np.log10(df_sol["Solubility_mol_per_L"] + 1e-6)
+
+Xs = df_sol[["MolWt", "LogP", "TPSA", "NumRings"]].dropna()
+ys = df_sol.loc[Xs.index, "y_log"]
+
+Xs_train, Xs_test, ys_train, ys_test = train_test_split(
+    Xs, ys, test_size=0.2, random_state=42
+)
+
+# Models
+tree_sol = DecisionTreeRegressor(max_depth=4, min_samples_leaf=5, random_state=0).fit(Xs_train, ys_train)
+rf_sol   = RandomForestRegressor(n_estimators=300, min_samples_leaf=5, random_state=0, n_jobs=-1).fit(Xs_train, ys_train)
+
+# Scores
+yhat_tree = tree_sol.predict(Xs_test)
+yhat_rf   = rf_sol.predict(Xs_test)
+
+print(f"Tree R2:   {r2_score(ys_test, yhat_tree):.3f}")
+print(f"Forest R2: {r2_score(ys_test, yhat_rf):.3f}")
+```
+
+Parity plots for both models.
+
+```{code-cell} ipython3
+# Parity for tree
+plt.scatter(ys_test, yhat_tree, alpha=0.6)
+lims = [min(ys_test.min(), yhat_tree.min()), max(ys_test.max(), yhat_tree.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Tree on log-solubility")
+plt.show()
+
+# Parity for forest
+plt.scatter(ys_test, yhat_rf, alpha=0.6)
+lims = [min(ys_test.min(), yhat_rf.min()), max(ys_test.max(), yhat_rf.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Forest on log-solubility")
+plt.show()
+```
+
+---
+
+### Q2
+
+Fix `max_depth=None` for a classifier on toxicity and sweep leaf size.
+
+```{code-cell} ipython3
+leaf_grid = [1, 2, 3, 5, 8, 12, 20]
+accs = []
+
+for leaf in leaf_grid:
+    clf = DecisionTreeClassifier(max_depth=None, min_samples_leaf=leaf, random_state=0).fit(X_train, y_train)
+    accs.append(accuracy_score(y_test, clf.predict(X_test)))
+
+pd.DataFrame({"min_samples_leaf": leaf_grid, "Accuracy": np.round(accs, 3)})
+```
+
+```{code-cell} ipython3
+plt.plot(leaf_grid, accs, marker="o")
+plt.xlabel("min_samples_leaf")
+plt.ylabel("Accuracy (test)")
+plt.title("Pruning with min_samples_leaf")
+plt.grid(True)
+plt.show()
+```
+
+Hint for interpretation: very small leaves may overfit while very large leaves may underfit.
+
+---
+
+### Q3
+
+
+
+```{code-cell} ipython3
+seeds = [0, 7, 21, 42]
+rows_oob = []
+
+for s in seeds:
+    X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=s, stratify=y)
+    rf = RandomForestClassifier(
+        n_estimators=300, max_features="sqrt", min_samples_leaf=3,
+        oob_score=True, random_state=s, n_jobs=-1
+    ).fit(X_tr, y_tr)
+    acc_test = accuracy_score(y_te, rf.predict(X_te))
+    rows_oob.append({"seed": s, "OOB": rf.oob_score_, "TestAcc": acc_test})
+
+pd.DataFrame(rows_oob).round(3)
+```
+
+```{code-cell} ipython3
+df_oob = pd.DataFrame(rows_oob)
+plt.plot(df_oob["seed"], df_oob["OOB"], "o-", label="OOB")
+plt.plot(df_oob["seed"], df_oob["TestAcc"], "o-", label="Test")
+plt.xlabel("random_state")
+plt.ylabel("Accuracy")
+plt.title("OOB vs Test accuracy")
+plt.grid(True)
+plt.legend()
+plt.show()
+```
+
+
+```{code-cell} ipython3
+
+small_tree = DecisionTreeClassifier(max_depth=2, random_state=0).fit(X_train, y_train)
+
+plt.figure(figsize=(7,5))
+plot_tree(small_tree, feature_names=feat_names, class_names=["non_toxic","toxic"], filled=True)
+plt.title("Small Decision Tree (max_depth=2)")
+plt.show()
+
+# Extract split rules programmatically for the top two levels
+feat_idx = small_tree.tree_.feature
+thresh = small_tree.tree_.threshold
+left = small_tree.tree_.children_left
+right = small_tree.tree_.children_right
+
+def node_rule(node_id):
+    f = feat_idx[node_id]
+    t = thresh[node_id]
+    return f"{feat_names[f]} <= {t:.3f} ?"
+
+print("Root rule:", node_rule(0))
+print("Left child rule:", node_rule(left[0]) if left[0] != -1 else "Left child is a leaf")
+print("Right child rule:", node_rule(right[0]) if right[0] != -1 else "Right child is a leaf")
+
+```
+
+Expect OOB to track test accuracy closely. Small differences are normal.
+
+---
+
+### Q4
+
+Compare built-in importance to permutation importance for a random forest regressor.
+
+```{code-cell} ipython3
+rf_imp = RandomForestRegressor(
+    n_estimators=400, min_samples_leaf=3, max_features="sqrt",
+    random_state=0, n_jobs=-1
+).fit(Xr_train, yr_train)
+
+# Built-in importance
+imp_series = pd.Series(rf_imp.feature_importances_, index=Xr_train.columns).sort_values()
+
+# Permutation importance on test
+perm_r = permutation_importance(
+    rf_imp, Xr_test, yr_test, scoring="r2", n_repeats=20, random_state=0
+)
+perm_series = pd.Series(perm_r.importances_mean, index=Xr_train.columns).sort_values()
+
+# Plots
+imp_series.plot(kind="barh")
+plt.title("Random Forest feature_importances_ (regression)")
+plt.show()
+
+perm_series.plot(kind="barh")
+plt.title("Permutation importance on test (regression)")
+plt.show()
+
+pd.DataFrame({"Built_in": imp_series, "Permutation": perm_series})
+```
+
+Look for agreement on the top features. Disagreements can signal correlation or overfitting in the training trees.
+
+---
+
+### Q5
+
+
+```{code-cell} ipython3
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
+df_raw = pd.read_csv(url)
+desc = df_raw["SMILES"].apply(calc_descriptors)
+df = pd.concat([df_raw, desc], axis=1)
+
+# 2) Build classification frame and clean
+label_map = {"toxic": 1, "non_toxic": 0}
+df_clf = df[["MolWt", "LogP", "TPSA", "NumRings", "Toxicity"]].dropna()
+df_clf = df_clf[df_clf["Toxicity"].str.lower().isin(label_map.keys())]
+
+X = df_clf[["MolWt", "LogP", "TPSA", "NumRings"]]
+y = df_clf["Toxicity"].str.lower().map(label_map).astype(int)
+
+# Guard against degenerate stratify cases
+assert y.nunique() == 2, "Need both classes for stratified split"
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=15, stratify=y
+)
+
+# 3) CV setup and grid
+cv = KFold(n_splits=5, shuffle=True, random_state=0)
+param_grid = {
+    "n_estimators": [200, 400],
+    "max_depth": [None, 6, 10],
+    "min_samples_leaf": [1, 2, 3, 5],
+    "max_features": ["sqrt", 0.8],
+}
+
+rf_base = RandomForestClassifier(random_state=0, n_jobs=-1)
+
+grid = GridSearchCV(
+    rf_base,
+    param_grid=param_grid,
+    scoring="roc_auc",
+    cv=cv,
+    n_jobs=-1,
+    refit=True,
+    return_train_score=False,
+)
+
+# 4) Fit and report
+grid.fit(X_train, y_train)
+print("Best params:", grid.best_params_)
+print(f"Best CV AUC: {grid.best_score_:.3f}")
+
+rf_best = grid.best_estimator_
+
+y_hat = rf_best.predict(X_test)
+y_proba = rf_best.predict_proba(X_test)[:, 1]
+print(f"Test Accuracy: {accuracy_score(y_test, y_hat):.3f}")
+print(f"Test AUC: {roc_auc_score(y_test, y_proba):.3f}")
+
+# 5) ROC curve
+fpr, tpr, thr = roc_curve(y_test, y_proba)
+plt.plot(fpr, tpr, lw=2)
+plt.plot([0, 1], [0, 1], "k--")
+plt.xlabel("FPR")
+plt.ylabel("TPR")
+plt.title("ROC curve - RF with CV-tuned hyperparameters")
+plt.show()
+```
+
+
