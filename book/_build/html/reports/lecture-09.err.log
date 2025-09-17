@@ -1,81 +1,48 @@
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
     asyncio.get_running_loop()
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^
 RuntimeError: no running event loop
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-    ~~~~~~~~~^
-        nb,
-        ^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
     return loop.run_until_complete(inner)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
     return future.result()
-           ~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-        cell, index, execution_count=self.code_cells_executed + 1
-    )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-cols = ["MolWt", "LogP", "TPSA", "NumRings", "Melting Point"]
-df_reg = df_raw[cols].dropna()
-X = df_reg[["MolWt", "LogP", "TPSA", "NumRings"]].values.astype(np.float32)
-y = df_reg["Melting Point"].values.astype(np.float32).reshape(-1, 1)
-
-Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42)
-scaler = StandardScaler().fit(Xtr)
-Xtr_s, Xte_s = scaler.transform(Xtr).astype(np.float32), scaler.transform(Xte).astype(np.float32)
-
-Xtr_s.shape, ytr.shape
+if Chem is not None:
+    small = df_raw[["SMILES","Melting Point"]].dropna().sample(200, random_state=0)
+    graphs, targets = [], []
+    for smi, mp in zip(small["SMILES"], small["Melting Point"]):
+        g = smiles_to_graph(smi)
+        if g is not None:
+            graphs.append(g); targets.append(mp)
+    y_all = torch.tensor(targets, dtype=torch.float32).view(-1,1)
+    len(graphs), y_all.shape
+else:
+    print("RDKit missing. Skip to Section 7.")
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mKeyError[39m                                  Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 2[39m
-[32m      1[39m cols = [[33m"[39m[33mMolWt[39m[33m"[39m, [33m"[39m[33mLogP[39m[33m"[39m, [33m"[39m[33mTPSA[39m[33m"[39m, [33m"[39m[33mNumRings[39m[33m"[39m, [33m"[39m[33mMelting Point[39m[33m"[39m]
-[32m----> [39m[32m2[39m df_reg = [43mdf_raw[49m[43m[[49m[43mcols[49m[43m][49m.dropna()
-[32m      3[39m X = df_reg[[[33m"[39m[33mMolWt[39m[33m"[39m, [33m"[39m[33mLogP[39m[33m"[39m, [33m"[39m[33mTPSA[39m[33m"[39m, [33m"[39m[33mNumRings[39m[33m"[39m]].values.astype(np.float32)
-[32m      4[39m y = df_reg[[33m"[39m[33mMelting Point[39m[33m"[39m].values.astype(np.float32).reshape(-[32m1[39m, [32m1[39m)
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[22], line 2[0m
+[0;32m      1[0m [38;5;28;01mif[39;00m Chem [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m----> 2[0m     small [38;5;241m=[39m [43mdf_raw[49m[[[38;5;124m"[39m[38;5;124mSMILES[39m[38;5;124m"[39m,[38;5;124m"[39m[38;5;124mMelting Point[39m[38;5;124m"[39m]][38;5;241m.[39mdropna()[38;5;241m.[39msample([38;5;241m200[39m, random_state[38;5;241m=[39m[38;5;241m0[39m)
+[0;32m      3[0m     graphs, targets [38;5;241m=[39m [], []
+[0;32m      4[0m     [38;5;28;01mfor[39;00m smi, mp [38;5;129;01min[39;00m [38;5;28mzip[39m(small[[38;5;124m"[39m[38;5;124mSMILES[39m[38;5;124m"[39m], small[[38;5;124m"[39m[38;5;124mMelting Point[39m[38;5;124m"[39m]):
 
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py:4113[39m, in [36mDataFrame.__getitem__[39m[34m(self, key)[39m
-[32m   4111[39m     [38;5;28;01mif[39;00m is_iterator(key):
-[32m   4112[39m         key = [38;5;28mlist[39m(key)
-[32m-> [39m[32m4113[39m     indexer = [38;5;28;43mself[39;49m[43m.[49m[43mcolumns[49m[43m.[49m[43m_get_indexer_strict[49m[43m([49m[43mkey[49m[43m,[49m[43m [49m[33;43m"[39;49m[33;43mcolumns[39;49m[33;43m"[39;49m[43m)[49m[[32m1[39m]
-[32m   4115[39m [38;5;66;03m# take() does not accept boolean indexers[39;00m
-[32m   4116[39m [38;5;28;01mif[39;00m [38;5;28mgetattr[39m(indexer, [33m"[39m[33mdtype[39m[33m"[39m, [38;5;28;01mNone[39;00m) == [38;5;28mbool[39m:
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py:6212[39m, in [36mIndex._get_indexer_strict[39m[34m(self, key, axis_name)[39m
-[32m   6209[39m [38;5;28;01melse[39;00m:
-[32m   6210[39m     keyarr, indexer, new_indexer = [38;5;28mself[39m._reindex_non_unique(keyarr)
-[32m-> [39m[32m6212[39m [38;5;28;43mself[39;49m[43m.[49m[43m_raise_if_missing[49m[43m([49m[43mkeyarr[49m[43m,[49m[43m [49m[43mindexer[49m[43m,[49m[43m [49m[43maxis_name[49m[43m)[49m
-[32m   6214[39m keyarr = [38;5;28mself[39m.take(indexer)
-[32m   6215[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(key, Index):
-[32m   6216[39m     [38;5;66;03m# GH 42790 - Preserve name from an Index[39;00m
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py:6264[39m, in [36mIndex._raise_if_missing[39m[34m(self, key, indexer, axis_name)[39m
-[32m   6261[39m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m([33mf[39m[33m"[39m[33mNone of [[39m[38;5;132;01m{[39;00mkey[38;5;132;01m}[39;00m[33m] are in the [[39m[38;5;132;01m{[39;00maxis_name[38;5;132;01m}[39;00m[33m][39m[33m"[39m)
-[32m   6263[39m not_found = [38;5;28mlist[39m(ensure_index(key)[missing_mask.nonzero()[[32m0[39m]].unique())
-[32m-> [39m[32m6264[39m [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m([33mf[39m[33m"[39m[38;5;132;01m{[39;00mnot_found[38;5;132;01m}[39;00m[33m not in index[39m[33m"[39m)
-
-[31mKeyError[39m: "['MolWt', 'LogP', 'TPSA', 'NumRings'] not in index"
+[1;31mNameError[0m: name 'df_raw' is not defined
 

@@ -30,33 +30,22 @@ Traceback (most recent call last):
     await self.async_execute_cell(
         cell, index, execution_count=self.code_cells_executed + 1
     )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
-acc_svc = accuracy_score(y_test, SVC(probability=True, random_state=0).fit(X_train,y_train).predict(X_test))
-acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
-
-pd.DataFrame({
-    "Model": ["LogReg", "SVC", "RandomForest", "Voting-Hard", "Voting-Soft"],
-    "Accuracy": [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
-})
-------------------
-
-
-[31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[37][39m[32m, line 2[39m
-[32m      1[39m acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=[32m500[39m, random_state=[32m0[39m).fit(X_train,y_train).predict(X_test))
-[32m----> [39m[32m2[39m acc_svc = accuracy_score(y_test, [43mSVC[49m(probability=[38;5;28;01mTrue[39;00m, random_state=[32m0[39m).fit(X_train,y_train).predict(X_test))
-[32m      3[39m acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=[32m100[39m, random_state=[32m0[39m, n_jobs=-[32m1[39m).fit(X_train,y_train).predict(X_test))
-[32m      5[39m pd.DataFrame({
-[32m      6[39m     [33m"[39m[33mModel[39m[33m"[39m: [[33m"[39m[33mLogReg[39m[33m"[39m, [33m"[39m[33mSVC[39m[33m"[39m, [33m"[39m[33mRandomForest[39m[33m"[39m, [33m"[39m[33mVoting-Hard[39m[33m"[39m, [33m"[39m[33mVoting-Soft[39m[33m"[39m],
-[32m      7[39m     [33m"[39m[33mAccuracy[39m[33m"[39m: [acc_lr, acc_svc, acc_rf, accuracy_score(y_test, vote_clf_hard.predict(X_test)), accuracy_score(y_test, vote_clf_soft.predict(X_test))]
-[32m      8[39m })
-
-[31mNameError[39m: name 'SVC' is not defined
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+        "Cell execution timed out", timeout, cell
+    )
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['from sklearn.model_selection import KFold, GridSearchCV', 'from sklearn.ensemble import RandomForestClassifier', 'from sklearn.metrics import accuracy_score, roc_auc_score, classification_report', '', '# Data']
+...
+['y_hat = best_rf.predict(X_test)', 'y_proba = best_rf.predict_proba(X_test)[:, 1]', 'print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")', 'print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")', 'print(classification_report(y_test, y_hat, digits=3))']
+-------------------
 

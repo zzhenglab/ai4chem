@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 9 - Graph Neural Networks (Chemistry)
+# Lecture 9 - Graph Neural Networks
 
 ```{contents}
 :local:
@@ -29,11 +29,13 @@ kernelspec:
 
 ---
 
-## 1) Setup
+## 1. Setup
 
 We reuse most of the stack from earlier lectures. 
 
+
 ```{code-cell} ipython3
+:tags: [hide-input]
 # 1. Setup
 import warnings, math, os, sys, json, time, random
 warnings.filterwarnings("ignore")
@@ -45,6 +47,13 @@ import matplotlib.pyplot as plt
 # Sklearn bits for splitting and metrics
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+from sklearn.compose import TransformedTargetRegressor
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.neural_network import MLPRegressor
+
+
 from sklearn.metrics import (mean_squared_error, mean_absolute_error, r2_score,
                              accuracy_score, precision_score, recall_score,
                              f1_score, roc_auc_score, roc_curve, confusion_matrix)
@@ -61,12 +70,18 @@ except Exception as e:
     import torch.nn as nn
     from torch.utils.data import Dataset, DataLoader
 
-# RDKit is optional
+# RDKit
 try:
     from rdkit import Chem
-    from rdkit.Chem import rdchem
+    from rdkit.Chem import Draw, Descriptors, Crippen, rdMolDescriptors, AllChem
 except Exception:
-    Chem = None  # we will use toy graphs if RDKit is unavailable
+    try:
+        %pip install rdkit
+        from rdkit import Chem
+        from rdkit.Chem import Draw, Descriptors, Crippen, rdMolDescriptors, AllChem
+    except Exception as e:
+        print("RDKit is not available in this environment. Drawing and descriptors will be skipped.")
+        Chem = None
 
 # A small global seed helper
 def set_seed(seed=0):
@@ -76,153 +91,403 @@ set_seed(0)
 
 ---
 
-## 2) From MLP (Lecture 8) to PyTorch MLP (recap)
 
-In Lecture 8 we built MLPs with scikit‑learn. Today we start by doing the same with **PyTorch** so that the later GNN will feel familiar.
+
+
+## 2 Building MLP from scratch
+
+In Lecture 8 we built MLPs with `scikit‑learn`. Today we start by doing the same with **PyTorch**. One advantage of using PyTorch is that it lets you write the forward pass directly, control the training loop, and later move to GPUs or custom layers. We start tiny and stay friendly.
+
 
 We will predict **melting point** from four descriptors: `MolWt`, `LogP`, `TPSA`, `NumRings`, same as before.
 
-### 2.1 Load the same CSV and compute descriptors quickly (RDKit optional)
+
+### 2.1 PyTorch regression on melting point
+
+Every PyTorch project has three parts:
+
+1. **Model**: stack of layers with weights and activations.  
+2. **Loss**: a number telling how far predictions are from the truth.  
+3. **Optimizer**: an algorithm that adjusts weights to reduce loss.
+
+We use descriptors `[MolWt, LogP, TPSA, NumRings]` to predict `Melting Point`.  
+
 
 ```{code-cell} ipython3
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
-df_raw = pd.read_csv(url)
-df_raw.head(3)
+df_oxidation_raw = pd.read_csv(url)
+def calc_descriptors(smiles):
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return pd.Series({
+            "MolWt": None,
+            "LogP": None,
+            "TPSA": None,
+            "NumRings": None
+        })
+    return pd.Series({
+        "MolWt": Descriptors.MolWt(mol),                    # molecular weight
+        "LogP": Crippen.MolLogP(mol),                       # octanol-water logP
+        "TPSA": rdMolDescriptors.CalcTPSA(mol),             # topological polar surface area
+        "NumRings": rdMolDescriptors.CalcNumRings(mol)      # number of rings
+    })
+
+# Apply the function to the SMILES column
+desc_df = df_oxidation_raw["SMILES"].apply(calc_descriptors)
+
+# Concatenate new descriptor columns to original DataFrame
+df = pd.concat([df_oxidation_raw, desc_df], axis=1)
+df
 ```
 
-If RDKit is available we recompute 4 descriptors. If not, we will use the columns already present in the CSV.
-
 ```{code-cell} ipython3
-def quick_desc(smiles):
-    if Chem is None:
-        # If RDKit not present, return NaNs to fall back to existing columns
-        return pd.Series({"MolWt": np.nan, "LogP": np.nan, "TPSA": np.nan, "NumRings": np.nan})
-    m = Chem.MolFromSmiles(smiles)
-    if m is None:
-        return pd.Series({"MolWt": np.nan, "LogP": np.nan, "TPSA": np.nan, "NumRings": np.nan})
-    # Minimal set computed from RDKit's atom/bond info without heavy deps
-    mw = rdchem.CalcExactMolWt(m) if hasattr(rdchem, "CalcExactMolWt") else np.nan
-    # Fallbacks if helpers are missing
-    logp = float(np.nan)
-    tpsa = float(np.nan)
-    rings = Chem.GetSSSR(m) if hasattr(Chem, "GetSSSR") else np.nan
-    return pd.Series({"MolWt": mw, "LogP": logp, "TPSA": tpsa, "NumRings": rings})
-
-# Try to add descriptors; if they already exist with numbers, we will use them
-maybe_desc = df_raw["SMILES"].head(3).apply(quick_desc)  # quick probe
-maybe_desc.head()
-```
-
-To keep the class portable, we will **prefer the 4 columns already in the dataset** if they are numeric.
-
-```{code-cell} ipython3
-cols = ["MolWt", "LogP", "TPSA", "NumRings", "Melting Point"]
-df_reg = df_raw[cols].dropna()
+df_reg = df[["MolWt", "LogP", "TPSA", "NumRings", "Melting Point"]].dropna()
 X = df_reg[["MolWt", "LogP", "TPSA", "NumRings"]].values.astype(np.float32)
 y = df_reg["Melting Point"].values.astype(np.float32).reshape(-1, 1)
 
-Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42)
-scaler = StandardScaler().fit(Xtr)
-Xtr_s, Xte_s = scaler.transform(Xtr).astype(np.float32), scaler.transform(Xte).astype(np.float32)
+X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=42)
+scaler = StandardScaler().fit(X_tr)
+X_tr_s, X_te_s = scaler.transform(X_tr), scaler.transform(X_te)
+X_tr[:3], X_tr_s[:3]
 
-Xtr_s.shape, ytr.shape
 ```
 
-### 2.2 Define a tiny MLP in PyTorch
+---
 
-We keep one hidden layer to keep the shape clear.
+### 2.2 Build a tiny network
+
+Now we will start to build a network has one hidden layer of 32 units with ReLU activation.  
+Output is a single number (regression).
+
+This is equivalent to what we did before with:
+
+> MLPRegressor(hidden_layer_sizes=(32,), activation="relu")
+
+
+But the difference is that in scikit-learn the whole pipeline is hidden inside one class.
+
+In PyTorch we build the pieces ourselves: the layers, the activation, and the forward pass.
+
+This way you can see what is happening under the hood.
+
+**How PyTorch models work**  
+- A model is a Python object with **layers**. Each layer has **parameters** (weights and bias).  
+- You pass an input **tensor** through the model to get predictions. This call is the **forward pass**.  
+- PyTorch **records** operations during the forward pass. That record lets it compute **gradients** during `loss.backward()`.  
+- Parameters live in `model.parameters()` and can be saved with `model.state_dict()`.  
+- `.to(device)` moves the model to GPU if available. Inputs must be on the same device.
+
+**Two common ways to build a model**  
+1) **`nn.Sequential`**: fast for simple stacks.  
+2) **Subclass `nn.Module`**: gives you a custom `forward` method and more control.
+
+Below we show both styles. Pick one. They behave the same here.
 
 ```{code-cell} ipython3
-class TinyMLP(nn.Module):
-    def __init__(self, in_dim=4, hidden=32, out_dim=1):
-        super().__init__()
-        self.fc1 = nn.Linear(in_dim, hidden)
-        self.act = nn.ReLU()
-        self.fc2 = nn.Linear(hidden, out_dim)
+# Sequential style: quickest for simple feed-forward nets
+in_dim = X_tr_s.shape[1]
+reg_model = nn.Sequential(
+    nn.Linear(in_dim, 32),  # weights W: [in_dim, 32], bias b: [32]
+    nn.ReLU(),
+    nn.Linear(32, 1)        # weights W: [32, 1], bias b: [1]
+)
+reg_model 
 
+```
+
+```{code-cell} ipython3
+# Inspect shapes of parameters
+for name, p in reg_model.named_parameters():
+    print(f"{name:20s}  shape={tuple(p.shape)}  requires_grad={p.requires_grad}")
+```
+
+A custom module version looks like this:
+
+```{code-cell} ipython3
+class TinyRegressor(nn.Module):
+    def __init__(self, in_dim, hidden=32):
+        super().__init__()
+        self.fc1 = nn.Linear(in_dim, hidden)  # input -> hidden layer
+        self.act = nn.ReLU()  # ReLU activation function in hidden layer
+        self.fc2 = nn.Linear(hidden, 1)   # hidden -> output layer
     def forward(self, x):
-        h = self.act(self.fc1(x))
-        out = self.fc2(h)
+        # x has shape [batch, in_dim]
+        h = self.act(self.fc1(x))  # shape [batch, hidden]
+        out = self.fc2(h)          # shape [batch, 1]
         return out
 
-mlp = TinyMLP(in_dim=Xtr_s.shape[1], hidden=32, out_dim=1)
-mlp
+reg_model2 = TinyRegressor(in_dim, hidden=32)
+reg_model2
 ```
 
-Check the parameter shapes so you see what is being learned.
+**Shapes to keep in mind**  
+- Input batch `x`: `[batch, in_dim]`  
+- Hidden layer output: `[batch, 32]`  
+- Final output: `[batch, 1]`
+
+**Tip**: you can print a few predictions to sanity check the flow (numbers will be random before training).
 
 ```{code-cell} ipython3
-for name, p in mlp.named_parameters():
-    print(name, tuple(p.shape))
+x_sample = torch.from_numpy(X_tr_s[:3])
+with torch.no_grad():
+    print("Raw outputs using first 3 values on X-train:", reg_model(x_sample).cpu().numpy().ravel())
 ```
 
-### 2.3 One training epoch by hand
+For the rest of this chapter, we will use method 2 (`reg_model2`) to show the rest steps.
 
-We will implement a plain loop: forward → loss → backward → update.
+---
+
+### 2.3 Loss and optimizer
+
+For regression we use **MSELoss**.  
+The optimizer is **Adam**, which updates weights smoothly.
 
 ```{code-cell} ipython3
 loss_fn = nn.MSELoss()
-opt = torch.optim.Adam(mlp.parameters(), lr=1e-3, weight_decay=1e-3)
+optimizer = torch.optim.Adam(reg_model2.parameters(), lr=1e-2, weight_decay=1e-3)
+optimizer 
+```
 
-xb = torch.from_numpy(Xtr_s[:64])
-yb = torch.from_numpy(ytr[:64])
-pred = mlp(xb)
-loss = loss_fn(pred, yb)
-opt.zero_grad(); loss.backward(); opt.step()
+---
+
+### 2.4 One training step demo
+
+To see the loop clearly: forward → loss → backward → update.
+
+```{code-cell} ipython3
+xb = torch.from_numpy(X_tr_s[:64])
+yb = torch.from_numpy(y_tr[:64])
+
+pred = reg_model2(xb)      # forward pass
+loss = loss_fn(pred, yb)  # compute loss
+
+optimizer.zero_grad()     # clear old grads
+loss.backward()           # compute new grads for each parameter
+optimizer.step()          # apply the update
+
 float(loss.item())
 ```
 
-### 2.4 Full training with a DataLoader
+---
+
+### 2.5 Training loop
+
+We train for 150 epochs. Each epoch goes through the dataset in batches.  
+We plot the loss to see if the model is learning.
 
 ```{code-cell} ipython3
 class NumpyDataset(Dataset):
     def __init__(self, X, y):
-        self.X = torch.from_numpy(X)
-        self.y = torch.from_numpy(y)
+        self.X = torch.from_numpy(X).float()
+        self.y = torch.from_numpy(y).float()
     def __len__(self): return len(self.X)
     def __getitem__(self, i): return self.X[i], self.y[i]
 
-train_loader = DataLoader(NumpyDataset(Xtr_s, ytr), batch_size=64, shuffle=True)
-
-mlp = TinyMLP(in_dim=Xtr_s.shape[1], hidden=32, out_dim=1)
-loss_fn = nn.MSELoss()
-opt = torch.optim.Adam(mlp.parameters(), lr=1e-3, weight_decay=1e-3)
+train_loader = DataLoader(NumpyDataset(X_tr_s, y_tr), batch_size=64, shuffle=True)
 
 train_losses = []
+reg_model2.train()
 for epoch in range(150):
     batch_losses = []
     for xb, yb in train_loader:
-        pred = mlp(xb)
+        xb, yb = xb, yb
+        pred = reg_model2(xb)
         loss = loss_fn(pred, yb)
-        opt.zero_grad(); loss.backward(); opt.step()
+        optimizer.zero_grad(); loss.backward(); optimizer.step()
         batch_losses.append(loss.item())
     train_losses.append(np.mean(batch_losses))
 
-plt.plot(train_losses); plt.xlabel("epoch"); plt.ylabel("train MSE"); plt.title("MLP training curve"); plt.grid(alpha=0.3)
+plt.figure(figsize=(5,3))
+plt.plot(train_losses)
+plt.xlabel("epoch"); plt.ylabel("train MSE")
+plt.title("Training loss - regression")
+plt.grid(alpha=0.3)
 plt.show()
 ```
 
-Evaluate on test.
+Let’s break down what happened above step by step:
+
+1. **Dataset and DataLoader**  
+   We wrapped our numpy arrays in `NumpyDataset`, which makes them look like a PyTorch dataset.  
+   Then `DataLoader` split the dataset into mini-batches of 64 rows and shuffled them each epoch.  
+   This helps training be faster and more stable.
+
+2. **Epochs and batches**  
+   Each `epoch` means "one full pass over the training data".  
+   Inside each epoch, we looped over mini-batches. For every batch:
+   - We ran the **forward pass**: `pred = reg_model(xb)`
+   - We computed the **loss**: `loss = loss_fn(pred, yb)`
+   - We reset old gradients with `optimizer.zero_grad()`
+   - We called `loss.backward()` so PyTorch computes gradients for each weight
+   - We called `optimizer.step()` to update the weights slightly
+
+3. **Loss tracking**  
+   We stored the average loss per epoch in `train_losses`.  
+   If you plot `train_losses`, you should see it go down.  
+   This means the network predictions are getting closer to the true labels.
+
+
+By the end of 150 epochs, the model should be much better than at the start.
+
+---
+
+### 2.6 Evaluate regression
+
+We check mean squared error and plot predicted vs true `Meltig Point`.
 
 ```{code-cell} ipython3
-mlp.eval()
+reg_model2.eval()
 with torch.no_grad():
-    yhat = mlp(torch.from_numpy(Xte_s)).numpy()
+    yhat_te = reg_model2(torch.from_numpy(X_te_s)).cpu().numpy()
 
-print(f"MSE: {mean_squared_error(yte, yhat):.2f}")
-print(f"MAE: {mean_absolute_error(yte, yhat):.2f}")
-print(f"R2 : {r2_score(yte, yhat):.3f}")
+from sklearn.metrics import mean_squared_error, r2_score
+print("MSE:", mean_squared_error(y_te, yhat_te))
+print("R2:", r2_score(y_te, yhat_te))
 
-plt.scatter(yte, yhat, alpha=0.6)
-lims = [min(yte.min(), yhat.min()), max(yte.max(), yhat.max())]
-plt.plot(lims, lims, "k--"); plt.xlabel("True MP"); plt.ylabel("Pred MP"); plt.title("MLP parity")
+plt.figure(figsize=(4.6,4))
+plt.scatter(y_te, yhat_te, alpha=0.6)
+lims = [min(y_te.min(), yhat_te.min()), max(y_te.max(), yhat_te.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True logS"); plt.ylabel("Pred logS")
+plt.title("Parity plot")
 plt.show()
 ```
+This suggests our customized NN achieve a good performance on this task  :D
+
+
+## 2.7 Baseline comparison
+
+To understand how our PyTorch neural network compares to standard regressors, 
+we evaluate three baselines:
+
+- **Decision Tree Regressor**: a single non-linear tree.
+- **Random Forest Regressor**: an ensemble of decision trees.
+- **MLPRegressor (sklearn)**: configured to closely match our PyTorch NN.
+
+Our PyTorch model is:  
+- Input: 4 features  
+- Hidden layer: 32 units with ReLU  
+- Output: 1 unit  
+- Optimizer: Adam with learning rate 1e-2 and weight decay 1e-3  
+- Trained for 150 epochs with mini-batches of size 64.
+
+To mirror this in `scikit-learn`, we set:
+
+- `hidden_layer_sizes=(32,)`: one hidden layer of 32 units, just like PyTorch.  
+- `activation="relu"`: same nonlinearity.  
+- `solver="adam"`: same optimization family.  
+- `learning_rate_init=1e-2`: match the PyTorch learning rate.  
+- `alpha=1e-3`: equivalent to weight decay 1e-3.  
+- `max_iter=2000`: roughly comparable to 150 epochs in Torch.
+
+
+We then compare all four models (Decision Tree, Random Forest, sklearn MLP, and PyTorch NN) 
+on the test set using **MSE** and **R²**.  
+
+
 
 ```{admonition} ⏰ Exercises 2.x
-1) Change the hidden size to 64 and rerun. Does R² improve.  
-2) Switch `ReLU` to `Tanh` and rerun. Compare training curve shape.  
-3) Increase `weight_decay` to `1e-2`. What happens to train vs test scores.  
+1) For our own NN by Pytorch change the hidden size to 64 and rerun. Does R² improve.  
+2) Increase `weight_decay` to `1e-2`. What happens to train vs test scores.  
+
+> You need to re-initialize the optimizer and re-run the training loop, as there is no `.fit(...)` function for our customized NN. In next section you will see we can wrap this
+logic into a helper function to avoid repetition.
+```
+### 2.8 PyTorch Regressor with sklearn-like Interface
+
+In earlier sections, we trained our custom PyTorch model by manually writing the
+training loop. How can we make our customized NN feel more convenient? 
+
+We can introduce a small wrapper called **`CHEM5080Regressor`** that makes our
+PyTorch model behave like a sklearn regressor. The class builds a Sequential
+network with two hidden layers (64 units with ReLU, then 32 units with Tanh),
+and provides:
+
+- `.fit(X, y)` for training
+- `.predict(X)` for inference
+
+This way, the PyTorch model can be plugged into the same workflow as Decision
+Tree, Random Forest, or sklearn’s MLP. You can customize the architecture inside
+`nn.Sequential` by changing the hidden sizes or swapping the activation
+functions.
+
+
+```{code-cell} ipython3
+class NumpyDataset(Dataset):
+    def __init__(self, X, y):
+        self.X = torch.from_numpy(X).float()
+        self.y = torch.from_numpy(y).float()
+    def __len__(self): return len(self.X)
+    def __getitem__(self, i): return self.X[i], self.y[i]
+
+class CHEM5080Regressor:
+    """
+    A simple sklearn-like wrapper around a PyTorch feed-forward regressor.
+    Architecture:
+        Input -> Linear(4, 64) -> ReLU
+              -> Linear(64, 32) -> ReLU
+              -> Linear(32, 1)
+    """
+    def __init__(self, in_dim, lr=1e-2, weight_decay=1e-3, epochs=150, batch_size=64):
+        # Build Sequential model
+        self.model = nn.Sequential(
+            nn.Linear(in_dim, 64),
+            nn.ReLU(),         # Hidden layer 1
+            nn.Linear(64, 32),
+            nn.ReLU(),         # Hidden layer 2
+            nn.Linear(32, 1)   # Output
+        )
+        # Training settings
+        self.lr = lr
+        self.weight_decay = weight_decay
+        self.epochs = epochs
+        self.batch_size = batch_size
+        self.loss_fn = nn.MSELoss()
+        self.optimizer = torch.optim.Adam(self.model.parameters(), lr=lr, weight_decay=weight_decay)
+
+    def fit(self, X, y):
+        dataset = NumpyDataset(X, y)
+        loader = DataLoader(dataset, batch_size=self.batch_size, shuffle=True)
+        self.model.train()
+        for epoch in range(self.epochs):
+            for xb, yb in loader:
+                pred = self.model(xb)
+                loss = self.loss_fn(pred, yb)
+                self.optimizer.zero_grad()
+                loss.backward()
+                self.optimizer.step()
+        return self
+
+    def predict(self, X):
+        self.model.eval()
+        with torch.no_grad():
+            X_tensor = torch.from_numpy(X).float()
+            return self.model(X_tensor).cpu().numpy().ravel()
+
+# --- Train and evaluate ---
+chem_model = CHEM5080Regressor(in_dim=X_tr_s.shape[1], epochs=150)
+chem_model.fit(X_tr_s, y_tr)
+y_pred = chem_model.predict(X_te_s)
+
+print("MSE:", mean_squared_error(y_te, y_pred))
+print("R2:", r2_score(y_te, y_pred))
+
+```
+
+It works exactly the same way as we see in previous lectures with `sklearn`, but it was **written by ourselves**!
+
+```{code-cell} ipython3
+:tags: [hide-input]
+# --- Optional: Parity plot ---
+plt.figure(figsize=(5,5))
+plt.scatter(y_te, y_pred, alpha=0.6)
+lims = [min(y_te.min(), y_pred.min()), max(y_te.max(), y_pred.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True Melting Point")
+plt.ylabel("Predicted Melting Point")
+plt.title("Parity plot - CHEM5080Regressor")
+plt.grid(alpha=0.3)
+plt.show()
 ```
 
 ---
@@ -811,7 +1076,7 @@ Each question is designed to be solved with what you coded above. Try first, the
 
 ---
 
-### Q5. Chemprop classification on toxicity (student challenge)
+### Q5. Chemprop classification on toxicity 
 
 - Convert `Toxicity` to `1/0` using the mapping `{toxic:1, non_toxic:0}`  
 - Save `["SMILES","Toxicity_bin"]` to `tox_data.csv`  

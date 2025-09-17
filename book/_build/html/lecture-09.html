@@ -1,62 +1,67 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lecture 9 - Graph Neural Networks (Chemistry) &#8212; My sample book</title>
+    <title>Lecture 9 - Graph Neural Networks &#8212; My sample book</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-09';</script>
@@ -71,23 +76,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,22 +119,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +140,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +158,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -204,7 +191,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -213,14 +200,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -345,10 +332,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -356,14 +343,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -374,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 9 - Graph Neural Networks (Chemistry)</h1>
+    <h1>Lecture 9 - Graph Neural Networks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -385,12 +372,18 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1) Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mlp-lecture-8-to-pytorch-mlp-recap">2) From MLP (Lecture 8) to PyTorch MLP (recap)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-same-csv-and-compute-descriptors-quickly-rdkit-optional">2.1 Load the same CSV and compute descriptors quickly (RDKit optional)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-tiny-mlp-in-pytorch">2.2 Define a tiny MLP in PyTorch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-training-epoch-by-hand">2.3 One training epoch by hand</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-training-with-a-dataloader">2.4 Full training with a DataLoader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-mlp-from-scratch">2 Building MLP from scratch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-regression-on-melting-point">2.1 PyTorch regression on melting point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-tiny-network">2.2 Build a tiny network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-and-optimizer">2.3 Loss and optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-training-step-demo">2.4 One training step demo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-loop">2.5 Training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-regression">2.6 Evaluate regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-comparison">2.7 Baseline comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-regressor-with-sklearn-like-interface">2.8 PyTorch Regressor with sklearn-like Interface</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecules-as-graphs">3) Molecules as graphs</a><ul class="nav section-nav flex-column">
@@ -426,7 +419,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-build-and-inspect-the-toy-gnn">Q2. Build and inspect the toy GNN</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-rdkit-graph-miniset-optional-if-rdkit-missing">Q3. RDKit graph mini‑set (optional if RDKit missing)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-chemprop-regression-on-melting-point">Q4. Chemprop regression on melting point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-chemprop-classification-on-toxicity-student-challenge">Q5. Chemprop classification on toxicity (student challenge)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-chemprop-classification-on-toxicity">Q5. Chemprop classification on toxicity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">Solution Q1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">Solution Q2</a></li>
@@ -447,27 +440,28 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-graph-neural-networks-chemistry">
-<h1>Lecture 9 - Graph Neural Networks (Chemistry)<a class="headerlink" href="#lecture-9-graph-neural-networks-chemistry" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-graph-neural-networks">
+<h1>Lecture 9 - Graph Neural Networks<a class="headerlink" href="#lecture-9-graph-neural-networks" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
-<li><p><a class="reference internal" href="#setup" id="id2">1) Setup</a></p></li>
-<li><p><a class="reference internal" href="#from-mlp-lecture-8-to-pytorch-mlp-recap" id="id3">2) From MLP (Lecture 8) to PyTorch MLP (recap)</a></p></li>
-<li><p><a class="reference internal" href="#molecules-as-graphs" id="id4">3) Molecules as graphs</a></p></li>
-<li><p><a class="reference internal" href="#message-passing-the-core-idea" id="id5">4) Message passing: the core idea</a></p></li>
-<li><p><a class="reference internal" href="#your-first-gnn-layer-in-pure-pytorch" id="id6">5) Your first GNN layer in pure PyTorch</a></p></li>
-<li><p><a class="reference internal" href="#from-smiles-to-graphs-with-rdkit-mini-pipeline" id="id7">6) From SMILES to graphs with RDKit (mini pipeline)</a></p></li>
-<li><p><a class="reference internal" href="#chemprop-v2-practical-graph-models-for-chemistry" id="id8">7) Chemprop v2: practical graph models for chemistry</a></p></li>
-<li><p><a class="reference internal" href="#references" id="id9">8) References</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id10">9) Glossary</a></p></li>
-<li><p><a class="reference internal" href="#inclass-activity-and-solutions" id="id11">10) In‑class activity and solutions</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#building-mlp-from-scratch" id="id3">2 Building MLP from scratch</a></p></li>
+<li><p><a class="reference internal" href="#baseline-comparison" id="id4">2.7 Baseline comparison</a></p></li>
+<li><p><a class="reference internal" href="#molecules-as-graphs" id="id5">3) Molecules as graphs</a></p></li>
+<li><p><a class="reference internal" href="#message-passing-the-core-idea" id="id6">4) Message passing: the core idea</a></p></li>
+<li><p><a class="reference internal" href="#your-first-gnn-layer-in-pure-pytorch" id="id7">5) Your first GNN layer in pure PyTorch</a></p></li>
+<li><p><a class="reference internal" href="#from-smiles-to-graphs-with-rdkit-mini-pipeline" id="id8">6) From SMILES to graphs with RDKit (mini pipeline)</a></p></li>
+<li><p><a class="reference internal" href="#chemprop-v2-practical-graph-models-for-chemistry" id="id9">7) Chemprop v2: practical graph models for chemistry</a></p></li>
+<li><p><a class="reference internal" href="#references" id="id10">8) References</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id11">9) Glossary</a></p></li>
+<li><p><a class="reference internal" href="#inclass-activity-and-solutions" id="id12">10) In‑class activity and solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Build basic MLP-style Neural Networks from scratch using <strong>PyTorch</strong>.</p></li>
 <li><p>Explain molecules as <strong>graphs</strong>: atoms = nodes, bonds = edges, features at each.</p></li>
@@ -479,9 +473,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1) Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <p>We reuse most of the stack from earlier lectures.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Setup</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span>
@@ -494,6 +493,13 @@ document.write(`
 <span class="c1"># Sklearn bits for splitting and metrics</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.compose</span><span class="w"> </span><span class="kn">import</span> <span class="n">TransformedTargetRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neural_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">MLPRegressor</span>
+
+
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span>
                              <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span>
                              <span class="n">f1_score</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">)</span>
@@ -510,12 +516,18 @@ document.write(`
     <span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
 
-<span class="c1"># RDKit is optional</span>
+<span class="c1"># RDKit</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdchem</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span><span class="p">,</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span><span class="p">,</span> <span class="n">AllChem</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-    <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># we will use toy graphs if RDKit is unavailable</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="o">%</span><span class="k">pip</span> install rdkit
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span><span class="p">,</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span><span class="p">,</span> <span class="n">AllChem</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RDKit is not available in this environment. Drawing and descriptors will be skipped.&quot;</span><span class="p">)</span>
+        <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>
 
 <span class="c1"># A small global seed helper</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -524,20 +536,49 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 <hr class="docutils" />
-<section id="from-mlp-lecture-8-to-pytorch-mlp-recap">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2) From MLP (Lecture 8) to PyTorch MLP (recap)</a><a class="headerlink" href="#from-mlp-lecture-8-to-pytorch-mlp-recap" title="Link to this heading">#</a></h2>
-<p>In Lecture 8 we built MLPs with scikit‑learn. Today we start by doing the same with <strong>PyTorch</strong> so that the later GNN will feel familiar.</p>
+<section id="building-mlp-from-scratch">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2 Building MLP from scratch</a><a class="headerlink" href="#building-mlp-from-scratch" title="Permalink to this heading">#</a></h2>
+<p>In Lecture 8 we built MLPs with <code class="docutils literal notranslate"><span class="pre">scikit‑learn</span></code>. Today we start by doing the same with <strong>PyTorch</strong>. One advantage of using PyTorch is that it lets you write the forward pass directly, control the training loop, and later move to GPUs or custom layers. We start tiny and stay friendly.</p>
 <p>We will predict <strong>melting point</strong> from four descriptors: <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">NumRings</span></code>, same as before.</p>
-<section id="load-the-same-csv-and-compute-descriptors-quickly-rdkit-optional">
-<h3>2.1 Load the same CSV and compute descriptors quickly (RDKit optional)<a class="headerlink" href="#load-the-same-csv-and-compute-descriptors-quickly-rdkit-optional" title="Link to this heading">#</a></h3>
+<section id="pytorch-regression-on-melting-point">
+<h3>2.1 PyTorch regression on melting point<a class="headerlink" href="#pytorch-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
+<p>Every PyTorch project has three parts:</p>
+<ol class="arabic simple">
+<li><p><strong>Model</strong>: stack of layers with weights and activations.</p></li>
+<li><p><strong>Loss</strong>: a number telling how far predictions are from the truth.</p></li>
+<li><p><strong>Optimizer</strong>: an algorithm that adjusts weights to reduce loss.</p></li>
+</ol>
+<p>We use descriptors <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code> to predict <code class="docutils literal notranslate"><span class="pre">Melting</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
-<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">df_oxidation_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_descriptors</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
+    <span class="n">mol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+            <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="kc">None</span>
+        <span class="p">})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span>                    <span class="c1"># molecular weight</span>
+        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span>                       <span class="c1"># octanol-water logP</span>
+        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">mol</span><span class="p">),</span>             <span class="c1"># topological polar surface area</span>
+        <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRings</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>      <span class="c1"># number of rings</span>
+    <span class="p">})</span>
+
+<span class="c1"># Apply the function to the SMILES column</span>
+<span class="n">desc_df</span> <span class="o">=</span> <span class="n">df_oxidation_raw</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calc_descriptors</span><span class="p">)</span>
+
+<span class="c1"># Concatenate new descriptor columns to original DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_oxidation_raw</span><span class="p">,</span> <span class="n">desc_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -569,6 +610,10 @@ document.write(`
       <th>Melting Point</th>
       <th>Reactivity</th>
       <th>Oxidation Site</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
     </tr>
   </thead>
   <tbody>
@@ -583,6 +628,10 @@ document.write(`
       <td>65.8</td>
       <td>1</td>
       <td>8,10</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -595,6 +644,10 @@ document.write(`
       <td>90.0</td>
       <td>1</td>
       <td>7</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -607,254 +660,604 @@ document.write(`
       <td>69.4</td>
       <td>1</td>
       <td>7,10</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>90299-04-0</td>
+      <td>CC(C)(N)c1ccc2ccccc2c1</td>
+      <td>0.018990</td>
+      <td>10.04</td>
+      <td>toxic</td>
+      <td>121.5</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>185.270</td>
+      <td>3.0336</td>
+      <td>26.02</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>128-93-8</td>
+      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
+      <td>0.021590</td>
+      <td>7.81</td>
+      <td>toxic</td>
+      <td>154.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>316.154</td>
+      <td>3.2662</td>
+      <td>46.17</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>86636-92-2</td>
+      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
+      <td>0.017866</td>
+      <td>8.58</td>
+      <td>toxic</td>
+      <td>128.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>225.291</td>
+      <td>3.2745</td>
+      <td>20.31</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>34316-15-9</td>
+      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
+      <td>0.016210</td>
+      <td>5.54</td>
+      <td>toxic</td>
+      <td>215.6</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>348.378</td>
+      <td>3.7166</td>
+      <td>40.80</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>93655-34-6</td>
+      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
+      <td>0.016761</td>
+      <td>5.43</td>
+      <td>toxic</td>
+      <td>175.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>294.306</td>
+      <td>3.5662</td>
+      <td>52.60</td>
+      <td>3.0</td>
     </tr>
   </tbody>
 </table>
+<p>575 rows × 13 columns</p>
 </div></div></div>
 </div>
-<p>If RDKit is available we recompute 4 descriptors. If not, we will use the columns already present in the CSV.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quick_desc</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># If RDKit not present, return NaNs to fall back to existing columns</span>
-        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">})</span>
-    <span class="c1"># Minimal set computed from RDKit&#39;s atom/bond info without heavy deps</span>
-    <span class="n">mw</span> <span class="o">=</span> <span class="n">rdchem</span><span class="o">.</span><span class="n">CalcExactMolWt</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">rdchem</span><span class="p">,</span> <span class="s2">&quot;CalcExactMolWt&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="c1"># Fallbacks if helpers are missing</span>
-    <span class="n">logp</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-    <span class="n">tpsa</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-    <span class="n">rings</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">GetSSSR</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">Chem</span><span class="p">,</span> <span class="s2">&quot;GetSSSR&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">mw</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">logp</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">tpsa</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">rings</span><span class="p">})</span>
-
-<span class="c1"># Try to add descriptors; if they already exist with numbers, we will use them</span>
-<span class="n">maybe_desc</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">quick_desc</span><span class="p">)</span>  <span class="c1"># quick probe</span>
-<span class="n">maybe_desc</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>[[0, 5, 4, 3, 2, 1], [6, 7, 8, 9, 3, 4]]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>[[0, 5, 4, 3, 2, 1], [6, 4, 3, 12, 7], [8, 9, ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>[[0, 5, 4, 3, 2, 1], [6, 7, 8, 9, 3, 4]]</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>To keep the class portable, we will <strong>prefer the 4 columns already in the dataset</strong> if they are numeric.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">,</span> <span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
-<span class="n">df_reg</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">,</span> <span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">Xtr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr</span><span class="p">)</span>
-<span class="n">Xtr_s</span><span class="p">,</span> <span class="n">Xte_s</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtr</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-
-<span class="n">Xtr_s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">ytr</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">X_tr</span><span class="p">,</span> <span class="n">X_te</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">,</span> <span class="n">y_te</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr</span><span class="p">)</span>
+<span class="n">X_tr_s</span><span class="p">,</span> <span class="n">X_te_s</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_tr</span><span class="p">),</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span>
+<span class="n">X_tr</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">X_tr_s</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">,</span> <span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df_reg</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">X</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py:4113,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4111</span>     <span class="k">if</span> <span class="n">is_iterator</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">4112</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">4113</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;columns&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">4115</span> <span class="c1"># take() does not accept boolean indexers</span>
-<span class="g g-Whitespace">   </span><span class="mi">4116</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py:6212,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6209</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">6210</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">6212</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6214</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6215</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">6216</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\base.py:6264,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6261</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">6263</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<span class="ne">-&gt; </span><span class="mi">6264</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
-
-<span class="ne">KeyError</span>: &quot;[&#39;MolWt&#39;, &#39;LogP&#39;, &#39;TPSA&#39;, &#39;NumRings&#39;] not in index&quot;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[226.703 ,   3.687 ,  26.3   ,   1.    ],
+        [282.295 ,   2.5255,  52.6   ,   3.    ],
+        [468.722 ,   7.5302,  43.37  ,   5.    ]], dtype=float32),
+ array([[ 0.06339765,  0.44967934, -0.24905416, -0.86862624],
+        [ 0.6769087 , -0.22752753,  0.58845747,  0.51635844],
+        [ 2.7343087 ,  2.6904383 ,  0.2945323 ,  1.9013431 ]],
+       dtype=float32))
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="define-a-tiny-mlp-in-pytorch">
-<h3>2.2 Define a tiny MLP in PyTorch<a class="headerlink" href="#define-a-tiny-mlp-in-pytorch" title="Link to this heading">#</a></h3>
-<p>We keep one hidden layer to keep the shape clear.</p>
+<hr class="docutils" />
+<section id="build-a-tiny-network">
+<h3>2.2 Build a tiny network<a class="headerlink" href="#build-a-tiny-network" title="Permalink to this heading">#</a></h3>
+<p>Now we will start to build a network has one hidden layer of 32 units with ReLU activation.<br />
+Output is a single number (regression).</p>
+<p>This is equivalent to what we did before with:</p>
+<blockquote>
+<div><p>MLPRegressor(hidden_layer_sizes=(32,), activation=”relu”)</p>
+</div></blockquote>
+<p>But the difference is that in scikit-learn the whole pipeline is hidden inside one class.</p>
+<p>In PyTorch we build the pieces ourselves: the layers, the activation, and the forward pass.</p>
+<p>This way you can see what is happening under the hood.</p>
+<p><strong>How PyTorch models work</strong></p>
+<ul class="simple">
+<li><p>A model is a Python object with <strong>layers</strong>. Each layer has <strong>parameters</strong> (weights and bias).</p></li>
+<li><p>You pass an input <strong>tensor</strong> through the model to get predictions. This call is the <strong>forward pass</strong>.</p></li>
+<li><p>PyTorch <strong>records</strong> operations during the forward pass. That record lets it compute <strong>gradients</strong> during <code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code>.</p></li>
+<li><p>Parameters live in <code class="docutils literal notranslate"><span class="pre">model.parameters()</span></code> and can be saved with <code class="docutils literal notranslate"><span class="pre">model.state_dict()</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.to(device)</span></code> moves the model to GPU if available. Inputs must be on the same device.</p></li>
+</ul>
+<p><strong>Two common ways to build a model</strong></p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code></strong>: fast for simple stacks.</p></li>
+<li><p><strong>Subclass <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code></strong>: gives you a custom <code class="docutils literal notranslate"><span class="pre">forward</span></code> method and more control.</p></li>
+</ol>
+<p>Below we show both styles. Pick one. They behave the same here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TinyMLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">out_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sequential style: quickest for simple feed-forward nets</span>
+<span class="n">in_dim</span> <span class="o">=</span> <span class="n">X_tr_s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>  <span class="c1"># weights W: [in_dim, 32], bias b: [32]</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+    <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># weights W: [32, 1], bias b: [1]</span>
+<span class="p">)</span>
+<span class="n">reg_model</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sequential(
+  (0): Linear(in_features=4, out_features=32, bias=True)
+  (1): ReLU()
+  (2): Linear(in_features=32, out_features=1, bias=True)
+)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect shapes of parameters</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">reg_model</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">20s</span><span class="si">}</span><span class="s2">  shape=</span><span class="si">{</span><span class="nb">tuple</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span><span class="si">}</span><span class="s2">  requires_grad=</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.weight              shape=(32, 4)  requires_grad=True
+0.bias                shape=(32,)  requires_grad=True
+2.weight              shape=(1, 32)  requires_grad=True
+2.bias                shape=(1,)  requires_grad=True
+</pre></div>
+</div>
+</div>
+</div>
+<p>A custom module version looks like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TinyRegressor</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>  <span class="c1"># input -&gt; hidden layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">act</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>  <span class="c1"># ReLU activation function in hidden layer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># hidden -&gt; output layer</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+        <span class="c1"># x has shape [batch, in_dim]</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">act</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># shape [batch, hidden]</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>          <span class="c1"># shape [batch, 1]</span>
         <span class="k">return</span> <span class="n">out</span>
 
-<span class="n">mlp</span> <span class="o">=</span> <span class="n">TinyMLP</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="n">Xtr_s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">out_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">mlp</span>
+<span class="n">reg_model2</span> <span class="o">=</span> <span class="n">TinyRegressor</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">reg_model2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TinyRegressor(
+  (fc1): Linear(in_features=4, out_features=32, bias=True)
+  (act): ReLU()
+  (fc2): Linear(in_features=32, out_features=1, bias=True)
+)
 </pre></div>
 </div>
 </div>
 </div>
-<p>Check the parameter shapes so you see what is being learned.</p>
+<p><strong>Shapes to keep in mind</strong></p>
+<ul class="simple">
+<li><p>Input batch <code class="docutils literal notranslate"><span class="pre">x</span></code>: <code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">in_dim]</span></code></p></li>
+<li><p>Hidden layer output: <code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">32]</span></code></p></li>
+<li><p>Final output: <code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">1]</span></code></p></li>
+</ul>
+<p><strong>Tip</strong>: you can print a few predictions to sanity check the flow (numbers will be random before training).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">mlp</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_sample</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_tr_s</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raw outputs using first 3 values on X-train:&quot;</span><span class="p">,</span> <span class="n">reg_model</span><span class="p">(</span><span class="n">x_sample</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [-0.3615578   0.06239668  0.7558894 ]
 </pre></div>
 </div>
 </div>
 </div>
+<p>For the rest of this chapter, we will use method 2 (<code class="docutils literal notranslate"><span class="pre">reg_model2</span></code>) to show the rest steps.</p>
 </section>
-<section id="one-training-epoch-by-hand">
-<h3>2.3 One training epoch by hand<a class="headerlink" href="#one-training-epoch-by-hand" title="Link to this heading">#</a></h3>
-<p>We will implement a plain loop: forward → loss → backward → update.</p>
+<hr class="docutils" />
+<section id="loss-and-optimizer">
+<h3>2.3 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Permalink to this heading">#</a></h3>
+<p>For regression we use <strong>MSELoss</strong>.<br />
+The optimizer is <strong>Adam</strong>, which updates weights smoothly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
-<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">reg_model2</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">optimizer</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adam (
+Parameter Group 0
+    amsgrad: False
+    betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
+    eps: 1e-08
+    foreach: None
+    fused: None
+    lr: 0.01
+    maximize: False
+    weight_decay: 0.001
+)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="one-training-step-demo">
+<h3>2.4 One training step demo<a class="headerlink" href="#one-training-step-demo" title="Permalink to this heading">#</a></h3>
+<p>To see the loop clearly: forward → loss → backward → update.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_tr_s</span><span class="p">[:</span><span class="mi">64</span><span class="p">])</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y_tr</span><span class="p">[:</span><span class="mi">64</span><span class="p">])</span>
 
-<span class="n">xb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xtr_s</span><span class="p">[:</span><span class="mi">64</span><span class="p">])</span>
-<span class="n">yb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">ytr</span><span class="p">[:</span><span class="mi">64</span><span class="p">])</span>
-<span class="n">pred</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
-<span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
-<span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="n">pred</span> <span class="o">=</span> <span class="n">reg_model2</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>      <span class="c1"># forward pass</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>  <span class="c1"># compute loss</span>
+
+<span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>     <span class="c1"># clear old grads</span>
+<span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>           <span class="c1"># compute new grads for each parameter</span>
+<span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>          <span class="c1"># apply the update</span>
+
 <span class="nb">float</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19706.015625
+</pre></div>
+</div>
+</div>
 </div>
 </section>
-<section id="full-training-with-a-dataloader">
-<h3>2.4 Full training with a DataLoader<a class="headerlink" href="#full-training-with-a-dataloader" title="Link to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="training-loop">
+<h3>2.5 Training loop<a class="headerlink" href="#training-loop" title="Permalink to this heading">#</a></h3>
+<p>We train for 150 epochs. Each epoch goes through the dataset in batches.<br />
+We plot the loss to see if the model is learning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NumpyDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
-<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">NumpyDataset</span><span class="p">(</span><span class="n">Xtr_s</span><span class="p">,</span> <span class="n">ytr</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">mlp</span> <span class="o">=</span> <span class="n">TinyMLP</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="n">Xtr_s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hidden</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">out_dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
-<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">mlp</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">NumpyDataset</span><span class="p">(</span><span class="n">X_tr_s</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">train_losses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">reg_model2</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">):</span>
     <span class="n">batch_losses</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
-        <span class="n">pred</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+        <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="o">=</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">reg_model2</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
-        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
         <span class="n">batch_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
     <span class="n">train_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">batch_losses</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_losses</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;train MSE&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MLP training curve&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train_losses</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;train MSE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Training loss - regression&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" src="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" />
 </div>
-<p>Evaluate on test.</p>
+</div>
+<p>Let’s break down what happened above step by step:</p>
+<ol class="arabic simple">
+<li><p><strong>Dataset and DataLoader</strong><br />
+We wrapped our numpy arrays in <code class="docutils literal notranslate"><span class="pre">NumpyDataset</span></code>, which makes them look like a PyTorch dataset.<br />
+Then <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> split the dataset into mini-batches of 64 rows and shuffled them each epoch.<br />
+This helps training be faster and more stable.</p></li>
+<li><p><strong>Epochs and batches</strong><br />
+Each <code class="docutils literal notranslate"><span class="pre">epoch</span></code> means “one full pass over the training data”.<br />
+Inside each epoch, we looped over mini-batches. For every batch:</p>
+<ul class="simple">
+<li><p>We ran the <strong>forward pass</strong>: <code class="docutils literal notranslate"><span class="pre">pred</span> <span class="pre">=</span> <span class="pre">reg_model(xb)</span></code></p></li>
+<li><p>We computed the <strong>loss</strong>: <code class="docutils literal notranslate"><span class="pre">loss</span> <span class="pre">=</span> <span class="pre">loss_fn(pred,</span> <span class="pre">yb)</span></code></p></li>
+<li><p>We reset old gradients with <code class="docutils literal notranslate"><span class="pre">optimizer.zero_grad()</span></code></p></li>
+<li><p>We called <code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code> so PyTorch computes gradients for each weight</p></li>
+<li><p>We called <code class="docutils literal notranslate"><span class="pre">optimizer.step()</span></code> to update the weights slightly</p></li>
+</ul>
+</li>
+<li><p><strong>Loss tracking</strong><br />
+We stored the average loss per epoch in <code class="docutils literal notranslate"><span class="pre">train_losses</span></code>.<br />
+If you plot <code class="docutils literal notranslate"><span class="pre">train_losses</span></code>, you should see it go down.<br />
+This means the network predictions are getting closer to the true labels.</p></li>
+</ol>
+<p>By the end of 150 epochs, the model should be much better than at the start.</p>
+</section>
+<hr class="docutils" />
+<section id="evaluate-regression">
+<h3>2.6 Evaluate regression<a class="headerlink" href="#evaluate-regression" title="Permalink to this heading">#</a></h3>
+<p>We check mean squared error and plot predicted vs true <code class="docutils literal notranslate"><span class="pre">Meltig</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model2</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-    <span class="n">yhat</span> <span class="o">=</span> <span class="n">mlp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xte_s</span><span class="p">))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">yhat_te</span> <span class="o">=</span> <span class="n">reg_model2</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X_te_s</span><span class="p">))</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 : </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">yhat_te</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">yhat_te</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">yhat</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yhat</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">yte</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">yhat</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True MP&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pred MP&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MLP parity&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">yhat_te</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">yhat_te</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">yhat_te</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True logS&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Pred logS&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parity plot&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 377.2238
+R2: 0.8732098882942341
+</pre></div>
 </div>
+<img alt="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" src="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" />
+</div>
+</div>
+<p>This suggests our customized NN achieve a good performance on this task  :D</p>
+</section>
+</section>
+<section id="baseline-comparison">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2.7 Baseline comparison</a><a class="headerlink" href="#baseline-comparison" title="Permalink to this heading">#</a></h2>
+<p>To understand how our PyTorch neural network compares to standard regressors,
+we evaluate three baselines:</p>
+<ul class="simple">
+<li><p><strong>Decision Tree Regressor</strong>: a single non-linear tree.</p></li>
+<li><p><strong>Random Forest Regressor</strong>: an ensemble of decision trees.</p></li>
+<li><p><strong>MLPRegressor (sklearn)</strong>: configured to closely match our PyTorch NN.</p></li>
+</ul>
+<p>Our PyTorch model is:</p>
+<ul class="simple">
+<li><p>Input: 4 features</p></li>
+<li><p>Hidden layer: 32 units with ReLU</p></li>
+<li><p>Output: 1 unit</p></li>
+<li><p>Optimizer: Adam with learning rate 1e-2 and weight decay 1e-3</p></li>
+<li><p>Trained for 150 epochs with mini-batches of size 64.</p></li>
+</ul>
+<p>To mirror this in <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, we set:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes=(32,)</span></code>: one hidden layer of 32 units, just like PyTorch.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">activation=&quot;relu&quot;</span></code>: same nonlinearity.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">solver=&quot;adam&quot;</span></code>: same optimization family.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">learning_rate_init=1e-2</span></code>: match the PyTorch learning rate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alpha=1e-3</span></code>: equivalent to weight decay 1e-3.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_iter=2000</span></code>: roughly comparable to 150 epochs in Torch.</p></li>
+</ul>
+<p>We then compare all four models (Decision Tree, Random Forest, sklearn MLP, and PyTorch NN)
+on the test set using <strong>MSE</strong> and <strong>R²</strong>.</p>
 <div class="admonition-exercises-2-x admonition">
 <p class="admonition-title">⏰ Exercises 2.x</p>
 <ol class="arabic simple">
-<li><p>Change the hidden size to 64 and rerun. Does R² improve.</p></li>
-<li><p>Switch <code class="docutils literal notranslate"><span class="pre">ReLU</span></code> to <code class="docutils literal notranslate"><span class="pre">Tanh</span></code> and rerun. Compare training curve shape.</p></li>
+<li><p>For our own NN by Pytorch change the hidden size to 64 and rerun. Does R² improve.</p></li>
 <li><p>Increase <code class="docutils literal notranslate"><span class="pre">weight_decay</span></code> to <code class="docutils literal notranslate"><span class="pre">1e-2</span></code>. What happens to train vs test scores.</p></li>
 </ol>
+<blockquote>
+<div><p>You need to re-initialize the optimizer and re-run the training loop, as there is no <code class="docutils literal notranslate"><span class="pre">.fit(...)</span></code> function for our customized NN. In next section you will see we can wrap this
+logic into a helper function to avoid repetition.</p>
+</div></blockquote>
+</div>
+<section id="pytorch-regressor-with-sklearn-like-interface">
+<h3>2.8 PyTorch Regressor with sklearn-like Interface<a class="headerlink" href="#pytorch-regressor-with-sklearn-like-interface" title="Permalink to this heading">#</a></h3>
+<p>In earlier sections, we trained our custom PyTorch model by manually writing the
+training loop. How can we make our customized NN feel more convenient?</p>
+<p>We can introduce a small wrapper called <strong><code class="docutils literal notranslate"><span class="pre">CHEM5080Regressor</span></code></strong> that makes our
+PyTorch model behave like a sklearn regressor. The class builds a Sequential
+network with two hidden layers (64 units with ReLU, then 32 units with Tanh),
+and provides:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code> for training</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.predict(X)</span></code> for inference</p></li>
+</ul>
+<p>This way, the PyTorch model can be plugged into the same workflow as Decision
+Tree, Random Forest, or sklearn’s MLP. You can customize the architecture inside
+<code class="docutils literal notranslate"><span class="pre">nn.Sequential</span></code> by changing the hidden sizes or swapping the activation
+functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">NumpyDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CHEM5080Regressor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A simple sklearn-like wrapper around a PyTorch feed-forward regressor.</span>
+<span class="sd">    Architecture:</span>
+<span class="sd">        Input -&gt; Linear(4, 64) -&gt; ReLU</span>
+<span class="sd">              -&gt; Linear(64, 32) -&gt; ReLU</span>
+<span class="sd">              -&gt; Linear(32, 1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-2</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="c1"># Build Sequential model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>         <span class="c1"># Hidden layer 1</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>         <span class="c1"># Hidden layer 2</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># Output</span>
+        <span class="p">)</span>
+        <span class="c1"># Training settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weight_decay</span> <span class="o">=</span> <span class="n">weight_decay</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span> <span class="o">=</span> <span class="n">batch_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">dataset</span> <span class="o">=</span> <span class="n">NumpyDataset</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">xb</span><span class="p">,</span> <span class="n">yb</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+                <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+                <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">X_tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">X_tensor</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+<span class="c1"># --- Train and evaluate ---</span>
+<span class="n">chem_model</span> <span class="o">=</span> <span class="n">CHEM5080Regressor</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="n">X_tr_s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">chem_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr_s</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">chem_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te_s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 387.48224
+R2: 0.8697618698517982
+</pre></div>
+</div>
+</div>
+</div>
+<p>It works exactly the same way as we see in previous lectures with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>, but it was <strong>written by ourselves</strong>!</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Optional: Parity plot ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_te</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">max</span><span class="p">())]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lims</span><span class="p">,</span> <span class="n">lims</span><span class="p">,</span> <span class="s2">&quot;k--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;True Melting Point&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Predicted Melting Point&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Parity plot - CHEM5080Regressor&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" src="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" />
+</div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="molecules-as-graphs">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3) Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3) Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Permalink to this heading">#</a></h2>
 <p>A molecule can be seen as a graph:</p>
 <ul class="simple">
 <li><p><strong>Nodes</strong> are atoms with a feature vector per atom.</p></li>
@@ -862,7 +1265,7 @@ document.write(`
 <li><p>A molecule level label (melting point, toxicity) requires <strong>pooling</strong> node representations into one vector.</p></li>
 </ul>
 <section id="minimal-node-and-edge-features">
-<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Link to this heading">#</a></h3>
+<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Permalink to this heading">#</a></h3>
 <p>Common node features:</p>
 <ul class="simple">
 <li><p>One‑hot element type, degree, formal charge, aromatic flag.<br />
@@ -878,7 +1281,7 @@ Common edge features:</p></li>
 </ul>
 </section>
 <section id="build-tiny-toy-graphs-by-hand">
-<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Link to this heading">#</a></h3>
+<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Permalink to this heading">#</a></h3>
 <p>We start with two toy molecules without RDKit: Methane and Ethane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -916,12 +1319,30 @@ Common edge features:</p></li>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(5, 4), (2, 8), (8, 4), (2, 14)]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Peek at arrays to make sure the shapes are what you expect.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Methane x:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">g1</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Methane edges (first 6 cols):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">g1</span><span class="p">[</span><span class="s2">&quot;edge_index&quot;</span><span class="p">][:,</span> <span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Methane x:
+ [[6. 4. 0. 0.]
+ [1. 1. 0. 0.]
+ [1. 1. 0. 0.]
+ [1. 1. 0. 0.]
+ [1. 1. 0. 0.]]
+Methane edges (first 6 cols):
+ [[0 1 0 2 0 3]
+ [1 0 2 0 3 0]]
 </pre></div>
 </div>
 </div>
@@ -938,7 +1359,7 @@ Common edge features:</p></li>
 </section>
 <hr class="docutils" />
 <section id="message-passing-the-core-idea">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4) Message passing: the core idea</a><a class="headerlink" href="#message-passing-the-core-idea" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4) Message passing: the core idea</a><a class="headerlink" href="#message-passing-the-core-idea" title="Permalink to this heading">#</a></h2>
 <p>At each layer <code class="docutils literal notranslate"><span class="pre">t</span></code>, every node gets messages from its neighbors and updates its hidden state.</p>
 <p>A simple form:</p>
 <div class="math notranslate nohighlight">
@@ -960,10 +1381,10 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="your-first-gnn-layer-in-pure-pytorch">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5) Your first GNN layer in pure PyTorch</a><a class="headerlink" href="#your-first-gnn-layer-in-pure-pytorch" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5) Your first GNN layer in pure PyTorch</a><a class="headerlink" href="#your-first-gnn-layer-in-pure-pytorch" title="Permalink to this heading">#</a></h2>
 <p>We implement a very small GNN layer that follows the equation above. No external graph library is needed.</p>
 <section id="a-neighbor-sum-helper">
-<h3>5.1 A neighbor sum helper<a class="headerlink" href="#a-neighbor-sum-helper" title="Link to this heading">#</a></h3>
+<h3>5.1 A neighbor sum helper<a class="headerlink" href="#a-neighbor-sum-helper" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">neighbor_sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">):</span>
@@ -983,7 +1404,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="define-one-message-passing-layer">
-<h3>5.2 Define one message passing layer<a class="headerlink" href="#define-one-message-passing-layer" title="Link to this heading">#</a></h3>
+<h3>5.2 Define one message passing layer<a class="headerlink" href="#define-one-message-passing-layer" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleMP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -1004,7 +1425,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="stack-layers-and-pool-to-a-graph-vector">
-<h3>5.3 Stack layers and pool to a graph vector<a class="headerlink" href="#stack-layers-and-pool-to-a-graph-vector" title="Link to this heading">#</a></h3>
+<h3>5.3 Stack layers and pool to a graph vector<a class="headerlink" href="#stack-layers-and-pool-to-a-graph-vector" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TinyGNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
@@ -1036,7 +1457,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="sanity-check-with-toy-graphs">
-<h3>5.4 Sanity check with toy graphs<a class="headerlink" href="#sanity-check-with-toy-graphs" title="Link to this heading">#</a></h3>
+<h3>5.4 Sanity check with toy graphs<a class="headerlink" href="#sanity-check-with-toy-graphs" title="Permalink to this heading">#</a></h3>
 <p>We will make up fake targets for the toys to see the forward pass shape.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,10 +1477,15 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Toy outputs: torch.Size([1, 1]) torch.Size([1, 1])
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="train-on-toy-data-regression-on-a-madeup-scalar">
-<h3>5.5 Train on toy data (regression on a made‑up scalar)<a class="headerlink" href="#train-on-toy-data-regression-on-a-madeup-scalar" title="Link to this heading">#</a></h3>
+<h3>5.5 Train on toy data (regression on a made‑up scalar)<a class="headerlink" href="#train-on-toy-data-regression-on-a-madeup-scalar" title="Permalink to this heading">#</a></h3>
 <p>Let us define a toy label such as “number of heavy atoms”. This is only for demonstration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1095,6 +1521,13 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/4b5112c41ac42237167d40b59a8e4aea29ea0a84a68a4b71ab54028c32c6c2aa.png" src="_images/4b5112c41ac42237167d40b59a8e4aea29ea0a84a68a4b71ab54028c32c6c2aa.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pred 1.0 target 1.0
+pred 2.0 target 2.0
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-what-you-saw admonition">
 <p class="admonition-title">What you saw</p>
@@ -1116,10 +1549,10 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="from-smiles-to-graphs-with-rdkit-mini-pipeline">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6) From SMILES to graphs with RDKit (mini pipeline)</a><a class="headerlink" href="#from-smiles-to-graphs-with-rdkit-mini-pipeline" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6) From SMILES to graphs with RDKit (mini pipeline)</a><a class="headerlink" href="#from-smiles-to-graphs-with-rdkit-mini-pipeline" title="Permalink to this heading">#</a></h2>
 <p>Now we prepare graphs from real SMILES. If RDKit is not available in your environment, skip to Section 7 (Chemprop), which does not require RDKit.</p>
 <section id="featurization-helpers">
-<h3>6.1 Featurization helpers<a class="headerlink" href="#featurization-helpers" title="Link to this heading">#</a></h3>
+<h3>6.1 Featurization helpers<a class="headerlink" href="#featurization-helpers" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">atom_features</span><span class="p">(</span><span class="n">atom</span><span class="p">):</span>
@@ -1155,7 +1588,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="make-a-small-dataset-from-the-csv">
-<h3>6.2 Make a small dataset from the CSV<a class="headerlink" href="#make-a-small-dataset-from-the-csv" title="Link to this heading">#</a></h3>
+<h3>6.2 Make a small dataset from the CSV<a class="headerlink" href="#make-a-small-dataset-from-the-csv" title="Permalink to this heading">#</a></h3>
 <p>We will try to regress <strong>melting point</strong> as a quick demo with the tiny GNN. This is only to show the flow; Chemprop will do a stronger job later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1173,10 +1606,23 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">small</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">graphs</span><span class="p">,</span> <span class="n">targets</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">smi</span><span class="p">,</span> <span class="n">mp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">small</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">],</span> <span class="n">small</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]):</span>
+
+<span class="ne">NameError</span>: name &#39;df_raw&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="tiny-training-loop-for-graphs">
-<h3>6.3 Tiny training loop for graphs<a class="headerlink" href="#tiny-training-loop-for-graphs" title="Link to this heading">#</a></h3>
+<h3>6.3 Tiny training loop for graphs<a class="headerlink" href="#tiny-training-loop-for-graphs" title="Permalink to this heading">#</a></h3>
 <p>We split by index since graphs are already constructed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1241,7 +1687,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="chemprop-v2-practical-graph-models-for-chemistry">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7) Chemprop v2: practical graph models for chemistry</a><a class="headerlink" href="#chemprop-v2-practical-graph-models-for-chemistry" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7) Chemprop v2: practical graph models for chemistry</a><a class="headerlink" href="#chemprop-v2-practical-graph-models-for-chemistry" title="Permalink to this heading">#</a></h2>
 <p>Chemprop implements a directed message passing neural network with strong defaults. We will:</p>
 <ol class="arabic simple">
 <li><p><strong>Install Chemprop v2</strong></p></li>
@@ -1249,7 +1695,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <li><p>Run a <strong>reactivity</strong> classification and predict on new SMILES</p></li>
 </ol>
 <section id="install-chemprop">
-<h3>7.1 Install Chemprop<a class="headerlink" href="#install-chemprop" title="Link to this heading">#</a></h3>
+<h3>7.1 Install Chemprop<a class="headerlink" href="#install-chemprop" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># You may need a restart after install in some environments</span>
@@ -1260,7 +1706,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="melting-point-regression">
-<h3>7.2 Melting point regression<a class="headerlink" href="#melting-point-regression" title="Link to this heading">#</a></h3>
+<h3>7.2 Melting point regression<a class="headerlink" href="#melting-point-regression" title="Permalink to this heading">#</a></h3>
 <p>Prepare a minimal CSV: <code class="docutils literal notranslate"><span class="pre">SMILES,Melting</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,18 +1732,18 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>Train a <strong>small</strong> model so it runs in class. We log common metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A short run. Increase epochs later if you have time/GPU.</span>
-<span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">mp_data</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">-</span><span class="n">t</span> <span class="n">regression</span> \
-  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
-  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="s2">&quot;Melting Point&quot;</span> \
-  <span class="o">-</span><span class="n">o</span> <span class="n">mp_model</span> \
-  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
-  <span class="o">--</span><span class="n">epochs</span> <span class="mi">15</span> \
-  <span class="o">--</span><span class="n">save</span><span class="o">-</span><span class="n">smiles</span><span class="o">-</span><span class="n">splits</span> \
-  <span class="o">--</span><span class="n">metrics</span> <span class="n">mae</span> <span class="n">rmse</span> <span class="n">r2</span> \
-  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">r2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># A short run. Increase epochs later if you have time/GPU.
+!chemprop train \
+  --data-path mp_data.csv \
+  -t regression \
+  -s SMILES \
+  --target-columns &quot;Melting Point&quot; \
+  -o mp_model \
+  --num-replicates 1 \
+  --epochs 15 \
+  --save-smiles-splits \
+  --metrics mae rmse r2 \
+  --tracking-metric r2
 </pre></div>
 </div>
 </div>
@@ -1305,27 +1751,27 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>Make quick predictions on a few molecules.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smiles_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>              <span class="c1"># ethanol</span>
-    <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span>         <span class="c1"># benzene</span>
-    <span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span>          <span class="c1"># acetic acid</span>
-    <span class="s2">&quot;CCN(CC)CC&quot;</span>         <span class="c1"># triethylamine</span>
-<span class="p">]</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="n">smiles_list</span><span class="p">})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;custom_smiles_reg.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>smiles_list = [
+    &quot;CCO&quot;,              # ethanol
+    &quot;c1ccccc1&quot;,         # benzene
+    &quot;CC(=O)O&quot;,          # acetic acid
+    &quot;CCN(CC)CC&quot;         # triethylamine
+]
+pd.DataFrame({&quot;SMILES&quot;: smiles_list}).to_csv(&quot;custom_smiles_reg.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">custom_smiles_reg</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">mp_model</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
-  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">mp_preds</span><span class="o">.</span><span class="n">csv</span>
+!chemprop predict \
+  --test-path custom_smiles_reg.csv \
+  --model-paths mp_model/replicate_0/model_0/best.pt \
+  --preds-path mp_preds.csv
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;mp_preds.csv&quot;</span><span class="p">)</span>
+pd.read_csv(&quot;mp_preds.csv&quot;)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reactivity-classification-ch-oxidation-dataset">
-<h3>7.3 Reactivity classification (C–H oxidation dataset)<a class="headerlink" href="#reactivity-classification-ch-oxidation-dataset" title="Link to this heading">#</a></h3>
+<h3>7.3 Reactivity classification (C–H oxidation dataset)<a class="headerlink" href="#reactivity-classification-ch-oxidation-dataset" title="Permalink to this heading">#</a></h3>
 <p>We use the <code class="docutils literal notranslate"><span class="pre">Reactivity</span></code> column and convert it to <strong>binary</strong> 0/1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1351,17 +1797,17 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>Train a short classification model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">reactivity_data_bin</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">-</span><span class="n">t</span> <span class="n">classification</span> \
-  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
-  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="n">Reactivity_bin</span> \
-  <span class="o">-</span><span class="n">o</span> <span class="n">reactivity_model</span> \
-  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
-  <span class="o">--</span><span class="n">epochs</span> <span class="mi">15</span> \
-  <span class="o">--</span><span class="n">class</span><span class="o">-</span><span class="n">balance</span> \
-  <span class="o">--</span><span class="n">metrics</span> <span class="n">roc</span> <span class="n">prc</span> <span class="n">accuracy</span> \
-  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">roc</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!chemprop train \
+  --data-path reactivity_data_bin.csv \
+  -t classification \
+  -s SMILES \
+  --target-columns Reactivity_bin \
+  -o reactivity_model \
+  --num-replicates 1 \
+  --epochs 15 \
+  --class-balance \
+  --metrics roc prc accuracy \
+  --tracking-metric roc
 </pre></div>
 </div>
 </div>
@@ -1369,22 +1815,22 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>Predict on new SMILES.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smiles_list</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;c1ccccc1C(F)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;C1=C([C@@H]2C[C@H](C1)C2(C)C)&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;C1=CC=CC=C1C=O&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;CCN(CC)CC&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;c1cccc(C=CC)c1&quot;</span>
-<span class="p">]</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="n">smiles_list</span><span class="p">})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;custom_smiles.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>smiles_list = [
+    &quot;CCO&quot;,
+    &quot;c1ccccc1C(F)&quot;,
+    &quot;C1=C([C@@H]2C[C@H](C1)C2(C)C)&quot;,
+    &quot;C1=CC=CC=C1C=O&quot;,
+    &quot;CCN(CC)CC&quot;,
+    &quot;c1cccc(C=CC)c1&quot;
+]
+pd.DataFrame({&quot;SMILES&quot;: smiles_list}).to_csv(&quot;custom_smiles.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">custom_smiles</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">reactivity_model</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
-  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">custom_preds</span><span class="o">.</span><span class="n">csv</span>
+!chemprop predict \
+  --test-path custom_smiles.csv \
+  --model-paths reactivity_model/replicate_0/model_0/best.pt \
+  --preds-path custom_preds.csv
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;custom_preds.csv&quot;</span><span class="p">)</span>
+pd.read_csv(&quot;custom_preds.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -1409,7 +1855,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="references">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8) References</a><a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8) References</a><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Gilmer, J. et al., <strong>Neural Message Passing for Quantum Chemistry</strong>, ICML 2017.</p></li>
 <li><p>Yang, K. et al., <strong>Analyzing Learned Molecular Representations for Property Prediction</strong>, J. Chem. Inf. Model. 2019.</p></li>
@@ -1421,32 +1867,32 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9) Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">9) Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Link to this term">#</a></dt><dd><p>A neural model that updates node states by aggregating messages from neighbors.</p>
+<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Permalink to this term">#</a></dt><dd><p>A neural model that updates node states by aggregating messages from neighbors.</p>
 </dd>
-<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Link to this term">#</a></dt><dd><p>The update step where a node combines its own vector with aggregated neighbor vectors.</p>
+<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Permalink to this term">#</a></dt><dd><p>The update step where a node combines its own vector with aggregated neighbor vectors.</p>
 </dd>
-<dt id="term-readout-pooling">readout (pooling)<a class="headerlink" href="#term-readout-pooling" title="Link to this term">#</a></dt><dd><p>Operation that compresses node states into a single graph vector, often by sum, mean, or max.</p>
+<dt id="term-readout-pooling">readout (pooling)<a class="headerlink" href="#term-readout-pooling" title="Permalink to this term">#</a></dt><dd><p>Operation that compresses node states into a single graph vector, often by sum, mean, or max.</p>
 </dd>
-<dt id="term-edge-index">edge index<a class="headerlink" href="#term-edge-index" title="Link to this term">#</a></dt><dd><p>A 2×E tensor listing source and destination of each edge.</p>
+<dt id="term-edge-index">edge index<a class="headerlink" href="#term-edge-index" title="Permalink to this term">#</a></dt><dd><p>A 2×E tensor listing source and destination of each edge.</p>
 </dd>
-<dt id="term-Chemprop">Chemprop<a class="headerlink" href="#term-Chemprop" title="Link to this term">#</a></dt><dd><p>A practical library that trains message passing networks directly from SMILES.</p>
+<dt id="term-Chemprop">Chemprop<a class="headerlink" href="#term-Chemprop" title="Permalink to this term">#</a></dt><dd><p>A practical library that trains message passing networks directly from SMILES.</p>
 </dd>
-<dt id="term-replicate">replicate<a class="headerlink" href="#term-replicate" title="Link to this term">#</a></dt><dd><p>Independent training run with a different random seed. Often ensembled for stability.</p>
+<dt id="term-replicate">replicate<a class="headerlink" href="#term-replicate" title="Permalink to this term">#</a></dt><dd><p>Independent training run with a different random seed. Often ensembled for stability.</p>
 </dd>
-<dt id="term-tracking-metric">tracking metric<a class="headerlink" href="#term-tracking-metric" title="Link to this term">#</a></dt><dd><p>The metric used to pick the best checkpoint during training.</p>
+<dt id="term-tracking-metric">tracking metric<a class="headerlink" href="#term-tracking-metric" title="Permalink to this term">#</a></dt><dd><p>The metric used to pick the best checkpoint during training.</p>
 </dd>
-<dt id="term-class-balance">class balance<a class="headerlink" href="#term-class-balance" title="Link to this term">#</a></dt><dd><p>Loss weighting that compensates for skewed class proportions.</p>
+<dt id="term-class-balance">class balance<a class="headerlink" href="#term-class-balance" title="Permalink to this term">#</a></dt><dd><p>Loss weighting that compensates for skewed class proportions.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="inclass-activity-and-solutions">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">10) In‑class activity and solutions</a><a class="headerlink" href="#inclass-activity-and-solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">10) In‑class activity and solutions</a><a class="headerlink" href="#inclass-activity-and-solutions" title="Permalink to this heading">#</a></h2>
 <p>Each question is designed to be solved with what you coded above. Try first, then check the solution blocks.</p>
 <section id="q1-mlp-warmup-on-melting-point">
-<h3>Q1. MLP warmup on melting point<a class="headerlink" href="#q1-mlp-warmup-on-melting-point" title="Link to this heading">#</a></h3>
+<h3>Q1. MLP warmup on melting point<a class="headerlink" href="#q1-mlp-warmup-on-melting-point" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code></p></li>
 <li><p>Standardize, then train the PyTorch MLP <code class="docutils literal notranslate"><span class="pre">(32,)</span></code> for 150 epochs</p></li>
@@ -1458,7 +1904,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="q2-build-and-inspect-the-toy-gnn">
-<h3>Q2. Build and inspect the toy GNN<a class="headerlink" href="#q2-build-and-inspect-the-toy-gnn" title="Link to this heading">#</a></h3>
+<h3>Q2. Build and inspect the toy GNN<a class="headerlink" href="#q2-build-and-inspect-the-toy-gnn" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Train <code class="docutils literal notranslate"><span class="pre">TinyGNN</span></code> with pooling <code class="docutils literal notranslate"><span class="pre">&quot;sum&quot;</span></code> on methane and ethane to predict <strong>heavy atom count</strong></p></li>
 <li><p>Plot the loss</p></li>
@@ -1470,7 +1916,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="q3-rdkit-graph-miniset-optional-if-rdkit-missing">
-<h3>Q3. RDKit graph mini‑set (optional if RDKit missing)<a class="headerlink" href="#q3-rdkit-graph-miniset-optional-if-rdkit-missing" title="Link to this heading">#</a></h3>
+<h3>Q3. RDKit graph mini‑set (optional if RDKit missing)<a class="headerlink" href="#q3-rdkit-graph-miniset-optional-if-rdkit-missing" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Sample 200 SMILES with melting points from the CSV</p></li>
 <li><p>Convert to graphs and train <code class="docutils literal notranslate"><span class="pre">TinyGNN</span></code> with <code class="docutils literal notranslate"><span class="pre">num_layers=3</span></code>, hidden 32</p></li>
@@ -1482,7 +1928,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="q4-chemprop-regression-on-melting-point">
-<h3>Q4. Chemprop regression on melting point<a class="headerlink" href="#q4-chemprop-regression-on-melting-point" title="Link to this heading">#</a></h3>
+<h3>Q4. Chemprop regression on melting point<a class="headerlink" href="#q4-chemprop-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Train Chemprop on <code class="docutils literal notranslate"><span class="pre">mp_data.csv</span></code> for <code class="docutils literal notranslate"><span class="pre">--epochs</span> <span class="pre">20</span></code></p></li>
 <li><p>Predict on at least 5 new SMILES of your choice and list the predictions</p></li>
@@ -1492,8 +1938,8 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <hr class="docutils" />
-<section id="q5-chemprop-classification-on-toxicity-student-challenge">
-<h3>Q5. Chemprop classification on toxicity (student challenge)<a class="headerlink" href="#q5-chemprop-classification-on-toxicity-student-challenge" title="Link to this heading">#</a></h3>
+<section id="q5-chemprop-classification-on-toxicity">
+<h3>Q5. Chemprop classification on toxicity<a class="headerlink" href="#q5-chemprop-classification-on-toxicity" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Convert <code class="docutils literal notranslate"><span class="pre">Toxicity</span></code> to <code class="docutils literal notranslate"><span class="pre">1/0</span></code> using the mapping <code class="docutils literal notranslate"><span class="pre">{toxic:1,</span> <span class="pre">non_toxic:0}</span></code></p></li>
 <li><p>Save <code class="docutils literal notranslate"><span class="pre">[&quot;SMILES&quot;,&quot;Toxicity_bin&quot;]</span></code> to <code class="docutils literal notranslate"><span class="pre">tox_data.csv</span></code></p></li>
@@ -1506,9 +1952,9 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h3>Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h3>
+<h3>Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h3>
 <section id="solution-q1">
-<h4>Solution Q1<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h4>
+<h4>Solution Q1<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q1 solution</span>
@@ -1552,7 +1998,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="solution-q2">
-<h4>Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h4>
+<h4>Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q2 solution</span>
@@ -1590,7 +2036,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="solution-q3">
-<h4>Solution Q3<a class="headerlink" href="#solution-q3" title="Link to this heading">#</a></h4>
+<h4>Solution Q3<a class="headerlink" href="#solution-q3" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q3 solution (skip if RDKit missing)</span>
@@ -1635,67 +2081,67 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </div>
 </section>
 <section id="solution-q4">
-<h4>Solution Q4<a class="headerlink" href="#solution-q4" title="Link to this heading">#</a></h4>
+<h4>Solution Q4<a class="headerlink" href="#solution-q4" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q4 solution</span>
-<span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df_reg</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;mp_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Q4 solution
+df_reg = df[[&quot;SMILES&quot;,&quot;Melting Point&quot;]].dropna().copy()
+df_reg.to_csv(&quot;mp_data.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">mp_data</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">-</span><span class="n">t</span> <span class="n">regression</span> \
-  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
-  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="s2">&quot;Melting Point&quot;</span> \
-  <span class="o">-</span><span class="n">o</span> <span class="n">mp_model_q4</span> \
-  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
-  <span class="o">--</span><span class="n">epochs</span> <span class="mi">20</span> \
-  <span class="o">--</span><span class="n">metrics</span> <span class="n">mae</span> <span class="n">rmse</span> <span class="n">r2</span> \
-  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">r2</span>
+!chemprop train \
+  --data-path mp_data.csv \
+  -t regression \
+  -s SMILES \
+  --target-columns &quot;Melting Point&quot; \
+  -o mp_model_q4 \
+  --num-replicates 1 \
+  --epochs 20 \
+  --metrics mae rmse r2 \
+  --tracking-metric r2
 
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span><span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span><span class="s2">&quot;CCN(CC)CC&quot;</span><span class="p">,</span><span class="s2">&quot;O=C(O)C(O)C&quot;</span><span class="p">]})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;q4_smiles.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;CC(=O)O&quot;,&quot;CCN(CC)CC&quot;,&quot;O=C(O)C(O)C&quot;]}).to_csv(&quot;q4_smiles.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">q4_smiles</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">mp_model_q4</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
-  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">q4_preds</span><span class="o">.</span><span class="n">csv</span>
+!chemprop predict \
+  --test-path q4_smiles.csv \
+  --model-paths mp_model_q4/replicate_0/model_0/best.pt \
+  --preds-path q4_preds.csv
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;q4_preds.csv&quot;</span><span class="p">)</span>
+pd.read_csv(&quot;q4_preds.csv&quot;)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="solution-q5">
-<h4>Solution Q5<a class="headerlink" href="#solution-q5" title="Link to this heading">#</a></h4>
+<h4>Solution Q5<a class="headerlink" href="#solution-q5" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q5 solution</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Toxicity_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;toxic&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;non_toxic&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;tox_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Q5 solution
+df = pd.read_csv(url)
+df = df[[&quot;SMILES&quot;,&quot;Toxicity&quot;]].dropna().copy()
+df[&quot;Toxicity_bin&quot;] = df[&quot;Toxicity&quot;].str.lower().map({&quot;toxic&quot;:1, &quot;non_toxic&quot;:0}).astype(int)
+df[[&quot;SMILES&quot;,&quot;Toxicity_bin&quot;]].to_csv(&quot;tox_data.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">tox_data</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">-</span><span class="n">t</span> <span class="n">classification</span> \
-  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
-  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="n">Toxicity_bin</span> \
-  <span class="o">-</span><span class="n">o</span> <span class="n">tox_model</span> \
-  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
-  <span class="o">--</span><span class="n">epochs</span> <span class="mi">20</span> \
-  <span class="o">--</span><span class="n">class</span><span class="o">-</span><span class="n">balance</span> \
-  <span class="o">--</span><span class="n">metrics</span> <span class="n">roc</span> <span class="n">prc</span> <span class="n">accuracy</span> \
-  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">roc</span>
+!chemprop train \
+  --data-path tox_data.csv \
+  -t classification \
+  -s SMILES \
+  --target-columns Toxicity_bin \
+  -o tox_model \
+  --num-replicates 1 \
+  --epochs 20 \
+  --class-balance \
+  --metrics roc prc accuracy \
+  --tracking-metric roc
 
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span><span class="s2">&quot;O=[N+](=O)[O-]&quot;</span><span class="p">,</span><span class="s2">&quot;ClCCl&quot;</span><span class="p">,</span><span class="s2">&quot;CC(=O)Cl&quot;</span><span class="p">]})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;q5_smiles.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;O=[N+](=O)[O-]&quot;,&quot;ClCCl&quot;,&quot;CC(=O)Cl&quot;]}).to_csv(&quot;q5_smiles.csv&quot;, index=False)
 
-<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
-  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">q5_smiles</span><span class="o">.</span><span class="n">csv</span> \
-  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">tox_model</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
-  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">q5_preds</span><span class="o">.</span><span class="n">csv</span>
+!chemprop predict \
+  --test-path q5_smiles.csv \
+  --model-paths tox_model/replicate_0/model_0/best.pt \
+  --preds-path q5_preds.csv
 
-<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;q5_preds.csv&quot;</span><span class="p">)</span>
+pd.read_csv(&quot;q5_preds.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -1704,7 +2150,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 </section>
 <hr class="docutils" />
 <section id="quick-cheat-sheet">
-<h3>Quick cheat sheet<a class="headerlink" href="#quick-cheat-sheet" title="Link to this heading">#</a></h3>
+<h3>Quick cheat sheet<a class="headerlink" href="#quick-cheat-sheet" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Message passing layer shape checks help catch indexing mistakes early.</p></li>
 <li><p>Pooling choice can change gradients a lot on small graphs.</p></li>
@@ -1763,7 +2209,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
 </div>
@@ -1775,7 +2221,6 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1783,12 +2228,18 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1) Setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-mlp-lecture-8-to-pytorch-mlp-recap">2) From MLP (Lecture 8) to PyTorch MLP (recap)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-same-csv-and-compute-descriptors-quickly-rdkit-optional">2.1 Load the same CSV and compute descriptors quickly (RDKit optional)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-a-tiny-mlp-in-pytorch">2.2 Define a tiny MLP in PyTorch</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-training-epoch-by-hand">2.3 One training epoch by hand</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-training-with-a-dataloader">2.4 Full training with a DataLoader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-mlp-from-scratch">2 Building MLP from scratch</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-regression-on-melting-point">2.1 PyTorch regression on melting point</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-a-tiny-network">2.2 Build a tiny network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-and-optimizer">2.3 Loss and optimizer</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-training-step-demo">2.4 One training step demo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-loop">2.5 Training loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluate-regression">2.6 Evaluate regression</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-comparison">2.7 Baseline comparison</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pytorch-regressor-with-sklearn-like-interface">2.8 PyTorch Regressor with sklearn-like Interface</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molecules-as-graphs">3) Molecules as graphs</a><ul class="nav section-nav flex-column">
@@ -1824,7 +2275,7 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-build-and-inspect-the-toy-gnn">Q2. Build and inspect the toy GNN</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-rdkit-graph-miniset-optional-if-rdkit-missing">Q3. RDKit graph mini‑set (optional if RDKit missing)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-chemprop-regression-on-melting-point">Q4. Chemprop regression on melting point</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-chemprop-classification-on-toxicity-student-challenge">Q5. Chemprop classification on toxicity (student challenge)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-chemprop-classification-on-toxicity">Q5. Chemprop classification on toxicity</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">Solutions</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q1">Solution Q1</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q2">Solution Q2</a></li>
@@ -1860,7 +2311,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1884,8 +2335,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

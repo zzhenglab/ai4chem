@@ -31,7 +31,7 @@ kernelspec:
 
 ## 1. PyTorch from zero to a working MLP
 
-Students so far only used scikit-learn MLPs. Here we start PyTorch from the very beginning and keep every step visible. Each code cell is small. After each group of cells, you will get short exercises to tweak.
+
 
 ### 1.0 Setup
 
@@ -724,9 +724,8 @@ Chemprop provides a production model for molecular graphs. We try two tasks with
 
 ### 8.1 Install Chemprop v2
 
-```{code-cell} ipython3
+```python
 %pip install -q chemprop
-import pandas as pd
 ```
 
 ### 8.2 Melting point regression with Chemprop
