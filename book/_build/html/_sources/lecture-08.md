@@ -82,24 +82,47 @@ We start tiny with a simulated dataset so we can see each piece clearly.
 rng = np.random.RandomState(0)
 
 n = 200
+
+# --- Base donut in 2D ---
+# Outer ring
 theta = rng.uniform(0, 2*np.pi, size=n)
 r = 1.0 + 0.3*rng.randn(n)
-X1 = np.c_[r*np.cos(theta), r*np.sin(theta)]
+X1 = np.c_[3 * r*np.cos(theta), r*np.sin(theta)]  # stretch x by 3
 y1 = np.zeros(n, dtype=int)
 
+# Inner ring
 theta2 = rng.uniform(0, 2*np.pi, size=n)
 r2 = 0.4 + 0.15*rng.randn(n)
-X2 = np.c_[r2*np.cos(theta2), r2*np.sin(theta2)]
+X2 = np.c_[3 * r2*np.cos(theta2), r2*np.sin(theta2)]  # stretch x by 3
 y2 = np.ones(n, dtype=int)
 
-X_toy = np.vstack([X1, X2])
+# Combine 2D
+X2d = np.vstack([X1, X2])
 y_toy = np.hstack([y1, y2])
 
-plt.figure(figsize=(4.5,4.5))
+angle = np.pi / 4
+R = np.array([[np.cos(angle), -np.sin(angle)],
+              [np.sin(angle),  np.cos(angle)]])
+X2d = X2d @ R.T
+
+f_big   = rng.normal(0, 10000.0,  size=(X2d.shape[0], 1))
+f_small = rng.normal(0, 0.0001,  size=(X2d.shape[0], 1))
+f_mid   = rng.normal(0, 3.0,   size=(X2d.shape[0], 1))
+
+X_toy = np.hstack([X2d, f_big, f_small, f_mid])
+
+# --- Plot using the first two columns only, keep square view ---
+plt.figure(figsize=(5,5))
 plt.scatter(X_toy[:,0], X_toy[:,1], c=y_toy, cmap="coolwarm", s=16)
+
+lim = max(abs(X_toy[:,0]).max(), abs(X_toy[:,1]).max())
+plt.xlim(-lim, lim)
+plt.ylim(-lim, lim)
 plt.gca().set_aspect("equal")
+
 plt.title("Toy classification data")
 plt.show()
+
 ```
 
 ### 1.2 Split and try a linear model
@@ -146,21 +169,32 @@ Regardless, as you can see, currently the prediction is pretty bad because linea
 
 
 ```{code-cell} ipython3
-# Visualization of linear model decision boundary
-xx, yy = np.meshgrid(
-    np.linspace(X_toy[:, 0].min() - 0.5, X_toy[:, 0].max() + 0.5, 200),
-    np.linspace(X_toy[:, 1].min() - 0.5, X_toy[:, 1].max() + 0.5, 200)
-)
+# Compact decision-boundary plot using only the first two features
 
-Z = lin.predict(np.c_[xx.ravel(), yy.ravel()])
-Z = Z.reshape(xx.shape)
+# square limits from first two columns
+lim = np.abs(np.vstack([Xtr[:, :2], Xte[:, :2]])).max()
+pad = 0.5
+xs = np.linspace(-lim - pad, lim + pad, 300)
+ys = np.linspace(-lim - pad, lim + pad, 300)
+xx, yy = np.meshgrid(xs, ys)
+
+# build full grid (fill extra features with training means)
+grid = np.c_[xx.ravel(), yy.ravel()]
+if Xtr.shape[1] > 2:
+    rest = np.tile(Xtr[:, 2:].mean(axis=0), (grid.shape[0], 1))
+    grid = np.hstack([grid, rest])
+
+Z = lin.predict(grid).reshape(xx.shape)
 
 plt.figure(figsize=(5,5))
-plt.contourf(xx, yy, Z, cmap="coolwarm", alpha=0.3)
-plt.scatter(Xte[:, 0], Xte[:, 1], c=yte, cmap="coolwarm", s=20, edgecolor="k")
-plt.gca().set_aspect("equal")
-plt.title(f"Linear Model Decision Boundary\nAccuracy: {acc_lin:.3f}")
+plt.contourf(xx, yy, Z, levels=2, alpha=0.25, cmap="coolwarm")
+plt.scatter(Xte[:, 0], Xte[:, 1], c=yte, cmap="coolwarm", s=18, edgecolor="k")
+plt.xlim(-lim - pad, lim + pad)
+plt.ylim(-lim - pad, lim + pad)
+plt.gca().set_aspect("equal", adjustable="box")
+plt.title(f"Linear decision boundary  Acc: {acc_lin:.3f}")
 plt.show()
+
 ```
 
 
@@ -221,6 +255,7 @@ for ax in axes:
 
 plt.tight_layout()
 plt.show()
+
 
 ```
 To keep it simple, imagine we have just **one input $x$**, two hidden ReLU units, and one sigmoid output.
@@ -324,7 +359,7 @@ def draw_node(ax, name, label, value=None, radius=0.35):
     ax.add_patch(c)
     ax.text(cx, cy, label, ha="center", va="center", fontsize=11)
     if value is not None:
-        ax.text(cx, cy - radius - 0.15, f"{value:.2f}", 
+        ax.text(cx, cy - radius - 0.15, f"{value:.2f}",
                 ha="center", va="top", fontsize=9, color="blue")
 
 def draw_arrow(ax, a, b, lbl_top, lbl_bottom, radius=0.35, y_offset=0.45):
@@ -378,6 +413,7 @@ text = (
 ax.text(6.2, 1.5, text, fontsize=10, va="top")
 
 plt.show()
+
 
 ```
 Note that in above example we already have a set of paramters so the calculation can be demonstrated.
@@ -635,6 +671,7 @@ fig.colorbar(cs, ax=axes, label="P(class=1)")
 axes[0].legend(loc="lower right")
 plt.show()
 
+
 ```
 
 
@@ -661,6 +698,7 @@ Below code will take around **2 minutes** to complete, since it's alreay 10 x 4 
 
 ```{code-cell} ipython3
 :tags: [hide-input]
+
 from sklearn.model_selection import GridSearchCV, StratifiedKFold
 from sklearn.metrics import accuracy_score
 
@@ -708,7 +746,7 @@ def run_mlp_grid_search(Xtr, ytr, Xte, yte, layer_choices=None, lr_choices=None)
             activation="relu",
             solver="adam",
             early_stopping=False, # keep early_stopping off to match direct fits, will take less time to run if turn on
-            max_iter=500,    
+            max_iter=500,
             random_state=0
         ))
     ])
@@ -717,9 +755,6 @@ def run_mlp_grid_search(Xtr, ytr, Xte, yte, layer_choices=None, lr_choices=None)
         "clf__hidden_layer_sizes": layer_choices,
         "clf__learning_rate_init": lr_choices,
     }
-
-
-
 
     cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=0)
 
@@ -765,7 +800,7 @@ best_pipe, results_df = run_mlp_grid_search(Xtr, ytr, Xte, yte,
 
 # Optional: diagram and loss curve for the best model
 summarize_mlp(best_pipe)
-draw_full_mlp_structure(best_pipe, Xtr)
+draw_full_mlp_structure(best_pipe, Xtr, "best from 10 HLS × 4 LR grid")
 
 best_clf = best_pipe.named_steps["clf"]
 if hasattr(best_clf, "loss_curve_") and len(best_clf.loss_curve_) > 0:
@@ -777,6 +812,7 @@ if hasattr(best_clf, "loss_curve_") and len(best_clf.loss_curve_) > 0:
     plt.grid(alpha=0.3)
     plt.tight_layout()
     plt.show()
+
 
 ```
 
@@ -1291,6 +1327,17 @@ plt.legend(); plt.show()
 
 ---
 
+
+### Q3. Toxicity classification with threshold tuning
+
+- For `Toxicity`, train `MLPClassifier` with `(32,)`, `alpha=1e-3`, early stopping on
+- Compute probabilities on test
+- For thresholds `[0.3, 0.5, 0.7]` print Accuracy, Precision, Recall, F1
+```python
+#TO DO
+```
+
+---
 
 ### Q4. Compare MLP to Linear Regression on logS
 
