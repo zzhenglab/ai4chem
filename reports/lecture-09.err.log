@@ -16,33 +16,18 @@ Traceback (most recent call last):
     return future.result()
   File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-if Chem is not None:
-    small = df_raw[["SMILES","Melting Point"]].dropna().sample(200, random_state=0)
-    graphs, targets = [], []
-    for smi, mp in zip(small["SMILES"], small["Melting Point"]):
-        g = smiles_to_graph(smi)
-        if g is not None:
-            graphs.append(g); targets.append(mp)
-    y_all = torch.tensor(targets, dtype=torch.float32).view(-1,1)
-    len(graphs), y_all.shape
-else:
-    print("RDKit missing. Skip to Section 7.")
-------------------
-
-
-[1;31m---------------------------------------------------------------------------[0m
-[1;31mNameError[0m                                 Traceback (most recent call last)
-Cell [1;32mIn[22], line 2[0m
-[0;32m      1[0m [38;5;28;01mif[39;00m Chem [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[1;32m----> 2[0m     small [38;5;241m=[39m [43mdf_raw[49m[[[38;5;124m"[39m[38;5;124mSMILES[39m[38;5;124m"[39m,[38;5;124m"[39m[38;5;124mMelting Point[39m[38;5;124m"[39m]][38;5;241m.[39mdropna()[38;5;241m.[39msample([38;5;241m200[39m, random_state[38;5;241m=[39m[38;5;241m0[39m)
-[0;32m      3[0m     graphs, targets [38;5;241m=[39m [], []
-[0;32m      4[0m     [38;5;28;01mfor[39;00m smi, mp [38;5;129;01min[39;00m [38;5;28mzip[39m(small[[38;5;124m"[39m[38;5;124mSMILES[39m[38;5;124m"[39m], small[[38;5;124m"[39m[38;5;124mMelting Point[39m[38;5;124m"[39m]):
-
-[1;31mNameError[0m: name 'df_raw' is not defined
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1001, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 802, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 852, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['from sklearn.model_selection import StratifiedKFold', 'from sklearn.metrics import roc_auc_score', '', '# Prepare once', 'y_all = np.array([g["y"].item() for g in graphs_tox])']
+...
+['    acc, auc = fit_eval_fold(tr_ids, te_ids)', '    accs.append(acc); aucs.append(auc)', '', 'print(f"5-fold mean acc: {np.mean(accs):.3f}  ± {np.std(accs):.3f}")', 'print(f"5-fold mean AUC: {np.mean(aucs):.3f}  ± {np.std(aucs):.3f}")']
+-------------------
 

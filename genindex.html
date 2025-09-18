@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
 </ul>
 
     </div>
@@ -367,8 +368,6 @@ document.write(`
 </li>
       <li><a href="lecture-02.html#term-aspect"><strong>aspect</strong></a>
 </li>
-      <li><a href="lecture-09b.html#term-autograd"><strong>autograd</strong></a>
-</li>
       <li><a href="lecture-02.html#term-axes"><strong>axes</strong></a>
 </li>
   </ul></td>
@@ -391,20 +390,16 @@ document.write(`
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-09.html#term-Chemprop"><strong>Chemprop</strong></a>, <a href="lecture-09b.html#term-Chemprop"><strong>[1]</strong></a>
-</li>
       <li><a href="lecture-03.html#term-CID"><strong>CID</strong></a>, <a href="lecture-04.html#term-CID"><strong>[1]</strong></a>
 </li>
       <li><a href="lecture-04.html#term-CIR"><strong>CIR</strong></a>
 </li>
-      <li><a href="lecture-09.html#term-class-balance"><strong>class balance</strong></a>
-</li>
       <li><a href="lecture-05.html#term-classification"><strong>classification</strong></a>
+</li>
+      <li><a href="lecture-06.html#term-Coefficient-importance"><strong>Coefficient importance</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-06.html#term-Coefficient-importance"><strong>Coefficient importance</strong></a>
-</li>
       <li><a href="lecture-02.html#term-colormap"><strong>colormap</strong></a>
 </li>
       <li><a href="lecture-01.html#term-comment"><strong>comment</strong></a>
@@ -421,12 +416,10 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-02.html#term-DataFrame"><strong>DataFrame</strong></a>
 </li>
-      <li><a href="lecture-09b.html#term-Dataset"><strong>Dataset</strong></a>
+      <li><a href="lecture-03.html#term-descriptor"><strong>descriptor</strong></a>, <a href="lecture-04.html#term-descriptor"><strong>[1]</strong></a>, <a href="lecture-05.html#term-descriptor"><strong>[2]</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-03.html#term-descriptor"><strong>descriptor</strong></a>, <a href="lecture-04.html#term-descriptor"><strong>[1]</strong></a>, <a href="lecture-05.html#term-descriptor"><strong>[2]</strong></a>
-</li>
       <li><a href="lecture-01.html#term-dictionary"><strong>dictionary</strong></a>
 </li>
       <li><a href="lecture-02.html#term-dtype"><strong>dtype</strong></a>
@@ -439,7 +432,7 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-08.html#term-early-stopping"><strong>early stopping</strong></a>
 </li>
-      <li><a href="lecture-09.html#term-edge-index"><strong>edge index</strong></a>, <a href="lecture-09b.html#term-edge-index"><strong>[1]</strong></a>
+      <li><a href="lecture-09.html#term-edge-feature"><strong>edge feature</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -535,11 +528,13 @@ document.write(`
 </li>
       <li><a href="lecture-06.html#term-MAE"><strong>MAE</strong></a>
 </li>
-      <li><a href="lecture-09.html#term-message-passing"><strong>message passing</strong></a>, <a href="lecture-09b.html#term-message-passing"><strong>[1]</strong></a>
+      <li><a href="lecture-09.html#term-message-passing"><strong>message passing</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-01.html#term-module"><strong>module</strong></a>
+</li>
+      <li><a href="lecture-09.html#term-MPNN"><strong>MPNN</strong></a>
 </li>
       <li><a href="lecture-06.html#term-MSE"><strong>MSE</strong></a>
 </li>
@@ -552,6 +547,10 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-02.html#term-NaN"><strong>NaN</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="lecture-09.html#term-node-feature"><strong>node feature</strong></a>
 </li>
   </ul></td>
 </tr></table>
@@ -581,6 +580,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-01.html#term-plot"><strong>plot</strong></a>
 </li>
+      <li><a href="lecture-09.html#term-pooling"><strong>pooling</strong></a>
+</li>
       <li><a href="lecture-04.html#term-PUG-REST"><strong>PUG-REST</strong></a>
 </li>
       <li><a href="lecture-04.html#term-PUG-View"><strong>PUG-View</strong></a>
@@ -591,20 +592,12 @@ document.write(`
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-09b.html#term-readout"><strong>readout</strong></a>
-
-      <ul>
-        <li><a href="lecture-09.html#term-readout-pooling"><strong>(pooling)</strong></a>
-</li>
-      </ul></li>
       <li><a href="lecture-05.html#term-regression"><strong>regression</strong></a>
 </li>
       <li><a href="lecture-05.html#term-regularization"><strong>regularization</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-09.html#term-replicate"><strong>replicate</strong></a>
-</li>
       <li><a href="lecture-05.html#term-residual"><strong>residual</strong></a>
 </li>
       <li><a href="lecture-05.html#term-ROC-AUC"><strong>ROC AUC</strong></a>, <a href="lecture-08.html#term-ROC-AUC"><strong>[1]</strong></a>
@@ -638,10 +631,6 @@ document.write(`
 
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-09.html#term-tracking-metric"><strong>tracking metric</strong></a>
-</li>
-  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-05.html#term-train-test-split"><strong>train test split</strong></a>
 </li>
