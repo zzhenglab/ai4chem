@@ -1150,7 +1150,7 @@ plt.show()
 ```
 ---
 
-## 8. Glossary
+## 7. Glossary
 
 ```{glossary}
 multilayer perceptron
@@ -1188,7 +1188,7 @@ hidden layer
 
 ---
 
-## 9. Quick reference
+## 8. Quick reference
 
 ```{admonition} Recipes
 - Always scale inputs for MLPs: `Pipeline([("scaler", StandardScaler()), ("mlp", ...)])`
@@ -1210,7 +1210,7 @@ hidden layer
 
 ---
 
-## 10. In-class activity
+## 9. In-class activity
 
 
 
@@ -1220,9 +1220,11 @@ hidden layer
 - Split 80/20 with `random_state=7`
 - Train `MLPRegressor` with `(32,)`, `alpha=1e-3`, ReLU
 - Report `MSE`, `MAE`, `R²` and draw a parity plot
-
 ```python
 # Q1 starter
+...
+
+
 df_reg = df[["MolWt","LogP","TPSA","NumRings","Melting Point"]].dropna()
 X = df_reg[["MolWt","LogP","TPSA","NumRings"]].values
 y = df_reg["Melting Point"].values
@@ -1242,11 +1244,13 @@ plt.xlabel("True MP"); plt.ylabel("Pred MP"); plt.title("Q1 parity")
 plt.show()
 ```
 
+---
+
 ### Q2. Depth vs width on log-solubility
 
 - Train three models on `logS` with hidden sizes `(16,)`, `(32,)`, `(64,32)`
 - Keep `alpha=1e-3`, `learning_rate_init=0.01`, early stopping on
-- Compare test `R²` and show the three loss curves on the same plot
+- Compare test `R²` and **plot** the three loss curves on the same plot
 
 ```python
 # Q2 starter
@@ -1268,7 +1272,7 @@ for sz in sizes:
         ("mlp", MLPRegressor(hidden_layer_sizes=sz, activation="relu",
                              alpha=...,  #TO DO
                              learning_rate_init=...,  #TO DO
-                             early_stopping=..., #TO DO 
+                             early_stopping=..., #TO DO
                              validation_fraction=0.15,
                              max_iter=3000, random_state=0))
     ]).fit(Xtr, ytr)
@@ -1285,24 +1289,22 @@ plt.xlabel("Epoch"); plt.ylabel("Loss"); plt.title("Q2 loss curves")
 plt.legend(); plt.show()
 ```
 
-### Q3. Toxicity classification with threshold tuning
+---
 
-- Train `MLPClassifier` with `(32,)`, `alpha=1e-3`, early stopping on
-- Compute probabilities on test
-- For thresholds `[0.3, 0.5, 0.7]` print Accuracy, Precision, Recall, F1
-
-```python
-# Q3 starter
-#TO DO
-```
 
 ### Q4. Compare MLP to Linear Regression on logS
 
 - Same train test split as Q2
-- Fit Linear Regression on scaled inputs
+- Fit Linear Regression on scaled inputs for `logS`
 - Report both R² on test and draw both parity scatters on one plot
 
 ```python
-# Q4 starter
-#TO DO
+# TO DO
 ```
+
+
+
+
+
+
+
