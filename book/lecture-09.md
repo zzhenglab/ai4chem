@@ -66,7 +66,6 @@ try:
     import torch.nn as nn
     from torch.utils.data import Dataset, DataLoader
     import torch.nn.functional as F
-    RDKit_OK = True
 except Exception as e:
     print("Installing torch, this may take a minute...")
     %pip -q install torch
@@ -1164,6 +1163,24 @@ def mol_formic_acid():
     colors = ["lightblue", "lightcoral", "lightcoral", "lightgray", "lightgray"]
     return x, edge_index, edge_w, labels, colors
 
+def mol_methanol():
+    # Methanol CH3OH
+    # Typical lengths (Angstrom): C-O 1.43, O-H 0.96, C-H 1.09
+    # Indices: C0, O1, H2/H3/H4 on C, H5 on O
+    Z = [6, 8, 1, 1, 1, 1]
+    bonds = [
+        (0, 1, 1.43, "C-O"),
+        (1, 5, 0.96, "O-H"),
+        (0, 2, 1.09, "C-H"),
+        (0, 3, 1.09, "C-H"),
+        (0, 4, 1.09, "C-H"),
+    ]
+    x = node_feature_matrix(Z, bonds)
+    edge_index, edge_w = expand_edges(bonds)
+    labels = ["C0", "O1", "H2", "H3", "H4", "H5"]
+    colors = ["lightblue", "lightcoral", "lightgray", "lightgray", "lightgray", "lightgray"]
+    return x, edge_index, edge_w, labels, colors
+
 def graph_chain():  # keep a neutral toy
     Z = [0, 0, 0, 0]  # type not meaningful here
     bonds = [(0,1,1.0),(1,2,1.0),(2,3,1.0)]
@@ -1181,6 +1198,7 @@ BUILDERS = {
     "Methane CH4": mol_methane,
     "Propene C3H6": mol_propene,
     "Formic acid HCOOH": mol_formic_acid,
+    "Methanol CH3OH": mol_methanol,   # <— new
     "Chain 0-1-2-3": graph_chain,
 }
 
@@ -1282,20 +1300,17 @@ def run_demo(name="Methane CH4", steps=3, agg="Mean", act="tanh", a=0.6, b=0.8, 
     show_vectors(h, labels, title=f"After {steps} step(s) • agg={agg}, act={act}, a={a}, b={b}, safety={safety}, weight={weight_mode}")
 
 if WIDGETS_AVAILABLE:
-    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methane CH4", description="Molecule")
-    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=3, description="Steps")
-    agg_tb     = widgets.ToggleButtons(options=["Mean","Sum"], value="Mean", description="Aggregate")
-    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="tanh", description="Activation")
-    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.6, description="Self (a)")
-    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.8, description="Neighbor (b)")
-    safety_cb  = widgets.Checkbox(value=True, description="Renormalization / Safety Scale")
-    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Length", description="Edge feature")
-    run_btn    = widgets.Button(description="Run", button_style="primary")
-    out_graph  = widgets.Output()
-    out_vec    = widgets.Output()
+    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methanol CH3OH", description="Molecule")  
+    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=0, description="Steps")                            
+    agg_tb     = widgets.ToggleButtons(options=["Mean","Sum"], value="Sum", description="Aggregate")
+    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="Identity", description="Activation")  
+    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=1.0, description="Self (a)")              
+    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.5, description="Neighbor (b)")          
+    safety_cb  = widgets.Checkbox(value=False, description="Renormalization / Safety Scale")                       
+    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Inverse length", description="Edge feature") 
     def on_run(_):
         out_graph.clear_output(wait=True); out_vec.clear_output(wait=True)
-        with out_graph: 
+        with out_graph:
             x, ei, ew, labels, colors = BUILDERS[graph_dd.value]()
             show_graph(ei, labels, colors, title=f"{graph_dd.value} — bonds (Å weighting)")
         with out_vec:
@@ -1315,7 +1330,7 @@ if WIDGETS_AVAILABLE:
     on_run(None)
 else:
     # Fallback run here so you can see the revised initialization and new Formic acid example
-    run_demo(name="Formic acid HCOOH", steps=3, agg="Mean", act="tanh", a=0.6, b=0.8, safety=True, weight_mode="Length")
+    run_demo(name="Methanol CH3OH", steps=0, agg="Mean", act="Identity", a=1.0, b=0.5, safety=False, weight_mode="Inverse length")
 
 ```
 
@@ -1356,8 +1371,6 @@ graphs.
 ```{code-cell} ipython3
 :tags: [hide-input]
 def smiles_to_graph(smiles):
-    if not RDKit_OK:
-        raise RuntimeError("RDKit not available in this environment.")
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         raise ValueError(f"Invalid SMILES: {smiles}")
@@ -1422,14 +1435,14 @@ def bond_df(mol, edge_index, edge_attr):
     return pd.DataFrame(rows)
 
 def draw_mol(mol, title):
-    if RDKit_OK:
+    try:
         img = Draw.MolToImage(mol, size=(400, 300), kekulize=True)
         plt.figure(figsize=(4,3))
         plt.imshow(img)
         plt.axis("off")
         plt.title(title)
         plt.show()
-    else:
+    except:
         # Fallback: NetworkX from connectivity
         import networkx as nx
         G = nx.Graph()
@@ -1958,7 +1971,7 @@ MPNN
   - Classification: `Accuracy`, `Precision`, `Recall`, `F1`, `ROC AUC`  
 
 
-# 9. In-class activities
+## 9. In-class activities
 
 ### Q1. Build an MLP for toxicity classification  
 - Use input features `[MolWt, LogP, TPSA, NumRings]`.  

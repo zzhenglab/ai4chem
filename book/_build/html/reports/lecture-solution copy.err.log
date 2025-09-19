@@ -36,36 +36,77 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-df_reg = df[["MolWt","LogP","TPSA","NumRings","Melting Point"]].dropna()
-X = df_reg[["MolWt","LogP","TPSA","NumRings"]].values
-y = df_reg["Melting Point"].values
-Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=7)
+# Q1 solution
+set_seed(0)
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
+df_oxidation_raw = pd.read_csv(url)
+def calc_descriptors(smiles):
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return pd.Series({
+            "MolWt": None,
+            "LogP": None,
+            "TPSA": None,
+            "NumRings": None
+        })
+    return pd.Series({
+        "MolWt": Descriptors.MolWt(mol),                    # molecular weight
+        "LogP": Crippen.MolLogP(mol),                       # octanol-water logP
+        "TPSA": rdMolDescriptors.CalcTPSA(mol),             # topological polar surface area
+        "NumRings": rdMolDescriptors.CalcNumRings(mol)      # number of rings
+    })
 
-pipe = Pipeline([
-    ("scaler", StandardScaler()),
-    ("mlp", MLPRegressor(hidden_layer_sizes=(32,), activation="relu",
-                         alpha=1e-3, learning_rate_init=0.01,
-                         max_iter=1500, random_state=0))
-]).fit(Xtr, ytr)
+# Apply the function to the SMILES column
+desc_df = df_oxidation_raw["SMILES"].apply(calc_descriptors)
 
-yhat = pipe.predict(Xte)
-print(f"MSE={mean_squared_error(yte,yhat):.2f}  MAE={mean_absolute_error(yte,yhat):.2f}  R2={r2_score(yte,yhat):.3f}")
+# Concatenate new descriptor columns to original DataFrame
+df_clf = pd.concat([df_oxidation_raw, desc_df], axis=1)
+df_reg = df_clf.copy() 
 
-plt.figure(figsize=(4.5,4))
-plt.scatter(yte, yhat, alpha=0.65)
-lims = [min(yte.min(), yhat.min()), max(yte.max(), yhat.max())]
-plt.plot(lims, lims, "k--")
-plt.xlabel("True MP"); plt.ylabel("Pred MP"); plt.title("Q1 parity")
-plt.show()
+# Logistic regression baseline
+from sklearn.linear_model import LogisticRegression
+X = df_clf[["MolWt","LogP","TPSA","NumRings"]].values
+y = df_clf["Toxicity"].str.lower().map({"toxic":1,"non_toxic":0}).values
+Xtr,Xte,ytr,yte = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+baseline = LogisticRegression(max_iter=1000).fit(Xtr,ytr)
+print("Baseline acc:", accuracy_score(yte, baseline.predict(Xte)))
+
+# MLP from scratch
+class MLP_Q1(nn.Module):
+    def __init__(self,in_dim,hidden=32,n_classes=2):
+        super().__init__()
+        self.fc1 = nn.Linear(in_dim,hidden)
+        self.fc2 = nn.Linear(hidden,n_classes)
+    def forward(self,x):
+        return self.fc2(F.relu(self.fc1(x)))
+
+model = MLP_Q1(4)
+opt = torch.optim.Adam(model.parameters(), lr=1e-2)
+loss_fn = nn.CrossEntropyLoss()
+
+for epoch in range(200):
+    xb = torch.tensor(Xtr, dtype=torch.float32)
+    yb = torch.tensor(ytr, dtype=torch.long)
+    opt.zero_grad()
+    out = model(xb)
+    loss = loss_fn(out,yb)
+    loss.backward()
+    opt.step()
+
+model.eval()
+ypred = model(torch.tensor(Xte, dtype=torch.float32)).argmax(1).numpy()
+print("MLP acc:", accuracy_score(yte, ypred))
+#For this question and the following questions, it is fine if the model performance is worse than the baseline. 
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m df_reg = [43mdf[49m[[[33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m,[33m"[39m[33mMelting Point[39m[33m"[39m]].dropna()
-[32m      2[39m X = df_reg[[[33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m]].values
-[32m      3[39m y = df_reg[[33m"[39m[33mMelting Point[39m[33m"[39m].values
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
+[32m      1[39m [38;5;66;03m# Q1 solution[39;00m
+[32m----> [39m[32m2[39m [43mset_seed[49m([32m0[39m)
+[32m      3[39m url = [33m"[39m[33mhttps://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv[39m[33m"[39m
+[32m      4[39m df_oxidation_raw = pd.read_csv(url)
 
-[31mNameError[39m: name 'df' is not defined
+[31mNameError[39m: name 'set_seed' is not defined
 
