@@ -431,7 +431,7 @@ Here we predict `toxic` vs `non_toxic`.
 
 ### 4.1 Build classification dataset
 
-```{code-cell} ipython3
+```python
 df_tox = df[["SMILES","tox_bin"]].dropna()
 smis = df_tox["SMILES"].tolist()
 ys   = df_tox["tox_bin"].astype(int).to_numpy().reshape(-1,1)
@@ -449,7 +449,7 @@ tox_te = data.MoleculeDataset(te[0], featurizer=feat)
 
 ### 4.2 Model and training
 
-```{code-cell} ipython3
+```python
 mp  = nn.BondMessagePassing()
 agg = nn.MeanAggregation()
 ffn = nn.BinaryClassificationFFN(n_tasks=1)
@@ -465,9 +465,18 @@ trainer_tox.fit(mpnn_tox, tr_loader, va_loader)
 trainer_tox.test(mpnn_tox, te_loader)
 ```
 
+```{admonition} Output
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│         test/roc          │    0.8480725288391113     │
+└───────────────────────────┴───────────────────────────┘
+[{'test/roc': 0.8480725288391113}]
+```
+
 ### 4.3 ROC curve
 
-```{code-cell} ipython3
+```python
 
 # Gather probabilities
 with torch.inference_mode():
@@ -487,6 +496,12 @@ plt.ylabel("TPR")
 plt.title("ROC: Toxicity")
 plt.grid(True)
 plt.show()
+```
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-10-roc.png"))
+
 ```
 
 ---
