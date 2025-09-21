@@ -22,24 +22,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-mp  = nn.BondMessagePassing()        # node/edge update
-agg = nn.MeanAggregation()           # pool node vectors
-out = nn.RegressionFFN(              # simple FFN head
-    output_transform=nn.UnscaleTransform.from_standard_scaler(scaler)
-)
-batch_norm = True
-metrics = [nn.metrics.RMSE(), nn.metrics.MAE()]  # first metric used for early stopping
+raise RuntimeError("Intentional stop: ending execution here.")
 ------------------
 
 
 [1;31m---------------------------------------------------------------------------[0m
-[1;31mNameError[0m                                 Traceback (most recent call last)
-Cell [1;32mIn[5], line 1[0m
-[1;32m----> 1[0m mp  [38;5;241m=[39m [43mnn[49m[38;5;241m.[39mBondMessagePassing()        [38;5;66;03m# node/edge update[39;00m
-[0;32m      2[0m agg [38;5;241m=[39m nn[38;5;241m.[39mMeanAggregation()           [38;5;66;03m# pool node vectors[39;00m
-[0;32m      3[0m out [38;5;241m=[39m nn[38;5;241m.[39mRegressionFFN(              [38;5;66;03m# simple FFN head[39;00m
-[0;32m      4[0m     output_transform[38;5;241m=[39mnn[38;5;241m.[39mUnscaleTransform[38;5;241m.[39mfrom_standard_scaler(scaler)
-[0;32m      5[0m )
+[1;31mRuntimeError[0m                              Traceback (most recent call last)
+Cell [1;32mIn[1], line 1[0m
+[1;32m----> 1[0m [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124m"[39m[38;5;124mIntentional stop: ending execution here.[39m[38;5;124m"[39m)
 
-[1;31mNameError[0m: name 'nn' is not defined
+[1;31mRuntimeError[0m: Intentional stop: ending execution here.
 

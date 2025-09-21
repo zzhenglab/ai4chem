@@ -30,7 +30,12 @@ kernelspec:
 - Train a **reactivity** classifier and an **atom-level selectivity** predictor.
 - Interpret a trained model with **Shapley values (SHAP)** at the feature and node levels.
 
-Important note: For this lecture 10, it is recommended to run everything in Colab. On this HTML page, some outputs are disabled due to execution limits, so only code and some example output is displayed.
+```{admonition} Important note
+For this lecture 10, it is recommended to run everything in Colab. On this HTML page, some outputs are disabled due to execution limits, so only code and some example output is displayed.
+```
+
+
+
 ---
 
 
@@ -51,13 +56,6 @@ from pathlib import Path
 # RDKit (must be installed in THIS venv)
 from rdkit import Chem
 from rdkit.Chem import Draw, Descriptors, Crippen, rdMolDescriptors, AllChem
-
-# Lightning (either import works depending on install)
-try:
-    from lightning import pytorch as pl
-except ImportError:
-    import pytorch_lightning as pl
-
 
 import warnings, math, os, sys, json, time, random
 warnings.filterwarnings("ignore")
@@ -125,7 +123,7 @@ $
 h_{i \to j}^{(t)} = \sigma \Big( W \cdot \big( h_{i \to j}^{(t-1)} + \sum_{k \in \mathcal{N}(i) \setminus \{j\}} h_{k \to i}^{(t-1)} \big) + b \Big)
 $,
 
-where `σ` is an activation such as `ReLU`, `W` is a learned weight, $x_{i→j}$ are featurized inputs, $⊕$ is concatenation, and $N(i)\j$ removes the target atom to avoid immediate backtracking. After T steps, Chemprop aggregates per directed bond states to atom states, then pools to a molecule vector $h_mol$ using sum or mean or attention pooling. $h_mol$ feeds a multitask feedforward head.
+where `σ` is an activation such as `ReLU`, `W` is a learned weight, $x_{i→j}$ are featurized inputs, $⊕$ is concatenation, and $N(i)\{j}$ removes the target atom to avoid immediate backtracking. After T steps, Chemprop aggregates per directed bond states to atom states, then pools to a molecule vector $h_mol$ using sum or mean or attention pooling. $h_mol$ feeds a multitask feedforward head.
 
 We have been working with the following quite many times:
 - **Solubility_mol_per_L**: continuous. Regression with loss like MSE or MAE.
@@ -299,7 +297,7 @@ In particular, we will:
 
 ### 3.1 Pick blocks
 
-```{code-cell} ipython3
+```python
 mp  = nn.BondMessagePassing()        # node/edge update
 agg = nn.MeanAggregation()           # pool node vectors
 out = nn.RegressionFFN(              # simple FFN head
@@ -326,7 +324,7 @@ Once the blocks are chosen, we wrap them into a full MPNN model. Chemprop uses P
 
 We limit to 15 epochs here for demonstration, but in practice you might extend this depending on dataset size and convergence.
 
-```{code-cell} ipython3
+```python
 mpnn_sol = models.MPNN(mp, agg, out, batch_norm, metrics)
 
 checkpoint_dir = Path("checkpoints_sol")
@@ -355,7 +353,7 @@ Since we implement everything earlier, now training is as simple as calling `fit
 
 During training, you can monitor validation loss to see whether the model is underfitting, overfitting, or converging as expected.
 
-```{code-cell} ipython3
+```python
 trainer.fit(mpnn_sol, train_loader, val_loader)
 ```
 
@@ -365,7 +363,7 @@ After training, we hold back the test set for final evaluation. We then visualiz
 
 
 
-```{code-cell} ipython3
+```python
 results = trainer.test(mpnn_sol, test_loader)
 
 # Gather predictions for parity
@@ -391,6 +389,22 @@ plt.title("Parity plot: Solubility")
 plt.grid(True)
 plt.show()
 ```
+```{admonition} Output
+
+│         test/mae          │    0.2726641297340393     │
+│         test/rmse         │    0.4700523018836975     │
+
+
+Test size: 58
+```
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-10-pa-plot.png"))
+
+```
+
+
 
 ```{admonition} ⏰ Exercise
 Change the aggregation from `MeanAggregation()` to `SumAggregation()` and retrain for 10 epochs. Compare RMSE and the parity plot. What changed?
@@ -405,7 +419,7 @@ Here we predict `toxic` vs `non_toxic`.
 
 ### 4.1 Build classification dataset
 
-```{code-cell} ipython3
+```python
 df_tox = df[["SMILES","tox_bin"]].dropna()
 smis = df_tox["SMILES"].tolist()
 ys   = df_tox["tox_bin"].astype(int).to_numpy().reshape(-1,1)
@@ -423,7 +437,7 @@ tox_te = data.MoleculeDataset(te[0], featurizer=feat)
 
 ### 4.2 Model and training
 
-```{code-cell} ipython3
+```python
 mp  = nn.BondMessagePassing()
 agg = nn.MeanAggregation()
 ffn = nn.BinaryClassificationFFN(n_tasks=1)
@@ -439,9 +453,18 @@ trainer_tox.fit(mpnn_tox, tr_loader, va_loader)
 trainer_tox.test(mpnn_tox, te_loader)
 ```
 
+```{admonition} Output
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        Test metric        ┃       DataLoader 0        ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│         test/roc          │    0.8480725288391113     │
+└───────────────────────────┴───────────────────────────┘
+[{'test/roc': 0.8480725288391113}]
+```
+
 ### 4.3 ROC curve
 
-```{code-cell} ipython3
+```python
 
 # Gather probabilities
 with torch.inference_mode():
@@ -461,6 +484,12 @@ plt.ylabel("TPR")
 plt.title("ROC: Toxicity")
 plt.grid(True)
 plt.show()
+```
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-10-roc.png"))
+
 ```
 
 ---
@@ -578,7 +607,7 @@ grid_img
 
 This mirrors the toxicity workflow.
 
-```{code-cell} ipython3
+```python
 df_rxn = df[["SMILES","react_bin"]].dropna()
 smis = df_rxn["SMILES"].tolist()
 ys   = df_rxn["react_bin"].astype(int).to_numpy().reshape(-1,1)
@@ -608,14 +637,17 @@ trainer_rxn.fit(mpnn_rxn, tr_loader, va_loader)
 trainer_rxn.test(mpnn_rxn, te_loader)
 ```
 
+```{admonition} Output
+[{'test/roc': 0.9569892883300781}]
+```
+
 ### 5.2 Atom-level selectivity: build labels per atom
 
 We want atom targets `1` for indices that appear in `site_list`, and `0` otherwise.
 
 We will create **MolAtomBondDatapoint** objects. For a gentle first pass, we only supply `atom_y` and leave other advanced inputs out.
 
-```{code-cell} ipython3
-import ast
+```python
 
 def atoms_labels_from_smiles(smi, positive_idxs):
     if Chem is None:
@@ -650,7 +682,7 @@ len(sel_dps), type(sel_dps[0]).__name__
 
 Split and dataset construction.
 
-```{code-cell} ipython3
+```python
 mols = [Chem.MolFromSmiles(dp.name) if hasattr(dp, "name") else None for dp in sel_dps]
 # For structure-based split we need RDKit Mol. Build directly from SMILES fallback:
 mols = [Chem.MolFromSmiles(df.loc[df["SMILES"]==dp.name, "SMILES"].iloc[0]) if Chem else None for dp in sel_dps]
@@ -670,7 +702,7 @@ te_loader = data.build_dataloader(te_set, shuffle=False, batch_size=8)
 
 Model for molecule and atom predictions. Here we focus on atom prediction.
 
-```{code-cell} ipython3
+```python
 mp = nn.MABBondMessagePassing(
     d_v=feat.atom_fdim, d_e=feat.bond_fdim, d_h=300, depth=3, dropout=0.1
 )
@@ -694,9 +726,13 @@ trainer_sel.fit(model_sel, tr_loader, va_loader)
 trainer_sel.test(model_sel, te_loader)
 ```
 
+```{admonition} Output
+[{'atom_test/roc': 0.8910984396934509}]
+```
+
 Inspect a molecule with predicted atom probabilities by Visualizing probabilities as atom annotations for the first molecule in the batch.
 
-```{code-cell} ipython3
+```PYTHON
 :tags: [hide-input]
 # 1) Pick which test item to visualize
 idx = 11  # change as you like
@@ -732,6 +768,11 @@ display(img)
 
 ```
 
+
+
+
+
+
 ```{admonition} ⏰ Exercise 7.1
 Switch the atom predictor to a small regression head and train with labels 0.0 or 1.0. Then threshold the outputs at 0.5 to recover classes. Compare AUROC.
 ```
@@ -740,137 +781,476 @@ Switch the atom predictor to a small regression head and train with labels 0.0 o
 
 ---
 
-## 6. Interpretation with SHAP
+## 6. Rationale
 
-We show a compact variant of SHAP for a trained **molecule-level** model. This helps answer: which features or nodes influenced a prediction.
+In this section we ask **why** the model makes its predictions. Instead of just reporting a number for solubility or reactivity, we try to find the *substructures* of a molecule that drive the prediction.
 
+The method we use is a simplified form of **Monte Carlo Tree Search (MCTS) rationale extraction** from the Chemprop:
 
-### 6.1 Install and prepare
+1. **Start with the whole molecule** and its predicted property.
+2. **Systematically remove small fragments** (like a bond or a ring) and check how the model’s prediction changes for the remaining subgraph.
+3. Build a search tree of candidate subgraphs and keep the ones that still predict strongly for the property of interest.
+4. From this set, report the **smallest and most predictive subgraph** as the *rationale*.
 
-```{code-cell} ipython3
-try:
-    import shap
-except Exception:
-    # !pip install shap 
-    import shap
-```
+```python
 
-### 6.2 Wrap the model for SHAP
-
-We illustrate feature-ablation style with the default featurizers.
-
-```{code-cell} ipython3
-from copy import deepcopy
-
-# Use the solubility model as example
-test_smi = df_sol["SMILES"].iloc[0]
-
-atom_featurizer = featurizers.atom.MultiHotAtomFeaturizer.v2()
-bond_featurizer = featurizers.bond.MultiHotBondFeaturizer()
-
-def predict_with_keep_masks(keep_atom_feats, keep_bond_feats, smi):
-    # This uses masks of booleans for atom and bond feature groups
-    fz = featurizers.molgraph.molecule.SimpleMoleculeMolGraphFeaturizer(
-        atom_featurizer=atom_featurizer,
-        bond_featurizer=bond_featurizer
-    )
-    dp = data.MoleculeDatapoint.from_smi(smi)
-    ds = data.MoleculeDataset([dp], featurizer=fz)
-    dl = data.build_dataloader(ds, shuffle=False, batch_size=1)
-
+# Predict a list of SMILES with a single-task model. Returns array shape (n, 1).
+def make_prediction(models_in: List[MPNN], trainer_in: pl.Trainer, smiles: List[str]) -> np.ndarray:
+    test_data = [data.MoleculeDatapoint.from_smi(s) for s in smiles]
+    test_dset = data.MoleculeDataset(test_data)
+    test_loader = data.build_dataloader(test_dset, batch_size=1, num_workers=0, shuffle=False)
     with torch.inference_mode():
-        pred = trainer.predict(mpnn_sol, dl)[0][0]
-    return float(pred)
+        agg = None
+        for m in models_in:
+            pred_batches = trainer_in.predict(m, test_loader)  # list of tensors/arrays
+            preds = torch.cat([torch.as_tensor(pb) for pb in pred_batches], dim=0).cpu().numpy()
+            agg = preds if agg is None else (agg + preds)
+    return agg / len(models_in)
+
+# ---- MCTS components (as in tutorial, with safer kekulize handling) ----
+@dataclass
+class MCTSNode:
+    smiles: str
+    atoms: Iterable[int]
+    W: float = 0
+    N: float = 0
+    P: float = 0
+    children: list = field(default_factory=list)
+    def __post_init__(self): self.atoms = set(self.atoms)
+    def Q(self) -> float: return self.W / self.N if self.N > 0 else 0
+    def U(self, n: int, c_puct: float = 10.0) -> float: return c_puct * self.P * math.sqrt(n) / (1 + self.N)
+
+def find_clusters(mol: Chem.Mol) -> Tuple[List[Tuple[int,...]], List[List[int]]]:
+    n = mol.GetNumAtoms()
+    if n == 1: return [(0,)], [[0]]
+    clusters = []
+    for b in mol.GetBonds():
+        i, j = b.GetBeginAtomIdx(), b.GetEndAtomIdx()
+        if not b.IsInRing():
+            clusters.append((i, j))
+    ssr = [tuple(x) for x in Chem.GetSymmSSSR(mol)]
+    clusters.extend(ssr)
+    atom_cls = [[] for _ in range(n)]
+    for k, cl in enumerate(clusters):
+        for a in cl: atom_cls[a].append(k)
+    return clusters, atom_cls
+
+def extract_subgraph_from_mol(mol: Chem.Mol, selected_atoms: set) -> Tuple[Chem.Mol, List[int]]:
+    sel = set(selected_atoms)
+    roots = []
+    for idx in sel:
+        atom = mol.GetAtomWithIdx(idx)
+        if any(nei.GetIdx() not in sel for nei in atom.GetNeighbors()):
+            roots.append(idx)
+    rw = Chem.RWMol(mol)
+    for idx in roots:
+        a = rw.GetAtomWithIdx(idx)
+        a.SetAtomMapNum(1)
+        aroma = [b for b in a.GetBonds() if b.GetBondType() == Chem.rdchem.BondType.AROMATIC]
+        aroma = [b for b in aroma if b.GetBeginAtom().GetIdx() in sel and b.GetEndAtom().GetIdx() in sel]
+        if len(aroma) == 0: a.SetIsAromatic(False)
+    for idx in sorted([a.GetIdx() for a in rw.GetAtoms() if a.GetIdx() not in sel], reverse=True):
+        rw.RemoveAtom(idx)
+    return rw.GetMol(), roots
+
+def extract_subgraph(smiles: str, selected_atoms: set) -> Tuple[Union[str,None], Union[List[int],None]]:
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None: return None, None
+    # try kekulized
+    try:
+        mk = Chem.Mol(mol); Chem.Kekulize(mk)
+        sub, roots = extract_subgraph_from_mol(mk, selected_atoms)
+        try:
+            smi = Chem.MolToSmiles(sub, kekuleSmiles=True)
+            sub = Chem.MolFromSmiles(smi)
+        except Exception: sub = None
+        if sub is not None and mol.HasSubstructMatch(sub): return Chem.MolToSmiles(sub), roots
+    except Exception:
+        pass
+    # fallback without kekulize
+    sub, roots = extract_subgraph_from_mol(mol, selected_atoms)
+    try:
+        smi = Chem.MolToSmiles(sub)
+        sub = Chem.MolFromSmiles(smi)
+    except Exception: sub = None
+    return (Chem.MolToSmiles(sub), roots) if sub is not None else (None, None)
+
+def mcts_rollout(node: MCTSNode, state_map, orig_smiles, clusters, atom_cls, nei_cls,
+                 scoring_fn: Callable[[List[str]], np.ndarray], min_atoms=8, c_puct=10.0) -> float:
+    cur = node.atoms
+    if len(cur) <= min_atoms: return node.P
+    if len(node.children) == 0:
+        cur_cls = set([i for i, x in enumerate(clusters) if x <= cur])
+        for i in cur_cls:
+            leaf_atoms = [a for a in clusters[i] if len(atom_cls[a] & cur_cls) == 1]
+            if len(nei_cls[i] & cur_cls) == 1 or (len(clusters[i]) == 2 and len(leaf_atoms) == 1):
+                new_atoms = cur - set(leaf_atoms)
+                new_smi, _ = extract_subgraph(orig_smiles, new_atoms)
+                if not new_smi: continue
+                node.children.append(state_map.get(new_smi, MCTSNode(new_smi, new_atoms)))
+        state_map[node.smiles] = node
+        if len(node.children) == 0: return node.P
+        scores = scoring_fn([x.smiles for x in node.children])
+        for child, sc in zip(node.children, scores): child.P = float(sc)
+    totalN = sum(c.N for c in node.children)
+    nxt = max(node.children, key=lambda x: x.Q() + x.U(totalN, c_puct=c_puct))
+    v = mcts_rollout(nxt, state_map, orig_smiles, clusters, atom_cls, nei_cls, scoring_fn, min_atoms=min_atoms, c_puct=c_puct)
+    nxt.W += v; nxt.N += 1
+    return v
+
+def run_mcts_for_smiles(smi: str, scoring_fn, rollout=10, c_puct=10.0,
+                        min_atoms=8, max_atoms=20) -> List[MCTSNode]:
+    mol = Chem.MolFromSmiles(smi)
+    if mol is None: return []
+    clusters_raw, atom_cls_raw = find_clusters(mol)
+    clusters = [set(cl) for cl in clusters_raw]
+    atom_cls = [set(x) for x in atom_cls_raw]
+    nei_cls = []
+    for i, cl in enumerate(clusters):
+        neigh = [nei for a in cl for nei in atom_cls_raw[a]]
+        nei_cls.append(set(neigh) - {i})
+    root = MCTSNode(smi, set(range(mol.GetNumAtoms())))
+    state_map = {smi: root}
+    for _ in range(rollout):
+        mcts_rollout(root, state_map, smi, clusters, atom_cls, nei_cls, scoring_fn, min_atoms=min_atoms, c_puct=c_puct)
+    rats = [node for _, node in state_map.items() if node.smiles is not None and len(node.atoms) <= max_atoms]
+    return rats
+
+# Simple fragment fallback if MCTS cannot find anything
+def find_fragments(mol: Chem.Mol):
+    frags = []
+    for b in mol.GetBonds():
+        if not b.IsInRing():
+            frags.append({b.GetBeginAtomIdx(), b.GetEndAtomIdx()})
+    try:
+        for ring in Chem.GetSymmSSSR(mol):
+            frags.append(set(int(i) for i in ring))
+    except Exception:
+        pass
+    return frags
+
+def fragment_top1(smi: str, scoring_fn) -> List[Tuple[str, float]]:
+    mol = Chem.MolFromSmiles(smi)
+    if mol is None: return []
+    cands = []
+    for aset in find_fragments(mol):
+        sub_smi, _ = extract_subgraph(smi, aset)
+        if sub_smi: cands.append(sub_smi)
+    if not cands: return []
+    cands = list(dict.fromkeys(cands))
+    scores = scoring_fn(cands)
+    idx = int(np.argmax(scores))
+    return [(cands[idx], float(scores[idx]))]
+
+def visualize_rationale_on_parent(parent_smi: str, rationale_smi: str, size=(520, 420)):
+    pm = Chem.MolFromSmiles(parent_smi)
+    rm = Chem.MolFromSmiles(rationale_smi)
+    if pm is None or rm is None:
+        print("Cannot draw: invalid SMILES.")
+        return
+    match = pm.GetSubstructMatch(rm)
+    hi_atoms = list(match) if match else []
+    drawer = rdMolDraw2D.MolDraw2DCairo(size[0], size[1])
+    opts = drawer.drawOptions()
+    for attr in ("atomLabelFontSize", "fontSize", "scalingFactor"):
+        if hasattr(opts, attr):
+            try:
+                setattr(opts, attr, 0.9)
+                break
+            except Exception:
+                pass
+    rdMolDraw2D.PrepareAndDrawMolecule(drawer, pm,
+                                       highlightAtoms=hi_atoms if hi_atoms else None)
+    drawer.FinishDrawing()
+    png = drawer.GetDrawingText()
+    display(Image(data=png))
+
 ```
 
-Define a SHAP-compatible callable and a simple masker.
 
-```{code-cell} ipython3
-# Example wrapper that expects a 12-dim mask [8 atom feat groups + 4 bond feat groups]
-def model_wrapper(X):
-    preds = []
-    for row in X:
-        a_mask = [bool(v) for v in row[:8]]
-        b_mask = [bool(v) for v in row[8:12]]
-        preds.append([predict_with_keep_masks(a_mask, b_mask, test_smi)])
-    return np.array(preds)
 
-def binary_masker(binary_mask, x):
-    x2 = deepcopy(x)
-    x2[binary_mask == 0] = 0
-    return np.array([x2])
+Because scoring is done by predicting each subgraph as if it were a standalone molecule, the absolute values (like negative `logS`) may not be directly comparable to the parent’s score. What matters is the **difference (Δ)**: how much the rationale’s score differs from the parent. A positive Δ means the subgraph supports the property; a negative Δ means removing that part lowers the property.
+
+We generate a **summary table** with one rationale (`rationale_0`) for each molecule:
+
+- `smiles`: the original molecule  
+- `logS` or `react_prob`: the model’s prediction on the full molecule  
+- `rationale_0`: the SMILES string of the key substructure  
+- `rationale_0_score`: the model’s prediction on that substructure  
+- `rationale_0_delta`: the difference between rationale and parent  
+
+Finally, we **visualize the rationale** by highlighting the matching atoms in the parent molecule. This lets us
+
+### 6.1 Solubility prediction rationale
+
+```python
+# ===== Solubility summary table with top-1 rationale =====
+# Uses your trained mpnn_sol and trainer, and df_sol["SMILES"]
+
+models_sol = [mpnn_sol]  # must be single-task regression
+prop_name = "logS"
+
+def scoring_fn_sol(smiles_list: List[str]) -> np.ndarray:
+    return make_prediction(models_sol, trainer, smiles_list)[:, 0]
+
+# Build table
+N = 15  # how many molecules to summarize
+sample_smis = df_sol["SMILES"].tolist()[:N]
+
+rows = {"smiles": [], prop_name: [], "rationale_0": [], "rationale_0_score": []}
+
+t0 = time.time()
+for smi in sample_smis:
+    base = float(scoring_fn_sol([smi])[0])
+    rows["smiles"].append(smi)
+    rows[prop_name].append(base)
+
+    # size-aware MCTS settings
+    mol = Chem.MolFromSmiles(smi)
+    n = mol.GetNumAtoms() if mol is not None else 20
+    min_atoms = max(3, int(0.30 * n))
+    max_atoms = max(min_atoms + 1, int(0.60 * n))
+
+    rats = run_mcts_for_smiles(smi, scoring_fn_sol, rollout=10, c_puct=10.0,
+                               min_atoms=min_atoms, max_atoms=max_atoms)
+
+    if rats:
+        # choose smallest subgraphs, then highest score
+        ms = min(len(x.atoms) for x in rats)
+        kept = [x for x in rats if len(x.atoms) == ms and x.smiles is not None]
+        kept.sort(key=lambda x: x.P, reverse=True)
+        r0 = kept[0].smiles
+        r0s = float(kept[0].P)
+    else:
+        # fallback to fragment top1
+        top1 = fragment_top1(smi, scoring_fn_sol)
+        if top1:
+            r0, r0s = top1[0]
+        else:
+            r0, r0s = None, None
+
+    rows["rationale_0"].append(r0)
+    rows["rationale_0_score"].append(r0s)
+
+elapsed = time.time() - t0
+print(f"Solubility: built table for {len(sample_smis)} molecules in {elapsed:.2f}s")
+
+
+
+solubility_rationales = pd.DataFrame(rows)
+solubility_rationales
+
+if pd.notna(solubility_rationales.loc[0, "rationale_0"]):
+    parent = solubility_rationales.loc[0, "smiles"]
+    rat    = solubility_rationales.loc[0, "rationale_0"]
+    print("Parent:", parent)
+    print("Rationale 0:", rat, " score=", solubility_rationales.loc[0, "rationale_0_score"])
+    visualize_rationale_on_parent(parent, rat)
+
 ```
+### 6.2 Reactivity prediction rationale
 
-Run SHAP on a single mask example.
+```python
+# ===== Reactivity summary table with top-1 rationale =====
+# Uses your trained mpnn_rxn and trainer_rxn, and df_rxn["SMILES"]
 
-```{code-cell} ipython3
-explainer = shap.PermutationExplainer(model_wrapper, masker=binary_masker)
-X0 = np.ones((1,12))
-explanation = explainer(X0, max_evals=100)
+models_rxn = [mpnn_rxn]     # single-task binary classification head
+trainer_cls = trainer_rxn   # your classification trainer
 
-explanation.values, explanation.base_values
-```
+def scoring_fn_rxn(smiles_list: List[str]) -> np.ndarray:
+    # predict logits, convert to probabilities with sigmoid
+    preds = make_prediction(models_rxn, trainer_cls, smiles_list)[:, 0]
+    # Some builds return probs already; to be safe, apply sigmoid if outside [0,1]
+    if ((preds < 0) | (preds > 1)).any():
+        preds = 1.0 / (1.0 + np.exp(-preds))
+    return preds.reshape(-1,)
 
-Bar plot of contributions.
+# Build table
+N = 15
+sample_smis_rxn = df_rxn["SMILES"].tolist()[:N]
 
-```{code-cell} ipython3
-shap.plots.bar(explanation[0])
-```
+rows_rxn = {"smiles": [], "react_prob": [], "rationale_0": [], "rationale_0_score": []}
 
-```{admonition} Notes
-- Values indicate how keeping a feature group pushes the predicted solubility up or down relative to a base.
-- Use care when interpreting these numbers. For rigorous analysis, use trained models with stable validation performance and repeat SHAP sampling.
-```
+t0 = time.time()
+for smi in sample_smis_rxn:
+    base_p = float(scoring_fn_rxn([smi])[0])
+    rows_rxn["smiles"].append(smi)
+    rows_rxn["react_prob"].append(base_p)
 
-```{admonition} ⏰ Exercise 8.1
-Change `test_smi` to another molecule from the dataset and rerun the SHAP explainer. Which feature group appears most helpful for that molecule?
+    mol = Chem.MolFromSmiles(smi)
+    n = mol.GetNumAtoms() if mol is not None else 20
+    min_atoms = max(3, int(0.30 * n))
+    max_atoms = max(min_atoms + 1, int(0.60 * n))
+
+    rats = run_mcts_for_smiles(smi, scoring_fn_rxn, rollout=10, c_puct=10.0,
+                               min_atoms=min_atoms, max_atoms=max_atoms)
+
+    if rats:
+        ms = min(len(x.atoms) for x in rats)
+        kept = [x for x in rats if len(x.atoms) == ms and x.smiles is not None]
+        kept.sort(key=lambda x: x.P, reverse=True)
+        r0 = kept[0].smiles
+        r0s = float(kept[0].P)
+    else:
+        top1 = fragment_top1(smi, scoring_fn_rxn)
+        if top1:
+            r0, r0s = top1[0]
+        else:
+            r0, r0s = None, None
+
+    rows_rxn["rationale_0"].append(r0)
+    rows_rxn["rationale_0_score"].append(r0s)
+
+elapsed = time.time() - t0
+print(f"Reactivity: built table for {len(sample_smis_rxn)} molecules in {elapsed:.2f}s")
+
+reactivity_rationales = pd.DataFrame(rows_rxn)
+reactivity_rationales
+
+if pd.notna(reactivity_rationales.loc[0, "rationale_0"]):
+    parent = reactivity_rationales.loc[0, "smiles"]
+    rat    = reactivity_rationales.loc[0, "rationale_0"]
+    print("Parent:", parent)
+    print("Rationale 0:", rat, " score=", reactivity_rationales.loc[0, "rationale_0_score"])
+    visualize_rationale_on_parent(parent, rat)
+
 ```
 
 ---
 
-## 9. Save and run inference
 
-We collect model checkpoints and write a helper that predicts all four properties plus reactivity from a list of SMILES.
+
+## 7. Chemprop CLI (Command-Line Interface)
+
+
+
+
+Prepare a minimal CSV: `SMILES,Melting Point`.
 
 ```{code-cell} ipython3
-# Keep references to trained models. If you restarted the kernel, reload from checkpoints.
-sol_model  = mpnn_sol
-pka_model  = mpnn_pka
-mp_model   = mpnn_mp
-tox_model  = mpnn_tox
-rxn_model  = mpnn_rxn
-
-def predict_all(smis):
-    outs = []
-    # Build datasets once per model to reuse featurizers
-    feat = featurizers.SimpleMoleculeMolGraphFeaturizer()
-    test_dps = [data.MoleculeDatapoint.from_smi(s) for s in smis]
-    ds = data.MoleculeDataset(test_dps, featurizer=feat)
-    dl = data.build_dataloader(ds, shuffle=False)
-
-    with torch.inference_mode():
-        sol = np.concatenate(trainer.predict(sol_model, dl), axis=0).ravel()
-        pka = np.concatenate(trainer_pka.predict(pka_model, dl), axis=0).ravel()
-        mpv = np.concatenate(trainer_mp.predict(mp_model, dl), axis=0).ravel()
-        tox = np.concatenate(trainer_tox.predict(tox_model, dl), axis=0).ravel()
-        rxn = np.concatenate(trainer_rxn.predict(rxn_model, dl), axis=0).ravel()
-
-    return pd.DataFrame({
-        "SMILES": smis,
-        "Solubility_pred": sol,
-        "pKa_pred": pka,
-        "MeltingPoint_pred": mpv,
-        "Toxicity_prob": tox,
-        "Reactivity_prob": rxn
-    })
-
-demo = predict_all(df["SMILES"].head(8).tolist())
-demo
+# Load data and write a small CSV
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
+df = pd.read_csv(url)
+reg_cols = ["SMILES", "Melting Point"]
+df_reg = df[reg_cols].dropna().copy()
+df_reg.head(3)
 ```
 
-```{admonition} ⏰ Exercise 9.1
-Create a small list of three custom SMILES and call `predict_all`. Inspect which of the four properties differs the most across your three examples.
+Save to disk for Chemprop CLI.
+
+```{code-cell} ipython3
+df_reg.to_csv("mp_data.csv", index=False)
+len(df_reg), df_reg.head(2)
 ```
+
+Train a **small** model so it runs in class. We log common metrics.
+
+```{code-cell} ipython3
+# A short run. Increase epochs later if you have time/GPU.
+!chemprop train \
+  --data-path mp_data.csv \
+  -t regression \
+  -s SMILES \
+  --target-columns "Melting Point" \
+  -o mp_model \
+  --num-replicates 1 \
+  --epochs 15 \
+  --save-smiles-splits \
+  --metrics mae rmse r2 \
+  --tracking-metric r2
+```
+
+Make quick predictions on a few molecules.
+
+```{code-cell} ipython3
+smiles_list = [
+    "CCO",              # ethanol
+    "c1ccccc1",         # benzene
+    "CC(=O)O",          # acetic acid
+    "CCN(CC)CC"         # triethylamine
+]
+pd.DataFrame({"SMILES": smiles_list}).to_csv("custom_smiles_reg.csv", index=False)
+
+!chemprop predict \
+  --test-path custom_smiles_reg.csv \
+  --model-paths mp_model/replicate_0/model_0/best.pt \
+  --preds-path mp_preds.csv
+
+pd.read_csv("mp_preds.csv")
+```
+
+### Reactivity classification (C–H oxidation dataset)
+
+We use the `Reactivity` column and convert it to **binary** 0/1.
+
+```{code-cell} ipython3
+df = pd.read_csv(url)
+df["Reactivity_bin"] = df["Reactivity"].replace({-1: 0}).astype(int)
+df[["SMILES","Reactivity","Reactivity_bin"]].head(3)
+```
+
+Write a minimal file.
+
+```{code-cell} ipython3
+df[["SMILES", "Reactivity_bin"]].to_csv("reactivity_data_bin.csv", index=False)
+
+# Optional: sanity check the class balance
+print(df["Reactivity"].value_counts(dropna=False).to_dict())
+print(df["Reactivity_bin"].value_counts(dropna=False).to_dict())
+```
+
+Train a short classification model.
+
+```{code-cell} ipython3
+!chemprop train \
+  --data-path reactivity_data_bin.csv \
+  -t classification \
+  -s SMILES \
+  --target-columns Reactivity_bin \
+  -o reactivity_model \
+  --num-replicates 1 \
+  --epochs 15 \
+  --class-balance \
+  --metrics roc prc accuracy \
+  --tracking-metric roc
+```
+
+Predict on new SMILES.
+
+```{code-cell} ipython3
+smiles_list = [
+    "CCO",
+    "c1ccccc1C(F)",
+    "C1=C([C@@H]2C[C@H](C1)C2(C)C)",
+    "C1=CC=CC=C1C=O",
+    "CCN(CC)CC",
+    "c1cccc(C=CC)c1"
+]
+pd.DataFrame({"SMILES": smiles_list}).to_csv("custom_smiles.csv", index=False)
+
+!chemprop predict \
+  --test-path custom_smiles.csv \
+  --model-paths reactivity_model/replicate_0/model_0/best.pt \
+  --preds-path custom_preds.csv
+
+pd.read_csv("custom_preds.csv")
+```
+
+```{admonition} Tips
+- Increase `--num-replicates` to 3 and `--epochs` to 50-100 for stronger baselines.  
+- For class imbalance, keep `--class-balance`.  
+- Use `--save-smiles-splits` to capture exact train/val/test molecules for reproducibility.  
+```
+
+```{admonition} ⏰ Exercises 7.x
+1) Add `--ensemble-size 5` during prediction by passing multiple `--model-paths` if you trained replicates. Compare ROC.  
+2) Change tracking metric to `prc` and rerun. Does validation selection change.  
+3) For melting point, add `--ffn-hidden-size 800` to increase the head capacity and try 30 epochs.  
+```
+
+
+
+
 
 ---
 
@@ -1060,145 +1440,3 @@ pd.DataFrame(results)
 
 
 
-
----
-
-## Chemprop v2: practical graph models for chemistry
-
-Chemprop implements a directed message passing neural network with strong defaults. We will:
-
-1) **Install Chemprop v2**  
-2) Run a **melting point** regression  
-3) Run a **reactivity** classification and predict on new SMILES
-
-###  Install Chemprop
-
-```{code-cell} ipython3
-# You may need a restart after install in some environments
-%pip -q install chemprop
-```
-
-### Melting point regression
-
-Prepare a minimal CSV: `SMILES,Melting Point`.
-
-```{code-cell} ipython3
-# Load data and write a small CSV
-url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
-df = pd.read_csv(url)
-reg_cols = ["SMILES", "Melting Point"]
-df_reg = df[reg_cols].dropna().copy()
-df_reg.head(3)
-```
-
-Save to disk for Chemprop CLI.
-
-```{code-cell} ipython3
-df_reg.to_csv("mp_data.csv", index=False)
-len(df_reg), df_reg.head(2)
-```
-
-Train a **small** model so it runs in class. We log common metrics.
-
-```{code-cell} ipython3
-# A short run. Increase epochs later if you have time/GPU.
-!chemprop train \
-  --data-path mp_data.csv \
-  -t regression \
-  -s SMILES \
-  --target-columns "Melting Point" \
-  -o mp_model \
-  --num-replicates 1 \
-  --epochs 15 \
-  --save-smiles-splits \
-  --metrics mae rmse r2 \
-  --tracking-metric r2
-```
-
-Make quick predictions on a few molecules.
-
-```{code-cell} ipython3
-smiles_list = [
-    "CCO",              # ethanol
-    "c1ccccc1",         # benzene
-    "CC(=O)O",          # acetic acid
-    "CCN(CC)CC"         # triethylamine
-]
-pd.DataFrame({"SMILES": smiles_list}).to_csv("custom_smiles_reg.csv", index=False)
-
-!chemprop predict \
-  --test-path custom_smiles_reg.csv \
-  --model-paths mp_model/replicate_0/model_0/best.pt \
-  --preds-path mp_preds.csv
-
-pd.read_csv("mp_preds.csv")
-```
-
-### Reactivity classification (C–H oxidation dataset)
-
-We use the `Reactivity` column and convert it to **binary** 0/1.
-
-```{code-cell} ipython3
-df = pd.read_csv(url)
-df["Reactivity_bin"] = df["Reactivity"].replace({-1: 0}).astype(int)
-df[["SMILES","Reactivity","Reactivity_bin"]].head(3)
-```
-
-Write a minimal file.
-
-```{code-cell} ipython3
-df[["SMILES", "Reactivity_bin"]].to_csv("reactivity_data_bin.csv", index=False)
-
-# Optional: sanity check the class balance
-print(df["Reactivity"].value_counts(dropna=False).to_dict())
-print(df["Reactivity_bin"].value_counts(dropna=False).to_dict())
-```
-
-Train a short classification model.
-
-```{code-cell} ipython3
-!chemprop train \
-  --data-path reactivity_data_bin.csv \
-  -t classification \
-  -s SMILES \
-  --target-columns Reactivity_bin \
-  -o reactivity_model \
-  --num-replicates 1 \
-  --epochs 15 \
-  --class-balance \
-  --metrics roc prc accuracy \
-  --tracking-metric roc
-```
-
-Predict on new SMILES.
-
-```{code-cell} ipython3
-smiles_list = [
-    "CCO",
-    "c1ccccc1C(F)",
-    "C1=C([C@@H]2C[C@H](C1)C2(C)C)",
-    "C1=CC=CC=C1C=O",
-    "CCN(CC)CC",
-    "c1cccc(C=CC)c1"
-]
-pd.DataFrame({"SMILES": smiles_list}).to_csv("custom_smiles.csv", index=False)
-
-!chemprop predict \
-  --test-path custom_smiles.csv \
-  --model-paths reactivity_model/replicate_0/model_0/best.pt \
-  --preds-path custom_preds.csv
-
-pd.read_csv("custom_preds.csv")
-```
-
-```{admonition} Tips
-- Increase `--num-replicates` to 3 and `--epochs` to 50-100 for stronger baselines.  
-- For class imbalance, keep `--class-balance`.  
-- Use `--save-smiles-splits` to capture exact train/val/test molecules for reproducibility.  
-```
-
-```{admonition} ⏰ Exercises 7.x
-1) Add `--ensemble-size 5` during prediction by passing multiple `--model-paths` if you trained replicates. Compare ROC.  
-2) Change tracking metric to `prc` and rerun. Does validation selection change.  
-3) For melting point, add `--ffn-hidden-size 800` to increase the head capacity and try 30 epochs.  
-```

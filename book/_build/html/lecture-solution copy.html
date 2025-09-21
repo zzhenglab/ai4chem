@@ -373,6 +373,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">Solution Q3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">Solution Q4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">Solution Q5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution Q1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution Q2</a></li>
 </ul>
             </nav>
         </div>
@@ -748,6 +750,74 @@ document.write(`
 
 </pre></div>
 </div>
+<p>#Lecture 10</p>
+</section>
+<section id="id1">
+<h2>Solution Q1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Q4 solution
+df_reg = df[[&quot;SMILES&quot;,&quot;Melting Point&quot;]].dropna().copy()
+df_reg.to_csv(&quot;mp_data.csv&quot;, index=False)
+
+!chemprop train \
+  --data-path mp_data.csv \
+  -t regression \
+  -s SMILES \
+  --target-columns &quot;Melting Point&quot; \
+  -o mp_model_q4 \
+  --num-replicates 1 \
+  --epochs 20 \
+  --metrics mae rmse r2 \
+  --tracking-metric r2
+
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;CC(=O)O&quot;,&quot;CCN(CC)CC&quot;,&quot;O=C(O)C(O)C&quot;]}).to_csv(&quot;q4_smiles.csv&quot;, index=False)
+
+!chemprop predict \
+  --test-path q4_smiles.csv \
+  --model-paths mp_model_q4/replicate_0/model_0/best.pt \
+  --preds-path q4_preds.csv
+
+pd.read_csv(&quot;q4_preds.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Solution Q2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Q5 solution
+df = pd.read_csv(url)
+df = df[[&quot;SMILES&quot;,&quot;Toxicity&quot;]].dropna().copy()
+df[&quot;Toxicity_bin&quot;] = df[&quot;Toxicity&quot;].str.lower().map({&quot;toxic&quot;:1, &quot;non_toxic&quot;:0}).astype(int)
+df[[&quot;SMILES&quot;,&quot;Toxicity_bin&quot;]].to_csv(&quot;tox_data.csv&quot;, index=False)
+
+!chemprop train \
+  --data-path tox_data.csv \
+  -t classification \
+  -s SMILES \
+  --target-columns Toxicity_bin \
+  -o tox_model \
+  --num-replicates 1 \
+  --epochs 20 \
+  --class-balance \
+  --metrics roc prc accuracy \
+  --tracking-metric roc
+
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;O=[N+](=O)[O-]&quot;,&quot;ClCCl&quot;,&quot;CC(=O)Cl&quot;]}).to_csv(&quot;q5_smiles.csv&quot;, index=False)
+
+!chemprop predict \
+  --test-path q5_smiles.csv \
+  --model-paths tox_model/replicate_0/model_0/best.pt \
+  --preds-path q5_preds.csv
+
+pd.read_csv(&quot;q5_preds.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -801,6 +871,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q3">Solution Q3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q4">Solution Q4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-q5">Solution Q5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solution Q1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution Q2</a></li>
 </ul>
   </nav></div>
 
