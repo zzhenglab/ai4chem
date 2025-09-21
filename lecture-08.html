@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -177,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 8 - Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 </ul>
 
     </div>
@@ -1449,8 +1450,6 @@ Layer 2 weight shape: (16, 16)   bias shape: (16,)
 Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
-<img alt="_images/8bbc2d3aec14ee6bc6aa6fa94e4a25762fd9158d687219d57b5eff3d5f6381eb.png" src="_images/8bbc2d3aec14ee6bc6aa6fa94e4a25762fd9158d687219d57b5eff3d5f6381eb.png" />
-<img alt="_images/91bd7208e9df2677c96d093df8c61d1940b6be76beeb2bd7ab1a46e678fcf299.png" src="_images/91bd7208e9df2677c96d093df8c61d1940b6be76beeb2bd7ab1a46e678fcf299.png" />
 </div>
 </div>
 </section>
@@ -1467,76 +1466,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1559,100 +1488,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>SMILES</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-      <th>Melting Point</th>
-      <th>Solubility_mol_per_L</th>
-      <th>Toxicity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-      <td>65.8</td>
-      <td>0.103906</td>
-      <td>non_toxic</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-      <td>90.0</td>
-      <td>0.010460</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-      <td>69.4</td>
-      <td>0.020589</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>CCc1ccccc1</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>65.0</td>
-      <td>0.048107</td>
-      <td>non_toxic</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>C1=CCCCC1</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>96.4</td>
-      <td>0.060688</td>
-      <td>non_toxic</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="admonition-reminder admonition">
 <p class="admonition-title">Reminder</p>
@@ -1673,11 +1508,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((460, 4), (115, 4))
-</pre></div>
-</div>
-</div>
 </div>
 <p>MLP without scaling:</p>
 <div class="cell docutils container">
@@ -1691,11 +1521,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 <span class="n">mlp_raw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_raw</span> <span class="o">=</span> <span class="n">mlp_raw</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 no scaling: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_raw</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 no scaling: 0.867
 </pre></div>
 </div>
 </div>
@@ -1715,11 +1540,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 <span class="n">mlp_scaled</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_scaled</span> <span class="o">=</span> <span class="n">mlp_scaled</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 with scaling: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_scaled</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 with scaling: 0.873
 </pre></div>
 </div>
 </div>
@@ -1747,9 +1567,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/06440213b5760c5625f4d7145cd60314cd38f2fa1d708ed712d47fd99e02568b.png" src="_images/06440213b5760c5625f4d7145cd60314cd38f2fa1d708ed712d47fd99e02568b.png" />
-</div>
 </div>
 <div class="admonition-exercises-2 admonition">
 <p class="admonition-title">⏰ <strong>Exercises 2</strong></p>
@@ -1781,14 +1598,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[174.243 ,   2.768 ,  17.07  ,   2.    ],
-        [250.725 ,   3.6854,  26.3   ,   3.    ],
-        [316.154 ,   3.2662,  46.17  ,   3.    ]]),
- array([-1.33079381, -1.81944953, -1.66573637, -1.73461148, -1.83886568]))
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="build-the-pipeline-and-fit">
@@ -1809,17 +1618,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,),
-                              learning_rate_init=0.01, max_iter=1000,
-                              random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,),
-                              learning_rate_init=0.01, max_iter=1000,
-                              random_state=0))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">MLPRegressor</label><div class="sk-toggleable__content"><pre>MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,), learning_rate_init=0.01,
-             max_iter=1000, random_state=0)</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <p>Note: You can click on MLPRehressor above to see the details.</p>
 </section>
@@ -1835,13 +1633,6 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2:  </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 0.0185
-MAE: 0.1075
-R2:  0.966
 </pre></div>
 </div>
 </div>
@@ -1874,10 +1665,6 @@ R2:  0.966
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/30a717b8c7e5aa4a698813a97983a195d234dce84280c362c315cb5b5385e106.png" src="_images/30a717b8c7e5aa4a698813a97983a195d234dce84280c362c315cb5b5385e106.png" />
-<img alt="_images/8420743f8c33d12fd73e0ab55ca98c8adf928d8edf69a2a6a5431963c6469356.png" src="_images/8420743f8c33d12fd73e0ab55ca98c8adf928d8edf69a2a6a5431963c6469356.png" />
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1897,9 +1684,6 @@ R2:  0.966
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/843e5d3e8ce0a64b9e616474238e38e21b0b0423a2d0dfe644375cbb8791ed4b.png" src="_images/843e5d3e8ce0a64b9e616474238e38e21b0b0423a2d0dfe644375cbb8791ed4b.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1932,17 +1716,6 @@ R2:  0.966
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPClassifier(hidden_layer_sizes=(16,),
-                               learning_rate_init=0.01, max_iter=2000,
-                               random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPClassifier(hidden_layer_sizes=(16,),
-                               learning_rate_init=0.01, max_iter=2000,
-                               random_state=0))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">MLPClassifier</label><div class="sk-toggleable__content"><pre>MLPClassifier(hidden_layer_sizes=(16,), learning_rate_init=0.01, max_iter=2000,
-              random_state=0)</pre></div></div></div></div></div></div></div></div></div>
 </div>
 <p>Everything stays the same except we use <code class="docutils literal notranslate"><span class="pre">MLPClassifier()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">MLPRegressor()</span></code></p>
 <p>Now let’s fit and evaluate.</p>
@@ -1988,17 +1761,6 @@ R2:  0.966
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.939
-Precision: 0.968
-Recall:    0.958
-F1:        0.963
-AUC:       0.986
-</pre></div>
-</div>
-<img alt="_images/6640270415cfa6ac5b383ac79ade7114d2a94e6fd6622b1e10d3a9df192880ec.png" src="_images/6640270415cfa6ac5b383ac79ade7114d2a94e6fd6622b1e10d3a9df192880ec.png" />
-<img alt="_images/b502ac5082bc886a9af3bbe45985ec928ba8e0e21b97cc669ec4c8a389f3ed70.png" src="_images/b502ac5082bc886a9af3bbe45985ec928ba8e0e21b97cc669ec4c8a389f3ed70.png" />
-</div>
 </div>
 <p>Threshold tuning demo.</p>
 <div class="cell docutils container">
@@ -2006,13 +1768,6 @@ AUC:       0.986
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]:</span>
     <span class="n">yp_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">yproba</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;threshold=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  acc=</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  prec=</span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  rec=</span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>threshold=0.30  acc=0.965  prec=0.969  rec=0.989
-threshold=0.50  acc=0.939  prec=0.968  rec=0.958
-threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </pre></div>
 </div>
 </div>
@@ -2048,9 +1803,6 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/94db7ae2056cfe43164f1d618882b4e6f11fa7e1b9401036916a10ef28f9ba0c.png" src="_images/94db7ae2056cfe43164f1d618882b4e6f11fa7e1b9401036916a10ef28f9ba0c.png" />
 </div>
 </div>
 <p>How to read above plot:</p>
@@ -2113,9 +1865,6 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/b9c3e133a45b13243c37cede9b532aebdf5aa74b465db2bf3a1270bc6da20fe5.png" src="_images/b9c3e133a45b13243c37cede9b532aebdf5aa74b465db2bf3a1270bc6da20fe5.png" />
-</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -2305,12 +2054,6 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE=409.35  MAE=16.27  R2=0.855
-</pre></div>
-</div>
-<img alt="_images/d6d9a41ccdd6d807f19fdd29f61acc63b58ab3b408a8c4ddeacda5535337b9ca.png" src="_images/d6d9a41ccdd6d807f19fdd29f61acc63b58ab3b408a8c4ddeacda5535337b9ca.png" />
-</div>
 </div>
 </section>
 <section id="solution-q2">
@@ -2347,15 +2090,6 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  hidden_sizes     R2
-0        (16,)  0.950
-1        (32,)  0.964
-2     (64, 32)  0.958
-</pre></div>
-</div>
-<img alt="_images/a650324d246e6ffe4e4ae4b44dcca0d95748909504913f5a22cb39a60673a1c0.png" src="_images/a650324d246e6ffe4e4ae4b44dcca0d95748909504913f5a22cb39a60673a1c0.png" />
-</div>
 </div>
 </section>
 <section id="solution-q3">
@@ -2379,13 +2113,6 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]:</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">proba</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  acc=</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  prec=</span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  rec=</span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  f1=</span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t=0.3  acc=0.887  prec=0.887  rec=0.989  f1=0.935
-t=0.5  acc=0.896  prec=0.946  rec=0.926  f1=0.936
-t=0.7  acc=0.878  prec=0.976  rec=0.874  f1=0.922
 </pre></div>
 </div>
 </div>
@@ -2425,13 +2152,6 @@ t=0.7  acc=0.878  prec=0.976  rec=0.874  f1=0.922
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear R2: 0.970
-MLP    R2: 0.966
-</pre></div>
-</div>
-<img alt="_images/22bded6c1425a4509c214a94e36ca196272a4efa76445cd7b98a3aa03d8df46c.png" src="_images/22bded6c1425a4509c214a94e36ca196272a4efa76445cd7b98a3aa03d8df46c.png" />
 </div>
 </div>
 </section>
@@ -2510,15 +2230,6 @@ MLP    R2: 0.966
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 472.617
-MAE: 17.389
-R2:  0.778
-</pre></div>
-</div>
-<img alt="_images/f2fee0b91d770e7829f8e7afbe1c6247c36327b94bc518a7c234c438dac7856e.png" src="_images/f2fee0b91d770e7829f8e7afbe1c6247c36327b94bc518a7c234c438dac7856e.png" />
-<img alt="_images/2a9cfdc4c695ec51ea4cc10137a479d5c20de97b0ad5590b4d4fdb5f311b30d9.png" src="_images/2a9cfdc4c695ec51ea4cc10137a479d5c20de97b0ad5590b4d4fdb5f311b30d9.png" />
 </div>
 </div>
 </section>
