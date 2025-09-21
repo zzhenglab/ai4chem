@@ -8,7 +8,21 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  exclude_patterns:
+    - lecture-1.md
+    - lecture-2.md
+    - lecture-3
+    - lecture-4
+    - lecture-5
+    - lecture-6
+    - lecture-7
+    - lecture-8
+    - lecture-9
+    - lecture-10
+    - lecture-10-old
+    - lecture-10.ipynb
+  execute_notebooks: cache
+
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -31,11 +45,6 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-
-sphinx:
-  config:
-    exclude_patterns:
-      - .venv/**
-      - _build/**
-      - "**/.ipynb_checkpoints"
-      - Thumbs.db
+#sphinx:
+#  config:
+#    nb_execution_mode: auto

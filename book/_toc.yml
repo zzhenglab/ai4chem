@@ -2,6 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 # .\.venv\Scripts\Activate.ps1 
+#jupytext --to myst path/to/yourfile
+
+
 
 format: jb-book
 root: intro
@@ -15,4 +18,7 @@ chapters:
 - file: lecture-07
 - file: lecture-08
 - file: lecture-09
-- file: lecture-10
+#- file: lecture-10.ipynb
+#- file: lecture-11
+#only_build_toc_files: true
+#exclude_patterns: [lecture-10-old.md]]
