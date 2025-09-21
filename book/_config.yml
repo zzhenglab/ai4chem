@@ -30,3 +30,12 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+
+sphinx:
+  config:
+    exclude_patterns:
+      - .venv/**
+      - _build/**
+      - "**/.ipynb_checkpoints"
+      - Thumbs.db

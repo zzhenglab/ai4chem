@@ -1073,265 +1073,58 @@ This lets us literally **see numbers flowing through edges** using below UI.
 ```{code-cell} ipython3
 :tags: [hide-input]
 
-# Node features = [type_Z, degree, formal_charge, aromatic_flag]
-# Edge weights = bond length in Angstroms (Å)  [default], with optional inverse-length toggle
-# Molecules: Chain, Methane (CH4), Propene (C3H6), Formic acid (HCOOH)
-
-
-# --------------------------- Utilities ---------------------------
-def node_feature_matrix(Z_list, bonds, formal_charges=None, aromatic_flags=None):
-    """
-    Build x from chemistry-style features:
-    x[i] = [type_Z, degree, formal_charge, aromatic_flag]
-    - type_Z: atomic number (float)
-    - degree: number of incident bonds
-    - formal_charge: default 0
-    - aromatic_flag: 0/1, default 0
-    """
-    N = len(Z_list)
-    deg = np.zeros(N, dtype=float)
-    for u, v, *_ in bonds:
-        deg[u] += 1.0
-        deg[v] += 1.0
-    if formal_charges is None:
-        formal_charges = np.zeros(N, dtype=float)
-    if aromatic_flags is None:
-        aromatic_flags = np.zeros(N, dtype=float)
-    x = np.stack([np.array(Z_list, dtype=float),
-                  deg,
-                  np.array(formal_charges, dtype=float),
-                  np.array(aromatic_flags, dtype=float)], axis=1)
-    return x
-
-def expand_edges(bonds):
-    """
-    bonds: list of (u, v, length_A, optional_label)
-    Return directed edge_index [2,E] and edge_weight [E] (length in Å)
-    """
-    ei = []
-    ew = []
-    for b in bonds:
-        if len(b) == 3:
-            u, v, L = b
-        else:
-            u, v, L, _ = b
-        ei += [(u, v), (v, u)]
-        ew += [L, L]
-    return np.array(ei, dtype=int).T, np.array(ew, dtype=float)
-
-# ----------------------- Molecule builders -----------------------
-def mol_methane():
-    # Nodes: 0=C, 1..4=H; approx C-H 1.09 Å
-    Z = [6, 1, 1, 1, 1]
-    bonds = [(0, 1, 1.09), (0, 2, 1.09), (0, 3, 1.09), (0, 4, 1.09)]
-    x = node_feature_matrix(Z, bonds)
-    edge_index, edge_w = expand_edges(bonds)
-    labels = ["C0", "H1", "H2", "H3", "H4"]
-    colors = ["lightblue", "lightgray", "lightgray", "lightgray", "lightgray"]
-    return x, edge_index, edge_w, labels, colors
-
-def mol_propene():
-    # Propene CH3-CH=CH2
-    # Typical lengths: C–C 1.54 Å, C=C 1.34 Å, C–H 1.09 Å
-    Z = [6, 6, 6, 1, 1, 1, 1, 1, 1]
-    bonds = [
-        (0, 1, 1.54, "C-C"),
-        (1, 2, 1.34, "C=C"),
-        (0, 3, 1.09), (0, 4, 1.09), (0, 5, 1.09),
-        (1, 6, 1.09),
-        (2, 7, 1.09), (2, 8, 1.09),
-    ]
-    x = node_feature_matrix(Z, bonds)
-    edge_index, edge_w = expand_edges(bonds)
-    labels = ["C0", "C1", "C2", "H3", "H4", "H5", "H6", "H7", "H8"]
-    colors = ["lightblue"]*3 + ["lightgray"]*6
-    return x, edge_index, edge_w, labels, colors
-
-def mol_formic_acid():
-    # Formic acid HCOOH (indices: C0, O1, O2, H3(on O2), H4(on C))
-    # Typical lengths (Å): C=O 1.23, C–O 1.36, O–H 0.96, C–H 1.09
-    Z = [6, 8, 8, 1, 1]
-    bonds = [
-        (0, 1, 1.23, "C=O"),
-        (0, 2, 1.36, "C–O"),
-        (2, 3, 0.96, "O–H"),
-        (0, 4, 1.09, "C–H"),
-    ]
-    x = node_feature_matrix(Z, bonds)
-    edge_index, edge_w = expand_edges(bonds)
-    labels = ["C0", "O1", "O2", "H3", "H4"]
-    colors = ["lightblue", "lightcoral", "lightcoral", "lightgray", "lightgray"]
-    return x, edge_index, edge_w, labels, colors
-
-def mol_methanol():
-    # Methanol CH3OH
-    # Typical lengths (Angstrom): C-O 1.43, O-H 0.96, C-H 1.09
-    # Indices: C0, O1, H2/H3/H4 on C, H5 on O
-    Z = [6, 8, 1, 1, 1, 1]
-    bonds = [
-        (0, 1, 1.43, "C-O"),
-        (1, 5, 0.96, "O-H"),
-        (0, 2, 1.09, "C-H"),
-        (0, 3, 1.09, "C-H"),
-        (0, 4, 1.09, "C-H"),
-    ]
-    x = node_feature_matrix(Z, bonds)
-    edge_index, edge_w = expand_edges(bonds)
-    labels = ["C0", "O1", "H2", "H3", "H4", "H5"]
-    colors = ["lightblue", "lightcoral", "lightgray", "lightgray", "lightgray", "lightgray"]
-    return x, edge_index, edge_w, labels, colors
-
-def graph_chain():  # keep a neutral toy
-    Z = [0, 0, 0, 0]  # type not meaningful here
-    bonds = [(0,1,1.0),(1,2,1.0),(2,3,1.0)]
-    x = node_feature_matrix(Z, bonds)
-    ei = []
-    for u, v, L in bonds:
-        ei += [(u,v),(v,u)]
-    edge_index = np.array(ei, dtype=int).T
-    edge_w = np.ones(edge_index.shape[1], dtype=float)
-    labels = [f"Node {i}" for i in range(4)]
-    colors = None
-    return x, edge_index, edge_w, labels, colors
-
-BUILDERS = {
-    "Methane CH4": mol_methane,
-    "Propene C3H6": mol_propene,
-    "Formic acid HCOOH": mol_formic_acid,
-    "Methanol CH3OH": mol_methanol,   # <— new
-    "Chain 0-1-2-3": graph_chain,
-}
-
-# -------------------- Message passing math --------------------
-def aggregate(x, edge_index, edge_w, how="Mean", weight_mode="Length"):
-    """
-    Aggregate neighbor vectors with edge weights.
-    - how: "Mean" or "Sum"
-    - weight_mode: "Length" (multiply by L) or "Inverse length" (multiply by 1/L)
-    """
-    src, dst = edge_index
-    N, D = x.shape
-    agg = np.zeros((N, D), dtype=float)
-    for e in range(src.shape[0]):
-        w = edge_w[e]
-        if weight_mode == "Inverse length":
-            w = 1.0 / max(w, 1e-6)
-        agg[dst[e]] += w * x[src[e]]
-    if how == "Mean":
-        deg = np.zeros(N, dtype=float)
-        for d in dst:
-            deg[d] += 1.0
-        deg = np.maximum(deg, 1.0)
-        agg = agg / deg[:, None]
-    return agg
-
-def activate(z, kind="tanh"):
-    if kind == "Identity": return z
-    if kind == "ReLU":     return np.maximum(z, 0.0)
-    if kind == "tanh":     return np.tanh(z)
-    return z
-
-def one_step(x, edge_index, edge_w, a=0.6, b=0.8, agg="Mean", act="tanh", safety=True, weight_mode="Length"):
-    nei = aggregate(x, edge_index, edge_w, how=agg, weight_mode=weight_mode)
-    z = a * x + b * nei
-    h = activate(z, kind=act)
-    if safety:
-        norms = np.linalg.norm(h, axis=1, keepdims=True) + 1e-8
-        scale = np.minimum(1.0, 2.0 / norms)
-        h = h * scale
-    return h
-
-# ------------------------- Drawing -------------------------
-COLORS = ["tab:blue", "tab:orange", "tab:green", "tab:red"]
-
-def show_vectors(vectors, labels, title):
-    N, D = vectors.shape
-    fig, ax = plt.subplots(figsize=(1.7*N + 2.0, 3.8))
-    ax.set_xlim(0, N)
-    ax.set_ylim(-0.5, 4.7)
-    ax.axis("off")
-    ax.set_title(title, pad=10)
-    for i in range(N):
-        x_left, x_right = i + 0.1, i + 0.9
-        ax.plot([x_left, x_left], [0, 4], color="black", linewidth=2)
-        ax.plot([x_right, x_right], [0, 4], color="black", linewidth=2)
-        ax.plot([x_left, x_right], [4, 4], color="black", linewidth=2)
-        ax.plot([x_left, x_right], [0, 0], color="black", linewidth=2)
-        ax.text((x_left+x_right)/2, 4.3, labels[i], ha="center", va="bottom", fontsize=11)
-        for k in range(4):
-            ax.text((x_left+x_right)/2, 3.5 - k, f"[ {vectors[i,k]:+.2f} ]",
-                    ha="center", va="center", fontsize=12, color=COLORS[k])
-    plt.show()
-
-def show_graph(edge_index, labels, node_colors, title="Molecule/graph connectivity"):
-    src, dst = edge_index
-    edges = list(set(tuple(sorted((int(u), int(v)))) for u, v in zip(src, dst) if u != v))
-    G = nx.Graph()
-    for i, lab in enumerate(labels):
-        G.add_node(i, label=lab)
-    for u, v in edges:
-        G.add_edge(u, v)
-    pos = nx.spring_layout(G, seed=7)
-    fig, ax = plt.subplots(figsize=(5.5, 5.0))
-    if node_colors is None:
-        nx.draw(G, pos, with_labels=True, labels={i: labels[i] for i in range(len(labels))},
-                node_size=1200, font_size=10)
-    else:
-        nx.draw(G, pos, with_labels=True, labels={i: labels[i] for i in range(len(labels))},
-                node_size=1200, font_size=10, node_color=node_colors)
-    ax.set_title(title)
-    plt.show()
-
-# ----------------------- Widget UI or Fallback -----------------------
-WIDGETS_AVAILABLE = False
-try:
-    import ipywidgets as widgets
-    from IPython.display import display
-    WIDGETS_AVAILABLE = True
-except Exception:
-    pass
-
-def run_demo(name="Methane CH4", steps=3, agg="Mean", act="tanh", a=0.6, b=0.8, safety=True, weight_mode="Length"):
-    x, ei, ew, labels, colors = BUILDERS[name]()
-    show_graph(ei, labels, colors, title=f"{name} — bonds")
-    h = x.copy()
-    for _ in range(steps):
-        h = one_step(h, ei, ew, a=a, b=b, agg=agg, act=act, safety=safety, weight_mode=weight_mode)
-    show_vectors(h, labels, title=f"After {steps} step(s) • agg={agg}, act={act}, a={a}, b={b}, safety={safety}, weight={weight_mode}")
-
 if WIDGETS_AVAILABLE:
-    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methanol CH3OH", description="Molecule")  
-    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=0, description="Steps")                            
+    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methanol CH3OH", description="Molecule")
+    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=0, description="Steps")
     agg_tb     = widgets.ToggleButtons(options=["Mean","Sum"], value="Sum", description="Aggregate")
-    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="Identity", description="Activation")  
-    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=1.0, description="Self (a)")              
-    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.5, description="Neighbor (b)")          
-    safety_cb  = widgets.Checkbox(value=False, description="Renormalization / Safety Scale")                       
-    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Inverse length", description="Edge feature") 
+    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="Identity", description="Activation")
+    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=1.0, description="Self (a)")
+    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.5, description="Neighbor (b)")
+    safety_cb  = widgets.Checkbox(value=False, description="Renormalization / Safety Scale")
+    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Inverse length", description="Edge feature")
+
+    # NEW: create the missing widgets
+    run_btn    = widgets.Button(description="Run", button_style="")
+    out_graph  = widgets.Output()
+    out_vec    = widgets.Output()
+
     def on_run(_):
-        out_graph.clear_output(wait=True); out_vec.clear_output(wait=True)
+        out_graph.clear_output(wait=True)
+        out_vec.clear_output(wait=True)
+
         with out_graph:
             x, ei, ew, labels, colors = BUILDERS[graph_dd.value]()
-            show_graph(ei, labels, colors, title=f"{graph_dd.value} — bonds (Å weighting)")
+            show_graph(ei, labels, colors, title=f"{graph_dd.value} - bonds (Å weighting)")
+
         with out_vec:
+            x, ei, ew, labels, colors = BUILDERS[graph_dd.value]()
             h = x.copy()
             for _ in range(steps_sl.value):
                 h = one_step(h, ei, ew, a=a_sl.value, b=b_sl.value,
                              agg=agg_tb.value, act=act_tb.value,
                              safety=safety_cb.value, weight_mode=weight_tb.value)
-            show_vectors(h, labels, title=f"After {steps_sl.value} step(s) • agg={agg_tb.value}, act={act_tb.value}, a={a_sl.value}, b={b_sl.value}, safety={safety_cb.value}, weight={weight_tb.value}")
+            show_vectors(
+                h, labels,
+                title=(
+                    f"After {steps_sl.value} step(s) • agg={agg_tb.value}, "
+                    f"act={act_tb.value}, a={a_sl.value}, b={b_sl.value}, "
+                    f"safety={safety_cb.value}, weight={weight_tb.value}"
+                )
+            )
+
     run_btn.on_click(on_run)
-    display(widgets.VBox([
+
+    ui = widgets.VBox([
         widgets.HBox([graph_dd, steps_sl, weight_tb]),
         widgets.HBox([agg_tb, act_tb]),
         widgets.HBox([a_sl, b_sl, safety_cb, run_btn]),
-        widgets.HBox([out_graph, out_vec])
-    ]))
+        widgets.HBox([out_graph, out_vec]),
+    ])
+    display(ui)
     on_run(None)
 else:
-    # Fallback run here so you can see the revised initialization and new Formic acid example
+    # Fallback so there is still output without widgets
     run_demo(name="Methanol CH3OH", steps=0, agg="Mean", act="Identity", a=1.0, b=0.5, safety=False, weight_mode="Inverse length")
-
 ```
 
 
