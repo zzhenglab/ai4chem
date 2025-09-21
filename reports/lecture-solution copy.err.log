@@ -1,71 +1,98 @@
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
     asyncio.get_running_loop()
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^
 RuntimeError: no running event loop
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
-    ~~~~~~~~~^
-        nb,
-        ^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )
-    ^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
     return loop.run_until_complete(inner)
-           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
     return future.result()
-           ~~~~~~~~~~~~~^^
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-        cell, index, execution_count=self.code_cells_executed + 1
-    )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-df_reg = df[["MolWt","LogP","TPSA","NumRings","Melting Point"]].dropna()
-X = df_reg[["MolWt","LogP","TPSA","NumRings"]].values
-y = df_reg["Melting Point"].values
-Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=7)
+# Q1 solution
+set_seed(0)
+url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
+df_oxidation_raw = pd.read_csv(url)
+def calc_descriptors(smiles):
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return pd.Series({
+            "MolWt": None,
+            "LogP": None,
+            "TPSA": None,
+            "NumRings": None
+        })
+    return pd.Series({
+        "MolWt": Descriptors.MolWt(mol),                    # molecular weight
+        "LogP": Crippen.MolLogP(mol),                       # octanol-water logP
+        "TPSA": rdMolDescriptors.CalcTPSA(mol),             # topological polar surface area
+        "NumRings": rdMolDescriptors.CalcNumRings(mol)      # number of rings
+    })
 
-pipe = Pipeline([
-    ("scaler", StandardScaler()),
-    ("mlp", MLPRegressor(hidden_layer_sizes=(32,), activation="relu",
-                         alpha=1e-3, learning_rate_init=0.01,
-                         max_iter=1500, random_state=0))
-]).fit(Xtr, ytr)
+# Apply the function to the SMILES column
+desc_df = df_oxidation_raw["SMILES"].apply(calc_descriptors)
 
-yhat = pipe.predict(Xte)
-print(f"MSE={mean_squared_error(yte,yhat):.2f}  MAE={mean_absolute_error(yte,yhat):.2f}  R2={r2_score(yte,yhat):.3f}")
+# Concatenate new descriptor columns to original DataFrame
+df_clf = pd.concat([df_oxidation_raw, desc_df], axis=1)
+df_reg = df_clf.copy() 
 
-plt.figure(figsize=(4.5,4))
-plt.scatter(yte, yhat, alpha=0.65)
-lims = [min(yte.min(), yhat.min()), max(yte.max(), yhat.max())]
-plt.plot(lims, lims, "k--")
-plt.xlabel("True MP"); plt.ylabel("Pred MP"); plt.title("Q1 parity")
-plt.show()
+# Logistic regression baseline
+from sklearn.linear_model import LogisticRegression
+X = df_clf[["MolWt","LogP","TPSA","NumRings"]].values
+y = df_clf["Toxicity"].str.lower().map({"toxic":1,"non_toxic":0}).values
+Xtr,Xte,ytr,yte = train_test_split(X,y,test_size=0.2,random_state=42,stratify=y)
+baseline = LogisticRegression(max_iter=1000).fit(Xtr,ytr)
+print("Baseline acc:", accuracy_score(yte, baseline.predict(Xte)))
+
+# MLP from scratch
+class MLP_Q1(nn.Module):
+    def __init__(self,in_dim,hidden=32,n_classes=2):
+        super().__init__()
+        self.fc1 = nn.Linear(in_dim,hidden)
+        self.fc2 = nn.Linear(hidden,n_classes)
+    def forward(self,x):
+        return self.fc2(F.relu(self.fc1(x)))
+
+model = MLP_Q1(4)
+opt = torch.optim.Adam(model.parameters(), lr=1e-2)
+loss_fn = nn.CrossEntropyLoss()
+
+for epoch in range(200):
+    xb = torch.tensor(Xtr, dtype=torch.float32)
+    yb = torch.tensor(ytr, dtype=torch.long)
+    opt.zero_grad()
+    out = model(xb)
+    loss = loss_fn(out,yb)
+    loss.backward()
+    opt.step()
+
+model.eval()
+ypred = model(torch.tensor(Xte, dtype=torch.float32)).argmax(1).numpy()
+print("MLP acc:", accuracy_score(yte, ypred))
+#For this question and the following questions, it is fine if the model performance is worse than the baseline. 
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m df_reg = [43mdf[49m[[[33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m,[33m"[39m[33mMelting Point[39m[33m"[39m]].dropna()
-[32m      2[39m X = df_reg[[[33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m]].values
-[32m      3[39m y = df_reg[[33m"[39m[33mMelting Point[39m[33m"[39m].values
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[1], line 2[0m
+[0;32m      1[0m [38;5;66;03m# Q1 solution[39;00m
+[1;32m----> 2[0m [43mset_seed[49m([38;5;241m0[39m)
+[0;32m      3[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv[39m[38;5;124m"[39m
+[0;32m      4[0m df_oxidation_raw [38;5;241m=[39m pd[38;5;241m.[39mread_csv(url)
 
-[31mNameError[39m: name 'df' is not defined
+[1;31mNameError[0m: name 'set_seed' is not defined
 
