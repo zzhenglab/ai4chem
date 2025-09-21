@@ -9,19 +9,14 @@ logo: logo.png
 # See https://jupyterbook.org/content/execute.html
 execute:
   exclude_patterns:
-    - lecture-1.md
-    - lecture-2.md
-    - lecture-3
-    - lecture-4
-    - lecture-5
-    - lecture-6
-    - lecture-7
-    - lecture-8
-    - lecture-9
     - lecture-10
     - lecture-10-old
     - lecture-10.ipynb
-  execute_notebooks: cache
+  execute_notebooks: auto
+  exclude_patterns:
+    - lecture-10
+    - lecture-10-old
+    - lecture-10.ipynb
 
 
 # Define the name of the latex output file for PDF builds
@@ -45,6 +40,6 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-#sphinx:
-#  config:
-#    nb_execution_mode: auto
+sphinx:
+  config:
+    nb_execution_mode: auto
