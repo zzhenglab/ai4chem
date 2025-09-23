@@ -1300,14 +1300,19 @@ def run_demo(name="Methane CH4", steps=3, agg="Mean", act="tanh", a=0.6, b=0.8, 
     show_vectors(h, labels, title=f"After {steps} step(s) • agg={agg}, act={act}, a={a}, b={b}, safety={safety}, weight={weight_mode}")
 
 if WIDGETS_AVAILABLE:
-    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methanol CH3OH", description="Molecule")  
-    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=0, description="Steps")                            
+    graph_dd   = widgets.Dropdown(options=list(BUILDERS.keys()), value="Methanol CH3OH", description="Molecule")
+    steps_sl   = widgets.IntSlider(min=0, max=10, step=1, value=0, description="Steps")
     agg_tb     = widgets.ToggleButtons(options=["Mean","Sum"], value="Sum", description="Aggregate")
-    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="Identity", description="Activation")  
-    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=1.0, description="Self (a)")              
-    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.5, description="Neighbor (b)")          
-    safety_cb  = widgets.Checkbox(value=False, description="Renormalization / Safety Scale")                       
-    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Inverse length", description="Edge feature") 
+    act_tb     = widgets.ToggleButtons(options=["tanh","ReLU","Identity"], value="Identity", description="Activation")
+    a_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=1.0, description="Self (a)")
+    b_sl       = widgets.FloatSlider(min=0.0, max=1.5, step=0.05, value=0.5, description="Neighbor (b)")
+    safety_cb  = widgets.Checkbox(value=False, description="Renormalization / Safety Scale")
+    weight_tb  = widgets.ToggleButtons(options=["Length","Inverse length"], value="Inverse length", description="Edge feature")
+
+    run_btn    = widgets.Button(description="Run")
+    out_graph = widgets.Output()
+    out_vec   = widgets.Output()
+
     def on_run(_):
         out_graph.clear_output(wait=True); out_vec.clear_output(wait=True)
         with out_graph:
