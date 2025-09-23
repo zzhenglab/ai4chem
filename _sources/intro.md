@@ -29,7 +29,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 9 & 11** – Classification & regression  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
 - **Sept 16 & 18** – Supervised machine learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
-- **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)  
+- **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing)  
 - **Sept 30 & Oct 2** – Unsupervised learning  methods
 - **Oct 7** - Fall Break
 - **Oct 9** – Bayesian optimization
@@ -52,8 +52,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 | Date | Assignment / Project  |
 |------|----------------------|
 | **Sept 7** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1Zel7MlJgwcndDsBfqsk7LFYpdZpJRH3g?usp=sharing) |  
-| **Sept 21** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) | 
-| **Oct 5** | Project 1 due |  
+| **Sept 21** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/18AIDo3hclJssMQc1hRgUfAsm-SpkFd5t?usp=sharing) | 
+| **Oct 5** | Project 1 due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
 | **Oct 14** | Project 1 Evaluation due |  
 | **Oct 26** | Assignment 3 due |  
 | **Nov 9** | Assignment 4 due |  

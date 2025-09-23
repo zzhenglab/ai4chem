@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,57 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-09';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 10 - Property &amp; Reaction Prediction" href="lecture-10.html" />
     <link rel="prev" title="Lecture 8 - Neural Networks" href="lecture-08.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -75,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -177,7 +190,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 9 - Graph Neural Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 </ul>
 
     </div>
@@ -193,7 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -202,14 +214,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -334,10 +346,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -345,14 +357,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -415,10 +427,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-graph-neural-networks">
-<h1>Lecture 9 - Graph Neural Networks<a class="headerlink" href="#lecture-9-graph-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 9 - Graph Neural Networks<a class="headerlink" href="#lecture-9-graph-neural-networks" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
@@ -433,7 +445,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Build basic MLP-style Neural Networks from scratch using <strong>PyTorch</strong>.</p></li>
 <li><p>Explain molecules as <strong>graphs</strong>: atoms = nodes, bonds = edges, features at each.</p></li>
@@ -445,13 +457,13 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setup">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <p>We reuse most of the stack from earlier lectures.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Setup</span>
@@ -515,11 +527,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="building-mlp-from-scratch">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2 Building MLP from scratch</a><a class="headerlink" href="#building-mlp-from-scratch" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2 Building MLP from scratch</a><a class="headerlink" href="#building-mlp-from-scratch" title="Link to this heading">#</a></h2>
 <p>In Lecture 8 we built MLPs with <code class="docutils literal notranslate"><span class="pre">scikit‑learn</span></code>. Today we start by doing the same with <strong>PyTorch</strong>. One advantage of using PyTorch is that it lets you write the forward pass directly, control the training loop, and later move to GPUs or custom layers. We start tiny and stay friendly.</p>
 <p>We will predict <strong>melting point</strong> from four descriptors: <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">NumRings</span></code>, same as before.</p>
 <section id="pytorch-regression-on-melting-point">
-<h3>2.1 PyTorch regression on melting point<a class="headerlink" href="#pytorch-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
+<h3>2.1 PyTorch regression on melting point<a class="headerlink" href="#pytorch-regression-on-melting-point" title="Link to this heading">#</a></h3>
 <p>Every PyTorch project has three parts:</p>
 <ol class="arabic simple">
 <li><p><strong>Model</strong>: stack of layers with weights and activations.</p></li>
@@ -800,7 +812,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="build-a-tiny-network">
-<h3>2.2 Build a tiny network<a class="headerlink" href="#build-a-tiny-network" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Build a tiny network<a class="headerlink" href="#build-a-tiny-network" title="Link to this heading">#</a></h3>
 <p>Now we will start to build a network has one hidden layer of 32 units with ReLU activation.<br />
 Output is a single number (regression).</p>
 <p>This is equivalent to what we did before with:</p>
@@ -910,7 +922,7 @@ Output is a single number (regression).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [-0.3615578   0.06239668  0.7558894 ]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [-0.36155778  0.06239666  0.75588953]
 </pre></div>
 </div>
 </div>
@@ -919,7 +931,7 @@ Output is a single number (regression).</p>
 </section>
 <hr class="docutils" />
 <section id="loss-and-optimizer">
-<h3>2.3 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Permalink to this heading">#</a></h3>
+<h3>2.3 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Link to this heading">#</a></h3>
 <p>For regression we use <strong>MSELoss</strong>.<br />
 The optimizer is <strong>Adam</strong>, which updates weights smoothly.</p>
 <div class="cell docutils container">
@@ -936,6 +948,7 @@ Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
     capturable: False
+    decoupled_weight_decay: False
     differentiable: False
     eps: 1e-08
     foreach: None
@@ -951,7 +964,7 @@ Parameter Group 0
 </section>
 <hr class="docutils" />
 <section id="one-training-step-demo">
-<h3>2.4 One training step demo<a class="headerlink" href="#one-training-step-demo" title="Permalink to this heading">#</a></h3>
+<h3>2.4 One training step demo<a class="headerlink" href="#one-training-step-demo" title="Link to this heading">#</a></h3>
 <p>To see the loop clearly: forward → loss → backward → update.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -978,7 +991,7 @@ Parameter Group 0
 </section>
 <hr class="docutils" />
 <section id="training-loop">
-<h3>2.5 Training loop<a class="headerlink" href="#training-loop" title="Permalink to this heading">#</a></h3>
+<h3>2.5 Training loop<a class="headerlink" href="#training-loop" title="Link to this heading">#</a></h3>
 <p>We train for 150 epochs. Each epoch goes through the dataset in batches.<br />
 We plot the loss to see if the model is learning.</p>
 <div class="cell docutils container">
@@ -1014,7 +1027,7 @@ We plot the loss to see if the model is learning.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" src="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" />
+<img alt="_images/4eaf5319e1492c0f1144a1014fa19b36ce0a2d8eea1c39245c26df230023c718.png" src="_images/4eaf5319e1492c0f1144a1014fa19b36ce0a2d8eea1c39245c26df230023c718.png" />
 </div>
 </div>
 <p>Let’s break down what happened above step by step:</p>
@@ -1043,7 +1056,7 @@ This means the network predictions are getting closer to the true labels.</p></l
 </section>
 <hr class="docutils" />
 <section id="evaluate-regression">
-<h3>2.6 Evaluate regression<a class="headerlink" href="#evaluate-regression" title="Permalink to this heading">#</a></h3>
+<h3>2.6 Evaluate regression<a class="headerlink" href="#evaluate-regression" title="Link to this heading">#</a></h3>
 <p>We check mean squared error and plot predicted vs true <code class="docutils literal notranslate"><span class="pre">Meltig</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1066,17 +1079,17 @@ This means the network predictions are getting closer to the true labels.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 377.2238
-R2: 0.8732098882942341
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 377.2237548828125
+R2: 0.8732098937034607
 </pre></div>
 </div>
-<img alt="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" src="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" />
+<img alt="_images/e4ecec78a6913e3813cd405bce5e5826cd1af09da1c52ff41f0a1a6a29883d1c.png" src="_images/e4ecec78a6913e3813cd405bce5e5826cd1af09da1c52ff41f0a1a6a29883d1c.png" />
 </div>
 </div>
 <p>This suggests our customized NN achieve a good performance on this task  :D</p>
 </section>
 <section id="baseline-comparison">
-<h3>2.7 Baseline comparison<a class="headerlink" href="#baseline-comparison" title="Permalink to this heading">#</a></h3>
+<h3>2.7 Baseline comparison<a class="headerlink" href="#baseline-comparison" title="Link to this heading">#</a></h3>
 <p>To understand how our PyTorch neural network compares to standard regressors,
 we evaluate three baselines:</p>
 <ul class="simple">
@@ -1116,7 +1129,7 @@ logic into a helper function to avoid repetition.</p>
 </div>
 </section>
 <section id="pytorch-regressor-with-sklearn-like-interface">
-<h3>2.8 PyTorch Regressor with sklearn-like Interface<a class="headerlink" href="#pytorch-regressor-with-sklearn-like-interface" title="Permalink to this heading">#</a></h3>
+<h3>2.8 PyTorch Regressor with sklearn-like Interface<a class="headerlink" href="#pytorch-regressor-with-sklearn-like-interface" title="Link to this heading">#</a></h3>
 <p>In earlier sections, we trained our custom PyTorch model by manually writing the
 training loop. How can we make our customized NN feel more convenient?</p>
 <p>We can introduce a small wrapper called <strong><code class="docutils literal notranslate"><span class="pre">CHEM5080Regressor</span></code></strong> that makes our
@@ -1195,18 +1208,18 @@ functions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 387.48224
-R2: 0.8697618698517982
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 387.4822998046875
+R2: 0.8697618246078491
 </pre></div>
 </div>
 </div>
 </div>
 <p>It works exactly the same way as we see in previous lectures with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>, but it was <strong>written by ourselves</strong>!</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Optional: Parity plot ---</span>
@@ -1224,16 +1237,16 @@ R2: 0.8697618698517982
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" src="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" />
+<img alt="_images/96c1553e45bfca7be0554b77dbb735f62215def2828686e9e0b7fb4444b25ad2.png" src="_images/96c1553e45bfca7be0554b77dbb735f62215def2828686e9e0b7fb4444b25ad2.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="molecules-as-graphs">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Link to this heading">#</a></h2>
 <section id="why-graph">
-<h3>3.1 Why Graph?<a class="headerlink" href="#why-graph" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Why Graph?<a class="headerlink" href="#why-graph" title="Link to this heading">#</a></h3>
 <p>Graphs are sets of vertices connected by edges.</p>
 <p>Graphs are general language/data structure for describing and analyzing relational/interacting objects.</p>
 <p>Graph machine learning tasks:</p>
@@ -1250,10 +1263,10 @@ R2: 0.8697618698517982
 </div>
 <p>Now let’s look at a few examples. We first define a helper function called <code class="docutils literal notranslate"><span class="pre">draw_graph_structure()</span></code> which will take adjacency matrix to construct a graph.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get and helper function and routine to draw graph structure</span>
@@ -1332,7 +1345,7 @@ R2: 0.8697618698517982
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<img alt="_images/fdaa37ee2f929952c0f7458104df25a9b0b222569d564c7f469768c29546681a.png" src="_images/fdaa37ee2f929952c0f7458104df25a9b0b222569d564c7f469768c29546681a.png" />
+<img alt="_images/1a2f46a0f4d13de5381297bf1a85a03d3e203f23ebe60d6e2bd3d15a6c93a150.png" src="_images/1a2f46a0f4d13de5381297bf1a85a03d3e203f23ebe60d6e2bd3d15a6c93a150.png" />
 </div>
 </div>
 <p>Case 2:</p>
@@ -1391,7 +1404,7 @@ R2: 0.8697618698517982
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<img alt="_images/aa273963306faf89028cda04e4aef585fb553c47c0fb57d48567ccee0559aced.png" src="_images/aa273963306faf89028cda04e4aef585fb553c47c0fb57d48567ccee0559aced.png" />
+<img alt="_images/1049378142de561c0d2df70b26d2dab0a9227bab50086e306dd0e073da87ce2e.png" src="_images/1049378142de561c0d2df70b26d2dab0a9227bab50086e306dd0e073da87ce2e.png" />
 </div>
 </div>
 <p>Case 3:</p>
@@ -1455,10 +1468,7 @@ R2: 0.8697618698517982
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-<img alt="_images/365f474f1757eb8d561afaa6626f7ea3b1cb79c5a6263d830ccc0f1c8746c27a.png" src="_images/365f474f1757eb8d561afaa6626f7ea3b1cb79c5a6263d830ccc0f1c8746c27a.png" />
+<img alt="_images/8974e3a3dbe6ead6fe1ad4c207108ad5e656a1a894105413625bbfbec2ae20ba.png" src="_images/8974e3a3dbe6ead6fe1ad4c207108ad5e656a1a894105413625bbfbec2ae20ba.png" />
 </div>
 </div>
 <div class="admonition-exercises-3 admonition">
@@ -1467,7 +1477,7 @@ R2: 0.8697618698517982
 </div>
 </section>
 <section id="build-tiny-toy-molecules-graphs-by-hand">
-<h3>3.2 Build tiny toy molecules graphs by hand<a class="headerlink" href="#build-tiny-toy-molecules-graphs-by-hand" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Build tiny toy molecules graphs by hand<a class="headerlink" href="#build-tiny-toy-molecules-graphs-by-hand" title="Link to this heading">#</a></h3>
 <p>Common node features:</p>
 <ul class="simple">
 <li><p>One‑hot element type, degree, formal charge, aromatic flag.<br />
@@ -1483,10 +1493,10 @@ Common edge features:</p></li>
 </ul>
 <p>We start with first build a helper function to draw molecule.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
@@ -1581,7 +1591,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/37dc30917cdce1fcaad0023606d3fc3c448758aab8c765d0d637473d64ecb081.png" src="_images/37dc30917cdce1fcaad0023606d3fc3c448758aab8c765d0d637473d64ecb081.png" />
+<img alt="_images/e6e054e31751a0b392f8922ddce20d4084949181db71921d15023872e017a4c3.png" src="_images/e6e054e31751a0b392f8922ddce20d4084949181db71921d15023872e017a4c3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Methane (CH4): x.shape (5, 4), edge_index.shape (2, 8), edge_attr.shape (8, 1)
 </pre></div>
 </div>
@@ -1616,7 +1626,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c870de2f9d4c21bd903a1ca66a8f09006ca08b05ed2e0f3d2ed62408c341e44c.png" src="_images/c870de2f9d4c21bd903a1ca66a8f09006ca08b05ed2e0f3d2ed62408c341e44c.png" />
+<img alt="_images/24cd8949d2db2316cd93593d44ff8bd7c803f8a415a4766ba1f0aad57fce7b46.png" src="_images/24cd8949d2db2316cd93593d44ff8bd7c803f8a415a4766ba1f0aad57fce7b46.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ethane (C2H6): x.shape (8, 4), edge_index.shape (2, 14), edge_attr.shape (14, 1)
 </pre></div>
 </div>
@@ -1646,7 +1656,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5d8c1c1c5aeb1bf9df651f9158d025b53488201aa408b8f08625fc706d0fde81.png" src="_images/5d8c1c1c5aeb1bf9df651f9158d025b53488201aa408b8f08625fc706d0fde81.png" />
+<img alt="_images/d1de7d682edc09190bfe92ae2232bafdca0105f18eb6ea1d9f53d1fef2c3b2e4.png" src="_images/d1de7d682edc09190bfe92ae2232bafdca0105f18eb6ea1d9f53d1fef2c3b2e4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Formic acid (HCOOH): x.shape (5, 4), edge_index.shape (2, 8), edge_attr.shape (8, 1)
 </pre></div>
 </div>
@@ -1679,7 +1689,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1314f4fa0f9193d2f0b7aff81c1a22e9cde5f91c9202bdcb81b4055f76d9f3ec.png" src="_images/1314f4fa0f9193d2f0b7aff81c1a22e9cde5f91c9202bdcb81b4055f76d9f3ec.png" />
+<img alt="_images/8369d28ba67531180c7d3d7d68b7f5d6e778843aa408607914a7581afd98ff6e.png" src="_images/8369d28ba67531180c7d3d7d68b7f5d6e778843aa408607914a7581afd98ff6e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trifluoropropyne (CF3–C≡C–H): x.shape (7, 4), edge_index.shape (2, 12), edge_attr.shape (12, 1)
 </pre></div>
 </div>
@@ -1691,7 +1701,7 @@ Common edge features:</p></li>
 </div>
 </section>
 <section id="id1">
-<h3>3.1 Molecules as graphs<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Molecules as graphs<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>A molecule can be seen as a graph:</p>
 <ul class="simple">
 <li><p><strong>Nodes</strong> are atoms with a feature vector per atom.</p></li>
@@ -1700,7 +1710,7 @@ Common edge features:</p></li>
 </ul>
 </section>
 <section id="minimal-node-and-edge-features">
-<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Link to this heading">#</a></h3>
 <p>Common node features:</p>
 <ul class="simple">
 <li><p>One‑hot element type, degree, formal charge, aromatic flag.<br />
@@ -1716,7 +1726,7 @@ Common edge features:</p></li>
 </ul>
 </section>
 <section id="build-tiny-toy-graphs-by-hand">
-<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Link to this heading">#</a></h3>
 <p>We start with two toy molecules: Methane and Ethane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1794,7 +1804,7 @@ Methane edges (first 6 cols):
 </section>
 <hr class="docutils" />
 <section id="gnn-and-mpnn">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. GNN and MPNN</a><a class="headerlink" href="#gnn-and-mpnn" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. GNN and MPNN</a><a class="headerlink" href="#gnn-and-mpnn" title="Link to this heading">#</a></h2>
 <p>Let’s take <strong>Methanol (CH₃OH)</strong> graph as an example and run both a generic <strong>GNN</strong> formulation and a more specific <strong>MPNN</strong> with full 4-dimensional features:</p>
 <p><span class="math notranslate nohighlight">\(
 h_v^{(0)} = [Z, \text{degree}, \text{aromatic}, \text{charge}]
@@ -1928,63 +1938,269 @@ Training adjusts the weights in the update rules and output MLP to minimize a lo
 <p>We can draw a few molecules graph with features shown on each node before and after updates.<br />
 This lets us literally <strong>see numbers flowing through edges</strong> using below UI.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">WIDGETS_AVAILABLE</span><span class="p">:</span>
-    <span class="n">graph_dd</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">BUILDERS</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Methanol CH3OH&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Molecule&quot;</span><span class="p">)</span>
-    <span class="n">steps_sl</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Node features = [type_Z, degree, formal_charge, aromatic_flag]</span>
+<span class="c1"># Edge weights = bond length in Angstroms (Å)  [default], with optional inverse-length toggle</span>
+<span class="c1"># Molecules: Chain, Methane (CH4), Propene (C3H6), Formic acid (HCOOH)</span>
+
+
+<span class="c1"># --------------------------- Utilities ---------------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">node_feature_matrix</span><span class="p">(</span><span class="n">Z_list</span><span class="p">,</span> <span class="n">bonds</span><span class="p">,</span> <span class="n">formal_charges</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">aromatic_flags</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Build x from chemistry-style features:</span>
+<span class="sd">    x[i] = [type_Z, degree, formal_charge, aromatic_flag]</span>
+<span class="sd">    - type_Z: atomic number (float)</span>
+<span class="sd">    - degree: number of incident bonds</span>
+<span class="sd">    - formal_charge: default 0</span>
+<span class="sd">    - aromatic_flag: 0/1, default 0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Z_list</span><span class="p">)</span>
+    <span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">:</span>
+        <span class="n">deg</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+        <span class="n">deg</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+    <span class="k">if</span> <span class="n">formal_charges</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">formal_charges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">aromatic_flags</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">aromatic_flags</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Z_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+                  <span class="n">deg</span><span class="p">,</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">formal_charges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">),</span>
+                  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">aromatic_flags</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">expand_edges</span><span class="p">(</span><span class="n">bonds</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    bonds: list of (u, v, length_A, optional_label)</span>
+<span class="sd">    Return directed edge_index [2,E] and edge_weight [E] (length in Å)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ei</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">ew</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">L</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">b</span>
+        <span class="n">ei</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">u</span><span class="p">)]</span>
+        <span class="n">ew</span> <span class="o">+=</span> <span class="p">[</span><span class="n">L</span><span class="p">,</span> <span class="n">L</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ei</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ew</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># ----------------------- Molecule builders -----------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mol_methane</span><span class="p">():</span>
+    <span class="c1"># Nodes: 0=C, 1..4=H; approx C-H 1.09 Å</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">node_feature_matrix</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)</span>
+    <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span> <span class="o">=</span> <span class="n">expand_edges</span><span class="p">(</span><span class="n">bonds</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;H1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">,</span> <span class="s2">&quot;H3&quot;</span><span class="p">,</span> <span class="s2">&quot;H4&quot;</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mol_propene</span><span class="p">():</span>
+    <span class="c1"># Propene CH3-CH=CH2</span>
+    <span class="c1"># Typical lengths: C–C 1.54 Å, C=C 1.34 Å, C–H 1.09 Å</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.54</span><span class="p">,</span> <span class="s2">&quot;C-C&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.34</span><span class="p">,</span> <span class="s2">&quot;C=C&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">node_feature_matrix</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)</span>
+    <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span> <span class="o">=</span> <span class="n">expand_edges</span><span class="p">(</span><span class="n">bonds</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;H3&quot;</span><span class="p">,</span> <span class="s2">&quot;H4&quot;</span><span class="p">,</span> <span class="s2">&quot;H5&quot;</span><span class="p">,</span> <span class="s2">&quot;H6&quot;</span><span class="p">,</span> <span class="s2">&quot;H7&quot;</span><span class="p">,</span> <span class="s2">&quot;H8&quot;</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;lightgray&quot;</span><span class="p">]</span><span class="o">*</span><span class="mi">6</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mol_formic_acid</span><span class="p">():</span>
+    <span class="c1"># Formic acid HCOOH (indices: C0, O1, O2, H3(on O2), H4(on C))</span>
+    <span class="c1"># Typical lengths (Å): C=O 1.23, C–O 1.36, O–H 0.96, C–H 1.09</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">,</span> <span class="s2">&quot;C=O&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.36</span><span class="p">,</span> <span class="s2">&quot;C–O&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s2">&quot;O–H&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">,</span> <span class="s2">&quot;C–H&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">node_feature_matrix</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)</span>
+    <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span> <span class="o">=</span> <span class="n">expand_edges</span><span class="p">(</span><span class="n">bonds</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;O1&quot;</span><span class="p">,</span> <span class="s2">&quot;O2&quot;</span><span class="p">,</span> <span class="s2">&quot;H3&quot;</span><span class="p">,</span> <span class="s2">&quot;H4&quot;</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mol_methanol</span><span class="p">():</span>
+    <span class="c1"># Methanol CH3OH</span>
+    <span class="c1"># Typical lengths (Angstrom): C-O 1.43, O-H 0.96, C-H 1.09</span>
+    <span class="c1"># Indices: C0, O1, H2/H3/H4 on C, H5 on O</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.43</span><span class="p">,</span> <span class="s2">&quot;C-O&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.96</span><span class="p">,</span> <span class="s2">&quot;O-H&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">,</span> <span class="s2">&quot;C-H&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">,</span> <span class="s2">&quot;C-H&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">,</span> <span class="s2">&quot;C-H&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">node_feature_matrix</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)</span>
+    <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span> <span class="o">=</span> <span class="n">expand_edges</span><span class="p">(</span><span class="n">bonds</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;O1&quot;</span><span class="p">,</span> <span class="s2">&quot;H2&quot;</span><span class="p">,</span> <span class="s2">&quot;H3&quot;</span><span class="p">,</span> <span class="s2">&quot;H4&quot;</span><span class="p">,</span> <span class="s2">&quot;H5&quot;</span><span class="p">]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="s2">&quot;lightcoral&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">,</span> <span class="s2">&quot;lightgray&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">graph_chain</span><span class="p">():</span>  <span class="c1"># keep a neutral toy</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># type not meaningful here</span>
+    <span class="n">bonds</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mf">1.0</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)]</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">node_feature_matrix</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">bonds</span><span class="p">)</span>
+    <span class="n">ei</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">bonds</span><span class="p">:</span>
+        <span class="n">ei</span> <span class="o">+=</span> <span class="p">[(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">),(</span><span class="n">v</span><span class="p">,</span><span class="n">u</span><span class="p">)]</span>
+    <span class="n">edge_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ei</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">edge_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">edge_index</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span>
+
+<span class="n">BUILDERS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Methane CH4&quot;</span><span class="p">:</span> <span class="n">mol_methane</span><span class="p">,</span>
+    <span class="s2">&quot;Propene C3H6&quot;</span><span class="p">:</span> <span class="n">mol_propene</span><span class="p">,</span>
+    <span class="s2">&quot;Formic acid HCOOH&quot;</span><span class="p">:</span> <span class="n">mol_formic_acid</span><span class="p">,</span>
+    <span class="s2">&quot;Methanol CH3OH&quot;</span><span class="p">:</span> <span class="n">mol_methanol</span><span class="p">,</span>   <span class="c1"># &lt;— new</span>
+    <span class="s2">&quot;Chain 0-1-2-3&quot;</span><span class="p">:</span> <span class="n">graph_chain</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># -------------------- Message passing math --------------------</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="s2">&quot;Length&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aggregate neighbor vectors with edge weights.</span>
+<span class="sd">    - how: &quot;Mean&quot; or &quot;Sum&quot;</span>
+<span class="sd">    - weight_mode: &quot;Length&quot; (multiply by L) or &quot;Inverse length&quot; (multiply by 1/L)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="n">edge_index</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">agg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">edge_w</span><span class="p">[</span><span class="n">e</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">weight_mode</span> <span class="o">==</span> <span class="s2">&quot;Inverse length&quot;</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">)</span>
+        <span class="n">agg</span><span class="p">[</span><span class="n">dst</span><span class="p">[</span><span class="n">e</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">w</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">src</span><span class="p">[</span><span class="n">e</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="n">how</span> <span class="o">==</span> <span class="s2">&quot;Mean&quot;</span><span class="p">:</span>
+        <span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dst</span><span class="p">:</span>
+            <span class="n">deg</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">1.0</span>
+        <span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">deg</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">agg</span> <span class="o">=</span> <span class="n">agg</span> <span class="o">/</span> <span class="n">deg</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">agg</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">activate</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;Identity&quot;</span><span class="p">:</span> <span class="k">return</span> <span class="n">z</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;ReLU&quot;</span><span class="p">:</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;tanh&quot;</span><span class="p">:</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">one_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span> <span class="n">safety</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="s2">&quot;Length&quot;</span><span class="p">):</span>
+    <span class="n">nei</span> <span class="o">=</span> <span class="n">aggregate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">edge_index</span><span class="p">,</span> <span class="n">edge_w</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="n">agg</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="n">weight_mode</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">nei</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">activate</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">act</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">safety</span><span class="p">:</span>
+        <span class="n">norms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-8</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">norms</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">scale</span>
+    <span class="k">return</span> <span class="n">h</span>
+
+<span class="c1"># ------------------------- Drawing -------------------------</span>
+<span class="n">COLORS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:green&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:red&quot;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_vectors</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">vectors</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">1.7</span><span class="o">*</span><span class="n">N</span> <span class="o">+</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">4.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="n">x_left</span><span class="p">,</span> <span class="n">x_right</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mf">0.9</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_left</span><span class="p">,</span> <span class="n">x_left</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_right</span><span class="p">,</span> <span class="n">x_right</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_left</span><span class="p">,</span> <span class="n">x_right</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x_left</span><span class="p">,</span> <span class="n">x_right</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">x_left</span><span class="o">+</span><span class="n">x_right</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">x_left</span><span class="o">+</span><span class="n">x_right</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.5</span> <span class="o">-</span> <span class="n">k</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[ </span><span class="si">{</span><span class="n">vectors</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2"> ]&quot;</span><span class="p">,</span>
+                    <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">COLORS</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_graph</span><span class="p">(</span><span class="n">edge_index</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">node_colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Molecule/graph connectivity&quot;</span><span class="p">):</span>
+    <span class="n">src</span><span class="p">,</span> <span class="n">dst</span> <span class="o">=</span> <span class="n">edge_index</span>
+    <span class="n">edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">sorted</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">))))</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span> <span class="k">if</span> <span class="n">u</span> <span class="o">!=</span> <span class="n">v</span><span class="p">))</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">lab</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+        <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">node_colors</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))},</span>
+                <span class="n">node_size</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="n">i</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))},</span>
+                <span class="n">node_size</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ----------------------- Widget UI or Fallback -----------------------</span>
+<span class="n">WIDGETS_AVAILABLE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+    <span class="n">WIDGETS_AVAILABLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_demo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Methane CH4&quot;</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">safety</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="s2">&quot;Length&quot;</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">BUILDERS</span><span class="p">[</span><span class="n">name</span><span class="p">]()</span>
+    <span class="n">show_graph</span><span class="p">(</span><span class="n">ei</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> — bonds&quot;</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">one_step</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="n">agg</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="n">act</span><span class="p">,</span> <span class="n">safety</span><span class="o">=</span><span class="n">safety</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="n">weight_mode</span><span class="p">)</span>
+    <span class="n">show_vectors</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">steps</span><span class="si">}</span><span class="s2"> step(s) • agg=</span><span class="si">{</span><span class="n">agg</span><span class="si">}</span><span class="s2">, act=</span><span class="si">{</span><span class="n">act</span><span class="si">}</span><span class="s2">, a=</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">, safety=</span><span class="si">{</span><span class="n">safety</span><span class="si">}</span><span class="s2">, weight=</span><span class="si">{</span><span class="n">weight_mode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">WIDGETS_AVAILABLE</span><span class="p">:</span>
+    <span class="n">graph_dd</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">BUILDERS</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Methanol CH3OH&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Molecule&quot;</span><span class="p">)</span>  
+    <span class="n">steps_sl</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>                            
     <span class="n">agg_tb</span>     <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span><span class="s2">&quot;Sum&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Sum&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Aggregate&quot;</span><span class="p">)</span>
-    <span class="n">act_tb</span>     <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span><span class="s2">&quot;ReLU&quot;</span><span class="p">,</span><span class="s2">&quot;Identity&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Activation&quot;</span><span class="p">)</span>
-    <span class="n">a_sl</span>       <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Self (a)&quot;</span><span class="p">)</span>
-    <span class="n">b_sl</span>       <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Neighbor (b)&quot;</span><span class="p">)</span>
-    <span class="n">safety_cb</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Renormalization / Safety Scale&quot;</span><span class="p">)</span>
-    <span class="n">weight_tb</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span><span class="s2">&quot;Inverse length&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Inverse length&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Edge feature&quot;</span><span class="p">)</span>
-
-    <span class="c1"># NEW: create the missing widgets</span>
-    <span class="n">run_btn</span>    <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Run&quot;</span><span class="p">,</span> <span class="n">button_style</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-    <span class="n">out_graph</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
-    <span class="n">out_vec</span>    <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Output</span><span class="p">()</span>
-
+    <span class="n">act_tb</span>     <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span><span class="s2">&quot;ReLU&quot;</span><span class="p">,</span><span class="s2">&quot;Identity&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Activation&quot;</span><span class="p">)</span>  
+    <span class="n">a_sl</span>       <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Self (a)&quot;</span><span class="p">)</span>              
+    <span class="n">b_sl</span>       <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Neighbor (b)&quot;</span><span class="p">)</span>          
+    <span class="n">safety_cb</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Checkbox</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Renormalization / Safety Scale&quot;</span><span class="p">)</span>                       
+    <span class="n">weight_tb</span>  <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">ToggleButtons</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Length&quot;</span><span class="p">,</span><span class="s2">&quot;Inverse length&quot;</span><span class="p">],</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Inverse length&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Edge feature&quot;</span><span class="p">)</span> 
     <span class="k">def</span><span class="w"> </span><span class="nf">on_run</span><span class="p">(</span><span class="n">_</span><span class="p">):</span>
-        <span class="n">out_graph</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">out_vec</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
+        <span class="n">out_graph</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span> <span class="n">out_vec</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">out_graph</span><span class="p">:</span>
             <span class="n">x</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">BUILDERS</span><span class="p">[</span><span class="n">graph_dd</span><span class="o">.</span><span class="n">value</span><span class="p">]()</span>
-            <span class="n">show_graph</span><span class="p">(</span><span class="n">ei</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">graph_dd</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> - bonds (Å weighting)&quot;</span><span class="p">)</span>
-
+            <span class="n">show_graph</span><span class="p">(</span><span class="n">ei</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">graph_dd</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> — bonds (Å weighting)&quot;</span><span class="p">)</span>
         <span class="k">with</span> <span class="n">out_vec</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">BUILDERS</span><span class="p">[</span><span class="n">graph_dd</span><span class="o">.</span><span class="n">value</span><span class="p">]()</span>
             <span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
             <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_sl</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
                 <span class="n">h</span> <span class="o">=</span> <span class="n">one_step</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">a_sl</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b_sl</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                              <span class="n">agg</span><span class="o">=</span><span class="n">agg_tb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="n">act_tb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
                              <span class="n">safety</span><span class="o">=</span><span class="n">safety_cb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="n">weight_tb</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-            <span class="n">show_vectors</span><span class="p">(</span>
-                <span class="n">h</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span>
-                <span class="n">title</span><span class="o">=</span><span class="p">(</span>
-                    <span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">steps_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> step(s) • agg=</span><span class="si">{</span><span class="n">agg_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;act=</span><span class="si">{</span><span class="n">act_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, a=</span><span class="si">{</span><span class="n">a_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, &quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot;safety=</span><span class="si">{</span><span class="n">safety_cb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, weight=</span><span class="si">{</span><span class="n">weight_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
-                <span class="p">)</span>
-            <span class="p">)</span>
-
+            <span class="n">show_vectors</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">steps_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> step(s) • agg=</span><span class="si">{</span><span class="n">agg_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, act=</span><span class="si">{</span><span class="n">act_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, a=</span><span class="si">{</span><span class="n">a_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, safety=</span><span class="si">{</span><span class="n">safety_cb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, weight=</span><span class="si">{</span><span class="n">weight_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run</span><span class="p">)</span>
-
-    <span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
         <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">graph_dd</span><span class="p">,</span> <span class="n">steps_sl</span><span class="p">,</span> <span class="n">weight_tb</span><span class="p">]),</span>
         <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">agg_tb</span><span class="p">,</span> <span class="n">act_tb</span><span class="p">]),</span>
         <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">a_sl</span><span class="p">,</span> <span class="n">b_sl</span><span class="p">,</span> <span class="n">safety_cb</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">]),</span>
-        <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">out_graph</span><span class="p">,</span> <span class="n">out_vec</span><span class="p">]),</span>
-    <span class="p">])</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">ui</span><span class="p">)</span>
+        <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">out_graph</span><span class="p">,</span> <span class="n">out_vec</span><span class="p">])</span>
+    <span class="p">]))</span>
     <span class="n">on_run</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="c1"># Fallback so there is still output without widgets</span>
+    <span class="c1"># Fallback run here so you can see the revised initialization and new Formic acid example</span>
     <span class="n">run_demo</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Methanol CH3OH&quot;</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">agg</span><span class="o">=</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">safety</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="s2">&quot;Inverse length&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1993,19 +2209,28 @@ This lets us literally <strong>see numbers flowing through edges</strong> using 
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">if</span> <span class="n">WIDGETS_AVAILABLE</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">graph_dd</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">BUILDERS</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Methanol CH3OH&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Molecule&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">steps_sl</span>   <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">248</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span>             <span class="n">h</span> <span class="o">=</span> <span class="n">one_step</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ew</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="n">a_sl</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b_sl</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">245</span>                          <span class="n">agg</span><span class="o">=</span><span class="n">agg_tb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">act</span><span class="o">=</span><span class="n">act_tb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span>                          <span class="n">safety</span><span class="o">=</span><span class="n">safety_cb</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">weight_mode</span><span class="o">=</span><span class="n">weight_tb</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">247</span>         <span class="n">show_vectors</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">steps_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2"> step(s) • agg=</span><span class="si">{</span><span class="n">agg_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, act=</span><span class="si">{</span><span class="n">act_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, a=</span><span class="si">{</span><span class="n">a_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b_sl</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, safety=</span><span class="si">{</span><span class="n">safety_cb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">, weight=</span><span class="si">{</span><span class="n">weight_tb</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">248</span> <span class="n">run_btn</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">on_run</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="n">display</span><span class="p">(</span><span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span>     <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">graph_dd</span><span class="p">,</span> <span class="n">steps_sl</span><span class="p">,</span> <span class="n">weight_tb</span><span class="p">]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">agg_tb</span><span class="p">,</span> <span class="n">act_tb</span><span class="p">]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">252</span>     <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">a_sl</span><span class="p">,</span> <span class="n">b_sl</span><span class="p">,</span> <span class="n">safety_cb</span><span class="p">,</span> <span class="n">run_btn</span><span class="p">]),</span>
+<span class="g g-Whitespace">    </span><span class="mi">253</span>     <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">out_graph</span><span class="p">,</span> <span class="n">out_vec</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">254</span> <span class="p">]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="n">on_run</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;WIDGETS_AVAILABLE&#39; is not defined
+<span class="ne">NameError</span>: name &#39;run_btn&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="build-an-mpnn-from-scratch">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Build an MPNN from scratch</a><a class="headerlink" href="#build-an-mpnn-from-scratch" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Build an MPNN from scratch</a><a class="headerlink" href="#build-an-mpnn-from-scratch" title="Link to this heading">#</a></h2>
 <p>Now that we’ve seen the math for message passing, we will implement a
 simple <strong>MPNN layer</strong> in PyTorch and use it for a toxicity classification task.</p>
 <p>At each layer <code class="docutils literal notranslate"><span class="pre">t</span></code>, every node gets messages from its neighbors and updates its hidden state.</p>
@@ -2029,10 +2254,10 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>We will use RDKit to parse SMILES strings and turn molecules into
 graphs.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">smiles_to_graph</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
@@ -2128,10 +2353,10 @@ graphs.</p>
 </details>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="p">{</span>
@@ -2327,10 +2552,10 @@ graphs.</p>
 <p>The other thing you may notice is that, since we use molecule as graph, this time we <strong>did not</strong> provide molecular level descritors like <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">#Rings</span></code>, instead we simply just put some simple atomic level information like atomic number and bond order.</p>
 <p>Similar to the case you see earlier today with MLP, we can also have customized <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> function.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
@@ -2570,25 +2795,25 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Permalink to this term">#</a></dt><dd><p>A neural network that operates on graph-structured data, updating node features by aggregating information from neighbors.</p>
+<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Link to this term">#</a></dt><dd><p>A neural network that operates on graph-structured data, updating node features by aggregating information from neighbors.</p>
 </dd>
-<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Permalink to this term">#</a></dt><dd><p>The process in a GNN where node representations are updated by exchanging information with neighbors over edges.</p>
+<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Link to this term">#</a></dt><dd><p>The process in a GNN where node representations are updated by exchanging information with neighbors over edges.</p>
 </dd>
-<dt id="term-node-feature">node feature<a class="headerlink" href="#term-node-feature" title="Permalink to this term">#</a></dt><dd><p>A vector describing atom properties such as atomic number, degree, aromaticity, or formal charge.</p>
+<dt id="term-node-feature">node feature<a class="headerlink" href="#term-node-feature" title="Link to this term">#</a></dt><dd><p>A vector describing atom properties such as atomic number, degree, aromaticity, or formal charge.</p>
 </dd>
-<dt id="term-edge-feature">edge feature<a class="headerlink" href="#term-edge-feature" title="Permalink to this term">#</a></dt><dd><p>A vector describing bond properties such as single/double/triple/aromatic bond type.</p>
+<dt id="term-edge-feature">edge feature<a class="headerlink" href="#term-edge-feature" title="Link to this term">#</a></dt><dd><p>A vector describing bond properties such as single/double/triple/aromatic bond type.</p>
 </dd>
-<dt id="term-pooling">pooling<a class="headerlink" href="#term-pooling" title="Permalink to this term">#</a></dt><dd><p>Aggregation of all node embeddings into a single graph-level embedding (e.g., mean, sum, or max).</p>
+<dt id="term-pooling">pooling<a class="headerlink" href="#term-pooling" title="Link to this term">#</a></dt><dd><p>Aggregation of all node embeddings into a single graph-level embedding (e.g., mean, sum, or max).</p>
 </dd>
-<dt id="term-MPNN">MPNN<a class="headerlink" href="#term-MPNN" title="Permalink to this term">#</a></dt><dd><p>Message Passing Neural Network. A GNN variant where messages explicitly depend on both neighbor node features and edge features.</p>
+<dt id="term-MPNN">MPNN<a class="headerlink" href="#term-MPNN" title="Link to this term">#</a></dt><dd><p>Message Passing Neural Network. A GNN variant where messages explicitly depend on both neighbor node features and edge features.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -2622,9 +2847,9 @@ val_acc=0.8435
 </ul>
 </section>
 <section id="in-class-activities">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Link to this heading">#</a></h2>
 <section id="q1-build-an-mlp-for-toxicity-classification">
-<h3>Q1. Build an MLP for toxicity classification<a class="headerlink" href="#q1-build-an-mlp-for-toxicity-classification" title="Permalink to this heading">#</a></h3>
+<h3>Q1. Build an MLP for toxicity classification<a class="headerlink" href="#q1-build-an-mlp-for-toxicity-classification" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use input features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
 <li><p>Build an <strong>MLP from scratch in PyTorch</strong> with one hidden layer of 32 units and ReLU.</p></li>
@@ -2637,7 +2862,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q2-build-an-mlp-for-regression-on-melting-point">
-<h3>Q2. Build an MLP for regression on melting point<a class="headerlink" href="#q2-build-an-mlp-for-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
+<h3>Q2. Build an MLP for regression on melting point<a class="headerlink" href="#q2-build-an-mlp-for-regression-on-melting-point" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Same input features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
 <li><p>Build an MLP with two hidden layers <code class="docutils literal notranslate"><span class="pre">(64,</span> <span class="pre">32)</span></code> in PyTorch.</p></li>
@@ -2650,7 +2875,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q3-gnn-1-toxicity-with-a-slightly-different-architecture">
-<h3>Q3. GNN-1: Toxicity with a slightly different architecture<a class="headerlink" href="#q3-gnn-1-toxicity-with-a-slightly-different-architecture" title="Permalink to this heading">#</a></h3>
+<h3>Q3. GNN-1: Toxicity with a slightly different architecture<a class="headerlink" href="#q3-gnn-1-toxicity-with-a-slightly-different-architecture" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Build a GNN with <strong>3 message-passing layers</strong>, hidden size <strong>48</strong>, <strong>sum pooling</strong>, and <strong>dropout=0.2</strong>.</p></li>
 <li><p>Train on toxicity graphs from SMILES.</p></li>
@@ -2662,7 +2887,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q4-gnn-2-toxicity-with-5-fold-cross-validation">
-<h3>Q4. GNN-2: Toxicity with 5-fold cross validation<a class="headerlink" href="#q4-gnn-2-toxicity-with-5-fold-cross-validation" title="Permalink to this heading">#</a></h3>
+<h3>Q4. GNN-2: Toxicity with 5-fold cross validation<a class="headerlink" href="#q4-gnn-2-toxicity-with-5-fold-cross-validation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Build a second GNN that differs again: <strong>2 layers</strong>, hidden <strong>96</strong>, <strong>max pooling</strong>.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">KFold()</span></code> or <code class="docutils literal notranslate"><span class="pre">StratifiedKFold()</span></code> with <code class="docutils literal notranslate"><span class="pre">n_splits=5</span></code> on toxicity.</p></li>
@@ -2674,7 +2899,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q5-reactivity-classification-mlp-from-scratch">
-<h3>Q5. Reactivity classification (MLP from scratch)<a class="headerlink" href="#q5-reactivity-classification-mlp-from-scratch" title="Permalink to this heading">#</a></h3>
+<h3>Q5. Reactivity classification (MLP from scratch)<a class="headerlink" href="#q5-reactivity-classification-mlp-from-scratch" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Target = <code class="docutils literal notranslate"><span class="pre">Reactivity</span></code> (yes, this is a property exists in our C-H oxidation dataset that we have never touched before! basically it’s binary success/failure labels on the C-H reaction outcome if electrochemical conditions were applied ) in the dataset. Values are <code class="docutils literal notranslate"><span class="pre">−1</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p>Map to 0 or 1 and train a <strong>PyTorch MLP</strong> on <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
@@ -2715,7 +2940,7 @@ val_acc=0.8435
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2727,15 +2952,6 @@ val_acc=0.8435
         <p class="prev-next-title">Lecture 8 - Neural Networks</p>
       </div>
     </a>
-    <a class="right-next"
-       href="lecture-10.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 10 - Property &amp; Reaction Prediction</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -2744,6 +2960,7 @@ val_acc=0.8435
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2808,7 +3025,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2832,8 +3049,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

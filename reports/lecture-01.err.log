@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+aw = {"H": 1.008, "C": 12.011, "O": 15.999, "N": 14.007}
+
+mixture = [
+    (2.00, "CO2", {"C": 1, "O": 2}),
+    (3.00, "H2O", {"H": 2, "O": 1}),
+    (4.00, "NH3", {"N": 1, "H": 3}),
+]
+
+max_moles = -1.0
+winner = None
+
+for mass_g, name, counts in mixture:         # TODO
+    # Compute molar mass from counts
+    M = 0.0
+    for elem, n in counts.items:    # TODO
+        M = M + aw[elem] * n   # TODO
+    n_moles = mass_g / M        # TODO
+
+    if n_moles > max_moles:          # TODO
+        max_moles = n_moles
+        winner = name
+
+print("Largest moles:", winner, "with", max_moles, "mol")
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[45][39m[32m, line 15[39m
+[32m     12[39m [38;5;28;01mfor[39;00m mass_g, name, counts [38;5;129;01min[39;00m mixture:         [38;5;66;03m# TODO[39;00m
+[32m     13[39m     [38;5;66;03m# Compute molar mass from counts[39;00m
+[32m     14[39m     M = [32m0.0[39m
+[32m---> [39m[32m15[39m [43m    [49m[38;5;28;43;01mfor[39;49;00m[43m [49m[43melem[49m[43m,[49m[43m [49m[43mn[49m[43m [49m[38;5;129;43;01min[39;49;00m[43m [49m[43mcounts[49m[43m.[49m[43mitems[49m[43m:[49m[43m    [49m[38;5;66;43;03m# TODO[39;49;00m
+[32m     16[39m [43m        [49m[43mM[49m[43m [49m[43m=[49m[43m [49m[43mM[49m[43m [49m[43m+[49m[43m [49m[43maw[49m[43m[[49m[43melem[49m[43m][49m[43m [49m[43m*[49m[43m [49m[43mn[49m   [38;5;66;03m# TODO[39;00m
+[32m     17[39m     n_moles = mass_g / M        [38;5;66;03m# TODO[39;00m
+
+[31mTypeError[39m: 'builtin_function_or_method' object is not iterable
+

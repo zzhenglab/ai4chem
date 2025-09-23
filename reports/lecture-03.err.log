@@ -1,0 +1,47 @@
+Traceback (most recent call last):
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+methane = Chem.MolFromSmiles("C") # replace with other SMILES strings to see how it changes!
+caffeine = Chem.MolFromSmiles("Cn1cnc2c1c(=O)n(C)c(=O)n2C")
+fp_me = mfpgen.GetFingerprint(methane)
+fp_caff = mfpgen.GetFingerprint(caffeine)
+
+from rdkit import DataStructs
+print(fp_me.ToBitString())
+print("----------------")
+print(fp_caff.ToBitString())
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[25], line 3[0m
+[0;32m      1[0m methane [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles([38;5;124m"[39m[38;5;124mC[39m[38;5;124m"[39m) [38;5;66;03m# replace with other SMILES strings to see how it changes![39;00m
+[0;32m      2[0m caffeine [38;5;241m=[39m Chem[38;5;241m.[39mMolFromSmiles([38;5;124m"[39m[38;5;124mCn1cnc2c1c(=O)n(C)c(=O)n2C[39m[38;5;124m"[39m)
+[1;32m----> 3[0m fp_me [38;5;241m=[39m [43mmfpgen[49m[38;5;241m.[39mGetFingerprint(methane)
+[0;32m      4[0m fp_caff [38;5;241m=[39m mfpgen[38;5;241m.[39mGetFingerprint(caffeine)
+[0;32m      6[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mrdkit[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m DataStructs
+
+[1;31mNameError[0m: name 'mfpgen' is not defined
+
