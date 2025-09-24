@@ -39,6 +39,21 @@ Yields:
   expected_yield is the model prediction without noise.
   yield is the noisy and perturbed outcome with 10% failures, 10% at 70% expected, and 15% boosted by +0.10 clipped at 0.99.
 Intended use: toy data for Gaussian-process BO with active learning; PCA/t-SNE show clusters by family/descriptor.
+
+first a few lines of the CSV file:
+linker_smiles	temperature	time_h	concentration_M	solvent_DMF	yield
+O=C(O)c1ccc(cc1)C(=O)O	25	12	0.05	0	29
+O=C(O)/C=C/C(=O)O	25	12	0.05	0	42
+Cc1ncc[nH]1	25	12	0.05	0	66
+O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1	25	12	0.05	0	21
+Nc1cc(C(=O)O)ccc1C(=O)O	25	12	0.05	0	23
+O=C(O)c1cc(F)ccc1C(=O)O	25	12	0.05	0	20
+O=C(O)c1ccc2cccc(C(=O)O)c2c1	25	12	0.05	0	9
+O=C(O)c1cccc2c1ccc(C(=O)O)c2	25	12	0.05	0	13
+O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O	25	12	0.05	0	5
+c1ccc2[nH]cnc2c1	25	12	0.05	0	58
+O=C(O)c1ccc(cc1)C(=O)O	25	12	0.05	1	49
+
 """
 
 
