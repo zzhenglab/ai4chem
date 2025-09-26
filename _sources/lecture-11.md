@@ -11,28 +11,27 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 11 - Dimension Reduction and Clustering
+# Lecture 11 - Dimension Reduction for Data Visualization
 
-{contents}
+```{contents}
 :local:
 :depth: 1
+```
 
 ## Learning goals
 
 - Understand **unsupervised learning** vs **supervised learning** in chemistry.
 - Explain the intuition and math of **PCA** and read **loadings**, **scores**, and **explained variance**.
 - Use **t-SNE** and **UMAP** to embed high dimensional chemical features to 2D for visualization.
-- Perform **K-means** clustering, choose **K** using elbow and silhouette, and interpret clusters.
 
----
+
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)
+
 
 ## 1. Setup and data
 
-We will reuse the C–H oxidation dataset and compute a small set of descriptors.
-
+We will reuse the C-H oxidation dataset and compute a small set of descriptors.
 ```{code-cell} ipython3
-:tags: [hide-input]
-
 # Core
 import numpy as np
 import pandas as pd
@@ -70,18 +69,17 @@ except Exception:
       RD = False
       Chem = None
 ```
-
 ```{code-cell} ipython3
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
 df_raw = pd.read_csv(url)
 df_raw.head(3)
 ```
-
-We compute four quick descriptors for everyone. If RDKit is available, we will also compute a binary Morgan fingerprint.
+We compute four quick 4 descriptors for everyone. Different from we we did previously, we only have another function compute 10 descriptors.
 
 ```{code-cell} ipython3
+# Original function (4 descriptors)
 def calc_descriptors(smiles: str):
-    if not RD or smiles is None:
+    if smiles is None:
         return pd.Series({"MolWt": np.nan, "LogP": np.nan, "TPSA": np.nan, "NumRings": np.nan})
     m = Chem.MolFromSmiles(smiles)
     if m is None:
@@ -93,172 +91,269 @@ def calc_descriptors(smiles: str):
         "NumRings": rdMolDescriptors.CalcNumRings(m),
     })
 
-desc = df_raw["SMILES"].apply(calc_descriptors)
-df = pd.concat([df_raw, desc], axis=1)
 
-print("Rows x Cols:", df.shape)
-df[["Compound Name","SMILES","MolWt","LogP","TPSA","NumRings","Toxicity"]].head()
+# New function (10 descriptors)
+def calc_descriptors10(smiles: str):
+    m = Chem.MolFromSmiles(smiles)
+    return pd.Series({
+        "MolWt": Descriptors.MolWt(m),
+        "LogP": Crippen.MolLogP(m),
+        "TPSA": rdMolDescriptors.CalcTPSA(m),
+        "NumRings": rdMolDescriptors.CalcNumRings(m),
+        "NumHAcceptors": rdMolDescriptors.CalcNumHBA(m),
+        "NumHDonors": rdMolDescriptors.CalcNumHBD(m),
+        "NumRotatableBonds": rdMolDescriptors.CalcNumRotatableBonds(m),
+        "HeavyAtomCount": Descriptors.HeavyAtomCount(m),   # <-- fixed
+        "FractionCSP3": rdMolDescriptors.CalcFractionCSP3(m),
+        "NumAromaticRings": rdMolDescriptors.CalcNumAromaticRings(m)
+    })
+
+# Example usage (choose which function you want to apply)
+desc4 = df_raw["SMILES"].apply(calc_descriptors)      # 4 descriptors
+desc10 = df_raw["SMILES"].apply(calc_descriptors10)   # 10 descriptors
+
+df4 = pd.concat([df_raw, desc4], axis=1)
+df10 = pd.concat([df_raw, desc10], axis=1)
+
+print("Rows x Cols (4 desc):", df4.shape)
+print("Rows x Cols (10 desc):", df10.shape)
+
+df4.head()
 ```
-
-Now we build a 1024-bit Morgan fingerprint ($r=2$). We keep both a **small descriptor table** and a **high dimensional fingerprint** table.
 
 ```{code-cell} ipython3
-if RD:
-    def morgan_bits(smiles, n_bits=1024, radius=2):
-        m = Chem.MolFromSmiles(smiles)
-        if m is None:
-            return np.zeros(n_bits, dtype=np.int8)
-        bv = rdMolDescriptors.GetMorganFingerprintAsBitVect(m, radius=radius, nBits=n_bits)
-        arr = np.zeros((n_bits,), dtype=np.int8)
-        _ = Chem.DataStructs.ConvertToNumpyArray(bv, arr)  # fills arr in place
-        return arr
-
-    X_fp = np.vstack(df["SMILES"].apply(morgan_bits).to_numpy())
-    print("Fingerprint shape:", X_fp.shape)
-else:
-    X_fp = None
-    print("RDKit not available. Fingerprints will be skipped.")
-
-# Small numeric descriptors
-X_small = df[["MolWt","LogP","TPSA","NumRings"]].astype(float).to_numpy()
-mask_small = np.isfinite(X_small).all(axis=1)
-X_small = X_small[mask_small]
-labels_all = df.loc[mask_small, "Toxicity"].str.lower().map({"toxic":1, "non_toxic":0})
-y_toxic = labels_all.fillna(-1).to_numpy()  # -1 if missing
-
-print("Small descriptor matrix:", X_small.shape, "  Toxicity labels:", np.unique(y_toxic, return_counts=True))
+df10.head()
 ```
 
+Now we build a 64-bit Morgan fingerprint ($r=2$). We keep both a **small descriptor table** and a **high dimensional fingerprint** table.
+
+```{code-cell} ipython3
+from rdkit.Chem import rdFingerprintGenerator
+from rdkit import DataStructs
+
+# --- Morgan fingerprint function (compact string) ---
+def morgan_bits(smiles: str, n_bits: int = 64, radius: int = 2):
+    if smiles is None:
+        return np.nan
+    m = Chem.MolFromSmiles(smiles)
+    if m is None:
+        return np.nan
+
+    gen = rdFingerprintGenerator.GetMorganGenerator(radius=radius, fpSize=n_bits)
+    fp = gen.GetFingerprint(m)
+    arr = np.zeros((n_bits,), dtype=int)
+    DataStructs.ConvertToNumpyArray(fp, arr)
+
+    # join into one string of "0101..."
+    return "".join(map(str, arr))
+
+#1024bit
+df_morgan_1024 = df_raw.copy()
+df_morgan_1024["Fingerprint"] = df_morgan_1024["SMILES"].apply(lambda s: morgan_bits(s, n_bits=1024, radius=2))
+
+#64 bit
+df_morgan = df_raw.copy()
+df_morgan["Fingerprint"] = df_morgan["SMILES"].apply(lambda s: morgan_bits(s, n_bits=64, radius=2))
+
+
+print("Rows x Cols:", df_morgan.shape)
+df_morgan.head()
+
+
+
+```
 ```{admonition} Data choices
-- **X_small** uses 4 descriptors. Good for first PCA stories.
-- **X_fp** has 1024 bits. Good for t-SNE or UMAP since it is very high dimensional.
+> - **X_small** uses 4 descriptors. Good for first PCA stories.
+> - **X_fp** has 64 bits. Good for t-SNE or UMAP since it is very high dimensional.
 ```
 
-```{admonition} ⏰ Exercise 1
-1. How many rows were dropped because of missing descriptor values? Use `mask_small.sum()` and `len(mask_small)` to compute it.
-2. If RDKit is available, check the fraction of 1-bits in the fingerprints for the first 5 molecules.
+Now, let's compare their 4D, 10D descriptors with 64D fingerprints.
+```{code-cell} ipython3
+
+
+import random
+from rdkit.Chem import Draw
+
+# pick indices you want
+sample_indices = [1, 5, 7, 15, 20, 80, 100]
+
+# make sure you have all descriptor sets ready
+desc4 = df_raw["SMILES"].apply(calc_descriptors)
+desc10 = df_raw["SMILES"].apply(calc_descriptors10)
+df_all = pd.concat([df_raw, desc4, desc10.add_prefix("d10_"), df_morgan["Fingerprint"]], axis=1)
+
+# loop through chosen indices
+for idx in sample_indices:
+    row = df_all.iloc[idx]
+    mol = Chem.MolFromSmiles(row["SMILES"])
+    img = Draw.MolToImage(mol, size=(200, 200), legend=row["Compound Name"])
+    display(img)
+
+    print(f"=== {row['Compound Name']} ===")
+    print("SMILES:", row["SMILES"])
+
+    # 4-descriptor set
+    d4 = np.round([row["MolWt"], row["LogP"], row["TPSA"], row["NumRings"]], 2)
+    print("Descriptors [MolWt, LogP, TPSA, NumRings]:", d4)
+
+    # 10-descriptor set
+    d10_keys = ["MolWt","LogP","TPSA","NumRings","NumHAcceptors","NumHDonors",
+                "NumRotatableBonds","HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+    d10 = np.round([row["d10_"+k] for k in d10_keys], 2)
+    print("10-Descriptor Vector:", d10)
+    print("Fingerprint:", row["Fingerprint"][:32])
+
+    print()
+
 ```
 
-### 1.4 Why two feature tables
-
-We keep both a low dimensional table and a high dimensional table on purpose.
 
 - The 4-descriptor table is easy to standardize and to interpret.
 - The 1024-bit fingerprint captures substructure presence or absence and is useful for neighborhood maps.
 
-When you learn a new method, start with the small table. Once the idea feels solid, switch to fingerprints to stress test the method.
+With 4-desciptor, it's easier to visualize:
 
-### 1.5 Sanity checks on raw data
-
-Before any modeling, confirm shapes, missing values, and duplicates. We will store a few quick counts that we will reuse in later plots.
 
 ```{code-cell} ipython3
-n_rows = len(df)
-n_unique_smiles = df["SMILES"].nunique()
-n_missing_smiles = df["SMILES"].isna().sum()
-n_missing_tox = df["Toxicity"].isna().sum()
-print("Rows:", n_rows)
-print("Unique SMILES:", n_unique_smiles)
-print("Missing SMILES:", n_missing_smiles)
-print("Missing toxicity labels:", n_missing_tox)
+:tags: [hide-input]
+from mpl_toolkits.mplot3d import Axes3D
+
+# pick specific indices
+df_sel = df_all.iloc[sample_indices]   # df_all includes your descriptors
+
+# --- 3D scatter plot ---
+fig = plt.figure(figsize=(8,6))
+ax = fig.add_subplot(111, projection="3d")
+
+sc = ax.scatter(
+    df_sel["MolWt"], df_sel["LogP"], df_sel["TPSA"],
+    c=df_sel["NumRings"], cmap="viridis", s=100
+)
+
+# add labels to points
+for i, row in df_sel.iterrows():
+    ax.text(
+        row["MolWt"]+10 ,   # shift value so no overlap
+        row["LogP"]-0.21,
+        row["TPSA"]+4.5,
+        row["Compound Name"],
+        ha="right",   # align text to the right
+        fontsize=9
+    )
+
+ax.set_xlabel("MolWt")
+ax.set_ylabel("LogP")
+ax.set_zlabel("TPSA")
+plt.colorbar(sc, label="NumRings")
+plt.title("3D Descriptor Visualization (Selected Compounds)")
+plt.show()
+
 ```
+Now we can apply this to the entire C-H oxidation dataset.
+```{code-cell} ipython3
+:tags: [hide-input]
+fig = plt.figure(figsize=(8,6))
+ax = fig.add_subplot(111, projection="3d")
 
-Narrative:
+sc = ax.scatter(
+    df4["MolWt"],
+    df4["LogP"],
+    df4["TPSA"],
+    c=df4["NumRings"], cmap="viridis", s=10, alpha=0.5
+)
 
-- The number of unique SMILES tells us how many unique structures exist in this dataset.
-- Missing toxicity does not block unsupervised methods since they do not use labels. We will still color points by the available labels for interpretation.
+ax.set_xlabel("MolWt")
+ax.set_ylabel("LogP")
+ax.set_zlabel("TPSA")
 
-### 1.6 Fixing a possible RDKit quirk
+plt.colorbar(sc, label="NumRings")  # 4th dimension
+plt.title("4D Descriptor Visualization (MolWt, LogP, TPSA, NumRings)")
+plt.show()
 
-Some RDKit builds expose `ConvertToNumpyArray` via `rdkit.DataStructs` rather than `Chem.DataStructs`. If your earlier fingerprint cell failed, run this patch cell. It will recompute `X_fp` only when needed.
+```
+And depending which three descriptors you used for XYZ, you can have different plottings.
 
 ```{code-cell} ipython3
-if RD:
-    try:
-        _ = Chem.DataStructs
-        rdkit_ok = True
-    except Exception:
-        rdkit_ok = False
+:tags: [hide-input]
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
-    if (X_fp is None) or (not rdkit_ok) or (isinstance(X_fp, str)):
-        try:
-            from rdkit import DataStructs
-            def morgan_bits_safe(smiles, n_bits=1024, radius=2):
-                m = Chem.MolFromSmiles(smiles)
-                if m is None:
-                    return np.zeros(n_bits, dtype=np.int8)
-                bv = rdMolDescriptors.GetMorganFingerprintAsBitVect(m, radius=radius, nBits=n_bits)
-                arr = np.zeros((n_bits,), dtype=np.int8)
-                DataStructs.ConvertToNumpyArray(bv, arr)
-                return arr
-            X_fp = np.vstack(df["SMILES"].apply(morgan_bits_safe).to_numpy())
-            print("Rebuilt fingerprints with rdkit.DataStructs. Shape:", X_fp.shape)
-        except Exception as e:
-            print("Could not rebuild fingerprints. Proceed with X_small only.", e)
+# All 4 descriptors
+descs = ["MolWt", "LogP", "TPSA", "NumRings"]
+
+fig = plt.figure(figsize=(20,5))
+
+for i, color_dim in enumerate(descs, 1):
+    # the other three go on axes
+    axes_dims = [d for d in descs if d != color_dim]
+    xcol, ycol, zcol = axes_dims
+
+    ax = fig.add_subplot(1, 4, i, projection="3d")
+
+    sc = ax.scatter(
+        df4[xcol], df4[ycol], df4[zcol],
+        c=df4[color_dim], cmap="cividis", s=10, alpha=0.7
+    )
+
+    ax.set_xlabel(xcol)
+    ax.set_ylabel(ycol)
+    ax.set_zlabel(zcol)
+    ax.set_title(f"Color = {color_dim}")
+
+    # horizontal colorbar under each subplot
+    cbar = plt.colorbar(sc, ax=ax, orientation="horizontal", pad=0.1, shrink=0.7)
+    cbar.set_label(color_dim)
+
+plt.suptitle("4D Descriptor Visualization (All Permutations)", fontsize=16)
+plt.tight_layout()
+plt.show()
+
 ```
 
-### 1.7 A first look at Morgan fingerprints
+But when it comes to 10-dimensional descriptors or even something like a 1024-dimensional Morgan fingerprint, it is nearly impossible to directly visualize them. It becomes even harder to know the "neigbors" to a specific molecule.
 
-Morgan fingerprints are circular substructure fingerprints. Bit $j$ equals 1 if at least one circular environment of a given radius hashes to that bit. For radius $r=2$, the environment includes neighbors up to two bonds away.
+Humans can only intuitively grasp two or three axes at once. Once you go beyond that, you can only look at pairs of dimensions at a time, and the relationships quickly become hard to characterize.
 
-We will compute for the first few molecules:
-
-- the number of set bits,
-- the fraction of set bits,
-- an index list of which bits are active.
 
 ```{code-cell} ipython3
-if RD and X_fp is not None:
-    active_counts = X_fp[:10].sum(axis=1)
-    frac_active = active_counts / X_fp.shape[1]
-    print("Active bit counts (first 10):", active_counts.tolist())
-    print("Fraction active (first 10):", np.round(frac_active, 4).tolist())
+:tags: [hide-input]
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+vars = ["MolWt","LogP","TPSA","NumRings",
+        "NumHAcceptors","NumHDonors","NumRotatableBonds",
+        "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+
+fig, axes = plt.subplots(len(vars), 1, figsize=(6, 20), sharex=False)
+
+for i, v in enumerate(vars):
+    sns.scatterplot(
+        data=df10,
+        x="MolWt", y=v,   # fix one descriptor on x-axis (e.g., MolWt)
+        ax=axes[i], s=20, alpha=0.7
+    )
+    axes[i].set_ylabel(v)
+
+plt.tight_layout()
+plt.show()
+
 ```
-
-Let us also peek at which bit indices are set for the very first molecule. This gives a sense of sparsity.
-
 ```{code-cell} ipython3
-if RD and X_fp is not None:
-    idx0 = np.where(X_fp[0] == 1)[0]
-    print("First molecule. Active bit indices:", idx0[:25].tolist(), " ... total =", len(idx0))
+:tags: [hide-input]
+# expand "0101..." strings into arrays of integers
+fp_matrix = df_morgan["Fingerprint"].apply(lambda x: [int(ch) for ch in x]).tolist()
+fp_df = pd.DataFrame(fp_matrix, index=df_morgan["Compound Name"])
+
+plt.figure(figsize=(5,5))
+sns.heatmap(fp_df, cmap="Greys", cbar=False)
+plt.title("Morgan Fingerprint")
+plt.xlabel("Bit Index")
+plt.ylabel("Molecule")
+plt.show()
 ```
 
-```{admonition} Tip
-Binary fingerprints are sparse. Most bits are zero for any particular molecule. This is why cosine or Jaccard distances often behave better than Euclidean on raw bit vectors.
-```
+That’s why cheminformatics usually applies **dimension reduction** methods (PCA, t-SNE, UMAP) to compress high-dimensional data into a visualizable 2D or 3D form. We will get to these points today!
 
-### 1.8 Optional: recover substructures for a few bits
-
-RDKit can report which atom environments triggered a bit via the `bitInfo` dictionary. This gives intuition about what the fingerprint encodes.
-
-```{code-cell} ipython3
-if RD:
-    from rdkit.Chem import rdMolDescriptors as rdm
-    def bit_environment_examples(smiles, n_bits=1024, radius=2, max_show=5):
-        m = Chem.MolFromSmiles(smiles)
-        if m is None:
-            return {}
-        bitInfo = {}
-        bv = rdm.GetMorganFingerprintAsBitVect(m, radius=radius, nBits=n_bits, bitInfo=bitInfo)
-        # bitInfo: {bit_id: [(atom_idx, radius), ...]}
-        # Return only a few entries for display
-        out = {}
-        for k, v in list(bitInfo.items())[:max_show]:
-            out[k] = v
-        return out
-
-    env = bit_environment_examples(df.loc[0, "SMILES"])
-    print("Example bit environments (bit id -> (atom_index, radius)):", env)
-```
-
-Narrative:
-
-- The same bit can be set by multiple distinct environments because of hashing.
-- For teaching, pick one molecule and inspect two or three bits with the largest number of occurrences.
-
-```{admonition} ⏰ Mini exercise
-Pick a molecule by index. Use the helper above to list a few bit environments. Change the radius to 3 and compare how many environments get recorded.
-```
 
 ---
 
@@ -271,11 +366,8 @@ In Lectures 6 to 8 we learned supervised models that map $x \to y$ with labeled 
 
 We will color plots using toxicity when available. That is only to **interpret** the embedding or clusters. It is not used in the algorithms.
 
-```{admonition} Key idea
-Unsupervised learning looks for structure that is already present in $X$. Labels are for *evaluation* and interpretation only, not for fitting.
-```
-
 ```{admonition} ⏰ Exercise 2
+
 State whether each task is supervised or unsupervised:
 
 - Predict melting point from descriptors.
@@ -283,8 +375,7 @@ State whether each task is supervised or unsupervised:
 - Map 1024-bit fingerprints to 2D for plotting.
 - Predict toxicity from descriptors.
 ```
-
-### 2.1 What counts as a feature in chemistry
+### 2.1 Principal Component Analysis (PCA)
 
 Feature choices will drive everything downstream. You can use:
 
@@ -292,28 +383,323 @@ Feature choices will drive everything downstream. You can use:
 - Fingerprints like Morgan bits or MACCS keys.
 - Learned embeddings from a graph neural network. We will not use those here, but the same methods apply.
 
-If two students use different features, their PCA or UMAP plots will look different. That is expected.
+If two students use different features, their dimension reduction plots will look different. That is expected.
+
+> So, how do we start with dimension reduction?
+Let's first try **Principal Component Analysis (PCA)**
+In the previous section, when we move from **4 descriptors** (MolWt, LogP, TPSA, NumRings) to **10 descriptors** or even **64-bit Morgan fingerprints**, direct visualization becomes impossible. You can only plot a few dimensions at a time, and the relationships across all features become hard to interpret.
+
+PCA addresses this challenge by finding **new axes (principal components)** that summarize the directions of greatest variance in the data. These axes are:
+
+- **Orthogonal** (uncorrelated).
+- **Ranked by importance** (PC1 explains the most variance, PC2 the second most, and so on).
+- **Linear combinations** of the original features.
+
+Thus, PCA compresses high-dimensional molecular representations into just **2 or 3 coordinates** that can be plotted.
+
+
+
+Below is the mathematical pieces:
+
+1. Start with standardized data $\tilde X$ (mean 0, variance 1 across features).
+2. Compute the covariance matrix:
+   $
+   S = \frac{1}{n-1}\tilde X^\top \tilde X
+   $
+3. Either:
+   - Eigen-decompose $S$ → eigenvectors are principal directions.
+   - Or compute SVD:
+     $
+     \tilde X = U \Sigma V^\top
+     $
+4. The top $k$ eigenvectors (or columns of $V$) form the principal directions.
+5. The new coordinates are:
+   $
+   Z = \tilde X V_k
+   $
+   where $Z$ are the principal component scores.
+
+---
+What this means for our chemistry dataset (`df10`)
+
+- `df10` contains **10 molecular descriptors** for each compound:
+  - MolWt, LogP, TPSA, NumRings,
+  - NumHAcceptors, NumHDonors,
+  - NumRotatableBonds, HeavyAtomCount,
+  - FractionCSP3, NumAromaticRings.
+
+- These form a data matrix $X$ of shape **(n molecules × 10 features)**.
+
+- PCA standardizes each column (feature) so they are comparable on the same scale.  
+  For example, MolWt ranges in the hundreds, but FractionCSP3 is between 0 and 1. Standardization makes both contribute fairly.
+
+- Then PCA computes **principal directions** as linear combinations of these 10 descriptors.  
+
+- The result is a new score matrix $Z$ of shape **(n molecules × k components)**, usually with $k=2$ or $3$ for visualization.  
+  This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3) instead of 10 descriptors.
+
+- The same approach works for fingerprints: instead of 10 columns, you may have 64, 1024, or 2048. PCA reduces that down to 2–3 interpretable axes.
+
+```{code-cell} ipython3
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import numpy as np
+
+# ---- prepare matrices ----
+X_desc = df10[["MolWt","LogP","TPSA","NumRings",
+               "NumHAcceptors","NumHDonors","NumRotatableBonds",
+               "HeavyAtomCount","FractionCSP3","NumAromaticRings"]].values
+
+X_morgan = np.array([[int(ch) for ch in fp] for fp in df_morgan["Fingerprint"]])  # 64 bits
+
+# ---- standardize ----
+X_desc_std = StandardScaler().fit_transform(X_desc)
+X_morgan_std = StandardScaler().fit_transform(X_morgan)
+
+# ---- PCA fit ----
+pca_desc = PCA().fit(X_desc_std)
+pca_morgan = PCA().fit(X_morgan_std)
+
+# ---- scree plots ----
+fig, axes = plt.subplots(1, 2, figsize=(12,4))
+axes[0].plot(np.cumsum(pca_desc.explained_variance_ratio_[:10]), marker="o")
+axes[0].set_title("Explained Variance (10D descriptors)")
+axes[0].set_xlabel("Number of PCs")
+axes[0].set_ylabel("Cumulative variance")
+
+axes[1].plot(np.cumsum(pca_morgan.explained_variance_ratio_[:20]), marker="o")
+axes[1].set_title("Explained Variance (64D Morgan)")
+axes[1].set_xlabel("Number of PCs")
+axes[1].set_ylabel("Cumulative variance")
+
+plt.tight_layout()
+plt.show()
+
+# ---- 2D PCA projections ----
+desc_2d = pca_desc.transform(X_desc_std)[:, :2]
+morgan_2d = pca_morgan.transform(X_morgan_std)[:, :2]
+
+fig, axes = plt.subplots(1, 2, figsize=(12,5))
+axes[0].scatter(desc_2d[:,0], desc_2d[:,1], c="blue", alpha=0.7)
+axes[0].set_title("PCA 2D projection (10 descriptors)")
+axes[0].set_xlabel("PC1")
+axes[0].set_ylabel("PC2")
+
+axes[1].scatter(morgan_2d[:,0], morgan_2d[:,1], c="green", alpha=0.7)
+axes[1].set_title("PCA 2D projection (64-bit Morgan)")
+axes[1].set_xlabel("PC1")
+axes[1].set_ylabel("PC2")
+
+plt.tight_layout()
+plt.show()
+
+# ---- 3D PCA projections ----
+desc_3d = pca_desc.transform(X_desc_std)[:, :3]
+morgan_3d = pca_morgan.transform(X_morgan_std)[:, :3]
+
+fig = plt.figure(figsize=(12,5))
+
+ax1 = fig.add_subplot(121, projection="3d")
+ax1.scatter(desc_3d[:,0], desc_3d[:,1], desc_3d[:,2],
+            c="blue", alpha=0.7, s=50)
+ax1.set_title("PCA 3D projection (10 descriptors)")
+ax1.set_xlabel("PC1"); ax1.set_ylabel("PC2"); ax1.set_zlabel("PC3")
+
+ax2 = fig.add_subplot(122, projection="3d")
+ax2.scatter(morgan_3d[:,0], morgan_3d[:,1], morgan_3d[:,2],
+            c="green", alpha=0.7, s=50)
+ax2.set_title("PCA 3D projection (64-bit Morgan)")
+ax2.set_xlabel("PC1"); ax2.set_ylabel("PC2"); ax2.set_zlabel("PC3")
+
+plt.tight_layout()
+plt.show()
+```
+
+
+Now you can see, the 10D vector is converted to 2D or 3D vector, which become much easier to plot.
+
+```{code-cell} ipython3
+desc_2d
+```
+
+```{code-cell} ipython3
+desc_3d
+```
+
+
+
+In essence, PCA gives us coordinates for each molecule in a reduced 2D space.  
+To make this more concrete, we can select specific molecules and compare them:
+
+- A **manual pair** that we choose (indices 0 and 5).  
+- The **closest pair** in PCA space (most similar according to the descriptors).  
+- The **farthest pair** in PCA space (most dissimilar).  
+
+We plot all molecules in grey, highlight the pairs with different colors, and draw a line connecting each pair.  
+For the selected molecules we also show their **structure, compound name, and PCA coordinates**.
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from itertools import combinations
+
+# ---- prepare feature matrix ----
+X_desc = df10[["MolWt","LogP","TPSA","NumRings",
+               "NumHAcceptors","NumHDonors","NumRotatableBonds",
+               "HeavyAtomCount","FractionCSP3","NumAromaticRings"]].values
+
+# ---- standardize and PCA ----
+X_desc_std = StandardScaler().fit_transform(X_desc)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_desc_std)
+
+# ---- distance matrix to find closest/farthest ----
+pairs = list(combinations(range(len(X_pca)), 2))
+distances = [np.linalg.norm(X_pca[i]-X_pca[j]) for i,j in pairs]
+farthest = pairs[np.argmax(distances)]
+closest = pairs[np.argmin(distances)]
+
+# ---- chosen pairs ----
+manual_pair = (225,35)
+pairs_to_show = [("Manual pair", manual_pair),
+                 ("Closest pair", closest),
+                 ("Farthest pair", farthest)]
+
+# ---- scatter plot ----
+plt.figure(figsize=(7,6))
+plt.scatter(X_pca[:,0], X_pca[:,1], c="grey", alpha=0.4)
+
+colors = ["red","blue","green"]
+for (label,(i,j)),c in zip(pairs_to_show, colors):
+    plt.scatter(X_pca[i,0], X_pca[i,1], c=c, s=80, edgecolor="black")
+    plt.scatter(X_pca[j,0], X_pca[j,1], c=c, s=80, edgecolor="black")
+    plt.plot([X_pca[i,0],X_pca[j,0]],[X_pca[i,1],X_pca[j,1]],c=c,label=label)
+
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.legend()
+plt.title("PCA of 10 Descriptors with Selected Pairs")
+plt.show()
+
+# ---- show structures + coordinates ----
+for label, (i,j) in pairs_to_show:
+    print(f"=== {label} ===")
+    for idx in (i,j):
+        name = df10.iloc[idx]["Compound Name"]
+        smiles = df10.iloc[idx]["SMILES"]
+        mol = Chem.MolFromSmiles(smiles)
+        img = Draw.MolToImage(mol, size=(200,200), legend=name)
+        display(img)
+        print(f"{name} (index {idx})")
+        print(f"  PC1 = {X_pca[idx,0]:.3f}, PC2 = {X_pca[idx,1]:.3f}")
+    print()
+
+```
+
+We can also make this plot to be interactive:
+```{code-cell} ipython3
+:tags: [hide-input]
+import plotly.express as px
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+# ---- prepare feature matrix ----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+
+X_desc = df10[desc_cols].values
+
+# ---- standardize and PCA ----
+X_desc_std = StandardScaler().fit_transform(X_desc)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_desc_std)
+
+# ---- build dataframe with PCA scores ----
+df_pca = df10.copy()
+df_pca["PC1"] = X_pca[:,0]
+df_pca["PC2"] = X_pca[:,1]
+
+# ---- interactive scatter with custom size ----
+fig = px.scatter(
+    df_pca,
+    x="PC1", y="PC2",
+    color="NumRings",
+    hover_data=["Compound Name"] + desc_cols,
+    title="Interactive PCA of 10 Descriptors",
+    width=1200, height=600   # <-- 12 wide, 6 tall
+)
+fig.show()
+
+```
+
+
 
 ### 2.2 Data leakage in unsupervised settings
 
-Even in unsupervised workflows, leakage can happen. A common mistake is to use the full dataset to standardize, then later split for evaluation. Safer pattern:
+Even in unsupervised workflows, leakage can happen.  
+A common mistake is to **fit the scaler or PCA on the full dataset** before splitting.  
+This means the test set has already influenced the scaling or component directions, which is a subtle form of information leak.  
 
-1. Split the dataset.
-2. Fit the scaler on the training subset.
-3. Transform train and test with the fitted scaler.
+**Safer pattern**:  
+1. Split the dataset into train and test.  
+2. Fit the scaler only on the training subset.  
+3. Transform both train and test using the fitted scaler.  
+4. Fit PCA (or clustering) on the training data only, then apply the transform to the test set.  
+
+This way the test set truly remains unseen during model fitting.
+
 
 ```{code-cell} ipython3
+:tags: [hide-input]
 from sklearn.model_selection import train_test_split
-Xs_leak = StandardScaler().fit_transform(X_small)  # risky pattern if you plan to evaluate downstream
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
 
-Xtr, Xte = train_test_split(X_small, test_size=0.25, random_state=0)
-sc = StandardScaler().fit(Xtr)
-Xtr_s = sc.transform(Xtr)
-Xte_s = sc.transform(Xte)
-print("Standardized shapes:", Xtr_s.shape, Xte_s.shape)
+# ---- features ----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+
+X = df10[desc_cols].values
+
+# ---- split first ----
+X_train, X_test = train_test_split(X, test_size=0.3, random_state=42)
+
+# ---- fit scaler on train only ----
+scaler = StandardScaler().fit(X_train)
+X_train_std = scaler.transform(X_train)
+X_test_std = scaler.transform(X_test)
+
+# ---- fit PCA on train only ----
+pca = PCA(n_components=2).fit(X_train_std)
+X_train_pca = pca.transform(X_train_std)
+X_test_pca = pca.transform(X_test_std)
+
+print("Train shape:", X_train_pca.shape)
+print("Test shape:", X_test_pca.shape)
+
+# ---- visualize ----
+plt.figure(figsize=(6,5))
+plt.scatter(X_train_pca[:,0], X_train_pca[:,1], c="purple", label="Train", alpha=0.6)
+plt.scatter(X_test_pca[:,0], X_test_pca[:,1], c="orange", label="Test", alpha=0.3, marker="o")
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+plt.title("Leakage-safe PCA (Train vs Test)")
+plt.legend()
+plt.show()
 ```
+If the test set overlaps reasonably with the distribution of the train set, that’s a sign your train-derived scaling and PCA directions generalize.
 
-Narrative:
+If the test points lie far outside, that could mean:
+
+- Train and test distributions are very different.
+- Or PCA didn’t capture the structure of test molecules well.
+Note:
 
 - In pure visualization use cases, the risk is smaller since we are not optimizing a predictive model.
 - For cluster analysis that will be compared to labels afterward, keep the split discipline.
@@ -322,1019 +708,625 @@ Narrative:
 
 ## 3. Standardization and distance
 
-PCA and K-means are sensitive to scale. Always check the mean and standard deviation of features.
+Unsupervised methods depend on a distance or similarity rule. The choice of distance and the way you scale features can completely change neighborhoods, clusters, and embeddings. This section covers why we standardize, which distance to use for scalar descriptors vs fingerprints, and how to compute and visualize distance in a leakage safe way.
+
+
+### 3.1 Why standardize
+
+Descriptor columns live on different scales. `MolWt` can be in the hundreds. `FractionCSP3` is in `[0, 1]`. If you compute Euclidean distance on the raw matrix, large scale columns dominate. Standardization fixes this by centering and scaling each column so that all features contribute fairly.
+
+Common scalers:
+- **StandardScaler**: zero mean, unit variance. Good default.
+- **MinMaxScaler**: rescales to [0, 1]. Useful when you want bounded ranges.
+- **RobustScaler**: uses medians and IQR. Useful with outliers.
+
+
+
+Below is an example for `StandardScaler()`
 
 ```{code-cell} ipython3
-scaler = StandardScaler()
-Xs = scaler.fit_transform(X_small)
+from sklearn.preprocessing import StandardScaler
 
-print("Means (should be ~0):", np.round(Xs.mean(axis=0), 3))
-print("Stds  (should be ~1):", np.round(Xs.std(axis=0), 3))
-```
+# pick two columns
+cols2 = ["MolWt", "TPSA"]
+X2 = df10[cols2].to_numpy()
 
-We also pick a distance. Two common choices:
+# standardize both columns
+scaler = StandardScaler().fit(X2)
+X2_std = scaler.transform(X2)
 
-- **Euclidean** on standardized features.
-- **Cosine** which compares angles and ignores magnitude.
+# show means and std before vs after
+print("Raw means:", np.round(X2.mean(axis=0), 3))
+print("Raw stds :", np.round(X2.std(axis=0, ddof=0), 3))
+print("Std means:", np.round(X2_std.mean(axis=0), 3))
+print("Std stds :", np.round(X2_std.std(axis=0, ddof=0), 3))
 
-Below we compute both between the first 5 rows.
+# quick scatter before vs after
+fig, ax = plt.subplots(1, 2, figsize=(10,4))
+ax[0].scatter(X2[:,0], X2[:,1], s=10, alpha=0.6)
+ax[0].set_xlabel("MolWt"); ax[0].set_ylabel("TPSA"); ax[0].set_title("Raw")
 
-```{code-cell} ipython3
-sub = Xs[:5]
-D_euc = pairwise_distances(sub, metric="euclidean")
-D_cos = pairwise_distances(sub, metric="cosine")
-
-print("Euclidean distances (5x5):\n", np.round(D_euc, 3))
-print("\nCosine distances (5x5):\n", np.round(D_cos, 3))
-```
-
-```{admonition} Tip
-For sparse fingerprints, cosine distance or Jaccard often makes more sense than raw Euclidean. For dense scaled descriptors, Euclidean is fine.
-```
-
-### 3.1 Jaccard and Tanimoto for binary fingerprints
-
-For bit vectors $A$ and $B$:
-
-- Count $a = \|A\|_1$, $b = \|B\|_1$, and $c = A \cdot B$ which is the count of shared 1s.
-- **Tanimoto similarity** is $S = \dfrac{c}{a + b - c}$.
-- **Jaccard distance** is $1 - S$.
-
-We can implement a tiny helper that computes Tanimoto for a small batch. The code is simple but gives a concrete feel.
-
-```{code-cell} ipython3
-def tanimoto_pairwise(Xbin):
-    Xbin = Xbin.astype(np.uint8)
-    n = Xbin.shape[0]
-    out = np.eye(n, dtype=float)
-    ones = Xbin.sum(axis=1)
-    for i in range(n):
-        for j in range(i+1, n):
-            c = np.dot(Xbin[i], Xbin[j])
-            denom = ones[i] + ones[j] - c
-            s = 0.0 if denom == 0 else c / denom
-            out[i, j] = s
-            out[j, i] = s
-    return out
-
-if RD and X_fp is not None:
-    S_tan = tanimoto_pairwise(X_fp[:6])
-    print("Tanimoto similarity (6x6):\n", np.round(S_tan, 3))
-```
-
-Narrative:
-
-- If two molecules have no bits set in common, $S=0$.
-- If they are identical in bits, $S=1$.
-- For Morgan fingerprints, Tanimoto is the default similarity used in many cheminformatics tools.
-
-### 3.2 Robust scaling and outliers
-
-Chemistry features like TPSA or MolWt can have long tails. Robust scaling uses the median and IQR instead of mean and standard deviation.
-
-```{code-cell} ipython3
-from sklearn.preprocessing import RobustScaler
-Xr = RobustScaler().fit_transform(X_small)
-print("Robust-scaled feature medians ~0:", np.round(np.median(Xr, axis=0), 3))
-```
-
-When should you use robust scaling:
-
-- Many outliers.
-- You care about relative ordering more than exact distances.
-
-### 3.3 Visual check of feature distributions
-
-Small histograms help you decide scaling. We will plot the four descriptors in simple panels.
-
-```{code-cell} ipython3
-cols = ["MolWt","LogP","TPSA","NumRings"]
-plt.figure(figsize=(9,3))
-for i, c in enumerate(cols, 1):
-    plt.subplot(1,4,i)
-    plt.hist(df.loc[mask_small, c], bins=20, alpha=0.8)
-    plt.title(c); plt.tight_layout()
-plt.show()
-```
-
-Observation:
-
-- Skewed distributions suggest log transforms or robust scaling.
-- Counts near zero for NumRings show many monocyclic or bicyclic molecules. That will influence PCA loadings.
-
----
-
-## 4. PCA by hand: step by step
-
-PCA finds orthogonal directions that capture maximum variance. We implement the steps on the standardized matrix.
-
-Mathematical pieces:
-
-- Centered data $\tilde X$ is already produced by StandardScaler.
-- Covariance $S = \frac{1}{n-1}\tilde X^\top \tilde X$.
-- Either eigen-decompose $S$, or compute SVD of $\tilde X = U \Sigma V^\top$.
-- The top $k$ columns of $V$ are the principal directions. Scores are $Z = \tilde X V_k$.
-
-### 4.1 Centering and covariance
-
-```{code-cell} ipython3
-n, p = Xs.shape
-Xc = Xs  # already standardized
-S = (Xc.T @ Xc) / (n - 1)
-
-print("Xc shape:", Xc.shape)
-print("Covariance shape:", S.shape)
-```
-
-### 4.2 SVD and explained variance
-
-```{code-cell} ipython3
-U, Sig, VT = np.linalg.svd(Xc, full_matrices=False)  # Xc = U * diag(Sig) * VT
-eigvals = (Sig ** 2) / (n - 1)
-evr = eigvals / eigvals.sum()
-
-print("Singular values:", np.round(Sig, 3))
-print("Explained variance ratio:", np.round(evr, 3))
-```
-
-### 4.3 Project to 2D and inspect
-
-```{code-cell} ipython3
-V2 = VT[:2].T             # p x 2
-Z2 = Xc @ V2              # n x 2 scores
-print("Scores shape:", Z2.shape)
-print("First 3 rows:\n", np.round(Z2[:3], 3))
-
-plt.figure(figsize=(4.6,4.2))
-plt.scatter(Z2[:,0], Z2[:,1], s=10, alpha=0.7)
-plt.axhline(0, ls=":", c="k"); plt.axvline(0, ls=":", c="k")
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA scores (by SVD)")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-```
-
-```{admonition} Loadings
-Columns of $V$ are **loadings**. They tell how each original feature contributes to each PC. Large magnitude means strong contribution.
-```
-
-```{admonition} ⏰ Exercise 4
-Print the 4x2 loading matrix `V2` with 3 decimals. Which descriptor dominates PC1?
-```
-
-### 4.4 Reconstructing original features from PCs
-
-Given $Z_k$ and $V_k$, you can reconstruct an approximation of $X$ as $\hat X = Z_k V_k^\top$. Since we standardized, this returns standardized units.
-
-```{code-cell} ipython3
-Xhat = Z2 @ V2.T
-rmse = np.sqrt(np.mean((Xc - Xhat)**2))
-print("RMSE of 2-PC reconstruction in standardized units:", round(rmse, 3))
-```
-
-Narrative:
-
-- As $k$ increases, $Xhat$ gets closer to $X$.
-- A small $k$ gives a compressed summary useful for visualization and clustering.
-
-### 4.5 Hotelling $T^2$ and Q residuals
-
-Two common PCA diagnostics:
-
-- Hotelling $T^2$ is the squared Mahalanobis distance in score space: $T^2 = \sum_{j=1}^{k}\frac{z_{ij}^2}{\lambda_j}$.
-- Q residuals measure leftover variance outside the model: $Q = \lVert x_i - \hat x_i\rVert^2$.
-
-We will compute both for $k=2$ and highlight the top outliers.
-
-```{code-cell} ipython3
-lam = eigvals[:2]
-T2 = (Z2**2 / lam).sum(axis=1)
-Q  = ((Xc - Xhat)**2).sum(axis=1)
-print("T2 range:", (float(T2.min()), float(T2.max())))
-print("Q  range:", (float(Q.min()), float(Q.max())))
-```
-
-Plot the Q residuals as a simple stem plot.
-
-```{code-cell} ipython3
-plt.figure(figsize=(6,2.6))
-plt.stem(Q[:80], use_line_collection=True)
-plt.xlabel("Sample index"); plt.ylabel("Q residual")
-plt.title("First 80 samples. Larger Q means worse reconstruction by 2 PCs.")
+ax[1].scatter(X2_std[:,0], X2_std[:,1], s=10, alpha=0.6)
+ax[1].set_xlabel("MolWt (z)"); ax[1].set_ylabel("TPSA (z)"); ax[1].set_title("Standardized")
 plt.tight_layout(); plt.show()
 ```
 
-### 4.6 Sign indeterminacy and rotation
+### 3.2 Which distance to use
 
-Loadings have arbitrary sign. If you multiply a loading vector by $-1$, scores flip sign as well, and the model remains the same. Do not interpret signs as absolute truths. Interpret directions relative to each other.
+- **Scalar descriptors** (10D):
+  - **Euclidean** on standardized data is a good default.
+  - **Cosine** focuses on direction rather than magnitude. Try it when overall size varies a lot.
+- **Fingerprints** (64D or 1024D binary bits):
+  - **Tanimoto similarity** is the chem-informatics standard. Tanimoto distance = 1 − Tanimoto similarity.
+  - You can also compute cosine, but Tanimoto aligns with bitset overlap and is more common for substructure style features.
 
-```{code-cell} ipython3
-# Demonstrate sign flip
-V2_flip = V2.copy()
-V2_flip[:,0] *= -1
-Z2_flip = Xc @ V2_flip
-d = np.allclose(Z2_flip[:,0], -Z2[:,0]) and np.allclose(Z2_flip[:,1], Z2[:,1])
-print("Sign flip leaves model equivalent:", d)
-```
 
-### 4.7 PCA with and without scaling
+Below are equations:
 
-To see why scaling matters, run PCA without standardizing.
+- **Euclidean distance** between rows $x_i, x_j \in \mathbb{R}^d$  
+  $
+  d_{\text{Euc}}(i,j)=\left\|x_i-x_j\right\|_2=\sqrt{\sum_{k=1}^{d}\left(x_{ik}-x_{jk}\right)^2}
+  $
+- **Cosine distance** (1 minus cosine similarity)  
+  $
+  d_{\text{Cos}}(i,j)=1-\frac{x_i^\top x_j}{\lVert x_i\rVert_2\,\lVert x_j\rVert_2}
+  $
+- **Tanimoto distance** for bit vectors $b_i,b_j\in\{0,1\}^m$ with on-bit sets $A,B$  
+  $
+  s_{\text{Tan}}(i,j)=\frac{|A\cap B|}{|A|+|B|-|A\cap B|},\qquad
+  d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
+  $
 
-```{code-cell} ipython3
-pca_noscale = PCA(n_components=2).fit(X_small)  # no scaling
-Z_ns = pca_noscale.transform(X_small)
 
-plt.figure(figsize=(4.4,4.0))
-plt.scatter(Z_ns[:,0], Z_ns[:,1], s=10, alpha=0.7)
-plt.title("PCA without scaling")
-plt.xticks([]); plt.yticks([])
-plt.show()
+Below we show Euclidean vs Cosine on two standardized columns
 
-print("Unscaled EVR:", np.round(pca_noscale.explained_variance_ratio_, 3))
-```
-
-Observation:
-
-- MolWt typically dominates variance if you skip scaling. That can hide patterns from TPSA or LogP.
-
----
-
-## 5. PCA with scikit-learn and interpretation
-
-Now we use `sklearn.decomposition.PCA` and compare to the by-hand result.
-
-### 5.1 Fit PCA and compare EVR
 
 ```{code-cell} ipython3
-pca = PCA(n_components=4, random_state=0)
-Z = pca.fit_transform(Xs)
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import pairwise_distances
 
-print("Explained variance ratio:", np.round(pca.explained_variance_ratio_, 3))
-print("Cumulative:", np.round(pca.explained_variance_ratio_.cumsum(), 3))
-print("Components shape:", pca.components_.shape)  # 4 x 4 (each row is a PC)
-```
+# two columns for a small, clear demo
+cols2 = ["MolWt", "TPSA"]
+X2 = df10[cols2].to_numpy()
 
-### 5.2 Scree plot
+# standardize
+X2_std = StandardScaler().fit_transform(X2)
 
-```{code-cell} ipython3
-plt.figure(figsize=(4.8,3.2))
-plt.plot(np.arange(1, p+1), pca.explained_variance_ratio_, marker="o")
-plt.xlabel("PC index"); plt.ylabel("Explained variance ratio")
-plt.title("Scree plot")
-plt.grid(True, alpha=0.4)
-plt.show()
-```
+# take a tiny subset to keep visuals readable
+Xsmall = X2_std[:30]
 
-### 5.3 Biplot: scores and loadings
+# pairwise distances
+D_eu = pairwise_distances(Xsmall, metric="euclidean")
+D_co = pairwise_distances(Xsmall, metric="cosine")
 
-We plot PC1 vs PC2 and overlay loading vectors. For color we use toxicity when known. This color is for **reading** the map only.
+# heatmaps side by side
+fig, ax = plt.subplots(1, 2, figsize=(10,4))
+im0 = ax[0].imshow(D_eu, aspect="auto")
+ax[0].set_title("Euclidean distance")
+ax[0].set_xlabel("sample"); ax[0].set_ylabel("sample")
+fig.colorbar(im0, ax=ax[0], fraction=0.046, pad=0.04)
 
-```{code-cell} ipython3
-scores = Z[:, :2]
-loads = pca.components_[:2, :].T  # shape 4x2
-cols = ["MolWt","LogP","TPSA","NumRings"]
+im1 = ax[1].imshow(D_co, aspect="auto")
+ax[1].set_title("Cosine distance")
+ax[1].set_xlabel("sample"); ax[1].set_ylabel("sample")
+fig.colorbar(im1, ax=ax[1], fraction=0.046, pad=0.04)
 
-plt.figure(figsize=(5,4.6))
-c = np.where(y_toxic[:len(scores)]==1, "crimson",
-    np.where(y_toxic[:len(scores)]==0, "steelblue", "gray"))
-plt.scatter(scores[:,0], scores[:,1], s=12, alpha=0.7, c=c)
-plt.axhline(0, ls=":", c="k"); plt.axvline(0, ls=":", c="k")
-
-for i, name in enumerate(cols):
-    x, y = loads[i,0]*2.2, loads[i,1]*2.2
-    plt.arrow(0, 0, x, y, head_width=0.05, length_includes_head=True)
-    plt.text(x*1.05, y*1.05, name, fontsize=9)
-
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA biplot")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-```
-
-```{admonition} Reading a biplot
-- Points near each other have similar standardized descriptors.
-- A loading arrow points in the direction of increase of that feature.
-- The projection of a point onto an arrow relates to that feature value.
-```
-
-```{admonition} ⏰ Exercise 5
-Set `PCA(n_components=2, whiten=True)` and replot the biplot. How do the axes scale and the scatter change?
-```
-
-### 5.4 Which molecules live at extremes of PCs
-
-A simple trick to interpret PCs is to find molecules at the tails of PC1 and PC2. We will print their SMILES and descriptor values.
-
-```{code-cell} ipython3
-df_pc = pd.DataFrame(scores, columns=["PC1","PC2"])
-df_pc["idx"] = np.arange(len(df_pc))
-df_pc["SMILES"] = df.loc[mask_small, "SMILES"].values
-df_pc = pd.concat([df_pc, pd.DataFrame(X_small, columns=["MolWt","LogP","TPSA","NumRings"]).reset_index(drop=True)], axis=1)
-
-tails = pd.concat([
-    df_pc.nsmallest(3, "PC1"),
-    df_pc.nlargest(3, "PC1"),
-    df_pc.nsmallest(3, "PC2"),
-    df_pc.nlargest(3, "PC2"),
-], axis=0)
-
-cols_show = ["idx","SMILES","PC1","PC2","MolWt","LogP","TPSA","NumRings"]
-tails[cols_show].round(3)
-```
-
-Narrative:
-
-- Extreme PC1 to the right will have larger values on features with positive loadings on PC1.
-- Extreme PC1 to the left will have larger values on features with negative loadings on PC1.
-
-### 5.5 Annotate a few molecules on the PC1 vs PC2 scatter
-
-We randomly pick a few molecules and label them by index to show how you can connect points to SMILES.
-
-```{code-cell} ipython3
-np.random.seed(0)
-idx_pick = np.random.choice(len(scores), size=min(8, len(scores)), replace=False)
-plt.figure(figsize=(5.2,4.8))
-plt.scatter(scores[:,0], scores[:,1], s=10, alpha=0.6, color="gray")
-for i in idx_pick:
-    plt.scatter(scores[i,0], scores[i,1], s=28)
-    plt.text(scores[i,0]+0.03, scores[i,1]+0.03, str(int(i)), fontsize=8)
-plt.title("PC1 vs PC2 with a few labeled points")
-plt.xlabel("PC1"); plt.ylabel("PC2")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-
-print("Labeled indices and SMILES:")
-display(df_pc.loc[idx_pick, ["idx","SMILES"]].sort_values("idx"))
-```
-
-### 5.6 A loadings heatmap for all four descriptors
-
-For small $p$ a heatmap is readable and builds intuition for how loadings spread across components.
-
-```{code-cell} ipython3
-plt.figure(figsize=(4.6,2.8))
-plt.imshow(pca.components_, aspect="auto", interpolation="nearest")
-plt.colorbar(label="loading")
-plt.yticks(range(4), [f"PC{i+1}" for i in range(4)])
-plt.xticks(range(4), ["MolWt","LogP","TPSA","NumRings"], rotation=20)
-plt.title("PCA loadings matrix")
-plt.tight_layout(); plt.show()
-```
-
-### 5.7 Case study: MOF screening dataset
-
-We now add a second dataset for practice. It describes a grid of synthetic experiments for metal organic framework formation. Columns:
-
-- `linker_smiles` for the organic linker,
-- `temperature` in °C,
-- `time_h` in hours,
-- `concentration_M` in molarity,
-- `solvent_DMF` as a binary flag (0 for water, 1 for DMF),
-- `yield` as the output variable.
-
-We will read it and compute descriptor columns for each unique linker. Then we will merge descriptors back to the experiment table.
-
-```{code-cell} ipython3
-url_mof = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/mof_yield_dataset.csv"
-mof = pd.read_csv(url_mof)
-print("MOF rows x cols:", mof.shape)
-mof.head(3)
-```
-
-Compute descriptors for the 10 linkers and merge.
-
-```{code-cell} ipython3
-if RD:
-    linkers = pd.DataFrame({"linker_smiles": sorted(mof["linker_smiles"].unique())})
-    linkers_desc = linkers["linker_smiles"].apply(calc_descriptors)
-    linkers_full = pd.concat([linkers, linkers_desc], axis=1)
-    mof_full = mof.merge(linkers_full, on="linker_smiles", how="left")
-else:
-    mof_full = mof.copy()
-    for c in ["MolWt","LogP","TPSA","NumRings"]:
-        mof_full[c] = np.nan
-
-mof_full.describe(include="all").T.head(12)
-```
-
-### 5.8 Explore MOF inputs and outputs
-
-We plot histograms for the continuous inputs and the yield distribution.
-
-```{code-cell} ipython3
-fig, axes = plt.subplots(2,3, figsize=(9,5))
-ax = axes.ravel()
-cols_cont = ["temperature","time_h","concentration_M","yield"]
-labels = ["Temperature (°C)","Time (h)","Concentration (M)","Yield (%)"]
-for i, (c, lab) in enumerate(zip(cols_cont, labels)):
-    ax[i].hist(mof_full[c], bins=20)
-    ax[i].set_title(lab)
-ax[3].axis("off"); ax[5].axis("off")
 plt.tight_layout(); plt.show()
 
-print("Unique solvents:", mof_full["solvent_DMF"].unique().tolist())
-print("Unique linkers:", len(mof_full["linker_smiles"].unique()))
+# highlight how neighbors can change across metrics
+q = 10
+eu_nn = np.argsort(D_eu[q])[1:6]
+co_nn = np.argsort(D_co[q])[1:6]
+print("Euclidean Nearest Neighbor (rows) for sample #10:", eu_nn.tolist())
+print("Cosine Nearest Neighbor (rows) for sample #10:", co_nn.tolist())
 ```
 
-Observations for students:
-
-- The grid is regular. This is a full factorial design with 10 temperatures, 10 times, 10 concentrations, 2 solvents, and 10 linkers.
-- Yield distribution can be unimodal or multimodal depending on the linkers. We will look at slices next.
-
-### 5.9 Heatmaps of yield across conditions
-
-Pick a linker, fix a concentration, and compare temperature vs time as a 2D heatmap. We show one heatmap for water and another for DMF.
-
-```{code-cell} ipython3
-def yield_heatmaps_for_linker(smiles, conc=0.05):
-    dfL = mof_full.query("linker_smiles == @smiles and concentration_M == @conc")
-    # pivot by solvent then temperature vs time
-    Ts = sorted(dfL["temperature"].unique())
-    Hs = sorted(dfL["time_h"].unique())
-    fig, axes = plt.subplots(1,2, figsize=(9,3.6), sharex=True, sharey=True)
-    for j, solv in enumerate([0,1]):
-        sub = dfL.query("solvent_DMF == @solv").pivot(index="temperature", columns="time_h", values="yield")
-        im = axes[j].imshow(sub.values, origin="lower", aspect="auto")
-        axes[j].set_title(f"{'H2O' if solv==0 else 'DMF'}")
-        axes[j].set_xticks(range(len(Hs))); axes[j].set_xticklabels(Hs, rotation=45)
-        axes[j].set_yticks(range(len(Ts))); axes[j].set_yticklabels(Ts)
-        axes[j].set_xlabel("time_h")
-        if j == 0:
-            axes[j].set_ylabel("temperature")
-    fig.colorbar(im, ax=axes.ravel().tolist(), label="yield")
-    plt.suptitle(f"Yield heatmaps at concentration={conc} for linker:\n{smiles}", y=1.05)
-    plt.tight_layout(); plt.show()
-
-example_linker = mof_full["linker_smiles"].iloc[0]
-yield_heatmaps_for_linker(example_linker, conc=0.05)
-```
-
-Narrative:
-
-- The gradient of color across temperature or time suggests where to explore next.
-- You can imagine a simple decision pathway for screening: move toward directions that increase the gradient.
-
-### 5.10 A simple gradient heuristic for screening
-
-We simulate a greedy path: start at a random setting and move to a neighbor with higher yield until a local maximum.
-
-```{code-cell} ipython3
-def greedy_path(dfL):
-    # assumes single linker and single solvent for simplicity
-    Tvals = sorted(dfL["temperature"].unique())
-    Hvals = sorted(dfL["time_h"].unique())
-    Cvals = sorted(dfL["concentration_M"].unique())
-    # pick solvent and concentration
-    solv = dfL["solvent_DMF"].iloc[0]
-    conc = Cvals[len(Cvals)//2]
-    grid = dfL.query("solvent_DMF == @solv and concentration_M == @conc]")  # will fix below if typo
+```{admonition} Note
+Idea is that, the same query point can have different nearest neighbors under Euclidean vs Cosine because one metric cares about absolute offsets while the other cares about direction.
 ```
 
 ```{code-cell} ipython3
-# Fix small bracket typo in the function above and implement fully
-def greedy_path(dfL):
-    Tvals = sorted(dfL["temperature"].unique())
-    Hvals = sorted(dfL["time_h"].unique())
-    Cvals = sorted(dfL["concentration_M"].unique())
-    solv = dfL["solvent_DMF"].iloc[0]
-    conc = Cvals[len(Cvals)//2]
-    grid = dfL.query("solvent_DMF == @solv and concentration_M == @conc")
-    Y = grid.pivot(index="temperature", columns="time_h", values="yield")
-    Ti, Hi = np.random.randint(len(Tvals)), np.random.randint(len(Hvals))
-    path = [(Tvals[Ti], Hvals[Hi], float(Y.iloc[Ti, Hi]))]
-    improved = True
-    while improved:
-        improved = False
-        best = path[-1]
-        Ti0, Hi0 = Tvals.index(best[0]), Hvals.index(best[1])
-        for dT, dH in [(1,0), (-1,0), (0,1), (0,-1)]:
-            Ti1, Hi1 = Ti0 + dT, Hi0 + dH
-            if 0 <= Ti1 < len(Tvals) and 0 <= Hi1 < len(Hvals):
-                y1 = float(Y.iloc[Ti1, Hi1])
-                if y1 > best[2]:
-                    best = (Tvals[Ti1], Hvals[Hi1], y1)
-                    improved = True
-        if improved:
-            path.append(best)
-    return path, Y
+:tags: [hide-input]
+# take first 30 molecules to keep plot compact
+fp_strings = df_morgan["Fingerprint"].iloc[:30].tolist()
 
-np.random.seed(0)
-dfL = mof_full.query("linker_smiles == @example_linker and solvent_DMF == 0")
-path, Ygrid = greedy_path(dfL)
+def fp_string_to_bitvect(fp_str):
+    arr = [int(ch) for ch in fp_str]
+    bv = DataStructs.ExplicitBitVect(len(arr))
+    for k, b in enumerate(arr):
+        if b: bv.SetBit(k)
+    return bv
 
-print("Path length:", len(path))
-print("Path:", path[:5], " ...")
-```
+fps = [fp_string_to_bitvect(s) for s in fp_strings]
 
-Plot the path on top of the heatmap.
+# similarities and distances
+n = len(fps)
+S = np.zeros((n, n))
+for i in range(n):
+    S[i, :] = DataStructs.BulkTanimotoSimilarity(fps[i], fps)
 
-```{code-cell} ipython3
-plt.figure(figsize=(5.8,4.6))
-plt.imshow(Ygrid.values, origin="lower", aspect="auto")
-Ts = sorted(dfL["temperature"].unique())
-Hs = sorted(dfL["time_h"].unique())
-plt.xticks(range(len(Hs)), Hs, rotation=45)
-plt.yticks(range(len(Ts)), Ts)
-plt.xlabel("time_h"); plt.ylabel("temperature")
-plt.colorbar(label="yield")
-# Overlay path
-xy = [(Hs.index(h), Ts.index(t)) for t, h, _ in path]
-xs, ys = zip(*xy)
-plt.plot(xs, ys, marker="o", lw=2)
-plt.title("Greedy path toward higher yield")
+D_tan = 1.0 - S
+
+# heatmap
+plt.figure(figsize=(5,4))
+im = plt.imshow(D_tan, aspect="auto")
+plt.title("Tanimoto distance (Morgan bits)")
+plt.xlabel("sample"); plt.ylabel("sample")
+plt.colorbar(im, fraction=0.046, pad=0.04)
 plt.tight_layout(); plt.show()
+
+# nearest neighbors under Tanimoto
+q = 10
+nn_tan = np.argsort(D_tan[q])[1:6]
+print("Tanimoto NN (rows) for query 10:", nn_tan.tolist())
+
 ```
 
-```{admonition} Discussion
-A greedy path is a baseline strategy. Real screening uses smarter designs that balance exploration and exploitation. Still, this tiny script shows how to visualize a decision pathway on a grid.
+```{admonition} Note
+Idea is that, small Tanimoto distance means strong bit overlap, which often reflects shared substructures. This is why Tanimoto is standard for fingerprint similarity.
 ```
-
-### 5.11 PCA on MOF experiments
-
-We can apply PCA to the MOF dataset by combining process variables with linker descriptors. This produces a mixed feature space.
+Below we add a simple 2D plot to **show how nearest neighbors can differ** under different metrics in the same fingerprint space.  
+We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbor connections for all three kinds of distance calculation methods.
 
 ```{code-cell} ipython3
-feat_cols = ["temperature","time_h","concentration_M","solvent_DMF","MolWt","LogP","TPSA","NumRings"]
-mofX = mof_full[feat_cols].copy()
-mofX_s = StandardScaler().fit_transform(mofX.fillna(0.0))  # if RDKit not present, the descriptor columns are NaN -> set to 0
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.metrics import pairwise_distances
+from rdkit import DataStructs
 
-pca_mof = PCA(n_components=2, random_state=0).fit(mofX_s)
-Zm = pca_mof.transform(mofX_s)
+# --- build matrices on the FULL set ---
+fp_strings = df_morgan["Fingerprint"].tolist()
+n = len(fp_strings)
+m = len(fp_strings[0])
 
-plt.figure(figsize=(5.2,4.6))
-plt.scatter(Zm[:,0], Zm[:,1], s=6, alpha=0.5)
-plt.title("MOF experiments in 2D PC space")
-plt.xlabel("PC1"); plt.ylabel("PC2")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
+def fp_string_to_bitvect(fp_str):
+    arr = [int(ch) for ch in fp_str]
+    bv = DataStructs.ExplicitBitVect(len(arr))
+    for k, b in enumerate(arr):
+        if b: bv.SetBit(k)
+    return bv
 
-print("MOF EVR:", np.round(pca_mof.explained_variance_ratio_, 3))
-print("Top loadings per PC:\n", pd.DataFrame(pca_mof.components_.T, index=feat_cols, columns=["PC1","PC2"]).round(3))
-```
+# RDKit bitvecs for Tanimoto
+fp_bvs = [fp_string_to_bitvect(s) for s in fp_strings]
 
-We can color by yield to see if the embedding separates high yield regions.
+# 0/1 matrix for cosine and Euclidean
+Xfp = np.array([[int(ch) for ch in s] for s in fp_strings], dtype=float)  # shape (n, m)
 
-```{code-cell} ipython3
-cmap_vals = mof_full["yield"].values
-plt.figure(figsize=(5.4,4.6))
-sc = plt.scatter(Zm[:,0], Zm[:,1], s=8, c=cmap_vals, alpha=0.7)
-plt.colorbar(sc, label="yield")
-plt.title("MOF PC map colored by yield")
-plt.xlabel("PC1"); plt.ylabel("PC2")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-```
+# --- pairwise distances in ORIGINAL space ---
+# Tanimoto
+S_tani = np.zeros((n, n), dtype=float)
+for i in range(n):
+    S_tani[i, :] = DataStructs.BulkTanimotoSimilarity(fp_bvs[i], fp_bvs)
+D_tani = 1.0 - S_tani
 
-### 5.12 Which inputs correlate most with yield
+# Cosine and Euclidean on 0/1 bits
+D_cos = pairwise_distances(Xfp, metric="cosine")
+D_eu  = pairwise_distances(Xfp, metric="euclidean")  # for binary, relates to Hamming
 
-We compute simple Pearson correlations between inputs and yield. This is not a model, just a direction finder.
+# --- 2D coordinates for plotting ONLY ---
+Z = PCA(n_components=2).fit_transform(Xfp)
 
-```{code-cell} ipython3
-corr = mof_full[feat_cols + ["yield"]].corr(numeric_only=True)["yield"].sort_values(ascending=False)
-corr
-```
+# --- helper for stable top-k excluding self ---
+def topk_neighbors(D, q, k=5):
+    order = np.argsort(D[q], kind="mergesort")  # stable
+    order = order[order != q]
+    return order[:k]
 
-Interpretation:
+q = 196   # your example index
+k = 5
 
-- Positive correlation with temperature suggests hotter conditions increase yield for this dataset.
-- Check how solvent_DMF correlates. If positive, DMF might be more favorable on average.
+nn_tani = topk_neighbors(D_tani, q, k)
+nn_cos  = topk_neighbors(D_cos,  q, k)
+nn_eu   = topk_neighbors(D_eu,   q, k)
 
----
+print("Tanimoto NN for query", q, "->", nn_tani.tolist())
+print("Cosine   NN for query", q, "->", nn_cos.tolist())
+print("Euclidean NN for query", q, "->", nn_eu.tolist())
 
-## 6. Nonlinear embeddings: t-SNE and UMAP
+# --- three-panel plot: same coords, different neighbor sets ---
+fig, ax = plt.subplots(1, 3, figsize=(15, 5))
 
-Linear PCA often works, but some manifolds curve. t-SNE and UMAP aim to keep local neighborhoods together in 2D. We will use 1024-bit fingerprints as well.
+for a in ax:
+    a.scatter(Z[:,0], Z[:,1], c="lightgrey", s=16, alpha=0.6, label="All points")
+    a.scatter(Z[q,0], Z[q,1], c="black", s=80, edgecolor="white", label="Query")
+    a.set_xlabel("PC1"); a.set_ylabel("PC2")
 
-### 6.1 Prepare features for embedding
+# panel 1: Tanimoto
+ax[0].scatter(Z[nn_tani,0], Z[nn_tani,1], c="tab:blue", s=40, label="kNN")
+for j in nn_tani:
+    ax[0].plot([Z[q,0], Z[j,0]], [Z[q,1], Z[j,1]], c="tab:blue", alpha=0.8)
+ax[0].set_title("Neighbors by Tanimoto")
 
-```{code-cell} ipython3
-if X_fp is not None:
-    X_embed = X_fp.astype(float)
-    feature_kind = "Morgan-1024"
-else:
-    X_embed = Xs
-    feature_kind = "4-desc (scaled)"
+# panel 2: Cosine
+ax[1].scatter(Z[nn_cos,0], Z[nn_cos,1], c="tab:green", s=40, label="kNN")
+for j in nn_cos:
+    ax[1].plot([Z[q,0], Z[j,0]], [Z[q,1], Z[j,1]], c="tab:green", alpha=0.8)
+ax[1].set_title("Neighbors by Cosine")
 
-print("Embedding on:", feature_kind, "| shape:", X_embed.shape)
-```
+# panel 3: Euclidean
+ax[2].scatter(Z[nn_eu,0], Z[nn_eu,1], c="tab:red", s=40, label="kNN")
+for j in nn_eu:
+    ax[2].plot([Z[q,0], Z[j,0]], [Z[q,1], Z[j,1]], c="tab:red", alpha=0.8)
+ax[2].set_title("Neighbors by Euclidean")
 
-### 6.2 t-SNE with two perplexities
-
-Perplexity sets the effective neighbor count. Small values highlight very local neighborhoods. Larger values make broader groups.
-
-```{code-cell} ipython3
-perps = [10, 30]
-embeds = []
-for perp in perps:
-    tsne = TSNE(n_components=2, perplexity=perp, init="random", learning_rate="auto", random_state=0)
-    Z_tsne = tsne.fit_transform(X_embed)
-    embeds.append((perp, Z_tsne))
-
-# Plot
-fig, axes = plt.subplots(1, len(perps), figsize=(10,4), sharex=False, sharey=False)
-for ax, (perp, Zt) in zip(axes, embeds):
-    c = np.where(y_toxic[:len(Zt)]==1, "crimson",
-        np.where(y_toxic[:len(Zt)]==0, "steelblue", "gray"))
-    ax.scatter(Zt[:,0], Zt[:,1], s=8, c=c, alpha=0.8)
-    ax.set_title(f"t-SNE perplexity={perp}")
-    ax.set_xticks([]); ax.set_yticks([])
 plt.tight_layout()
 plt.show()
+
 ```
 
-### 6.3 UMAP
+We can plot both the query molecule and the found neighbors to take a look:
+```{code-cell} ipython3
+:tags: [hide-input]
+
+# 1) Draw the query molecule
+q_name = df10.iloc[q]["Compound Name"]
+q_smiles = df10.iloc[q]["SMILES"]
+q_mol = Chem.MolFromSmiles(q_smiles)
+print(f"Query #{q}: {q_name}")
+display(Draw.MolToImage(q_mol, size=(250, 250), legend=f"Query: {q_name}"))
+
+# 2) Build a 5×3 grid of neighbor structures
+#    Row r: [Tanimoto_r, Cosine_r, Euclidean_r]
+mols = []
+legends = []
+
+def add_neighbors(metric_name, nn_idxs, dists):
+    col_mols, col_legs = [], []
+    for j in nn_idxs:
+        name = df10.iloc[j]["Compound Name"]
+        smi  = df10.iloc[j]["SMILES"]
+        mol  = Chem.MolFromSmiles(smi)
+        col_mols.append(mol)
+        col_legs.append(f"{metric_name}\n{name}\nidx={j}  d={dists[q, j]:.3f}")
+    return col_mols, col_legs
+
+# Prepare the three columns (5 neighbors each)
+m_tani, l_tani = add_neighbors("Tanimoto", nn_tani, D_tani)
+m_cos,  l_cos  = add_neighbors("Cosine",   nn_cos,  D_cos)
+m_eu,   l_eu   = add_neighbors("Euclidean",nn_eu,   D_eu)
+
+# Interleave as rows: (Tani[r], Cos[r], Euclid[r]) for r=0..4
+for r in range(5):
+    mols.extend([m_tani[r], m_cos[r], m_eu[r]])
+    legends.extend([l_tani[r], l_cos[r], l_eu[r]])
+
+# Draw 5 rows × 3 columns (molsPerRow=3)
+grid = Draw.MolsToGridImage(
+    mols,
+    molsPerRow=3,
+    subImgSize=(220, 220),
+    legends=legends,
+)
+
+display(grid)
+```
+
+
+## 4. Nonlinear embeddings: t-SNE and UMAP
+
+Linear PCA gives a fast global summary. For curved manifolds or cluster-heavy data, **t-SNE** and **UMAP** often reveal structure that PCA compresses. Both start from a notion of neighborhood in the original feature space and then optimize a 2D or 3D layout that tries to keep neighbors close.
+
+We will use two feature sets:
+- **10D scalar descriptors** from `df10[desc_cols]`
+- **64-bit Morgan fingerprints** from `df_morgan["Fingerprint"]`
+
+
+### 4.1 t-SNE
+
+**Idea:** Build probabilities that say which points are neighbors in high-dim, then find a low-dim map whose neighbor probabilities match.
+
+**Math:**
+- Convert distances to conditional probabilities with a Gaussian kernel per point:
+  $
+  p_{j\mid i}=\frac{\exp\!\left(-\frac{\lVert x_i-x_j\rVert^2}{2\sigma_i^2}\right)}{\sum_{k\ne i}\exp\!\left(-\frac{\lVert x_i-x_k\rVert^2}{2\sigma_i^2}\right)},\quad p_{i\mid i}=0
+  $
+  $\sigma_i$ is chosen so that the **perplexity** matches a user target (roughly the effective number of neighbors).
+- Symmetrize:
+  $
+  P_{ij}=\frac{p_{j\mid i}+p_{i\mid j}}{2n}
+  $
+- In 2D, use a heavy-tailed kernel to define
+  $
+  q_{ij}=\frac{\left(1+\lVert y_i-y_j\rVert^2\right)^{-1}}{\sum_{k\ne \ell}\left(1+\lVert y_k-y_\ell\rVert^2\right)^{-1}},\quad q_{ii}=0
+  $
+- Optimize by minimizing the Kullback–Leibler divergence
+  $
+  \operatorname{KL}(P\parallel Q)=\sum_{i\ne j}P_{ij}\log\frac{P_{ij}}{Q_{ij}}.
+  $/
+
+**Practical tips:**
+- Choose `perplexity` about 5 to 50. For ~500 molecules, start at 30.
+- Standardize descriptor matrices. Fingerprints are binary. You can feed them as 0/1, or first reduce to 50 PCs for speed.
 
 ```{code-cell} ipython3
-try:
-    import umap.umap_ as umap
-    um = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=0)
-    Z_umap = um.fit_transform(X_embed)
-    plt.figure(figsize=(4.8,4.0))
-    c = np.where(y_toxic[:len(Z_umap)]==1, "crimson",
-        np.where(y_toxic[:len(Z_umap)]==0, "steelblue", "gray"))
-    plt.scatter(Z_umap[:,0], Z_umap[:,1], s=8, c=c, alpha=0.8)
-    plt.xticks([]); plt.yticks([])
-    plt.title("UMAP 2D")
-    plt.show()
-except Exception as e:
-    print("UMAP is not installed in this environment. Skipping UMAP demo.")
+from sklearn.manifold import TSNE
+
+# ----- features -----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+
+# 10D descriptors: standardize
+X_desc = df10[desc_cols].to_numpy()
+X_desc_std = StandardScaler().fit_transform(X_desc)
+
+# 64-bit Morgan: turn "0101..." into 0/1 matrix
+X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
+
+# optional: speed-up via PCA(50) before t-SNE on fingerprints
+#X_fp_50 = PCA(n_components=min(50, X_fp.shape[1], X_fp.shape[0]-1), random_state=0).fit_transform(X_fp)
+
+# ----- t-SNE fits -----
+tsne_desc = TSNE(n_components=2, perplexity=30, learning_rate="auto",
+                 init="pca", n_iter=1000, random_state=0)
+Y_desc = tsne_desc.fit_transform(X_desc_std)
+
+tsne_fp = TSNE(n_components=2, perplexity=30, learning_rate="auto",
+               init="pca", n_iter=1000, random_state=0)
+Y_fp = tsne_fp.fit_transform(X_fp)
+
+# ----- plots -----
+fig, ax = plt.subplots(1, 2, figsize=(12,5))
+ax[0].scatter(Y_desc[:,0], Y_desc[:,1], s=18, alpha=0.8)
+ax[0].set_title("t-SNE on 10D descriptors")
+ax[0].set_xlabel("tSNE-1"); ax[0].set_ylabel("tSNE-2")
+
+ax[1].scatter(Y_fp[:,0], Y_fp[:,1], s=18, alpha=0.8)
+ax[1].set_title("t-SNE on 64-bit Morgan")
+ax[1].set_xlabel("tSNE-1"); ax[1].set_ylabel("tSNE-2")
+
+plt.tight_layout(); plt.show()
 ```
+### 4.2 UMAP
 
-```{admonition} Practical notes
-- t-SNE preserves local neighborhoods but does not preserve global distances or cluster sizes.
-- UMAP often runs faster on large sets and can preserve more of the global shape.
-- Random seeds matter. Always record `random_state` for reproducibility.
-```
+**Idea:** Build a weighted kNN graph in the original space, interpret it as a fuzzy set of edges, then find low dimensional coordinates that preserve this fuzzy structure.
 
-```{admonition} ⏰ Exercise 6
-1. Try t-SNE with `perplexity=50`. Compare the layout to 10 and 30.
-2. For UMAP, change `n_neighbors` to 5 and 30. What changes in the map?
-```
+**Math:**
 
-### 6.4 Metric choices for embeddings
+- For each point \(i\), choose a local connectivity scale so that exactly \(k\) neighbors have significant membership. Convert distances to directed fuzzy memberships $\mu_{i\to j}\in[0,1]$.
 
-Both t-SNE and UMAP accept a metric. For fingerprints, try Jaccard in UMAP.
+- Symmetrize with fuzzy union
+  $
+  \mu_{ij} = \mu_{i\to j} + \mu_{j\to i} - \mu_{i\to j}\mu_{j\to i}
+  $
+
+- In low dimension, define a differentiable edge likelihood controlled by **spread** and **min\_dist**. Optimize a cross entropy between the high dimensional and low dimensional fuzzy graphs with negative sampling.
+
+**Practice:**
+
+- `n_neighbors` sets the balance of local vs global. Small values focus on fine detail, larger values keep more global structure. Start at 15 to 50.
+- `min_dist` controls cluster tightness. Smaller values allow tighter blobs, larger values spread points.
+- UMAP supports `.transform`, so you can fit on train then place test without leakage. For fingerprints, `metric="jaccard"` matches Tanimoto on 0 or 1 bits.
 
 ```{code-cell} ipython3
-if X_fp is not None:
-    try:
-        um_j = umap.UMAP(n_neighbors=15, min_dist=0.05, metric="jaccard", random_state=0)
-        Zj = um_j.fit_transform(X_fp.astype(bool))
-        plt.figure(figsize=(4.8,4.0))
-        plt.scatter(Zj[:,0], Zj[:,1], s=6, alpha=0.7)
-        plt.title("UMAP with Jaccard on fingerprints")
-        plt.xticks([]); plt.yticks([])
-        plt.show()
-    except Exception as e:
-        print("UMAP Jaccard failed:", e)
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from umap import UMAP
+
+# ----- features -----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+X_desc = df10[desc_cols].to_numpy()
+
+X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
+
+# ----- split first (leakage safe) -----
+X_desc_tr, X_desc_te = train_test_split(X_desc, test_size=0.3, random_state=42)
+X_fp_tr,   X_fp_te   = train_test_split(X_fp,   test_size=0.3, random_state=42)
+
+# ----- standardize descriptors using train only -----
+scaler = StandardScaler().fit(X_desc_tr)
+X_desc_tr_std = scaler.transform(X_desc_tr)
+X_desc_te_std = scaler.transform(X_desc_te)
+
+# ----- UMAP fits (separate models per feature family) -----
+umap_desc = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0)
+Z_desc_tr = umap_desc.fit_transform(X_desc_tr_std)
+Z_desc_te = umap_desc.transform(X_desc_te_std)  # out-of-sample
+
+umap_fp = UMAP(n_neighbors=30, min_dist=0.1, metric="cosine", random_state=0)
+Z_fp_tr = umap_fp.fit_transform(X_fp_tr)
+Z_fp_te = umap_fp.transform(X_fp_te)
+
+# ----- plots -----
+fig, ax = plt.subplots(1, 2, figsize=(12,5))
+
+ax[0].scatter(Z_desc_tr[:,0], Z_desc_tr[:,1], s=14, c="tab:blue", alpha=0.7, label="train")
+ax[0].scatter(Z_desc_te[:,0], Z_desc_te[:,1], s=14, c="tab:red", alpha=0.7, label="test", marker="x")
+ax[0].set_title("UMAP on 10D descriptors")
+ax[0].set_xlabel("UMAP-1"); ax[0].set_ylabel("UMAP-2"); ax[0].legend()
+
+ax[1].scatter(Z_fp_tr[:,0], Z_fp_tr[:,1], s=14, c="tab:blue", alpha=0.7, label="train")
+ax[1].scatter(Z_fp_te[:,0], Z_fp_te[:,1], s=14, c="tab:red", alpha=0.7, label="test", marker="x")
+ax[1].set_title("UMAP on 64-bit Morgan")
+ax[1].set_xlabel("UMAP-1"); ax[1].set_ylabel("UMAP-2"); ax[1].legend()
+
+plt.tight_layout(); plt.show()
+
 ```
 
-Narrative:
-
-- Jaccard on boolean arrays aligns with Tanimoto similarity. It often produces cleaner neighborhoods for bit vectors.
-- For descriptor matrices, Euclidean or cosine are common.
-
-### 6.5 Stability check with multiple runs
-
-Run t-SNE twice with different seeds and compare if large groups are stable.
-
 ```{code-cell} ipython3
-if X_embed is not None:
-    tsne_a = TSNE(n_components=2, perplexity=30, init="random", learning_rate="auto", random_state=0)
-    tsne_b = TSNE(n_components=2, perplexity=30, init="random", learning_rate="auto", random_state=42)
-    Za = tsne_a.fit_transform(X_embed)
-    Zb = tsne_b.fit_transform(X_embed)
+:tags: [hide-input]
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from umap import UMAP
 
-    fig, axes = plt.subplots(1,2, figsize=(9.6,4))
-    axes[0].scatter(Za[:,0], Za[:,1], s=6, alpha=0.7); axes[0].set_title("Seed 0")
-    axes[1].scatter(Zb[:,0], Zb[:,1], s=6, alpha=0.7); axes[1].set_title("Seed 42")
-    for ax in axes:
-        ax.set_xticks([]); ax.set_yticks([])
-    plt.tight_layout(); plt.show()
+# -----------------------------
+# Data prep
+# -----------------------------
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+X_desc = df10[desc_cols].to_numpy()
+
+# Morgan 64-bit (string of 0/1 per row)
+X_fp64 = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
+
+# Morgan 1024-bit
+X_fp1024 = np.array([[int(ch) for ch in s] for s in df_morgan_1024["Fingerprint"]], dtype=float)
+
+# single split to keep row alignment across all feature sets
+n = X_desc.shape[0]
+idx = np.arange(n)
+idx_tr, idx_te = train_test_split(idx, test_size=0.30, random_state=0, shuffle=True)
+
+X_desc_tr,   X_desc_te   = X_desc[idx_tr],   X_desc[idx_te]
+X_fp64_tr,   X_fp64_te   = X_fp64[idx_tr],   X_fp64[idx_te]
+X_fp1024_tr, X_fp1024_te = X_fp1024[idx_tr], X_fp1024[idx_te]
+
+# scale descriptors using train only
+scaler = StandardScaler().fit(X_desc_tr)
+X_desc_tr_std = scaler.transform(X_desc_tr)
+X_desc_te_std = scaler.transform(X_desc_te)
+
+# -----------------------------
+# Metrics
+# -----------------------------
+def tanimoto_distance(u, v):
+    # extended Tanimoto for real or binary vectors
+    uv = float(np.dot(u, v))
+    uu = float(np.dot(u, u))
+    vv = float(np.dot(v, v))
+    denom = uu + vv - uv
+    if denom == 0.0:
+        # both zero vectors -> distance 0
+        return 0.0
+    return 1.0 - (uv / denom)
+
+metric_map = {
+    "Euclidean": "euclidean",
+    "Cosine": "cosine",
+    "Tanimoto": tanimoto_distance,
+}
+
+# -----------------------------
+# UMAP and plotting
+# -----------------------------
+def fit_umap_and_transform(Xtr, Xte, metric, n_neighbors=30, min_dist=0.1, random_state=0):
+    reducer = UMAP(
+        n_neighbors=n_neighbors,
+        min_dist=min_dist,
+        metric=metric,
+        random_state=random_state,
+    )
+    Ztr = reducer.fit_transform(Xtr)
+    Zte = reducer.transform(Xte)
+    return Ztr, Zte
+
+feature_sets = [
+    ("10D descriptors", X_desc_tr_std, X_desc_te_std),
+    ("Morgan 64-bit",   X_fp64_tr,     X_fp64_te),
+    ("Morgan 1024-bit", X_fp1024_tr,   X_fp1024_te),
+]
+
+metrics_order = ["Euclidean", "Cosine", "Tanimoto"]
+
+fig, axes = plt.subplots(3, 3, figsize=(18, 15))
+for i, (feat_name, Xtr, Xte) in enumerate(feature_sets):
+    for j, mname in enumerate(metrics_order):
+        metric = metric_map[mname]
+        Ztr, Zte = fit_umap_and_transform(Xtr, Xte, metric=metric)
+
+        ax = axes[i, j]
+        ax.scatter(Ztr[:, 0], Ztr[:, 1], s=12, c="tab:blue", alpha=0.7, label="train")
+        ax.scatter(Zte[:, 0], Zte[:, 1], s=12, c="tab:red",  alpha=0.7, label="test", marker="x")
+        ax.set_title(f"{feat_name} • {mname}")
+        ax.set_xlabel("UMAP-1")
+        ax.set_ylabel("UMAP-2")
+        ax.legend(loc="best", frameon=True)
+
+plt.tight_layout()
+plt.show()
+
+```
+SO how these compare in chemistry?
+
+**In terms of global shape:**
+- PCA preserves coarse directions of variance and is easy to interpret through loadings.
+-UMAP can keep some global relations if `n_neighbors` is set higher.
+-t-SNE focuses on local neighborhoods and often distorts large scale distances.
+
+
+**For clusters:**
+- t-SNE and UMAP usually separate clusters more clearly than PCA.
+- UMAP tends to preserve relative distances between clusters better than t-SNE.
+
+
+**Workflow tips.**
+1. Decide the feature family. For scalar descriptors, standardize first. For fingerprints, keep bits and pick a metric that matches chemistry.
+2. If you plan any evaluation, split first. Fit scalers and embedding models on train only. Transform test afterward.
+3. Read maps with labels only for interpretation. Do not feed labels during fitting in unsupervised sections.
+```{code-cell} ipython3
+:tags: [hide-input]
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+from umap import UMAP
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+X = StandardScaler().fit_transform(df10[desc_cols].to_numpy())
+
+Z_pca  = PCA(n_components=2, random_state=0).fit_transform(X)
+Z_tsne = TSNE(n_components=2, perplexity=30, init="pca", learning_rate="auto",
+              n_iter=1000, random_state=0).fit_transform(X)
+Z_umap = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0).fit_transform(X)
+
+fig, ax = plt.subplots(1, 3, figsize=(15,4))
+ax[0].scatter(Z_pca[:,0],  Z_pca[:,1],  s=14, alpha=0.8); ax[0].set_title("PCA (2D)")
+ax[1].scatter(Z_tsne[:,0], Z_tsne[:,1], s=14, alpha=0.8); ax[1].set_title("t-SNE (2D)")
+ax[2].scatter(Z_umap[:,0], Z_umap[:,1], s=14, alpha=0.8); ax[2].set_title("UMAP (2D)")
+for a in ax: a.set_xlabel("comp 1"); a.set_ylabel("comp 2")
+plt.tight_layout(); plt.show()
+
 ```
 
-Discussion:
-
-- The layout can rotate or reflect. That is fine. What you want is preservation of which points are near each other.
-
-### 6.6 Label a few SMILES on the embedding
-
-We will choose three molecules and annotate their positions on UMAP or t-SNE.
-
 ```{code-cell} ipython3
-Zplot = Z_umap if ('Z_umap' in globals()) else embeds[1][1]  # prefer UMAP if available
-np.random.seed(1)
-idx_sel = np.random.choice(len(Zplot), size=min(5, len(Zplot)), replace=False)
-plt.figure(figsize=(5.4,4.6))
-plt.scatter(Zplot[:,0], Zplot[:,1], s=6, alpha=0.6, color="gray")
-for i in idx_sel:
-    plt.scatter(Zplot[i,0], Zplot[i,1], s=30)
-    smi = df.loc[mask_small, "SMILES"].iloc[i]
-    plt.text(Zplot[i,0]+0.5, Zplot[i,1]+0.5, smi[:12]+"...", fontsize=7)
-plt.title("Embedding with a few SMILES labels")
-plt.xticks([]); plt.yticks([])
+:tags: [hide-input]
+# Morgan bits -> 0/1 matrix
+X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
+
+# 2D embeddings
+Z_pca  = PCA(n_components=2, random_state=0).fit_transform(X_fp)
+Z_tsne = TSNE(n_components=2, perplexity=30, init="pca", learning_rate="auto",
+              n_iter=1000, random_state=0).fit_transform(X_fp)
+Z_umap = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0).fit_transform(X_fp)
+
+# Plots
+fig, ax = plt.subplots(1, 3, figsize=(15,4))
+ax[0].scatter(Z_pca[:,0],  Z_pca[:,1],  s=14, alpha=0.8); ax[0].set_title("PCA (Morgan)")
+ax[1].scatter(Z_tsne[:,0], Z_tsne[:,1], s=14, alpha=0.8); ax[1].set_title("t-SNE (Morgan)")
+ax[2].scatter(Z_umap[:,0], Z_umap[:,1], s=14, alpha=0.8); ax[2].set_title("UMAP (Morgan)")
+for a in ax: a.set_xlabel("comp 1"); a.set_ylabel("comp 2")
 plt.tight_layout(); plt.show()
 ```
 
-### 6.7 Nearest neighbors under different metrics
+Summary: 
+PCA finds orthogonal directions of variance. t-SNE preserves neighbor probabilities and is great for tight clusters. UMAP preserves a fuzzy kNN graph and supports transforming new points. On molecules, try both t-SNE and UMAP on descriptors and fingerprints, then read the plots with domain knowledge rather than expecting one single correct picture.
 
-Compare the 5 nearest neighbors of a chosen molecule using Euclidean on descriptors and Tanimoto on fingerprints.
-
-```{code-cell} ipython3
-from sklearn.neighbors import NearestNeighbors
-
-if RD and X_fp is not None:
-    idx0 = 0
-    # Euclidean on Xs
-    nn_euc = NearestNeighbors(n_neighbors=6, metric="euclidean").fit(Xs)
-    dist_euc, ind_euc = nn_euc.kneighbors(Xs[idx0:idx0+1])
-    # Jaccard on binary fingerprints
-    nn_jac = NearestNeighbors(n_neighbors=6, metric="jaccard").fit(X_fp.astype(bool))
-    dist_jac, ind_jac = nn_jac.kneighbors(X_fp[idx0:idx0+1].astype(bool))
-
-    print("Euclidean neighbors (indices):", ind_euc[0].tolist())
-    print("Jaccard neighbors (indices):  ", ind_jac[0].tolist())
-    print("SMILES for Jaccard neighbors:")
-    display(df.loc[mask_small, "SMILES"].iloc[ind_jac[0]].reset_index(drop=True).to_frame("SMILES"))
-```
-
-Observation:
-
-- Different metrics retrieve different neighbors because they emphasize different aspects of similarity.
-
-### 6.8 MOF dataset with UMAP
-
-We can embed MOF experiments using UMAP to mix process variables and linker descriptors.
-
-```{code-cell} ipython3
-mX = mof_full[feat_cols].fillna(0.0).values
-mX_s = StandardScaler().fit_transform(mX)
-try:
-    um_m = umap.UMAP(n_neighbors=20, min_dist=0.1, random_state=0)
-    Zm_umap = um_m.fit_transform(mX_s)
-    plt.figure(figsize=(5.6,4.6))
-    sc = plt.scatter(Zm_umap[:,0], Zm_umap[:,1], s=6, c=mof_full["yield"].values, alpha=0.7)
-    plt.colorbar(sc, label="yield")
-    plt.title("MOF UMAP colored by yield")
-    plt.xticks([]); plt.yticks([])
-    plt.tight_layout(); plt.show()
-except Exception as e:
-    print("UMAP not available for MOF:", e)
-```
-
-Interpretation:
-
-- If high yield points cluster together, a cluster-based design might help target good regions.
-- If yield gradients run across the embedding, a regression model may be more suitable than hard clusters.
 
 ---
 
-## 7. Clustering with K-means
 
-K-means partitions points into K clusters by minimizing within-cluster squared distances. It works best when clusters are roughly spherical in the chosen space.
-
-Objective:
-
-$$
- \min_{\{\mathcal{C}_k\}, \{\mu_k\}} \sum_{k=1}^{K} \sum_{x_i \in \mathcal{C}_k} \lVert x_i - \mu_k \rVert^2.
-$$
-
-We will cluster PCA scores rather than raw descriptors. This reduces noise and helps K-means.
-
-### 7.1 Build PCA features for clustering
-
-```{code-cell} ipython3
-pca10 = PCA(n_components=min(10, Xs.shape[1]), random_state=0).fit(Xs)
-Z10 = pca10.transform(Xs)
-print("Z10 shape:", Z10.shape, "  EVR cum:", np.round(pca10.explained_variance_ratio_.cumsum()[-1], 3))
-```
-
-### 7.2 Choose K: elbow and silhouette
-
-```{code-cell} ipython3
-Ks = range(2, 9)
-inertia, sil = [], []
-for K in Ks:
-    km = KMeans(n_clusters=K, n_init=20, random_state=0).fit(Z10)
-    inertia.append(km.inertia_)
-    sil.append(silhouette_score(Z10, km.labels_))
-
-fig, ax = plt.subplots(1,2, figsize=(9,3.2))
-ax[0].plot(list(Ks), inertia, marker="o"); ax[0].set_xlabel("K"); ax[0].set_ylabel("Inertia"); ax[0].set_title("Elbow")
-ax[1].plot(list(Ks), sil, marker="o"); ax[1].set_xlabel("K"); ax[1].set_ylabel("Silhouette"); ax[1].set_title("Silhouette vs K")
-plt.tight_layout(); plt.show()
-```
-
-### 7.3 Fit a K and visualize on PC1–PC2
-
-```{code-cell} ipython3
-K_best = 3
-km = KMeans(n_clusters=K_best, n_init=50, random_state=0).fit(Z10)
-labs = km.labels_
-sc2 = Z10[:, :2]
-
-plt.figure(figsize=(4.8,4.4))
-plt.scatter(sc2[:,0], sc2[:,1], s=12, c=labs, alpha=0.8)
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title(f"K-means on PCA (K={K_best})")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-```
-
-### 7.4 Interpret clusters with loadings
-
-We can see which original descriptors drive each cluster by comparing cluster means in the original standardized space.
-
-```{code-cell} ipython3
-df_feat = pd.DataFrame(Xs, columns=["MolWt","LogP","TPSA","NumRings"])
-df_feat["cluster"] = labs
-means = df_feat.groupby("cluster").mean()
-means
-```
-
-```{admonition} Reading cluster means
-Large positive mean for a descriptor means that cluster has higher than average values for that feature in standardized units.
-```
-
-```{admonition} ⏰ Exercise 7
-1. Compute the silhouette score for K=2,3,4 and report which is largest.
-2. Change the space for K-means to the **t-SNE** coordinates and try K=3. Does the silhouette improve or get worse? Why might that happen?
-```
-
-### 7.5 Silhouette plot per sample
-
-A silhouette plot lets you see compactness per cluster. Higher is better. We sort samples within each cluster by their silhouette value.
-
-```{code-cell} ipython3
-svals = silhouette_samples(Z10, labs)
-y_lower = 10
-plt.figure(figsize=(6.6,4.2))
-for k in sorted(np.unique(labs)):
-    sv = svals[labs==k]
-    sv.sort()
-    y_upper = y_lower + len(sv)
-    plt.fill_betweenx(np.arange(y_lower, y_upper), 0, sv, alpha=0.6)
-    plt.text(-0.05, y_lower + 0.5*len(sv), str(k))
-    y_lower = y_upper + 10
-plt.axvline(np.mean(svals), color="k", ls="--")
-plt.xlabel("silhouette value"); plt.ylabel("sample index in cluster")
-plt.title("Silhouette plot K=3")
-plt.tight_layout(); plt.show()
-```
-
-### 7.6 Link cluster labels back to SMILES
-
-We display a small table per cluster showing a few example SMILES. This connects clusters to chemistry.
-
-```{code-cell} ipython3
-df_view = pd.DataFrame({
-    "SMILES": df.loc[mask_small, "SMILES"].values,
-    "cluster": labs
-})
-for k in sorted(df_view["cluster"].unique()):
-    print(f"\nCluster {k} examples:")
-    display(df_view.query("cluster == @k").head(5))
-```
-
-### 7.7 K-means on MOF experiments
-
-Cluster the MOF PCA space and color by cluster, then inspect yield per cluster.
-
-```{code-cell} ipython3
-km_m = KMeans(n_clusters=4, n_init=50, random_state=0).fit(Zm)
-labs_m = km_m.labels_
-
-plt.figure(figsize=(5.6,4.6))
-plt.scatter(Zm[:,0], Zm[:,1], s=8, c=labs_m, alpha=0.8)
-plt.title("MOF PCA clustering")
-plt.xlabel("PC1"); plt.ylabel("PC2")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-
-print("Yield per cluster (mean ± std):")
-display(mof_full.assign(cluster=labs_m).groupby("cluster")["yield"].agg(["mean","std","count"]).round(2))
-```
-
-Discussion:
-
-- If one cluster has high mean yield, what process conditions define it
-  Based on the PCA loadings, check which features are elevated in that cluster.
-
-### 7.8 Cluster centroids in original units
-
-We compute means for the process variables per cluster to describe them in natural units.
-
-```{code-cell} ipython3
-summ = (mof_full.assign(cluster=labs_m)
-        .groupby("cluster")[["temperature","time_h","concentration_M","solvent_DMF"]]
-        .mean().round(2))
-summ
-```
-
----
-
-## 8. Beyond K-means: Agglomerative and DBSCAN
-
-Some clusters are not spherical. Two alternatives:
-
-- **Agglomerative (hierarchical)**: start with each point as a cluster, then merge nearest clusters until K remains. Linkage can be ward, average, or complete.
-- **DBSCAN**: density based. Finds core points with at least `min_samples` neighbors within `eps`, then builds clusters of connected dense regions. Good for outliers.
-
-We use the PCA 10D space again.
-
-### 8.1 Agglomerative
-
-```{code-cell} ipython3
-agg = AgglomerativeClustering(n_clusters=3, linkage="ward")
-labs_agg = agg.fit_predict(Z10)
-
-plt.figure(figsize=(4.6,4.2))
-plt.scatter(sc2[:,0], sc2[:,1], s=12, c=labs_agg, alpha=0.85)
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("Agglomerative on PCA")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-
-print("Silhouette (agg):", round(silhouette_score(Z10, labs_agg), 3))
-```
-
-### 8.2 DBSCAN
-
-```{code-cell} ipython3
-db = DBSCAN(eps=0.9, min_samples=6)  # eps is sensitive to scale
-labs_db = db.fit_predict(Z10)
-
-plt.figure(figsize=(4.6,4.2))
-plt.scatter(sc2[:,0], sc2[:,1], s=12, c=labs_db, alpha=0.9)
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("DBSCAN on PCA (-1 are noise)")
-plt.gca().set_aspect("equal", adjustable="box")
-plt.show()
-
-vals, cnts = np.unique(labs_db, return_counts=True)
-dict(zip(vals, cnts))
-```
-
-```{admonition} Tips for DBSCAN
-- Scale matters. Tune `eps` after standardization or PCA.
-- `-1` labels are noise or outliers.
-- You can grid search `eps` on a small set to find stable clusters.
-```
-
-### 8.3 Linkage variants
-
-Ward linkage assumes Euclidean geometry and tries to minimize variance. Average and complete linkage use pairwise distances between clusters.
-
-```{code-cell} ipython3
-for link in ["ward","average","complete"]:
-    agg = AgglomerativeClustering(n_clusters=3, linkage=link)
-    labs_link = agg.fit_predict(Z10)
-    sil_link = silhouette_score(Z10, labs_link)
-    print(f"Linkage={link:8s} silhouette={sil_link:.3f}")
-```
-
-### 8.4 DBSCAN parameter sweep
-
-A quick sweep gives a feel for sensitivity.
-
-```{code-cell} ipython3
-eps_list = [0.6, 0.8, 1.0, 1.2]
-res = []
-for eps in eps_list:
-    db = DBSCAN(eps=eps, min_samples=6).fit(Z10)
-    vals, cnts = np.unique(db.labels_, return_counts=True)
-    n_noise = cnts[vals==-1][0] if (-1 in vals) else 0
-    n_clusters = (vals >= 0).sum()
-    sil = silhouette_score(Z10, db.labels_) if n_clusters > 1 else np.nan
-    res.append({"eps": eps, "n_clusters": int(n_clusters), "n_noise": int(n_noise), "silhouette": sil})
-pd.DataFrame(res)
-```
-
-### 8.5 Outlier molecules
-
-List a few outliers when DBSCAN marks them as noise.
-
-```{code-cell} ipython3
-out_idx = np.where(labs_db == -1)[0]
-print("Noise points:", len(out_idx))
-if len(out_idx) > 0:
-    print("First few outliers with SMILES:")
-    display(df.loc[mask_small, "SMILES"].iloc[out_idx[:8]].reset_index(drop=True).to_frame("SMILES"))
-```
-
----
-
-## 9. Glossary
-
+## 5. Glossary
 ```{glossary}
 dimension reduction
-  Map $p$-dimensional features to a few coordinates that keep the most structure for your task.
+   Map $p$-dimensional features to a few coordinates that keep the most structure for your task.
 
 PCA
   Linear method that finds orthogonal directions of maximum variance.
 
 loading
   The weight of each original feature for a principal component.
-
-score
-  The coordinates of each sample in PC space.
 
 scree plot
   Bar or line plot of explained variance ratio per PC.
@@ -1345,169 +1337,293 @@ t-SNE
 UMAP
   Graph-based embedding that models fuzzy set cross entropy on a kNN graph.
 
-K-means
-  Clustering by minimizing within-cluster squared distances to centroids.
-
-silhouette
-  For a point, $s=(b-a)/\max(a,b)$ where $a$ is mean intra-cluster distance and $b$ is the smallest mean distance to another cluster.
-
-DBSCAN
-  Density-based clustering that finds core points and expands clusters. Labels noise as $-1$.
-
-Tanimoto similarity
-  For bit vectors $A$ and $B$, $S=\dfrac{A\cdot B}{\lVert A\rVert_1+\lVert B\rVert_1 - A\cdot B}$.
-
-Jaccard distance
-  One minus Tanimoto similarity on binary vectors.
-
-Hotelling $T^2$
-  Squared Mahalanobis distance in PCA score space. Large values indicate leverage points in scores.
-
-Q residuals
-  Reconstruction error in original space after projecting onto the first $k$ PCs.
-
-bit environment
-  In Morgan fingerprints, the center atom index and radius that triggered a specific bit.
 ```
+
+
 
 ---
 
-## 10. In-class activity with solutions
+## 6. In-class activity
 
-Five hands-on questions. Each can be solved with code from this lecture. Write your answers in small blocks and explain what you see.
 
-### Q1. PCA for interpretation
-
-- Use `X_small` scaled. Fit `PCA(n_components=4)`.
-- Report the loading vector for PC1 and PC2.
-- Write one sentence per PC about what chemical trend each PC seems to capture.
+Scenario:
+You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal is to build quick descriptor and fingerprint views, create 2D maps, and compare nearest neighbors under different distances before moving to assays.
 
 ```{code-cell} ipython3
-scaler = StandardScaler()
-Xs = scaler.fit_transform(X_small)
-pca = PCA(n_components=4, random_state=0).fit(Xs)
-loads = pd.DataFrame(pca.components_.T, index=["MolWt","LogP","TPSA","NumRings"], columns=[f"PC{i+1}" for i in range(4)])
-loads.round(3)
+# Fixed 20 compounds with groups (3 clusters)
+mol_records = [
+    # Group A - hydrophobic aromatics
+    ("Toluene",               "Cc1ccccc1",                "A_hydrophobic_aromatics"),
+    ("Ethylbenzene",          "CCc1ccccc1",               "A_hydrophobic_aromatics"),
+    ("Propylbenzene",         "CCCc1ccccc1",              "A_hydrophobic_aromatics"),
+    ("p-Xylene",              "Cc1ccc(cc1)C",             "A_hydrophobic_aromatics"),
+    ("Cumene",                "CC(C)c1ccccc1",            "A_hydrophobic_aromatics"),
+    ("Mesitylene",            "Cc1cc(C)cc(C)c1",          "A_hydrophobic_aromatics"),
+    ("Isobutylbenzene",       "CC(C)Cc1ccccc1",           "A_hydrophobic_aromatics"),
 
-cum = pca.explained_variance_ratio_.cumsum()
-print("EVR:", np.round(pca.explained_variance_ratio_,3), "  Cumulative:", np.round(cum,3))
-loads
+    # Group B - polar alcohols and acids
+    ("Acetic acid",           "CC(=O)O",                  "B_polar_alc_acid"),
+    ("Propionic acid",        "CCC(=O)O",                 "B_polar_alc_acid"),
+    ("Butanoic acid",         "CCCC(=O)O",                "B_polar_alc_acid"),
+    ("Ethanol",               "CCO",                      "B_polar_alc_acid"),
+    ("1-Propanol",            "CCCO",                     "B_polar_alc_acid"),
+    ("1-Butanol",             "CCCCO",                    "B_polar_alc_acid"),
+    ("Ethylene glycol",       "OCCO",                     "B_polar_alc_acid"),
+
+    # Group C - nitrogen hetero and amines
+    ("Pyridine",              "n1ccccc1",                 "C_N_hetero_amines"),
+    ("Aniline",               "Nc1ccccc1",                "C_N_hetero_amines"),
+    ("Dimethylaniline",       "CN(C)c1ccccc1",            "C_N_hetero_amines"),
+    ("Imidazole",             "c1ncc[nH]1",               "C_N_hetero_amines"),
+    ("Morpholine",            "O1CCNCC1",                 "C_N_hetero_amines"),
+    ("Piperidine",            "N1CCCCC1",                 "C_N_hetero_amines"),
+]
+
+import pandas as pd
+df_20 = pd.DataFrame(mol_records, columns=["Compound Name","SMILES","Group"])
+df_20
+
 ```
 
-Narrative template for students:
 
-- PC1: If the largest magnitude loading is on MolWt and TPSA is moderate, then PC1 tracks overall molecular size with polarity elements.
-- PC2: If LogP has a large positive loading and TPSA negative, PC2 contrasts hydrophobicity with polarity.
+### **Q1. Build feature sets and print compact summaries**
 
-```{admonition} Hint
-If you flip the sign of the loadings, the interpretation stays the same. Always talk about relative direction and magnitude.
+1. Using `calc_descriptors10` we defined earlier today, create a 20×10 descriptor table `df_fp_20` for these molecules.
+2. Using `morgan_bits` with `n_bits=64` and `radius=2`, create a 64-bit fingerprint string for each molecule.
+3. Show the first 24 bits of the fingerprint for all 20 molecules.
+
+```python
+#TO DO
 ```
 
----
+### **Q2. PCA on 10 descriptors**
 
-### Q2. Choose K by silhouette
+1. Build a feature matrix `X_desc` from the 10 descriptor columns, then standardize with `StandardScaler()`, call it `X_desc_std`.
 
-- Use `Z10` from PCA on `X_small`.
-- Compute silhouette for `K=2..8` and pick the best K.
-- Plot silhouette vs K.
+2. Fit `PCA()` on standardized data and project to 2D.
+
+3. Create a scatter. Optional: add text labels for each molecule.
+```python
+#TO DO
+```
+
+### **Q3. t-SNE on 10 descriptors**
+
+1. Use the same standardized 10D matrix `X_desc_std`.
+
+2. Fit t-SNE with `n_components=2`, `perplexity=5`, `init="pca"`, `learning_rate="auto"`, `n_iter=1000`, `random_state=0`.
+
+3. Make a scatter with text labels
+
+4. Change `perplexity` to `2`, `10`, and `15`, see how they are different from each other.
+```python
+#TO DO
+```
+
+### **Q4. PCA and t-SNE on Morgan-64 fingerprints**
+
+
+
+1. Convert each 64-bit fingerprint string to a row of 0 or 1 to form a 20×64 matrix ·X_fp·.
+
+2. Run PCA to 2D and plot with labels **and** t-SNE to 2D on `X_fp` with the same t-SNE settings as Q3, and plot with labels.
+
+3. Compare with Q3
+
+```python
+#TO DO
+```
+
+### **Q5. Nearest 5 neighbors - descriptors vs fingerprints**
+
+
+1. Pick a query molecule index `q` between `0` and `19`
+
+2. Compute a 20×20 Euclidean distance matrix on `X_desc_std` and list the 5 closest neighbors of `q` (exclude itself).
+
+3. Compute a 20×20 Tanimoto distance matrix for the fingerprints and list the 5 closest neighbors of `q`.
+
+4. Compare the two neighbor lists. Which list better respects group membership for this query?
+
+
+```python
+#TO DO
+```
+
+
+## 7. Solution
+
+### Q1
 
 ```{code-cell} ipython3
-Ks = range(2, 9)
-scores = []
-for K in Ks:
-    km = KMeans(n_clusters=K, n_init=30, random_state=0).fit(Z10)
-    scores.append(silhouette_score(Z10, km.labels_))
-pd.DataFrame({"K": list(Ks), "silhouette": np.round(scores,3)})
-plt.plot(list(Ks), scores, marker="o"); plt.xlabel("K"); plt.ylabel("Silhouette"); plt.grid(True, alpha=0.4)
-K_best = Ks[int(np.argmax(scores))]
-print("Best K by silhouette:", K_best)
+# Q1 - Solution
+
+# 10-descriptor table
+desc10_20 = df_20["SMILES"].apply(calc_descriptors10)
+df10_20 = pd.concat([df_20[["Compound Name","SMILES","Group"]], desc10_20], axis=1)
+
+# 64-bit Morgan fingerprints
+df_fp_20 = df_20.copy()
+df_fp_20["Fingerprint"] = df_fp_20["SMILES"].apply(lambda s: morgan_bits(s, n_bits=64, radius=2))
+
+print("10-descriptor table (head):")
+display(df10_20.head().round(3))
+
+print("\nFingerprint preview (first 24 bits):")
+fp_preview = df_fp_20[["Compound Name","Group","Fingerprint"]].copy()
+fp_preview["Fingerprint"] = fp_preview["Fingerprint"].str.slice(0, 24) + "..."
+display(fp_preview)
+
+print("\nDescriptor stats:")
+display(df10_20.drop(columns=["Compound Name","SMILES","Group"]).agg(["mean","std"]).round(3))
+
 ```
 
-Narrative template:
+### Q2
+```{code-cell} ipython3
+# Q2 - Solution
 
-- If the curve peaks at K=3 and then drops, pick K=3.
-- A very flat curve suggests weak cluster structure. In that case, focus more on interpretation than strict assignment.
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 
----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
 
-### Q3. t-SNE vs UMAP on fingerprints
+X_desc = df10_20[desc_cols].to_numpy()
+X_desc_std = StandardScaler().fit_transform(X_desc)
 
-- If RDKit is available, embed `X_fp` with t-SNE and UMAP.
-- Use the same `random_state` and similar neighbor counts.
-- Color by toxicity when available.
+pca_desc_full = PCA().fit(X_desc_std)
+Z_desc = pca_desc_full.transform(X_desc_std)[:, :2]
+
+# color map by group
+group_to_color = {"A_hydrophobic_aromatics":"tab:orange",
+                  "B_polar_alc_acid":"tab:blue",
+                  "C_N_hetero_amines":"tab:green"}
+colors = df10_20["Group"].map(group_to_color).to_numpy()
+
+# explained variance
+plt.figure(figsize=(4,3))
+plt.plot(np.cumsum(pca_desc_full.explained_variance_ratio_), marker="o")
+plt.xlabel("Number of PCs"); plt.ylabel("Cumulative EVR"); plt.tight_layout(); plt.show()
+
+# 2D scatter with labels
+plt.figure(figsize=(7,6))
+plt.scatter(Z_desc[:,0], Z_desc[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df10_20["Compound Name"]):
+    plt.text(Z_desc[i,0]+0.03, Z_desc[i,1], name, fontsize=8)
+plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on 10 descriptors (n=20)")
+# legend
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+```
+
+### Q3
 
 ```{code-cell} ipython3
-if X_fp is not None:
-    X_embed = X_fp.astype(float)
-    tsne = TSNE(n_components=2, perplexity=30, init="random", learning_rate="auto", random_state=0)
-    Zt = tsne.fit_transform(X_embed)
-    try:
-        import umap.umap_ as umap
-        Zu = umap.UMAP(n_neighbors=15, min_dist=0.1, random_state=0).fit_transform(X_embed)
-    except Exception:
-        Zu = None
-else:
-    print("Skip. No fingerprints.")
+# Q3 - Solution
 
-if X_fp is not None:
-    plt.figure(figsize=(9,4))
-    c = np.where(y_toxic[:len(Zt)]==1, "crimson", np.where(y_toxic[:len(Zt)]==0, "steelblue", "gray"))
-    plt.subplot(1,2,1); plt.scatter(Zt[:,0], Zt[:,1], s=8, c=c, alpha=0.8); plt.title("t-SNE"); plt.xticks([]); plt.yticks([])
-    if Zu is not None:
-        plt.subplot(1,2,2); plt.scatter(Zu[:,0], Zu[:,1], s=8, c=c, alpha=0.8); plt.title("UMAP"); plt.xticks([]); plt.yticks([])
-    plt.tight_layout(); plt.show()
+from sklearn.manifold import TSNE
+
+tsne_desc = TSNE(n_components=2, perplexity=2, learning_rate="auto",
+                 init="pca", n_iter=1000, random_state=0)
+Y_desc = tsne_desc.fit_transform(X_desc_std)
+
+plt.figure(figsize=(7,6))
+plt.scatter(Y_desc[:,0], Y_desc[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df10_20["Compound Name"]):
+    plt.text(Y_desc[i,0]+0.5, Y_desc[i,1], name, fontsize=8)
+plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on 10 descriptors (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
 ```
 
-Comment on whether groups align between methods. If they do, that increases confidence in those local neighborhoods.
+### Q4
+```{code-cell} ipython3
+# Q4 - Solution
 
----
+# 0/1 matrix from bitstrings
+X_fp = np.array([[int(ch) for ch in s] for s in df_fp_20["Fingerprint"]], dtype=float)
 
-### Q4. DBSCAN to find outliers
+# PCA on fingerprint bits
+pca_fp = PCA(n_components=2, random_state=0).fit(X_fp)
+Z_fp_pca = pca_fp.transform(X_fp)
 
-- Work in PCA 10D space.
-- Tune `eps` to find at least one noise point.
-- Print cluster counts.
+plt.figure(figsize=(7,6))
+plt.scatter(Z_fp_pca[:,0], Z_fp_pca[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df_fp_20["Compound Name"]):
+    plt.text(Z_fp_pca[i,0]+0.03, Z_fp_pca[i,1], name, fontsize=8)
+plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on Morgan-64 (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+# t-SNE on fingerprint bits
+tsne_fp = TSNE(n_components=2, perplexity=5, learning_rate="auto",
+               init="pca", n_iter=1000, random_state=0)
+Y_fp = tsne_fp.fit_transform(X_fp)
+
+plt.figure(figsize=(7,6))
+plt.scatter(Y_fp[:,0], Y_fp[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df_fp_20["Compound Name"]):
+    plt.text(Y_fp[i,0]+0.5, Y_fp[i,1], name, fontsize=8)
+plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on Morgan-64 (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+```
+
+### Q5
 
 ```{code-cell} ipython3
-for eps in [0.6, 0.8, 1.0]:
-    db = DBSCAN(eps=eps, min_samples=6).fit(Z10)
-    vals, cnts = np.unique(db.labels_, return_counts=True)
-    print("eps=", eps, dict(zip(vals, cnts)))
+# Q5 - Solution
 
+from sklearn.metrics import pairwise_distances
+from rdkit import DataStructs
 
-eps = 0.8
-db = DBSCAN(eps=eps, min_samples=6).fit(Z10)
-labs = db.labels_
-plt.scatter(Z10[:,0], Z10[:,1], s=12, c=labs, alpha=0.9)
-plt.title(f"DBSCAN on PCA, eps={eps}")
-plt.show()
+# choose a query row
+q = 3  # change during class to test different queries
+
+# 1) Euclidean on standardized 10D descriptors
+D_eu = pairwise_distances(X_desc_std, metric="euclidean")
+order_eu = np.argsort(D_eu[q])
+nn_eu_idx = [i for i in order_eu if i != q][:5]
+
+print(f"Query: {df10_20.loc[q,'Compound Name']}  |  Group: {df10_20.loc[q,'Group']}")
+print("\nNearest 5 by Euclidean (10 descriptors):")
+for j in nn_eu_idx:
+    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_eu={D_eu[q,j]:.3f}")
+
+# 2) Tanimoto on 64-bit fingerprints
+def fp_string_to_bvect(fp_str):
+    arr = [int(ch) for ch in fp_str]
+    bv = DataStructs.ExplicitBitVect(len(arr))
+    for k, b in enumerate(arr):
+        if b: bv.SetBit(k)
+    return bv
+
+fps = [fp_string_to_bvect(s) for s in df_fp_20["Fingerprint"]]
+S_tan = np.zeros((len(fps), len(fps)))
+for i in range(len(fps)):
+    S_tan[i, :] = DataStructs.BulkTanimotoSimilarity(fps[i], fps)
+D_tan = 1.0 - S_tan
+
+order_tan = np.argsort(D_tan[q])
+nn_tan_idx = [i for i in order_tan if i != q][:5]
+
+print("\nNearest 5 by Tanimoto (Morgan-64):")
+for j in nn_tan_idx:
+    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_tan={D_tan[q,j]:.3f}")
+
 ```
-
-Narrative template:
-
-- If the number of noise points is very high, reduce `eps`. If there are no noise points and only one cluster, increase `eps` or `min_samples`.
-
----
-
-### Q5. Cluster meaning in original units
-
-- Fit K-means with K=3 on `Z10`.
-- For each cluster, compute the mean of original descriptors **before** scaling.
-- Report a small table and give one sentence per cluster.
-- Cluster 0: higher MolWt and NumRings, moderate TPSA.
-- Cluster 1: lower MolWt, higher TPSA, more polar.
-- Cluster 2: hydrophobic with higher LogP.
-
-
-```{code-cell} ipython3
-km = KMeans(n_clusters=3, n_init=50, random_state=0).fit(Z10)
-labs = km.labels_
-D_orig = df.loc[mask_small, ["MolWt","LogP","TPSA","NumRings"]].reset_index(drop=True)
-D_orig["cluster"] = labs
-D_orig.groupby("cluster").mean().round(2)
-
-tbl = D_orig.groupby("cluster").agg(["mean","std"]).round(2)
-```
-
-
-
