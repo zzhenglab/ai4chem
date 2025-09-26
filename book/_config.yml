@@ -8,15 +8,15 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  exclude_patterns:
-    - lecture-10
-    - lecture-10-old
-    - lecture-10.ipynb
+  #exclude_patterns:
+  #  - lecture-10
+  #  - lecture-10-old
+  #  - lecture-10.ipynb
   execute_notebooks: auto
-  exclude_patterns:
-    - lecture-10
-    - lecture-10-old
-    - lecture-10.ipynb
+  #exclude_patterns:
+  #  - lecture-10
+  #  - lecture-10-old
+  #  - lecture-10.ipynb
 
 
 # Define the name of the latex output file for PDF builds
@@ -40,6 +40,6 @@ html:
   use_issues_button: true
   use_repository_button: true
 
-sphinx:
-  config:
-    nb_execution_mode: auto
+#sphinx:
+#  config:
+#    nb_execution_mode: auto
