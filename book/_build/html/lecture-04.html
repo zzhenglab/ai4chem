@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,50 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"91b57e06342d4abe9b9d6acb866dbe99": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "fb040481f4d64e41bb1a643f64e11796": {"model_name": "TextStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TextStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "495da61f20f44aadb681dc072e08cfcf": {"model_name": "TextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TextView", "continuous_update": true, "description": "Query:", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_91b57e06342d4abe9b9d6acb866dbe99", "placeholder": "\u200b", "style": "IPY_MODEL_fb040481f4d64e41bb1a643f64e11796", "tabbable": null, "tooltip": null, "value": "aspirin"}}, "457929a8fe8c4547a58930744c220129": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d846ad9f582547429546e38b592586d9": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "8b6dd8cdc18d49cb8d7cf9b5d9917796": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["PubChem", "CIR"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ToggleButtonsView", "button_style": "", "description": "Source:", "description_allow_html": false, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_457929a8fe8c4547a58930744c220129", "style": "IPY_MODEL_d846ad9f582547429546e38b592586d9", "tabbable": null, "tooltip": null, "tooltips": []}}, "60ef37b83521453eb518a922641bd7df": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0cfe3263cfb642389ab4e9c1d6375af5": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "79e3961e7aff43c792c271b7400749e3": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Fetch", "disabled": false, "icon": "", "layout": "IPY_MODEL_60ef37b83521453eb518a922641bd7df", "style": "IPY_MODEL_0cfe3263cfb642389ab4e9c1d6375af5", "tabbable": null, "tooltip": null}}, "2b3e8eb6e9064685b25e14a8c49b9c88": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "e04d7e189165495b890f079d5853604a": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_2b3e8eb6e9064685b25e14a8c49b9c88", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "097f2a962ee941df9555014fa83697ef": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "99b82b0f9d4b4b879a8b1925649e25b0": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_495da61f20f44aadb681dc072e08cfcf", "IPY_MODEL_8b6dd8cdc18d49cb8d7cf9b5d9917796", "IPY_MODEL_79e3961e7aff43c792c271b7400749e3"], "layout": "IPY_MODEL_097f2a962ee941df9555014fa83697ef", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"22b618d204994bcc955c8261580fac27": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "60%"}}, "edddd7e3afc84c1c91cfc2fd9485be40": {"model_name": "TextStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TextStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "07e2959937244e929637e17e45d72886": {"model_name": "TextModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "TextModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "TextView", "continuous_update": true, "description": "Query:", "description_allow_html": false, "disabled": false, "layout": "IPY_MODEL_22b618d204994bcc955c8261580fac27", "placeholder": "\u200b", "style": "IPY_MODEL_edddd7e3afc84c1c91cfc2fd9485be40", "tabbable": null, "tooltip": null, "value": "aspirin"}}, "6b7a3c6d0f1c42e79c02e03ead92279e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a2691333febc4cc08116fc748dd9c882": {"model_name": "ToggleButtonsStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ToggleButtonsStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_width": "", "description_width": "", "font_weight": ""}}, "369f0c3e9c2c4b05bf27420bc58ba6e0": {"model_name": "ToggleButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ToggleButtonsModel", "_options_labels": ["PubChem", "CIR"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ToggleButtonsView", "button_style": "", "description": "Source:", "description_allow_html": false, "disabled": false, "icons": [], "index": 0, "layout": "IPY_MODEL_6b7a3c6d0f1c42e79c02e03ead92279e", "style": "IPY_MODEL_a2691333febc4cc08116fc748dd9c882", "tabbable": null, "tooltip": null, "tooltips": []}}, "ebef00787eee4fa685f8d05326ab8e81": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a5611567dce1439ea1978bd3bcbce272": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "e25d62b728864d13becd737fb9ff00f0": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Fetch", "disabled": false, "icon": "", "layout": "IPY_MODEL_ebef00787eee4fa685f8d05326ab8e81", "style": "IPY_MODEL_a5611567dce1439ea1978bd3bcbce272", "tabbable": null, "tooltip": null}}, "731d70ee152c4db1830d1a2f5fe921f9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "57056bcf51374adbbb46b0b2ceda3811": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_731d70ee152c4db1830d1a2f5fe921f9", "msg_id": "", "outputs": [], "tabbable": null, "tooltip": null}}, "f54ad4fbf4ce45c887d8eeab13ebcbea": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "96e3d88de1c649bd8eb0209bfb4de3b2": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_07e2959937244e929637e17e45d72886", "IPY_MODEL_369f0c3e9c2c4b05bf27420bc58ba6e0", "IPY_MODEL_e25d62b728864d13becd737fb9ff00f0"], "layout": "IPY_MODEL_f54ad4fbf4ce45c887d8eeab13ebcbea", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-04';</script>
@@ -74,23 +76,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -112,20 +119,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,8 +140,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -161,18 +158,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -209,7 +195,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -218,14 +204,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -350,10 +336,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -361,14 +347,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -446,10 +432,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-4-chemical-structure-identifier">
-<h1>Lecture 4 - Chemical Structure Identifier<a class="headerlink" href="#lecture-4-chemical-structure-identifier" title="Link to this heading">#</a></h1>
+<h1>Lecture 4 - Chemical Structure Identifier<a class="headerlink" href="#lecture-4-chemical-structure-identifier" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -466,7 +452,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand PubChem as a data service via <strong>PUG-REST</strong> and <strong>PUG-View</strong>.</p></li>
 <li><p>Form URLs that return JSON, TXT or images.</p></li>
@@ -481,14 +467,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="pubchem-pug-rest-basics">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. PubChem PUG-REST Basics</a><a class="headerlink" href="#pubchem-pug-rest-basics" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. PubChem PUG-REST Basics</a><a class="headerlink" href="#pubchem-pug-rest-basics" title="Permalink to this heading">#</a></h2>
 <section id="setup">
-<h3>1.1 Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h3>
+<h3>1.1 Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Networking</span>
@@ -539,7 +525,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="background-information">
-<h3>1.2 Background Information<a class="headerlink" href="#background-information" title="Link to this heading">#</a></h3>
+<h3>1.2 Background Information<a class="headerlink" href="#background-information" title="Permalink to this heading">#</a></h3>
 <p>Instead of going to <a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov">PubChem’s main site</a> and manually searching for a compound, we can also use a <strong>direct URL</strong> to query PubChem’s REST API. This allows us to send structured requests and retrieve data in machine-readable formats such as JSON, XML, or plain text.</p>
 <p>Other latest features of PubChem can be found in  <em>Nucleic Acids Research</em>, 2025, 53 (D1), D1516–D1525. <a class="reference external" href="https://academic.oup.com/nar/article/53/D1/D1516/7903365?login=false"><img alt="Read" src="https://img.shields.io/badge/Read-Paper-blue" /></a></p>
 <p>The figure below illustrates the general workflow of PUG-REST: provide an input (like a compound name), choose an operation (for example, retrieving a CID), and specify the output format. Using URLs in this way not only automates lookups but also integrates PubChem data smoothly into code and analysis.</p>
@@ -582,9 +568,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="from-name-to-cid-and-properties">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. From name to CID and properties</a><a class="headerlink" href="#from-name-to-cid-and-properties" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. From name to CID and properties</a><a class="headerlink" href="#from-name-to-cid-and-properties" title="Permalink to this heading">#</a></h2>
 <section id="form-the-url">
-<h3>2.1 Form the URL<a class="headerlink" href="#form-the-url" title="Link to this heading">#</a></h3>
+<h3>2.1 Form the URL<a class="headerlink" href="#form-the-url" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;acetaminophen&quot;</span>
@@ -605,7 +591,7 @@ document.write(`
 </div>
 </section>
 <section id="request-and-parse">
-<h3>2.2 Request and parse<a class="headerlink" href="#request-and-parse" title="Link to this heading">#</a></h3>
+<h3>2.2 Request and parse<a class="headerlink" href="#request-and-parse" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install requests if you do not have it</span>
@@ -666,7 +652,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="iupac-name">
-<h3>2.3 IUPAC name<a class="headerlink" href="#iupac-name" title="Link to this heading">#</a></h3>
+<h3>2.3 IUPAC name<a class="headerlink" href="#iupac-name" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cid</span> <span class="o">=</span> <span class="mi">2244</span>  <span class="c1"># aspirin</span>
@@ -686,7 +672,7 @@ document.write(`
 </div>
 </section>
 <section id="canonical-vs-isomeric-smiles">
-<h3>2.4 Canonical vs isomeric SMILES<a class="headerlink" href="#canonical-vs-isomeric-smiles" title="Link to this heading">#</a></h3>
+<h3>2.4 Canonical vs isomeric SMILES<a class="headerlink" href="#canonical-vs-isomeric-smiles" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">canon</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/</span><span class="si">{</span><span class="n">cid</span><span class="si">}</span><span class="s2">/property/CanonicalSMILES/TXT&quot;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -711,7 +697,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </section>
 <hr class="docutils" />
 <section id="safer-helpers">
-<h3>2.5 Safer helpers<a class="headerlink" href="#safer-helpers" title="Link to this heading">#</a></h3>
+<h3>2.5 Safer helpers<a class="headerlink" href="#safer-helpers" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">safe_get_json</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
@@ -735,7 +721,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </section>
 <hr class="docutils" />
 <section id="write-convenience-functions-by-name">
-<h3>2.6 Write convenience functions (by name)<a class="headerlink" href="#write-convenience-functions-by-name" title="Link to this heading">#</a></h3>
+<h3>2.6 Write convenience functions (by name)<a class="headerlink" href="#write-convenience-functions-by-name" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pubchem_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">isomeric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -774,7 +760,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </div>
 </section>
 <section id="write-convenience-functions-by-cid">
-<h3>2.7 Write convenience functions (by CID)<a class="headerlink" href="#write-convenience-functions-by-cid" title="Link to this heading">#</a></h3>
+<h3>2.7 Write convenience functions (by CID)<a class="headerlink" href="#write-convenience-functions-by-cid" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pubchem_by_cid</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">isomeric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -805,9 +791,9 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </section>
 <hr class="docutils" />
 <section id="other-pubchem-features">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Other PubChem features</a><a class="headerlink" href="#other-pubchem-features" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Other PubChem features</a><a class="headerlink" href="#other-pubchem-features" title="Permalink to this heading">#</a></h2>
 <section id="selected-computed-properties">
-<h3>3.1 Selected computed properties<a class="headerlink" href="#selected-computed-properties" title="Link to this heading">#</a></h3>
+<h3>3.1 Selected computed properties<a class="headerlink" href="#selected-computed-properties" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pubchem_properties</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">fields</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;MolecularWeight&quot;</span><span class="p">,</span><span class="s2">&quot;XLogP&quot;</span><span class="p">,</span><span class="s2">&quot;ExactMass&quot;</span><span class="p">,</span><span class="s2">&quot;HBondDonorCount&quot;</span><span class="p">,</span><span class="s2">&quot;HBondAcceptorCount&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">)):</span>
@@ -835,7 +821,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </div>
 </section>
 <section id="synonyms">
-<h3>3.2 Synonyms<a class="headerlink" href="#synonyms" title="Link to this heading">#</a></h3>
+<h3>3.2 Synonyms<a class="headerlink" href="#synonyms" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pubchem_synonyms</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
@@ -862,7 +848,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </div>
 </section>
 <section id="png-depiction-from-pubchem">
-<h3>3.3 PNG depiction from PubChem<a class="headerlink" href="#png-depiction-from-pubchem" title="Link to this heading">#</a></h3>
+<h3>3.3 PNG depiction from PubChem<a class="headerlink" href="#png-depiction-from-pubchem" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pubchem_png_by_cid</span><span class="p">(</span><span class="n">cid</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
@@ -880,7 +866,7 @@ Isomeric SMILES includes stereochemistry and isotopes if available.</p>
 </div>
 </section>
 <section id="pug-view-for-safety-snippets">
-<h3>3.4 PUG-View for safety snippets<a class="headerlink" href="#pug-view-for-safety-snippets" title="Link to this heading">#</a></h3>
+<h3>3.4 PUG-View for safety snippets<a class="headerlink" href="#pug-view-for-safety-snippets" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">PUG-View</span></code> serves formatted record content such as GHS classification. The path is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pubchem</span><span class="o">.</span><span class="n">ncbi</span><span class="o">.</span><span class="n">nlm</span><span class="o">.</span><span class="n">nih</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">rest</span><span class="o">/</span><span class="n">pug_view</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">compound</span><span class="o">/&lt;</span><span class="n">cid</span><span class="o">&gt;/</span><span class="n">JSON</span>
 </pre></div>
@@ -956,7 +942,7 @@ Danger
 </section>
 <hr class="docutils" />
 <section id="nci-chemical-identifier-resolver-cir-as-a-second-path">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. NCI Chemical Identifier Resolver (CIR) as a second path</a><a class="headerlink" href="#nci-chemical-identifier-resolver-cir-as-a-second-path" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. NCI Chemical Identifier Resolver (CIR) as a second path</a><a class="headerlink" href="#nci-chemical-identifier-resolver-cir-as-a-second-path" title="Permalink to this heading">#</a></h2>
 <p>Base URL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cactus</span><span class="o">.</span><span class="n">nci</span><span class="o">.</span><span class="n">nih</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">chemical</span><span class="o">/</span><span class="n">structure</span><span class="o">/&lt;</span><span class="nb">input</span><span class="o">&gt;/&lt;</span><span class="n">output</span><span class="o">&gt;</span>
 </pre></div>
@@ -983,9 +969,7 @@ Danger
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SMILES: CC(=O)Oc1ccccc1C(O)=O ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>InChIKey: InChIKey=BSYNRYMUTXBXSQ-UHFFFAOYSA-N
+InChIKey: InChIKey=BSYNRYMUTXBXSQ-UHFFFAOYSA-N
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CAS: 50-78-2
@@ -1001,7 +985,7 @@ Danger
 </section>
 <hr class="docutils" />
 <section id="mini-widget">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Mini widget</a><a class="headerlink" href="#mini-widget" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Mini widget</a><a class="headerlink" href="#mini-widget" title="Permalink to this heading">#</a></h2>
 <p>Enter a <strong>name or CID or SMILES or CAS</strong> and show a quick summary. Generates a small GIF from a PNG depiction so it can be shared easily.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1058,12 +1042,12 @@ Danger
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "99b82b0f9d4b4b879a8b1925649e25b0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e04d7e189165495b890f079d5853604a"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "96e3d88de1c649bd8eb0209bfb4de3b2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "57056bcf51374adbbb46b0b2ceda3811"}</script></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="case-study-with-cas-from-excel">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Case study with CAS from Excel</a><a class="headerlink" href="#case-study-with-cas-from-excel" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Case study with CAS from Excel</a><a class="headerlink" href="#case-study-with-cas-from-excel" title="Permalink to this heading">#</a></h2>
 <p>We will re-use the inventory file:</p>
 <p>📂 <code class="docutils literal notranslate"><span class="pre">organic</span> <span class="pre">ligands</span> <span class="pre">inventory.xlsx</span></code><br />
 <a class="reference external" href="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_ligands_inventory.xlsx">https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/organic_ligands_inventory.xlsx</a></p>
@@ -1153,7 +1137,7 @@ Danger
 <p>In previous example, we directly read csv. However, to access excell spreedsheet, we need to specify <code class="docutils literal notranslate"><span class="pre">engine=&quot;openpyxl&quot;</span></code>.</p>
 </div>
 <section id="query-pubchem-by-cas-with-fallback">
-<h3>6.1 Query PubChem by CAS with fallback<a class="headerlink" href="#query-pubchem-by-cas-with-fallback" title="Link to this heading">#</a></h3>
+<h3>6.1 Query PubChem by CAS with fallback<a class="headerlink" href="#query-pubchem-by-cas-with-fallback" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">by_cas_with_fallback</span><span class="p">(</span><span class="n">cas</span><span class="p">,</span> <span class="n">isomeric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
@@ -1187,7 +1171,7 @@ Danger
 </div>
 </section>
 <section id="enrich-a-small-slice">
-<h3>6.2 Enrich a small slice<a class="headerlink" href="#enrich-a-small-slice" title="Link to this heading">#</a></h3>
+<h3>6.2 Enrich a small slice<a class="headerlink" href="#enrich-a-small-slice" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1348,35 +1332,35 @@ Danger
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-PUG-REST">PUG-REST<a class="headerlink" href="#term-PUG-REST" title="Link to this term">#</a></dt><dd><p>The PubChem REST interface that returns properties, identifiers and files via URL patterns.</p>
+<dt id="term-PUG-REST">PUG-REST<a class="headerlink" href="#term-PUG-REST" title="Permalink to this term">#</a></dt><dd><p>The PubChem REST interface that returns properties, identifiers and files via URL patterns.</p>
 </dd>
-<dt id="term-PUG-View">PUG-View<a class="headerlink" href="#term-PUG-View" title="Link to this term">#</a></dt><dd><p>A service that returns human-oriented record sections such as safety and vendor data in JSON.</p>
+<dt id="term-PUG-View">PUG-View<a class="headerlink" href="#term-PUG-View" title="Permalink to this term">#</a></dt><dd><p>A service that returns human-oriented record sections such as safety and vendor data in JSON.</p>
 </dd>
-<dt id="term-CID">CID<a class="headerlink" href="#term-CID" title="Link to this term">#</a></dt><dd><p>PubChem Compound ID for a unique compound record.</p>
+<dt id="term-CID">CID<a class="headerlink" href="#term-CID" title="Permalink to this term">#</a></dt><dd><p>PubChem Compound ID for a unique compound record.</p>
 </dd>
-<dt id="term-SID">SID<a class="headerlink" href="#term-SID" title="Link to this term">#</a></dt><dd><p>PubChem Substance ID which refers to a submitted substance record.</p>
+<dt id="term-SID">SID<a class="headerlink" href="#term-SID" title="Permalink to this term">#</a></dt><dd><p>PubChem Substance ID which refers to a submitted substance record.</p>
 </dd>
-<dt id="term-AID">AID<a class="headerlink" href="#term-AID" title="Link to this term">#</a></dt><dd><p>PubChem Assay ID for a bioassay record.</p>
+<dt id="term-AID">AID<a class="headerlink" href="#term-AID" title="Permalink to this term">#</a></dt><dd><p>PubChem Assay ID for a bioassay record.</p>
 </dd>
-<dt id="term-SMILES">SMILES<a class="headerlink" href="#term-SMILES" title="Link to this term">#</a></dt><dd><p>Text line notation for molecules. Canonical SMILES omits stereochemistry. Isomeric SMILES includes it.</p>
+<dt id="term-SMILES">SMILES<a class="headerlink" href="#term-SMILES" title="Permalink to this term">#</a></dt><dd><p>Text line notation for molecules. Canonical SMILES omits stereochemistry. Isomeric SMILES includes it.</p>
 </dd>
-<dt id="term-InChI-and-InChIKey">InChI and InChIKey<a class="headerlink" href="#term-InChI-and-InChIKey" title="Link to this term">#</a></dt><dd><p>IUPAC identifiers. InChIKey is a hashed, fixed-length form that is easy to compare.</p>
+<dt id="term-InChI-and-InChIKey">InChI and InChIKey<a class="headerlink" href="#term-InChI-and-InChIKey" title="Permalink to this term">#</a></dt><dd><p>IUPAC identifiers. InChIKey is a hashed, fixed-length form that is easy to compare.</p>
 </dd>
-<dt id="term-GHS">GHS<a class="headerlink" href="#term-GHS" title="Link to this term">#</a></dt><dd><p>Globally Harmonized System of Classification and Labelling of Chemicals. PubChem PUG-View can include these sections.</p>
+<dt id="term-GHS">GHS<a class="headerlink" href="#term-GHS" title="Permalink to this term">#</a></dt><dd><p>Globally Harmonized System of Classification and Labelling of Chemicals. PubChem PUG-View can include these sections.</p>
 </dd>
-<dt id="term-CIR">CIR<a class="headerlink" href="#term-CIR" title="Link to this term">#</a></dt><dd><p>NCI Chemical Identifier Resolver. A second service that converts between names, SMILES, InChI, InChIKey and more.</p>
+<dt id="term-CIR">CIR<a class="headerlink" href="#term-CIR" title="Permalink to this term">#</a></dt><dd><p>NCI Chemical Identifier Resolver. A second service that converts between names, SMILES, InChI, InChIKey and more.</p>
 </dd>
-<dt id="term-sanitize">sanitize<a class="headerlink" href="#term-sanitize" title="Link to this term">#</a></dt><dd><p>RDKit process that checks valence, aromaticity and stereochemistry.</p>
+<dt id="term-sanitize">sanitize<a class="headerlink" href="#term-sanitize" title="Permalink to this term">#</a></dt><dd><p>RDKit process that checks valence, aromaticity and stereochemistry.</p>
 </dd>
-<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Link to this term">#</a></dt><dd><p>Computed molecular property such as molecular weight or LogP.</p>
+<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Permalink to this term">#</a></dt><dd><p>Computed molecular property such as molecular weight or LogP.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-pubchem-endpoints-to-remember admonition">
 <p class="admonition-title">PubChem endpoints to remember</p>
 <ul class="simple">
@@ -1399,10 +1383,10 @@ Danger
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p>Each task is aligned with what we covered above. Work in pairs. Fill in the <code class="docutils literal notranslate"><span class="pre">...</span></code> lines. Solutions are in Section 13.</p>
 <section id="verify-pubchem-vs-cir-agreement">
-<h3>9.1 Verify PubChem vs CIR agreement<a class="headerlink" href="#verify-pubchem-vs-cir-agreement" title="Link to this heading">#</a></h3>
+<h3>9.1 Verify PubChem vs CIR agreement<a class="headerlink" href="#verify-pubchem-vs-cir-agreement" title="Permalink to this heading">#</a></h3>
 <p>Given <code class="docutils literal notranslate"><span class="pre">targets</span> <span class="pre">=</span> <span class="pre">[&quot;caffeine&quot;,</span> <span class="pre">&quot;ibuprofen&quot;,</span> <span class="pre">&quot;acetaminophen&quot;]</span></code></p>
 <ul class="simple">
 <li><p>Get InChIKey from PubChem and from CIR.</p></li>
@@ -1417,14 +1401,14 @@ Danger
 </div>
 </section>
 <section id="small-properties-table-from-names">
-<h3>9.2 Small properties table from names<a class="headerlink" href="#small-properties-table-from-names" title="Link to this heading">#</a></h3>
+<h3>9.2 Small properties table from names<a class="headerlink" href="#small-properties-table-from-names" title="Permalink to this heading">#</a></h3>
 <p>Use names <code class="docutils literal notranslate"><span class="pre">[&quot;caffeine&quot;,</span> <span class="pre">&quot;acetaminophen&quot;,</span> <span class="pre">&quot;ibuprofen&quot;]</span></code>. For each, fetch SMILES from PubChem, then compute MolWt, LogP, HBD, HBA, and TPSA.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#TO DO</span>
 </pre></div>
 </div>
 </section>
 <section id="get-a-quick-ghs-note-from-pug-view">
-<h3>9.3 Get a quick GHS note from PUG-View<a class="headerlink" href="#get-a-quick-ghs-note-from-pug-view" title="Link to this heading">#</a></h3>
+<h3>9.3 Get a quick GHS note from PUG-View<a class="headerlink" href="#get-a-quick-ghs-note-from-pug-view" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For CID 2244 retrieve GHS section text.</p></li>
 <li><p>Print the first 8 lines.</p></li>
@@ -1434,7 +1418,7 @@ Danger
 </div>
 </section>
 <section id="build-a-one-liner-resolver">
-<h3>9.4 Build a one-liner resolver<a class="headerlink" href="#build-a-one-liner-resolver" title="Link to this heading">#</a></h3>
+<h3>9.4 Build a one-liner resolver<a class="headerlink" href="#build-a-one-liner-resolver" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Input list <code class="docutils literal notranslate"><span class="pre">[&quot;446157&quot;,</span> <span class="pre">&quot;2244&quot;,</span> <span class="pre">&quot;CCO&quot;,</span> <span class="pre">&quot;482752&quot;,</span> <span class="pre">&quot;c1ccccc1&quot;]</span></code></p></li>
 <li><p>If it is digits treat as CID else try SMILES else treat as name.</p></li>
@@ -1450,7 +1434,7 @@ Danger
 </div>
 </section>
 <section id="process-dataset">
-<h3>9.5 Process dataset<a class="headerlink" href="#process-dataset" title="Link to this heading">#</a></h3>
+<h3>9.5 Process dataset<a class="headerlink" href="#process-dataset" title="Permalink to this heading">#</a></h3>
 <p>Load dataset “<a class="reference external" href="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv">https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv</a>”.</p>
 <p>Examine the dataset structure using <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> and select the SMILES strings from first 5 rows to query CIR (see section 4) to get <strong>number of freely rotatable bonds</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#TO DO</span>
@@ -1464,9 +1448,9 @@ Danger
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <section id="solution-9-1">
-<h3>Solution 9.1<a class="headerlink" href="#solution-9-1" title="Link to this heading">#</a></h3>
+<h3>Solution 9.1<a class="headerlink" href="#solution-9-1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;caffeine&quot;</span><span class="p">,</span> <span class="s2">&quot;ibuprofen&quot;</span><span class="p">,</span> <span class="s2">&quot;acetaminophen&quot;</span><span class="p">]</span>
@@ -1491,7 +1475,7 @@ Danger
 </div>
 </section>
 <section id="solution-9-2">
-<h3>Solution 9.2<a class="headerlink" href="#solution-9-2" title="Link to this heading">#</a></h3>
+<h3>Solution 9.2<a class="headerlink" href="#solution-9-2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1520,7 +1504,7 @@ Danger
 </div>
 </section>
 <section id="solution-9-3">
-<h3>Solution 9.3<a class="headerlink" href="#solution-9-3" title="Link to this heading">#</a></h3>
+<h3>Solution 9.3<a class="headerlink" href="#solution-9-3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hits</span> <span class="o">=</span> <span class="n">pug_view_find_sections</span><span class="p">(</span><span class="mi">2244</span><span class="p">,</span> <span class="s2">&quot;GHS&quot;</span><span class="p">)</span>
@@ -1543,7 +1527,7 @@ Aggregated GHS information provided per 315 reports by companies from 23 notific
 </div>
 </section>
 <section id="solution-9-4">
-<h3>Solution 9.4<a class="headerlink" href="#solution-9-4" title="Link to this heading">#</a></h3>
+<h3>Solution 9.4<a class="headerlink" href="#solution-9-4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1566,7 +1550,7 @@ Aggregated GHS information provided per 315 reports by companies from 23 notific
 </div>
 </section>
 <section id="solution-9-5">
-<h3>Solution 9.5<a class="headerlink" href="#solution-9-5" title="Link to this heading">#</a></h3>
+<h3>Solution 9.5<a class="headerlink" href="#solution-9-5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;446157&quot;</span><span class="p">,</span> <span class="s2">&quot;2244&quot;</span><span class="p">,</span> <span class="s2">&quot;CCO&quot;</span><span class="p">,</span> <span class="s2">&quot;482752&quot;</span><span class="p">,</span> <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">]</span>
@@ -1591,23 +1575,23 @@ Aggregated GHS information provided per 315 reports by companies from 23 notific
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input=446157 CID=446157 SMILES=CC(C)C1=NC(=NC(=C1/C=C/[C@H](C[C@H](CC(=O)O)O)O)C2=CC=C(C=C2)F)N(C)S(=O)(=O)C
 </pre></div>
 </div>
-<img alt="_images/2959360066b7a4e19260c665acd513b8bc1cfe11f0ad694ead0a861a1cf12869.png" src="_images/2959360066b7a4e19260c665acd513b8bc1cfe11f0ad694ead0a861a1cf12869.png" />
+<img alt="_images/8d746ab668d3748039a1cbf07cc3fda5c05570101c48688003204def735e4f8e.png" src="_images/8d746ab668d3748039a1cbf07cc3fda5c05570101c48688003204def735e4f8e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input=2244 CID=2244 SMILES=CC(=O)OC1=CC=CC=C1C(=O)O
 </pre></div>
 </div>
-<img alt="_images/8c44db82bada06d3bd4f46ec809f27123300a6530a5b29b1aa4d2116c9bd6685.png" src="_images/8c44db82bada06d3bd4f46ec809f27123300a6530a5b29b1aa4d2116c9bd6685.png" />
+<img alt="_images/93e42113bba090e0fef9b5680cca8eadc59de873d9c7437da2b86442697166e1.png" src="_images/93e42113bba090e0fef9b5680cca8eadc59de873d9c7437da2b86442697166e1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input=CCO CID=None SMILES=CCO
 </pre></div>
 </div>
-<img alt="_images/8f8eac75f18a754b87a8e6467e9e82412c810c8165c80b2e5855734a1f74d3b0.png" src="_images/8f8eac75f18a754b87a8e6467e9e82412c810c8165c80b2e5855734a1f74d3b0.png" />
+<img alt="_images/9b3f0eabf5b152166bb0a06ff08f743140baa334d56350d04e4c0f78cce0ebc6.png" src="_images/9b3f0eabf5b152166bb0a06ff08f743140baa334d56350d04e4c0f78cce0ebc6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input=482752 CID=482752 SMILES=CC[N+]1=CC=C(C=C1)C2=C3C=CC(=C(C4=NC(=C(C5=CC=C([NH2+]5)C(=C6C=CC2=N6)C7=CC=[N+](C=C7)CC)C8=CC=[N+](C=C8)CC)C=C4)C9=CC=[N+](C=C9)CC)[NH2+]3.[Cl-]
 </pre></div>
 </div>
-<img alt="_images/6b4a1fcdf47571a9ed95f938153252bacd7c2ee75a94b846fc50d2dbc0af42f1.png" src="_images/6b4a1fcdf47571a9ed95f938153252bacd7c2ee75a94b846fc50d2dbc0af42f1.png" />
+<img alt="_images/159163f427b17b058ab67252b46a8e43d23323b661386ecc8fd0c147657b7743.png" src="_images/159163f427b17b058ab67252b46a8e43d23323b661386ecc8fd0c147657b7743.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>input=c1ccccc1 CID=None SMILES=c1ccccc1
 </pre></div>
 </div>
-<img alt="_images/f52c6d438baf02b01a53d949b5b0e36e9f0c92b4c391d32400cc0336cadd29d2.png" src="_images/f52c6d438baf02b01a53d949b5b0e36e9f0c92b4c391d32400cc0336cadd29d2.png" />
+<img alt="_images/1aedb7d5bb4a5a01ceaf08106f370cbee896d64e274680a56a5d075539379113.png" src="_images/1aedb7d5bb4a5a01ceaf08106f370cbee896d64e274680a56a5d075539379113.png" />
 </div>
 </div>
 </section>
@@ -1641,7 +1625,7 @@ Aggregated GHS information provided per 315 reports by companies from 23 notific
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1670,7 +1654,6 @@ Aggregated GHS information provided per 315 reports by companies from 23 notific
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1750,7 +1733,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1774,8 +1757,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

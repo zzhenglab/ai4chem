@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-07';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -208,7 +194,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -217,14 +203,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -349,10 +335,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -360,14 +346,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -439,10 +425,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-7-decision-trees-and-random-forests">
-<h1>Lecture 7 - Decision Trees and Random Forests<a class="headerlink" href="#lecture-7-decision-trees-and-random-forests" title="Link to this heading">#</a></h1>
+<h1>Lecture 7 - Decision Trees and Random Forests<a class="headerlink" href="#lecture-7-decision-trees-and-random-forests" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -458,7 +444,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Explain the intuition of <strong>decision trees</strong> for regression and classification.</p></li>
 <li><p>Read <strong>Gini</strong> and <strong>entropy</strong> for splits and <strong>MSE</strong> for regression splits.</p></li>
@@ -473,12 +459,12 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0. Setup</span>
@@ -517,15 +503,15 @@ document.write(`
 </div>
 </section>
 <section id="decision-tree">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Decision tree</a><a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Decision tree</a><a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h2>
 <section id="load-data-and-build-descriptors">
-<h3>1.1 Load data and build descriptors<a class="headerlink" href="#load-data-and-build-descriptors" title="Link to this heading">#</a></h3>
+<h3>1.1 Load data and build descriptors<a class="headerlink" href="#load-data-and-build-descriptors" title="Permalink to this heading">#</a></h3>
 <p>We will reuse the same dataset to keep the context consistent. If RDKit is available, we compute four descriptors; otherwise we fallback to numeric columns that are already present.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
@@ -631,10 +617,10 @@ document.write(`
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calc_descriptors</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
@@ -751,7 +737,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="what-is-a-decision-tree">
-<h3>1.2 What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Link to this heading">#</a></h3>
+<h3>1.2 What is a decision tree<a class="headerlink" href="#what-is-a-decision-tree" title="Permalink to this heading">#</a></h3>
 <p>A tree splits the feature space into rectangles by asking simple questions like <code class="docutils literal notranslate"><span class="pre">LogP</span> <span class="pre">&lt;=</span> <span class="pre">1.3</span></code>. Each split tries to make the target inside each branch more pure.</p>
 <ul class="simple">
 <li><p>For <strong>classification</strong>, purity is measured by <strong>Gini</strong> or <strong>entropy</strong>.</p></li>
@@ -796,7 +782,7 @@ For classification, it is measured by <strong>Gini</strong> for a node with clas
 </section>
 <hr class="docutils" />
 <section id="tiny-classification-example-one-split">
-<h3>1.3 Tiny classification example: one split<a class="headerlink" href="#tiny-classification-example-one-split" title="Link to this heading">#</a></h3>
+<h3>1.3 Tiny classification example: one split<a class="headerlink" href="#tiny-classification-example-one-split" title="Permalink to this heading">#</a></h3>
 <p>We start with toxicity as a binary label to see a single split and the data shape at each step.</p>
 <p>We will split the dataset into train and test parts. Stratification (<code class="docutils literal notranslate"><span class="pre">stratify</span> <span class="pre">=</span> <span class="pre">y</span></code>) keeps the class ratio similar in both parts, which is important when classes are imbalanced.</p>
 <div class="cell docutils container">
@@ -980,7 +966,7 @@ weighted avg      0.919     0.922     0.919       115
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[14,  6],
-       [ 3, 92]])
+       [ 3, 92]], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1001,7 +987,7 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/268d8958b3ece5fbbace6fd3d80ccda44372145c224dae7b79b95412dbac52e7.png" src="_images/268d8958b3ece5fbbace6fd3d80ccda44372145c224dae7b79b95412dbac52e7.png" />
+<img alt="_images/aa580231161c4f63823ebb434ef1e0bf044aca624b6258121483da790dd5199a.png" src="_images/aa580231161c4f63823ebb434ef1e0bf044aca624b6258121483da790dd5199a.png" />
 </div>
 </div>
 <p>We can also visualize <code class="docutils literal notranslate"><span class="pre">max_depth=2</span></code> to see the difference:</p>
@@ -1017,13 +1003,13 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/edbc8542fa887ffb1a3c67354017139cbd4bae7bce6e6904c903f5b4d5850962.png" src="_images/edbc8542fa887ffb1a3c67354017139cbd4bae7bce6e6904c903f5b4d5850962.png" />
+<img alt="_images/6bb4dc11fb5888c4a5e8867363dba28d9eadf1d5a4950624aa7f243f8bbf05e1.png" src="_images/6bb4dc11fb5888c4a5e8867363dba28d9eadf1d5a4950624aa7f243f8bbf05e1.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="grow-deeper-and-control-overfitting">
-<h3>1.4 Grow deeper and control overfitting<a class="headerlink" href="#grow-deeper-and-control-overfitting" title="Link to this heading">#</a></h3>
+<h3>1.4 Grow deeper and control overfitting<a class="headerlink" href="#grow-deeper-and-control-overfitting" title="Permalink to this heading">#</a></h3>
 <p>Trees can fit noise if we let them grow without limits. We control growth using a few simple knobs.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>: limit the number of levels</p></li>
@@ -1121,7 +1107,7 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/82a46dd7310591e9d7304bac52788339e50fc66f1981d4b7275b5a10d7af5515.png" src="_images/82a46dd7310591e9d7304bac52788339e50fc66f1981d4b7275b5a10d7af5515.png" />
+<img alt="_images/4e552473274e3e204efaa01f85a459fdb32cebdfb57ee306c38bd1f9db2730b5.png" src="_images/4e552473274e3e204efaa01f85a459fdb32cebdfb57ee306c38bd1f9db2730b5.png" />
 </div>
 </div>
 <div class="admonition-takeaway admonition">
@@ -1424,7 +1410,7 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7265441227db581fc09bf896b98a35376d3d5d1ff5150c86cceaf1b98c2072f7.png" src="_images/7265441227db581fc09bf896b98a35376d3d5d1ff5150c86cceaf1b98c2072f7.png" />
+<img alt="_images/743ce9d0c419885007d3dda811d3964124e12e7d102625687c40ee3c7a8bd132.png" src="_images/743ce9d0c419885007d3dda811d3964124e12e7d102625687c40ee3c7a8bd132.png" />
 </div>
 </div>
 <p>Finally, let’s look at what happen if we fix depth and vary leaf size:</p>
@@ -1537,7 +1523,7 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99bfea5cc4c3e21aebe0b9b88d38284594356c673f81e5b2030f4f1529403a47.png" src="_images/99bfea5cc4c3e21aebe0b9b88d38284594356c673f81e5b2030f4f1529403a47.png" />
+<img alt="_images/6471731df3ec38f1ca199cc6b093b39a7459c59549ed5dcb50bb67aa3fdcf160.png" src="_images/6471731df3ec38f1ca199cc6b093b39a7459c59549ed5dcb50bb67aa3fdcf160.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1553,7 +1539,7 @@ The tree plot below shows the root node with its split, the Gini impurity at eac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d51ae1992da5d032e2e7966d190b2bb50492bc10a1b0e31b8c19d019e5bd31e.png" src="_images/3d51ae1992da5d032e2e7966d190b2bb50492bc10a1b0e31b8c19d019e5bd31e.png" />
+<img alt="_images/5a472a3b14c4d8073cc8670d06edcb7613c5e6d23dc48e8b969f2ee4ab29e93e.png" src="_images/5a472a3b14c4d8073cc8670d06edcb7613c5e6d23dc48e8b969f2ee4ab29e93e.png" />
 </div>
 </div>
 <div class="admonition-underfitting-vs-overfitting admonition">
@@ -1585,7 +1571,7 @@ Signs:</p>
 </section>
 <hr class="docutils" />
 <section id="model-based-importance-gini-importance">
-<h3>1.5 Model-based importance: Gini importance<a class="headerlink" href="#model-based-importance-gini-importance" title="Link to this heading">#</a></h3>
+<h3>1.5 Model-based importance: Gini importance<a class="headerlink" href="#model-based-importance-gini-importance" title="Permalink to this heading">#</a></h3>
 <p>As we learned in lecture 6, ML models not only make predictions but also provide insight into which features were most useful.</p>
 <p>There are two main ways we can measure this: <strong>Gini importance</strong> (model-based) and <strong>permutation importance</strong> (data-based). Both give us different perspectives on feature relevance.</p>
 <p>When fitting a tree, each split reduces impurity (measured by Gini or entropy). A feature’s importance is computed as:</p>
@@ -1623,14 +1609,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a2d915a5134d335811fb0ea8b320ea7fea2c3d6f11a09b2dad8329874a61d7ac.png" src="_images/a2d915a5134d335811fb0ea8b320ea7fea2c3d6f11a09b2dad8329874a61d7ac.png" />
+<img alt="_images/d97352fa4900520aa698dfac8cd7d491a68a482811d35b278978f67dd5a5cdd9.png" src="_images/d97352fa4900520aa698dfac8cd7d491a68a482811d35b278978f67dd5a5cdd9.png" />
 </div>
 </div>
 <p>This bar chart above ranks features by how much they reduced impurity in the training process. The top feature is the one the tree found most useful for splitting. However, keep in mind this is internal to the model and may not reflect true predictive power on unseen data.</p>
 </section>
 <hr class="docutils" />
 <section id="data-based-importance-permutation-importance">
-<h3>1.6 Data-based importance: Permutation importance<a class="headerlink" href="#data-based-importance-permutation-importance" title="Link to this heading">#</a></h3>
+<h3>1.6 Data-based importance: Permutation importance<a class="headerlink" href="#data-based-importance-permutation-importance" title="Permalink to this heading">#</a></h3>
 <p>Permutation importance takes a different approach. Instead of looking inside the model, it asks: What happens if I scramble a feature’s values on the test set? If accuracy drops, that feature was important. If accuracy stays the same, the model did not really depend on it.</p>
 <p>Steps:</p>
 <blockquote>
@@ -1653,7 +1639,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a2fad0d413d3c73be452d37ec11f34c52e56ac8ac4c17dbb0978b3b2d2addae7.png" src="_images/a2fad0d413d3c73be452d37ec11f34c52e56ac8ac4c17dbb0978b3b2d2addae7.png" />
+<img alt="_images/905c4888f5d7e34b47b0df172b5232dbb2fb5222c835aadad04d30f8996ed59f.png" src="_images/905c4888f5d7e34b47b0df172b5232dbb2fb5222c835aadad04d30f8996ed59f.png" />
 </div>
 </div>
 <p>Here, the bars show how much accuracy falls when each feature is disrupted. This provides a more honest reflection of <strong>predictive value on unseen data</strong>. Features that looked strong in Gini importance may shrink here if they were just splitting on quirks of the training set.</p>
@@ -1679,7 +1665,7 @@ Can reveal when the model “thought” a feature was important but it doesn’t
 </section>
 <hr class="docutils" />
 <section id="regression-trees-on-melting-point">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Regression trees on Melting Point</a><a class="headerlink" href="#regression-trees-on-melting-point" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Regression trees on Melting Point</a><a class="headerlink" href="#regression-trees-on-melting-point" title="Permalink to this heading">#</a></h2>
 <p>So far we used trees for <strong>classification</strong>. Now we switch to a <strong>regression target</strong>: the <strong>melting point</strong> of molecules. The mechanics are similar, but instead of predicting a discrete class, the tree predicts a continuous value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1825,7 +1811,7 @@ R² = 0 means the model is no better than the mean.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2971c5cc5b5f506aa8fad2f21f81cdefb05901fca840d7f621c9404e0e7ff2cb.png" src="_images/2971c5cc5b5f506aa8fad2f21f81cdefb05901fca840d7f621c9404e0e7ff2cb.png" />
+<img alt="_images/c5661ebfc4cadde53b3ff0a7e18365bddab508258708dd35f2cc32b9c38a496c.png" src="_images/c5661ebfc4cadde53b3ff0a7e18365bddab508258708dd35f2cc32b9c38a496c.png" />
 </div>
 </div>
 <p>This mirrors the classification case: shallow trees underfit, very deep trees overfit.</p>
@@ -1866,8 +1852,8 @@ MAE=17.574
 R2=0.810
 </pre></div>
 </div>
-<img alt="_images/07ae1bc21f5ed6dc07910105f739f195694b9a4351da273628d9a7e76c64b412.png" src="_images/07ae1bc21f5ed6dc07910105f739f195694b9a4351da273628d9a7e76c64b412.png" />
-<img alt="_images/3583f56430cbf95d7804c00f7c8841e579a92fb0ea7a302cd8e5899dca4b649f.png" src="_images/3583f56430cbf95d7804c00f7c8841e579a92fb0ea7a302cd8e5899dca4b649f.png" />
+<img alt="_images/f62cc97ed134118806294d09625d0b211bea946974f801ee412d75c06f6d5cc0.png" src="_images/f62cc97ed134118806294d09625d0b211bea946974f801ee412d75c06f6d5cc0.png" />
+<img alt="_images/3f81a2f4998614863fb8eb97c86cd1125a55c104371756972907bae7b2ed5fee.png" src="_images/3f81a2f4998614863fb8eb97c86cd1125a55c104371756972907bae7b2ed5fee.png" />
 </div>
 </div>
 <p>Similar to the example we see on the linear regression, residuals (true – predicted) should scatter around zero. If you see patterns (e.g., always underpredicting high values), the model may be biased. Here, residuals are fairly centered but not perfectly homoscedastic.</p>
@@ -1885,7 +1871,7 @@ R2=0.810
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/edb1875331670e5dcc786c2d4ded9d1ae7ccae26cba83cff2d25dc780b6362fd.png" src="_images/edb1875331670e5dcc786c2d4ded9d1ae7ccae26cba83cff2d25dc780b6362fd.png" />
+<img alt="_images/7b02105994e78600c1bec9a9479d0cdf3e8537968711c7421947cb0a830ce525.png" src="_images/7b02105994e78600c1bec9a9479d0cdf3e8537968711c7421947cb0a830ce525.png" />
 </div>
 </div>
 <div class="admonition-regression-tree-vs-classifier-tree admonition">
@@ -1895,7 +1881,7 @@ R2=0.810
 </section>
 <hr class="docutils" />
 <section id="random-forest-bagging-many-trees">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Random Forest: bagging many trees</a><a class="headerlink" href="#random-forest-bagging-many-trees" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Random Forest: bagging many trees</a><a class="headerlink" href="#random-forest-bagging-many-trees" title="Permalink to this heading">#</a></h2>
 <p>Decision trees are intuitive but unstable: a small change in data can produce a very different tree. To make trees more reliable and accurate, we use <strong>ensembles</strong> — groups of models working together. The most widely used ensemble of trees is the <strong>Random Forest</strong>.</p>
 <p>Eseentially, a random forest grows <strong>many decision trees</strong>, each trained on a slightly different view of the data, and then combines their predictions:</p>
 <ul class="simple">
@@ -1914,7 +1900,7 @@ At each split, the tree does not see all features — only a random subset, cont
 </ul>
 <p>In practice, random forests are a strong default: robust, interpretable at the feature level, and requiring little parameter tuning.</p>
 <section id="classification-forest-on-toxicity">
-<h3>3.1 Classification forest on toxicity<a class="headerlink" href="#classification-forest-on-toxicity" title="Link to this heading">#</a></h3>
+<h3>3.1 Classification forest on toxicity<a class="headerlink" href="#classification-forest-on-toxicity" title="Permalink to this heading">#</a></h3>
 <p>We now build a forest to classify molecules as toxic vs non-toxic.<br />
 We set:</p>
 <ul class="simple">
@@ -1974,13 +1960,13 @@ Test accuracy: 0.9478260869565217
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d485c16374ed7f6864ae45020f1f0f17ac78caa2dee1f9adc5c42891b95f6d57.png" src="_images/d485c16374ed7f6864ae45020f1f0f17ac78caa2dee1f9adc5c42891b95f6d57.png" />
-<img alt="_images/dd70cc01345aabc01f211260b4a28517c9efed051d4b59f4f2982dc79d97769a.png" src="_images/dd70cc01345aabc01f211260b4a28517c9efed051d4b59f4f2982dc79d97769a.png" />
+<img alt="_images/c31a4fde0f5627e5186d2438ed551bc7a93cddd7d5aa6ef22f9020a167b3daba.png" src="_images/c31a4fde0f5627e5186d2438ed551bc7a93cddd7d5aa6ef22f9020a167b3daba.png" />
+<img alt="_images/fd9d84145f84cbd6a863ec3fb427d1ee435d1e10515b55ef1dc503de776a92e6.png" src="_images/fd9d84145f84cbd6a863ec3fb427d1ee435d1e10515b55ef1dc503de776a92e6.png" />
 </div>
 </div>
 </section>
 <section id="regression-forest-on-melting-point">
-<h3>3.2 Regression forest on Melting Point<a class="headerlink" href="#regression-forest-on-melting-point" title="Link to this heading">#</a></h3>
+<h3>3.2 Regression forest on Melting Point<a class="headerlink" href="#regression-forest-on-melting-point" title="Permalink to this heading">#</a></h3>
 <p>Next we apply the same idea for regression. The forest predicts a continuous value (melting point) by averaging predictions from many regression trees.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2055,19 +2041,19 @@ Test MAE: 16.952
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60dcb22a5c08bad5f521cc2c0695bf04dc26ab81c190f31b846ff28effdc581b.png" src="_images/60dcb22a5c08bad5f521cc2c0695bf04dc26ab81c190f31b846ff28effdc581b.png" />
-<img alt="_images/45e12b6223972c249e647f39511c6a5cd62ff55be1289f96c4e37a07d7c8cfdb.png" src="_images/45e12b6223972c249e647f39511c6a5cd62ff55be1289f96c4e37a07d7c8cfdb.png" />
+<img alt="_images/4998a59fc443323c306236ebff1ea5f6c735114e9aed476d9fc42f0905d237cb.png" src="_images/4998a59fc443323c306236ebff1ea5f6c735114e9aed476d9fc42f0905d237cb.png" />
+<img alt="_images/c7acfdefd31895809c3779801ec81bf2dd38a76b4ebeb5433abc9080fd768092.png" src="_images/c7acfdefd31895809c3779801ec81bf2dd38a76b4ebeb5433abc9080fd768092.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="ensembles">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Ensembles</a><a class="headerlink" href="#ensembles" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Ensembles</a><a class="headerlink" href="#ensembles" title="Permalink to this heading">#</a></h2>
 <p>Ensembles combine multiple models to improve stability and accuracy. Here we expand on trees with forests, simple averaging, voting, and boosting, and add <strong>visual comparisons</strong> to show their differences.</p>
 <hr class="docutils" />
 <section id="experiment-single-tree-vs-random-forest">
-<h3>4.1 Experiment: single tree vs random forest<a class="headerlink" href="#experiment-single-tree-vs-random-forest" title="Link to this heading">#</a></h3>
+<h3>4.1 Experiment: single tree vs random forest<a class="headerlink" href="#experiment-single-tree-vs-random-forest" title="Permalink to this heading">#</a></h3>
 <p>We repeat training several times with different random seeds for the train/test split. For each split:</p>
 <ul class="simple">
 <li><p>Fit a single unpruned tree.</p></li>
@@ -2164,7 +2150,7 @@ Test MAE: 16.952
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1983e87c67ac767d0beedff42ba3d8f217528f88bc13b1f7acb793b63fb459ce.png" src="_images/1983e87c67ac767d0beedff42ba3d8f217528f88bc13b1f7acb793b63fb459ce.png" />
+<img alt="_images/506bca3e8108d41270239c3758a2fb5d03fe77813bcf40ba11b7dff42172246a.png" src="_images/506bca3e8108d41270239c3758a2fb5d03fe77813bcf40ba11b7dff42172246a.png" />
 </div>
 </div>
 <div class="admonition-why-forests-are-often-a-safe-and-strong-default-model admonition">
@@ -2178,7 +2164,7 @@ Forests trade a bit of interpretability for much more reliability.</p></li>
 </section>
 <hr class="docutils" />
 <section id="simple-ensembles-by-model-averaging">
-<h3>4.2 Simple Ensembles by Model Averaging<a class="headerlink" href="#simple-ensembles-by-model-averaging" title="Link to this heading">#</a></h3>
+<h3>4.2 Simple Ensembles by Model Averaging<a class="headerlink" href="#simple-ensembles-by-model-averaging" title="Permalink to this heading">#</a></h3>
 <p>Random forests are powerful, but ensembling can be simpler. Even just <strong>averaging two different models</strong> can improve performance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2333,7 +2319,7 @@ Averaged R2: 0.869699219889096
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2d2e9ae4a531980c0e8a245e736117a1af2853fe86cea0bc7f7587762e1ea641.png" src="_images/2d2e9ae4a531980c0e8a245e736117a1af2853fe86cea0bc7f7587762e1ea641.png" />
+<img alt="_images/5336108562edb5e5dcbd60fa065a99b6aefafac060fa939cadf3bbf0b7fc39cc.png" src="_images/5336108562edb5e5dcbd60fa065a99b6aefafac060fa939cadf3bbf0b7fc39cc.png" />
 </div>
 </div>
 <div class="admonition-difference admonition">
@@ -2347,7 +2333,7 @@ Averaged R2: 0.869699219889096
 </section>
 <hr class="docutils" />
 <section id="simple-ensembles-by-voting">
-<h3>4.3 Simple Ensembles by Voting<a class="headerlink" href="#simple-ensembles-by-voting" title="Link to this heading">#</a></h3>
+<h3>4.3 Simple Ensembles by Voting<a class="headerlink" href="#simple-ensembles-by-voting" title="Permalink to this heading">#</a></h3>
 <p>Voting is most common for classification. Each model votes for a class.</p>
 <ul class="simple">
 <li><p><strong>Hard voting</strong>: majority wins.</p></li>
@@ -2388,7 +2374,9 @@ Averaged R2: 0.869699219889096
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soft Voting classifier accuracy: 0.9652173913043478
-Hard Voting classifier accuracy: 0.9565217391304348
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hard Voting classifier accuracy: 0.9565217391304348
 </pre></div>
 </div>
 </div>
@@ -2464,7 +2452,7 @@ Hard Voting classifier accuracy: 0.9565217391304348
 </section>
 <hr class="docutils" />
 <section id="optional-topic-boosting-a-different-ensemble-structure">
-<h3>4.4 (Optional Topic) Boosting: a different ensemble structure<a class="headerlink" href="#optional-topic-boosting-a-different-ensemble-structure" title="Link to this heading">#</a></h3>
+<h3>4.4 (Optional Topic) Boosting: a different ensemble structure<a class="headerlink" href="#optional-topic-boosting-a-different-ensemble-structure" title="Permalink to this heading">#</a></h3>
 <p>Boosting is sequential: each tree corrects the mistakes of the last. Sometimes it can be stronger than bagging, but needs careful tuning.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2561,7 +2549,7 @@ Gradient Boosting MAE: 16.17
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" src="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" />
+<img alt="_images/3291f6ac9c1a590c202a22144ebf1d7fe0d31be8b43638b1daf782ee32d5a5c8.png" src="_images/3291f6ac9c1a590c202a22144ebf1d7fe0d31be8b43638b1daf782ee32d5a5c8.png" />
 </div>
 </div>
 <div class="admonition-compare admonition">
@@ -2575,7 +2563,7 @@ Gradient Boosting MAE: 16.17
 </section>
 <hr class="docutils" />
 <section id="end-to-end-recipe-for-random-forest">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. End-to-end recipe for random forest</a><a class="headerlink" href="#end-to-end-recipe-for-random-forest" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. End-to-end recipe for random forest</a><a class="headerlink" href="#end-to-end-recipe-for-random-forest" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s put everything we learn for trees and forests together. Below is a standard workflow for toxicity with a forest. Similar to what we learned from last lecture but handled with RF model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2662,7 +2650,9 @@ AUC: 0.955
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params: {&#39;max_depth&#39;: None, &#39;min_samples_leaf&#39;: 3, &#39;n_estimators&#39;: 500}
 Best CV AUC: 0.972
-Accuracy: 0.948
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.948
 AUC: 0.982
               precision    recall  f1-score   support
 
@@ -2696,14 +2686,14 @@ weighted avg      0.948     0.948     0.948       115
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" src="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" />
-<img alt="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" src="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" />
+<img alt="_images/5f249c91188fa5629834b0b752fdc0ec6a715206e28fa1e49a4604516a646e0d.png" src="_images/5f249c91188fa5629834b0b752fdc0ec6a715206e28fa1e49a4604516a646e0d.png" />
+<img alt="_images/cdbd7af692f6733a6937cbf88414dbb543a447b8092b25a1ebae95b50edf048c.png" src="_images/cdbd7af692f6733a6937cbf88414dbb543a447b8092b25a1ebae95b50edf048c.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-common-options admonition">
 <p class="admonition-title">Common options</p>
 <ul class="simple">
@@ -2722,9 +2712,9 @@ weighted avg      0.948     0.948     0.948       115
 </section>
 <hr class="docutils" />
 <section id="in-class-activities">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Permalink to this heading">#</a></h2>
 <section id="tree-vs-forest-on-log-solubility">
-<h3>7.1 Tree vs Forest on log-solubility<a class="headerlink" href="#tree-vs-forest-on-log-solubility" title="Link to this heading">#</a></h3>
+<h3>7.1 Tree vs Forest on log-solubility<a class="headerlink" href="#tree-vs-forest-on-log-solubility" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">y_log</span> <span class="pre">=</span> <span class="pre">log10(Solubility_mol_per_L</span> <span class="pre">+</span> <span class="pre">1e-6)</span></code></p></li>
 <li><p>Use features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code></p></li>
@@ -2736,7 +2726,7 @@ weighted avg      0.948     0.948     0.948       115
 </div>
 </section>
 <section id="pruning-with-min-samples-leaf">
-<h3>7.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code><a class="headerlink" href="#pruning-with-min-samples-leaf" title="Link to this heading">#</a></h3>
+<h3>7.2 Pruning with <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code><a class="headerlink" href="#pruning-with-min-samples-leaf" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code> for <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> on toxicity</p></li>
 <li><p>Sweep <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code> in <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">8,</span> <span class="pre">12,</span> <span class="pre">20]</span></code></p></li>
@@ -2747,7 +2737,7 @@ weighted avg      0.948     0.948     0.948       115
 </div>
 </section>
 <section id="toxicity-prediction">
-<h3>7.3 Toxicity prediction<a class="headerlink" href="#toxicity-prediction" title="Link to this heading">#</a></h3>
+<h3>7.3 Toxicity prediction<a class="headerlink" href="#toxicity-prediction" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Train a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier(max_depth=2)</span></code> on toxicity</p></li>
 <li><p>Use <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code> to draw it and write down the two split rules in plain language</p></li>
@@ -2762,7 +2752,7 @@ weighted avg      0.948     0.948     0.948       115
 </div>
 </section>
 <section id="feature-importance-agreement">
-<h3>7.4 Feature importance agreement<a class="headerlink" href="#feature-importance-agreement" title="Link to this heading">#</a></h3>
+<h3>7.4 Feature importance agreement<a class="headerlink" href="#feature-importance-agreement" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>On melting point, compute forest <code class="docutils literal notranslate"><span class="pre">feature_importances_</span></code> and <code class="docutils literal notranslate"><span class="pre">permutation_importance</span></code></p></li>
 <li><p>Plot both and comment where they agree or disagree</p></li>
@@ -2772,7 +2762,7 @@ weighted avg      0.948     0.948     0.948       115
 </div>
 </section>
 <section id="hyperparameter-search-with-cross-validation">
-<h3>7.5 Hyperparameter search with cross validation<a class="headerlink" href="#hyperparameter-search-with-cross-validation" title="Link to this heading">#</a></h3>
+<h3>7.5 Hyperparameter search with cross validation<a class="headerlink" href="#hyperparameter-search-with-cross-validation" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> on <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> for toxicity</p>
 <p>Split once into train and test as usual, but perform 5-fold CV only on the training fold</p>
 <p>Search over:</p>
@@ -2792,9 +2782,9 @@ weighted avg      0.948     0.948     0.948       115
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <section id="q1">
-<h3>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<h3>Q1<a class="headerlink" href="#q1" title="Permalink to this heading">#</a></h3>
 <p>Goal: predict log-solubility and compare a small tree to a forest.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2854,14 +2844,14 @@ Forest R2: 0.947
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" src="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" />
-<img alt="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" src="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" />
+<img alt="_images/b4021e6de044e5d599ba82ec37d6c784ddadf6c1a733065e77e39e704bf5fe05.png" src="_images/b4021e6de044e5d599ba82ec37d6c784ddadf6c1a733065e77e39e704bf5fe05.png" />
+<img alt="_images/cc267a463f51070cd50c51502be4acb69e55de9546c7323d9a0259c1f2decec1.png" src="_images/cc267a463f51070cd50c51502be4acb69e55de9546c7323d9a0259c1f2decec1.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="q2">
-<h3>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<h3>Q2<a class="headerlink" href="#q2" title="Permalink to this heading">#</a></h3>
 <p>Fix <code class="docutils literal notranslate"><span class="pre">max_depth=None</span></code> for a classifier on toxicity and sweep leaf size.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2951,14 +2941,14 @@ Forest R2: 0.947
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" src="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" />
+<img alt="_images/76d16245111186a97dfdcac57d98f856f44e09747188819fb45da0ad4671dc0d.png" src="_images/76d16245111186a97dfdcac57d98f856f44e09747188819fb45da0ad4671dc0d.png" />
 </div>
 </div>
 <p>Hint for interpretation: very small leaves may overfit while very large leaves may underfit.</p>
 </section>
 <hr class="docutils" />
 <section id="q3">
-<h3>Q3<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<h3>Q3<a class="headerlink" href="#q3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seeds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
@@ -3045,7 +3035,7 @@ Forest R2: 0.947
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" src="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" />
+<img alt="_images/d1a06ecd1d8a9de4eb127f647518b9745e044997e072d4c32883457a44fd0106.png" src="_images/d1a06ecd1d8a9de4eb127f647518b9745e044997e072d4c32883457a44fd0106.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3075,7 +3065,7 @@ Forest R2: 0.947
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" src="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" />
+<img alt="_images/397c83587ba0bf5616c9688e0c3be798f9ad8d7af89161a3f187145702bc8bc0.png" src="_images/397c83587ba0bf5616c9688e0c3be798f9ad8d7af89161a3f187145702bc8bc0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root rule: MolWt &lt;= 134.200 ?
 Left child rule: LogP &lt;= 2.538 ?
 Right child rule: LogP &lt;= 1.248 ?
@@ -3087,7 +3077,7 @@ Right child rule: LogP &lt;= 1.248 ?
 </section>
 <hr class="docutils" />
 <section id="q4">
-<h3>Q4<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
+<h3>Q4<a class="headerlink" href="#q4" title="Permalink to this heading">#</a></h3>
 <p>Compare built-in importance to permutation importance for a random forest regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3119,8 +3109,8 @@ Right child rule: LogP &lt;= 1.248 ?
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" src="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" />
-<img alt="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" src="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" />
+<img alt="_images/d7e4c6ad5775ba61b5f849cb5ad7bfe5cba69cd5db3b4377f4cad43f6420d570.png" src="_images/d7e4c6ad5775ba61b5f849cb5ad7bfe5cba69cd5db3b4377f4cad43f6420d570.png" />
+<img alt="_images/8c3f5264489fea1b411d06192d89254bc5eb1489938d39d314957f11e425b258.png" src="_images/8c3f5264489fea1b411d06192d89254bc5eb1489938d39d314957f11e425b258.png" />
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3172,7 +3162,7 @@ Right child rule: LogP &lt;= 1.248 ?
 </section>
 <hr class="docutils" />
 <section id="q5">
-<h3>Q5<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<h3>Q5<a class="headerlink" href="#q5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
@@ -3246,7 +3236,7 @@ Test Accuracy: 0.922
 Test AUC: 0.959
 </pre></div>
 </div>
-<img alt="_images/0401236edbf1238db3ad12d9029915cdbf937154435086b755ee15e9154bdd2f.png" src="_images/0401236edbf1238db3ad12d9029915cdbf937154435086b755ee15e9154bdd2f.png" />
+<img alt="_images/4fda940410ac9b6487bd9445d234c9fc9c28063e632249aabfac69d2b9452c8e.png" src="_images/4fda940410ac9b6487bd9445d234c9fc9c28063e632249aabfac69d2b9452c8e.png" />
 </div>
 </div>
 </section>
@@ -3280,7 +3270,7 @@ Test AUC: 0.959
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -3309,7 +3299,6 @@ Test AUC: 0.959
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -3383,7 +3372,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -3407,8 +3396,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
