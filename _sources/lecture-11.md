@@ -31,7 +31,12 @@ kernelspec:
 ## 1. Setup and data
 
 We will reuse the C-H oxidation dataset and compute a small set of descriptors.
+<<<<<<< HEAD
 ```{code-cell} ipython3
+=======
+```python
+>>>>>>> 6cda9aa (0929-1)
+:tags: [hide-input]
 # Core
 import numpy as np
 import pandas as pd
@@ -46,9 +51,11 @@ from sklearn.metrics import silhouette_score, silhouette_samples, pairwise_dista
 
 try:
   import umap.umap_ as umap
+  from umap.umap_ import UMAP
 except:
   %pip install umap-learn
   import umap.umap_ as umap
+  from umap.umap_ import UMAP
 
 # Utils
 import warnings
@@ -1103,153 +1110,12 @@ plt.tight_layout(); plt.show()
 - `min_dist` controls cluster tightness. Smaller values allow tighter blobs, larger values spread points.
 - UMAP supports `.transform`, so you can fit on train then place test without leakage. For fingerprints, `metric="jaccard"` matches Tanimoto on 0 or 1 bits.
 
-```{code-cell} ipython3
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from umap import UMAP
 
-# ----- features -----
-desc_cols = ["MolWt","LogP","TPSA","NumRings",
-             "NumHAcceptors","NumHDonors","NumRotatableBonds",
-             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
-X_desc = df10[desc_cols].to_numpy()
-
-X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
-
-# ----- split first (leakage safe) -----
-X_desc_tr, X_desc_te = train_test_split(X_desc, test_size=0.3, random_state=42)
-X_fp_tr,   X_fp_te   = train_test_split(X_fp,   test_size=0.3, random_state=42)
-
-# ----- standardize descriptors using train only -----
-scaler = StandardScaler().fit(X_desc_tr)
-X_desc_tr_std = scaler.transform(X_desc_tr)
-X_desc_te_std = scaler.transform(X_desc_te)
-
-# ----- UMAP fits (separate models per feature family) -----
-umap_desc = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0)
-Z_desc_tr = umap_desc.fit_transform(X_desc_tr_std)
-Z_desc_te = umap_desc.transform(X_desc_te_std)  # out-of-sample
-
-umap_fp = UMAP(n_neighbors=30, min_dist=0.1, metric="cosine", random_state=0)
-Z_fp_tr = umap_fp.fit_transform(X_fp_tr)
-Z_fp_te = umap_fp.transform(X_fp_te)
-
-# ----- plots -----
-fig, ax = plt.subplots(1, 2, figsize=(12,5))
-
-ax[0].scatter(Z_desc_tr[:,0], Z_desc_tr[:,1], s=14, c="tab:blue", alpha=0.7, label="train")
-ax[0].scatter(Z_desc_te[:,0], Z_desc_te[:,1], s=14, c="tab:red", alpha=0.7, label="test", marker="x")
-ax[0].set_title("UMAP on 10D descriptors")
-ax[0].set_xlabel("UMAP-1"); ax[0].set_ylabel("UMAP-2"); ax[0].legend()
-
-ax[1].scatter(Z_fp_tr[:,0], Z_fp_tr[:,1], s=14, c="tab:blue", alpha=0.7, label="train")
-ax[1].scatter(Z_fp_te[:,0], Z_fp_te[:,1], s=14, c="tab:red", alpha=0.7, label="test", marker="x")
-ax[1].set_title("UMAP on 64-bit Morgan")
-ax[1].set_xlabel("UMAP-1"); ax[1].set_ylabel("UMAP-2"); ax[1].legend()
-
-plt.tight_layout(); plt.show()
-
+```{admonition} Note
+We will skip the code here, please them run in Colab.
 ```
 
-```{code-cell} ipython3
-:tags: [hide-input]
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from umap import UMAP
-
-# -----------------------------
-# Data prep
-# -----------------------------
-desc_cols = ["MolWt","LogP","TPSA","NumRings",
-             "NumHAcceptors","NumHDonors","NumRotatableBonds",
-             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
-X_desc = df10[desc_cols].to_numpy()
-
-# Morgan 64-bit (string of 0/1 per row)
-X_fp64 = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
-
-# Morgan 1024-bit
-X_fp1024 = np.array([[int(ch) for ch in s] for s in df_morgan_1024["Fingerprint"]], dtype=float)
-
-# single split to keep row alignment across all feature sets
-n = X_desc.shape[0]
-idx = np.arange(n)
-idx_tr, idx_te = train_test_split(idx, test_size=0.30, random_state=0, shuffle=True)
-
-X_desc_tr,   X_desc_te   = X_desc[idx_tr],   X_desc[idx_te]
-X_fp64_tr,   X_fp64_te   = X_fp64[idx_tr],   X_fp64[idx_te]
-X_fp1024_tr, X_fp1024_te = X_fp1024[idx_tr], X_fp1024[idx_te]
-
-# scale descriptors using train only
-scaler = StandardScaler().fit(X_desc_tr)
-X_desc_tr_std = scaler.transform(X_desc_tr)
-X_desc_te_std = scaler.transform(X_desc_te)
-
-# -----------------------------
-# Metrics
-# -----------------------------
-def tanimoto_distance(u, v):
-    # extended Tanimoto for real or binary vectors
-    uv = float(np.dot(u, v))
-    uu = float(np.dot(u, u))
-    vv = float(np.dot(v, v))
-    denom = uu + vv - uv
-    if denom == 0.0:
-        # both zero vectors -> distance 0
-        return 0.0
-    return 1.0 - (uv / denom)
-
-metric_map = {
-    "Euclidean": "euclidean",
-    "Cosine": "cosine",
-    "Tanimoto": tanimoto_distance,
-}
-
-# -----------------------------
-# UMAP and plotting
-# -----------------------------
-def fit_umap_and_transform(Xtr, Xte, metric, n_neighbors=30, min_dist=0.1, random_state=0):
-    reducer = UMAP(
-        n_neighbors=n_neighbors,
-        min_dist=min_dist,
-        metric=metric,
-        random_state=random_state,
-    )
-    Ztr = reducer.fit_transform(Xtr)
-    Zte = reducer.transform(Xte)
-    return Ztr, Zte
-
-feature_sets = [
-    ("10D descriptors", X_desc_tr_std, X_desc_te_std),
-    ("Morgan 64-bit",   X_fp64_tr,     X_fp64_te),
-    ("Morgan 1024-bit", X_fp1024_tr,   X_fp1024_te),
-]
-
-metrics_order = ["Euclidean", "Cosine", "Tanimoto"]
-
-fig, axes = plt.subplots(3, 3, figsize=(18, 15))
-for i, (feat_name, Xtr, Xte) in enumerate(feature_sets):
-    for j, mname in enumerate(metrics_order):
-        metric = metric_map[mname]
-        Ztr, Zte = fit_umap_and_transform(Xtr, Xte, metric=metric)
-
-        ax = axes[i, j]
-        ax.scatter(Ztr[:, 0], Ztr[:, 1], s=12, c="tab:blue", alpha=0.7, label="train")
-        ax.scatter(Zte[:, 0], Zte[:, 1], s=12, c="tab:red",  alpha=0.7, label="test", marker="x")
-        ax.set_title(f"{feat_name} • {mname}")
-        ax.set_xlabel("UMAP-1")
-        ax.set_ylabel("UMAP-2")
-        ax.legend(loc="best", frameon=True)
-
-plt.tight_layout()
-plt.show()
-
-```
-SO how these compare in chemistry?
+So how these compare in chemistry?
 
 **In terms of global shape:**
 - PCA preserves coarse directions of variance and is easy to interpret through loadings.
@@ -1266,49 +1132,6 @@ SO how these compare in chemistry?
 1. Decide the feature family. For scalar descriptors, standardize first. For fingerprints, keep bits and pick a metric that matches chemistry.
 2. If you plan any evaluation, split first. Fit scalers and embedding models on train only. Transform test afterward.
 3. Read maps with labels only for interpretation. Do not feed labels during fitting in unsupervised sections.
-```{code-cell} ipython3
-:tags: [hide-input]
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-from umap import UMAP
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
-
-X = StandardScaler().fit_transform(df10[desc_cols].to_numpy())
-
-Z_pca  = PCA(n_components=2, random_state=0).fit_transform(X)
-Z_tsne = TSNE(n_components=2, perplexity=30, init="pca", learning_rate="auto",
-              n_iter=1000, random_state=0).fit_transform(X)
-Z_umap = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0).fit_transform(X)
-
-fig, ax = plt.subplots(1, 3, figsize=(15,4))
-ax[0].scatter(Z_pca[:,0],  Z_pca[:,1],  s=14, alpha=0.8); ax[0].set_title("PCA (2D)")
-ax[1].scatter(Z_tsne[:,0], Z_tsne[:,1], s=14, alpha=0.8); ax[1].set_title("t-SNE (2D)")
-ax[2].scatter(Z_umap[:,0], Z_umap[:,1], s=14, alpha=0.8); ax[2].set_title("UMAP (2D)")
-for a in ax: a.set_xlabel("comp 1"); a.set_ylabel("comp 2")
-plt.tight_layout(); plt.show()
-
-```
-
-```{code-cell} ipython3
-:tags: [hide-input]
-# Morgan bits -> 0/1 matrix
-X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
-
-# 2D embeddings
-Z_pca  = PCA(n_components=2, random_state=0).fit_transform(X_fp)
-Z_tsne = TSNE(n_components=2, perplexity=30, init="pca", learning_rate="auto",
-              n_iter=1000, random_state=0).fit_transform(X_fp)
-Z_umap = UMAP(n_neighbors=30, min_dist=0.1, metric="euclidean", random_state=0).fit_transform(X_fp)
-
-# Plots
-fig, ax = plt.subplots(1, 3, figsize=(15,4))
-ax[0].scatter(Z_pca[:,0],  Z_pca[:,1],  s=14, alpha=0.8); ax[0].set_title("PCA (Morgan)")
-ax[1].scatter(Z_tsne[:,0], Z_tsne[:,1], s=14, alpha=0.8); ax[1].set_title("t-SNE (Morgan)")
-ax[2].scatter(Z_umap[:,0], Z_umap[:,1], s=14, alpha=0.8); ax[2].set_title("UMAP (Morgan)")
-for a in ax: a.set_xlabel("comp 1"); a.set_ylabel("comp 2")
-plt.tight_layout(); plt.show()
-```
 
 Summary: 
 PCA finds orthogonal directions of variance. t-SNE preserves neighbor probabilities and is great for tight clusters. UMAP preserves a fuzzy kNN graph and supports transforming new points. On molecules, try both t-SNE and UMAP on descriptors and fingerprints, then read the plots with domain knowledge rather than expecting one single correct picture.
@@ -1448,182 +1271,4 @@ df_20
 
 ```python
 #TO DO
-```
-
-
-## 7. Solution
-
-### Q1
-
-```{code-cell} ipython3
-# Q1 - Solution
-
-# 10-descriptor table
-desc10_20 = df_20["SMILES"].apply(calc_descriptors10)
-df10_20 = pd.concat([df_20[["Compound Name","SMILES","Group"]], desc10_20], axis=1)
-
-# 64-bit Morgan fingerprints
-df_fp_20 = df_20.copy()
-df_fp_20["Fingerprint"] = df_fp_20["SMILES"].apply(lambda s: morgan_bits(s, n_bits=64, radius=2))
-
-print("10-descriptor table (head):")
-display(df10_20.head().round(3))
-
-print("\nFingerprint preview (first 24 bits):")
-fp_preview = df_fp_20[["Compound Name","Group","Fingerprint"]].copy()
-fp_preview["Fingerprint"] = fp_preview["Fingerprint"].str.slice(0, 24) + "..."
-display(fp_preview)
-
-print("\nDescriptor stats:")
-display(df10_20.drop(columns=["Compound Name","SMILES","Group"]).agg(["mean","std"]).round(3))
-
-```
-
-### Q2
-```{code-cell} ipython3
-# Q2 - Solution
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-
-desc_cols = ["MolWt","LogP","TPSA","NumRings",
-             "NumHAcceptors","NumHDonors","NumRotatableBonds",
-             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
-
-X_desc = df10_20[desc_cols].to_numpy()
-X_desc_std = StandardScaler().fit_transform(X_desc)
-
-pca_desc_full = PCA().fit(X_desc_std)
-Z_desc = pca_desc_full.transform(X_desc_std)[:, :2]
-
-# color map by group
-group_to_color = {"A_hydrophobic_aromatics":"tab:orange",
-                  "B_polar_alc_acid":"tab:blue",
-                  "C_N_hetero_amines":"tab:green"}
-colors = df10_20["Group"].map(group_to_color).to_numpy()
-
-# explained variance
-plt.figure(figsize=(4,3))
-plt.plot(np.cumsum(pca_desc_full.explained_variance_ratio_), marker="o")
-plt.xlabel("Number of PCs"); plt.ylabel("Cumulative EVR"); plt.tight_layout(); plt.show()
-
-# 2D scatter with labels
-plt.figure(figsize=(7,6))
-plt.scatter(Z_desc[:,0], Z_desc[:,1], s=80, c=colors, alpha=0.9)
-for i, name in enumerate(df10_20["Compound Name"]):
-    plt.text(Z_desc[i,0]+0.03, Z_desc[i,1], name, fontsize=8)
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on 10 descriptors (n=20)")
-# legend
-for g, col in group_to_color.items():
-    plt.scatter([], [], c=col, label=g)
-plt.legend(title="Group", loc="best")
-plt.tight_layout(); plt.show()
-
-```
-
-### Q3
-
-```{code-cell} ipython3
-# Q3 - Solution
-
-from sklearn.manifold import TSNE
-
-tsne_desc = TSNE(n_components=2, perplexity=2, learning_rate="auto",
-                 init="pca", n_iter=1000, random_state=0)
-Y_desc = tsne_desc.fit_transform(X_desc_std)
-
-plt.figure(figsize=(7,6))
-plt.scatter(Y_desc[:,0], Y_desc[:,1], s=80, c=colors, alpha=0.9)
-for i, name in enumerate(df10_20["Compound Name"]):
-    plt.text(Y_desc[i,0]+0.5, Y_desc[i,1], name, fontsize=8)
-plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on 10 descriptors (n=20)")
-for g, col in group_to_color.items():
-    plt.scatter([], [], c=col, label=g)
-plt.legend(title="Group", loc="best")
-plt.tight_layout(); plt.show()
-
-```
-
-### Q4
-```{code-cell} ipython3
-# Q4 - Solution
-
-# 0/1 matrix from bitstrings
-X_fp = np.array([[int(ch) for ch in s] for s in df_fp_20["Fingerprint"]], dtype=float)
-
-# PCA on fingerprint bits
-pca_fp = PCA(n_components=2, random_state=0).fit(X_fp)
-Z_fp_pca = pca_fp.transform(X_fp)
-
-plt.figure(figsize=(7,6))
-plt.scatter(Z_fp_pca[:,0], Z_fp_pca[:,1], s=80, c=colors, alpha=0.9)
-for i, name in enumerate(df_fp_20["Compound Name"]):
-    plt.text(Z_fp_pca[i,0]+0.03, Z_fp_pca[i,1], name, fontsize=8)
-plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on Morgan-64 (n=20)")
-for g, col in group_to_color.items():
-    plt.scatter([], [], c=col, label=g)
-plt.legend(title="Group", loc="best")
-plt.tight_layout(); plt.show()
-
-# t-SNE on fingerprint bits
-tsne_fp = TSNE(n_components=2, perplexity=5, learning_rate="auto",
-               init="pca", n_iter=1000, random_state=0)
-Y_fp = tsne_fp.fit_transform(X_fp)
-
-plt.figure(figsize=(7,6))
-plt.scatter(Y_fp[:,0], Y_fp[:,1], s=80, c=colors, alpha=0.9)
-for i, name in enumerate(df_fp_20["Compound Name"]):
-    plt.text(Y_fp[i,0]+0.5, Y_fp[i,1], name, fontsize=8)
-plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on Morgan-64 (n=20)")
-for g, col in group_to_color.items():
-    plt.scatter([], [], c=col, label=g)
-plt.legend(title="Group", loc="best")
-plt.tight_layout(); plt.show()
-
-```
-
-### Q5
-
-```{code-cell} ipython3
-# Q5 - Solution
-
-from sklearn.metrics import pairwise_distances
-from rdkit import DataStructs
-
-# choose a query row
-q = 3  # change during class to test different queries
-
-# 1) Euclidean on standardized 10D descriptors
-D_eu = pairwise_distances(X_desc_std, metric="euclidean")
-order_eu = np.argsort(D_eu[q])
-nn_eu_idx = [i for i in order_eu if i != q][:5]
-
-print(f"Query: {df10_20.loc[q,'Compound Name']}  |  Group: {df10_20.loc[q,'Group']}")
-print("\nNearest 5 by Euclidean (10 descriptors):")
-for j in nn_eu_idx:
-    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_eu={D_eu[q,j]:.3f}")
-
-# 2) Tanimoto on 64-bit fingerprints
-def fp_string_to_bvect(fp_str):
-    arr = [int(ch) for ch in fp_str]
-    bv = DataStructs.ExplicitBitVect(len(arr))
-    for k, b in enumerate(arr):
-        if b: bv.SetBit(k)
-    return bv
-
-fps = [fp_string_to_bvect(s) for s in df_fp_20["Fingerprint"]]
-S_tan = np.zeros((len(fps), len(fps)))
-for i in range(len(fps)):
-    S_tan[i, :] = DataStructs.BulkTanimotoSimilarity(fps[i], fps)
-D_tan = 1.0 - S_tan
-
-order_tan = np.argsort(D_tan[q])
-nn_tan_idx = [i for i in order_tan if i != q][:5]
-
-print("\nNearest 5 by Tanimoto (Morgan-64):")
-for j in nn_tan_idx:
-    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_tan={D_tan[q,j]:.3f}")
-
 ```

@@ -29,13 +29,13 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 9 & 11** – Classification & regression  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
 - **Sept 16 & 18** – Supervised machine learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
-- **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)  
+- **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing) 
 - **Sept 30 & Oct 2** – Unsupervised learning  methods [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)
 - **Oct 7** - Fall Break
-- **Oct 9** – Bayesian optimization
-- **Oct 14** - No Class
-- **Oct 16** – Active learning 
-- **Oct 21 & 23** – Generative models for molecules  
+- **Oct 9** – De novo Molecule generation 
+- **Oct 14 & Oct 16** - Bayesian optimization
+- **Oct 21** – No Class
+- **Oct 23** – Contrastive learning
 - **Oct 28 & 30** – Computer vision techniques   
 - **Nov 4 & 6** – Transformers & large language models 
 - **Nov 11 & 13** – Multimodal models and literature data mining
