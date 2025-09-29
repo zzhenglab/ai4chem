@@ -31,7 +31,11 @@ kernelspec:
 ## 1. Setup and data
 
 We will reuse the C-H oxidation dataset and compute a small set of descriptors.
+<<<<<<< HEAD
 ```{code-cell} ipython3
+=======
+```python
+>>>>>>> 6cda9aa (0929-1)
 :tags: [hide-input]
 # Core
 import numpy as np
