@@ -1,0 +1,1521 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 13 - De novo Molecule Generation &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-13';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to CHEM 5080: AI for Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flecture-13.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture-13.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 13 - De novo Molecule Generation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-data">1. Setup and data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-recap-with-a-tiny-pca">2. Unsupervised recap with a tiny PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoder-on-descriptors">3. Autoencoder on descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-ae-is-tricky-for-smiles">4. Why AE is tricky for SMILES</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vae-concept-with-a-tiny-numeric-example">5. VAE concept with a tiny numeric example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-smiles-vocabulary-and-dataset">6. Build SMILES vocabulary and dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles-vae-model-and-training">7. SMILES VAE model and training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-evaluation">8. Sampling and evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">9. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-with-solutions">10. In-class activity with solutions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-13-de-novo-molecule-generation">
+<h1>Lecture 13 - De novo Molecule Generation<a class="headerlink" href="#lecture-13-de-novo-molecule-generation" title="Link to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#setup-and-data" id="id1">1. Setup and data</a></p></li>
+<li><p><a class="reference internal" href="#unsupervised-recap-with-a-tiny-pca" id="id2">2. Unsupervised recap with a tiny PCA</a></p></li>
+<li><p><a class="reference internal" href="#autoencoder-on-descriptors" id="id3">3. Autoencoder on descriptors</a></p></li>
+<li><p><a class="reference internal" href="#why-ae-is-tricky-for-smiles" id="id4">4. Why AE is tricky for SMILES</a></p></li>
+<li><p><a class="reference internal" href="#vae-concept-with-a-tiny-numeric-example" id="id5">5. VAE concept with a tiny numeric example</a></p></li>
+<li><p><a class="reference internal" href="#build-smiles-vocabulary-and-dataset" id="id6">6. Build SMILES vocabulary and dataset</a></p></li>
+<li><p><a class="reference internal" href="#smiles-vae-model-and-training" id="id7">7. SMILES VAE model and training</a></p></li>
+<li><p><a class="reference internal" href="#sampling-and-evaluation" id="id8">8. Sampling and evaluation</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id9">9. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity-with-solutions" id="id10">10. In-class activity with solutions</a></p></li>
+</ul>
+</nav>
+<section id="setup-and-data">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Link to this heading">#</a></h2>
+<p>We keep code in small steps. After each step we print a small result so you can see shapes and objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>RDKit is assumed in this course. If it is not present in your environment, you can still read, but some cells will not run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span><span class="p">,</span> <span class="n">Draw</span>
+    <span class="n">RD</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">RD</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">RD</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>For ML we only need a few pieces. We will add more as needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span><span class="o">,</span><span class="w"> </span><span class="nn">torch.optim</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Load the small C-H oxidation dataset used in earlier lectures.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Compute 10 quick descriptors that we will reuse several times today.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calc_descriptors10</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">RD</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span><span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span>
+        <span class="p">]})</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="n">k</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span><span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span>
+        <span class="p">]})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRings</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumHDonors&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRotatableBonds</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">HeavyAtomCount</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;FractionCSP3&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcFractionCSP3</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumAromaticRings</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+    <span class="p">})</span>
+
+<span class="n">desc10</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calc_descriptors10</span><span class="p">)</span>
+<span class="n">df10</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">desc10</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df10</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">df10</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((575, 19),
+                 Compound Name       CAS                  SMILES  \
+ 0  3,4-dihydro-1H-isochromene  493-05-0        c1ccc2c(c1)CCOC2   
+ 1                 9H-fluorene   86-73-7  c1ccc2c(c1)Cc1ccccc1-2   
+ 
+    Solubility_mol_per_L   pKa   Toxicity  Melting Point  Reactivity  \
+ 0              0.103906  5.80  non_toxic           65.8           1   
+ 1              0.010460  5.82      toxic           90.0           1   
+ 
+   Oxidation Site    MolWt    LogP  TPSA  NumRings  NumHAcceptors  NumHDonors  \
+ 0           8,10  134.178  1.7593  9.23       2.0            1.0         0.0   
+ 1              7  166.223  3.2578  0.00       3.0            0.0         0.0   
+ 
+    NumRotatableBonds  HeavyAtomCount  FractionCSP3  NumAromaticRings  
+ 0                0.0            10.0      0.333333               1.0  
+ 1                0.0            13.0      0.076923               2.0  )
+</pre></div>
+</div>
+</div>
+</div>
+<p>We pick a medium sized subset for quick AE experiments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">df10</span><span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">between</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">450</span><span class="p">))</span> <span class="o">&amp;</span>
+    <span class="p">((</span><span class="n">df10</span><span class="p">[</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df10</span><span class="p">[</span><span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df10</span><span class="p">[</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">df_small</span> <span class="o">=</span> <span class="n">df10</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">df_small</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(500, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-1 admonition">
+<p class="admonition-title">⏰ Exercise 1</p>
+<p>Change the MolWt range to 100..380 and re-run the filter. How many rows remain Print <code class="docutils literal notranslate"><span class="pre">df_small.shape</span></code>.</p>
+</div>
+</section>
+<section id="unsupervised-recap-with-a-tiny-pca">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">2. Unsupervised recap with a tiny PCA</a><a class="headerlink" href="#unsupervised-recap-with-a-tiny-pca" title="Link to this heading">#</a></h2>
+<p>We standardize 10D descriptors and compute a 2D PCA for a quick map. This connects to our earlier lecture on dimension reduction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">feat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span><span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_small</span><span class="p">[</span><span class="n">feat_cols</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Xz</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xz</span><span class="p">)</span>
+<span class="n">Zp</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xz</span><span class="p">)</span>
+<span class="n">Zp</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4.49600188,  1.26404954],
+       [ 0.43883249,  0.69197567],
+       [ 0.45086122, -3.45685118]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the PCA map and color by number of rings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Zp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Zp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;NumRings&quot;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;NumRings&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA on 10 descriptors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9736a71ba09a7d6cd6100f4e8fbb9ffe9120e4bd3f9bb0446e94a8b8b9812a9e.png" src="_images/9736a71ba09a7d6cd6100f4e8fbb9ffe9120e4bd3f9bb0446e94a8b8b9812a9e.png" />
+</div>
+</div>
+<p>Look at loadings to see which descriptors drive PC1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loadings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">feat_cols</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+<span class="n">loadings</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FractionCSP3        -0.237596
+NumRotatableBonds   -0.022847
+LogP                 0.165198
+NumHDonors           0.251924
+NumHAcceptors        0.293134
+TPSA                 0.299482
+NumAromaticRings     0.379889
+NumRings             0.404603
+MolWt                0.418982
+HeavyAtomCount       0.439418
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-2 admonition">
+<p class="admonition-title">⏰ Exercise 2</p>
+<p>Replace color by <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> in the PCA scatter. What region corresponds to high TPSA</p>
+</div>
+</section>
+<section id="autoencoder-on-descriptors">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">3. Autoencoder on descriptors</a><a class="headerlink" href="#autoencoder-on-descriptors" title="Link to this heading">#</a></h2>
+<p>We build a very small autoencoder. The encoder compresses 10 numbers to 2. The decoder reconstructs the 10 numbers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">TinyAE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hid</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="n">z_dim</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">z_dim</span><span class="p">,</span> <span class="n">hid</span><span class="p">),</span> <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">xr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">xr</span><span class="p">,</span> <span class="n">z</span>
+
+<span class="n">ae</span> <span class="o">=</span> <span class="n">TinyAE</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ae</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TinyAE(
+  (enc): Sequential(
+    (0): Linear(in_features=10, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=2, bias=True)
+  )
+  (dec): Sequential(
+    (0): Linear(in_features=2, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=10, bias=True)
+  )
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Prepare tensors and a simple loader.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ArrayDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ArrayDataset</span><span class="p">(</span><span class="n">Xz</span><span class="p">)</span>
+<span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xb</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span>
+<span class="n">xb</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">xb</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([64, 10]), tensor([-1.4587, -1.2725, -0.5686, -1.0040]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Train for a few epochs and watch the loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">ae</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">losses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">xb</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ae</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">xb</span><span class="p">)</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">losses</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;step&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;MSE&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;AE training loss&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c6aa09360de093c32c5a748f69a0dc46deac1a2c42b2231a64ebb1327c404e5d.png" src="_images/c6aa09360de093c32c5a748f69a0dc46deac1a2c42b2231a64ebb1327c404e5d.png" />
+</div>
+</div>
+<p>Encode all rows to see the latent space. This is what <strong>encode</strong> returns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xz</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">Z</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.3566122 , -2.3071775 ],
+       [-0.09010807, -0.19626446],
+       [-0.24562994, -0.8618359 ]], dtype=float32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the latent and color by LogP.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">df_small</span><span class="p">[</span><span class="s2">&quot;LogP&quot;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;z2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;AE latent (color = LogP)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2460f7af56d941bebee757b134250af176375178eee2fa64429d5ff56c3a23c3.png" src="_images/2460f7af56d941bebee757b134250af176375178eee2fa64429d5ff56c3a23c3.png" />
+</div>
+</div>
+<div class="admonition-exercise-3 admonition">
+<p class="admonition-title">⏰ Exercise 3</p>
+<p>Change <code class="docutils literal notranslate"><span class="pre">z_dim</span></code> to 3 in <code class="docutils literal notranslate"><span class="pre">TinyAE</span></code> and plot <code class="docutils literal notranslate"><span class="pre">z[:,0]</span></code> vs <code class="docutils literal notranslate"><span class="pre">z[:,2]</span></code>. Does it reveal more structure</p>
+</div>
+</section>
+<section id="why-ae-is-tricky-for-smiles">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">4. Why AE is tricky for SMILES</a><a class="headerlink" href="#why-ae-is-tricky-for-smiles" title="Link to this heading">#</a></h2>
+<p>A descriptor AE reconstructs numbers. A molecular generator must produce valid SMILES. Small mistakes create invalid molecules. Here is a tiny example of parsing errors and a safe parser that skips them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDLogger</span>
+<span class="n">RDLogger</span><span class="o">.</span><span class="n">DisableLog</span><span class="p">(</span><span class="s1">&#39;rdApp.*&#39;</span><span class="p">)</span>
+
+<span class="n">bad_smiles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C1CC1C1&quot;</span><span class="p">,</span> <span class="s2">&quot;CCC(C)(C)(C)&quot;</span><span class="p">,</span> <span class="s2">&quot;C=O=O&quot;</span><span class="p">,</span> <span class="s2">&quot;C(C)(C)(C)(C)C&quot;</span><span class="p">]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">safe_mol_from_smiles</span><span class="p">(</span><span class="n">smi</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">,</span> <span class="n">sanitize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">parsed</span> <span class="o">=</span> <span class="p">[</span><span class="n">safe_mol_from_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">bad_smiles</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="n">bad_smiles</span><span class="p">,</span> <span class="s2">&quot;is_valid&quot;</span><span class="p">:</span> <span class="n">parsed</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SMILES</th>
+      <th>is_valid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>C1CC1C1</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CCC(C)(C)(C)</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>C=O=O</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>C(C)(C)(C)(C)C</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This motivates a VAE which gives a distribution in latent space so we can sample smoothly and then decode to strings.</p>
+</section>
+<section id="vae-concept-with-a-tiny-numeric-example">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">5. VAE concept with a tiny numeric example</a><a class="headerlink" href="#vae-concept-with-a-tiny-numeric-example" title="Link to this heading">#</a></h2>
+<p>The VAE encoder outputs a mean and a log-variance. We compute the KL term to the standard normal. For a single sample with diagonal covariance, the KL has a closed form.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">])</span>
+<span class="n">logvar</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.2</span><span class="p">)])</span>
+<span class="n">kl</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">logvar</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">logvar</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span>
+<span class="nb">float</span><span class="p">(</span><span class="n">kl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06520640682625409
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reparameterization trick: sample epsilon and form z.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">logvar</span><span class="p">)</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">eps</span>
+<span class="n">z</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.68454375, -1.1998065 ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="build-smiles-vocabulary-and-dataset">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">6. Build SMILES vocabulary and dataset</a><a class="headerlink" href="#build-smiles-vocabulary-and-dataset" title="Link to this heading">#</a></h2>
+<p>We fetch about 4k sanitized SMILES from QM9 using DeepChem, then tokenize to characters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">deepchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dc</span>
+<span class="n">tasks</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transformers</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">molnet</span><span class="o">.</span><span class="n">load_qm9</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="n">train_dataset</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">canonicalize_smiles</span><span class="p">(</span><span class="n">smi</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">smi</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">,</span> <span class="n">sanitize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">canonical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dataset_to_smiles</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">max_n</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">X</span><span class="p">)</span> <span class="k">if</span> <span class="n">max_n</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">X</span><span class="p">),</span> <span class="n">max_n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">mol</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">mol</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">canonical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">can</span> <span class="o">=</span> <span class="n">canonicalize_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">can</span><span class="p">:</span> <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">can</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">pool_smiles</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">dataset_to_smiles</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">max_n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)))</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">pool_smiles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dc</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transformers</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">molnet</span><span class="o">.</span><span class="n">load_qm9</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python313</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">deepchem</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">10</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem.data</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem.feat</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem.hyper</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem.metalearning</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem.metrics</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python313</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">deepchem</span>\<span class="n">hyper</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># flake8: noqa</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.hyper.base_classes</span><span class="w"> </span><span class="kn">import</span> <span class="n">HyperparamOpt</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.hyper.grid_search</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridHyperparamOpt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.hyper.gaussian_process</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianProcessHyperparamOpt</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python313</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">deepchem</span>\<span class="n">hyper</span>\<span class="n">base_classes</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.trans</span><span class="w"> </span><span class="kn">import</span> <span class="n">Transformer</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Model</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">Metric</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python313</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">deepchem</span>\<span class="n">trans</span>\<span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> Gathers all transformers in one place for convenient imports</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># flake8: noqa</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.trans.transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">undo_transforms</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.trans.transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">undo_grad_transforms</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.trans.transformers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Transformer</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python313</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">deepchem</span>\<span class="n">trans</span>\<span class="n">transformers</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">13</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span><span class="w"> </span><span class="nn">scipy.ndimage</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">import</span><span class="w"> </span><span class="nn">deepchem</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dc</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span><span class="w"> </span><span class="nn">deepchem.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">NumpyDataset</span><span class="p">,</span> <span class="n">DiskDataset</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tensorflow&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Select ~4k and split.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">target_n</span> <span class="o">=</span> <span class="mi">4000</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pool_smiles</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">target_n</span><span class="p">:</span>
+    <span class="n">smiles_all</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pool_smiles</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">target_n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">smiles_all</span> <span class="o">=</span> <span class="n">pool_smiles</span><span class="p">[:</span><span class="n">target_n</span><span class="p">]</span>
+
+<span class="n">train_smiles</span><span class="p">,</span> <span class="n">val_smiles</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">smiles_all</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">train_smiles</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_smiles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build the character vocabulary and a simple dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SPECIAL</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;[PAD]&quot;</span><span class="p">,</span> <span class="s2">&quot;[SOS]&quot;</span><span class="p">,</span> <span class="s2">&quot;[EOS]&quot;</span><span class="p">]</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">train_smiles</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span> <span class="n">chars</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+<span class="n">idx2ch</span> <span class="o">=</span> <span class="n">SPECIAL</span> <span class="o">+</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+<span class="n">ch2idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">idx2ch</span><span class="p">)}</span>
+<span class="n">PAD</span><span class="p">,</span> <span class="n">SOS</span><span class="p">,</span> <span class="n">EOS</span> <span class="o">=</span> <span class="n">ch2idx</span><span class="p">[</span><span class="s2">&quot;[PAD]&quot;</span><span class="p">],</span> <span class="n">ch2idx</span><span class="p">[</span><span class="s2">&quot;[SOS]&quot;</span><span class="p">],</span> <span class="n">ch2idx</span><span class="p">[</span><span class="s2">&quot;[EOS]&quot;</span><span class="p">]</span>
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">idx2ch</span><span class="p">);</span> <span class="n">vocab_size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MAX_LEN</span> <span class="o">=</span> <span class="mi">120</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">smiles_to_idx</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">toks</span> <span class="o">=</span> <span class="p">[</span><span class="n">SOS</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">ch2idx</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ch</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">EOS</span><span class="p">]</span>
+    <span class="n">toks</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">toks</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="n">toks</span> <span class="o">=</span> <span class="n">toks</span><span class="p">[:</span><span class="n">MAX_LEN</span><span class="p">]</span>
+    <span class="n">attn</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">toks</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">MAX_LEN</span><span class="p">:</span>
+        <span class="n">toks</span> <span class="o">+=</span> <span class="p">[</span><span class="n">PAD</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">MAX_LEN</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">toks</span><span class="p">))</span>
+        <span class="n">attn</span> <span class="o">+=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">MAX_LEN</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">attn</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">toks</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">attn</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SmilesDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">smiles_list</span><span class="p">):</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">smiles_to_idx</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles_list</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">toks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">])</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">])</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toks</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">toks</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">attn</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="n">train_ds</span> <span class="o">=</span> <span class="n">SmilesDataset</span><span class="p">(</span><span class="n">train_smiles</span><span class="p">)</span>
+<span class="n">val_ds</span>   <span class="o">=</span> <span class="n">SmilesDataset</span><span class="p">(</span><span class="n">val_smiles</span><span class="p">)</span>
+<span class="p">(</span><span class="n">train_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">(),</span> <span class="n">train_ds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">][:</span><span class="mi">20</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-4 admonition">
+<p class="admonition-title">⏰ Exercise 4</p>
+<p>Print the full <code class="docutils literal notranslate"><span class="pre">idx2ch</span></code> list and count vowels or special punctuation. What characters are most frequent in your SMILES</p>
+</div>
+</section>
+<section id="smiles-vae-model-and-training">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">7. SMILES VAE model and training</a><a class="headerlink" href="#smiles-vae-model-and-training" title="Link to this heading">#</a></h2>
+<p>We use a compact GRU-based VAE. The loss is cross entropy for next character plus a small KL term.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Encoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">hid_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emb</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">PAD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">emb_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">z_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logvar</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">z_dim</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">attn</span><span class="p">):</span>
+        <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">lengths</span> <span class="o">=</span> <span class="n">attn</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+        <span class="n">packed</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">rnn</span><span class="o">.</span><span class="n">pack_padded_sequence</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">lengths</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">enforce_sorted</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gru</span><span class="p">(</span><span class="n">packed</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">(</span><span class="n">h</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">logvar</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Decoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">hid_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">emb</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">padding_idx</span><span class="o">=</span><span class="n">PAD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc_z</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">z_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">emb_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">batch_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">x_in</span><span class="p">):</span>
+        <span class="n">h0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc_z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">emb</span><span class="p">(</span><span class="n">x_in</span><span class="p">)</span>
+        <span class="n">o</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gru</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">h0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">VAE</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">hid_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc</span> <span class="o">=</span> <span class="n">Encoder</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">z_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dec</span> <span class="o">=</span> <span class="n">Decoder</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span> <span class="n">z_dim</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reparameterize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">):</span>
+        <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">logvar</span><span class="p">)</span>
+        <span class="n">eps</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">eps</span><span class="o">*</span><span class="n">std</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">attn</span><span class="p">):</span>
+        <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">attn</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reparameterize</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dec</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">logits</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vae_loss</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">kl_weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span>
+        <span class="n">logits</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">logits</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">ignore_index</span><span class="o">=</span><span class="n">PAD</span>
+    <span class="p">)</span>
+    <span class="n">kl</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">logvar</span> <span class="o">-</span> <span class="n">mu</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">logvar</span><span class="o">.</span><span class="n">exp</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">ce</span> <span class="o">+</span> <span class="n">kl_weight</span><span class="o">*</span><span class="n">kl</span><span class="p">,</span> <span class="n">ce</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">kl</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">VAE</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">)</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">2e-3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Train 30 epochs and plot loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">val_loader</span>   <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">EPOCHS</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">hist</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;val&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;ce&quot;</span><span class="p">:</span> <span class="p">[],</span> <span class="s2">&quot;kl&quot;</span><span class="p">:</span> <span class="p">[]}</span>
+
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">EPOCHS</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">tr_losses</span><span class="p">,</span> <span class="n">ce_losses</span><span class="p">,</span> <span class="n">kl_losses</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+        <span class="n">logits</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="n">loss</span><span class="p">,</span> <span class="n">ce</span><span class="p">,</span> <span class="n">kl</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">kl_weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">clip_grad_norm_</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">tr_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">());</span> <span class="n">ce_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ce</span><span class="p">);</span> <span class="n">kl_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kl</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">val_losses</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+            <span class="n">logits</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+            <span class="n">l</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">vae_loss</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">,</span> <span class="n">kl_weight</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+            <span class="n">val_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+    <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">tr_losses</span><span class="p">))</span>
+    <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">val_losses</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">val_losses</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;ce&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ce_losses</span><span class="p">));</span> <span class="n">hist</span><span class="p">[</span><span class="s2">&quot;kl&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kl_losses</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch </span><span class="si">{</span><span class="n">ep</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> | train </span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> | val </span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;val&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> | CE </span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;ce&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> | KL </span><span class="si">{</span><span class="n">hist</span><span class="p">[</span><span class="s1">&#39;kl&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="s2">&quot;train&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="s2">&quot;val&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;val&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;epoch&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;VAE loss over epochs&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-5 admonition">
+<p class="admonition-title">⏰ Exercise 5</p>
+<p>Set <code class="docutils literal notranslate"><span class="pre">kl_weight=0.2</span></code> and train for 5 epochs. Does CE go up while KL goes down What happens to the validation curve</p>
+</div>
+</section>
+<section id="sampling-and-evaluation">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">8. Sampling and evaluation</a><a class="headerlink" href="#sampling-and-evaluation" title="Link to this heading">#</a></h2>
+<p>Sample strings from the decoder by drawing z from the prior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">sample_smiles</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">max_len</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">temp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">enc</span><span class="o">.</span><span class="n">mu</span><span class="o">.</span><span class="n">out_features</span><span class="p">)</span>
+        <span class="n">x_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">SOS</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">fc_z</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_len</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">emb</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">emb</span><span class="p">(</span><span class="n">x_t</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">o</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">gru</span><span class="p">(</span><span class="n">emb</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+            <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">dec</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">o</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span> <span class="o">/</span> <span class="n">temp</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">nxt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">multinomial</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">x_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">x_t</span><span class="p">,</span> <span class="n">nxt</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">seqs</span> <span class="o">=</span> <span class="n">x_t</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">seq</span> <span class="ow">in</span> <span class="n">seqs</span><span class="p">:</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">seq</span><span class="p">:</span>
+            <span class="n">ch</span> <span class="o">=</span> <span class="n">idx2ch</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="o">==</span> <span class="s2">&quot;[EOS]&quot;</span><span class="p">:</span> <span class="k">break</span>
+            <span class="k">if</span> <span class="n">ch</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;[PAD]&quot;</span><span class="p">,</span><span class="s2">&quot;[SOS]&quot;</span><span class="p">):</span> <span class="n">chars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">gen_raw</span> <span class="o">=</span> <span class="n">sample_smiles</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">temp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">gen_raw</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Filter to valid canonical SMILES and compute metrics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">RDLogger</span>
+<span class="n">RDLogger</span><span class="o">.</span><span class="n">DisableLog</span><span class="p">(</span><span class="s1">&#39;rdApp.*&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">safe_mol_from_smiles</span><span class="p">(</span><span class="n">smi</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smi</span><span class="p">,</span> <span class="n">sanitize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">Chem</span><span class="o">.</span><span class="n">SanitizeMol</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">m</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">canonicalize_batch</span><span class="p">(</span><span class="n">smiles_list</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles_list</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">safe_mol_from_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">can</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToSmiles</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">canonical</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">can</span><span class="p">:</span> <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">can</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">gen_smiles</span> <span class="o">=</span> <span class="n">canonicalize_batch</span><span class="p">(</span><span class="n">gen_raw</span><span class="p">)</span>
+<span class="n">train_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">train_smiles</span><span class="p">)</span>
+
+<span class="n">validity</span>   <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_smiles</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_raw</span><span class="p">))</span>
+<span class="n">uniq_list</span>  <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">gen_smiles</span><span class="p">))</span>
+<span class="n">uniqueness</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniq_list</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_smiles</span><span class="p">))</span>
+<span class="n">novelty</span>    <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">uniq_list</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">uniq_list</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validity: </span><span class="si">{</span><span class="n">validity</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  Uniqueness: </span><span class="si">{</span><span class="n">uniqueness</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  Novelty: </span><span class="si">{</span><span class="n">novelty</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compare property distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">QED</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">Descriptors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">props_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">smiles</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">safe_mol_from_smiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s2">&quot;QED&quot;</span><span class="p">:</span> <span class="n">QED</span><span class="o">.</span><span class="n">qed</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="s2">&quot;logP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span> <span class="s2">&quot;MW&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">)})</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">train_unique</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">train_smiles</span><span class="p">))</span>
+<span class="n">gen_unique</span>   <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">gen_smiles</span><span class="p">))</span>
+<span class="n">train_sample</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">train_unique</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_unique</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">gen_sample</span>   <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">gen_unique</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">gen_unique</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">props_from_smiles</span><span class="p">(</span><span class="n">train_sample</span><span class="p">)</span>
+<span class="n">df_gen</span>   <span class="o">=</span> <span class="n">props_from_smiles</span><span class="p">(</span><span class="n">gen_sample</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_dist</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_train</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Train&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_gen</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span>   <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Generated&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">metric</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metric</span><span class="si">}</span><span class="s2"> distribution&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;QED&quot;</span><span class="p">,</span><span class="s2">&quot;logP&quot;</span><span class="p">,</span><span class="s2">&quot;MW&quot;</span><span class="p">]:</span>
+    <span class="n">plot_dist</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-exercise-6 admonition">
+<p class="admonition-title">⏰ Exercise 6</p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">sample_smiles</span></code> with temperatures 0.7 and 1.3. Which one increases validity Which one increases uniqueness How do the histograms shift</p>
+</div>
+</section>
+<section id="glossary">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-encoder">encoder<a class="headerlink" href="#term-encoder" title="Link to this term">#</a></dt><dd><p>A mapping from input <span class="math notranslate nohighlight">\(x\)</span> to latent <span class="math notranslate nohighlight">\(z\)</span>.</p>
+</dd>
+<dt id="term-decoder">decoder<a class="headerlink" href="#term-decoder" title="Link to this term">#</a></dt><dd><p>A mapping from latent <span class="math notranslate nohighlight">\(z\)</span> to reconstructed <span class="math notranslate nohighlight">\(\hat x\)</span>.</p>
+</dd>
+<dt id="term-autoencoder-AE">autoencoder (AE)<a class="headerlink" href="#term-autoencoder-AE" title="Link to this term">#</a></dt><dd><p>A model trained to reconstruct input. Learns a compact latent code.</p>
+</dd>
+<dt id="term-latent-space">latent space<a class="headerlink" href="#term-latent-space" title="Link to this term">#</a></dt><dd><p>The internal coordinate used by the model to organize inputs.</p>
+</dd>
+<dt id="term-VAE">VAE<a class="headerlink" href="#term-VAE" title="Link to this term">#</a></dt><dd><p>A probabilistic AE that learns <span class="math notranslate nohighlight">\(q_\theta(z\mid x)\)</span> near a simple prior to enable sampling.</p>
+</dd>
+<dt id="term-validity">validity<a class="headerlink" href="#term-validity" title="Link to this term">#</a></dt><dd><p>Fraction of generated strings that sanitize as molecules.</p>
+</dd>
+<dt id="term-uniqueness">uniqueness<a class="headerlink" href="#term-uniqueness" title="Link to this term">#</a></dt><dd><p>Fraction of valid generated molecules that are unique.</p>
+</dd>
+<dt id="term-novelty">novelty<a class="headerlink" href="#term-novelty" title="Link to this term">#</a></dt><dd><p>Fraction of unique generated molecules not present in the training set.</p>
+</dd>
+</dl>
+</section>
+<section id="in-class-activity-with-solutions">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">10. In-class activity with solutions</a><a class="headerlink" href="#in-class-activity-with-solutions" title="Link to this heading">#</a></h2>
+<p><strong>Q1.</strong> AE latent: change <code class="docutils literal notranslate"><span class="pre">z_dim</span></code> to 3 and plot <code class="docutils literal notranslate"><span class="pre">z[:,0]</span></code> vs <code class="docutils literal notranslate"><span class="pre">z[:,1]</span></code>. Compare to <code class="docutils literal notranslate"><span class="pre">z[:,1]</span></code> vs <code class="docutils literal notranslate"><span class="pre">z[:,2]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ae3</span> <span class="o">=</span> <span class="n">TinyAE</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">ae3</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">xb</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">ae3</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">xb</span><span class="p">)</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">Z3</span> <span class="o">=</span> <span class="n">ae3</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xz</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z3</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z0&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;z1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;z0 vs z1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z3</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">Z3</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;z2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;z1 vs z2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q2.</strong> VAE temperature sweep: compute validity for T in [0.7, 1.0, 1.3].</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">]:</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">sample_smiles</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">temp</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">canonicalize_batch</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">: validity </span><span class="si">{</span><span class="n">val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q3.</strong> Wasserstein distance for QED.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">wasserstein_distance</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s2">&quot;QED&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">df_gen</span><span class="p">[</span><span class="s2">&quot;QED&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;QED W-dist:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">wasserstein_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SciPy not available&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q4.</strong> Show 12 novel molecules with QED.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uniq</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">gen_smiles</span><span class="p">))</span>
+<span class="n">novel_only</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">uniq</span> <span class="k">if</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">train_set</span><span class="p">][:</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">novel_only</span><span class="p">]</span>
+<span class="n">qed_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">QED</span><span class="o">.</span><span class="n">qed</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mols</span><span class="p">]</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">mols</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">220</span><span class="p">,</span><span class="mi">220</span><span class="p">),</span>
+                           <span class="n">legends</span><span class="o">=</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;QED=</span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">qed_vals</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q5.</strong> AE loss: swap MSE for MAE and compare curves in one figure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MSE run</span>
+<span class="n">ae_mse</span> <span class="o">=</span> <span class="n">TinyAE</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">opt_mse</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">ae_mse</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">loss_mse</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">xb</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ae_mse</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">xb</span><span class="p">)</span>
+        <span class="n">opt_mse</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt_mse</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">loss_mse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+
+<span class="c1"># MAE run</span>
+<span class="n">ae_mae</span> <span class="o">=</span> <span class="n">TinyAE</span><span class="p">(</span><span class="n">in_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">z_dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">opt_mae</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">ae_mae</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<span class="n">loss_mae</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">xb</span> <span class="ow">in</span> <span class="n">dl</span><span class="p">:</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ae_mae</span><span class="p">(</span><span class="n">xb</span><span class="p">)</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span> <span class="n">xb</span><span class="p">)</span>
+        <span class="n">opt_mae</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">();</span> <span class="n">l</span><span class="o">.</span><span class="n">backward</span><span class="p">();</span> <span class="n">opt_mae</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">loss_mae</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">loss_mse</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MSE&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">loss_mae</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MAE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;step&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;AE: MSE vs MAE&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-and-data">1. Setup and data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-recap-with-a-tiny-pca">2. Unsupervised recap with a tiny PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoencoder-on-descriptors">3. Autoencoder on descriptors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-ae-is-tricky-for-smiles">4. Why AE is tricky for SMILES</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vae-concept-with-a-tiny-numeric-example">5. VAE concept with a tiny numeric example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-smiles-vocabulary-and-dataset">6. Build SMILES vocabulary and dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smiles-vae-model-and-training">7. SMILES VAE model and training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-and-evaluation">8. Sampling and evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">9. Glossary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-with-solutions">10. In-class activity with solutions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

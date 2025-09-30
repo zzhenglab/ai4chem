@@ -30,7 +30,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 9 & 11** – Classification & regression  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
 - **Sept 16 & 18** – Supervised machine learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
 - **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing) 
-- **Sept 30 & Oct 2** – Unsupervised learning  methods [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)
+- **Sept 30 & Oct 2** – Unsupervised learning  methods [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing)
 - **Oct 7** - Fall Break
 - **Oct 9** – De novo Molecule generation 
 - **Oct 14 & Oct 16** - Bayesian optimization
@@ -102,4 +102,4 @@ By the end of this course, you will be able to:
 ```{dropdown} Acknowledgements
 We thank **Professor Robert Wexler** for his guidance in building this website and for helpful discussions on the course content.  
 We also acknowledge **Bingcui Guo**, whose contributions were tremendously valuable in discussing the material and in testing the code.  
-```
+```git push --force-with-lease

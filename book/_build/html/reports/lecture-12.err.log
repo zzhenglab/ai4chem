@@ -1,43 +1,12 @@
 Traceback (most recent call last):
-<<<<<<< HEAD
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
-    asyncio.get_running_loop()
-=======
   File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
     asyncio.get_running_loop()
     ~~~~~~~~~~~~~~~~~~~~~~~~^^
->>>>>>> 6cda9aa (0929-1)
 RuntimeError: no running event loop
 
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-<<<<<<< HEAD
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
-    executenb(
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
-    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
-    return loop.run_until_complete(inner)
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
-    return future.result()
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
-    await self.async_execute_cell(
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['from sklearn.manifold import TSNE', '', '# UMAP install guard', 'try:', '    import umap']
-...
-['    plt.scatter(Z_desc[idx,0], Z_desc[idx,1], s=14, alpha=0.9, label=f"c{c}")', 'plt.xlabel("dim 1"); plt.ylabel("dim 2")', 'plt.title(f"{name_desc} + KMeans(k={k}) on descriptors")', 'plt.legend()', 'plt.show()']
--------------------
-=======
   File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
     executenb(
     ~~~~~~~~~^
@@ -61,68 +30,22 @@ Here is a preview of the cell contents:
     await self.async_execute_cell(
         cell, index, execution_count=self.code_cells_executed + 1
     )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-
-# binarize reactivity if it has multiple levels: high vs not high
-yr = (y_reac.str.lower().str.contains("high")).astype(int)
-
-# raw descriptors
-Xd_tr, Xd_te, yr_tr, yr_te = train_test_split(X_desc, yr, test_size=0.2, random_state=0, stratify=yr)
-clf_d = LogisticRegression(max_iter=1000, random_state=0).fit(Xd_tr, yr_tr)
-acc_d = accuracy_score(yr_te, clf_d.predict(Xd_te))
-
-# learned embedding if available
-if TORCH_OK:
-    with torch.no_grad():
-        Z_emb = model(torch.tensor(X_desc, dtype=torch.float32)).numpy()
-else:
-    Z_emb = Z_embed
-
-Ze_tr, Ze_te, yr_tr2, yr_te2 = train_test_split(Z_emb, yr, test_size=0.2, random_state=0, stratify=yr)
-clf_e = LogisticRegression(max_iter=1000, random_state=0).fit(Ze_tr, yr_tr2)
-acc_e = accuracy_score(yr_te2, clf_e.predict(Ze_te))
-
-pd.DataFrame({"Model": ["LogReg on descriptors", "LogReg on learned embed"], "Accuracy": [acc_d, acc_e]}).round(3)
-------------------
-
-
-[31m---------------------------------------------------------------------------[39m
-[31mValueError[39m                                Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[39][39m[32m, line 10[39m
-[32m      8[39m [38;5;66;03m# raw descriptors[39;00m
-[32m      9[39m Xd_tr, Xd_te, yr_tr, yr_te = train_test_split(X_desc, yr, test_size=[32m0.2[39m, random_state=[32m0[39m, stratify=yr)
-[32m---> [39m[32m10[39m clf_d = [43mLogisticRegression[49m[43m([49m[43mmax_iter[49m[43m=[49m[32;43m1000[39;49m[43m,[49m[43m [49m[43mrandom_state[49m[43m=[49m[32;43m0[39;49m[43m)[49m[43m.[49m[43mfit[49m[43m([49m[43mXd_tr[49m[43m,[49m[43m [49m[43myr_tr[49m[43m)[49m
-[32m     11[39m acc_d = accuracy_score(yr_te, clf_d.predict(Xd_te))
-[32m     13[39m [38;5;66;03m# learned embedding if available[39;00m
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365[39m, in [36m_fit_context.<locals>.decorator.<locals>.wrapper[39m[34m(estimator, *args, **kwargs)[39m
-[32m   1358[39m     estimator._validate_params()
-[32m   1360[39m [38;5;28;01mwith[39;00m config_context(
-[32m   1361[39m     skip_parameter_validation=(
-[32m   1362[39m         prefer_skip_nested_validation [38;5;129;01mor[39;00m global_skip_validation
-[32m   1363[39m     )
-[32m   1364[39m ):
-[32m-> [39m[32m1365[39m     [38;5;28;01mreturn[39;00m [43mfit_method[49m[43m([49m[43mestimator[49m[43m,[49m[43m [49m[43m*[49m[43margs[49m[43m,[49m[43m [49m[43m*[49m[43m*[49m[43mkwargs[49m[43m)[49m
-
-[36mFile [39m[32m~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\linear_model\_logistic.py:1335[39m, in [36mLogisticRegression.fit[39m[34m(self, X, y, sample_weight)[39m
-[32m   1333[39m classes_ = [38;5;28mself[39m.classes_
-[32m   1334[39m [38;5;28;01mif[39;00m n_classes < [32m2[39m:
-[32m-> [39m[32m1335[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
-[32m   1336[39m         [33m"[39m[33mThis solver needs samples of at least 2 classes[39m[33m"[39m
-[32m   1337[39m         [33m"[39m[33m in the data, but the data contains only one[39m[33m"[39m
-[32m   1338[39m         [33m"[39m[33m class: [39m[38;5;132;01m%r[39;00m[33m"[39m % classes_[[32m0[39m]
-[32m   1339[39m     )
-[32m   1341[39m [38;5;28;01mif[39;00m [38;5;28mlen[39m([38;5;28mself[39m.classes_) == [32m2[39m:
-[32m   1342[39m     n_classes = [32m1[39m
-
-[31mValueError[39m: This solver needs samples of at least 2 classes in the data, but the data contains only one class: np.int64(0)
->>>>>>> 6cda9aa (0929-1)
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+        "Cell execution timed out", timeout, cell
+    )
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['"""', '- Column 1: KMeans. Pick k by highest silhouette.', '- Column 2: Agglomerative (Ward). Pick k by highest silhouette.', '- Column 3: DBSCAN. Pick eps and min_samples by highest silhouette.', '"""']
+...
+['            transform=ax.transAxes, ha="left", va="top", fontsize=9,', '            bbox=dict(boxstyle="round,pad=0.25", facecolor="white", alpha=0.8, edgecolor="none"))', '', 'fig.suptitle("Clustering gallery with automatic selection per dataset", fontsize=14)', 'plt.show()']
+-------------------
 

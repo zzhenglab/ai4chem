@@ -44,8 +44,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"', 'df_raw = pd.read_csv(url)', 'desc = df_raw["SMILES"].apply(calc_descriptors)', 'df = pd.concat([df_raw, desc], axis=1)', '']
+['from sklearn.model_selection import KFold, GridSearchCV', 'from sklearn.ensemble import RandomForestClassifier', 'from sklearn.metrics import accuracy_score, roc_auc_score, classification_report', '', '# Data']
 ...
-['plt.plot([0, 1], [0, 1], "k--")', 'plt.xlabel("FPR")', 'plt.ylabel("TPR")', 'plt.title("ROC curve - RF with CV-tuned hyperparameters")', 'plt.show()']
+['y_hat = best_rf.predict(X_test)', 'y_proba = best_rf.predict_proba(X_test)[:, 1]', 'print(f"Accuracy: {accuracy_score(y_test, y_hat):.3f}")', 'print(f"AUC: {roc_auc_score(y_test, y_proba):.3f}")', 'print(classification_report(y_test, y_hat, digits=3))']
 -------------------
 
