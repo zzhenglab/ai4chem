@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,56 +14,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-11';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 12 - Self-supervised Learning" href="lecture-12.html" />
     <link rel="prev" title="Lecture 10 - Property &amp; Reaction Prediction" href="lecture-10.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -74,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -156,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -178,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
 </ul>
 
     </div>
@@ -193,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -202,14 +218,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -334,10 +350,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -345,14 +361,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -399,6 +415,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints"><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7. Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">Q5</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -408,10 +432,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-11-dimension-reduction-for-data-visualization">
-<h1>Lecture 11 - Dimension Reduction for Data Visualization<a class="headerlink" href="#lecture-11-dimension-reduction-for-data-visualization" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 11 - Dimension Reduction for Data Visualization<a class="headerlink" href="#lecture-11-dimension-reduction-for-data-visualization" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -421,10 +445,11 @@ document.write(`
 <li><p><a class="reference internal" href="#nonlinear-embeddings-t-sne-and-umap" id="id5">4. Nonlinear embeddings: t-SNE and UMAP</a></p></li>
 <li><p><a class="reference internal" href="#glossary" id="id6">5. Glossary</a></p></li>
 <li><p><a class="reference internal" href="#in-class-activity" id="id7">6. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solution" id="id8">7. Solution</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand <strong>unsupervised learning</strong> vs <strong>supervised learning</strong> in chemistry.</p></li>
 <li><p>Explain the intuition and math of <strong>PCA</strong> and read <strong>loadings</strong>, <strong>scores</strong>, and <strong>explained variance</strong>.</p></li>
@@ -433,64 +458,57 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup-and-data">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Permalink to this heading">#</a></h2>
-<p>We will reuse the C-H oxidation dataset and compute a small set of descriptors.
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
-<div class="cell docutils container">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Link to this heading">#</a></h2>
+<p>We will reuse the C-H oxidation dataset and compute a small set of descriptors.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>=======
-```python
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 6cda9aa (0929-1)
-:tags: [hide-input]
-# Core
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-# ML
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
-from sklearn.metrics import silhouette_score, silhouette_samples, pairwise_distances
+<span class="c1"># ML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">AgglomerativeClustering</span><span class="p">,</span> <span class="n">DBSCAN</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span><span class="p">,</span> <span class="n">silhouette_samples</span><span class="p">,</span> <span class="n">pairwise_distances</span>
 
-try:
-  import umap.umap_ as umap
-  from umap.umap_ import UMAP
-except:
-  %pip install umap-learn
-  import umap.umap_ as umap
-  from umap.umap_ import UMAP
+<span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">umap</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="kn">import</span> <span class="n">UMAP</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="o">%</span><span class="k">pip</span> install umap-learn
+  <span class="kn">import</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">umap</span>
+  <span class="kn">from</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="kn">import</span> <span class="n">UMAP</span>
 
-# Utils
-import warnings
-warnings.filterwarnings(&quot;ignore&quot;)
+<span class="c1"># Utils</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 
 
-try:
-    from rdkit import Chem
-    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-    RD = True
-except Exception:
-    try:
-      %pip install rdkit
-      from rdkit import Chem
-      from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
-      RD = True
-    except:
-      RD = False
-      Chem = None
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
+    <span class="n">RD</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="o">%</span><span class="k">pip</span> install rdkit
+      <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+      <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
+      <span class="n">RD</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">except</span><span class="p">:</span>
+      <span class="n">RD</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="o">=======</span>
-    <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
-</pre></div>
-</div>
-</div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -500,6 +518,76 @@ except Exception:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>We compute four quick 4 descriptors for everyone. Different from we we did previously, we only have another function compute 10 descriptors.</p>
 <div class="cell docutils container">
@@ -549,6 +637,128 @@ except Exception:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows x Cols (4 desc): (575, 13)
+Rows x Cols (10 desc): (575, 19)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -556,6 +766,160 @@ except Exception:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+      <th>NumHAcceptors</th>
+      <th>NumHDonors</th>
+      <th>NumRotatableBonds</th>
+      <th>HeavyAtomCount</th>
+      <th>FractionCSP3</th>
+      <th>NumAromaticRings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>0.333333</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>13.0</td>
+      <td>0.076923</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>0.400000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>0.250000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>0.666667</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Now we build a 64-bit Morgan fingerprint (<span class="math notranslate nohighlight">\(r=2\)</span>). We keep both a <strong>small descriptor table</strong> and a <strong>high dimensional fingerprint</strong> table.</p>
 <div class="cell docutils container">
@@ -593,6 +957,109 @@ except Exception:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows x Cols: (575, 10)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+      <th>Fingerprint</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+      <td>1000000010111000110010100000001001001000000010...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1100000000000010010010101000101010001000000010...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+      <td>1000100000100000010010100000001000001000000010...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>1000010100000001110000100010000001001010001000...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>0000101000000000010000000000001000000001100000...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="admonition-data-choices admonition">
 <p class="admonition-title">Data choices</p>
@@ -642,6 +1109,65 @@ except Exception:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/10810f37ef4d5aa4e2d5a13d66780bb8d3db2ecfd7626cf83c6a461441cea5f4.png" src="_images/10810f37ef4d5aa4e2d5a13d66780bb8d3db2ecfd7626cf83c6a461441cea5f4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 9H-fluorene ===
+SMILES: c1ccc2c(c1)Cc1ccccc1-2
+Descriptors [MolWt, LogP, TPSA, NumRings]: [166.22   3.26   0.     3.  ]
+10-Descriptor Vector: [1.6622e+02 3.2600e+00 0.0000e+00 3.0000e+00 0.0000e+00 0.0000e+00
+ 0.0000e+00 1.3000e+01 8.0000e-02 2.0000e+00]
+Fingerprint: 11000000000000100100101010001010
+</pre></div>
+</div>
+<img alt="_images/1600b4cbadffb76293987051222bb9022aa87bf15758f5216aab0f178f16c301.png" src="_images/1600b4cbadffb76293987051222bb9022aa87bf15758f5216aab0f178f16c301.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== thiolane ===
+SMILES: C1CCSC1
+Descriptors [MolWt, LogP, TPSA, NumRings]: [88.18  1.51  0.    1.  ]
+10-Descriptor Vector: [88.18  1.51  0.    1.    1.    0.    0.    5.    1.    0.  ]
+Fingerprint: 00001100000000010000010000000010
+</pre></div>
+</div>
+<img alt="_images/67446e7bb88633d57000d0ee1e4490dfa2154b7e644786016381dead3102f97d.png" src="_images/67446e7bb88633d57000d0ee1e4490dfa2154b7e644786016381dead3102f97d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== methoxymethylbenzene ===
+SMILES: COCc1ccccc1
+Descriptors [MolWt, LogP, TPSA, NumRings]: [122.17   1.83   9.23   1.  ]
+10-Descriptor Vector: [122.17   1.83   9.23   1.     1.     0.     2.     9.     0.25   1.  ]
+Fingerprint: 10000100010000001100001000100000
+</pre></div>
+</div>
+<img alt="_images/93dd371c696525e3a1692128c4d5a4771d224b80d4414d9b52c246cf9bd9ce10.png" src="_images/93dd371c696525e3a1692128c4d5a4771d224b80d4414d9b52c246cf9bd9ce10.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== oct-1-ene ===
+SMILES: C=CCCCCCC
+Descriptors [MolWt, LogP, TPSA, NumRings]: [112.22   3.14   0.     0.  ]
+10-Descriptor Vector: [112.22   3.14   0.     0.     0.     0.     5.     8.     0.75   0.  ]
+Fingerprint: 00000000000000011100001000100001
+</pre></div>
+</div>
+<img alt="_images/f44efd41a08bd9f2bee16c5b1d9fae7d190533dde6a1277eb8f51f50e85acddd.png" src="_images/f44efd41a08bd9f2bee16c5b1d9fae7d190533dde6a1277eb8f51f50e85acddd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== N,N-diethylacetamide ===
+SMILES: CCN(CC)C(C)=O
+Descriptors [MolWt, LogP, TPSA, NumRings]: [115.18   0.87  20.31   0.  ]
+10-Descriptor Vector: [115.18   0.87  20.31   0.     1.     0.     2.     8.     0.83   0.  ]
+Fingerprint: 00000000001000001010000000000100
+</pre></div>
+</div>
+<img alt="_images/fed01a0a30fd3a557cdb8a8652e07ca6ac771ce392be695b86273aff0a0948e5.png" src="_images/fed01a0a30fd3a557cdb8a8652e07ca6ac771ce392be695b86273aff0a0948e5.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== cyclohexane ===
+SMILES: C1CCCCC1
+Descriptors [MolWt, LogP, TPSA, NumRings]: [84.16  2.34  0.    1.  ]
+10-Descriptor Vector: [84.16  2.34  0.    1.    0.    0.    0.    6.    1.    0.  ]
+Fingerprint: 00101000000000000000000000000010
+</pre></div>
+</div>
+<img alt="_images/2213a4e731bc48bef777b2b27139a4af0d9fb5151ae6c3f1073951e98064eddd.png" src="_images/2213a4e731bc48bef777b2b27139a4af0d9fb5151ae6c3f1073951e98064eddd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 1,4-xylene ===
+SMILES: Cc1ccc(C)cc1
+Descriptors [MolWt, LogP, TPSA, NumRings]: [106.17   2.3    0.     1.  ]
+10-Descriptor Vector: [106.17   2.3    0.     1.     0.     0.     0.     8.     0.25   1.  ]
+Fingerprint: 10000000000000000100001000000001
+</pre></div>
+</div>
+</div>
 </div>
 <ul class="simple">
 <li><p>The 4-descriptor table is easy to standardize and to interpret.</p></li>
@@ -649,10 +1175,10 @@ except Exception:
 </ul>
 <p>With 4-desciptor, it’s easier to visualize:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
@@ -690,13 +1216,16 @@ except Exception:
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/1207abce85638e0bf5bcce93f1d0e858bdaaa70ee1c2f529b8af099516b7656b.png" src="_images/1207abce85638e0bf5bcce93f1d0e858bdaaa70ee1c2f529b8af099516b7656b.png" />
+</div>
 </div>
 <p>Now we can apply this to the entire C-H oxidation dataset.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -720,13 +1249,16 @@ except Exception:
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/031c58748ecde9047852e9cf37e1061c5351f8f902f0f6216d79118897e86c0f.png" src="_images/031c58748ecde9047852e9cf37e1061c5351f8f902f0f6216d79118897e86c0f.png" />
+</div>
 </div>
 <p>And depending which three descriptors you used for XYZ, you can have different plottings.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -765,14 +1297,17 @@ except Exception:
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/8e06cb46bd61c71cf7bf9e8138a4b9f04564ccd545d880fcd5629823ec9b71c4.png" src="_images/8e06cb46bd61c71cf7bf9e8138a4b9f04564ccd545d880fcd5629823ec9b71c4.png" />
+</div>
 </div>
 <p>But when it comes to 10-dimensional descriptors or even something like a 1024-dimensional Morgan fingerprint, it is nearly impossible to directly visualize them. It becomes even harder to know the “neigbors” to a specific molecule.</p>
 <p>Humans can only intuitively grasp two or three axes at once. Once you go beyond that, you can only look at pairs of dimensions at a time, and the relationships quickly become hard to characterize.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -798,12 +1333,26 @@ except Exception:
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span><span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">]</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># expand &quot;0101...&quot; strings into arrays of integers</span>
@@ -825,7 +1374,7 @@ except Exception:
 </section>
 <hr class="docutils" />
 <section id="supervised-vs-unsupervised">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Supervised vs unsupervised</a><a class="headerlink" href="#supervised-vs-unsupervised" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Supervised vs unsupervised</a><a class="headerlink" href="#supervised-vs-unsupervised" title="Link to this heading">#</a></h2>
 <p>In Lectures 6 to 8 we learned supervised models that map <span class="math notranslate nohighlight">\(x \to y\)</span> with labeled targets. Today we switch to <strong>unsupervised learning</strong>.</p>
 <ul class="simple">
 <li><p><strong>Dimension reduction</strong>: summarize high dimensional <span class="math notranslate nohighlight">\(x \in \mathbb{R}^p\)</span> to a few coordinates <span class="math notranslate nohighlight">\(z \in \mathbb{R}^k\)</span> with <span class="math notranslate nohighlight">\(k \ll p\)</span>. You do not use <span class="math notranslate nohighlight">\(y\)</span> during the fit.</p></li>
@@ -843,7 +1392,7 @@ except Exception:
 </ul>
 </div>
 <section id="principal-component-analysis-pca">
-<h3>2.1 Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading">#</a></h3>
 <p>Feature choices will drive everything downstream. You can use:</p>
 <ul class="simple">
 <li><p>Scalar descriptors like MolWt, LogP, TPSA, ring counts.</p></li>
@@ -1010,10 +1559,10 @@ To make this more concrete, we can select specific molecules and compare them:</
 <p>We plot all molecules in grey, highlight the pairs with different colors, and draw a line connecting each pair.<br />
 For the selected molecules we also show their <strong>structure, compound name, and PCA coordinates</strong>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -1077,10 +1626,10 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 <p>We can also make this plot to be interactive:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
@@ -1121,7 +1670,7 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </section>
 <section id="data-leakage-in-unsupervised-settings">
-<h3>2.2 Data leakage in unsupervised settings<a class="headerlink" href="#data-leakage-in-unsupervised-settings" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Data leakage in unsupervised settings<a class="headerlink" href="#data-leakage-in-unsupervised-settings" title="Link to this heading">#</a></h3>
 <p>Even in unsupervised workflows, leakage can happen.<br />
 A common mistake is to <strong>fit the scaler or PCA on the full dataset</strong> before splitting.<br />
 This means the test set has already influenced the scaling or component directions, which is a subtle form of information leak.</p>
@@ -1134,10 +1683,10 @@ This means the test set has already influenced the scaling or component directio
 </ol>
 <p>This way the test set truly remains unseen during model fitting.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1195,10 +1744,10 @@ Note:</p></li>
 </section>
 <hr class="docutils" />
 <section id="standardization-and-distance">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Standardization and distance</a><a class="headerlink" href="#standardization-and-distance" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Standardization and distance</a><a class="headerlink" href="#standardization-and-distance" title="Link to this heading">#</a></h2>
 <p>Unsupervised methods depend on a distance or similarity rule. The choice of distance and the way you scale features can completely change neighborhoods, clusters, and embeddings. This section covers why we standardize, which distance to use for scalar descriptors vs fingerprints, and how to compute and visualize distance in a leakage safe way.</p>
 <section id="why-standardize">
-<h3>3.1 Why standardize<a class="headerlink" href="#why-standardize" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Why standardize<a class="headerlink" href="#why-standardize" title="Link to this heading">#</a></h3>
 <p>Descriptor columns live on different scales. <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> can be in the hundreds. <code class="docutils literal notranslate"><span class="pre">FractionCSP3</span></code> is in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If you compute Euclidean distance on the raw matrix, large scale columns dominate. Standardization fixes this by centering and scaling each column so that all features contribute fairly.</p>
 <p>Common scalers:</p>
 <ul class="simple">
@@ -1239,7 +1788,7 @@ Note:</p></li>
 </div>
 </section>
 <section id="which-distance-to-use">
-<h3>3.2 Which distance to use<a class="headerlink" href="#which-distance-to-use" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Which distance to use<a class="headerlink" href="#which-distance-to-use" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Scalar descriptors</strong> (10D):</p>
 <ul>
@@ -1272,10 +1821,10 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 </ul>
 <p>Below we show Euclidean vs Cosine on two standardized columns</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1327,10 +1876,10 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 <p>Idea is that, the same query point can have different nearest neighbors under Euclidean vs Cosine because one metric cares about absolute offsets while the other cares about direction.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take first 30 molecules to keep plot compact</span>
@@ -1377,10 +1926,10 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 <p>Below we add a simple 2D plot to <strong>show how nearest neighbors can differ</strong> under different metrics in the same fingerprint space.<br />
 We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbor connections for all three kinds of distance calculation methods.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1473,10 +2022,10 @@ We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbo
 </div>
 <p>We can plot both the query molecule and the found neighbors to take a look:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Draw the query molecule</span>
@@ -1528,7 +2077,7 @@ We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbo
 </section>
 </section>
 <section id="nonlinear-embeddings-t-sne-and-umap">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Nonlinear embeddings: t-SNE and UMAP</a><a class="headerlink" href="#nonlinear-embeddings-t-sne-and-umap" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Nonlinear embeddings: t-SNE and UMAP</a><a class="headerlink" href="#nonlinear-embeddings-t-sne-and-umap" title="Link to this heading">#</a></h2>
 <p>Linear PCA gives a fast global summary. For curved manifolds or cluster-heavy data, <strong>t-SNE</strong> and <strong>UMAP</strong> often reveal structure that PCA compresses. Both start from a notion of neighborhood in the original feature space and then optimize a 2D or 3D layout that tries to keep neighbors close.</p>
 <p>We will use two feature sets:</p>
 <ul class="simple">
@@ -1536,7 +2085,7 @@ We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbo
 <li><p><strong>64-bit Morgan fingerprints</strong> from <code class="docutils literal notranslate"><span class="pre">df_morgan[&quot;Fingerprint&quot;]</span></code></p></li>
 </ul>
 <section id="t-sne">
-<h3>4.1 t-SNE<a class="headerlink" href="#t-sne" title="Permalink to this heading">#</a></h3>
+<h3>4.1 t-SNE<a class="headerlink" href="#t-sne" title="Link to this heading">#</a></h3>
 <p><strong>Idea:</strong> Build probabilities that say which points are neighbors in high-dim, then find a low-dim map whose neighbor probabilities match.</p>
 <p><strong>Math:</strong></p>
 <ul class="simple">
@@ -1608,7 +2157,7 @@ q_{ij}=\frac{\left(1+\lVert y_i-y_j\rVert^2\right)^{-1}}{\sum_{k\ne \ell}\left(1
 </div>
 </section>
 <section id="umap">
-<h3>4.2 UMAP<a class="headerlink" href="#umap" title="Permalink to this heading">#</a></h3>
+<h3>4.2 UMAP<a class="headerlink" href="#umap" title="Link to this heading">#</a></h3>
 <p><strong>Idea:</strong> Build a weighted kNN graph in the original space, interpret it as a fuzzy set of edges, then find low dimensional coordinates that preserve this fuzzy structure.</p>
 <p><strong>Math:</strong></p>
 <ul class="simple">
@@ -1653,25 +2202,25 @@ PCA finds orthogonal directions of variance. t-SNE preserves neighbor probabilit
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-dimension-reduction">dimension reduction<a class="headerlink" href="#term-dimension-reduction" title="Permalink to this term">#</a></dt><dd><p>Map <span class="math notranslate nohighlight">\(p\)</span>-dimensional features to a few coordinates that keep the most structure for your task.</p>
+<dt id="term-dimension-reduction">dimension reduction<a class="headerlink" href="#term-dimension-reduction" title="Link to this term">#</a></dt><dd><p>Map <span class="math notranslate nohighlight">\(p\)</span>-dimensional features to a few coordinates that keep the most structure for your task.</p>
 </dd>
-<dt id="term-PCA">PCA<a class="headerlink" href="#term-PCA" title="Permalink to this term">#</a></dt><dd><p>Linear method that finds orthogonal directions of maximum variance.</p>
+<dt id="term-PCA">PCA<a class="headerlink" href="#term-PCA" title="Link to this term">#</a></dt><dd><p>Linear method that finds orthogonal directions of maximum variance.</p>
 </dd>
-<dt id="term-loading">loading<a class="headerlink" href="#term-loading" title="Permalink to this term">#</a></dt><dd><p>The weight of each original feature for a principal component.</p>
+<dt id="term-loading">loading<a class="headerlink" href="#term-loading" title="Link to this term">#</a></dt><dd><p>The weight of each original feature for a principal component.</p>
 </dd>
-<dt id="term-scree-plot">scree plot<a class="headerlink" href="#term-scree-plot" title="Permalink to this term">#</a></dt><dd><p>Bar or line plot of explained variance ratio per PC.</p>
+<dt id="term-scree-plot">scree plot<a class="headerlink" href="#term-scree-plot" title="Link to this term">#</a></dt><dd><p>Bar or line plot of explained variance ratio per PC.</p>
 </dd>
-<dt id="term-t-SNE">t-SNE<a class="headerlink" href="#term-t-SNE" title="Permalink to this term">#</a></dt><dd><p>Nonlinear embedding that preserves local neighbor relations. Uses a KL divergence objective.</p>
+<dt id="term-t-SNE">t-SNE<a class="headerlink" href="#term-t-SNE" title="Link to this term">#</a></dt><dd><p>Nonlinear embedding that preserves local neighbor relations. Uses a KL divergence objective.</p>
 </dd>
-<dt id="term-UMAP">UMAP<a class="headerlink" href="#term-UMAP" title="Permalink to this term">#</a></dt><dd><p>Graph-based embedding that models fuzzy set cross entropy on a kNN graph.</p>
+<dt id="term-UMAP">UMAP<a class="headerlink" href="#term-UMAP" title="Link to this term">#</a></dt><dd><p>Graph-based embedding that models fuzzy set cross entropy on a kNN graph.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <p>Scenario:
 You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal is to build quick descriptor and fingerprint views, create 2D maps, and compare nearest neighbors under different distances before moving to assays.</p>
 <div class="cell docutils container">
@@ -1713,7 +2262,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </div>
 <section id="q1-build-feature-sets-and-print-compact-summaries">
-<h3><strong>Q1. Build feature sets and print compact summaries</strong><a class="headerlink" href="#q1-build-feature-sets-and-print-compact-summaries" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q1. Build feature sets and print compact summaries</strong><a class="headerlink" href="#q1-build-feature-sets-and-print-compact-summaries" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">calc_descriptors10</span></code> we defined earlier today, create a 20×10 descriptor table <code class="docutils literal notranslate"><span class="pre">df_fp_20</span></code> for these molecules.</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">morgan_bits</span></code> with <code class="docutils literal notranslate"><span class="pre">n_bits=64</span></code> and <code class="docutils literal notranslate"><span class="pre">radius=2</span></code>, create a 64-bit fingerprint string for each molecule.</p></li>
@@ -1724,7 +2273,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q2-pca-on-10-descriptors">
-<h3><strong>Q2. PCA on 10 descriptors</strong><a class="headerlink" href="#q2-pca-on-10-descriptors" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q2. PCA on 10 descriptors</strong><a class="headerlink" href="#q2-pca-on-10-descriptors" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Build a feature matrix <code class="docutils literal notranslate"><span class="pre">X_desc</span></code> from the 10 descriptor columns, then standardize with <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code>, call it <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code>.</p></li>
 <li><p>Fit <code class="docutils literal notranslate"><span class="pre">PCA()</span></code> on standardized data and project to 2D.</p></li>
@@ -1735,7 +2284,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q3-t-sne-on-10-descriptors">
-<h3><strong>Q3. t-SNE on 10 descriptors</strong><a class="headerlink" href="#q3-t-sne-on-10-descriptors" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q3. t-SNE on 10 descriptors</strong><a class="headerlink" href="#q3-t-sne-on-10-descriptors" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Use the same standardized 10D matrix <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code>.</p></li>
 <li><p>Fit t-SNE with <code class="docutils literal notranslate"><span class="pre">n_components=2</span></code>, <code class="docutils literal notranslate"><span class="pre">perplexity=5</span></code>, <code class="docutils literal notranslate"><span class="pre">init=&quot;pca&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">learning_rate=&quot;auto&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">n_iter=1000</span></code>, <code class="docutils literal notranslate"><span class="pre">random_state=0</span></code>.</p></li>
@@ -1747,7 +2296,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q4-pca-and-t-sne-on-morgan-64-fingerprints">
-<h3><strong>Q4. PCA and t-SNE on Morgan-64 fingerprints</strong><a class="headerlink" href="#q4-pca-and-t-sne-on-morgan-64-fingerprints" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q4. PCA and t-SNE on Morgan-64 fingerprints</strong><a class="headerlink" href="#q4-pca-and-t-sne-on-morgan-64-fingerprints" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Convert each 64-bit fingerprint string to a row of 0 or 1 to form a 20×64 matrix ·X_fp·.</p></li>
 <li><p>Run PCA to 2D and plot with labels <strong>and</strong> t-SNE to 2D on <code class="docutils literal notranslate"><span class="pre">X_fp</span></code> with the same t-SNE settings as Q3, and plot with labels.</p></li>
@@ -1758,7 +2307,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q5-nearest-5-neighbors-descriptors-vs-fingerprints">
-<h3><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong><a class="headerlink" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong><a class="headerlink" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Pick a query molecule index <code class="docutils literal notranslate"><span class="pre">q</span></code> between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">19</span></code></p></li>
 <li><p>Compute a 20×20 Euclidean distance matrix on <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code> and list the 5 closest neighbors of <code class="docutils literal notranslate"><span class="pre">q</span></code> (exclude itself).</p></li>
@@ -1767,6 +2316,202 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#TO DO</span>
 </pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="solution">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Solution</a><a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<section id="q1">
+<h3>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q1 - Solution</span>
+
+<span class="c1"># 10-descriptor table</span>
+<span class="n">desc10_20</span> <span class="o">=</span> <span class="n">df_20</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calc_descriptors10</span><span class="p">)</span>
+<span class="n">df10_20</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_20</span><span class="p">[[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">,</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Group&quot;</span><span class="p">]],</span> <span class="n">desc10_20</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 64-bit Morgan fingerprints</span>
+<span class="n">df_fp_20</span> <span class="o">=</span> <span class="n">df_20</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">morgan_bits</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n_bits</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;10-descriptor table (head):&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df10_20</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Fingerprint preview (first 24 bits):&quot;</span><span class="p">)</span>
+<span class="n">fp_preview</span> <span class="o">=</span> <span class="n">df_fp_20</span><span class="p">[[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">,</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">fp_preview</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fp_preview</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">fp_preview</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Descriptor stats:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df10_20</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">,</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Group&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span><span class="s2">&quot;std&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q2">
+<h3>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q2 - Solution</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">desc_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span><span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">]</span>
+
+<span class="n">X_desc</span> <span class="o">=</span> <span class="n">df10_20</span><span class="p">[</span><span class="n">desc_cols</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">X_desc_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_desc</span><span class="p">)</span>
+
+<span class="n">pca_desc_full</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_desc_std</span><span class="p">)</span>
+<span class="n">Z_desc</span> <span class="o">=</span> <span class="n">pca_desc_full</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_desc_std</span><span class="p">)[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># color map by group</span>
+<span class="n">group_to_color</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A_hydrophobic_aromatics&quot;</span><span class="p">:</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;B_polar_alc_acid&quot;</span><span class="p">:</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;C_N_hetero_amines&quot;</span><span class="p">:</span><span class="s2">&quot;tab:green&quot;</span><span class="p">}</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">df10_20</span><span class="p">[</span><span class="s2">&quot;Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">group_to_color</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="c1"># explained variance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_desc_full</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of PCs&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative EVR&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 2D scatter with labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z_desc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z_desc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df10_20</span><span class="p">[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Z_desc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">Z_desc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA on 10 descriptors (n=20)&quot;</span><span class="p">)</span>
+<span class="c1"># legend</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">group_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3">
+<h3>Q3<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q3 - Solution</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+
+<span class="n">tsne_desc</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+                 <span class="n">init</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y_desc</span> <span class="o">=</span> <span class="n">tsne_desc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_desc_std</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y_desc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y_desc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df10_20</span><span class="p">[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Y_desc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Y_desc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;tSNE-1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;tSNE-2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;t-SNE on 10 descriptors (n=20)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">group_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4">
+<h3>Q4<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q4 - Solution</span>
+
+<span class="c1"># 0/1 matrix from bitstrings</span>
+<span class="n">X_fp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="nb">int</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+
+<span class="c1"># PCA on fingerprint bits</span>
+<span class="n">pca_fp</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_fp</span><span class="p">)</span>
+<span class="n">Z_fp_pca</span> <span class="o">=</span> <span class="n">pca_fp</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_fp</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z_fp_pca</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z_fp_pca</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Z_fp_pca</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.03</span><span class="p">,</span> <span class="n">Z_fp_pca</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA on Morgan-64 (n=20)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">group_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># t-SNE on fingerprint bits</span>
+<span class="n">tsne_fp</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+               <span class="n">init</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Y_fp</span> <span class="o">=</span> <span class="n">tsne_fp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_fp</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Y_fp</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Y_fp</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;Compound Name&quot;</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">Y_fp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">Y_fp</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;tSNE-1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;tSNE-2&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;t-SNE on Morgan-64 (n=20)&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">group_to_color</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([],</span> <span class="p">[],</span> <span class="n">c</span><span class="o">=</span><span class="n">col</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">g</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;best&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q5">
+<h3>Q5<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q5 - Solution</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">pairwise_distances</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataStructs</span>
+
+<span class="c1"># choose a query row</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># change during class to test different queries</span>
+
+<span class="c1"># 1) Euclidean on standardized 10D descriptors</span>
+<span class="n">D_eu</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">X_desc_std</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+<span class="n">order_eu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">D_eu</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+<span class="n">nn_eu_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order_eu</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">q</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query: </span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">q</span><span class="p">,</span><span class="s1">&#39;Compound Name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">  |  Group: </span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">q</span><span class="p">,</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Nearest 5 by Euclidean (10 descriptors):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nn_eu_idx</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;Compound Name&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">24s</span><span class="si">}</span><span class="s2">  group=</span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">22s</span><span class="si">}</span><span class="s2">  d_eu=</span><span class="si">{</span><span class="n">D_eu</span><span class="p">[</span><span class="n">q</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2) Tanimoto on 64-bit fingerprints</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fp_string_to_bvect</span><span class="p">(</span><span class="n">fp_str</span><span class="p">):</span>
+    <span class="n">arr</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">fp_str</span><span class="p">]</span>
+    <span class="n">bv</span> <span class="o">=</span> <span class="n">DataStructs</span><span class="o">.</span><span class="n">ExplicitBitVect</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">b</span><span class="p">:</span> <span class="n">bv</span><span class="o">.</span><span class="n">SetBit</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">bv</span>
+
+<span class="n">fps</span> <span class="o">=</span> <span class="p">[</span><span class="n">fp_string_to_bvect</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">df_fp_20</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">]]</span>
+<span class="n">S_tan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">fps</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">fps</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fps</span><span class="p">)):</span>
+    <span class="n">S_tan</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">DataStructs</span><span class="o">.</span><span class="n">BulkTanimotoSimilarity</span><span class="p">(</span><span class="n">fps</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">fps</span><span class="p">)</span>
+<span class="n">D_tan</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">S_tan</span>
+
+<span class="n">order_tan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">D_tan</span><span class="p">[</span><span class="n">q</span><span class="p">])</span>
+<span class="n">nn_tan_idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">order_tan</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">q</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Nearest 5 by Tanimoto (Morgan-64):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">nn_tan_idx</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;Compound Name&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">24s</span><span class="si">}</span><span class="s2">  group=</span><span class="si">{</span><span class="n">df10_20</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="s1">&#39;Group&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">22s</span><span class="si">}</span><span class="s2">  d_tan=</span><span class="si">{</span><span class="n">D_tan</span><span class="p">[</span><span class="n">q</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1799,7 +2544,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1811,6 +2556,15 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
         <p class="prev-next-title">Lecture 10 - Property &amp; Reaction Prediction</p>
       </div>
     </a>
+    <a class="right-next"
+       href="lecture-12.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 12 - Self-supervised Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1819,6 +2573,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1852,6 +2607,14 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints"><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">7. Solution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1">Q1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2">Q2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4">Q4</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q5">Q5</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -1876,7 +2639,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1900,8 +2663,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

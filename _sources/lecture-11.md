@@ -31,11 +31,7 @@ kernelspec:
 ## 1. Setup and data
 
 We will reuse the C-H oxidation dataset and compute a small set of descriptors.
-<<<<<<< HEAD
 ```{code-cell} ipython3
-=======
-```python
->>>>>>> 6cda9aa (0929-1)
 :tags: [hide-input]
 # Core
 import numpy as np
@@ -1272,3 +1268,185 @@ df_20
 ```python
 #TO DO
 ```
+
+
+---
+
+
+## 7. Solution
+
+### Q1
+
+```{code-cell} ipython3
+# Q1 - Solution
+
+# 10-descriptor table
+desc10_20 = df_20["SMILES"].apply(calc_descriptors10)
+df10_20 = pd.concat([df_20[["Compound Name","SMILES","Group"]], desc10_20], axis=1)
+
+# 64-bit Morgan fingerprints
+df_fp_20 = df_20.copy()
+df_fp_20["Fingerprint"] = df_fp_20["SMILES"].apply(lambda s: morgan_bits(s, n_bits=64, radius=2))
+
+print("10-descriptor table (head):")
+display(df10_20.head().round(3))
+
+print("\nFingerprint preview (first 24 bits):")
+fp_preview = df_fp_20[["Compound Name","Group","Fingerprint"]].copy()
+fp_preview["Fingerprint"] = fp_preview["Fingerprint"].str.slice(0, 24) + "..."
+display(fp_preview)
+
+print("\nDescriptor stats:")
+display(df10_20.drop(columns=["Compound Name","SMILES","Group"]).agg(["mean","std"]).round(3))
+
+```
+
+### Q2
+```{code-cell} ipython3
+# Q2 - Solution
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+
+X_desc = df10_20[desc_cols].to_numpy()
+X_desc_std = StandardScaler().fit_transform(X_desc)
+
+pca_desc_full = PCA().fit(X_desc_std)
+Z_desc = pca_desc_full.transform(X_desc_std)[:, :2]
+
+# color map by group
+group_to_color = {"A_hydrophobic_aromatics":"tab:orange",
+                  "B_polar_alc_acid":"tab:blue",
+                  "C_N_hetero_amines":"tab:green"}
+colors = df10_20["Group"].map(group_to_color).to_numpy()
+
+# explained variance
+plt.figure(figsize=(4,3))
+plt.plot(np.cumsum(pca_desc_full.explained_variance_ratio_), marker="o")
+plt.xlabel("Number of PCs"); plt.ylabel("Cumulative EVR"); plt.tight_layout(); plt.show()
+
+# 2D scatter with labels
+plt.figure(figsize=(7,6))
+plt.scatter(Z_desc[:,0], Z_desc[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df10_20["Compound Name"]):
+    plt.text(Z_desc[i,0]+0.03, Z_desc[i,1], name, fontsize=8)
+plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on 10 descriptors (n=20)")
+# legend
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+```
+
+### Q3
+
+```{code-cell} ipython3
+# Q3 - Solution
+
+from sklearn.manifold import TSNE
+
+tsne_desc = TSNE(n_components=2, perplexity=2, learning_rate="auto",
+                 init="pca", n_iter=1000, random_state=0)
+Y_desc = tsne_desc.fit_transform(X_desc_std)
+
+plt.figure(figsize=(7,6))
+plt.scatter(Y_desc[:,0], Y_desc[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df10_20["Compound Name"]):
+    plt.text(Y_desc[i,0]+0.5, Y_desc[i,1], name, fontsize=8)
+plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on 10 descriptors (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+```
+
+### Q4
+```{code-cell} ipython3
+# Q4 - Solution
+
+# 0/1 matrix from bitstrings
+X_fp = np.array([[int(ch) for ch in s] for s in df_fp_20["Fingerprint"]], dtype=float)
+
+# PCA on fingerprint bits
+pca_fp = PCA(n_components=2, random_state=0).fit(X_fp)
+Z_fp_pca = pca_fp.transform(X_fp)
+
+plt.figure(figsize=(7,6))
+plt.scatter(Z_fp_pca[:,0], Z_fp_pca[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df_fp_20["Compound Name"]):
+    plt.text(Z_fp_pca[i,0]+0.03, Z_fp_pca[i,1], name, fontsize=8)
+plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on Morgan-64 (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+# t-SNE on fingerprint bits
+tsne_fp = TSNE(n_components=2, perplexity=5, learning_rate="auto",
+               init="pca", n_iter=1000, random_state=0)
+Y_fp = tsne_fp.fit_transform(X_fp)
+
+plt.figure(figsize=(7,6))
+plt.scatter(Y_fp[:,0], Y_fp[:,1], s=80, c=colors, alpha=0.9)
+for i, name in enumerate(df_fp_20["Compound Name"]):
+    plt.text(Y_fp[i,0]+0.5, Y_fp[i,1], name, fontsize=8)
+plt.xlabel("tSNE-1"); plt.ylabel("tSNE-2"); plt.title("t-SNE on Morgan-64 (n=20)")
+for g, col in group_to_color.items():
+    plt.scatter([], [], c=col, label=g)
+plt.legend(title="Group", loc="best")
+plt.tight_layout(); plt.show()
+
+```
+
+### Q5
+
+```{code-cell} ipython3
+# Q5 - Solution
+
+from sklearn.metrics import pairwise_distances
+from rdkit import DataStructs
+
+# choose a query row
+q = 3  # change during class to test different queries
+
+# 1) Euclidean on standardized 10D descriptors
+D_eu = pairwise_distances(X_desc_std, metric="euclidean")
+order_eu = np.argsort(D_eu[q])
+nn_eu_idx = [i for i in order_eu if i != q][:5]
+
+print(f"Query: {df10_20.loc[q,'Compound Name']}  |  Group: {df10_20.loc[q,'Group']}")
+print("\nNearest 5 by Euclidean (10 descriptors):")
+for j in nn_eu_idx:
+    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_eu={D_eu[q,j]:.3f}")
+
+# 2) Tanimoto on 64-bit fingerprints
+def fp_string_to_bvect(fp_str):
+    arr = [int(ch) for ch in fp_str]
+    bv = DataStructs.ExplicitBitVect(len(arr))
+    for k, b in enumerate(arr):
+        if b: bv.SetBit(k)
+    return bv
+
+fps = [fp_string_to_bvect(s) for s in df_fp_20["Fingerprint"]]
+S_tan = np.zeros((len(fps), len(fps)))
+for i in range(len(fps)):
+    S_tan[i, :] = DataStructs.BulkTanimotoSimilarity(fps[i], fps)
+D_tan = 1.0 - S_tan
+
+order_tan = np.argsort(D_tan[q])
+nn_tan_idx = [i for i in order_tan if i != q][:5]
+
+print("\nNearest 5 by Tanimoto (Morgan-64):")
+for j in nn_tan_idx:
+    print(f"  {df10_20.loc[j,'Compound Name']:24s}  group={df10_20.loc[j,'Group']:22s}  d_tan={D_tan[q,j]:.3f}")
+
+```
+
