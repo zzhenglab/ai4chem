@@ -19,64 +19,77 @@ kernelspec:
 :depth: 1
 ```
 
+## Learning goals
+
+- Connect **unsupervised learning** ideas to **molecular generation**.
+- Explain what an **encoder** and a **decoder** are.
+- Build a tiny **Autoencoder (AE)** for SMILES and discuss its limits for generation.
+- Understand the **Variational Autoencoder (VAE)** idea and why it helps sampling.
+- Train a small **VAE on SMILES** and generate new molecules.
+- Inspect what **encode** outputs look like and how sampling works in latent space.
+
+[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
+
+
+
 ## 1. Setup and data
 
-We keep code in small steps. After each step we print a small result so you can see shapes and objects.
 
 ```{code-cell} ipython3
+:tags: [hide-input]
+
 # Core
-import numpy as np
-import pandas as pd
+import os, math, random, numpy as np, pandas as pd
 import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings("ignore")
-```
 
-RDKit is assumed in this course. If it is not present in your environment, you can still read, but some cells will not run.
+!pip -q install deepchem torchvision torchaudio --upgrade
+import deepchem as dc
 
-```{code-cell} ipython3
-try:
-    from rdkit import Chem
-    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, Draw
-    RD = True
-except Exception:
-    RD = False
-    Chem = None
-RD
-```
-
-For ML we only need a few pieces. We will add more as needed.
-
-```{code-cell} ipython3
 import torch, torch.nn as nn, torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-```
 
-Load the small C-H oxidation dataset used in earlier lectures.
+try:
+    from rdkit import Chem, RDLogger
+    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, QED, Draw
+    RD = True
+except Exception:
+    try:
+      %pip install rdkit
+      from rdkit import Chem
+      from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors, QED, Draw
+      RD = True
+    except:
+      print("RDKit not installed")
+      RD = False
+      Chem = None
 
-```{code-cell} ipython3
+# Reproducibility
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+
+# Device
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print("Device:", device)
+
+# Quiet RDKit
+RDLogger.DisableLog('rdApp.*')
+
 url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
 df_raw = pd.read_csv(url)
 df_raw.head(3)
 ```
 
-Compute 10 quick descriptors that we will reuse several times today.
+Similar to Lecture 11, we will first build a 10 descriptor dataset for our 575 molecules loaded from C-H oxidation dataset.
 
 ```{code-cell} ipython3
 def calc_descriptors10(smiles: str):
-    if not RD:
-        return pd.Series({k: np.nan for k in [
-            "MolWt","LogP","TPSA","NumRings","NumHAcceptors","NumHDonors",
-            "NumRotatableBonds","HeavyAtomCount","FractionCSP3","NumAromaticRings"
-        ]})
     m = Chem.MolFromSmiles(smiles)
-    if m is None:
-        return pd.Series({k: np.nan for k in [
-            "MolWt","LogP","TPSA","NumRings","NumHAcceptors","NumHDonors",
-            "NumRotatableBonds","HeavyAtomCount","FractionCSP3","NumAromaticRings"
-        ]})
     return pd.Series({
         "MolWt": Descriptors.MolWt(m),
         "LogP": Crippen.MolLogP(m),
@@ -85,36 +98,41 @@ def calc_descriptors10(smiles: str):
         "NumHAcceptors": rdMolDescriptors.CalcNumHBA(m),
         "NumHDonors": rdMolDescriptors.CalcNumHBD(m),
         "NumRotatableBonds": rdMolDescriptors.CalcNumRotatableBonds(m),
-        "HeavyAtomCount": Descriptors.HeavyAtomCount(m),
+        "HeavyAtomCount": Descriptors.HeavyAtomCount(m),  
         "FractionCSP3": rdMolDescriptors.CalcFractionCSP3(m),
-        "NumAromaticRings": rdMolDescriptors.CalcNumAromaticRings(m),
+        "NumAromaticRings": rdMolDescriptors.CalcNumAromaticRings(m)
     })
 
-desc10 = df_raw["SMILES"].apply(calc_descriptors10)
-df10 = pd.concat([df_raw, desc10], axis=1).dropna()
-df10.shape, df10.head(2)
+desc10 = df_raw["SMILES"].apply(calc_descriptors10)   # 10 descriptors
+df10 = pd.concat([df_raw, desc10], axis=1)
+df10
+
 ```
 
-We pick a medium sized subset for quick AE experiments.
+In the previous lecture, we learned how to explore our dataset by plotting the distribution of molecular properties using histograms.
+
+Another way is with a **mask**, which filters molecules by conditions like `molecular weight`, `LogP`, etc. Later in this class we’ll generate new molecules, so it’s helpful to see how many remain in our training set after applying these filters.
+
+
+
 
 ```{code-cell} ipython3
+# New mask: MolWt between 100–400, LogP between -1 and 5
 mask = (
-    (df10["MolWt"].between(120, 450)) &
-    ((df10["NumRings"] >= 1) | (df10["NumHAcceptors"] >= 1) | (df10["NumHDonors"] >= 1))
-)
+    (df10["MolWt"].between(100, 400)) &
+    (df10["LogP"].between(-1, 3)) )
+
+# Apply sampling
 df_small = df10[mask].copy().sample(min(500, mask.sum()), random_state=42)
 df_small.shape
 ```
 
-```{admonition} ⏰ Exercise 1
-Change the MolWt range to 100..380 and re-run the filter. How many rows remain Print `df_small.shape`.
-```
-
 ## 2. Unsupervised recap with a tiny PCA
 
-We standardize 10D descriptors and compute a 2D PCA for a quick map. This connects to our earlier lecture on dimension reduction.
+We standardize 10D descriptors and compute a 2D `PCA()` for a quick map. Recall that PCA helps us reduce complexity while preserving the main variation in the data, making it easier to visualize patterns and clusters.
 
 ```{code-cell} ipython3
+
 from sklearn.decomposition import PCA
 
 feat_cols = ["MolWt","LogP","TPSA","NumRings","NumHAcceptors","NumHDonors",
@@ -125,23 +143,27 @@ Xz = scaler.transform(X)
 
 pca = PCA(n_components=2).fit(Xz)
 Zp = pca.transform(Xz)
-Zp[:3]
-```
+print(f"Five Examples of molecules (coordinates): {Zp[:5]}")
 
-Plot the PCA map and color by number of rings.
 
-```{code-cell} ipython3
 plt.scatter(Zp[:,0], Zp[:,1], c=df_small["NumRings"], cmap="viridis", s=12, alpha=0.7)
 plt.colorbar(label="NumRings")
 plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title("PCA on 10 descriptors")
 plt.show()
+
+
 ```
 
-Look at loadings to see which descriptors drive PC1.
+In the scatter plot we colored the points by the number of rings. This is not required every time, and you could just use a single color for all points. Adding a property as color is simply a way to help you better visualize patterns in the PCA map.
+
+In the scatter plot we colored the points by the number of rings. This is not required every time, and you could just use a single color for all points. Adding a property as color is simply a way to help you better visualize patterns in the PCA map.
+
+Below we look at `loadings` to see which descriptors drive PC1.
 
 ```{code-cell} ipython3
 loadings = pd.Series(pca.components_[0], index=feat_cols).sort_values()
 loadings
+
 ```
 
 ```{admonition} ⏰ Exercise 2
@@ -150,8 +172,16 @@ Replace color by `TPSA` in the PCA scatter. What region corresponds to high TPSA
 
 ## 3. Autoencoder on descriptors
 
-We build a very small autoencoder. The encoder compresses 10 numbers to 2. The decoder reconstructs the 10 numbers.
+We will train a tiny autoencoder (AE) that learns a low-dimensional summary of our 10 standardized descriptors. 
 
+Let $x \in \mathbb{R}^{10}$ be one molecule's descriptor vector. The encoder $f_\theta$ maps $x$ to a latent code $z \in \mathbb{R}^2$, and the decoder $g_\phi$ maps $z$ back to a reconstruction $\hat{x} \in \mathbb{R}^{10}$. The training objective is to minimize the reconstruction error
+$
+\mathcal{L}(\theta,\phi) \;=\; \frac{1}{N}\sum_{i=1}^N \lVert x_i - \hat{x}_i \rVert_2^2
+\quad \text{with} \quad \hat{x}_i = g_\phi\!\big(f_\theta(x_i)\big).
+$
+
+
+Intuitively, the encoder compresses, the decoder unpacks, and the loss measures how faithful the unpacked vector is to the input.
 ```{code-cell} ipython3
 class TinyAE(nn.Module):
     def __init__(self, in_dim=10, hid=64, z_dim=2):
