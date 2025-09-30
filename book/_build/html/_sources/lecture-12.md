@@ -23,22 +23,14 @@ kernelspec:
 - Build **clustering** workflows: pick features, scale, fit, visualize.
 - Choose and justify distance metrics for descriptors vs fingerprints.
 - Select k and model type using elbow and silhouette.
-<<<<<<< HEAD
 
 [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing)
 
-=======
-- Diagnose and improve clusters with simple augmentation, dimensionality reduction, and iteration.
-- Train a small **contrastive model** with data augmentation.
->>>>>>> 6cda9aa (0929-1)
 
 ## 1. Setup
 
 ```{code-cell} ipython3
-<<<<<<< HEAD
 :tags: [hide-input]
-=======
->>>>>>> 6cda9aa (0929-1)
 # Core
 import numpy as np
 import pandas as pd
@@ -67,7 +59,6 @@ except Exception:
         RD = False
         Chem = None
 
-<<<<<<< HEAD
 # UMAP install guard
 try:
     import umap
@@ -76,17 +67,11 @@ try:
 except Exception:
     HAVE_UMAP = False
 
-=======
->>>>>>> 6cda9aa (0929-1)
 import warnings
 warnings.filterwarnings("ignore")
 ```
 
-<<<<<<< HEAD
 ## 2. Data Loading
-=======
-## 2. From dimension reduction to clustering
->>>>>>> 6cda9aa (0929-1)
 
 Similar to we we did before, let's first make small helper to compute 4 quick descriptors and a compact fingerprint.
 
@@ -153,12 +138,6 @@ X_desc[:2], X_fp.shape, y_reac.value_counts().to_dict()
 ```
 
 
-<<<<<<< HEAD
-=======
----
-
-## 2. From dimension reduction to clustering
->>>>>>> 6cda9aa (0929-1)
 
 In Lecture 11 we mapped high dimensional features to 2D for plots using PCA, t-SNE, and UMAP. Today we take the next step: form clusters that group similar molecules together. We will start simple and add checks.
 
@@ -187,11 +166,6 @@ plt.show()
 
 
 
-<<<<<<< HEAD
-
-=======
-## 3. KMeans on clustering
->>>>>>> 6cda9aa (0929-1)
 
 ## 3. KMeans on clustering
 
@@ -295,17 +269,6 @@ Let's also take a look at how kmeans can be applied to t-SNE and UMAP we learned
 ```{code-cell} ipython3
 from sklearn.manifold import TSNE
 
-<<<<<<< HEAD
-=======
-# UMAP install guard
-try:
-    import umap
-    from umap import UMAP
-    HAVE_UMAP = True
-except Exception:
-    HAVE_UMAP = False
-
->>>>>>> 6cda9aa (0929-1)
 def embed_descriptors(X, use_umap=True, random_state=0):
     if use_umap and HAVE_UMAP:
         reducer = UMAP(n_neighbors=15, min_dist=0.10, metric="euclidean", random_state=random_state)
@@ -884,7 +847,6 @@ plt.show()
 ```
 ---
 
-<<<<<<< HEAD
 
 ---
 ### 6. Glossary
@@ -943,359 +905,11 @@ Choose k by separation vs compactness.
 1) Fit `KMeans` for k in {2..9}.
 2) Compute `silhouette_score()` for each k.
 3) Plot `silhouette` vs `k`. Report the best k by this metric.
-=======
-## 6. Do clusters track the `Reactivity` column
-
-We do not use `Reactivity` during fit, but we can check alignment after the fact.
-
-```{code-cell} ipython3
-def report_against_reactivity(labels, name="model"):
-    ct = pd.crosstab(labels, y_reac)
-    print(name, "cross tab")
-    display(ct)
-    if y_reac.nunique() > 1:
-        print("ARI:", round(adjusted_rand_score(y_reac, labels), 3))
-        print("NMI:", round(normalized_mutual_info_score(y_reac, labels), 3))
-
-report_against_reactivity(labels_km, "KMeans")
-report_against_reactivity(lab_agg,  "Agglomerative")
-if (lab_db != -1).any():
-    report_against_reactivity(lab_db,  "DBSCAN")
-```
-
-Sometimes fingerprints carry scaffold patterns that make groups easier.
-
-We will cluster the fingerprint matrix with KMeans on cosine distance. Cosine on bits is a rough proxy. For a closer chem view you can swap in Tanimoto with methods that allow precomputed distances.
-
-```{code-cell} ipython3
-# normalize for cosine KMeans trick
-norm = np.linalg.norm(X_fp, axis=1, keepdims=True) + 1e-9
-X_fp_unit = X_fp / norm
-
-kmeans_fp = KMeans(n_clusters=3, random_state=0, n_init=10).fit(X_fp_unit)
-report_against_reactivity(kmeans_fp.labels_, "KMeans on FP (cosine via unit vectors)")
-```
-
-Project FP to 2D for inspection.
-
-```{code-cell} ipython3
-p_fp = PCA(n_components=2, random_state=0).fit_transform(X_fp)
-plt.figure(figsize=(5,4))
-for lab in np.unique(kmeans_fp.labels_):
-    idx = kmeans_fp.labels_ == lab
-    plt.scatter(p_fp[idx,0], p_fp[idx,1], s=12, alpha=0.8, label=f"c{lab}")
-plt.xlabel("PC1"); plt.ylabel("PC2")
-plt.title("KMeans on fingerprints - PCA view")
-plt.legend(); plt.show()
-```
-
----
-
-## 7. Data augmentation for chemistry tables
-
-Self-supervised methods often need two augmented views per sample. We keep it simple and transparent.
-
-For descriptors (continuous):
-- **Gaussian jitter**: $x' = x + \epsilon$, with $\epsilon \sim \mathcal{N}(0, \sigma^2)$ after standardization.
-- **Feature dropout**: set one coordinate to 0 with small probability $p$.
-
-For fingerprints (binary):
-- **Bit dropout**: randomly set a small fraction of on bits to 0.
-- **Substructure noise**: flip a tiny fraction of bits both ways, but keep the flip rate very small.
-
-We will build two simple augmenters.
-
-```{code-cell} ipython3
-rng = np.random.default_rng(0)
-
-def aug_desc(x, sigma=0.1, drop_p=0.1):
-    z = x + rng.normal(0, sigma, size=x.shape)
-    mask = rng.random(size=x.shape) < drop_p
-    z = z.copy()
-    z[mask] = 0.0
-    return z
-
-def aug_fp(bits, p_drop=0.05, p_flip=0.01):
-    b = bits.copy().astype(float)
-    on_idx = np.where(b > 0)[0]
-    off_idx = np.where(b == 0)[0]
-    # drop some on bits
-    if len(on_idx) > 0:
-        drop_n = max(0, int(p_drop * len(on_idx)))
-        sel = rng.choice(on_idx, size=drop_n, replace=False)
-        b[sel] = 0.0
-    # flip a tiny fraction either way
-    flip_n = max(0, int(p_flip * len(b)))
-    sel = rng.choice(np.arange(len(b)), size=flip_n, replace=False)
-    b[sel] = 1.0 - b[sel]
-    return b
-```
-
-Inspect a few rows to see the effect.
-
-```{code-cell} ipython3
-i = 3
-print("Original desc (z):", np.round(X_desc[i], 3))
-print("Aug desc (z):     ", np.round(aug_desc(X_desc[i]), 3))
-
-print("\nOriginal FP bits sum:", int(X_fp[i].sum()))
-print("Aug FP bits sum:", int(aug_fp(X_fp[i]).sum()))
-```
-
-```{admonition} Tip
-Augmentation should be mild. If you distort too much, two views no longer represent the same molecule and the method will struggle.
-```
-
----
-
-## 8. Contrastive learning - a gentle SimCLR style demo
-
-Goal: learn an embedding $f_\theta(x)$ so that two augmented views of the same molecule are close and different molecules are apart. We will do a small, clean implementation that runs on CPU with minimal code.
-
-We use a linear projection on top of standardized descriptors:
-- Input: 4 z-scored descriptors.
-- Hidden: small 32 unit layer with ReLU.
-- Projection: 16 unit head used in the loss.
-
-The InfoNCE loss for a batch with pairs $(i, i')$ is
-$
-\ell = -\frac{1}{N}\sum_{i=1}^{N}\log \frac{\exp(\mathrm{sim}(z_i, z_{i'})/\tau)}{\sum_{j=1}^{2N}\mathbb{1}[j \ne i]\exp(\mathrm{sim}(z_i, z_j)/\tau)}
-$
-with cosine similarity and temperature $\tau$.
-
-We implement a small training loop in PyTorch if available. If not, we show a simple NumPy fallback that optimizes a cosine triplet style loss.
-
-```{code-cell} ipython3
-try:
-    import torch
-    import torch.nn as nn
-    import torch.optim as optim
-    TORCH_OK = True
-except Exception:
-    TORCH_OK = False
-TORCH_OK
-```
-
-### 8.1 PyTorch path
-
-```{code-cell} ipython3
-if TORCH_OK:
-    class TinySimCLR(nn.Module):
-        def __init__(self, d_in=4, d_hidden=32, d_proj=16):
-            super().__init__()
-            self.net = nn.Sequential(
-                nn.Linear(d_in, d_hidden),
-                nn.ReLU(),
-                nn.Linear(d_hidden, d_proj)
-            )
-
-        def forward(self, x):
-            z = self.net(x)
-            # normalize to unit length for cosine
-            z = z / (z.norm(dim=1, keepdim=True) + 1e-9)
-            return z
-
-    def info_nce_loss(z1, z2, tau=0.2):
-        # z1, z2: [N, d], already unit norm
-        N = z1.size(0)
-        z = torch.cat([z1, z2], dim=0)                       # [2N, d]
-        sim = z @ z.t()                                      # cosine sim if z is normalized
-        mask = torch.eye(2*N, dtype=torch.bool, device=z.device)
-        sim = sim / tau
-
-        # for each i in 0..2N-1, the positive index is i^1 (flip last bit)
-        targets = torch.arange(2*N, device=z.device)
-        targets = targets ^ 1
-
-        # log-softmax over rows, exclude self with mask
-        sim = sim.masked_fill(mask, -1e9)
-        log_prob = sim.log_softmax(dim=1)
-        loss = -log_prob[torch.arange(2*N, device=z.device), targets].mean()
-        return loss
-
-    # make small training set from descriptors
-    X = torch.tensor(X_desc, dtype=torch.float32)
-    model = TinySimCLR(d_in=4, d_hidden=32, d_proj=16)
-    opt = optim.Adam(model.parameters(), lr=1e-3)
-
-    # simple loader that creates on the fly augmentations
-    def batch_indices(n, bs, rng=np.random.default_rng(0)):
-        idx = np.arange(n)
-        rng.shuffle(idx)
-        for i in range(0, n, bs):
-            yield idx[i:i+bs]
-
-    losses = []
-    model.train()
-    for epoch in range(10):
-        for idx in batch_indices(len(X_desc), bs=128):
-            x_np = X_desc[idx]
-            x1 = np.vstack([aug_desc(x) for x in x_np])
-            x2 = np.vstack([aug_desc(x) for x in x_np])
-            x1 = torch.tensor(x1, dtype=torch.float32)
-            x2 = torch.tensor(x2, dtype=torch.float32)
-
-            z1 = model(x1)
-            z2 = model(x2)
-            loss = info_nce_loss(z1, z2, tau=0.2)
-
-            opt.zero_grad()
-            loss.backward()
-            opt.step()
-            losses.append(float(loss.item()))
-    print("Last loss:", round(losses[-1], 4))
-```
-
-Plot the training loss curve.
-
-```{code-cell} ipython3
-if TORCH_OK:
-    plt.plot(losses)
-    plt.xlabel("update"); plt.ylabel("loss")
-    plt.title("Contrastive training - loss")
-    plt.show()
-```
-
-Get the final embeddings and visualize in 2D with PCA for a quick look. Color by `Reactivity` only for reading the plot.
-
-```{code-cell} ipython3
-if TORCH_OK:
-    model.eval()
-    with torch.no_grad():
-        Z_embed = model(torch.tensor(X_desc, dtype=torch.float32)).numpy()
-    Z2 = PCA(n_components=2, random_state=0).fit_transform(Z_embed)
-
-    colors = pd.Categorical(y_reac).codes
-    plt.scatter(Z2[:,0], Z2[:,1], s=12, c=colors, cmap="tab10", alpha=0.8)
-    plt.xlabel("PC1"); plt.ylabel("PC2")
-    plt.title("Learned embedding - projected to 2D")
-    plt.show()
-
-    # cluster in the learned space
-    kmeans_embed = KMeans(n_clusters=3, random_state=0, n_init=10).fit(Z_embed)
-    report_against_reactivity(kmeans_embed.labels_, "KMeans on learned embedding")
-```
-
-### 8.2 NumPy fallback (tiny triplet style)
-
-If PyTorch is not available, we do a small projection matrix and optimize a margin loss on cosine similarities.
-
-```{code-cell} ipython3
-if not TORCH_OK:
-    rng = np.random.default_rng(0)
-    W = rng.normal(0, 0.1, size=(4, 16))  # projection
-    lr = 1e-2
-
-    def proj(x):
-        z = x @ W
-        z = z / (np.linalg.norm(z, axis=1, keepdims=True) + 1e-9)
-        return z
-
-    def triplet_step(Xz, m=0.2, bs=128):
-        idx = rng.choice(len(Xz), size=bs, replace=False)
-        x = Xz[idx]
-        x_pos = np.vstack([aug_desc(v) for v in x])
-        x_neg = Xz[rng.choice(len(Xz), size=bs, replace=False)]
-
-        z = proj(x)
-        zp = proj(x_pos)
-        zn = proj(x_neg)
-
-        # cosine sim
-        s_pos = np.sum(z * zp, axis=1)
-        s_neg = np.sum(z * zn, axis=1)
-        # hinge
-        loss = np.maximum(0.0, m - s_pos + s_neg).mean()
-
-        # simple gradient approximation by finite diff on W for clarity in class
-        # not efficient, but readable for students
-        eps = 1e-3
-        grad = np.zeros_like(W)
-        for a in range(W.shape[0]):
-            for b in range(W.shape[1]):
-                W[a,b] += eps
-                lp = np.maximum(0.0, m - np.sum(proj(x)*proj(x_pos), axis=1) + np.sum(proj(x)*proj(x_neg), axis=1)).mean()
-                W[a,b] -= 2*eps
-                lm = np.maximum(0.0, m - np.sum(proj(x)*proj(x_pos), axis=1) + np.sum(proj(x)*proj(x_neg), axis=1)).mean()
-                W[a,b] += eps
-                grad[a,b] = (lp - lm) / (2*eps)
-
-        return loss, grad
-
-    Xz = X_desc.copy()
-    curve = []
-    for it in range(20):
-        loss, g = triplet_step(Xz, m=0.2, bs=96)
-        W -= lr * g
-        curve.append(loss)
-    print("Last loss:", round(curve[-1], 4))
-
-    plt.plot(curve); plt.xlabel("iter"); plt.ylabel("loss")
-    plt.title("NumPy triplet training - loss")
-    plt.show()
-
-    Z_embed = proj(X_desc)
-    Z2 = PCA(n_components=2, random_state=0).fit_transform(Z_embed)
-    colors = pd.Categorical(y_reac).codes
-    plt.scatter(Z2[:,0], Z2[:,1], s=12, c=colors, cmap="tab10", alpha=0.8)
-    plt.xlabel("PC1"); plt.ylabel("PC2")
-    plt.title("Learned embedding - projected to 2D")
-    plt.show()
-
-    kmeans_embed = KMeans(n_clusters=3, random_state=0, n_init=10).fit(Z_embed)
-    report_against_reactivity(kmeans_embed.labels_, "KMeans on learned embedding")
-```
-
-```{admonition} What to expect
-- The tiny model is simple, so gains will be modest. That is fine for a first hands-on.
-- If clusters on the learned space align a bit better with `Reactivity` than raw descriptors, the signal is working.
-- If not, try a slightly larger hidden size, more epochs, or gentler augmentation.
-```
-
----
-### 9 Glossary
-
-```{glossary}
-clustering
-  Group samples using only $X$, no labels during fit.
-
-silhouette score
-  For each point compare average distance to its own cluster vs nearest other cluster. Ranges in $[-1,1]$.
-
-ARI
-  Adjusted Rand Index. Compares two partitions. Corrects for random agreement.
-
-NMI
-  Normalized mutual information between two partitions. Ranges in $[0,1]$.
-
-augmentation
-  A small random transform that keeps identity. Used to create two views of the same sample.
-
-contrastive learning
-  Learn embeddings so positive pairs are close and negatives are apart.
-
-InfoNCE
-  A softmax loss over similarities. Temperature $\tau$ controls sharpness.
-
-Tanimoto similarity
-  Overlap over union for bit sets, common for fingerprints.
-```
----
-## 10. In-class activity
-
-You will work in pairs. Use small edits to code you already ran.
-
-**Q1. Descriptor vs fingerprint clustering**
-- Run KMeans with k in {2, 3, 4} on `X_desc` and on `X_fp_unit`.
-- For each run, record ARI and NMI vs `Reactivity`.
-- Which feature family did better for this dataset on your machine?
->>>>>>> 6cda9aa (0929-1)
 
 ```python
 # TO DO
 ```
 
-<<<<<<< HEAD
 
 
 ### Q4. Agglomerative sweep with plots
@@ -1304,170 +918,8 @@ Compare another clustering model and visualize the chosen solution.
 1) For k in {2..9}, fit `AgglomerativeClustering(linkage="ward")`.
 2) Compute the silhouette for each k and plot `silhouette` vs `k`.
 3) Pick the best k by silhouette, refit, then plot the cluster assignments on the same t-SNE plane from Q1.
-=======
-**Q2. DBSCAN tuning**
-- Fix descriptors. Sweep `eps` in `[0.6, 0.8, 1.0, 1.2]` and `min_samples` in `[5, 8, 12]`.
-- For each pair, record number of clusters and noise count.
-- Pick one setting that gives at least 2 clusters and less than 20 percent noise. Show PCA plot with those labels.
->>>>>>> 6cda9aa (0929-1)
 
 ```python
 # TO DO
 ```
 
-<<<<<<< HEAD
-=======
-**Q3. Elbow vs silhouette**
-- For descriptors, compute inertia and silhouette for k from 2 to 8.
-- Choose k by elbow and also by silhouette.
-- Are the two choices the same? If not, which do you trust here and why?
-
-```python
-# TO DO
-```
-
-**Q4. Augmentation sensitivity**
-- In the contrastive block, change descriptor jitter `sigma` from 0.05 to 0.2 and dropout `drop_p` from 0.05 to 0.2.
-- Rerun for 5 epochs and plot the loss curve.
-- Does the loss get unstable when noise is too strong?
-
-```python
-# TO DO
-```
-
-**Q5. Downstream check with a tiny classifier**
-- Take the learned embedding `Z_embed` and split into 80 or 20.
-- Train a simple logistic regression on `Z_embed` to predict a binarized `Reactivity` like high vs not high.
-- Compare accuracy to the same classifier trained on raw descriptors.
-
-```python
-# TO DO
-```
-
----
-
-## 11. Solutions
-
-**Q1**
-
-```{code-cell} ipython3
-def sweep_kmeans(X, ks=(2,3,4), title=""):
-    rows = []
-    for kk in ks:
-        km = KMeans(n_clusters=kk, random_state=0, n_init=10).fit(X)
-        ari = adjusted_rand_score(y_reac, km.labels_) if y_reac.nunique()>1 else np.nan
-        nmi = normalized_mutual_info_score(y_reac, km.labels_) if y_reac.nunique()>1 else np.nan
-        rows.append({"k": kk, "ARI": ari, "NMI": nmi})
-    out = pd.DataFrame(rows).round(3)
-    print(title); display(out); return out
-
-tab_desc = sweep_kmeans(X_desc, title="Descriptors")
-tab_fp   = sweep_kmeans(X_fp_unit, title="Fingerprints (unit, cosine trick)")
-```
-
-**Q2**
-
-```{code-cell} ipython3
-rows = []
-for eps in [0.6, 0.8, 1.0, 1.2]:
-    for ms in [5, 8, 12]:
-        db = DBSCAN(eps=eps, min_samples=ms).fit(X_desc)
-        labs = db.labels_
-        n_noise = int((labs == -1).sum())
-        n_cluster = len(np.unique(labs[labs!=-1]))
-        rows.append({"eps": eps, "min_samples": ms, "n_clusters": n_cluster, "n_noise": n_noise})
-pd.DataFrame(rows)
-```
-
-Plot with one selection.
-
-```{code-cell} ipython3
-eps_opt, ms_opt = 0.8, 8
-db = DBSCAN(eps=eps_opt, min_samples=ms_opt).fit(X_desc)
-labs = db.labels_
-plt.figure(figsize=(5,4))
-for lab in np.unique(labs):
-    idx = labs == lab
-    name = "noise" if lab == -1 else f"c{lab}"
-    plt.scatter(Z[idx,0], Z[idx,1], s=14, alpha=0.8, label=name)
-plt.legend(); plt.xlabel("PC1"); plt.ylabel("PC2"); plt.title(f"DBSCAN eps={eps_opt} ms={ms_opt}")
-plt.show()
-```
-
-**Q3**
-
-```{code-cell} ipython3
-ks = range(2,9)
-inertia, sil = [], []
-for kk in ks:
-    km = KMeans(n_clusters=kk, random_state=0, n_init=10).fit(X_desc)
-    inertia.append(km.inertia_)
-    sil.append(silhouette_score(X_desc, km.labels_))
-
-display(pd.DataFrame({"k": list(ks), "inertia": inertia, "silhouette": sil}).round(3))
-```
-
-**Q4**
-
-```{code-cell} ipython3
-def aug_desc_custom(x, sigma=0.05, drop_p=0.05):
-    z = x + rng.normal(0, sigma, size=x.shape)
-    mask = rng.random(size=x.shape) < drop_p
-    z = z.copy()
-    z[mask] = 0.0
-    return z
-
-if TORCH_OK:
-    model2 = TinySimCLR(d_in=4, d_hidden=32, d_proj=16)
-    opt2 = optim.Adam(model2.parameters(), lr=1e-3)
-    losses2 = []
-    for epoch in range(5):
-        for idx in batch_indices(len(X_desc), bs=128):
-            x_np = X_desc[idx]
-            x1 = np.vstack([aug_desc_custom(x, sigma=0.2, drop_p=0.2) for x in x_np])
-            x2 = np.vstack([aug_desc_custom(x, sigma=0.2, drop_p=0.2) for x in x_np])
-            x1 = torch.tensor(x1, dtype=torch.float32)
-            x2 = torch.tensor(x2, dtype=torch.float32)
-            z1 = model2(x1); z2 = model2(x2)
-            loss = info_nce_loss(z1, z2, tau=0.2)
-            opt2.zero_grad(); loss.backward(); opt2.step()
-            losses2.append(float(loss.item()))
-    plt.plot(losses2); plt.xlabel("update"); plt.ylabel("loss")
-    plt.title("High noise training - loss")
-    plt.show()
-```
-
-**Q5**
-
-```{code-cell} ipython3
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-
-# binarize reactivity if it has multiple levels: high vs not high
-yr = (y_reac.str.lower().str.contains("high")).astype(int)
-
-# raw descriptors
-Xd_tr, Xd_te, yr_tr, yr_te = train_test_split(X_desc, yr, test_size=0.2, random_state=0, stratify=yr)
-clf_d = LogisticRegression(max_iter=1000, random_state=0).fit(Xd_tr, yr_tr)
-acc_d = accuracy_score(yr_te, clf_d.predict(Xd_te))
-
-# learned embedding if available
-if TORCH_OK:
-    with torch.no_grad():
-        Z_emb = model(torch.tensor(X_desc, dtype=torch.float32)).numpy()
-else:
-    Z_emb = Z_embed
-
-Ze_tr, Ze_te, yr_tr2, yr_te2 = train_test_split(Z_emb, yr, test_size=0.2, random_state=0, stratify=yr)
-clf_e = LogisticRegression(max_iter=1000, random_state=0).fit(Ze_tr, yr_tr2)
-acc_e = accuracy_score(yr_te2, clf_e.predict(Ze_te))
-
-pd.DataFrame({"Model": ["LogReg on descriptors", "LogReg on learned embed"], "Accuracy": [acc_d, acc_e]}).round(3)
-```
-
-
-
-
-
->>>>>>> 6cda9aa (0929-1)
