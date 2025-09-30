@@ -434,65 +434,64 @@ document.write(`
 </section>
 <section id="setup-and-data">
 <h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Permalink to this heading">#</a></h2>
-<p>We will reuse the C-H oxidation dataset and compute a small set of descriptors.</p>
-<<<<<<< HEAD
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
+<p>We will reuse the C-H oxidation dataset and compute a small set of descriptors.
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
-=======
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">tags</span><span class="p">:</span> <span class="p">[</span><span class="n">hide</span><span class="o">-</span><span class="nb">input</span><span class="p">]</span>
-<span class="c1"># Core</span>
->>>>>>> 6cda9aa (0929-1)
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>=======
+```python
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; 6cda9aa (0929-1)
+:tags: [hide-input]
+# Core
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
-<span class="c1"># ML</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">AgglomerativeClustering</span><span class="p">,</span> <span class="n">DBSCAN</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span><span class="p">,</span> <span class="n">silhouette_samples</span><span class="p">,</span> <span class="n">pairwise_distances</span>
+# ML
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
+from sklearn.metrics import silhouette_score, silhouette_samples, pairwise_distances
 
-<span class="k">try</span><span class="p">:</span>
-  <span class="kn">import</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">umap</span>
-  <span class="kn">from</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="kn">import</span> <span class="n">UMAP</span>
-<span class="k">except</span><span class="p">:</span>
-  <span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">umap</span><span class="o">-</span><span class="n">learn</span>
-  <span class="kn">import</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">umap</span>
-  <span class="kn">from</span><span class="w"> </span><span class="nn">umap.umap_</span><span class="w"> </span><span class="kn">import</span> <span class="n">UMAP</span>
+try:
+  import umap.umap_ as umap
+  from umap.umap_ import UMAP
+except:
+  %pip install umap-learn
+  import umap.umap_ as umap
+  from umap.umap_ import UMAP
 
-<span class="c1"># Utils</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+# Utils
+import warnings
+warnings.filterwarnings(&quot;ignore&quot;)
 
 
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
-    <span class="n">RD</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-      <span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="n">rdkit</span>
-      <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
-      <span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Crippen</span><span class="p">,</span> <span class="n">rdMolDescriptors</span>
-      <span class="n">RD</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">except</span><span class="p">:</span>
-      <span class="n">RD</span> <span class="o">=</span> <span class="kc">False</span>
-      <span class="n">Chem</span> <span class="o">=</span> <span class="kc">None</span>
+try:
+    from rdkit import Chem
+    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+    RD = True
+except Exception:
+    try:
+      %pip install rdkit
+      from rdkit import Chem
+      from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+      RD = True
+    except:
+      RD = False
+      Chem = None
 </pre></div>
 </div>
-<<<<<<< HEAD
 </div>
-</details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="o">=======</span>
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
 </div>
-=======
->>>>>>> 6cda9aa (0929-1)
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
@@ -501,90 +500,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<<<<<<< HEAD
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-=======
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
-</div>
-</div>
->>>>>>> 6cda9aa (0929-1)
 </div>
 <p>We compute four quick 4 descriptors for everyone. Different from we we did previously, we only have another function compute 10 descriptors.</p>
 <div class="cell docutils container">
@@ -634,128 +549,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows x Cols (4 desc): (575, 13)
-Rows x Cols (10 desc): (575, 19)
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>100-41-4</td>
-      <td>CCc1ccccc1</td>
-      <td>0.048107</td>
-      <td>5.87</td>
-      <td>non_toxic</td>
-      <td>65.0</td>
-      <td>1</td>
-      <td>1,2</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>110-83-8</td>
-      <td>C1=CCCCC1</td>
-      <td>0.060688</td>
-      <td>5.66</td>
-      <td>non_toxic</td>
-      <td>96.4</td>
-      <td>1</td>
-      <td>3,6</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -763,160 +556,6 @@ Rows x Cols (10 desc): (575, 19)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-      <th>NumHAcceptors</th>
-      <th>NumHDonors</th>
-      <th>NumRotatableBonds</th>
-      <th>HeavyAtomCount</th>
-      <th>FractionCSP3</th>
-      <th>NumAromaticRings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>10.0</td>
-      <td>0.333333</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>13.0</td>
-      <td>0.076923</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>10.0</td>
-      <td>0.400000</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>100-41-4</td>
-      <td>CCc1ccccc1</td>
-      <td>0.048107</td>
-      <td>5.87</td>
-      <td>non_toxic</td>
-      <td>65.0</td>
-      <td>1</td>
-      <td>1,2</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>8.0</td>
-      <td>0.250000</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>110-83-8</td>
-      <td>C1=CCCCC1</td>
-      <td>0.060688</td>
-      <td>5.66</td>
-      <td>non_toxic</td>
-      <td>96.4</td>
-      <td>1</td>
-      <td>3,6</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>6.0</td>
-      <td>0.666667</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Now we build a 64-bit Morgan fingerprint (<span class="math notranslate nohighlight">\(r=2\)</span>). We keep both a <strong>small descriptor table</strong> and a <strong>high dimensional fingerprint</strong> table.</p>
 <div class="cell docutils container">
@@ -954,109 +593,6 @@ Rows x Cols (10 desc): (575, 19)
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows x Cols: (575, 10)
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-      <th>Fingerprint</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-      <td>1000000010111000110010100000001001001000000010...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>1100000000000010010010101000101010001000000010...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-      <td>1000100000100000010010100000001000001000000010...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>100-41-4</td>
-      <td>CCc1ccccc1</td>
-      <td>0.048107</td>
-      <td>5.87</td>
-      <td>non_toxic</td>
-      <td>65.0</td>
-      <td>1</td>
-      <td>1,2</td>
-      <td>1000010100000001110000100010000001001010001000...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>110-83-8</td>
-      <td>C1=CCCCC1</td>
-      <td>0.060688</td>
-      <td>5.66</td>
-      <td>non_toxic</td>
-      <td>96.4</td>
-      <td>1</td>
-      <td>3,6</td>
-      <td>0000101000000000010000000000001000000001100000...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="admonition-data-choices admonition">
 <p class="admonition-title">Data choices</p>
@@ -1103,65 +639,6 @@ Rows x Cols (10 desc): (575, 19)
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fingerprint:&quot;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Fingerprint&quot;</span><span class="p">][:</span><span class="mi">32</span><span class="p">])</span>
 
     <span class="nb">print</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/760dcf9794540efd72f90319c4122a60df78bf053e07e241bc6b6777d2f1f3e0.png" src="_images/760dcf9794540efd72f90319c4122a60df78bf053e07e241bc6b6777d2f1f3e0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 9H-fluorene ===
-SMILES: c1ccc2c(c1)Cc1ccccc1-2
-Descriptors [MolWt, LogP, TPSA, NumRings]: [166.22   3.26   0.     3.  ]
-10-Descriptor Vector: [1.6622e+02 3.2600e+00 0.0000e+00 3.0000e+00 0.0000e+00 0.0000e+00
- 0.0000e+00 1.3000e+01 8.0000e-02 2.0000e+00]
-Fingerprint: 11000000000000100100101010001010
-</pre></div>
-</div>
-<img alt="_images/f3f8944f421eb1729e5555fd4b4c20c30d71702da731d3836a52d75e1433998b.png" src="_images/f3f8944f421eb1729e5555fd4b4c20c30d71702da731d3836a52d75e1433998b.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== thiolane ===
-SMILES: C1CCSC1
-Descriptors [MolWt, LogP, TPSA, NumRings]: [88.18  1.51  0.    1.  ]
-10-Descriptor Vector: [88.18  1.51  0.    1.    1.    0.    0.    5.    1.    0.  ]
-Fingerprint: 00001100000000010000010000000010
-</pre></div>
-</div>
-<img alt="_images/7849d306ab4eb79df56edcbf11d2a3574fc05b0ea1d62088fae6876b50bccf8b.png" src="_images/7849d306ab4eb79df56edcbf11d2a3574fc05b0ea1d62088fae6876b50bccf8b.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== methoxymethylbenzene ===
-SMILES: COCc1ccccc1
-Descriptors [MolWt, LogP, TPSA, NumRings]: [122.17   1.83   9.23   1.  ]
-10-Descriptor Vector: [122.17   1.83   9.23   1.     1.     0.     2.     9.     0.25   1.  ]
-Fingerprint: 10000100010000001100001000100000
-</pre></div>
-</div>
-<img alt="_images/9df9aa4433eaa344446429d5f65310b9b0745455a8664068aef6dbd2bc1ad8e0.png" src="_images/9df9aa4433eaa344446429d5f65310b9b0745455a8664068aef6dbd2bc1ad8e0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== oct-1-ene ===
-SMILES: C=CCCCCCC
-Descriptors [MolWt, LogP, TPSA, NumRings]: [112.22   3.14   0.     0.  ]
-10-Descriptor Vector: [112.22   3.14   0.     0.     0.     0.     5.     8.     0.75   0.  ]
-Fingerprint: 00000000000000011100001000100001
-</pre></div>
-</div>
-<img alt="_images/6bef7bfd49dce8cac1023f03cc87fb37b0f643ce08dbacaed9360ccaf234db0a.png" src="_images/6bef7bfd49dce8cac1023f03cc87fb37b0f643ce08dbacaed9360ccaf234db0a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== N,N-diethylacetamide ===
-SMILES: CCN(CC)C(C)=O
-Descriptors [MolWt, LogP, TPSA, NumRings]: [115.18   0.87  20.31   0.  ]
-10-Descriptor Vector: [115.18   0.87  20.31   0.     1.     0.     2.     8.     0.83   0.  ]
-Fingerprint: 00000000001000001010000000000100
-</pre></div>
-</div>
-<img alt="_images/6ed476e36afd7db09150b19562b125442591abc157693a699a9c8155689091e3.png" src="_images/6ed476e36afd7db09150b19562b125442591abc157693a699a9c8155689091e3.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== cyclohexane ===
-SMILES: C1CCCCC1
-Descriptors [MolWt, LogP, TPSA, NumRings]: [84.16  2.34  0.    1.  ]
-10-Descriptor Vector: [84.16  2.34  0.    1.    0.    0.    0.    6.    1.    0.  ]
-Fingerprint: 00101000000000000000000000000010
-</pre></div>
-</div>
-<img alt="_images/ae2e9a2ae742a429f69c6c56b78f99d5c06a5bb1108181c874240c9e29690655.png" src="_images/ae2e9a2ae742a429f69c6c56b78f99d5c06a5bb1108181c874240c9e29690655.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 1,4-xylene ===
-SMILES: Cc1ccc(C)cc1
-Descriptors [MolWt, LogP, TPSA, NumRings]: [106.17   2.3    0.     1.  ]
-10-Descriptor Vector: [106.17   2.3    0.     1.     0.     0.     0.     8.     0.25   1.  ]
-Fingerprint: 10000000000000000100001000000001
 </pre></div>
 </div>
 </div>
@@ -1213,9 +690,6 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/9bc82e5aea10d257270ddd7c9f0465dd0597c9902388e24040316bfcbcb1df8c.png" src="_images/9bc82e5aea10d257270ddd7c9f0465dd0597c9902388e24040316bfcbcb1df8c.png" />
-</div>
 </div>
 <p>Now we can apply this to the entire C-H oxidation dataset.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1246,9 +720,6 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/ca3ed7b3831a96d657027981d193e4bbfc9e8068a2fcf71c925cd409ce5bea21.png" src="_images/ca3ed7b3831a96d657027981d193e4bbfc9e8068a2fcf71c925cd409ce5bea21.png" />
-</div>
 </div>
 <p>And depending which three descriptors you used for XYZ, you can have different plottings.</p>
 <div class="cell tag_hide-input docutils container">
@@ -1294,9 +765,6 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/4684c48eaa56de385445b010f6de8b734f25e2b2eb0070d09e4d7a89ce64b311.png" src="_images/4684c48eaa56de385445b010f6de8b734f25e2b2eb0070d09e4d7a89ce64b311.png" />
-</div>
 </div>
 <p>But when it comes to 10-dimensional descriptors or even something like a 1024-dimensional Morgan fingerprint, it is nearly impossible to directly visualize them. It becomes even harder to know the “neigbors” to a specific molecule.</p>
 <p>Humans can only intuitively grasp two or three axes at once. Once you go beyond that, you can only look at pairs of dimensions at a time, and the relationships quickly become hard to characterize.</p>
@@ -1330,9 +798,6 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/533d59f0d7df11527c083f3195fc2a28d738e222ac1deb3fed0734a8333fa7a6.png" src="_images/533d59f0d7df11527c083f3195fc2a28d738e222ac1deb3fed0734a8333fa7a6.png" />
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1355,9 +820,6 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/7f7a3bfd1a7b473db4969a85fdefafe22ca09b492234698ca97def44e8f3ffc9.png" src="_images/7f7a3bfd1a7b473db4969a85fdefafe22ca09b492234698ca97def44e8f3ffc9.png" />
-</div>
 </div>
 <p>That’s why cheminformatics usually applies <strong>dimension reduction</strong> methods (PCA, t-SNE, UMAP) to compress high-dimensional data into a visualizable 2D or 3D form. We will get to these points today!</p>
 </section>
@@ -1522,11 +984,6 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/7f018fcf7b2739de2fd118eefeb5abf3ff33cc8396f8a697fad57c0a2dc507ce.png" src="_images/7f018fcf7b2739de2fd118eefeb5abf3ff33cc8396f8a697fad57c0a2dc507ce.png" />
-<img alt="_images/3f1af266c91c6db598e7ff449e0c653984ec7d84618a87f5e8954b33f9f1a0a8.png" src="_images/3f1af266c91c6db598e7ff449e0c653984ec7d84618a87f5e8954b33f9f1a0a8.png" />
-<img alt="_images/d9c7eb037f49dec18b85499ad956c6d1f2b60946b4a8b0efb0edafc21097ced7.png" src="_images/d9c7eb037f49dec18b85499ad956c6d1f2b60946b4a8b0efb0edafc21097ced7.png" />
-</div>
 </div>
 <p>Now you can see, the 10D vector is converted to 2D or 3D vector, which become much easier to plot.</p>
 <div class="cell docutils container">
@@ -1535,32 +992,10 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457, -0.10406515],
-       [-0.8662983 , -1.26269482],
-       [-2.08798314, -0.77811   ],
-       ...,
-       [ 0.08373577, -0.58690452],
-       [ 3.19411974, -0.85437761],
-       [ 2.00081897, -0.04085639]])
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">desc_3d</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457, -0.10406515, -0.76130014],
-       [-0.8662983 , -1.26269482, -1.55622595],
-       [-2.08798314, -0.77811   , -0.75279025],
-       ...,
-       [ 0.08373577, -0.58690452,  0.27978755],
-       [ 3.19411974, -0.85437761,  0.07107396],
-       [ 2.00081897, -0.04085639,  0.17583671]])
 </pre></div>
 </div>
 </div>
@@ -1639,46 +1074,6 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/53fdf638ef0263ed374502704e6703d6e4318cf05c8f3dbd540ef5968ba74a89.png" src="_images/53fdf638ef0263ed374502704e6703d6e4318cf05c8f3dbd540ef5968ba74a89.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Manual pair ===
-</pre></div>
-</div>
-<img alt="_images/f73508fc03c390a73977c3bdf913bd66d4c34673cc71fcc16cce1ed8a1158b84.png" src="_images/f73508fc03c390a73977c3bdf913bd66d4c34673cc71fcc16cce1ed8a1158b84.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1-benzyl-2-phenylbenzimidazole   (index 225)
-  PC1 = 1.936, PC2 = -2.132
-</pre></div>
-</div>
-<img alt="_images/29dc7153171469a90b903154d7d5c6d5060b52f7a240c23ff8189f913dab93eb.png" src="_images/29dc7153171469a90b903154d7d5c6d5060b52f7a240c23ff8189f913dab93eb.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-2,2,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-4a-carboxylate (index 35)
-  PC1 = 3.267, PC2 = -1.618
-
-=== Closest pair ===
-</pre></div>
-</div>
-<img alt="_images/d3b9d6f29b85581b9389e4f2f9bda00f12a3f0d46f2978d1eab67cfc1ae24a37.png" src="_images/d3b9d6f29b85581b9389e4f2f9bda00f12a3f0d46f2978d1eab67cfc1ae24a37.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1S,5S)-6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptane (index 17)
-  PC1 = -2.274, PC2 = -1.042
-</pre></div>
-</div>
-<img alt="_images/fd9cad0598a64dfcf627480ad07e5b52b777c33ee8c6cabfae9753eb73c8721c.png" src="_images/fd9cad0598a64dfcf627480ad07e5b52b777c33ee8c6cabfae9753eb73c8721c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1R,5R)-2,6,6-trimethylbicyclo[3.1.1]hept-2-ene (index 27)
-  PC1 = -2.274, PC2 = -1.042
-
-=== Farthest pair ===
-</pre></div>
-</div>
-<img alt="_images/6c234bd0c3e5683dd514b52cea0b53298542e40e393b3dc2ee5e96fa63728645.png" src="_images/6c234bd0c3e5683dd514b52cea0b53298542e40e393b3dc2ee5e96fa63728645.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-[3,5-bis(1-phenylbenzimidazol-2-yl)phenyl]-1-phenylbenzimidazole (index 338)
-  PC1 = 11.072, PC2 = -4.750
-</pre></div>
-</div>
-<img alt="_images/983a10c2bef421600af6296ef6a475e0282a6b915f457849d9ef6614e7e47a03.png" src="_images/983a10c2bef421600af6296ef6a475e0282a6b915f457849d9ef6614e7e47a03.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sodium;perchlorate (index 462)
-  PC1 = -2.699, PC2 = 5.531
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can also make this plot to be interactive:</p>
 <div class="cell tag_hide-input docutils container">
@@ -1723,8 +1118,6 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-</div>
 </div>
 </section>
 <section id="data-leakage-in-unsupervised-settings">
@@ -1788,13 +1181,6 @@ This means the test set has already influenced the scaling or component directio
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train shape: (402, 2)
-Test shape: (173, 2)
-</pre></div>
-</div>
-<img alt="_images/70da5fba2380fd3d773e1d7418c801c08d6bbdeded6902a862fb58045938c98c.png" src="_images/70da5fba2380fd3d773e1d7418c801c08d6bbdeded6902a862fb58045938c98c.png" />
-</div>
 </div>
 <p>If the test set overlaps reasonably with the distribution of the train set, that’s a sign your train-derived scaling and PCA directions generalize.</p>
 <p>If the test points lie far outside, that could mean:</p>
@@ -1849,15 +1235,6 @@ Note:</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw means: [223.213  32.74 ]
-Raw stds : [92.66  30.417]
-Std means: [ 0. -0.]
-Std stds : [1. 1.]
-</pre></div>
-</div>
-<img alt="_images/58918b010fa0c0546fd6784a45ddf8254d3bd3bc19e055c866a1f698d78edcfd.png" src="_images/58918b010fa0c0546fd6784a45ddf8254d3bd3bc19e055c866a1f698d78edcfd.png" />
 </div>
 </div>
 </section>
@@ -1944,13 +1321,6 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/5fc9122a547b81d17f30e1b6957553b909ed85390d6373090edeada3c928e34a.png" src="_images/5fc9122a547b81d17f30e1b6957553b909ed85390d6373090edeada3c928e34a.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Euclidean Nearest Neighbor (rows) for sample #10: [23, 28, 21, 22, 11]
-Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
@@ -1999,12 +1369,6 @@ Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/9a267b4403b808c4f07ff528eb324cbbeceae715e0ae476aabb244ef51893203.png" src="_images/9a267b4403b808c4f07ff528eb324cbbeceae715e0ae476aabb244ef51893203.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN (rows) for query 10: [7, 15, 11, 8, 29]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
@@ -2106,14 +1470,6 @@ We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbo
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN for query 196 -&gt; [237, 414, 434, 11, 107]
-Cosine   NN for query 196 -&gt; [237, 414, 434, 107, 11]
-Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
-</pre></div>
-</div>
-<img alt="_images/bfcbb96f0712db46d99287bb1aae8d0ce93673530607d7afc249ef585fabfc3f.png" src="_images/bfcbb96f0712db46d99287bb1aae8d0ce93673530607d7afc249ef585fabfc3f.png" />
-</div>
 </div>
 <p>We can plot both the query molecule and the found neighbors to take a look:</p>
 <div class="cell tag_hide-input docutils container">
@@ -2168,13 +1524,6 @@ Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query #196: 3-methylbutylbenzene
-</pre></div>
-</div>
-<img alt="_images/10007613aa44cb4286c1e36bb8c5ffaab5c4b6b0d37b53cc2a95f9f7b2f6f1f1.png" src="_images/10007613aa44cb4286c1e36bb8c5ffaab5c4b6b0d37b53cc2a95f9f7b2f6f1f1.png" />
-<img alt="_images/e59f809b7eaf0d3702fa7b5f4b6fc031fff75eca9f04815b588c5d073cfc7d66.png" src="_images/e59f809b7eaf0d3702fa7b5f4b6fc031fff75eca9f04815b588c5d073cfc7d66.png" />
-</div>
 </div>
 </section>
 </section>
@@ -2255,9 +1604,6 @@ q_{ij}=\frac{\left(1+\lVert y_i-y_j\rVert^2\right)^{-1}}{\sum_{k\ne \ell}\left(1
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/0324707e670f07b1f2a4d53872adf45a0da3bdcf978349bbb8644e4c3116eab4.png" src="_images/0324707e670f07b1f2a4d53872adf45a0da3bdcf978349bbb8644e4c3116eab4.png" />
 </div>
 </div>
 </section>
@@ -2365,154 +1711,6 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>SMILES</th>
-      <th>Group</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Toluene</td>
-      <td>Cc1ccccc1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Ethylbenzene</td>
-      <td>CCc1ccccc1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Propylbenzene</td>
-      <td>CCCc1ccccc1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>p-Xylene</td>
-      <td>Cc1ccc(cc1)C</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Cumene</td>
-      <td>CC(C)c1ccccc1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Mesitylene</td>
-      <td>Cc1cc(C)cc(C)c1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Isobutylbenzene</td>
-      <td>CC(C)Cc1ccccc1</td>
-      <td>A_hydrophobic_aromatics</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Acetic acid</td>
-      <td>CC(=O)O</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Propionic acid</td>
-      <td>CCC(=O)O</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Butanoic acid</td>
-      <td>CCCC(=O)O</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Ethanol</td>
-      <td>CCO</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>1-Propanol</td>
-      <td>CCCO</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>1-Butanol</td>
-      <td>CCCCO</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>Ethylene glycol</td>
-      <td>OCCO</td>
-      <td>B_polar_alc_acid</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Pyridine</td>
-      <td>n1ccccc1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Aniline</td>
-      <td>Nc1ccccc1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Dimethylaniline</td>
-      <td>CN(C)c1ccccc1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Imidazole</td>
-      <td>c1ncc[nH]1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Morpholine</td>
-      <td>O1CCNCC1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>Piperidine</td>
-      <td>N1CCCCC1</td>
-      <td>C_N_hetero_amines</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <section id="q1-build-feature-sets-and-print-compact-summaries">
 <h3><strong>Q1. Build feature sets and print compact summaries</strong><a class="headerlink" href="#q1-build-feature-sets-and-print-compact-summaries" title="Permalink to this heading">#</a></h3>

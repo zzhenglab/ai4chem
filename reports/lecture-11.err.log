@@ -16,43 +16,60 @@ Traceback (most recent call last):
     return future.result()
   File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-<<<<<<< HEAD
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import os', 'os.environ.setdefault("NUMBA_CACHE", "1")   # cache compiled kernels', '', 'import numpy as np', 'import matplotlib.pyplot as plt']
-...
-['ax[1].set_ylabel("UMAP-2")', 'ax[1].legend()', '', 'plt.tight_layout()', 'plt.show()']
--------------------
-=======
-        cell, index, execution_count=self.code_cells_executed + 1
-    )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"
-df_raw = pd.read_csv(url)
-df_raw.head(3)
+=======
+```python
+>>>>>>> 6cda9aa (0929-1)
+:tags: [hide-input]
+# Core
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# ML
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
+from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
+from sklearn.metrics import silhouette_score, silhouette_samples, pairwise_distances
+
+try:
+  import umap.umap_ as umap
+  from umap.umap_ import UMAP
+except:
+  %pip install umap-learn
+  import umap.umap_ as umap
+  from umap.umap_ import UMAP
+
+# Utils
+import warnings
+warnings.filterwarnings("ignore")
+
+
+try:
+    from rdkit import Chem
+    from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+    RD = True
+except Exception:
+    try:
+      %pip install rdkit
+      from rdkit import Chem
+      from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+      RD = True
+    except:
+      RD = False
+      Chem = None
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 2[39m
-[32m      1[39m url = [33m"[39m[33mhttps://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv[39m[33m"[39m
-[32m----> [39m[32m2[39m df_raw = [43mpd[49m.read_csv(url)
-[32m      3[39m df_raw.head([32m3[39m)
+[1;36m  Cell [1;32mIn[1], line 1[1;36m[0m
+[1;33m    =======[0m
+[1;37m    ^[0m
+[1;31mSyntaxError[0m[1;31m:[0m invalid syntax
 
-[31mNameError[39m: name 'pd' is not defined
->>>>>>> 6cda9aa (0929-1)
 
