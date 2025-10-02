@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-13-use notebook instead';</script>
@@ -73,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +109,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -155,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -194,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -203,14 +219,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,10 +351,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -346,14 +362,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -392,10 +408,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-13-de-novo-molecule-generation">
-<h1>Lecture 13 - De novo Molecule Generation<a class="headerlink" href="#lecture-13-de-novo-molecule-generation" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 13 - De novo Molecule Generation<a class="headerlink" href="#lecture-13-de-novo-molecule-generation" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -410,7 +426,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Connect <strong>unsupervised learning</strong> ideas to <strong>molecular generation</strong>.</p></li>
 <li><p>Explain what an <strong>encoder</strong> and a <strong>decoder</strong> are.</p></li>
@@ -422,12 +438,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup-and-data">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
@@ -479,31 +495,9 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading some Tensorflow models, missing a dependency. No module named &#39;tensorflow&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading modules with pytorch-geometric dependency, missing a dependency. No module named &#39;torch_geometric&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading modules with transformers dependency. No module named &#39;transformers&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cannot import name &#39;HuggingFaceModel&#39; from &#39;deepchem.models.torch_models&#39; (c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\deepchem\models\torch_models\__init__.py)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading modules with pytorch-geometric dependency, missing a dependency. cannot import name &#39;DMPNN&#39; from &#39;deepchem.models.torch_models&#39; (c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\deepchem\models\torch_models\__init__.py)
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading modules with pytorch-lightning dependency, missing a dependency. No module named &#39;lightning&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading some Jax models, missing a dependency. No module named &#39;jax&#39;
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skipped loading some PyTorch models, missing a dependency. No module named &#39;tensorflow&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:tensorflow:From C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\tensorflow\python\util\deprecation.py:588: calling function (from tensorflow.python.eager.polymorphic_function.polymorphic_function) with experimental_relax_shapes is deprecated and will be removed in a future version.
+Instructions for updating:
+experimental_relax_shapes is deprecated, use reduce_retracing instead
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device: cpu
@@ -539,6 +533,293 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+      <th>NumHAcceptors</th>
+      <th>NumHDonors</th>
+      <th>NumRotatableBonds</th>
+      <th>HeavyAtomCount</th>
+      <th>FractionCSP3</th>
+      <th>NumAromaticRings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>0.333333</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>13.0</td>
+      <td>0.076923</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>10.0</td>
+      <td>0.400000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>8.0</td>
+      <td>0.250000</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>0.666667</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>90299-04-0</td>
+      <td>CC(C)(N)c1ccc2ccccc2c1</td>
+      <td>0.018990</td>
+      <td>10.04</td>
+      <td>toxic</td>
+      <td>121.5</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>185.270</td>
+      <td>3.0336</td>
+      <td>26.02</td>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>14.0</td>
+      <td>0.230769</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>128-93-8</td>
+      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
+      <td>0.021590</td>
+      <td>7.81</td>
+      <td>toxic</td>
+      <td>154.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>316.154</td>
+      <td>3.2662</td>
+      <td>46.17</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>19.0</td>
+      <td>0.066667</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>86636-92-2</td>
+      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
+      <td>0.017866</td>
+      <td>8.58</td>
+      <td>toxic</td>
+      <td>128.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>225.291</td>
+      <td>3.2745</td>
+      <td>20.31</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>17.0</td>
+      <td>0.133333</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>34316-15-9</td>
+      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
+      <td>0.016210</td>
+      <td>5.54</td>
+      <td>toxic</td>
+      <td>215.6</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>348.378</td>
+      <td>3.7166</td>
+      <td>40.80</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>26.0</td>
+      <td>0.190476</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>93655-34-6</td>
+      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
+      <td>0.016761</td>
+      <td>5.43</td>
+      <td>toxic</td>
+      <td>175.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>294.306</td>
+      <td>3.5662</td>
+      <td>52.60</td>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>22.0</td>
+      <td>0.111111</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>575 rows × 19 columns</p>
+</div></div></div>
 </div>
 <p>In the previous lecture, we learned how to explore our dataset by plotting the distribution of molecular properties using histograms.</p>
 <p>Another way is with a <strong>mask</strong>, which filters molecules by conditions like <code class="docutils literal notranslate"><span class="pre">molecular</span> <span class="pre">weight</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, etc. Later in this class we’ll generate new molecules, so it’s helpful to see how many remain in our training set after applying these filters.</p>
@@ -555,10 +836,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(276, 19)
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="unsupervised-recap-with-a-tiny-pca">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Unsupervised recap with a tiny PCA</a><a class="headerlink" href="#unsupervised-recap-with-a-tiny-pca" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Unsupervised recap with a tiny PCA</a><a class="headerlink" href="#unsupervised-recap-with-a-tiny-pca" title="Link to this heading">#</a></h2>
 <p>We standardize 10D descriptors and compute a 2D <code class="docutils literal notranslate"><span class="pre">PCA()</span></code> for a quick map. Recall that PCA helps us reduce complexity while preserving the main variation in the data, making it easier to visualize patterns and clusters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,6 +868,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Five Examples of molecules (coordinates): [[ 1.39032814 -0.29230696]
+ [ 4.45009367 -0.51704755]
+ [-0.50601149 -0.62038367]
+ [ 4.49210377 -0.02207216]
+ [-1.4659676  -0.55787823]]
+</pre></div>
+</div>
+<img alt="_images/1f51443250ad1ed1e4cac728ca4affd586e96719a7a439e4c69b61b293f6f2e0.png" src="_images/1f51443250ad1ed1e4cac728ca4affd586e96719a7a439e4c69b61b293f6f2e0.png" />
+</div>
 </div>
 <p>In the scatter plot we colored the points by the number of rings. This is not required every time, and you could just use a single color for all points. Adding a property as color is simply a way to help you better visualize patterns in the PCA map.</p>
 <p>In the scatter plot we colored the points by the number of rings. This is not required every time, and you could just use a single color for all points. Adding a property as color is simply a way to help you better visualize patterns in the PCA map.</p>
@@ -593,6 +889,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>FractionCSP3        -0.258801
+LogP                -0.012405
+NumRotatableBonds   -0.004420
+NumHDonors           0.292818
+NumAromaticRings     0.332956
+NumRings             0.343686
+NumHAcceptors        0.381308
+MolWt                0.391912
+TPSA                 0.393411
+HeavyAtomCount       0.405417
+dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-exercise-2 admonition">
 <p class="admonition-title">⏰ Exercise 2</p>
@@ -600,7 +911,7 @@ document.write(`
 </div>
 </section>
 <section id="autoencoder-on-descriptors">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Autoencoder on descriptors</a><a class="headerlink" href="#autoencoder-on-descriptors" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Autoencoder on descriptors</a><a class="headerlink" href="#autoencoder-on-descriptors" title="Link to this heading">#</a></h2>
 <p>We will train a tiny autoencoder (AE) that learns a low-dimensional summary of our 10 standardized descriptors.</p>
 <p>Let a molecule’s descriptor vector be:
 <span class="math notranslate nohighlight">\(
@@ -649,6 +960,22 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TinyAE(
+  (enc): Sequential(
+    (0): Linear(in_features=10, out_features=8, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=8, out_features=2, bias=True)
+  )
+  (dec): Sequential(
+    (0): Linear(in_features=2, out_features=8, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=8, out_features=10, bias=True)
+  )
+)
+</pre></div>
+</div>
+</div>
 </div>
 <p>We now wrap our standardized descriptors into a PyTorch dataset and build a DataLoader. The DataLoader controls how many samples are processed in each mini-batch.</p>
 <p>Since our dataset has about 500 molecules, <code class="docutils literal notranslate"><span class="pre">Batch</span> <span class="pre">size</span> <span class="pre">=</span> <span class="pre">64</span></code> is a good choice.</p>
@@ -664,6 +991,11 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 <span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">xb</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">dl</span><span class="p">))</span>
 <span class="n">xb</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">xb</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(torch.Size([64, 10]), tensor([ 0.7818,  0.1602, -0.4250, -0.7599]))
 </pre></div>
 </div>
 </div>
@@ -683,6 +1015,9 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/85dcaec7ac243da780fbf64f0445baa146e77c247b782aac0f7f17b5586c522b.png" src="_images/85dcaec7ac243da780fbf64f0445baa146e77c247b782aac0f7f17b5586c522b.png" />
+</div>
 </div>
 <p>After training, we use the encoder to map all molecules into the 2D latent space. Each row of <code class="docutils literal notranslate"><span class="pre">Z</span></code> is a compressed representation of one molecule. This is what <strong>encode</strong> returns.</p>
 <div class="cell docutils container">
@@ -690,6 +1025,13 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="n">ae</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">Xz</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)))</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 <span class="n">Z</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.17738552, -0.76097846],
+       [-0.49888745, -1.4279171 ],
+       [-0.04969665, -0.42891842]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -719,6 +1061,19 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/cb973811bdc1139df5f3f70c6dfd7089494f862c4d0b679231be06b14b4493f9.png" src="_images/cb973811bdc1139df5f3f70c6dfd7089494f862c4d0b679231be06b14b4493f9.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SMILES: CCCCC#CC(C)(C)O
+Encoded (z1, z2): [ 0.36141846 -0.23996092]
+
+SMILES: CCc1ccccc1OC
+Encoded (z1, z2): [ 0.14926992 -0.26622495]
+
+SMILES: [O-][n+]1ccc(Cl)cc1
+Encoded (z1, z2): [ 0.02485516 -0.316418  ]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Plot the latent and color by LogP.</p>
 <div class="cell docutils container">
@@ -728,6 +1083,9 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c3dc4c3db529b9468c563621a2eae41af450346dffdd9722c4e673f1907241bd.png" src="_images/c3dc4c3db529b9468c563621a2eae41af450346dffdd9722c4e673f1907241bd.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -775,6 +1133,99 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/e3d2e89b62d18d2686d0318481c5b455e891946f08746304c46d8a71e3c598a7.png" src="_images/e3d2e89b62d18d2686d0318481c5b455e891946f08746304c46d8a71e3c598a7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Roundtrip demonstration ===
+SMILES: CC(C)N=C=NC(C)C
+Latent z = (0.4135, -0.3231)
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_37c73">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_37c73_level0_col0" class="col_heading level0 col0" >Descriptor</th>
+      <th id="T_37c73_level0_col1" class="col_heading level0 col1" >Original</th>
+      <th id="T_37c73_level0_col2" class="col_heading level0 col2" >Reconstructed</th>
+      <th id="T_37c73_level0_col3" class="col_heading level0 col3" >AbsError</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_37c73_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_37c73_row0_col0" class="data row0 col0" >MolWt</td>
+      <td id="T_37c73_row0_col1" class="data row0 col1" >126.203</td>
+      <td id="T_37c73_row0_col2" class="data row0 col2" >187.163</td>
+      <td id="T_37c73_row0_col3" class="data row0 col3" >60.960</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_37c73_row1_col0" class="data row1 col0" >LogP</td>
+      <td id="T_37c73_row1_col1" class="data row1 col1" >1.977</td>
+      <td id="T_37c73_row1_col2" class="data row1 col2" >2.071</td>
+      <td id="T_37c73_row1_col3" class="data row1 col3" >0.094</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_37c73_row2_col0" class="data row2 col0" >TPSA</td>
+      <td id="T_37c73_row2_col1" class="data row2 col1" >24.720</td>
+      <td id="T_37c73_row2_col2" class="data row2 col2" >30.728</td>
+      <td id="T_37c73_row2_col3" class="data row2 col3" >6.008</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_37c73_row3_col0" class="data row3 col0" >NumRings</td>
+      <td id="T_37c73_row3_col1" class="data row3 col1" >0.000</td>
+      <td id="T_37c73_row3_col2" class="data row3 col2" >1.667</td>
+      <td id="T_37c73_row3_col3" class="data row3 col3" >1.667</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_37c73_row4_col0" class="data row4 col0" >NumHAcceptors</td>
+      <td id="T_37c73_row4_col1" class="data row4 col1" >2.000</td>
+      <td id="T_37c73_row4_col2" class="data row4 col2" >2.111</td>
+      <td id="T_37c73_row4_col3" class="data row4 col3" >0.111</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_37c73_row5_col0" class="data row5 col0" >NumHDonors</td>
+      <td id="T_37c73_row5_col1" class="data row5 col1" >0.000</td>
+      <td id="T_37c73_row5_col2" class="data row5 col2" >0.905</td>
+      <td id="T_37c73_row5_col3" class="data row5 col3" >0.905</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_37c73_row6_col0" class="data row6 col0" >NumRotatableBonds</td>
+      <td id="T_37c73_row6_col1" class="data row6 col1" >2.000</td>
+      <td id="T_37c73_row6_col2" class="data row6 col2" >1.281</td>
+      <td id="T_37c73_row6_col3" class="data row6 col3" >0.719</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_37c73_row7_col0" class="data row7 col0" >HeavyAtomCount</td>
+      <td id="T_37c73_row7_col1" class="data row7 col1" >9.000</td>
+      <td id="T_37c73_row7_col2" class="data row7 col2" >13.014</td>
+      <td id="T_37c73_row7_col3" class="data row7 col3" >4.014</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_37c73_row8_col0" class="data row8 col0" >FractionCSP3</td>
+      <td id="T_37c73_row8_col1" class="data row8 col1" >0.857</td>
+      <td id="T_37c73_row8_col2" class="data row8 col2" >0.242</td>
+      <td id="T_37c73_row8_col3" class="data row8 col3" >0.615</td>
+    </tr>
+    <tr>
+      <th id="T_37c73_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_37c73_row9_col0" class="data row9 col0" >NumAromaticRings</td>
+      <td id="T_37c73_row9_col1" class="data row9 col1" >0.000</td>
+      <td id="T_37c73_row9_col2" class="data row9 col2" >1.147</td>
+      <td id="T_37c73_row9_col3" class="data row9 col3" >1.147</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>In the above section, we saw that using a simple autoencoder on 10 descriptors with a very narrow bottleneck (10 → 8 → 2 → 8 → 10) generally did a fair job on reconstructions but not very good. This happens because descriptors are continuous, relatively few, and do not contain enough redundancy for the network to compress and expand reliably.</p>
 <p>A better strategy for testing reconstruction is to use <strong>high-dimensional representations</strong>. These vectors typically give the autoencoder much richer structure to learn from. Still, with limited data (~500) in our case it will not be perfect, but at least give you an idea of the improvement we can see:</p>
@@ -874,6 +1325,31 @@ the encoder reduces 10 → 8 → 2, and the decoder reconstructs 2 → 8 → 10.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/6c25fad85d44cd9fab2cb3b4eff8b8fe0b8f4154b8200d21dd1953128afcc496.png" src="_images/6c25fad85d44cd9fab2cb3b4eff8b8fe0b8f4154b8200d21dd1953128afcc496.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Random molecule roundtrip with Morgan-AE ===
+SMILES: O=C1c2ccccc2C(=O)c2c1cccc2[N+](=O)[O-]
+Latent z (length 32): [ 4.367 -3.068  5.747 -6.755 10.19   2.742  0.317 -1.699 -6.505 -3.996
+ -0.747  2.357 -3.491  1.257 -0.324  1.643  0.116  5.637 -2.105 -0.741
+ -2.766 -1.058 -2.266  2.925 -5.123 -1.284  2.473 -4.934  4.664 -0.256
+  3.397  3.398]
+Bit accuracy (full 512): 0.9863
+
+First 64 original bits:
+ 0100000000000001000000000000000000000000000000000000000000000000100000000000000000000000000000000000
+First 64 reconstructed bits:
+ 0100000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000
+
+Counts:
+        metric   value
+0    orig ones      26
+1     rec ones      23
+2   agree ones      21
+3  agree zeros     484
+4    total acc  0.9863
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that for the <strong>Morgan fingerprint autoencoder</strong> the input vectors are <strong>binary (0/1)</strong>. In this case, we want the decoder to output logits that are turned into probabilities with a sigmoid. To measure the reconstruction, we use the <strong>binary cross-entropy loss (BCE)</strong>, specifically <code class="docutils literal notranslate"><span class="pre">BCEWithLogitsLoss</span></code> in PyTorch.</p>
 <p>The BCE loss is:</p>
@@ -902,7 +1378,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 <section id="why-ae-is-tricky-for-smiles">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Why AE is tricky for SMILES</a><a class="headerlink" href="#why-ae-is-tricky-for-smiles" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Why AE is tricky for SMILES</a><a class="headerlink" href="#why-ae-is-tricky-for-smiles" title="Link to this heading">#</a></h2>
 <p>While it is exciting to see the decoder can convert latent variable back to something similar to the input, it is important to point out a issue when it’s molecule generation:</p>
 <blockquote>
 <div><p>an autoencoder that reconstructs descriptors or fingerprints does not guarantee that the reconstructed vector actually corresponds to a real molecule or a valid SMILES string.</p>
@@ -913,10 +1389,10 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 <p>So even if the AE achieves a <strong>low reconstruction error</strong>, there is no guarantee that <span class="math notranslate nohighlight">\(\hat{x}\)</span> corresponds to a valid SMILES.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">TensorDataset</span><span class="p">,</span> <span class="n">DataLoader</span>
@@ -1035,6 +1511,199 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Attempt to invert descriptors to a molecule ===
+Original SMILES: COC(=O)c1c[nH]c2ccc(Br)cc12
+Latent z: [-0.1953  1.9592]
+
+No molecule in the dataset matches the reconstructed descriptor targets under tight tolerances.
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_c7541">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_c7541_level0_col0" class="col_heading level0 col0" >SMILES</th>
+      <th id="T_c7541_level0_col1" class="col_heading level0 col1" >distance</th>
+      <th id="T_c7541_level0_col2" class="col_heading level0 col2" >MolWt</th>
+      <th id="T_c7541_level0_col3" class="col_heading level0 col3" >LogP</th>
+      <th id="T_c7541_level0_col4" class="col_heading level0 col4" >TPSA</th>
+      <th id="T_c7541_level0_col5" class="col_heading level0 col5" >NumRings</th>
+      <th id="T_c7541_level0_col6" class="col_heading level0 col6" >NumHAcceptors</th>
+      <th id="T_c7541_level0_col7" class="col_heading level0 col7" >NumHDonors</th>
+      <th id="T_c7541_level0_col8" class="col_heading level0 col8" >NumRotatableBonds</th>
+      <th id="T_c7541_level0_col9" class="col_heading level0 col9" >HeavyAtomCount</th>
+      <th id="T_c7541_level0_col10" class="col_heading level0 col10" >FractionCSP3</th>
+      <th id="T_c7541_level0_col11" class="col_heading level0 col11" >NumAromaticRings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_c7541_level0_row0" class="row_heading level0 row0" >564</th>
+      <td id="T_c7541_row0_col0" class="data row0 col0" >Nc1c(N)c2ccccc2c2ccccc12</td>
+      <td id="T_c7541_row0_col1" class="data row0 col1" >6.040</td>
+      <td id="T_c7541_row0_col2" class="data row0 col2" >208.264</td>
+      <td id="T_c7541_row0_col3" class="data row0 col3" >3.157</td>
+      <td id="T_c7541_row0_col4" class="data row0 col4" >52.040</td>
+      <td id="T_c7541_row0_col5" class="data row0 col5" >3.000</td>
+      <td id="T_c7541_row0_col6" class="data row0 col6" >2.000</td>
+      <td id="T_c7541_row0_col7" class="data row0 col7" >2.000</td>
+      <td id="T_c7541_row0_col8" class="data row0 col8" >0.000</td>
+      <td id="T_c7541_row0_col9" class="data row0 col9" >16.000</td>
+      <td id="T_c7541_row0_col10" class="data row0 col10" >0.000</td>
+      <td id="T_c7541_row0_col11" class="data row0 col11" >3.000</td>
+    </tr>
+    <tr>
+      <th id="T_c7541_level0_row1" class="row_heading level0 row1" >497</th>
+      <td id="T_c7541_row1_col0" class="data row1 col0" >N#Cc1ccc(C(=O)c2ccccc2)cc1</td>
+      <td id="T_c7541_row1_col1" class="data row1 col1" >6.440</td>
+      <td id="T_c7541_row1_col2" class="data row1 col2" >207.232</td>
+      <td id="T_c7541_row1_col3" class="data row1 col3" >2.789</td>
+      <td id="T_c7541_row1_col4" class="data row1 col4" >40.860</td>
+      <td id="T_c7541_row1_col5" class="data row1 col5" >2.000</td>
+      <td id="T_c7541_row1_col6" class="data row1 col6" >2.000</td>
+      <td id="T_c7541_row1_col7" class="data row1 col7" >0.000</td>
+      <td id="T_c7541_row1_col8" class="data row1 col8" >2.000</td>
+      <td id="T_c7541_row1_col9" class="data row1 col9" >16.000</td>
+      <td id="T_c7541_row1_col10" class="data row1 col10" >0.000</td>
+      <td id="T_c7541_row1_col11" class="data row1 col11" >2.000</td>
+    </tr>
+    <tr>
+      <th id="T_c7541_level0_row2" class="row_heading level0 row2" >88</th>
+      <td id="T_c7541_row2_col0" class="data row2 col0" >O=[N+]([O-])c1ccc(Cc2ccccc2)cc1</td>
+      <td id="T_c7541_row2_col1" class="data row2 col1" >8.458</td>
+      <td id="T_c7541_row2_col2" class="data row2 col2" >213.236</td>
+      <td id="T_c7541_row2_col3" class="data row2 col3" >3.186</td>
+      <td id="T_c7541_row2_col4" class="data row2 col4" >43.140</td>
+      <td id="T_c7541_row2_col5" class="data row2 col5" >2.000</td>
+      <td id="T_c7541_row2_col6" class="data row2 col6" >2.000</td>
+      <td id="T_c7541_row2_col7" class="data row2 col7" >0.000</td>
+      <td id="T_c7541_row2_col8" class="data row2 col8" >3.000</td>
+      <td id="T_c7541_row2_col9" class="data row2 col9" >16.000</td>
+      <td id="T_c7541_row2_col10" class="data row2 col10" >0.077</td>
+      <td id="T_c7541_row2_col11" class="data row2 col11" >2.000</td>
+    </tr>
+    <tr>
+      <th id="T_c7541_level0_row3" class="row_heading level0 row3" >369</th>
+      <td id="T_c7541_row3_col0" class="data row3 col0" >CC(C)(Oc1ccc(Cl)cc1)C(=O)O</td>
+      <td id="T_c7541_row3_col1" class="data row3 col1" >8.960</td>
+      <td id="T_c7541_row3_col2" class="data row3 col2" >214.648</td>
+      <td id="T_c7541_row3_col3" class="data row3 col3" >2.582</td>
+      <td id="T_c7541_row3_col4" class="data row3 col4" >46.530</td>
+      <td id="T_c7541_row3_col5" class="data row3 col5" >1.000</td>
+      <td id="T_c7541_row3_col6" class="data row3 col6" >2.000</td>
+      <td id="T_c7541_row3_col7" class="data row3 col7" >1.000</td>
+      <td id="T_c7541_row3_col8" class="data row3 col8" >3.000</td>
+      <td id="T_c7541_row3_col9" class="data row3 col9" >14.000</td>
+      <td id="T_c7541_row3_col10" class="data row3 col10" >0.300</td>
+      <td id="T_c7541_row3_col11" class="data row3 col11" >1.000</td>
+    </tr>
+    <tr>
+      <th id="T_c7541_level0_row4" class="row_heading level0 row4" >378</th>
+      <td id="T_c7541_row4_col0" class="data row4 col0" >Nc1nc(-c2ccc(Cl)cc2)cs1</td>
+      <td id="T_c7541_row4_col1" class="data row4 col1" >9.286</td>
+      <td id="T_c7541_row4_col2" class="data row4 col2" >210.689</td>
+      <td id="T_c7541_row4_col3" class="data row4 col3" >3.046</td>
+      <td id="T_c7541_row4_col4" class="data row4 col4" >38.910</td>
+      <td id="T_c7541_row4_col5" class="data row4 col5" >2.000</td>
+      <td id="T_c7541_row4_col6" class="data row4 col6" >3.000</td>
+      <td id="T_c7541_row4_col7" class="data row4 col7" >1.000</td>
+      <td id="T_c7541_row4_col8" class="data row4 col8" >1.000</td>
+      <td id="T_c7541_row4_col9" class="data row4 col9" >13.000</td>
+      <td id="T_c7541_row4_col10" class="data row4 col10" >0.000</td>
+      <td id="T_c7541_row4_col11" class="data row4 col11" >2.000</td>
+    </tr>
+  </tbody>
+</table>
+</div><img alt="_images/950dc66f2dd5bb2f104cb0cbdf5d798f1cd27a9d8491dd3dd08e658727298272.png" src="_images/950dc66f2dd5bb2f104cb0cbdf5d798f1cd27a9d8491dd3dd08e658727298272.png" />
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_a6e4a">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_a6e4a_level0_col0" class="col_heading level0 col0" >Descriptor</th>
+      <th id="T_a6e4a_level0_col1" class="col_heading level0 col1" >Original</th>
+      <th id="T_a6e4a_level0_col2" class="col_heading level0 col2" >Recon</th>
+      <th id="T_a6e4a_level0_col3" class="col_heading level0 col3" >AbsError</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_a6e4a_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_a6e4a_row0_col0" class="data row0 col0" >MolWt</td>
+      <td id="T_a6e4a_row0_col1" class="data row0 col1" >254.083</td>
+      <td id="T_a6e4a_row0_col2" class="data row0 col2" >206.399</td>
+      <td id="T_a6e4a_row0_col3" class="data row0 col3" >47.684</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_a6e4a_row1_col0" class="data row1 col0" >LogP</td>
+      <td id="T_a6e4a_row1_col1" class="data row1 col1" >2.717</td>
+      <td id="T_a6e4a_row1_col2" class="data row1 col2" >2.245</td>
+      <td id="T_a6e4a_row1_col3" class="data row1 col3" >0.472</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_a6e4a_row2_col0" class="data row2 col0" >TPSA</td>
+      <td id="T_a6e4a_row2_col1" class="data row2 col1" >42.090</td>
+      <td id="T_a6e4a_row2_col2" class="data row2 col2" >46.733</td>
+      <td id="T_a6e4a_row2_col3" class="data row2 col3" >4.643</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_a6e4a_row3_col0" class="data row3 col0" >NumRings</td>
+      <td id="T_a6e4a_row3_col1" class="data row3 col1" >2.000</td>
+      <td id="T_a6e4a_row3_col2" class="data row3 col2" >2.000</td>
+      <td id="T_a6e4a_row3_col3" class="data row3 col3" >0.000</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_a6e4a_row4_col0" class="data row4 col0" >NumHAcceptors</td>
+      <td id="T_a6e4a_row4_col1" class="data row4 col1" >2.000</td>
+      <td id="T_a6e4a_row4_col2" class="data row4 col2" >2.000</td>
+      <td id="T_a6e4a_row4_col3" class="data row4 col3" >0.000</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_a6e4a_row5_col0" class="data row5 col0" >NumHDonors</td>
+      <td id="T_a6e4a_row5_col1" class="data row5 col1" >1.000</td>
+      <td id="T_a6e4a_row5_col2" class="data row5 col2" >1.000</td>
+      <td id="T_a6e4a_row5_col3" class="data row5 col3" >0.000</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_a6e4a_row6_col0" class="data row6 col0" >NumRotatableBonds</td>
+      <td id="T_a6e4a_row6_col1" class="data row6 col1" >1.000</td>
+      <td id="T_a6e4a_row6_col2" class="data row6 col2" >0.000</td>
+      <td id="T_a6e4a_row6_col3" class="data row6 col3" >1.000</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_a6e4a_row7_col0" class="data row7 col0" >HeavyAtomCount</td>
+      <td id="T_a6e4a_row7_col1" class="data row7 col1" >14.000</td>
+      <td id="T_a6e4a_row7_col2" class="data row7 col2" >15.000</td>
+      <td id="T_a6e4a_row7_col3" class="data row7 col3" >1.000</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_a6e4a_row8_col0" class="data row8 col0" >FractionCSP3</td>
+      <td id="T_a6e4a_row8_col1" class="data row8 col1" >0.100</td>
+      <td id="T_a6e4a_row8_col2" class="data row8 col2" >0.020</td>
+      <td id="T_a6e4a_row8_col3" class="data row8 col3" >0.080</td>
+    </tr>
+    <tr>
+      <th id="T_a6e4a_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_a6e4a_row9_col0" class="data row9 col0" >NumAromaticRings</td>
+      <td id="T_a6e4a_row9_col1" class="data row9 col1" >2.000</td>
+      <td id="T_a6e4a_row9_col2" class="data row9 col2" >2.000</td>
+      <td id="T_a6e4a_row9_col3" class="data row9 col3" >0.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>In the previous example we tried to decode reconstructed descriptors back to a molecule and saw that it often fails. The reconstructed values may look <strong>numerically close</strong>, yet they do not correspond to any real molecule.</p>
 <p>With SMILES the situation becomes even more fragile. A single misplaced character is enough to make the entire string invalid. Unlike descriptors, which are continuous and can be perturbed slightly without losing “type”, SMILES is a discrete symbolic language with strict syntax rules.
@@ -1089,11 +1758,114 @@ Parentheses must balance, ring indices must pair, and atom valences must be chem
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original valid: 200/200  = 100.00%
+After 1 random edit valid: 45/200  = 22.50%
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>orig</th>
+      <th>perturbed</th>
+      <th>orig_valid</th>
+      <th>perturbed_valid</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>COc1ccc(C(=O)O)cc1</td>
+      <td>COc1ccc(C(=O))cc1</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Nc1ccccc1C(F)(F)F</td>
+      <td>Nc1ccc8c1C(F)(F)F</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CCOc1ccc(O)cc1</td>
+      <td>CCOc1ccc(Occ1</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CC(C)Cc1ccccc1</td>
+      <td>CC(C)Ccccccc1</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CCc1ccc(CC)cc1</td>
+      <td>CCc1ccc+CC)cc1</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CCOC(=O)c1ccc(C#N)cc1</td>
+      <td>CC-OC(=O)c1ccc(C#N)cc1</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Brc1ccc2[nH]ccc2c1</td>
+      <td>Brc1ccc2[nH]ccc2c41</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>O=c1c(=O)c2cccc3ccc4cccc1c4c32</td>
+      <td>=c1c(=O)c2cccc3ccc4cccc1c4c32</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CC1=C(C)C(=O)CCC1</td>
+      <td>C4C1=C(C)C(=O)CCC1</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>CN(C)C(n1n[n+]([O-])c2ncccc21)=[N+](C)C.F[P-](...</td>
+      <td>CN-(C)C(n1n[n+]([O-])c2ncccc21)=[N+](C)C.F[P-]...</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>This motivates a VAE which gives a distribution in latent space so we can sample smoothly and then decode to strings.</p>
 </section>
 <section id="variational-autoencoder-vae">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Variational Autoencoder (VAE)</a><a class="headerlink" href="#variational-autoencoder-vae" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Variational Autoencoder (VAE)</a><a class="headerlink" href="#variational-autoencoder-vae" title="Link to this heading">#</a></h2>
 <p>An AE compresses each input to a single point in latent space and learns to reconstruct that point. By constrast, a <em>Variational</em> Autoencoder (VAE) treats the latent code as a probability distribution. Instead of mapping an input to one vector, the encoder predicts a mean and a variance for a Gaussian latent. During training we sample from this Gaussian and ask the decoder to reconstruct the input from the sampled point. A <strong>Kullback–Leibler (KL)</strong> term softly pulls the posterior toward a simple prior such as a standard normal. The result is a latent space that is smoother and more continuous, which makes sampling new points more reliable.</p>
 <p>This shift from <strong>point encoding</strong> to <strong>distribution encoding</strong> matters for generation. With a plain AE, latent space can be patchy. Interpolating between two codes can land you off the data manifold and the decoder struggles.</p>
 <p>With a VAE, the KL term discourages such patchiness. The model learns a latent space where nearby points decode to similar objects, which helps when we draw new samples from the prior.</p>
@@ -1184,6 +1956,10 @@ Parentheses must balance, ring indices must pair, and atom valences must be chem
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/8a211af55f2c5553938d950dad57d461e16a50395a831afa4bb36b8b76c466fb.png" src="_images/8a211af55f2c5553938d950dad57d461e16a50395a831afa4bb36b8b76c466fb.png" />
+<img alt="_images/f4ad88c538373ce563619cf74fecc407ffaf65d1bd25cae09edb3089bb02b80a.png" src="_images/f4ad88c538373ce563619cf74fecc407ffaf65d1bd25cae09edb3089bb02b80a.png" />
+</div>
 </div>
 <p>The VAE maximizes the evidence lower bound (ELBO). In practice we minimize the negative ELBO, which has a reconstruction term and a KL term that regularizes the latent posterior toward the prior.</p>
 <p><span class="math notranslate nohighlight">\(
@@ -1261,10 +2037,55 @@ z = \mu + \sigma \odot \epsilon,\quad \epsilon \sim \mathcal{N}(0, I),\quad \sig
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/d85480b82ea5101e7c8130881c65277083cba8c206a908860b9d5d6539b88a37.png" src="_images/d85480b82ea5101e7c8130881c65277083cba8c206a908860b9d5d6539b88a37.png" />
+<img alt="_images/2815ade815494378bd83907fd64b53423d879bdd355e3371aa5c9028c8aac04a.png" src="_images/2815ade815494378bd83907fd64b53423d879bdd355e3371aa5c9028c8aac04a.png" />
+<img alt="_images/bc9b089b0f118c5dd914ba9b82d53275d82d1f7d64ac2acb26d9b950a86c0d03.png" src="_images/bc9b089b0f118c5dd914ba9b82d53275d82d1f7d64ac2acb26d9b950a86c0d03.png" />
+<img alt="_images/4ceee923d25b83f7b14539b3893162bc84ce3e7e2ee3145b7fe375e83345c918.png" src="_images/4ceee923d25b83f7b14539b3893162bc84ce3e7e2ee3145b7fe375e83345c918.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Latent mean z: [ 0.0135  0.3703  0.5941 -0.0038 -0.0104]
+</pre></div>
+</div>
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_0a18d">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_0a18d_level0_col0" class="col_heading level0 col0" >Property</th>
+      <th id="T_0a18d_level0_col1" class="col_heading level0 col1" >Original</th>
+      <th id="T_0a18d_level0_col2" class="col_heading level0 col2" >Reconstructed</th>
+      <th id="T_0a18d_level0_col3" class="col_heading level0 col3" >AbsError</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_0a18d_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_0a18d_row0_col0" class="data row0 col0" >MolWt</td>
+      <td id="T_0a18d_row0_col1" class="data row0 col1" >189.258</td>
+      <td id="T_0a18d_row0_col2" class="data row0 col2" >158.043</td>
+      <td id="T_0a18d_row0_col3" class="data row0 col3" >31.215</td>
+    </tr>
+    <tr>
+      <th id="T_0a18d_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_0a18d_row1_col0" class="data row1 col0" >LogP</td>
+      <td id="T_0a18d_row1_col1" class="data row1 col1" >2.313</td>
+      <td id="T_0a18d_row1_col2" class="data row1 col2" >2.351</td>
+      <td id="T_0a18d_row1_col3" class="data row1 col3" >0.038</td>
+    </tr>
+    <tr>
+      <th id="T_0a18d_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_0a18d_row2_col0" class="data row2 col0" >TPSA</td>
+      <td id="T_0a18d_row2_col1" class="data row2 col1" >20.310</td>
+      <td id="T_0a18d_row2_col2" class="data row2 col2" >19.841</td>
+      <td id="T_0a18d_row2_col3" class="data row2 col3" >0.469</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </section>
 <section id="smiles-vae-for-de-novo-molecular-generation">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. SMILES VAE for De Novo Molecular Generation</a><a class="headerlink" href="#smiles-vae-for-de-novo-molecular-generation" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. SMILES VAE for De Novo Molecular Generation</a><a class="headerlink" href="#smiles-vae-for-de-novo-molecular-generation" title="Link to this heading">#</a></h2>
 <p>In the previous examples, we are limited by the size of training data and the model complexicity so in general the performance is not perfect. Now, we will train a small SMILES-based Variational Autoencoder (VAE) on ~4,000 molecules, then sample new molecules and evaluate how well they match the training set.</p>
 <p>Below are the steps:</p>
 <ul class="simple">
@@ -1330,6 +2151,70 @@ z = \mu + \sigma \odot \epsilon,\quad \epsilon \sim \mathcal{N}(0, I),\quad \sig
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Training pool size used:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">smiles_all</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample:&quot;</span><span class="p">,</span> <span class="n">smiles_all</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Load QM9 via DeepChem (will download the dataset on first run)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">tasks</span><span class="p">,</span> <span class="n">datasets</span><span class="p">,</span> <span class="n">transformers</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">molnet</span><span class="o">.</span><span class="n">load_qm9</span><span class="p">(</span><span class="n">featurizer</span><span class="o">=</span><span class="s1">&#39;Raw&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">train_dataset</span><span class="p">,</span> <span class="n">valid_dataset</span><span class="p">,</span> <span class="n">test_dataset</span> <span class="o">=</span> <span class="n">datasets</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">def</span><span class="w"> </span><span class="nf">canonicalize_smiles</span><span class="p">(</span><span class="n">smi</span><span class="p">):</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\molnet\load_function\qm9_datasets.py:123,</span> in <span class="ni">load_qm9</span><span class="nt">(featurizer, splitter, transformers, reload, data_dir, save_dir, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Load QM9 dataset</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd"> QM9 is a comprehensive dataset that provides geometric, energetic,</span>
+<span class="sd">   (...)    119    properties of 134 kilo molecules.&quot; Scientific data 1 (2014): 140022.</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">loader</span> <span class="o">=</span> <span class="n">_QM9Loader</span><span class="p">(</span><span class="n">featurizer</span><span class="p">,</span> <span class="n">splitter</span><span class="p">,</span> <span class="n">transformers</span><span class="p">,</span> <span class="n">QM9_TASKS</span><span class="p">,</span> <span class="n">data_dir</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>                     <span class="n">save_dir</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">123</span> <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;qm9&#39;</span><span class="p">,</span> <span class="n">reload</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\molnet\load_function\molnet_loader.py:177,</span> in <span class="ni">_MolnetLoader.load_dataset</span><span class="nt">(self, name, reload)</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span> <span class="c1"># Create the dataset</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;About to featurize </span><span class="si">%s</span><span class="s2"> dataset.&quot;</span> <span class="o">%</span> <span class="n">name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">177</span> <span class="n">dataset</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="c1"># Split and transform the dataset.</span>
+<span class="g g-Whitespace">    </span><span class="mi">181</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">splitter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\molnet\load_function\qm9_datasets.py:28,</span> in <span class="ni">_QM9Loader.create_dataset</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>   <span class="n">dc</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data_utils</span><span class="o">.</span><span class="n">untargz_file</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>       <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;gdb9.tar.gz&quot;</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_dir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">loader</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">SDFLoader</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span>     <span class="n">tasks</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">,</span> <span class="n">featurizer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">featurizer</span><span class="p">,</span> <span class="n">sanitize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">28</span> <span class="k">return</span> <span class="n">loader</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">dataset_file</span><span class="p">,</span> <span class="n">shard_size</span><span class="o">=</span><span class="mi">8192</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\data\data_loader.py:226,</span> in <span class="ni">DataLoader.create_dataset</span><span class="nt">(self, inputs, data_dir, shard_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;TIMING: featurizing shard </span><span class="si">%d</span><span class="s2"> took </span><span class="si">%0.3f</span><span class="s2"> s&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>                 <span class="p">(</span><span class="n">shard_num</span><span class="p">,</span> <span class="n">time2</span> <span class="o">-</span> <span class="n">time1</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="k">yield</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ids</span>
+<span class="ne">--&gt; </span><span class="mi">226</span> <span class="k">return</span> <span class="n">DiskDataset</span><span class="o">.</span><span class="n">create_dataset</span><span class="p">(</span><span class="n">shard_generator</span><span class="p">(),</span> <span class="n">data_dir</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\data\datasets.py:1203,</span> in <span class="ni">DiskDataset.create_dataset</span><span class="nt">(shard_generator, data_dir, tasks)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1201</span> <span class="n">metadata_rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1202</span> <span class="n">time1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1203</span> <span class="k">for</span> <span class="n">shard_num</span><span class="p">,</span> <span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shard_generator</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1204</span>   <span class="n">basename</span> <span class="o">=</span> <span class="s2">&quot;shard-</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">shard_num</span>
+<span class="g g-Whitespace">   </span><span class="mi">1205</span>   <span class="n">metadata_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1206</span>       <span class="n">DiskDataset</span><span class="o">.</span><span class="n">write_data_to_disk</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">basename</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">ids</span><span class="p">))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\data\data_loader.py:204,</span> in <span class="ni">DataLoader.create_dataset.&lt;locals&gt;.shard_generator</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span> <span class="k">def</span><span class="w"> </span><span class="nf">shard_generator</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">204</span>   <span class="k">for</span> <span class="n">shard_num</span><span class="p">,</span> <span class="n">shard</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_shards</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">shard_size</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="n">time1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">206</span>     <span class="n">X</span><span class="p">,</span> <span class="n">valid_inds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_featurize_shard</span><span class="p">(</span><span class="n">shard</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\deepchem\utils\data_utils.py:264,</span> in <span class="ni">load_sdf_files</span><span class="nt">(input_files, clean_mols, tasks, shard_size)</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="n">df_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mol</span><span class="o">.</span><span class="n">GetProp</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">task</span><span class="p">)))</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span> <span class="n">df_rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_row</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">264</span> <span class="k">if</span> <span class="n">shard_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_rows</span><span class="p">)</span> <span class="o">==</span> <span class="n">shard_size</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span>   <span class="k">if</span> <span class="n">has_csv</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span>     <span class="n">mol_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_rows</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;mol_id&#39;</span><span class="p">,</span> <span class="s1">&#39;smiles&#39;</span><span class="p">,</span> <span class="s1">&#39;mol&#39;</span><span class="p">))</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1649,28 +2534,28 @@ z = \mu + \sigma \odot \epsilon,\quad \epsilon \sim \mathcal{N}(0, I),\quad \sig
 </div>
 </section>
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-encoder">encoder<a class="headerlink" href="#term-encoder" title="Permalink to this term">#</a></dt><dd><p>A mapping from input <span class="math notranslate nohighlight">\(x\)</span> to latent <span class="math notranslate nohighlight">\(z\)</span>.</p>
+<dt id="term-encoder">encoder<a class="headerlink" href="#term-encoder" title="Link to this term">#</a></dt><dd><p>A mapping from input <span class="math notranslate nohighlight">\(x\)</span> to latent <span class="math notranslate nohighlight">\(z\)</span>.</p>
 </dd>
-<dt id="term-decoder">decoder<a class="headerlink" href="#term-decoder" title="Permalink to this term">#</a></dt><dd><p>A mapping from latent <span class="math notranslate nohighlight">\(z\)</span> to reconstructed <span class="math notranslate nohighlight">\(\hat x\)</span>.</p>
+<dt id="term-decoder">decoder<a class="headerlink" href="#term-decoder" title="Link to this term">#</a></dt><dd><p>A mapping from latent <span class="math notranslate nohighlight">\(z\)</span> to reconstructed <span class="math notranslate nohighlight">\(\hat x\)</span>.</p>
 </dd>
-<dt id="term-autoencoder-AE">autoencoder (AE)<a class="headerlink" href="#term-autoencoder-AE" title="Permalink to this term">#</a></dt><dd><p>A model trained to reconstruct input. Learns a compact latent code.</p>
+<dt id="term-autoencoder-AE">autoencoder (AE)<a class="headerlink" href="#term-autoencoder-AE" title="Link to this term">#</a></dt><dd><p>A model trained to reconstruct input. Learns a compact latent code.</p>
 </dd>
-<dt id="term-latent-space">latent space<a class="headerlink" href="#term-latent-space" title="Permalink to this term">#</a></dt><dd><p>The internal coordinate used by the model to organize inputs.</p>
+<dt id="term-latent-space">latent space<a class="headerlink" href="#term-latent-space" title="Link to this term">#</a></dt><dd><p>The internal coordinate used by the model to organize inputs.</p>
 </dd>
-<dt id="term-VAE">VAE<a class="headerlink" href="#term-VAE" title="Permalink to this term">#</a></dt><dd><p>A probabilistic AE that learns <span class="math notranslate nohighlight">\(q_\theta(z\mid x)\)</span> near a simple prior to enable sampling.</p>
+<dt id="term-VAE">VAE<a class="headerlink" href="#term-VAE" title="Link to this term">#</a></dt><dd><p>A probabilistic AE that learns <span class="math notranslate nohighlight">\(q_\theta(z\mid x)\)</span> near a simple prior to enable sampling.</p>
 </dd>
-<dt id="term-validity">validity<a class="headerlink" href="#term-validity" title="Permalink to this term">#</a></dt><dd><p>Fraction of generated strings that sanitize as molecules.</p>
+<dt id="term-validity">validity<a class="headerlink" href="#term-validity" title="Link to this term">#</a></dt><dd><p>Fraction of generated strings that sanitize as molecules.</p>
 </dd>
-<dt id="term-uniqueness">uniqueness<a class="headerlink" href="#term-uniqueness" title="Permalink to this term">#</a></dt><dd><p>Fraction of valid generated molecules that are unique.</p>
+<dt id="term-uniqueness">uniqueness<a class="headerlink" href="#term-uniqueness" title="Link to this term">#</a></dt><dd><p>Fraction of valid generated molecules that are unique.</p>
 </dd>
-<dt id="term-novelty">novelty<a class="headerlink" href="#term-novelty" title="Permalink to this term">#</a></dt><dd><p>Fraction of unique generated molecules not present in the training set.</p>
+<dt id="term-novelty">novelty<a class="headerlink" href="#term-novelty" title="Link to this term">#</a></dt><dd><p>Fraction of unique generated molecules not present in the training set.</p>
 </dd>
 </dl>
 </section>
 <section id="in-class-activity-with-solutions">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">10. In-class activity with solutions</a><a class="headerlink" href="#in-class-activity-with-solutions" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">10. In-class activity with solutions</a><a class="headerlink" href="#in-class-activity-with-solutions" title="Link to this heading">#</a></h2>
 <p><strong>Q1.</strong> AE latent: change <code class="docutils literal notranslate"><span class="pre">z_dim</span></code> to 3 and plot <code class="docutils literal notranslate"><span class="pre">z[:,0]</span></code> vs <code class="docutils literal notranslate"><span class="pre">z[:,1]</span></code>. Compare to <code class="docutils literal notranslate"><span class="pre">z[:,1]</span></code> vs <code class="docutils literal notranslate"><span class="pre">z[:,2]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1732,7 +2617,7 @@ z = \mu + \sigma \odot \epsilon,\quad \epsilon \sim \mathcal{N}(0, I),\quad \sig
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1743,6 +2628,7 @@ z = \mu + \sigma \odot \epsilon,\quad \epsilon \sim \mathcal{N}(0, I),\quad \sig
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1783,7 +2669,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1807,8 +2693,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

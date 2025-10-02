@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-15 autoencode and predict next smiles';</script>
@@ -73,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +109,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -155,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -194,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -203,14 +219,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,10 +351,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -346,14 +362,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -400,12 +416,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-12-self-supervised-learning">
-<h1>Lecture 12 — Self-supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 12 — Self-supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Link to this heading">#</a></h1>
 <section id="setup-for-sections-78">
-<h2>0. Setup for sections 7–8<a class="headerlink" href="#setup-for-sections-78" title="Permalink to this heading">#</a></h2>
+<h2>0. Setup for sections 7–8<a class="headerlink" href="#setup-for-sections-78" title="Link to this heading">#</a></h2>
 <p>This file is self-contained. It installs packages if needed, loads the dataset, and prepares descriptor tables used below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -677,10 +693,10 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="in-class-activities">
-<h2>7. In-class activities<a class="headerlink" href="#in-class-activities" title="Permalink to this heading">#</a></h2>
+<h2>7. In-class activities<a class="headerlink" href="#in-class-activities" title="Link to this heading">#</a></h2>
 <p>We practice three light self-supervised ideas that fit experimental chemistry. Each activity is short and shows intermediate structures.</p>
 <section id="masked-descriptor-imputation-pretext-task">
-<h3>7.1 Masked descriptor imputation (pretext task)<a class="headerlink" href="#masked-descriptor-imputation-pretext-task" title="Permalink to this heading">#</a></h3>
+<h3>7.1 Masked descriptor imputation (pretext task)<a class="headerlink" href="#masked-descriptor-imputation-pretext-task" title="Link to this heading">#</a></h3>
 <p><strong>Idea</strong><br />
 Randomly hide one descriptor and predict it from the other 9. This is a pretext task that learns relationships inside <span class="math notranslate nohighlight">\(x\)</span> without labels <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <p><strong>Prepare the matrix</strong></p>
@@ -738,17 +754,15 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 <span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">X_te_use</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">X_tef</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tr_use</span><span class="p">,</span> <span class="n">y_tr</span><span class="p">)</span>
 
-<span class="nn">File &lt;__array_function__ internals&gt;:200,</span> in <span class="ni">delete</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\numpy\lib\function_base.py:5211,</span> in <span class="ni">delete</span><span class="nt">(arr, obj, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5208</span> <span class="k">if</span> <span class="n">single_value</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">5209</span>     <span class="c1"># optimization for a single value</span>
-<span class="g g-Whitespace">   </span><span class="mi">5210</span>     <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">N</span> <span class="ow">or</span> <span class="n">obj</span> <span class="o">&gt;=</span> <span class="n">N</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">5211</span>         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">5212</span>             <span class="s2">&quot;index </span><span class="si">%i</span><span class="s2"> is out of bounds for axis </span><span class="si">%i</span><span class="s2"> with &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">5213</span>             <span class="s2">&quot;size </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">5214</span>     <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">5215</span>         <span class="n">obj</span> <span class="o">+=</span> <span class="n">N</span>
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\numpy\lib\_function_base_impl.py:5437,</span> in <span class="ni">delete</span><span class="nt">(arr, obj, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5434</span> <span class="k">if</span> <span class="n">single_value</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">5435</span>     <span class="c1"># optimization for a single value</span>
+<span class="g g-Whitespace">   </span><span class="mi">5436</span>     <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">N</span> <span class="ow">or</span> <span class="n">obj</span> <span class="o">&gt;=</span> <span class="n">N</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">5437</span>         <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">5438</span>             <span class="sa">f</span><span class="s2">&quot;index </span><span class="si">{</span><span class="n">obj</span><span class="si">}</span><span class="s2"> is out of bounds for axis </span><span class="si">{</span><span class="n">axis</span><span class="si">}</span><span class="s2"> with &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">5439</span>             <span class="sa">f</span><span class="s2">&quot;size </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5440</span>     <span class="k">if</span> <span class="p">(</span><span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">5441</span>         <span class="n">obj</span> <span class="o">+=</span> <span class="n">N</span>
 
 <span class="ne">IndexError</span>: index 9 is out of bounds for axis 1 with size 9
 </pre></div>
@@ -811,7 +825,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="character-language-model-for-smiles">
-<h3>7.2 Character language model for SMILES<a class="headerlink" href="#character-language-model-for-smiles" title="Permalink to this heading">#</a></h3>
+<h3>7.2 Character language model for SMILES<a class="headerlink" href="#character-language-model-for-smiles" title="Link to this heading">#</a></h3>
 <p>Train an <span class="math notranslate nohighlight">\(n\)</span>-gram model that predicts the next character in SMILES. This mirrors next-token or masked-token pretraining at a tiny scale.</p>
 <p><strong>Collect SMILES and build a character set</strong></p>
 <div class="cell docutils container">
@@ -938,7 +952,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="linear-autoencoder-via-pca-on-descriptors">
-<h3>7.3 Linear autoencoder via PCA on descriptors<a class="headerlink" href="#linear-autoencoder-via-pca-on-descriptors" title="Permalink to this heading">#</a></h3>
+<h3>7.3 Linear autoencoder via PCA on descriptors<a class="headerlink" href="#linear-autoencoder-via-pca-on-descriptors" title="Link to this heading">#</a></h3>
 <p>Treat PCA as an encoder-decoder. Choose <span class="math notranslate nohighlight">\(k\)</span> by explained variance and study reconstruction error per column and per molecule.</p>
 <p><strong>Standardize and fit PCA</strong></p>
 <div class="cell docutils container">
@@ -1014,7 +1028,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="contrast-of-two-descriptor-views-with-cosine">
-<h3>7.4 Contrast of two descriptor views with cosine<a class="headerlink" href="#contrast-of-two-descriptor-views-with-cosine" title="Permalink to this heading">#</a></h3>
+<h3>7.4 Contrast of two descriptor views with cosine<a class="headerlink" href="#contrast-of-two-descriptor-views-with-cosine" title="Link to this heading">#</a></h3>
 <p>Make two simple views of the same molecule: standardized descriptors and a noisy copy. Check that each molecule matches its own view by cosine similarity.</p>
 <p><strong>Build two views</strong></p>
 <div class="cell docutils container">
@@ -1050,7 +1064,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="optional-map-the-encoder-codes">
-<h3>7.5 Optional: map the encoder codes<a class="headerlink" href="#optional-map-the-encoder-codes" title="Permalink to this heading">#</a></h3>
+<h3>7.5 Optional: map the encoder codes<a class="headerlink" href="#optional-map-the-encoder-codes" title="Link to this heading">#</a></h3>
 <p>Plot the first two principal components as a quick 2D map of the encoder codes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1068,10 +1082,10 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h2>8. Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<h2>8. Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
 <p>Short reference solutions that match the activities above.</p>
 <section id="solution-7-1-ridge-and-residuals">
-<h3>Solution 7.1 Ridge and residuals<a class="headerlink" href="#solution-7-1-ridge-and-residuals" title="Permalink to this heading">#</a></h3>
+<h3>Solution 7.1 Ridge and residuals<a class="headerlink" href="#solution-7-1-ridge-and-residuals" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ridge_scores</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1128,7 +1142,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="solution-7-2-n-4-and-masked-hit-5">
-<h3>Solution 7.2 <span class="math notranslate nohighlight">\(n=4\)</span> and masked hit&#64;5<a class="headerlink" href="#solution-7-2-n-4-and-masked-hit-5" title="Permalink to this heading">#</a></h3>
+<h3>Solution 7.2 <span class="math notranslate nohighlight">\(n=4\)</span> and masked hit&#64;5<a class="headerlink" href="#solution-7-2-n-4-and-masked-hit-5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rebuild counts with n=4</span>
@@ -1190,7 +1204,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="solution-7-3-k-3-and-error-vs-molwt">
-<h3>Solution 7.3 <span class="math notranslate nohighlight">\(k=3\)</span> and error vs MolWt<a class="headerlink" href="#solution-7-3-k-3-and-error-vs-molwt" title="Permalink to this heading">#</a></h3>
+<h3>Solution 7.3 <span class="math notranslate nohighlight">\(k=3\)</span> and error vs MolWt<a class="headerlink" href="#solution-7-3-k-3-and-error-vs-molwt" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>
@@ -1221,7 +1235,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="solution-7-4-noise-sweep-and-alt-similarity">
-<h3>Solution 7.4 Noise sweep and alt similarity<a class="headerlink" href="#solution-7-4-noise-sweep-and-alt-similarity" title="Permalink to this heading">#</a></h3>
+<h3>Solution 7.4 Noise sweep and alt similarity<a class="headerlink" href="#solution-7-4-noise-sweep-and-alt-similarity" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">euclidean_distances</span>
@@ -1256,7 +1270,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
 </section>
 <hr class="docutils" />
 <section id="solution-7-5-code-map">
-<h3>Solution 7.5 Code map<a class="headerlink" href="#solution-7-5-code-map" title="Permalink to this heading">#</a></h3>
+<h3>Solution 7.5 Code map<a class="headerlink" href="#solution-7-5-code-map" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z2</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xz</span><span class="p">)[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -1300,7 +1314,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1311,6 +1325,7 @@ Randomly hide one descriptor and predict it from the other 9. This is a pretext 
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1359,7 +1374,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1383,8 +1398,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

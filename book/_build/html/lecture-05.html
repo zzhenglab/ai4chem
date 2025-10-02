@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-05';</script>
@@ -75,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -196,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -205,14 +219,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -337,10 +351,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -348,14 +362,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -418,10 +432,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-regression-and-classification">
-<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id6">Learning goals</a></p></li>
@@ -438,7 +452,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tell classification from regression by the target type.</p></li>
 <li><p>Load small chemistry-like datasets with SMILES and simple text features.</p></li>
@@ -484,33 +498,35 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
+<details class="admonition hide below-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (1.3.2)
-Requirement already satisfied: pandas in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (2.0.3)
-Requirement already satisfied: matplotlib in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (3.7.5)
-Requirement already satisfied: numpy&lt;2.0,&gt;=1.17.3 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.24.4)
-Requirement already satisfied: scipy&gt;=1.5.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.10.1)
-Requirement already satisfied: joblib&gt;=1.1.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (3.5.0)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2023.3.post1)
-Requirement already satisfied: tzdata&gt;=2022.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2023.3)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (1.1.1)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (4.57.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (1.4.7)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=6.2.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (10.1.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (3.1.4)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (6.4.5)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib) (3.20.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.16.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (1.7.1)
+Requirement already satisfied: pandas in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (2.3.1)
+Requirement already satisfied: matplotlib in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (3.10.3)
+Requirement already satisfied: numpy&gt;=1.22.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (2.3.2)
+Requirement already satisfied: scipy&gt;=1.8.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (1.16.1)
+Requirement already satisfied: joblib&gt;=1.2.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (1.5.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (3.6.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (4.59.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (11.3.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.1.1 -&gt; 25.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -518,7 +534,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </section>
 <section id="what-is-supervised-learning">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Link to this heading">#</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <ul class="simple">
@@ -535,7 +551,7 @@ Note: you may need to restart the kernel to use updated packages.
 </ul>
 </section>
 <section id="data-preview-and-descriptor-engineering">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Link to this heading">#</a></h2>
 <p>We will read a small CSV from a public repository and compute a handful of molecular descriptors from SMILES. These lightweight features are enough to practice the full workflow.</p>
 <div class="admonition-tip admonition">
 <p class="admonition-title">Tip</p>
@@ -971,7 +987,7 @@ Note: you may need to restart the kernel to use updated packages.
 </section>
 <hr class="docutils" />
 <section id="regression-workflow-on-melting-point">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Link to this heading">#</a></h2>
 <p>We start with a single property, the <strong>Melting Point</strong>, and use four descriptors as features.</p>
 <p>Now let’s first look at regression, we will focus one property prediction at a time. first create a new df”””</p>
 <div class="cell docutils container">
@@ -1114,14 +1130,14 @@ Note: you may need to restart the kernel to use updated packages.
 </div></div></div>
 </div>
 <section id="train-and-test-split">
-<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h3>
 <div class="admonition-why-split admonition">
 <p class="admonition-title">Why split?</p>
 <p>We test on <strong>held-out</strong> data to estimate generalization. A common split is 80 percent train, 20 percent test with a fixed <code class="docutils literal notranslate"><span class="pre">random_state</span></code> for reproducibility.</p>
 </div>
 </section>
 <section id="splitting-the-data-and-train">
-<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Link to this heading">#</a></h3>
 <p>Before training, we need to separate the input features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) from the target (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Then we split into training and test sets to evaluate how well the model generalizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1184,7 +1200,7 @@ Name: Melting Point, Length: 460, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5872dfb030fd716143e05854ad7976fbf358aa252103221362fa4baa6c378a1a.png" src="_images/5872dfb030fd716143e05854ad7976fbf358aa252103221362fa4baa6c378a1a.png" />
+<img alt="_images/015c424d4fe957baf8c665a4b237c367c10e6296db16a1e97eb169c77ffa0c7c.png" src="_images/015c424d4fe957baf8c665a4b237c367c10e6296db16a1e97eb169c77ffa0c7c.png" />
 </div>
 </div>
 <p>Blue points are the training set and red points are the test set. We can see that the split looks balanced and the test set covers a different range of values.</p>
@@ -1212,7 +1228,7 @@ Name: Melting Point, Length: 460, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 374.56773278929023
-MAE: 15.316390819320329
+MAE: 15.316390819320326
 R2: 0.8741026174988968
 </pre></div>
 </div>
@@ -1300,13 +1316,13 @@ Predicted value: [ 86.80836978 169.99905967  53.35729424]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5609f6cf098676de0b2091b85b9ff9c058d5622cf46260bbfd6f8f0a600b637.png" src="_images/b5609f6cf098676de0b2091b85b9ff9c058d5622cf46260bbfd6f8f0a600b637.png" />
-<img alt="_images/9f1d16077a44c590033038856aa6bae96ab2e73ada79ef02368d8f60e714a34d.png" src="_images/9f1d16077a44c590033038856aa6bae96ab2e73ada79ef02368d8f60e714a34d.png" />
+<img alt="_images/3ee6a751a8396e06e9dba7677ac055bb9b433a5e635232cf617ac6c7d7b1f8dc.png" src="_images/3ee6a751a8396e06e9dba7677ac055bb9b433a5e635232cf617ac6c7d7b1f8dc.png" />
+<img alt="_images/76d2aca67e937a7bf2559fd45c6caea234724489baa01f7519402292f32b830d.png" src="_images/76d2aca67e937a7bf2559fd45c6caea234724489baa01f7519402292f32b830d.png" />
 </div>
 </div>
 </section>
 <section id="how-split-choice-affects-accuracy">
-<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Permalink to this heading">#</a></h3>
+<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Link to this heading">#</a></h3>
 <p>Besides, we can examine how different splitting strategies influence the accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1436,7 +1452,7 @@ Predicted value: [ 86.80836978 169.99905967  53.35729424]
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/4b55a0a9c3453da7b925db70f1e7c26c314efb717773161aae41432c703d271c.png" src="_images/4b55a0a9c3453da7b925db70f1e7c26c314efb717773161aae41432c703d271c.png" />
+</div></div><img alt="_images/18e55716e86451063c7bf7edaad8c1423cbd2bb0f27f45241279957b8c5ecccd.png" src="_images/18e55716e86451063c7bf7edaad8c1423cbd2bb0f27f45241279957b8c5ecccd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_size=0.2, seed=15 -&gt; MSE=415.498, MAE=16.380, R2=0.805
 test_size=0.2, seed=42 -&gt; MSE=374.568, MAE=15.316, R2=0.874
 test_size=0.1, seed=42 -&gt; MSE=324.998, MAE=13.861, R2=0.872
@@ -1451,7 +1467,7 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </div>
 </section>
 <section id="learning-curves">
-<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Link to this heading">#</a></h3>
 <p>A random <code class="docutils literal notranslate"><span class="pre">seed</span></code> is simply a number provided to a random number generator to ensure that it produces the same sequence of “random” results each time.</p>
 <p>For example, functions such as <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> shuffle the dataset before dividing it into training and testing sets. If you do not specify a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> (the seed), every run may produce a slightly different split. This variation can lead to different accuracy values across runs.</p>
 <p><strong>Same seed → same split → same results</strong></p>
@@ -1527,13 +1543,13 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de40d4e056e7620a90d99f59459683cbf9f1ee7dd45a9f39ec72ab0ed2bdd716.png" src="_images/de40d4e056e7620a90d99f59459683cbf9f1ee7dd45a9f39ec72ab0ed2bdd716.png" />
-<img alt="_images/63142f01011cc35b23b04591b4f982bae49f309efcafced3e62b1a1cb2105d8e.png" src="_images/63142f01011cc35b23b04591b4f982bae49f309efcafced3e62b1a1cb2105d8e.png" />
+<img alt="_images/4a43da0582501151adb7e9e5958739744d9cff9fdeaa2ad12d68f65db863da01.png" src="_images/4a43da0582501151adb7e9e5958739744d9cff9fdeaa2ad12d68f65db863da01.png" />
+<img alt="_images/2cf4c6ba2077299bffd41e623e8a50c7a0baea5def4db4c3169414443960aef4.png" src="_images/2cf4c6ba2077299bffd41e623e8a50c7a0baea5def4db4c3169414443960aef4.png" />
 </div>
 </div>
 </section>
 <section id="regularization-lasso-and-ridge">
-<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Permalink to this heading">#</a></h3>
+<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Link to this heading">#</a></h3>
 <p>Now, instead of using <strong>Linear Regression</strong>, we can also experiment with other models such as <strong>Lasso Regression</strong>. These alternatives add regularization, which helps prevent overfitting by penalizing overly complex models.</p>
 <p>So, how does <code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code> work?</p>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">model.fit(X,</span> <span class="pre">y)</span></code>, the following steps occur:</p>
@@ -1603,12 +1619,12 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Lasso regression:
 MSE: 329.0917965850995
-MAE: 14.768600346156408
+MAE: 14.76860034615641
 R2: 0.8788521790542615
 --------------
 For Linear regression:
 MSE: 374.56773278929023
-MAE: 15.316390819320329
+MAE: 15.316390819320326
 R2: 0.8741026174988968
 </pre></div>
 </div>
@@ -1658,13 +1674,13 @@ R2: 0.8741026174988968
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Ridge regression:
-MSE: 329.17713339699617
-MAE: 14.763612712404363
-R2: 0.87882076420614
+MSE: 329.1771333969961
+MAE: 14.763612712404358
+R2: 0.8788207642061401
 --------------
 For Linear regression:
 MSE: 374.56773278929023
-MAE: 15.316390819320329
+MAE: 15.316390819320326
 R2: 0.8741026174988968
 </pre></div>
 </div>
@@ -1676,7 +1692,7 @@ R2: 0.8741026174988968
 </section>
 <hr class="docutils" />
 <section id="another-regression-target-solubility-in-log-space">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Link to this heading">#</a></h2>
 <p>Let’s try doing the same process by defining the following molecular descriptors as our input features (<strong>X</strong>):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">molwt</span></code> (molecular weight)</p></li>
@@ -1745,19 +1761,19 @@ R2: 0.8741026174988968
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
-MSE: 5445.949091807627
-MAE: 48.59778162610544
-R2: -22609.20768075587
+MSE: 5445.949091807626
+MAE: 48.59778162610549
+R2: -22609.207680755866
 --------------
 For Ridge regression:
-MSE: 5421.635487770039
-MAE: 48.47750955001047
-R2: -22508.263726361492
+MSE: 5421.63548777009
+MAE: 48.477509550010666
+R2: -22508.2637263617
 --------------
 For Lasso regression:
-MSE: 5445.226685332671
-MAE: 48.59194974571603
-R2: -22606.208431193794
+MSE: 5445.22668533266
+MAE: 48.591949745715986
+R2: -22606.208431193747
 --------------
 </pre></div>
 </div>
@@ -1838,17 +1854,17 @@ y' = \log_{10}(\text{Solubility})
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
-MSE: 0.01839145854075597
-MAE: 0.11527716464692464
-R2: 0.9596775333018727
+MSE: 0.018391458540756016
+MAE: 0.11527716464692483
+R2: 0.9596775333018726
 --------------
 For Ridge regression:
-MSE: 0.018411193365126914
-MAE: 0.11530263164973845
-R2: 0.9596342655644756
+MSE: 0.01841119336512683
+MAE: 0.11530263164973817
+R2: 0.9596342655644758
 --------------
 For Lasso regression:
-MSE: 0.018796068172089866
+MSE: 0.01879606817208987
 MAE: 0.11631355339741077
 R2: 0.95879044442042
 --------------
@@ -1860,7 +1876,7 @@ R2: 0.95879044442042
 </section>
 <hr class="docutils" />
 <section id="binary-classification-toxicity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Link to this heading">#</a></h2>
 <p>We turn to a yes or no outcome, using the same four descriptors. Logistic Regression outputs probabilities. A threshold converts those into class predictions.</p>
 <p>We will build a binary classifier for <strong>Toxicity</strong> using the pre-built table:</p>
 <div class="cell docutils container">
@@ -2058,7 +2074,7 @@ R2: 0.95879044442042
  7    0
  8    1
  9    1
- Name: Toxicity, dtype: int32)
+ Name: Toxicity, dtype: int64)
 </pre></div>
 </div>
 </div>
@@ -2117,29 +2133,29 @@ Logistic Regression is for classification. It models probability of class 1. Lin
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1,
         0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
         1, 1, 1, 0, 1]),
- array([0.97365453, 0.99999445, 0.07948438, 0.99928248, 0.99808894,
-        0.99988604, 0.38728779, 0.28315917, 0.98259346, 0.91108836,
-        1.        , 0.46860683, 0.98970239, 0.99999986, 1.        ,
-        0.99999072, 0.19729071, 0.60959888, 0.99975044, 0.99999457,
-        0.99998644, 0.99999999, 0.99971599, 1.        , 0.99875044,
-        0.99895988, 0.99643145, 0.99999997, 0.99982696, 0.54798505,
-        0.25983915, 0.99996566, 0.99016677, 0.99951381, 0.99997991,
-        0.99457012, 0.68031579, 0.07968588, 0.99462309, 0.99898626,
-        0.99837834, 0.19580473, 0.99981471, 0.99845567, 0.9982642 ,
-        0.99744574, 0.99966752, 0.99993182, 0.9999963 , 0.00365461,
-        0.9783477 , 0.99973712, 0.94541859, 0.94609243, 0.17159213,
-        0.41085436, 0.99978143, 0.97261623, 0.99824279, 0.93470549,
-        0.9999994 , 0.99999999, 0.99580643, 0.45320951, 0.99849263,
-        0.98080696, 0.98614835, 0.99925845, 0.99649485, 0.98067138,
-        0.9999999 , 0.89617463, 0.99855388, 0.69050936, 0.99952047,
-        0.80492459, 0.32769445, 0.9977953 , 0.11406556, 0.99999984,
-        0.99992031, 0.94609243, 0.6493381 , 0.99558517, 0.97095266,
-        0.99935527, 0.04302485, 0.99995445, 0.13724835, 0.99999072,
-        0.9999411 , 0.99999647, 0.99997381, 0.41529205, 0.77149276,
-        0.99999642, 0.99918531, 0.99998729, 0.12146743, 0.97989156,
-        0.78881416, 0.99498349, 0.13724835, 0.99997757, 0.99999981,
-        0.88004382, 0.99542661, 0.34878501, 0.9999999 , 0.99999966,
-        0.99956903, 0.99993734, 0.99997789, 0.13220892, 0.99999716]))
+ array([0.97365623, 0.99999446, 0.07947364, 0.99928262, 0.9980891 ,
+        0.99988607, 0.38729989, 0.28314806, 0.98259664, 0.91109118,
+        1.        , 0.46860548, 0.98970303, 0.99999986, 1.        ,
+        0.99999072, 0.19727375, 0.60960733, 0.99975052, 0.99999458,
+        0.99998644, 0.99999999, 0.99971597, 1.        , 0.99875073,
+        0.99896006, 0.99643232, 0.99999997, 0.99982699, 0.54794482,
+        0.25983303, 0.99996567, 0.99016699, 0.99951395, 0.99997992,
+        0.9945712 , 0.68033858, 0.07968061, 0.99462357, 0.99898643,
+        0.99837874, 0.19580904, 0.99981472, 0.99845553, 0.99826431,
+        0.99744605, 0.99966762, 0.99993185, 0.99999631, 0.00365372,
+        0.97834833, 0.99973715, 0.94542293, 0.94609804, 0.17158234,
+        0.41085072, 0.99978148, 0.97261689, 0.99824268, 0.93471006,
+        0.9999994 , 0.99999999, 0.99580694, 0.45318977, 0.99849298,
+        0.98080952, 0.98615126, 0.99925854, 0.99649529, 0.98067268,
+        0.9999999 , 0.89617648, 0.99855409, 0.69051763, 0.99952057,
+        0.80491169, 0.3276906 , 0.99779547, 0.11405811, 0.99999984,
+        0.99992034, 0.94609804, 0.64932882, 0.99558584, 0.97095588,
+        0.99935538, 0.04301283, 0.99995445, 0.13724395, 0.99999072,
+        0.99994111, 0.99999647, 0.99997382, 0.41527923, 0.77149092,
+        0.99999642, 0.99918537, 0.99998729, 0.12146176, 0.97989265,
+        0.78881568, 0.99498407, 0.13724395, 0.99997757, 0.99999981,
+        0.88004593, 0.9954273 , 0.34878879, 0.9999999 , 0.99999966,
+        0.99956914, 0.99993736, 0.9999779 , 0.13220075, 0.99999716]))
 </pre></div>
 </div>
 </div>
@@ -2266,8 +2282,8 @@ AUC:       0.992
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a5356641ff676172ef5c5838a9e99f3790687bededbb2674e93dc0e7bfa24c88.png" src="_images/a5356641ff676172ef5c5838a9e99f3790687bededbb2674e93dc0e7bfa24c88.png" />
-<img alt="_images/ea2ced56c020b69e68333e323ced7bc663117ffe9f4d16386c9c372077974146.png" src="_images/ea2ced56c020b69e68333e323ced7bc663117ffe9f4d16386c9c372077974146.png" />
+<img alt="_images/95c5f1510071c152a296c1f9f4f4bb60a01240f7924bd4fdadc90d6091304c3c.png" src="_images/95c5f1510071c152a296c1f9f4f4bb60a01240f7924bd4fdadc90d6091304c3c.png" />
+<img alt="_images/649e881bba15d5d21cbbd099ac4190a4b3e85275081058e7553e7bb2fbc55554.png" src="_images/649e881bba15d5d21cbbd099ac4190a4b3e85275081058e7553e7bb2fbc55554.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>threshold: 0.350
 Accuracy: 0.965
 Precision: 0.960
@@ -2318,13 +2334,13 @@ AUC: 0.992
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dbfdcd386cd132a2d2d422bfac093fffd013ee3ec793b30a05019a08cd8e8ecb.png" src="_images/dbfdcd386cd132a2d2d422bfac093fffd013ee3ec793b30a05019a08cd8e8ecb.png" />
+<img alt="_images/bb981d4b4479f95d40d4e5e47eb99d6da7e72bfc806108195eb9fa24964827f6.png" src="_images/bb981d4b4479f95d40d4e5e47eb99d6da7e72bfc806108195eb9fa24964827f6.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="from-regression-to-classes-melting-point-bins">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Link to this heading">#</a></h2>
 <p>Now, let’s think about this:
 <strong>Can regression question be turning into classificiation?</strong></p>
 <blockquote>
@@ -2370,7 +2386,7 @@ AUC: 0.992
         ...,
         [277.106  ,   3.7688 ,  34.14   ,   3.     ],
         [215.061  ,   1.32648,  42.25   ,   2.     ],
-        [134.222  ,   2.8114 ,   0.     ,   1.     ]]),
+        [134.222  ,   2.8114 ,   0.     ,   1.     ]], shape=(460, 4)),
  array([1, 1, 2, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1,
         0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
         1, 1, 0, 0, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
@@ -2446,7 +2462,7 @@ F1:        0.794
 <p>Note: When moving from <strong>binary classification</strong> to <strong>multi-class classification</strong>, metrics like precision, recall, and F1 score cannot be defined in just one way.<br />
 You need to decide <strong>how to average</strong> them across multiple classes. This is where strategies such as <strong>macro</strong>, <strong>micro</strong>, and <strong>weighted</strong> averaging come into play.</p>
 <section id="macro-averaging">
-<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Permalink to this heading">#</a></h3>
+<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compute the metric (precision, recall, or F1) <strong>for each class separately</strong>.</p></li>
 <li><p>Take the <strong>simple, unweighted average</strong> across all classes.</p></li>
@@ -2510,15 +2526,15 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1e2db63f03a9c2ee167099c362c363ad325ab63b64bc89155059c450bf64ef71.png" src="_images/1e2db63f03a9c2ee167099c362c363ad325ab63b64bc89155059c450bf64ef71.png" />
-<img alt="_images/a79fab692ac3779eab5460eba3767dc91abe6c0ea6b39d591434d112f85362d7.png" src="_images/a79fab692ac3779eab5460eba3767dc91abe6c0ea6b39d591434d112f85362d7.png" />
+<img alt="_images/dfd1feed8cc23b19e59d9972a530b71a26cc9beea4ff40095a05839230968bc5.png" src="_images/dfd1feed8cc23b19e59d9972a530b71a26cc9beea4ff40095a05839230968bc5.png" />
+<img alt="_images/f8692feb29148def95edfd3095242ec8f921b798e83065ae09825fac90e7d16a.png" src="_images/f8692feb29148def95edfd3095242ec8f921b798e83065ae09825fac90e7d16a.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-model-recipes admonition">
 <p class="admonition-title">Model recipes</p>
 <ul class="simple">
@@ -2546,35 +2562,35 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Permalink to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
+<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Link to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
 </dd>
-<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Permalink to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
+<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Link to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
 </dd>
-<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Permalink to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
+<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Link to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
 </dd>
-<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Permalink to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
+<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Link to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
 </dd>
-<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Permalink to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
+<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Link to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
 </dd>
-<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Permalink to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
+<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Link to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
 </dd>
-<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Permalink to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
+<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Link to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
 </dd>
-<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Permalink to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
+<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Link to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
 </dd>
-<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Permalink to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
+<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Link to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
 </dd>
-<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Permalink to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
+<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Link to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="linear-regression-with-two-features">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
@@ -2592,7 +2608,7 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="ridge-across-splits">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
 <span class="n">y</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
@@ -2619,14 +2635,14 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="pka-regression-two-ways">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1">#TO DO</span>
 </pre></div>
 </div>
 </section>
 <section id="pka-to-classification">
-<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2638,9 +2654,9 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 </section>
 <section id="id1">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2676,7 +2692,7 @@ R2:  0.729
 </div>
 </section>
 <section id="id3">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2705,12 +2721,12 @@ R2:  0.729
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/66b2d8ff79b75beb6818a4fca95bace440b6f6f12cbcafbf1a25a368b171b2f7.png" src="_images/66b2d8ff79b75beb6818a4fca95bace440b6f6f12cbcafbf1a25a368b171b2f7.png" />
+<img alt="_images/63bcbf96d35d80048a2518cba6456bcfceafa3610d56c2630fd8e20a1971fa8b.png" src="_images/63bcbf96d35d80048a2518cba6456bcfceafa3610d56c2630fd8e20a1971fa8b.png" />
 </div>
 </div>
 </section>
 <section id="id4">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> and for <strong>exp(pKa)</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2752,12 +2768,12 @@ R2:  0.729
 Test MSE: 1.478
 </pre></div>
 </div>
-<img alt="_images/9195af60b17618079558034b65046da90fa2d2bbbcff15056e6220c8393ad352.png" src="_images/9195af60b17618079558034b65046da90fa2d2bbbcff15056e6220c8393ad352.png" />
+<img alt="_images/341b537ee6674ba5347efdfcdf06f8f902277ebf3a04c9e6077be3a8ce55ec33.png" src="_images/341b537ee6674ba5347efdfcdf06f8f902277ebf3a04c9e6077be3a8ce55ec33.png" />
 </div>
 </div>
 </section>
 <section id="id5">
-<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2827,7 +2843,7 @@ F1:        0.893
 AUC:       0.779
 </pre></div>
 </div>
-<img alt="_images/6e54c0aa7cd463afefb75b69ddfa791e79cefa3fa60e82daadaba2593291624e.png" src="_images/6e54c0aa7cd463afefb75b69ddfa791e79cefa3fa60e82daadaba2593291624e.png" />
+<img alt="_images/6282fc6f257136c9d552c82e59fbf32f493d10ef5091ead26909a1c03b688990.png" src="_images/6282fc6f257136c9d552c82e59fbf32f493d10ef5091ead26909a1c03b688990.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Rule B (≤ median pKa = acidic, median=5.90) ---
 Accuracy:  0.704
 Precision: 0.750
@@ -2836,7 +2852,7 @@ F1:        0.679
 AUC:       0.743
 </pre></div>
 </div>
-<img alt="_images/c9e5182cd61ba8b749037035f18126a2fb1d1926f457201a14e3654c1801920c.png" src="_images/c9e5182cd61ba8b749037035f18126a2fb1d1926f457201a14e3654c1801920c.png" />
+<img alt="_images/89f5d32d6fe46c6b5295059a61d23f4bf486d26c34b4f6261f11e32fc28c57df.png" src="_images/89f5d32d6fe46c6b5295059a61d23f4bf486d26c34b4f6261f11e32fc28c57df.png" />
 </div>
 </div>
 </section>
@@ -2870,7 +2886,7 @@ AUC:       0.743
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2899,6 +2915,7 @@ AUC:       0.743
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2963,7 +2980,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2987,8 +3004,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
