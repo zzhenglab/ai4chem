@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 12 - Self-supervised Learning
+# Lecture 12 - Self-Supervised Learning
 
 ```{contents}
 :local:

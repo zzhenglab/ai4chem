@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-06';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -71,23 +73,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,20 +116,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,8 +137,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -158,18 +155,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -191,7 +177,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -207,7 +194,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -216,14 +203,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -348,10 +335,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -359,14 +346,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -435,10 +422,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-6-cross-validation">
-<h1>Lecture 6 - Cross-Validation<a class="headerlink" href="#lecture-6-cross-validation" title="Link to this heading">#</a></h1>
+<h1>Lecture 6 - Cross-Validation<a class="headerlink" href="#lecture-6-cross-validation" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -456,7 +443,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Use <strong>KFold</strong> and <strong>cross_val_score</strong> for fair evaluation.</p></li>
 <li><p>Tune hyperparameters with <strong>GridSearchCV</strong>.</p></li>
@@ -467,18 +454,18 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="dataset-and-setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Dataset and setup</a><a class="headerlink" href="#dataset-and-setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Dataset and setup</a><a class="headerlink" href="#dataset-and-setup" title="Permalink to this heading">#</a></h2>
 <div class="admonition-why-this-dataset admonition">
 <p class="admonition-title">Why this dataset?</p>
 <p>We will reuse the same table from Lecture 5. It includes SMILES plus targets such as <strong>Melting Point</strong> and <strong>Toxicity</strong>. We compute four lightweight descriptors that we already trust: <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">NumRings</span></code>. They are fast to compute, easy to interpret, and good enough to demonstrate model selection and cross‑validation.</p>
 </div>
 <section id="imports-and-environment">
-<h3>1.1 Imports and environment<a class="headerlink" href="#imports-and-environment" title="Link to this heading">#</a></h3>
+<h3>1.1 Imports and environment<a class="headerlink" href="#imports-and-environment" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commented out IPython magic to ensure Python compatibility.</span>
@@ -521,7 +508,7 @@ document.write(`
 </div>
 </section>
 <section id="load-data-and-build-descriptors">
-<h3>1.2 Load data and build descriptors<a class="headerlink" href="#load-data-and-build-descriptors" title="Link to this heading">#</a></h3>
+<h3>1.2 Load data and build descriptors<a class="headerlink" href="#load-data-and-build-descriptors" title="Permalink to this heading">#</a></h3>
 <div class="admonition-data-source admonition">
 <p class="admonition-title">Data source</p>
 <p>We will use this C-H oxidation dataset we saw before:<br />
@@ -682,9 +669,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="quick-exploratory-data-analysis-eda">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Quick Exploratory Data Analysis (EDA)</a><a class="headerlink" href="#quick-exploratory-data-analysis-eda" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Quick Exploratory Data Analysis (EDA)</a><a class="headerlink" href="#quick-exploratory-data-analysis-eda" title="Permalink to this heading">#</a></h2>
 <section id="descriptor-histograms">
-<h3>2.1 Descriptor histograms<a class="headerlink" href="#descriptor-histograms" title="Link to this heading">#</a></h3>
+<h3>2.1 Descriptor histograms<a class="headerlink" href="#descriptor-histograms" title="Permalink to this heading">#</a></h3>
 <div class="admonition-goal admonition">
 <p class="admonition-title">Goal</p>
 <p>Check scale, spread, and any extreme values. If a feature is highly skewed, consider transforms or standardization before training.</p>
@@ -699,12 +686,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/182d8368dce923628285fec322bdccc65c100640960f10ab6270a37ccae0f9b4.png" src="_images/182d8368dce923628285fec322bdccc65c100640960f10ab6270a37ccae0f9b4.png" />
+<img alt="_images/70bac9bbf86db3ce7365a60aff643d891d06066986672b0cc83c7b148641570a.png" src="_images/70bac9bbf86db3ce7365a60aff643d891d06066986672b0cc83c7b148641570a.png" />
 </div>
 </div>
 </section>
 <section id="pairwise-relationships">
-<h3>2.2 Pairwise relationships<a class="headerlink" href="#pairwise-relationships" title="Link to this heading">#</a></h3>
+<h3>2.2 Pairwise relationships<a class="headerlink" href="#pairwise-relationships" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">df_reg_mp</span><span class="p">[</span><span class="n">features</span><span class="p">],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -714,7 +701,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/365c7e04c443660fc8973b08118f2eddf704524f1f8e6bb443eac39ff43257a7.png" src="_images/365c7e04c443660fc8973b08118f2eddf704524f1f8e6bb443eac39ff43257a7.png" />
+<img alt="_images/0c75ff935a88500bd148d1e5c5973c3e38007c4e7d639d8cb15fb96b017bc036.png" src="_images/0c75ff935a88500bd148d1e5c5973c3e38007c4e7d639d8cb15fb96b017bc036.png" />
 </div>
 </div>
 <p>As you see above, a pairwise plot (also called a scatterplot matrix) shows relationships between every possible pair of features. For example, if you have four descriptors — MolWt, LogP, TPSA, and NumRings — the matrix will draw 12 scatterplots pairs (diagonal being their own distribution).</p>
@@ -723,7 +710,7 @@ document.write(`
 <p><strong>Detect outliers</strong>: Points that are far away from the general cloud of data stand out.</p>
 </section>
 <section id="redundancy-demo-and-correlation">
-<h3>2.3 Redundancy demo and correlation<a class="headerlink" href="#redundancy-demo-and-correlation" title="Link to this heading">#</a></h3>
+<h3>2.3 Redundancy demo and correlation<a class="headerlink" href="#redundancy-demo-and-correlation" title="Permalink to this heading">#</a></h3>
 <p>To illustrate what redundancy looks like, in the following example, we added a synthetic feature called <code class="docutils literal notranslate"><span class="pre">MolWt_half</span></code>, created simply by multiplying molecular weight by 0.5. In the scatter matrix, <code class="docutils literal notranslate"><span class="pre">MolWt_half</span></code> and <code class="docutils literal notranslate"><span class="pre">MolW</span></code> form a perfect straight-line relationship, highlighting redundancy.</p>
 <p>In real-world datasets, you might encounter similar situations where two measured properties track one another closely because they arise from the same underlying physical or chemical trend. In such cases, redundancy reduces the effective dimensionality of the dataset.</p>
 <p>This visual impression can be confirmed by calculating the correlation coefficient numerically. A correlation near <code class="docutils literal notranslate"><span class="pre">1.0</span></code> (or <code class="docutils literal notranslate"><span class="pre">–1.0</span></code>) indicates strong redundancy, just like we see between MolWt and MolWt_half.</p>
@@ -758,14 +745,14 @@ NumRings    0.759  0.605  0.294     1.000       0.759
 MolWt_half  1.000  0.595  0.447     0.759       1.000
 </pre></div>
 </div>
-<img alt="_images/a87c79b6ca2b03d61872518e69d4b55dc937a05e55234efa23856261b2901b51.png" src="_images/a87c79b6ca2b03d61872518e69d4b55dc937a05e55234efa23856261b2901b51.png" />
+<img alt="_images/fde045dec64228e243795ccfde1dc23022c64e98ed35fb8545ca1bfd37c09bb1.png" src="_images/fde045dec64228e243795ccfde1dc23022c64e98ed35fb8545ca1bfd37c09bb1.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="introduction-to-hyperparameters">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Introduction to hyperparameters</a><a class="headerlink" href="#introduction-to-hyperparameters" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Introduction to hyperparameters</a><a class="headerlink" href="#introduction-to-hyperparameters" title="Permalink to this heading">#</a></h2>
 <div class="admonition-lasso-refresher admonition">
 <p class="admonition-title">Lasso refresher</p>
 <p>Lasso solves a linear regression with an L1 penalty. The loss (on a dataset of size <em>n</em>) is<br />
@@ -775,7 +762,7 @@ MolWt_half  1.000  0.595  0.447     0.759       1.000
 When (\alpha) is larger, more coefficients go to zero.</p>
 </div>
 <section id="single-split-evaluation">
-<h3>3.1 Single split evaluation<a class="headerlink" href="#single-split-evaluation" title="Link to this heading">#</a></h3>
+<h3>3.1 Single split evaluation<a class="headerlink" href="#single-split-evaluation" title="Permalink to this heading">#</a></h3>
 <p>When we fit a model, we often think about weights (w) that are learned from the data. But some knobs are not learned automatically — they are chosen by us. These are called <strong>hyperparameters</strong>. One of the most important hyperparameters in Lasso is alpha. As you may recall from last lecture, it controls the strength of the L1 penalty.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -891,7 +878,7 @@ When (\alpha) is larger, more coefficients go to zero.</p>
 </div>
 </section>
 <section id="effect-of-alpha-plot">
-<h3>3.2 Effect of alpha (plot)<a class="headerlink" href="#effect-of-alpha-plot" title="Link to this heading">#</a></h3>
+<h3>3.2 Effect of alpha (plot)<a class="headerlink" href="#effect-of-alpha-plot" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract results for plotting</span>
@@ -917,14 +904,14 @@ When (\alpha) is larger, more coefficients go to zero.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a196ebf7c869c4daf753f2c1d7b230e6190d744d609503c363d0c7b766ca35c.png" src="_images/5a196ebf7c869c4daf753f2c1d7b230e6190d744d609503c363d0c7b766ca35c.png" />
+<img alt="_images/440bfd01eefbdd8888e779e4fdbaf7558045e55b90e4877f777b313b3ba448c5.png" src="_images/440bfd01eefbdd8888e779e4fdbaf7558045e55b90e4877f777b313b3ba448c5.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="cross-validation">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Cross validation</a><a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Cross validation</a><a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h2>
 <p>So far we evaluated models with a single 80/20 split, which can give performance estimates that depend strongly on the random split. To obtain a more reliable measure, we can use <strong>4-fold cross validation</strong>*. This way, the dataset is split into 4 equal parts, and each part is used once as the test set while the other 3 parts are used for training. The metrics are then averaged across the 4 folds.</p>
 <div class="admonition-why-cv admonition">
 <p class="admonition-title">Why CV?</p>
@@ -967,7 +954,7 @@ Print the per-fold values and the mean MSE.</p>
 </section>
 <hr class="docutils" />
 <section id="model-selection-evaluation-and-prediction">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Model selection, evaluation and prediction</a><a class="headerlink" href="#model-selection-evaluation-and-prediction" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Model selection, evaluation and prediction</a><a class="headerlink" href="#model-selection-evaluation-and-prediction" title="Permalink to this heading">#</a></h2>
 <div class="admonition-plan admonition">
 <p class="admonition-title">Plan</p>
 <p>Pick an alpha using CV, fit on train, evaluate on held‑out test, then apply to new molecules.</p>
@@ -1162,7 +1149,7 @@ For example, we can predict two molecules’s melting point by listing their des
 </section>
 <hr class="docutils" />
 <section id="endtoend-workflow-and-grid-search">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. End‑to‑end workflow and grid search</a><a class="headerlink" href="#endtoend-workflow-and-grid-search" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. End‑to‑end workflow and grid search</a><a class="headerlink" href="#endtoend-workflow-and-grid-search" title="Permalink to this heading">#</a></h2>
 <div class="admonition-two-ways-to-choose-alpha admonition">
 <p class="admonition-title">Two ways to choose alpha</p>
 <ul class="simple">
@@ -1216,7 +1203,7 @@ Test R² = 0.818
 Linear Regression Test R² = 0.816
 </pre></div>
 </div>
-<img alt="_images/f661b83b89f790f3afe8a0e3fffc1258d7454e3ae5692b31e0697714c20b1a91.png" src="_images/f661b83b89f790f3afe8a0e3fffc1258d7454e3ae5692b31e0697714c20b1a91.png" />
+<img alt="_images/6f84009bedf730546e2bfdf8eb1356407a2cdde16b1ed61f3cfe71b2b4d6c2a8.png" src="_images/6f84009bedf730546e2bfdf8eb1356407a2cdde16b1ed61f3cfe71b2b4d6c2a8.png" />
 </div>
 </div>
 <p>The block above actually shows a <strong>manual</strong> grid search: you loop through candidate alphas, run cross-validation, collect mean R² scores, and then pick the best alpha before refitting on the training set.</p>
@@ -1326,15 +1313,15 @@ C(F)(F)(F)CC=CCO   90.429280
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b42d11431dd71cb1dd14263d0bc3c22f0956d69af1a26ae49c8f09f2f0ccadde.png" src="_images/b42d11431dd71cb1dd14263d0bc3c22f0956d69af1a26ae49c8f09f2f0ccadde.png" />
-<img alt="_images/b61dc7a5c42de1b5f5a5bfadc3b6232580970109ab9f6e0847fdafe3cd33a389.png" src="_images/b61dc7a5c42de1b5f5a5bfadc3b6232580970109ab9f6e0847fdafe3cd33a389.png" />
-<img alt="_images/f23605430ae538b2524ffaed859d9e8760516075112406fe19dbe838f0063088.png" src="_images/f23605430ae538b2524ffaed859d9e8760516075112406fe19dbe838f0063088.png" />
+<img alt="_images/69d9a28436c40575dd9fc064f889752fd8e7c96399f9f1f20979881130b855cf.png" src="_images/69d9a28436c40575dd9fc064f889752fd8e7c96399f9f1f20979881130b855cf.png" />
+<img alt="_images/7275fca76abfbc94a83f305d668d4af215717b8368ed2681ac575f9eb741027d.png" src="_images/7275fca76abfbc94a83f305d668d4af215717b8368ed2681ac575f9eb741027d.png" />
+<img alt="_images/d52bfa1727e760548526191b0747d445852631a5cf23631017494cc1267c46d5.png" src="_images/d52bfa1727e760548526191b0747d445852631a5cf23631017494cc1267c46d5.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="explaining-the-model-with-feature-importance">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Explaining the model with feature importance</a><a class="headerlink" href="#explaining-the-model-with-feature-importance" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Explaining the model with feature importance</a><a class="headerlink" href="#explaining-the-model-with-feature-importance" title="Permalink to this heading">#</a></h2>
 <div class="admonition-two-views admonition">
 <p class="admonition-title">Two views</p>
 <ul class="simple">
@@ -1391,7 +1378,7 @@ NumRings   -0.000000
 dtype: float64
 </pre></div>
 </div>
-<img alt="_images/014a98b5151c634dab01b31e406166d7a7636434e440a7ceee670b7c00b82c91.png" src="_images/014a98b5151c634dab01b31e406166d7a7636434e440a7ceee670b7c00b82c91.png" />
+<img alt="_images/09305743e6d74df8e76fbb46657398090db5f9b64cc1a952ff1d9870b9ee8d71.png" src="_images/09305743e6d74df8e76fbb46657398090db5f9b64cc1a952ff1d9870b9ee8d71.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Permutation importance (mean decrease in R²):
 LogP        0.000000
 NumRings    0.000000
@@ -1400,39 +1387,39 @@ MolWt       1.607811
 dtype: float64
 </pre></div>
 </div>
-<img alt="_images/4e5b94ff60e08160dab6b4516d8c82c2e9d9018b472b2e6bc4afa1afd88cb437.png" src="_images/4e5b94ff60e08160dab6b4516d8c82c2e9d9018b472b2e6bc4afa1afd88cb437.png" />
+<img alt="_images/48b8e62e6153e5d2404de3aca135f22a88b195cda62fad61f88b741f6c273e0a.png" src="_images/48b8e62e6153e5d2404de3aca135f22a88b195cda62fad61f88b741f6c273e0a.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Lasso-Regression">Lasso Regression<a class="headerlink" href="#term-Lasso-Regression" title="Link to this term">#</a></dt><dd><p>Linear regression with L1 regularization that can set some coefficients to exactly zero (feature selection).</p>
+<dt id="term-Lasso-Regression">Lasso Regression<a class="headerlink" href="#term-Lasso-Regression" title="Permalink to this term">#</a></dt><dd><p>Linear regression with L1 regularization that can set some coefficients to exactly zero (feature selection).</p>
 </dd>
-<dt id="term-Alpha">Alpha (λ)<a class="headerlink" href="#term-Alpha" title="Link to this term">#</a></dt><dd><p>Penalty strength in Lasso. Larger alpha increases regularization and may reduce the number of active features.</p>
+<dt id="term-Alpha">Alpha (λ)<a class="headerlink" href="#term-Alpha" title="Permalink to this term">#</a></dt><dd><p>Penalty strength in Lasso. Larger alpha increases regularization and may reduce the number of active features.</p>
 </dd>
-<dt id="term-Cross-validation-CV">Cross validation (CV)<a class="headerlink" href="#term-Cross-validation-CV" title="Link to this term">#</a></dt><dd><p>Split the data into folds, train on k‑1 folds and validate on the held‑out fold; repeat and average.</p>
+<dt id="term-Cross-validation-CV">Cross validation (CV)<a class="headerlink" href="#term-Cross-validation-CV" title="Permalink to this term">#</a></dt><dd><p>Split the data into folds, train on k‑1 folds and validate on the held‑out fold; repeat and average.</p>
 </dd>
-<dt id="term-R2-coefficient-of-determination">R² (coefficient of determination)<a class="headerlink" href="#term-R2-coefficient-of-determination" title="Link to this term">#</a></dt><dd><p>Measures how much variance the model explains. 1 is perfect, 0 matches the mean predictor.</p>
+<dt id="term-R2-coefficient-of-determination">R² (coefficient of determination)<a class="headerlink" href="#term-R2-coefficient-of-determination" title="Permalink to this term">#</a></dt><dd><p>Measures how much variance the model explains. 1 is perfect, 0 matches the mean predictor.</p>
 </dd>
-<dt id="term-MSE">MSE<a class="headerlink" href="#term-MSE" title="Link to this term">#</a></dt><dd><p>Mean of squared errors. Sensitive to large errors.</p>
+<dt id="term-MSE">MSE<a class="headerlink" href="#term-MSE" title="Permalink to this term">#</a></dt><dd><p>Mean of squared errors. Sensitive to large errors.</p>
 </dd>
-<dt id="term-MAE">MAE<a class="headerlink" href="#term-MAE" title="Link to this term">#</a></dt><dd><p>Mean of absolute errors. More robust to outliers than MSE.</p>
+<dt id="term-MAE">MAE<a class="headerlink" href="#term-MAE" title="Permalink to this term">#</a></dt><dd><p>Mean of absolute errors. More robust to outliers than MSE.</p>
 </dd>
-<dt id="term-Permutation-importance">Permutation importance<a class="headerlink" href="#term-Permutation-importance" title="Link to this term">#</a></dt><dd><p>Test‑time feature shuffle to estimate performance drop for each feature.</p>
+<dt id="term-Permutation-importance">Permutation importance<a class="headerlink" href="#term-Permutation-importance" title="Permalink to this term">#</a></dt><dd><p>Test‑time feature shuffle to estimate performance drop for each feature.</p>
 </dd>
-<dt id="term-Coefficient-importance">Coefficient importance<a class="headerlink" href="#term-Coefficient-importance" title="Link to this term">#</a></dt><dd><p>Weights in a linear model. In Lasso, many are shrunk to 0.</p>
+<dt id="term-Coefficient-importance">Coefficient importance<a class="headerlink" href="#term-Coefficient-importance" title="Permalink to this term">#</a></dt><dd><p>Weights in a linear model. In Lasso, many are shrunk to 0.</p>
 </dd>
-<dt id="term-Feature-redundancy">Feature redundancy<a class="headerlink" href="#term-Feature-redundancy" title="Link to this term">#</a></dt><dd><p>Two or more features carry nearly the same information (high correlation).</p>
+<dt id="term-Feature-redundancy">Feature redundancy<a class="headerlink" href="#term-Feature-redundancy" title="Permalink to this term">#</a></dt><dd><p>Two or more features carry nearly the same information (high correlation).</p>
 </dd>
-<dt id="term-GridSearchCV">GridSearchCV<a class="headerlink" href="#term-GridSearchCV" title="Link to this term">#</a></dt><dd><p>Scikit‑learn tool that evaluates parameter grids with CV and returns the best estimator.</p>
+<dt id="term-GridSearchCV">GridSearchCV<a class="headerlink" href="#term-GridSearchCV" title="Permalink to this term">#</a></dt><dd><p>Scikit‑learn tool that evaluates parameter grids with CV and returns the best estimator.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-common-scikitlearn-patterns admonition">
 <p class="admonition-title">Common scikit‑learn patterns</p>
 <ul class="simple">
@@ -1454,10 +1441,10 @@ dtype: float64
 </section>
 <hr class="docutils" />
 <section id="inclass-activity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. In‑class activity</a><a class="headerlink" href="#inclass-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. In‑class activity</a><a class="headerlink" href="#inclass-activity" title="Permalink to this heading">#</a></h2>
 <p>Each task uses the functions and concepts above. Fill in the <code class="docutils literal notranslate"><span class="pre">...</span></code> lines.</p>
 <section id="q1-prepare-logsolubility-and-visualize">
-<h3>Q1. Prepare log‑solubility and visualize<a class="headerlink" href="#q1-prepare-logsolubility-and-visualize" title="Link to this heading">#</a></h3>
+<h3>Q1. Prepare log‑solubility and visualize<a class="headerlink" href="#q1-prepare-logsolubility-and-visualize" title="Permalink to this heading">#</a></h3>
 <p>Prepare log-solubility, split 80/20 (seed=15), and visualize.</p>
 <ol class="arabic simple">
 <li><p>Create <code class="docutils literal notranslate"><span class="pre">y_log·</span> <span class="pre">=</span> <span class="pre">log10(Solubility_mol_per_L</span> <span class="pre">+</span> <span class="pre">1e-6)</span></code>,</p></li>
@@ -1477,7 +1464,7 @@ dtype: float64
 </div>
 </section>
 <section id="q2-tune-ridge-on-the-training-split">
-<h3>Q2. Tune Ridge on the training split<a class="headerlink" href="#q2-tune-ridge-on-the-training-split" title="Link to this heading">#</a></h3>
+<h3>Q2. Tune Ridge on the training split<a class="headerlink" href="#q2-tune-ridge-on-the-training-split" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Search alphas on <code class="docutils literal notranslate"><span class="pre">np.logspace(-2,</span> <span class="pre">3,</span> <span class="pre">12)</span></code> using <strong>5‑fold</strong> CV on <code class="docutils literal notranslate"><span class="pre">(X_tr,</span> <span class="pre">y_tr)</span></code></p></li>
 <li><p>Report best alpha and mean CV R², then refit <code class="docutils literal notranslate"><span class="pre">Ridge(alpha=best)</span></code> on train</p></li>
@@ -1493,7 +1480,7 @@ dtype: float64
 </div>
 </section>
 <section id="q3-evaluate-ridge-on-test-and-draw-diagnostics">
-<h3>Q3. Evaluate Ridge on test and draw diagnostics<a class="headerlink" href="#q3-evaluate-ridge-on-test-and-draw-diagnostics" title="Link to this heading">#</a></h3>
+<h3>Q3. Evaluate Ridge on test and draw diagnostics<a class="headerlink" href="#q3-evaluate-ridge-on-test-and-draw-diagnostics" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compute <strong>MSE</strong>, <strong>MAE</strong>, <strong>R²</strong> on <code class="docutils literal notranslate"><span class="pre">(X_te,</span> <span class="pre">y_te)</span></code></p></li>
 <li><p>Plot a parity plot and a residual plot</p></li>
@@ -1507,7 +1494,7 @@ dtype: float64
 </div>
 </section>
 <section id="q4-predict-two-new-molecules-ridge">
-<h3>Q4. Predict two new molecules (Ridge)<a class="headerlink" href="#q4-predict-two-new-molecules-ridge" title="Link to this heading">#</a></h3>
+<h3>Q4. Predict two new molecules (Ridge)<a class="headerlink" href="#q4-predict-two-new-molecules-ridge" title="Permalink to this heading">#</a></h3>
 <p>Use the trained Ridge to predict log‑solubility for:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[135.0,</span> <span class="pre">2.0,</span> <span class="pre">9.2,</span> <span class="pre">2]</span></code></p></li>
@@ -1523,7 +1510,7 @@ dtype: float64
 </div>
 </section>
 <section id="q5-interpret-ridge-with-coefficients-and-permutation-importance">
-<h3>Q5. Interpret Ridge with coefficients and permutation importance<a class="headerlink" href="#q5-interpret-ridge-with-coefficients-and-permutation-importance" title="Link to this heading">#</a></h3>
+<h3>Q5. Interpret Ridge with coefficients and permutation importance<a class="headerlink" href="#q5-interpret-ridge-with-coefficients-and-permutation-importance" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Show coefficient magnitudes and signs</p></li>
 <li><p>Compute permutation importance on the <strong>test</strong> split and plot</p></li>
@@ -1542,9 +1529,9 @@ dtype: float64
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <section id="solution-q1">
-<h3>11.1 Solution Q1<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h3>
+<h3>11.1 Solution Q1<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Log target</span>
@@ -1567,13 +1554,13 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ade42a869662442893fa34351be2a4933cd4312213f73a2fd05084ef8a6f692.png" src="_images/3ade42a869662442893fa34351be2a4933cd4312213f73a2fd05084ef8a6f692.png" />
-<img alt="_images/bc9f8070cc3eebdcc189a3046eba2d64baf6368500c4a3de9424b713e51b5598.png" src="_images/bc9f8070cc3eebdcc189a3046eba2d64baf6368500c4a3de9424b713e51b5598.png" />
+<img alt="_images/11e90d9a2b4fe2310410dee00daea1a3557f9f46d7093f1ad7def9338dc834bd.png" src="_images/11e90d9a2b4fe2310410dee00daea1a3557f9f46d7093f1ad7def9338dc834bd.png" />
+<img alt="_images/8aa4dc6d7fa0a388bd273eb10f3f4ce50a52da2d410cf39731b45fee85d11f5f.png" src="_images/8aa4dc6d7fa0a388bd273eb10f3f4ce50a52da2d410cf39731b45fee85d11f5f.png" />
 </div>
 </div>
 </section>
 <section id="solution-q2">
-<h3>11.2 Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h3>
+<h3>11.2 Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1593,7 +1580,7 @@ dtype: float64
 </div>
 </section>
 <section id="solution-q3">
-<h3>11.3 Solution Q3<a class="headerlink" href="#solution-q3" title="Link to this heading">#</a></h3>
+<h3>11.3 Solution Q3<a class="headerlink" href="#solution-q3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_hat</span> <span class="o">=</span> <span class="n">ridge_best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_te</span><span class="p">)</span>
@@ -1618,13 +1605,13 @@ dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test MSE=0.0160  MAE=0.1024  R2=0.970
 </pre></div>
 </div>
-<img alt="_images/c17c780964c3bd2393dfe1c3bc464510c8c619a5ffb1c9abee274b7c00876a84.png" src="_images/c17c780964c3bd2393dfe1c3bc464510c8c619a5ffb1c9abee274b7c00876a84.png" />
-<img alt="_images/09e5082a65c400c82f645abe932b97b9759aa9a460a974f9ea2db1c69274b537.png" src="_images/09e5082a65c400c82f645abe932b97b9759aa9a460a974f9ea2db1c69274b537.png" />
+<img alt="_images/1e95eb7145e23153574d03a9903ff5581b990d72310ff9d03eb17dc6bb6e7f3f.png" src="_images/1e95eb7145e23153574d03a9903ff5581b990d72310ff9d03eb17dc6bb6e7f3f.png" />
+<img alt="_images/73f049284a53e3bd35714a954920ac87dfba7af48af25ba7fcc5f83fcee4391e.png" src="_images/73f049284a53e3bd35714a954920ac87dfba7af48af25ba7fcc5f83fcee4391e.png" />
 </div>
 </div>
 </section>
 <section id="solution-q4">
-<h3>11.4 Solution Q4<a class="headerlink" href="#solution-q4" title="Link to this heading">#</a></h3>
+<h3>11.4 Solution Q4<a class="headerlink" href="#solution-q4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
@@ -1650,7 +1637,7 @@ dtype: float64
 </div>
 </section>
 <section id="solution-q5">
-<h3>11.5 Solution Q5<a class="headerlink" href="#solution-q5" title="Link to this heading">#</a></h3>
+<h3>11.5 Solution Q5<a class="headerlink" href="#solution-q5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]</span>
@@ -1675,8 +1662,8 @@ MolWt       0.000260
 dtype: float64
 </pre></div>
 </div>
-<img alt="_images/bfaaa5a02eb717b2ec739fff482fa179e7d8398fcf42c479ca837996cdac1def.png" src="_images/bfaaa5a02eb717b2ec739fff482fa179e7d8398fcf42c479ca837996cdac1def.png" />
-<img alt="_images/c544f6385c1968c5d3b7e44c1d1ba339e6b863ab85b4abc1676c107926737a95.png" src="_images/c544f6385c1968c5d3b7e44c1d1ba339e6b863ab85b4abc1676c107926737a95.png" />
+<img alt="_images/1ddc055512bec19899ff3c4297d14e065a9f4b5fe976f114f5b11c3ece627086.png" src="_images/1ddc055512bec19899ff3c4297d14e065a9f4b5fe976f114f5b11c3ece627086.png" />
+<img alt="_images/dac9226cbf9626fe5d61538fcaaf151e85ed3b1589be1c7bd05bb6bedad12c0b.png" src="_images/dac9226cbf9626fe5d61538fcaaf151e85ed3b1589be1c7bd05bb6bedad12c0b.png" />
 </div>
 </div>
 </section>
@@ -1710,7 +1697,7 @@ dtype: float64
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1739,7 +1726,6 @@ dtype: float64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1810,7 +1796,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1834,8 +1820,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
