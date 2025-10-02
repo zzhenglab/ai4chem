@@ -36,36 +36,46 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import seaborn as sns
-import matplotlib.pyplot as plt
+import plotly.express as px
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
 
-vars = ["MolWt","LogP","TPSA","NumRings",
-        "NumHAcceptors","NumHDonors","NumRotatableBonds",
-        "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
+# ---- prepare feature matrix ----
+desc_cols = ["MolWt","LogP","TPSA","NumRings",
+             "NumHAcceptors","NumHDonors","NumRotatableBonds",
+             "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
 
-fig, axes = plt.subplots(len(vars), 1, figsize=(6, 20), sharex=False)
+X_desc = df10[desc_cols].values
 
-for i, v in enumerate(vars):
-    sns.scatterplot(
-        data=df10,
-        x="MolWt", y=v,   # fix one descriptor on x-axis (e.g., MolWt)
-        ax=axes[i], s=20, alpha=0.7
-    )
-    axes[i].set_ylabel(v)
+# ---- standardize and PCA ----
+X_desc_std = StandardScaler().fit_transform(X_desc)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_desc_std)
 
-plt.tight_layout()
-plt.show()
+# ---- build dataframe with PCA scores ----
+df_pca = df10.copy()
+df_pca["PC1"] = X_pca[:,0]
+df_pca["PC2"] = X_pca[:,1]
+
+# ---- interactive scatter with custom size ----
+fig = px.scatter(
+    df_pca,
+    x="PC1", y="PC2",
+    color="NumRings",
+    hover_data=["Compound Name"] + desc_cols,
+    title="Interactive PCA of 10 Descriptors",
+    width=1200, height=600   # <-- 12 wide, 6 tall
+)
+fig.show()
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mseaborn[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01msns[39;00m
-[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      4[39m [38;5;28mvars[39m = [[33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m,
-[32m      5[39m         [33m"[39m[33mNumHAcceptors[39m[33m"[39m,[33m"[39m[33mNumHDonors[39m[33m"[39m,[33m"[39m[33mNumRotatableBonds[39m[33m"[39m,
-[32m      6[39m         [33m"[39m[33mHeavyAtomCount[39m[33m"[39m,[33m"[39m[33mFractionCSP3[39m[33m"[39m,[33m"[39m[33mNumAromaticRings[39m[33m"[39m]
+[36mCell[39m[36m [39m[32mIn[16][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mplotly[39;00m[34;01m.[39;00m[34;01mexpress[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpx[39;00m
+[32m      2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m StandardScaler
+[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mdecomposition[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m PCA
 
-[31mModuleNotFoundError[39m: No module named 'seaborn'
+[31mModuleNotFoundError[39m: No module named 'plotly'
 

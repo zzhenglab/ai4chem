@@ -193,7 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -2187,6 +2188,128 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 80 candidates, totalling 400 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best CV accuracy: 0.890
+Best params: {&#39;clf__hidden_layer_sizes&#39;: (np.int64(16), 16), &#39;clf__learning_rate_init&#39;: 0.001}
+Train accuracy (refit best): 0.953
+Test  accuracy (refit best): 0.890
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hidden_layer_sizes</th>
+      <th>learning_rate_init</th>
+      <th>mean_test_score</th>
+      <th>std_test_score</th>
+      <th>rank_test_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(16, 16)</td>
+      <td>0.001</td>
+      <td>0.890000</td>
+      <td>0.027080</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(8, 6, 3)</td>
+      <td>0.050</td>
+      <td>0.886667</td>
+      <td>0.038586</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(24, 4, 4, 4, 4)</td>
+      <td>0.020</td>
+      <td>0.880000</td>
+      <td>0.012472</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(16, 16)</td>
+      <td>0.050</td>
+      <td>0.876667</td>
+      <td>0.034319</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(32, 24)</td>
+      <td>0.001</td>
+      <td>0.876667</td>
+      <td>0.037417</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>(12, 8)</td>
+      <td>0.010</td>
+      <td>0.876667</td>
+      <td>0.030912</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>(32, 28)</td>
+      <td>0.001</td>
+      <td>0.873333</td>
+      <td>0.038873</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(8, 6, 3)</td>
+      <td>0.010</td>
+      <td>0.873333</td>
+      <td>0.024944</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>(8, 6, 3)</td>
+      <td>0.020</td>
+      <td>0.870000</td>
+      <td>0.019437</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>(16, 8, 4)</td>
+      <td>0.001</td>
+      <td>0.866667</td>
+      <td>0.027889</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of layers (including input and output): 4
+Hidden layer sizes: (np.int64(16), 16)
+coefs_ length (weight matrices between layers): 3
+Layer 1 weight shape: (5, 16)   bias shape: (16,)
+Layer 2 weight shape: (16, 16)   bias shape: (16,)
+Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>

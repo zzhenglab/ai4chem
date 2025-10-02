@@ -32,7 +32,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 23 & 25** – Molecular property & reaction prediction  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing) 
 - **Sept 30 & Oct 2** – Unsupervised learning  methods [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing)
 - **Oct 7** - Fall Break
-- **Oct 9** – De novo Molecule generation 
+- **Oct 9** – De novo Molecule generation   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 14 & Oct 16** - Bayesian optimization
 - **Oct 21** – No Class
 - **Oct 23** – Contrastive learning

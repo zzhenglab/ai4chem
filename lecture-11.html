@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-11';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 12 - Self-supervised Learning" href="lecture-12.html" />
+    <link rel="next" title="Lecture 12 - Self-Supervised Learning" href="lecture-12.html" />
     <link rel="prev" title="Lecture 10 - Property &amp; Reaction Prediction" href="lecture-10.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,7 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -1334,18 +1335,7 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span><span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span><span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span><span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
+<img alt="_images/9e1a3da5fb65eb78c9b9a863f03e380b9b9aee7386fff87a8a40ebe7565ee857.png" src="_images/9e1a3da5fb65eb78c9b9a863f03e380b9b9aee7386fff87a8a40ebe7565ee857.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -1369,6 +1359,9 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/48e975408de34a4aa1bae27cc8a3bb4baf0888c47169b890278e8beaddebd56e.png" src="_images/48e975408de34a4aa1bae27cc8a3bb4baf0888c47169b890278e8beaddebd56e.png" />
+</div>
 </div>
 <p>That’s why cheminformatics usually applies <strong>dimension reduction</strong> methods (PCA, t-SNE, UMAP) to compress high-dimensional data into a visualizable 2D or 3D form. We will get to these points today!</p>
 </section>
@@ -1533,6 +1526,11 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/f3e177650d70175819522efe8e61dff0d1455da576e029aa5223996628290df2.png" src="_images/f3e177650d70175819522efe8e61dff0d1455da576e029aa5223996628290df2.png" />
+<img alt="_images/16a9328bed2d73f12e2c92dabdf4e5218282746d43827f66c4a7bed5d2c0d320.png" src="_images/16a9328bed2d73f12e2c92dabdf4e5218282746d43827f66c4a7bed5d2c0d320.png" />
+<img alt="_images/83b9eb29d195b4453d69c3272cedbb1e6183575162adf3d66d35dda296a42484.png" src="_images/83b9eb29d195b4453d69c3272cedbb1e6183575162adf3d66d35dda296a42484.png" />
+</div>
 </div>
 <p>Now you can see, the 10D vector is converted to 2D or 3D vector, which become much easier to plot.</p>
 <div class="cell docutils container">
@@ -1541,10 +1539,32 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457,  0.10406515],
+       [-0.8662983 ,  1.26269482],
+       [-2.08798314,  0.77811   ],
+       ...,
+       [ 0.08373577,  0.58690452],
+       [ 3.19411974,  0.85437761],
+       [ 2.00081897,  0.04085639]], shape=(575, 2))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">desc_3d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457,  0.10406515, -0.76130014],
+       [-0.8662983 ,  1.26269482, -1.55622595],
+       [-2.08798314,  0.77811   , -0.75279025],
+       ...,
+       [ 0.08373577,  0.58690452,  0.27978755],
+       [ 3.19411974,  0.85437761,  0.07107396],
+       [ 2.00081897,  0.04085639,  0.17583671]], shape=(575, 3))
 </pre></div>
 </div>
 </div>
@@ -1623,6 +1643,46 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/a1b5030032c3816ed6bbf5ff8b092b0074d8834151095cce0cdd0fd049718894.png" src="_images/a1b5030032c3816ed6bbf5ff8b092b0074d8834151095cce0cdd0fd049718894.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Manual pair ===
+</pre></div>
+</div>
+<img alt="_images/e2661c2aec74a535ee1334c5487ebc1f2eb912ed4c6559e64876e2cbac6e1d5a.png" src="_images/e2661c2aec74a535ee1334c5487ebc1f2eb912ed4c6559e64876e2cbac6e1d5a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1-benzyl-2-phenylbenzimidazole   (index 225)
+  PC1 = 1.936, PC2 = 2.132
+</pre></div>
+</div>
+<img alt="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" src="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-2,2,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-4a-carboxylate (index 35)
+  PC1 = 3.267, PC2 = 1.618
+
+=== Closest pair ===
+</pre></div>
+</div>
+<img alt="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" src="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-2,2,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-4a-carboxylate (index 35)
+  PC1 = 3.267, PC2 = 1.618
+</pre></div>
+</div>
+<img alt="_images/c79023310ce2273b4b9888feefb39176557f7a4ec8cb14576be1212e58c8424f.png" src="_images/c79023310ce2273b4b9888feefb39176557f7a4ec8cb14576be1212e58c8424f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (2S,4aS,6aR,6aS,6bR,8aR,10S,12aR,14bR)-10-hydroxy-2,4a,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-2-carboxylate   (index 64)
+  PC1 = 3.267, PC2 = 1.618
+
+=== Farthest pair ===
+</pre></div>
+</div>
+<img alt="_images/2738173470f9625bad5ac32cb50e2075c594ddba56730df176c88bf1372454a7.png" src="_images/2738173470f9625bad5ac32cb50e2075c594ddba56730df176c88bf1372454a7.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-[3,5-bis(1-phenylbenzimidazol-2-yl)phenyl]-1-phenylbenzimidazole (index 338)
+  PC1 = 11.072, PC2 = 4.750
+</pre></div>
+</div>
+<img alt="_images/cf224992c0e050a6aeff9447ab11f25d573970eb7499b62c76d9e44d700d1c17.png" src="_images/cf224992c0e050a6aeff9447ab11f25d573970eb7499b62c76d9e44d700d1c17.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sodium;perchlorate (index 462)
+  PC1 = -2.699, PC2 = -5.531
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can also make this plot to be interactive:</p>
 <div class="cell tag_hide-input docutils container">
@@ -1667,6 +1727,18 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">plotly.express</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">px</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;plotly&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="data-leakage-in-unsupervised-settings">
@@ -2561,7 +2633,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 12 - Self-supervised Learning</p>
+        <p class="prev-next-title">Lecture 12 - Self-Supervised Learning</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

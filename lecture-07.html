@@ -193,7 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -2663,8 +2664,18 @@ AUC: 0.955
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:146: UserWarning: resource_tracker: process died unexpectedly, relaunching. Some folders/semaphores might leak.
-  warnings.warn(
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params: {&#39;max_depth&#39;: None, &#39;min_samples_leaf&#39;: 3, &#39;n_estimators&#39;: 500}
+Best CV AUC: 0.972
+Accuracy: 0.948
+AUC: 0.982
+              precision    recall  f1-score   support
+
+           0      0.850     0.850     0.850        20
+           1      0.968     0.968     0.968        95
+
+    accuracy                          0.948       115
+   macro avg      0.909     0.909     0.909       115
+weighted avg      0.948     0.948     0.948       115
 </pre></div>
 </div>
 </div>
@@ -2687,6 +2698,10 @@ AUC: 0.955
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" src="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" />
+<img alt="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" src="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" />
 </div>
 </div>
 </section>
@@ -2812,6 +2827,12 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tree R2:   0.918
+Forest R2: 0.947
+</pre></div>
+</div>
+</div>
 </div>
 <p>Parity plots for both models.</p>
 <div class="cell docutils container">
@@ -2836,6 +2857,10 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" src="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" />
+<img alt="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" src="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" />
+</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -2855,6 +2880,68 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min_samples_leaf</th>
+      <th>Accuracy</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>0.922</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>0.930</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>0.930</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>0.922</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8</td>
+      <td>0.957</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>12</td>
+      <td>0.939</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>20</td>
+      <td>0.939</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2866,6 +2953,9 @@ AUC: 0.955
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" src="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" />
 </div>
 </div>
 <p>Hint for interpretation: very small leaves may overfit while very large leaves may underfit.</p>
@@ -2891,6 +2981,58 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>seed</th>
+      <th>OOB</th>
+      <th>TestAcc</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0.920</td>
+      <td>0.965</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>0.933</td>
+      <td>0.904</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21</td>
+      <td>0.937</td>
+      <td>0.957</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>42</td>
+      <td>0.928</td>
+      <td>0.939</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2905,6 +3047,9 @@ AUC: 0.955
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" src="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2930,6 +3075,14 @@ AUC: 0.955
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Left child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Left child is a leaf&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Right child is a leaf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" src="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root rule: MolWt &lt;= 134.200 ?
+Left child rule: LogP &lt;= 2.538 ?
+Right child rule: LogP &lt;= 1.248 ?
 </pre></div>
 </div>
 </div>
@@ -2969,6 +3122,55 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" src="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" />
+<img alt="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" src="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Built_in</th>
+      <th>Permutation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>LogP</th>
+      <td>0.135308</td>
+      <td>0.039454</td>
+    </tr>
+    <tr>
+      <th>MolWt</th>
+      <td>0.617161</td>
+      <td>0.839382</td>
+    </tr>
+    <tr>
+      <th>NumRings</th>
+      <td>0.177916</td>
+      <td>0.025688</td>
+    </tr>
+    <tr>
+      <th>TPSA</th>
+      <td>0.069615</td>
+      <td>0.017808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Look for agreement on the top features. Disagreements can signal correlation or overfitting in the training trees.</p>
 </section>
@@ -3038,6 +3240,12 @@ AUC: 0.955
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;TPR&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC curve - RF with CV-tuned hyperparameters&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:146: UserWarning: resource_tracker: process died unexpectedly, relaunching. Some folders/semaphores might leak.
+  warnings.warn(
 </pre></div>
 </div>
 </div>

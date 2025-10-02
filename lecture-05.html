@@ -193,7 +193,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -503,10 +504,6 @@ document.write(`
 <p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.1.1 -&gt; 25.2
-[notice] To update, run: python.exe -m pip install --upgrade pip
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (1.7.1)
 Requirement already satisfied: pandas in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (2.3.1)
 Requirement already satisfied: matplotlib in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (3.10.3)
@@ -526,6 +523,10 @@ Requirement already satisfied: pillow&gt;=8 in c:\users\52377\appdata\local\prog
 Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (3.2.3)
 Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
 Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.1.1 -&gt; 25.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
 </pre></div>
 </div>
 </div>
@@ -564,6 +565,173 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>90299-04-0</td>
+      <td>CC(C)(N)c1ccc2ccccc2c1</td>
+      <td>0.018990</td>
+      <td>10.04</td>
+      <td>toxic</td>
+      <td>121.5</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>128-93-8</td>
+      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
+      <td>0.021590</td>
+      <td>7.81</td>
+      <td>toxic</td>
+      <td>154.0</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>86636-92-2</td>
+      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
+      <td>0.017866</td>
+      <td>8.58</td>
+      <td>toxic</td>
+      <td>128.3</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>34316-15-9</td>
+      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
+      <td>0.016210</td>
+      <td>5.54</td>
+      <td>toxic</td>
+      <td>215.6</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>93655-34-6</td>
+      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
+      <td>0.016761</td>
+      <td>5.43</td>
+      <td>toxic</td>
+      <td>175.3</td>
+      <td>-1</td>
+      <td>-1</td>
+    </tr>
+  </tbody>
+</table>
+<p>575 rows × 9 columns</p>
+</div></div></div>
 </div>
 <div class="admonition-think-pair-share admonition">
 <p class="admonition-title">Think-pair-share</p>
@@ -600,6 +768,221 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>100-41-4</td>
+      <td>CCc1ccccc1</td>
+      <td>0.048107</td>
+      <td>5.87</td>
+      <td>non_toxic</td>
+      <td>65.0</td>
+      <td>1</td>
+      <td>1,2</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>110-83-8</td>
+      <td>C1=CCCCC1</td>
+      <td>0.060688</td>
+      <td>5.66</td>
+      <td>non_toxic</td>
+      <td>96.4</td>
+      <td>1</td>
+      <td>3,6</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>90299-04-0</td>
+      <td>CC(C)(N)c1ccc2ccccc2c1</td>
+      <td>0.018990</td>
+      <td>10.04</td>
+      <td>toxic</td>
+      <td>121.5</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>185.270</td>
+      <td>3.0336</td>
+      <td>26.02</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>128-93-8</td>
+      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
+      <td>0.021590</td>
+      <td>7.81</td>
+      <td>toxic</td>
+      <td>154.0</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>316.154</td>
+      <td>3.2662</td>
+      <td>46.17</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>86636-92-2</td>
+      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
+      <td>0.017866</td>
+      <td>8.58</td>
+      <td>toxic</td>
+      <td>128.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>225.291</td>
+      <td>3.2745</td>
+      <td>20.31</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>34316-15-9</td>
+      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
+      <td>0.016210</td>
+      <td>5.54</td>
+      <td>toxic</td>
+      <td>215.6</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>348.378</td>
+      <td>3.7166</td>
+      <td>40.80</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>93655-34-6</td>
+      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
+      <td>0.016761</td>
+      <td>5.43</td>
+      <td>toxic</td>
+      <td>175.3</td>
+      <td>-1</td>
+      <td>-1</td>
+      <td>294.306</td>
+      <td>3.5662</td>
+      <td>52.60</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>575 rows × 13 columns</p>
+</div></div></div>
 </div>
 </section>
 <hr class="docutils" />
@@ -614,6 +997,137 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+      <th>Melting Point</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+      <td>65.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+      <td>90.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+      <td>69.4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>65.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>96.4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>185.270</td>
+      <td>3.0336</td>
+      <td>26.02</td>
+      <td>2.0</td>
+      <td>121.5</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>316.154</td>
+      <td>3.2662</td>
+      <td>46.17</td>
+      <td>3.0</td>
+      <td>154.0</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>225.291</td>
+      <td>3.2745</td>
+      <td>20.31</td>
+      <td>2.0</td>
+      <td>128.3</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>348.378</td>
+      <td>3.7166</td>
+      <td>40.80</td>
+      <td>5.0</td>
+      <td>215.6</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>294.306</td>
+      <td>3.5662</td>
+      <td>52.60</td>
+      <td>3.0</td>
+      <td>175.3</td>
+    </tr>
+  </tbody>
+</table>
+<p>575 rows × 6 columns</p>
+</div></div></div>
 </div>
 <section id="train-and-test-split">
 <h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h3>
@@ -646,6 +1160,22 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68     152.1
+231    169.4
+63     247.3
+436    160.0
+60     127.8
+       ...  
+71     126.6
+106    125.3
+270    207.8
+435    157.9
+102     57.5
+Name: Melting Point, Length: 460, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-visual-check admonition">
 <p class="admonition-title">Visual check</p>
@@ -669,6 +1199,9 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/015c424d4fe957baf8c665a4b237c367c10e6296db16a1e97eb169c77ffa0c7c.png" src="_images/015c424d4fe957baf8c665a4b237c367c10e6296db16a1e97eb169c77ffa0c7c.png" />
+</div>
 </div>
 <p>Blue points are the training set and red points are the test set. We can see that the split looks balanced and the test set covers a different range of values.</p>
 <div class="cell docutils container">
@@ -690,6 +1223,13 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 374.56773278929023
+MAE: 15.316390819320326
+R2: 0.8741026174988968
 </pre></div>
 </div>
 </div>
@@ -740,6 +1280,12 @@ Measures proportion of variance explained by the model.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted value: [86.80836978]
+Predicted value: [ 86.80836978 169.99905967  53.35729424]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-diagnostic-plots admonition">
 <p class="admonition-title">Diagnostic plots</p>
@@ -768,6 +1314,10 @@ Measures proportion of variance explained by the model.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3ee6a751a8396e06e9dba7677ac055bb9b433a5e635232cf617ac6c7d7b1f8dc.png" src="_images/3ee6a751a8396e06e9dba7677ac055bb9b433a5e635232cf617ac6c7d7b1f8dc.png" />
+<img alt="_images/76d2aca67e937a7bf2559fd45c6caea234724489baa01f7519402292f32b830d.png" src="_images/76d2aca67e937a7bf2559fd45c6caea234724489baa01f7519402292f32b830d.png" />
 </div>
 </div>
 </section>
@@ -827,6 +1377,86 @@ Measures proportion of variance explained by the model.</p>
           <span class="sa">f</span><span class="s2">&quot;MSE=</span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, &quot;</span>
           <span class="sa">f</span><span class="s2">&quot;MAE=</span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, &quot;</span>
           <span class="sa">f</span><span class="s2">&quot;R2=</span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_te</span><span class="p">,</span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Effect of split on accuracy
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test_size</th>
+      <th>MSE_mean</th>
+      <th>MSE_std</th>
+      <th>MAE_mean</th>
+      <th>MAE_std</th>
+      <th>R2_mean</th>
+      <th>R2_std</th>
+      <th>n_train_mean</th>
+      <th>n_test_mean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1</td>
+      <td>389.5968</td>
+      <td>75.9762</td>
+      <td>15.5954</td>
+      <td>1.7249</td>
+      <td>0.8338</td>
+      <td>0.0559</td>
+      <td>517.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.2</td>
+      <td>400.1363</td>
+      <td>47.3691</td>
+      <td>15.8006</td>
+      <td>1.0476</td>
+      <td>0.8433</td>
+      <td>0.0363</td>
+      <td>460.0</td>
+      <td>115.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.3</td>
+      <td>401.9008</td>
+      <td>42.3394</td>
+      <td>15.8713</td>
+      <td>0.8514</td>
+      <td>0.8412</td>
+      <td>0.0268</td>
+      <td>402.0</td>
+      <td>173.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/18e55716e86451063c7bf7edaad8c1423cbd2bb0f27f45241279957b8c5ecccd.png" src="_images/18e55716e86451063c7bf7edaad8c1423cbd2bb0f27f45241279957b8c5ecccd.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_size=0.2, seed=15 -&gt; MSE=415.498, MAE=16.380, R2=0.805
+test_size=0.2, seed=42 -&gt; MSE=374.568, MAE=15.316, R2=0.874
+test_size=0.1, seed=42 -&gt; MSE=324.998, MAE=13.861, R2=0.872
+test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </pre></div>
 </div>
 </div>
@@ -912,6 +1542,10 @@ Measures proportion of variance explained by the model.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/4a43da0582501151adb7e9e5958739744d9cff9fdeaa2ad12d68f65db863da01.png" src="_images/4a43da0582501151adb7e9e5958739744d9cff9fdeaa2ad12d68f65db863da01.png" />
+<img alt="_images/2cf4c6ba2077299bffd41e623e8a50c7a0baea5def4db4c3169414443960aef4.png" src="_images/2cf4c6ba2077299bffd41e623e8a50c7a0baea5def4db4c3169414443960aef4.png" />
+</div>
 </div>
 </section>
 <section id="regularization-lasso-and-ridge">
@@ -982,6 +1616,19 @@ Measures proportion of variance explained by the model.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Lasso regression:
+MSE: 329.0917965850995
+MAE: 14.76860034615641
+R2: 0.8788521790542615
+--------------
+For Linear regression:
+MSE: 374.56773278929023
+MAE: 15.316390819320326
+R2: 0.8741026174988968
+</pre></div>
+</div>
+</div>
 </div>
 <p>You can see here that, in fact, <strong>Lasso Regression performs slightly better Linear Regression</strong> in this particular example. You can also try changing alpha to 0.1, 1.0, 100 to see any difference.</p>
 <p>The prediction rule for Linear Regression is:</p>
@@ -1022,6 +1669,19 @@ Measures proportion of variance explained by the model.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Ridge regression:
+MSE: 329.1771333969961
+MAE: 14.763612712404358
+R2: 0.8788207642061401
+--------------
+For Linear regression:
+MSE: 374.56773278929023
+MAE: 15.316390819320326
+R2: 0.8741026174988968
 </pre></div>
 </div>
 </div>
@@ -1099,6 +1759,25 @@ Measures proportion of variance explained by the model.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
+MSE: 5445.949091807626
+MAE: 48.59778162610549
+R2: -22609.207680755866
+--------------
+For Ridge regression:
+MSE: 5421.63548777009
+MAE: 48.477509550010666
+R2: -22508.2637263617
+--------------
+For Lasso regression:
+MSE: 5445.22668533266
+MAE: 48.591949745715986
+R2: -22606.208431193747
+--------------
+</pre></div>
+</div>
+</div>
 </div>
 <p>The results here are very poor, with a strongly negative <span class="math notranslate nohighlight">\(R^2\)</span> value.</p>
 <div class="admonition-stabilize-with-logs admonition">
@@ -1173,6 +1852,25 @@ y' = \log_{10}(\text{Solubility})
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
+MSE: 0.018391458540756016
+MAE: 0.11527716464692483
+R2: 0.9596775333018726
+--------------
+For Ridge regression:
+MSE: 0.01841119336512683
+MAE: 0.11530263164973817
+R2: 0.9596342655644758
+--------------
+For Lasso regression:
+MSE: 0.01879606817208987
+MAE: 0.11631355339741077
+R2: 0.95879044442042
+--------------
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, much better, right? Now, what happen if instead transforming <code class="docutils literal notranslate"><span class="pre">y</span></code>, you actually transforming <code class="docutils literal notranslate"><span class="pre">x</span></code>? Try it by yourself after class.</p>
 </section>
@@ -1188,6 +1886,137 @@ y' = \log_{10}(\text{Solubility})
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+      <th>Toxicity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+      <td>non_toxic</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>non_toxic</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>non_toxic</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>570</th>
+      <td>2-naphthalen-2-ylpropan-2-amine</td>
+      <td>185.270</td>
+      <td>3.0336</td>
+      <td>26.02</td>
+      <td>2.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>571</th>
+      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
+      <td>316.154</td>
+      <td>3.2662</td>
+      <td>46.17</td>
+      <td>3.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>572</th>
+      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
+      <td>225.291</td>
+      <td>3.2745</td>
+      <td>20.31</td>
+      <td>2.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>573</th>
+      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
+      <td>348.378</td>
+      <td>3.7166</td>
+      <td>40.80</td>
+      <td>5.0</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>574</th>
+      <td>dimethyl anthracene-1,8-dicarboxylate</td>
+      <td>294.306</td>
+      <td>3.5662</td>
+      <td>52.60</td>
+      <td>3.0</td>
+      <td>toxic</td>
+    </tr>
+  </tbody>
+</table>
+<p>575 rows × 6 columns</p>
+</div></div></div>
 </div>
 <div class="admonition-encoding admonition">
 <p class="admonition-title">Encoding</p>
@@ -1231,6 +2060,24 @@ y' = \log_{10}(\text{Solubility})
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[134.178 ,   1.7593,   9.23  ,   2.    ],
+        [166.223 ,   3.2578,   0.    ,   3.    ],
+        [132.206 ,   2.5654,   0.    ,   2.    ]]),
+ 0    0
+ 1    1
+ 2    1
+ 3    0
+ 4    0
+ 5    0
+ 6    0
+ 7    0
+ 8    1
+ 9    1
+ Name: Toxicity, dtype: int64)
+</pre></div>
+</div>
+</div>
 </div>
 <p>When splitting the data into training and test sets, we will use <strong>stratification</strong>.</p>
 <div class="admonition-why-stratification admonition">
@@ -1246,6 +2093,13 @@ y' = \log_{10}(\text{Solubility})
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train shape:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot; Test shape:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train class balance:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s2">&quot; 1 = toxic&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test class balance:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train shape: (460, 4)  Test shape: (115, 4)
+Train class balance: 0.824  1 = toxic
+Test class balance: 0.826
 </pre></div>
 </div>
 </div>
@@ -1269,6 +2123,39 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">y_proba</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># probability of toxic = 1</span>
 <span class="n">y_pred</span><span class="p">,</span>  <span class="n">y_proba</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1,
+        1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+        0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+        1, 1, 1, 0, 1]),
+ array([0.97365623, 0.99999446, 0.07947364, 0.99928262, 0.9980891 ,
+        0.99988607, 0.38729989, 0.28314806, 0.98259664, 0.91109118,
+        1.        , 0.46860548, 0.98970303, 0.99999986, 1.        ,
+        0.99999072, 0.19727375, 0.60960733, 0.99975052, 0.99999458,
+        0.99998644, 0.99999999, 0.99971597, 1.        , 0.99875073,
+        0.99896006, 0.99643232, 0.99999997, 0.99982699, 0.54794482,
+        0.25983303, 0.99996567, 0.99016699, 0.99951395, 0.99997992,
+        0.9945712 , 0.68033858, 0.07968061, 0.99462357, 0.99898643,
+        0.99837874, 0.19580904, 0.99981472, 0.99845553, 0.99826431,
+        0.99744605, 0.99966762, 0.99993185, 0.99999631, 0.00365372,
+        0.97834833, 0.99973715, 0.94542293, 0.94609804, 0.17158234,
+        0.41085072, 0.99978148, 0.97261689, 0.99824268, 0.93471006,
+        0.9999994 , 0.99999999, 0.99580694, 0.45318977, 0.99849298,
+        0.98080952, 0.98615126, 0.99925854, 0.99649529, 0.98067268,
+        0.9999999 , 0.89617648, 0.99855409, 0.69051763, 0.99952057,
+        0.80491169, 0.3276906 , 0.99779547, 0.11405811, 0.99999984,
+        0.99992034, 0.94609804, 0.64932882, 0.99558584, 0.97095588,
+        0.99935538, 0.04301283, 0.99995445, 0.13724395, 0.99999072,
+        0.99994111, 0.99999647, 0.99997382, 0.41527923, 0.77149092,
+        0.99999642, 0.99918537, 0.99998729, 0.12146176, 0.97989265,
+        0.78881568, 0.99498407, 0.13724395, 0.99997757, 0.99999981,
+        0.88004593, 0.9954273 , 0.34878879, 0.9999999 , 0.99999966,
+        0.99956914, 0.99993736, 0.9999779 , 0.13220075, 0.99999716]))
 </pre></div>
 </div>
 </div>
@@ -1320,6 +2207,15 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall:    </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1:        </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC:       </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.957
+Precision: 0.979
+Recall:    0.968
+F1:        0.974
+AUC:       0.992
 </pre></div>
 </div>
 </div>
@@ -1385,6 +2281,18 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/95c5f1510071c152a296c1f9f4f4bb60a01240f7924bd4fdadc90d6091304c3c.png" src="_images/95c5f1510071c152a296c1f9f4f4bb60a01240f7924bd4fdadc90d6091304c3c.png" />
+<img alt="_images/649e881bba15d5d21cbbd099ac4190a4b3e85275081058e7553e7bb2fbc55554.png" src="_images/649e881bba15d5d21cbbd099ac4190a4b3e85275081058e7553e7bb2fbc55554.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>threshold: 0.350
+Accuracy: 0.965
+Precision: 0.960
+Recall: 1.000
+F1: 0.979
+AUC: 0.992
+</pre></div>
+</div>
+</div>
 </div>
 <p>Depending on how you set the classification threshold, the evaluation metrics will change.</p>
 <ul class="simple">
@@ -1424,6 +2332,9 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bb981d4b4479f95d40d4e5e47eb99d6da7e72bfc806108195eb9fa24964827f6.png" src="_images/bb981d4b4479f95d40d4e5e47eb99d6da7e72bfc806108195eb9fa24964827f6.png" />
 </div>
 </div>
 </section>
@@ -1468,6 +2379,38 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[226.703  ,   3.687  ,  26.3    ,   1.     ],
+        [282.295  ,   2.5255 ,  52.6    ,   3.     ],
+        [468.722  ,   7.5302 ,  43.37   ,   5.     ],
+        ...,
+        [277.106  ,   3.7688 ,  34.14   ,   3.     ],
+        [215.061  ,   1.32648,  42.25   ,   2.     ],
+        [134.222  ,   2.8114 ,   0.     ,   1.     ]], shape=(460, 4)),
+ array([1, 1, 2, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1,
+        0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
+        1, 1, 0, 0, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
+        0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 2, 0, 1, 0, 1,
+        1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1,
+        1, 0, 1, 1, 0, 2, 2, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 2,
+        0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 2, 0, 1, 2, 1, 0, 1, 1, 1, 1,
+        1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 2, 2, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1,
+        1, 0, 1, 1, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 1, 1, 1, 0, 2, 0, 0, 1,
+        1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 2, 0, 1, 1, 2, 1,
+        1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 2, 0, 0, 2, 1, 1,
+        2, 1, 0, 1, 2, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1,
+        1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 2, 1, 1, 1, 1, 2, 0, 2, 1, 1, 0, 1,
+        2, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 2,
+        0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 2, 0, 1, 1, 0, 0, 0, 1,
+        1, 0, 1, 1, 2, 1, 1, 1, 1, 0, 1, 0, 2, 0, 0, 0, 1, 0, 2, 1, 2, 2,
+        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 0, 2, 1, 1, 1, 1, 0,
+        0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 2,
+        0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1,
+        1, 0, 0, 2, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 2, 1, 0]))
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-multinomial-logistic-regression admonition">
 <p class="admonition-title">Multinomial logistic regression</p>
@@ -1500,6 +2443,14 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Precision: </span><span class="si">{</span><span class="n">prec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall:    </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1:        </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.826
+Precision: 0.795
+Recall:    0.797
+F1:        0.794
 </pre></div>
 </div>
 </div>
@@ -1573,6 +2524,10 @@ This is because each class’s F1 score contributes equally to the final average
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dfd1feed8cc23b19e59d9972a530b71a26cc9beea4ff40095a05839230968bc5.png" src="_images/dfd1feed8cc23b19e59d9972a530b71a26cc9beea4ff40095a05839230968bc5.png" />
+<img alt="_images/f8692feb29148def95edfd3095242ec8f921b798e83065ae09825fac90e7d16a.png" src="_images/f8692feb29148def95edfd3095242ec8f921b798e83065ae09825fac90e7d16a.png" />
 </div>
 </div>
 </section>
@@ -1727,6 +2682,13 @@ This is because each class’s F1 score contributes equally to the final average
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 401.424
+MAE: 15.892
+R2:  0.729
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="id3">
@@ -1757,6 +2719,9 @@ This is because each class’s F1 score contributes equally to the final average
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/63bcbf96d35d80048a2518cba6456bcfceafa3610d56c2630fd8e20a1971fa8b.png" src="_images/63bcbf96d35d80048a2518cba6456bcfceafa3610d56c2630fd8e20a1971fa8b.png" />
 </div>
 </div>
 </section>
@@ -1797,6 +2762,13 @@ This is because each class’s F1 score contributes equally to the final average
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test R2:  0.042
+Test MSE: 1.478
+</pre></div>
+</div>
+<img alt="_images/341b537ee6674ba5347efdfcdf06f8f902277ebf3a04c9e6077be3a8ce55ec33.png" src="_images/341b537ee6674ba5347efdfcdf06f8f902277ebf3a04c9e6077be3a8ce55ec33.png" />
 </div>
 </div>
 </section>
@@ -1861,6 +2833,26 @@ This is because each class’s F1 score contributes equally to the final average
 <span class="n">run_classification</span><span class="p">(</span><span class="n">y_cls_B</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Rule B (≤ median pKa = acidic, median=</span><span class="si">{</span><span class="n">median_val</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Rule A (pKa ≤ 7 = acidic) ---
+Accuracy:  0.809
+Precision: 0.814
+Recall:    0.989
+F1:        0.893
+AUC:       0.779
+</pre></div>
+</div>
+<img alt="_images/6282fc6f257136c9d552c82e59fbf32f493d10ef5091ead26909a1c03b688990.png" src="_images/6282fc6f257136c9d552c82e59fbf32f493d10ef5091ead26909a1c03b688990.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Rule B (≤ median pKa = acidic, median=5.90) ---
+Accuracy:  0.704
+Precision: 0.750
+Recall:    0.621
+F1:        0.679
+AUC:       0.743
+</pre></div>
+</div>
+<img alt="_images/89f5d32d6fe46c6b5295059a61d23f4bf486d26c34b4f6261f11e32fc28c57df.png" src="_images/89f5d32d6fe46c6b5295059a61d23f4bf486d26c34b4f6261f11e32fc28c57df.png" />
 </div>
 </div>
 </section>
