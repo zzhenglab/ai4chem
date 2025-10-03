@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-12';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 13 - De novo Molecule Generation" href="lecture-13.html" />
     <link rel="prev" title="Lecture 11 - Dimension Reduction for Data Visualization" href="lecture-11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -194,7 +193,6 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 12 - Self-Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -407,9 +405,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-clustering-methods">5. Alternative clustering methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agglomerative-ward">5.1 Agglomerative (Ward)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">5.2 DBSCAN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">7. In-class activity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-t-sne-on-10-descriptors">Q1. t-SNE on 10 descriptors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-elbow-on-kmeans">Q2. Elbow on KMeans</a></li>
@@ -417,6 +415,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-agglomerative-sweep-with-plots">Q4. Agglomerative sweep with plots</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">8. Solutions</a></li>
 </ul>
             </nav>
         </div>
@@ -438,7 +437,9 @@ document.write(`
 <li><p><a class="reference internal" href="#kmeans-on-clustering" id="id4">3. KMeans on clustering</a></p></li>
 <li><p><a class="reference internal" href="#picking-k-and-validating-clusters" id="id5">4. Picking k and validating clusters</a></p></li>
 <li><p><a class="reference internal" href="#alternative-clustering-methods" id="id6">5. Alternative clustering methods</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity" id="id7">7. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id7">6. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id8">7. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solutions" id="id9">8. Solutions</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
@@ -1843,14 +1844,15 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/3375fc6953599193d4346a25c71fc29bb5582205633e99efd29957a52b21b7db.png" src="_images/3375fc6953599193d4346a25c71fc29bb5582205633e99efd29957a52b21b7db.png" />
+<img alt="_images/b78875204aeb20cfa9a5999ad6b4a2f3f250e075f4d73c4ff5d0b52f1a392555.png" src="_images/b78875204aeb20cfa9a5999ad6b4a2f3f250e075f4d73c4ff5d0b52f1a392555.png" />
 </div>
 </div>
 <hr class="docutils" />
 </section>
+</section>
 <hr class="docutils" />
 <section id="glossary">
-<h3>6. Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h3>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
 <dt id="term-clustering">clustering<a class="headerlink" href="#term-clustering" title="Link to this term">#</a></dt><dd><p>Group samples using only <span class="math notranslate nohighlight">\(X\)</span>, no labels during fit.</p>
 </dd>
@@ -1868,10 +1870,9 @@ Instead, it groups points based on density and labels sparse points as noise The
 </dd>
 </dl>
 </section>
-</section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="q1-t-sne-on-10-descriptors">
 <h3>Q1. t-SNE on 10 descriptors<a class="headerlink" href="#q1-t-sne-on-10-descriptors" title="Link to this heading">#</a></h3>
 <p>Rebuild features using 10 descriptors, embed with t-SNE, plot in 2D.</p>
@@ -1917,6 +1918,300 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </section>
 </section>
+<hr class="docutils" />
+<section id="solutions">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<p><strong>Q1</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q1. t-SNE on 10 descriptors</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.cluster</span><span class="w"> </span><span class="kn">import</span> <span class="n">KMeans</span><span class="p">,</span> <span class="n">AgglomerativeClustering</span><span class="p">,</span> <span class="n">DBSCAN</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">pairwise_distances</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Assumes df_raw is already loaded and RDKit imports exist:</span>
+<span class="c1"># from rdkit import Chem</span>
+<span class="c1"># from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calc_descriptors10</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span>
+        <span class="s2">&quot;MolWt&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;LogP&quot;</span><span class="p">:</span> <span class="n">Crippen</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;TPSA&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcTPSA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRings</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBA</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumHDonors&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumHBD</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumRotatableBonds</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">:</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">HeavyAtomCount</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;FractionCSP3&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcFractionCSP3</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="s2">&quot;NumAromaticRings&quot;</span><span class="p">:</span> <span class="n">rdMolDescriptors</span><span class="o">.</span><span class="n">CalcNumAromaticRings</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="p">})</span>
+
+<span class="c1"># 10 descriptors</span>
+<span class="n">desc10</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">calc_descriptors10</span><span class="p">)</span>
+<span class="n">df10</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_raw</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">desc10</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cols10</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;NumHAcceptors&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;NumHDonors&quot;</span><span class="p">,</span><span class="s2">&quot;NumRotatableBonds&quot;</span><span class="p">,</span><span class="s2">&quot;HeavyAtomCount&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;FractionCSP3&quot;</span><span class="p">,</span><span class="s2">&quot;NumAromaticRings&quot;</span>
+<span class="p">]</span>
+<span class="n">scaler10</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df10</span><span class="p">[</span><span class="n">cols10</span><span class="p">])</span>
+<span class="n">X10</span> <span class="o">=</span> <span class="n">scaler10</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df10</span><span class="p">[</span><span class="n">cols10</span><span class="p">])</span>
+
+<span class="c1"># t-SNE embedding for descriptors (reused in Q4 and Q5)</span>
+<span class="n">tsne10</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+              <span class="n">init</span><span class="o">=</span><span class="s2">&quot;pca&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Z10</span> <span class="o">=</span> <span class="n">tsne10</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z10</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z10</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;t-SNE on 10 descriptors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12b0d517156dbf5f576eac3fe1a2ae4456439ff4b0e79989ac7bb209d73e9c82.png" src="_images/12b0d517156dbf5f576eac3fe1a2ae4456439ff4b0e79989ac7bb209d73e9c82.png" />
+</div>
+</div>
+<p><strong>Q2</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q2. Elbow on KMeans (k=2..9)</span>
+
+<span class="n">ks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">inertias</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X10</span><span class="p">)</span>
+    <span class="n">inertias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="n">inertias</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Inertia&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Elbow on 10-descriptor KMeans&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="s2">&quot;inertia&quot;</span><span class="p">:</span> <span class="n">inertias</span><span class="p">})</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/800bca23ec64db4983fa6fc0dc0676d8e088c4cb0bf5cb3ea939cdd94ab18fb1.png" src="_images/800bca23ec64db4983fa6fc0dc0676d8e088c4cb0bf5cb3ea939cdd94ab18fb1.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k</th>
+      <th>inertia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>4210.881</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>3612.879</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>3114.660</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>2827.642</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>2594.569</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7</td>
+      <td>2419.247</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8</td>
+      <td>2253.512</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9</td>
+      <td>2102.564</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Q3</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q3. Silhouette on KMeans (k=2..9)</span>
+<span class="n">sil_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X10</span><span class="p">)</span>
+    <span class="n">sil_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X10</span><span class="p">,</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="n">sil_scores</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Silhouette&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Silhouette vs k on 10-descriptor KMeans&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">best_k_sil</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sil_scores</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best k by silhouette:&quot;</span><span class="p">,</span> <span class="n">best_k_sil</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;k&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="s2">&quot;silhouette&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sil_scores</span><span class="p">,</span> <span class="mi">3</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/388878500895fe21dbe481d21871cfe8b3551527b70d627834708c04eb764011.png" src="_images/388878500895fe21dbe481d21871cfe8b3551527b70d627834708c04eb764011.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k by silhouette: 2
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>k</th>
+      <th>silhouette</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>0.315</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>0.284</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>0.213</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>0.203</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>0.210</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>7</td>
+      <td>0.230</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>8</td>
+      <td>0.211</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>9</td>
+      <td>0.208</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Q4</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q4. Agglomerative sweep with plots</span>
+<span class="n">sil_agg</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">ks</span><span class="p">:</span>
+    <span class="n">agg</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+    <span class="n">labels_agg</span> <span class="o">=</span> <span class="n">agg</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X10</span><span class="p">)</span>
+    <span class="n">sil_agg</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silhouette_score</span><span class="p">(</span><span class="n">X10</span><span class="p">,</span> <span class="n">labels_agg</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">),</span> <span class="n">sil_agg</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;k&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Silhouette&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Agglomerative (ward) silhouette vs k on 10 descriptors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">best_k_agg</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ks</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">sil_agg</span><span class="p">))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best k for Agglomerative by silhouette:&quot;</span><span class="p">,</span> <span class="n">best_k_agg</span><span class="p">)</span>
+
+<span class="c1"># Fit best k and plot clusters on t-SNE plane (Z10)</span>
+<span class="n">agg_best</span> <span class="o">=</span> <span class="n">AgglomerativeClustering</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">best_k_agg</span><span class="p">,</span> <span class="n">linkage</span><span class="o">=</span><span class="s2">&quot;ward&quot;</span><span class="p">)</span>
+<span class="n">labels_agg_best</span> <span class="o">=</span> <span class="n">agg_best</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">X10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels_agg_best</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">labels_agg_best</span> <span class="o">==</span> <span class="n">c</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Z10</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">Z10</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;c</span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;t-SNE 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Agglomerative (ward) on t-SNE, k=</span><span class="si">{</span><span class="n">best_k_agg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/12812b3d99b0bfc4cd950968c5be852ee10abb916debd6a2a362f5c08ef9805d.png" src="_images/12812b3d99b0bfc4cd950968c5be852ee10abb916debd6a2a362f5c08ef9805d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k for Agglomerative by silhouette: 2
+</pre></div>
+</div>
+<img alt="_images/b7a458e21328ffc2b493739c6f6c18becb3208c35adf48e1ed090877fcec80fc.png" src="_images/b7a458e21328ffc2b493739c6f6c18becb3208c35adf48e1ed090877fcec80fc.png" />
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1958,15 +2253,6 @@ Instead, it groups points based on density and labels sparse points as noise The
         <p class="prev-next-title">Lecture 11 - Dimension Reduction for Data Visualization</p>
       </div>
     </a>
-    <a class="right-next"
-       href="lecture-13.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 13 - De novo Molecule Generation</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -2000,9 +2286,9 @@ Instead, it groups points based on density and labels sparse points as noise The
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-clustering-methods">5. Alternative clustering methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agglomerative-ward">5.1 Agglomerative (Ward)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">5.2 DBSCAN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity">7. In-class activity</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-t-sne-on-10-descriptors">Q1. t-SNE on 10 descriptors</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-elbow-on-kmeans">Q2. Elbow on KMeans</a></li>
@@ -2010,6 +2296,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-agglomerative-sweep-with-plots">Q4. Agglomerative sweep with plots</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">8. Solutions</a></li>
 </ul>
   </nav></div>
 

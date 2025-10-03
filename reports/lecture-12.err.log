@@ -44,8 +44,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['"""', '- Column 1: KMeans. Pick k by highest silhouette.', '- Column 2: Agglomerative (Ward). Pick k by highest silhouette.', '- Column 3: DBSCAN. Pick eps and min_samples by highest silhouette.', '"""']
+['# Core', 'import numpy as np', 'import pandas as pd', 'import matplotlib.pyplot as plt', '']
 ...
-['            transform=ax.transAxes, ha="left", va="top", fontsize=9,', '            bbox=dict(boxstyle="round,pad=0.25", facecolor="white", alpha=0.8, edgecolor="none"))', '', 'fig.suptitle("Clustering gallery with automatic selection per dataset", fontsize=14)', 'plt.show()']
+['except Exception:', '    HAVE_UMAP = False', '', 'import warnings', 'warnings.filterwarnings("ignore")']
 -------------------
 
