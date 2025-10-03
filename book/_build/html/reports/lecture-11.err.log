@@ -36,46 +36,56 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import plotly.express as px
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 
-# ---- prepare feature matrix ----
+# ----- features -----
 desc_cols = ["MolWt","LogP","TPSA","NumRings",
              "NumHAcceptors","NumHDonors","NumRotatableBonds",
              "HeavyAtomCount","FractionCSP3","NumAromaticRings"]
 
-X_desc = df10[desc_cols].values
-
-# ---- standardize and PCA ----
+# 10D descriptors: standardize
+X_desc = df10[desc_cols].to_numpy()
 X_desc_std = StandardScaler().fit_transform(X_desc)
-pca = PCA(n_components=2)
-X_pca = pca.fit_transform(X_desc_std)
 
-# ---- build dataframe with PCA scores ----
-df_pca = df10.copy()
-df_pca["PC1"] = X_pca[:,0]
-df_pca["PC2"] = X_pca[:,1]
+# 64-bit Morgan: turn "0101..." into 0/1 matrix
+X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype=float)
 
-# ---- interactive scatter with custom size ----
-fig = px.scatter(
-    df_pca,
-    x="PC1", y="PC2",
-    color="NumRings",
-    hover_data=["Compound Name"] + desc_cols,
-    title="Interactive PCA of 10 Descriptors",
-    width=1200, height=600   # <-- 12 wide, 6 tall
-)
-fig.show()
+# optional: speed-up via PCA(50) before t-SNE on fingerprints
+#X_fp_50 = PCA(n_components=min(50, X_fp.shape[1], X_fp.shape[0]-1), random_state=0).fit_transform(X_fp)
+
+# ----- t-SNE fits -----
+tsne_desc = TSNE(n_components=2, perplexity=30, learning_rate="auto",
+                 init="pca", random_state=0)
+Y_desc = tsne_desc.fit_transform(X_desc_std)
+
+tsne_fp = TSNE(n_components=2, perplexity=30, learning_rate="auto",
+               init="pca", n_iter=1000, random_state=0)
+Y_fp = tsne_fp.fit_transform(X_fp)
+
+# ----- plots -----
+fig, ax = plt.subplots(1, 2, figsize=(12,5))
+ax[0].scatter(Y_desc[:,0], Y_desc[:,1], s=18, alpha=0.8)
+ax[0].set_title("t-SNE on 10D descriptors")
+ax[0].set_xlabel("tSNE-1"); ax[0].set_ylabel("tSNE-2")
+
+ax[1].scatter(Y_fp[:,0], Y_fp[:,1], s=18, alpha=0.8)
+ax[1].set_title("t-SNE on 64-bit Morgan")
+ax[1].set_xlabel("tSNE-1"); ax[1].set_ylabel("tSNE-2")
+
+plt.tight_layout(); plt.show()
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[16][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mplotly[39;00m[34;01m.[39;00m[34;01mexpress[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpx[39;00m
-[32m      2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mpreprocessing[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m StandardScaler
-[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mdecomposition[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m PCA
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[23][39m[32m, line 23[39m
+[32m     19[39m tsne_desc = TSNE(n_components=[32m2[39m, perplexity=[32m30[39m, learning_rate=[33m"[39m[33mauto[39m[33m"[39m,
+[32m     20[39m                  init=[33m"[39m[33mpca[39m[33m"[39m, random_state=[32m0[39m)
+[32m     21[39m Y_desc = tsne_desc.fit_transform(X_desc_std)
+[32m---> [39m[32m23[39m tsne_fp = [43mTSNE[49m[43m([49m[43mn_components[49m[43m=[49m[32;43m2[39;49m[43m,[49m[43m [49m[43mperplexity[49m[43m=[49m[32;43m30[39;49m[43m,[49m[43m [49m[43mlearning_rate[49m[43m=[49m[33;43m"[39;49m[33;43mauto[39;49m[33;43m"[39;49m[43m,[49m
+[32m     24[39m [43m               [49m[43minit[49m[43m=[49m[33;43m"[39;49m[33;43mpca[39;49m[33;43m"[39;49m[43m,[49m[43m [49m[43mn_iter[49m[43m=[49m[32;43m1000[39;49m[43m,[49m[43m [49m[43mrandom_state[49m[43m=[49m[32;43m0[39;49m[43m)[49m
+[32m     25[39m Y_fp = tsne_fp.fit_transform(X_fp)
+[32m     27[39m [38;5;66;03m# ----- plots -----[39;00m
 
-[31mModuleNotFoundError[39m: No module named 'plotly'
+[31mTypeError[39m: TSNE.__init__() got an unexpected keyword argument 'n_iter'
 

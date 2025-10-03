@@ -36,78 +36,58 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Q1. t-SNE on 10 descriptors
-from sklearn.preprocessing import StandardScaler
-from sklearn.manifold import TSNE
-from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
-from sklearn.metrics import silhouette_score
-from sklearn.metrics import pairwise_distances
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
+from torch.utils.data import TensorDataset, DataLoader
 
-# Assumes df_raw is already loaded and RDKit imports exist:
-# from rdkit import Chem
-# from rdkit.Chem import Descriptors, Crippen, rdMolDescriptors
+dl_desc = DataLoader(
+    TensorDataset(torch.from_numpy(Xz.astype(np.float32))),
+    batch_size=64,
+    shuffle=True,
+)
 
-def calc_descriptors10(smiles: str):
-    m = Chem.MolFromSmiles(smiles)
-    return pd.Series({
-        "MolWt": Descriptors.MolWt(m),
-        "LogP": Crippen.MolLogP(m),
-        "TPSA": rdMolDescriptors.CalcTPSA(m),
-        "NumRings": rdMolDescriptors.CalcNumRings(m),
-        "NumHAcceptors": rdMolDescriptors.CalcNumHBA(m),
-        "NumHDonors": rdMolDescriptors.CalcNumHBD(m),
-        "NumRotatableBonds": rdMolDescriptors.CalcNumRotatableBonds(m),
-        "HeavyAtomCount": Descriptors.HeavyAtomCount(m),
-        "FractionCSP3": rdMolDescriptors.CalcFractionCSP3(m),
-        "NumAromaticRings": rdMolDescriptors.CalcNumAromaticRings(m)
-    })
+# 3D latent AE and training loop (unpack with (xb,))
+ae3 = TinyAE(in_dim=10, hid=64, z_dim=3)
+opt = optim.Adam(ae3.parameters(), lr=1e-3)
 
-# 10 descriptors
-desc10 = df_raw["SMILES"].apply(calc_descriptors10)
-df10 = pd.concat([df_raw.reset_index(drop=True), desc10.reset_index(drop=True)], axis=1)
+for ep in range(4):
+    for (xb,) in dl_desc:
+        xr, z = ae3(xb)
+        loss = nn.functional.mse_loss(xr, xb)
+        opt.zero_grad(); loss.backward(); opt.step()
 
-cols10 = [
-    "MolWt","LogP","TPSA","NumRings","NumHAcceptors",
-    "NumHDonors","NumRotatableBonds","HeavyAtomCount",
-    "FractionCSP3","NumAromaticRings"
-]
-scaler10 = StandardScaler().fit(df10[cols10])
-X10 = scaler10.transform(df10[cols10])
+# Encode with the trained model
+with torch.no_grad():
+    Z3 = ae3.encode(torch.from_numpy(Xz.astype(np.float32))).numpy()
 
-# t-SNE embedding for descriptors (reused in Q4 and Q5)
-tsne10 = TSNE(n_components=2, perplexity=30, learning_rate="auto",
-              init="pca", metric="euclidean", random_state=0)
-Z10 = tsne10.fit_transform(X10)
 
-plt.figure(figsize=(5,4))
-plt.scatter(Z10[:,0], Z10[:,1], s=12, alpha=0.85)
-plt.xlabel("t-SNE 1"); plt.ylabel("t-SNE 2")
-plt.title("t-SNE on 10 descriptors")
-plt.tight_layout()
+fig = plt.figure(figsize=(6, 5))
+ax = fig.add_subplot(111, projection="3d")
+
+p = ax.scatter(
+    Z3[:, 0], Z3[:, 1], Z3[:, 2],
+    c=df_small["LogP"].values,
+    s=12, alpha=0.85
+)
+ax.set_xlabel("z0"); ax.set_ylabel("z1"); ax.set_zlabel("z2")
+ax.set_title("AE latent space (3D), color = LogP")
+cb = fig.colorbar(p, ax=ax, shrink=0.7, pad=0.1)
+cb.set_label("LogP")
 plt.show()
+
 
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 31[39m
-[32m     17[39m     [38;5;28;01mreturn[39;00m pd.Series({
-[32m     18[39m         [33m"[39m[33mMolWt[39m[33m"[39m: Descriptors.MolWt(m),
-[32m     19[39m         [33m"[39m[33mLogP[39m[33m"[39m: Crippen.MolLogP(m),
-[32m   (...)[39m[32m     27[39m         [33m"[39m[33mNumAromaticRings[39m[33m"[39m: rdMolDescriptors.CalcNumAromaticRings(m)
-[32m     28[39m     })
-[32m     30[39m [38;5;66;03m# 10 descriptors[39;00m
-[32m---> [39m[32m31[39m desc10 = [43mdf_raw[49m[[33m"[39m[33mSMILES[39m[33m"[39m].apply(calc_descriptors10)
-[32m     32[39m df10 = pd.concat([df_raw.reset_index(drop=[38;5;28;01mTrue[39;00m), desc10.reset_index(drop=[38;5;28;01mTrue[39;00m)], axis=[32m1[39m)
-[32m     34[39m cols10 = [
-[32m     35[39m     [33m"[39m[33mMolWt[39m[33m"[39m,[33m"[39m[33mLogP[39m[33m"[39m,[33m"[39m[33mTPSA[39m[33m"[39m,[33m"[39m[33mNumRings[39m[33m"[39m,[33m"[39m[33mNumHAcceptors[39m[33m"[39m,
-[32m     36[39m     [33m"[39m[33mNumHDonors[39m[33m"[39m,[33m"[39m[33mNumRotatableBonds[39m[33m"[39m,[33m"[39m[33mHeavyAtomCount[39m[33m"[39m,
-[32m     37[39m     [33m"[39m[33mFractionCSP3[39m[33m"[39m,[33m"[39m[33mNumAromaticRings[39m[33m"[39m
-[32m     38[39m ]
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 4[39m
+[32m      1[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtorch[39;00m[34;01m.[39;00m[34;01mutils[39;00m[34;01m.[39;00m[34;01mdata[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m TensorDataset, DataLoader
+[32m      3[39m dl_desc = DataLoader(
+[32m----> [39m[32m4[39m     TensorDataset([43mtorch[49m.from_numpy(Xz.astype(np.float32))),
+[32m      5[39m     batch_size=[32m64[39m,
+[32m      6[39m     shuffle=[38;5;28;01mTrue[39;00m,
+[32m      7[39m )
+[32m      9[39m [38;5;66;03m# 3D latent AE and training loop (unpack with (xb,))[39;00m
+[32m     10[39m ae3 = TinyAE(in_dim=[32m10[39m, hid=[32m64[39m, z_dim=[32m3[39m)
 
-[31mNameError[39m: name 'df_raw' is not defined
+[31mNameError[39m: name 'torch' is not defined
 

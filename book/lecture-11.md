@@ -605,7 +605,7 @@ for label, (i,j) in pairs_to_show:
 We can also make this plot to be interactive:
 ```{code-cell} ipython3
 :tags: [hide-input]
-import plotly.express as px
+import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 
@@ -626,16 +626,29 @@ df_pca = df10.copy()
 df_pca["PC1"] = X_pca[:,0]
 df_pca["PC2"] = X_pca[:,1]
 
-# ---- interactive scatter with custom size ----
-fig = px.scatter(
-    df_pca,
-    x="PC1", y="PC2",
-    color="NumRings",
-    hover_data=["Compound Name"] + desc_cols,
-    title="Interactive PCA of 10 Descriptors",
-    width=1200, height=600   # <-- 12 wide, 6 tall
+# ---- scatter plot with matplotlib ----
+plt.figure(figsize=(12, 6))
+scatter = plt.scatter(
+    df_pca["PC1"],
+    df_pca["PC2"],
+    c=df_pca["NumRings"],  # color by number of rings
+    cmap="viridis",
+    s=50,                  # marker size
+    alpha=0.7,
+    edgecolor="k"
 )
-fig.show()
+
+# add colorbar
+cbar = plt.colorbar(scatter)
+cbar.set_label("NumRings")
+
+# titles and labels
+plt.title("PCA of 10 Descriptors")
+plt.xlabel("PC1")
+plt.ylabel("PC2")
+
+plt.show()
+
 
 ```
 
@@ -1066,11 +1079,11 @@ X_fp = np.array([[int(ch) for ch in s] for s in df_morgan["Fingerprint"]], dtype
 
 # ----- t-SNE fits -----
 tsne_desc = TSNE(n_components=2, perplexity=30, learning_rate="auto",
-                 init="pca", n_iter=1000, random_state=0)
+                 init="pca", random_state=0)
 Y_desc = tsne_desc.fit_transform(X_desc_std)
 
 tsne_fp = TSNE(n_components=2, perplexity=30, learning_rate="auto",
-               init="pca", n_iter=1000, random_state=0)
+               init="pca", random_state=0)
 Y_fp = tsne_fp.fit_transform(X_fp)
 
 # ----- plots -----
@@ -1353,7 +1366,7 @@ plt.tight_layout(); plt.show()
 from sklearn.manifold import TSNE
 
 tsne_desc = TSNE(n_components=2, perplexity=2, learning_rate="auto",
-                 init="pca", n_iter=1000, random_state=0)
+                 init="pca", random_state=0)
 Y_desc = tsne_desc.fit_transform(X_desc_std)
 
 plt.figure(figsize=(7,6))
@@ -1391,7 +1404,7 @@ plt.tight_layout(); plt.show()
 
 # t-SNE on fingerprint bits
 tsne_fp = TSNE(n_components=2, perplexity=5, learning_rate="auto",
-               init="pca", n_iter=1000, random_state=0)
+               init="pca", random_state=0)
 Y_fp = tsne_fp.fit_transform(X_fp)
 
 plt.figure(figsize=(7,6))
