@@ -19,44 +19,39 @@
 #       * 10% random failures -> yield = 0
 #       * 10% at 70% of expected (before noise)
 #       * 15% boosted by +0.10 but clipped at 0.99
+#
+# Purity model (black box):
+#   - Nonlinear with discontinuities and hash-based jitter.
+#   - If yield is high, only ~30% of those cases land in high purity; ~70% skew low.
+#   - Depends on linker, a hidden pseudo-metal class, temperature, concentration, solvent.
+#   - High temperature and high concentration tend to reduce purity.
+#
+# Reproducibility model (black box, 4-class):
+#   - Values in {0.25, 0.5, 0.75, 1.0}.
+#   - Strongly dependent on linker, lightly on other factors.
+#   - Linker rules:
+#       * H2BDC, Fumaric acid -> 80% 1.0, 20% 0.75
+#       * H2BDC-NH2, H2BDC-F  -> 70% 0.25, 30% 0.5
+#       * Others              -> 50% 0.75, 20% 1.0, 30% 0.5
+#   - Temperature sometimes mutates the selected class:
+#       * T > 140: 35% chance to drop one class
+#       * 120 < T <= 140: 20% drop chance
+#       * T < 55: 15% chance to drop one class
+#       * Otherwise: 5% random flip up or down
+#   - Solvent and concentration add small noise to the mutation probability.
+#
 # Output:
 #   - CSV with 20,000 rows and columns:
 #       [linker, family, smiles, MW, logP, TPSA, n_rings,
 #        temperature, time_h, concentration_M, solvent_DMF,
-#        expected_yield, yield]
-#   - Sanity-check plots: PCA and t-SNE of feature space.
+#        expected_yield, yield, purity, reproducibility]
+#   - Plots:
+#       * PCA and t-SNE of feature space
+#       * Combined figure with PCA, t-SNE, and a purity heat map
 # Notes:
 #   - PCA runs on all rows; t-SNE runs on a subset for speed.
 #   - Random seeds fixed for reproducibility.
 # --------------------------------------------------------------------------------
-"""
-MOF Bayesian Optimization Toy Dataset
-Size: 20,000 experiments (10 temperatures x 10 times x 10 concentrations x 2 solvents x 10 linkers)
-Variables:
-  temperature (°C), time_h (h), concentration_M (M), solvent_DMF (0=H2O,1=DMF),
-  linker with descriptors (MW, logP, TPSA, n_rings) and smiles, family.
-Yields:
-  expected_yield is the model prediction without noise.
-  yield is the noisy and perturbed outcome with 10% failures, 10% at 70% expected, and 15% boosted by +0.10 clipped at 0.99.
-Intended use: toy data for Gaussian-process BO with active learning; PCA/t-SNE show clusters by family/descriptor.
-
-first a few lines of the CSV file:
-linker_smiles	temperature	time_h	concentration_M	solvent_DMF	yield
-O=C(O)c1ccc(cc1)C(=O)O	25	12	0.05	0	29
-O=C(O)/C=C/C(=O)O	25	12	0.05	0	42
-Cc1ncc[nH]1	25	12	0.05	0	66
-O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1	25	12	0.05	0	21
-Nc1cc(C(=O)O)ccc1C(=O)O	25	12	0.05	0	23
-O=C(O)c1cc(F)ccc1C(=O)O	25	12	0.05	0	20
-O=C(O)c1ccc2cccc(C(=O)O)c2c1	25	12	0.05	0	9
-O=C(O)c1cccc2c1ccc(C(=O)O)c2	25	12	0.05	0	13
-O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O	25	12	0.05	0	5
-c1ccc2[nH]cnc2c1	25	12	0.05	0	58
-O=C(O)c1ccc(cc1)C(=O)O	25	12	0.05	1	49
-
-"""
-
-
 
 import numpy as np
 import pandas as pd
@@ -65,7 +60,6 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 from itertools import product
-
 
 rng = np.random.default_rng(123)
 
@@ -158,20 +152,128 @@ y[low_idx]  = np.clip(0.7 * df.loc[low_idx, "expected_yield"].to_numpy(), 0.0, 0
 y[high_idx] = np.clip(df.loc[high_idx, "expected_yield"].to_numpy() + 0.10, 0.0, 0.99)
 df["yield"] = y
 
+# ---------------------------
+# Black-box purity generator
+# ---------------------------
+def _hash_noise(*tokens, scale=1.0):
+    s = "|".join(map(str, tokens))
+    h = hash(s)
+    u = ((h ^ (h >> 16)) & 0xFFFFFFFF) / 0xFFFFFFFF
+    return scale * (u - 0.5)
+
+def purity_black_box(row):
+    # Hidden pseudo-metal class derived from linker + family, 0..2
+    metal_class = (hash(row["linker"] + row["family"]) % 3)
+    base_map = {0: 0.60, 1: 0.45, 2: 0.70}
+    base = base_map[metal_class]
+
+    T = row["temperature"]
+    if T > 140:
+        base -= 0.20
+    elif T > 120:
+        base -= 0.12
+    elif 70 <= T <= 110:
+        base += 0.03
+
+    c = row["concentration_M"]
+    base -= 0.25 * (c - 0.15)
+
+    fam = row["family"]
+    solv = row["solvent_DMF"]
+    if fam in {"Azole"} and solv == 1:
+        base -= 0.05
+    if fam in {"BDC", "Biphenyl diacid"} and solv == 1:
+        base += 0.04
+
+    osc = 0.08 * np.sin(0.15 * T + 7.0 * c + (hash(row["linker"]) % 5))
+
+    y = row["yield"]
+    if y >= 0.70:
+        u = (hash((row["linker"], T, row["time_h"], c, solv, "gate")) & 1023) / 1023.0
+        branch = (0.25 + 0.40 * (y - 0.70)) if u < 0.30 else (-0.20 - 0.25 * (y - 0.70))
+    else:
+        branch = -0.05 + 0.10 * y
+
+    jitter = (
+        _hash_noise(row["linker"], T, c, solv, fam, scale=0.10)
+        + _hash_noise("kink", int(T // 15), int(c*100), scale=0.06)
+    )
+
+    purity = base + osc + branch + jitter
+    purity = 1 / (1 + np.exp(-4*(purity - 0.5)))
+    return float(np.clip(purity, 0.0, 1.0))
+
+df["purity"] = df.apply(purity_black_box, axis=1)
+
+# ---------------------------
+# Black-box reproducibility generator (4-class)
+# ---------------------------
+_repro_levels = [0.25, 0.5, 0.75, 1.0]
+
+def _pick_from_probs(levels, probs, key):
+    # deterministic draw in [0,1) from key
+    u = ((hash(key) ^ (hash(key) >> 17)) & 0xFFFFFFFF) / 0x100000000
+    cum = np.cumsum(probs)
+    idx = int(np.searchsorted(cum, u))
+    return levels[min(idx, len(levels)-1)]
+
+def _mutate_level(level, down=True):
+    order = [0.25, 0.5, 0.75, 1.0]
+    i = order.index(level)
+    if down:
+        return order[max(0, i-1)]
+    else:
+        return order[min(len(order)-1, i+1)]
+
+def reproducibility_black_box(row):
+    L = row["linker"]
+    T = row["temperature"]
+    c = row["concentration_M"]
+    solv = row["solvent_DMF"]
+
+    # base distribution by linker
+    if L in {"H2BDC", "Fumaric acid"}:
+        base = _pick_from_probs(_repro_levels, [0.0, 0.0, 0.20, 0.80], key=(L, T, c, solv, "base"))
+    elif L in {"H2BDC-NH2", "H2BDC-F"}:
+        base = _pick_from_probs(_repro_levels, [0.70, 0.30, 0.0, 0.0], key=(L, T, c, solv, "base"))
+    else:
+        base = _pick_from_probs(_repro_levels, [0.0, 0.30, 0.50, 0.20], key=(L, T, c, solv, "base"))
+
+    # temperature-driven mutation policy
+    # high T penalizes reproducibility; low T mild penalty; otherwise small random flips
+    if T > 140:
+        p_drop = 0.35
+    elif T > 120:
+        p_drop = 0.20
+    elif T < 55:
+        p_drop = 0.15
+    else:
+        p_drop = 0.05
+
+    # small wobble from solvent and concentration
+    p_drop = np.clip(p_drop + 0.03*(solv==1) + 0.02*(c > 0.30) - 0.01*(c < 0.12), 0.0, 0.5)
+
+    # decide mutation
+    u = ((hash((L, T, c, solv, "mut")) ^ 0x9E3779B9) & 0xFFFFFFFF) / 0x100000000
+    if u < p_drop:
+        return _mutate_level(base, down=True)
+    elif u > 1 - 0.03:  # rare upwards flip
+        return _mutate_level(base, down=False)
+    else:
+        return base
+
+df["reproducibility"] = df.apply(reproducibility_black_box, axis=1).astype(float)
+
 # Output CSV
 out_cols = ["linker", "family", "smiles", "MW", "logP", "TPSA", "n_rings",
             "temperature", "time_h", "concentration_M", "solvent_DMF",
-            "expected_yield", "yield"]
+            "expected_yield", "yield", "purity", "reproducibility"]
 csv_path = "mof_yield_dataset.csv"
 df[out_cols].to_csv(csv_path, index=False)
 
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
-import numpy as np
-
-# --- PCA ---
+# ---------------------------
+# Dimensionality reduction plots
+# ---------------------------
 feat_cols = ["MW", "logP", "TPSA", "n_rings",
              "temperature", "time_h", "concentration_M", "solvent_DMF"]
 X = df[feat_cols].to_numpy()
@@ -180,7 +282,6 @@ X_scaled = StandardScaler().fit_transform(X)
 pca = PCA(n_components=2, random_state=123)
 pca_2d = pca.fit_transform(X_scaled)
 
-# Plot 1: all gray points
 plt.figure(figsize=(7,6))
 plt.scatter(pca_2d[:,0], pca_2d[:,1], s=3, alpha=0.4, c="gray")
 plt.xlabel("PC1")
@@ -188,7 +289,6 @@ plt.ylabel("PC2")
 plt.title("PCA of MOF features (all points, no grouping)")
 plt.show()
 
-# Plot 2: color by family
 families = df["family"].astype("category")
 colors = families.cat.codes
 plt.figure(figsize=(7,6))
@@ -202,14 +302,13 @@ plt.ylabel("PC2")
 plt.title("PCA of MOF features (colored by linker family)")
 plt.show()
 
-# --- t-SNE on subset for speed ---
+# t-SNE on subset
 n_tsne = min(2000, X_scaled.shape[0])
 sub_idx = np.random.default_rng(1).choice(np.arange(X_scaled.shape[0]), size=n_tsne, replace=False)
 tsne = TSNE(n_components=2, learning_rate="auto", init="pca",
             perplexity=35, random_state=1)
 tsne_2d = tsne.fit_transform(X_scaled[sub_idx])
 
-# Plot 1: gray
 plt.figure(figsize=(7,6))
 plt.scatter(tsne_2d[:,0], tsne_2d[:,1], s=4, alpha=0.5, c="gray")
 plt.xlabel("t-SNE 1")
@@ -217,7 +316,6 @@ plt.ylabel("t-SNE 2")
 plt.title("t-SNE of MOF features (subset, no grouping)")
 plt.show()
 
-# Plot 2: colored by family
 sub_families = families.iloc[sub_idx]
 sub_colors = sub_families.cat.codes
 plt.figure(figsize=(7,6))
@@ -229,4 +327,40 @@ plt.legend(handles, sub_families.cat.categories,
 plt.xlabel("t-SNE 1")
 plt.ylabel("t-SNE 2")
 plt.title("t-SNE of MOF features (subset, colored by linker family)")
+plt.show()
+
+# ---------------------------
+# Combined figure: PCA, t-SNE, and heat map together
+# ---------------------------
+fig, axes = plt.subplots(1, 3, figsize=(18,5))
+
+# PCA colored by family
+sc0 = axes[0].scatter(pca_2d[:,0], pca_2d[:,1], c=colors, cmap="tab10", s=3, alpha=0.6)
+axes[0].set_xlabel("PC1")
+axes[0].set_ylabel("PC2")
+axes[0].set_title("PCA by family")
+
+# t-SNE colored by family (subset)
+sc1 = axes[1].scatter(tsne_2d[:,0], tsne_2d[:,1],
+                      c=sub_colors, cmap="tab10", s=4, alpha=0.7)
+axes[1].set_xlabel("t-SNE 1")
+axes[1].set_ylabel("t-SNE 2")
+axes[1].set_title("t-SNE by family")
+
+# Heat map of mean purity for a chosen linker and solvent across T x conc
+hm_linker = "H2BDC"
+hm_solvent = 1  # DMF
+subset = df[(df["linker"] == hm_linker) & (df["solvent_DMF"] == hm_solvent)]
+pivot = subset.pivot_table(index="temperature", columns="concentration_M", values="purity", aggfunc="mean")
+im = axes[2].imshow(pivot.values, aspect="auto", origin="lower")
+axes[2].set_xticks(np.arange(len(pivot.columns)))
+axes[2].set_xticklabels([str(c) for c in pivot.columns], rotation=90)
+axes[2].set_yticks(np.arange(len(pivot.index)))
+axes[2].set_yticklabels([str(t) for t in pivot.index])
+axes[2].set_xlabel("concentration_M")
+axes[2].set_ylabel("temperature")
+axes[2].set_title(f"Mean purity heat map\n{hm_linker}, solvent=DMF")
+fig.colorbar(im, ax=axes[2], shrink=0.8, label="purity")
+
+plt.tight_layout()
 plt.show()
