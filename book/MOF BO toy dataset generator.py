@@ -41,24 +41,19 @@
 #   - Solvent and concentration add small noise to the mutation probability.
 #
 # Output:
-#   - CSV with 20,000 rows and columns:
+#   - CSV (standard): mof_yield_dataset.csv with columns
+#       [smiles, temperature, time_h, concentration_M, solvent_DMF, yield, purity, reproducibility]
+#   - CSV (full): mof_yield_dataset_full.csv with columns
 #       [linker, family, smiles, MW, logP, TPSA, n_rings,
 #        temperature, time_h, concentration_M, solvent_DMF,
-#        expected_yield, yield, purity, reproducibility]
-#   - Plots:
-#       * PCA and t-SNE of feature space
-#       * Combined figure with PCA, t-SNE, and a purity heat map
+#        yield, purity, reproducibility]
 # Notes:
-#   - PCA runs on all rows; t-SNE runs on a subset for speed.
 #   - Random seeds fixed for reproducibility.
+#   - All plots removed per request.
 # --------------------------------------------------------------------------------
 
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-from sklearn.manifold import TSNE
-import matplotlib.pyplot as plt
 from itertools import product
 
 rng = np.random.default_rng(123)
@@ -187,12 +182,12 @@ def purity_black_box(row):
 
     osc = 0.08 * np.sin(0.15 * T + 7.0 * c + (hash(row["linker"]) % 5))
 
-    y = row["yield"]
-    if y >= 0.70:
+    yv = row["yield"]
+    if yv >= 0.70:
         u = (hash((row["linker"], T, row["time_h"], c, solv, "gate")) & 1023) / 1023.0
-        branch = (0.25 + 0.40 * (y - 0.70)) if u < 0.30 else (-0.20 - 0.25 * (y - 0.70))
+        branch = (0.25 + 0.40 * (yv - 0.70)) if u < 0.30 else (-0.20 - 0.25 * (yv - 0.70))
     else:
-        branch = -0.05 + 0.10 * y
+        branch = -0.05 + 0.10 * yv
 
     jitter = (
         _hash_noise(row["linker"], T, c, solv, fam, scale=0.10)
@@ -211,7 +206,6 @@ df["purity"] = df.apply(purity_black_box, axis=1)
 _repro_levels = [0.25, 0.5, 0.75, 1.0]
 
 def _pick_from_probs(levels, probs, key):
-    # deterministic draw in [0,1) from key
     u = ((hash(key) ^ (hash(key) >> 17)) & 0xFFFFFFFF) / 0x100000000
     cum = np.cumsum(probs)
     idx = int(np.searchsorted(cum, u))
@@ -240,7 +234,6 @@ def reproducibility_black_box(row):
         base = _pick_from_probs(_repro_levels, [0.0, 0.30, 0.50, 0.20], key=(L, T, c, solv, "base"))
 
     # temperature-driven mutation policy
-    # high T penalizes reproducibility; low T mild penalty; otherwise small random flips
     if T > 140:
         p_drop = 0.35
     elif T > 120:
@@ -257,110 +250,29 @@ def reproducibility_black_box(row):
     u = ((hash((L, T, c, solv, "mut")) ^ 0x9E3779B9) & 0xFFFFFFFF) / 0x100000000
     if u < p_drop:
         return _mutate_level(base, down=True)
-    elif u > 1 - 0.03:  # rare upwards flip
+    elif u > 1 - 0.03:
         return _mutate_level(base, down=False)
     else:
         return base
 
 df["reproducibility"] = df.apply(reproducibility_black_box, axis=1).astype(float)
 
-# Output CSV
-out_cols = ["linker", "family", "smiles", "MW", "logP", "TPSA", "n_rings",
-            "temperature", "time_h", "concentration_M", "solvent_DMF",
-            "expected_yield", "yield", "purity", "reproducibility"]
-csv_path = "mof_yield_dataset.csv"
-df[out_cols].to_csv(csv_path, index=False)
-
 # ---------------------------
-# Dimensionality reduction plots
+# Finalize and write CSVs
 # ---------------------------
-feat_cols = ["MW", "logP", "TPSA", "n_rings",
-             "temperature", "time_h", "concentration_M", "solvent_DMF"]
-X = df[feat_cols].to_numpy()
-X_scaled = StandardScaler().fit_transform(X)
 
-pca = PCA(n_components=2, random_state=123)
-pca_2d = pca.fit_transform(X_scaled)
+# Round outputs to 2 decimals
+df["yield"] = df["yield"].round(2)
+df["purity"] = df["purity"].round(2)
+df["reproducibility"] = df["reproducibility"].round(2)
 
-plt.figure(figsize=(7,6))
-plt.scatter(pca_2d[:,0], pca_2d[:,1], s=3, alpha=0.4, c="gray")
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.title("PCA of MOF features (all points, no grouping)")
-plt.show()
+# Standard CSV
+std_cols = ["smiles", "temperature", "time_h", "concentration_M", "solvent_DMF",
+            "yield", "purity", "reproducibility"]
+df[std_cols].to_csv("mof_yield_dataset.csv", index=False)
 
-families = df["family"].astype("category")
-colors = families.cat.codes
-plt.figure(figsize=(7,6))
-scatter = plt.scatter(pca_2d[:,0], pca_2d[:,1],
-                      c=colors, cmap="tab10", s=3, alpha=0.5)
-handles, _ = scatter.legend_elements(prop="colors", alpha=0.6)
-plt.legend(handles, families.cat.categories,
-           title="Family", bbox_to_anchor=(1.05,1), loc="upper left")
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.title("PCA of MOF features (colored by linker family)")
-plt.show()
-
-# t-SNE on subset
-n_tsne = min(2000, X_scaled.shape[0])
-sub_idx = np.random.default_rng(1).choice(np.arange(X_scaled.shape[0]), size=n_tsne, replace=False)
-tsne = TSNE(n_components=2, learning_rate="auto", init="pca",
-            perplexity=35, random_state=1)
-tsne_2d = tsne.fit_transform(X_scaled[sub_idx])
-
-plt.figure(figsize=(7,6))
-plt.scatter(tsne_2d[:,0], tsne_2d[:,1], s=4, alpha=0.5, c="gray")
-plt.xlabel("t-SNE 1")
-plt.ylabel("t-SNE 2")
-plt.title("t-SNE of MOF features (subset, no grouping)")
-plt.show()
-
-sub_families = families.iloc[sub_idx]
-sub_colors = sub_families.cat.codes
-plt.figure(figsize=(7,6))
-scatter = plt.scatter(tsne_2d[:,0], tsne_2d[:,1],
-                      c=sub_colors, cmap="tab10", s=4, alpha=0.5)
-handles, _ = scatter.legend_elements(prop="colors", alpha=0.6)
-plt.legend(handles, sub_families.cat.categories,
-           title="Family", bbox_to_anchor=(1.05,1), loc="upper left")
-plt.xlabel("t-SNE 1")
-plt.ylabel("t-SNE 2")
-plt.title("t-SNE of MOF features (subset, colored by linker family)")
-plt.show()
-
-# ---------------------------
-# Combined figure: PCA, t-SNE, and heat map together
-# ---------------------------
-fig, axes = plt.subplots(1, 3, figsize=(18,5))
-
-# PCA colored by family
-sc0 = axes[0].scatter(pca_2d[:,0], pca_2d[:,1], c=colors, cmap="tab10", s=3, alpha=0.6)
-axes[0].set_xlabel("PC1")
-axes[0].set_ylabel("PC2")
-axes[0].set_title("PCA by family")
-
-# t-SNE colored by family (subset)
-sc1 = axes[1].scatter(tsne_2d[:,0], tsne_2d[:,1],
-                      c=sub_colors, cmap="tab10", s=4, alpha=0.7)
-axes[1].set_xlabel("t-SNE 1")
-axes[1].set_ylabel("t-SNE 2")
-axes[1].set_title("t-SNE by family")
-
-# Heat map of mean purity for a chosen linker and solvent across T x conc
-hm_linker = "H2BDC"
-hm_solvent = 1  # DMF
-subset = df[(df["linker"] == hm_linker) & (df["solvent_DMF"] == hm_solvent)]
-pivot = subset.pivot_table(index="temperature", columns="concentration_M", values="purity", aggfunc="mean")
-im = axes[2].imshow(pivot.values, aspect="auto", origin="lower")
-axes[2].set_xticks(np.arange(len(pivot.columns)))
-axes[2].set_xticklabels([str(c) for c in pivot.columns], rotation=90)
-axes[2].set_yticks(np.arange(len(pivot.index)))
-axes[2].set_yticklabels([str(t) for t in pivot.index])
-axes[2].set_xlabel("concentration_M")
-axes[2].set_ylabel("temperature")
-axes[2].set_title(f"Mean purity heat map\n{hm_linker}, solvent=DMF")
-fig.colorbar(im, ax=axes[2], shrink=0.8, label="purity")
-
-plt.tight_layout()
-plt.show()
+# Full CSV (no expected_yield column)
+full_cols = ["linker", "family", "smiles", "MW", "logP", "TPSA", "n_rings",
+             "temperature", "time_h", "concentration_M", "solvent_DMF",
+             "yield", "purity", "reproducibility"]
+df[full_cols].to_csv("mof_yield_dataset_full.csv", index=False)
