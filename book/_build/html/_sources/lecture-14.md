@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 14 - Bayesian Optimization for Chemical Reactions
+# Lecture 14 - Bayesian Optimization for Synthesis Conditions
 
 ```{contents}
 :local:
@@ -948,6 +948,7 @@ for t in range(n_iter):
         trace.append(lab_next)
 
 ```
+
 ```{code-cell} ipython3
 :tags: [hide-input]
 
