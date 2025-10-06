@@ -16,18 +16,182 @@ Traceback (most recent call last):
     return future.result()
   File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['traces = compare_rf_gp_acq_8panels(', '    search_space=search_space,', '    run_experiment=run_experiment,', '    initial_idx=initial_idx,   # 50 starting indices in search_space', '    rounds=15,']
-...
-['    weights=np.array([0.33, 0.33, 0.33]),', '    rng_seed=42,', '    kappa=1.0,', '    xi=0.01', ')']
--------------------
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+prompt = """
+**Task**  
+Write Python code for Google Colab that performs multi-objective Bayesian optimization for chemists using only lists and a pandas DataFrame that the user edits by hand between runs. No widgets. No external UI. The workflow is: user defines variables and objectives, enters any existing experiments in lists, runs a function to get new suggestions, updates the lists with results after running the lab work, then calls the function again.
+
+---
+
+### Requirements
+
+1) **Environment and packages**
+- Use only standard Colab-friendly libraries: `numpy`, `pandas`, `itertools`, `scikit-learn` GaussianProcessRegressor and kernels, and `scipy` for acquisition optimization if needed.
+- Random seed support for reproducibility: a single `seed` parameter.
+
+2) **User inputs as plain Python lists**
+- Independent variables: the user defines a dict named `variables` where each key is a clean name without prefix and each value is a dict with `start`, `end`, `interval`. Example:
+  python
+  variables = {
+      "temperature": {"start": 50, "end": 100, "interval": 10},
+      "time": {"start": 1, "end": 5, "interval": 1}
+  }
+ 
+- Objectives: the user defines a list `objectives` with 1 to 3 names, assumed normalized to 0..1. Example: `objectives = ["yield", "selectivity"]`.
+- Objective weights: list `objective_weights`. If 1 objective, weight is [1.0]. If multiple, user provides weights that sum to 1.0. Validate the sum equals 1.0 within a small tolerance.
+
+3) **Internal naming scheme**
+- Code must convert variable names to columns with `var_` prefix and objective names to `obj_` prefix. Example: `temperature` becomes `var_temperature`, `yield` becomes `obj_yield`.
+- Add a column `iteration` to track status. Use:
+  - `-1` for not tried
+  - `1, 2, ...` for completed iterations
+  - The next suggested set gets the next integer
+
+4) **Space construction**
+- Build the full Cartesian grid from `variables` based on start, end, interval. Validate that `(end - start)` is divisible by `interval`. Raise a clear error message if not.
+- Create a DataFrame `df_space` with all `var_...` columns, empty `obj_...` columns, and `iteration` initialized to `-1`.
+
+5) **Manual data entry by the user**
+- The user maintains two Python lists of equal length that describe completed experiments:
+  - `run_conditions`: list of dicts for variables. Example:
+    python
+    run_conditions = [
+        {"temperature": 70, "time": 3},
+        {"temperature": 60, "time": 4},
+    ]
+    
+  - `run_results`: list of dicts for objectives. Example:
+
+    python
+    run_results = [
+        {"yield": 0.62, "selectivity": 0.80},
+        {"yield": 0.55, "selectivity": 0.83},
+    ]
+    
+- Code must validate that lengths match and all names match defined variables and objectives.
+
+6) **Merging runs into the master DataFrame**
+- A utility function updates `df_space`:
+  - Finds rows that match each `run_conditions` entry on all `var_...` columns.
+  - Writes the `obj_...` values.
+  - Sets `iteration` to the current completed iteration number. If no prior data, set to `1`. If prior exists, set to `max(iteration) + 1` only for new rows.
+- If a run condition does not appear in `df_space`, raise a helpful error that the value is out of grid.
+
+7) **Modeling and acquisition**
+- Default model is Gaussian Process with RBF kernel and WhiteKernel noise term. Use one model per objective.
+- Scale inputs to 0..1 across each variable dimension before modeling. Keep a small epsilon to avoid zero length.
+- Acquisition: Expected Improvement on the **weighted scalarized objective**. Steps:
+  - Fit one GP per objective on completed rows.
+  - Predict mean and std for each objective across all candidate points with `iteration == -1`.
+  - Compute a weighted sum of predicted means to get scalar mean. For variance, combine via a simple diagonal approximation by weighting the std terms. Document that this is an approximation.
+  - Compute EI vs the best observed weighted scalar value among completed rows.
+- Tie-breaking for equal scores should be stable by index order.
+
+8) **Suggestion function**
+- Provide a main function:
+  python
+  def suggest_experiments(variables, objectives, objective_weights, run_conditions, run_results, batch_size=3, seed=123, save_csv=False, csv_path=None):
+      """
+      Returns:
+        suggestions_df: DataFrame with the next set of suggested experiments (var_ columns only)
+        df_space: Updated master DataFrame with iteration values and any new writes
+      """
+
+- Behavior:
+  - Build or rebuild `df_space` from `variables`.
+  - Integrate `run_conditions` and `run_results` into `df_space`.
+  - If there is no completed data yet, pick `batch_size` random points from `iteration == -1` as suggestions and set their `iteration` to `1`. Return suggestions.
+  - Otherwise, fit GP models as above, compute EI on all `iteration == -1` rows, pick top `batch_size` rows, set their `iteration` to `max(iteration) + 1`, and return suggestions.
+  - If `save_csv` is True, write `df_space` to `csv_path` if provided, otherwise to `experiment_<timestamp>.csv`.
+
+9) **Outputs and instructions**
+- Print a short summary:
+  - Number of variables and total grid size
+  - Number of completed runs found
+  - Batch size and iteration number suggested
+- Return `suggestions_df` that shows only `var_...` columns for the user to run in the lab.
+- Also return the full `df_space` so the user can save or inspect it.
+
+10) **Round trip workflow for the user**
+- First call:
+  - Define `variables`, `objectives`, `objective_weights`.
+  - Set `run_conditions = []` and `run_results = []` if starting fresh.
+  - Call `suggest_experiments(...)` to get initial suggestions.
+- After the lab:
+  - Append the new completed conditions to `run_conditions` and the measured results to `run_results`.
+  - Call `suggest_experiments(...)` again to receive the next suggestions.
+- Provide a short example section in the notebook with a tiny space and fake results to demonstrate 2 iterations.
+
+11) **Validation and helpful errors**
+- Check weights sum to 1.0 within 1e-6.
+- Check variable ranges and intervals.
+- Check names match exactly.
+- If no available points remain, print a clear message and return empty suggestions.
+
+12) **No UI, no widgets, no files required**
+- Everything runs in cells.
+- The only persistence is optional CSV save when `save_csv=True`.
+
+---
+
+### Example usage block to include in the notebook
+
+python
+# 1) Define variables and objectives
+variables = {
+    "temperature": {"start": 50, "end": 70, "interval": 10},
+    "time": {"start": 1, "end": 3, "interval": 1},
+}
+objectives = ["yield", "selectivity"]
+objective_weights = [0.6, 0.4]  # sums to 1.0
+
+# 2) Start with no completed data
+run_conditions = []
+run_results = []
+
+# 3) First call: random suggestions
+suggestions, df_space = suggest_experiments(
+    variables, objectives, objective_weights,
+    run_conditions, run_results,
+    batch_size=2, seed=42, save_csv=False
+)
+print("Suggested experiments:")
+print(suggestions)
+
+# 4) Pretend we ran them in the lab, now enter results
+# Convert suggested rows back to plain dicts with original names
+run_conditions.extend([
+    {"temperature": int(row["var_temperature"]), "time": int(row["var_time"])}
+    for _, row in suggestions.iterrows()
+])
+run_results.extend([
+    {"yield": 0.55, "selectivity": 0.78},
+    {"yield": 0.61, "selectivity": 0.74},
+])
+
+# 5) Second call: model-based suggestions
+suggestions, df_space = suggest_experiments(
+    variables, objectives, objective_weights,
+    run_conditions, run_results,
+    batch_size=2, seed=42, save_csv=False
+)
+print("Next suggestions:")
+print(suggestions)
+
+
+Include all functions and imports needed to run this end to end in a fresh Colab session.
+"""
+------------------
+
+
+[1;36m  Cell [1;32mIn[25], line 76[1;36m[0m
+[1;33m    Returns:[0m
+[1;37m    ^[0m
+[1;31mIndentationError[0m[1;31m:[0m unexpected indent
+
 

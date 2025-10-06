@@ -18,11 +18,12 @@ kernelspec:
 :depth: 1
 ```
 
-**Learning goals**
+## Learning goals
 
 - Connect single objective Bayesian Optimization to multiobjective problems.
 - Define Pareto dominance, Pareto front, scalarization, hypervolume, and expected hypervolume improvement.
 - Build a simple **multiobjective active learning** loop on a materials.
+
 [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 ---
 
@@ -1071,11 +1072,6 @@ results = run_mobo_with_oracle(
     rng_seed=17
 )
 
-# Print per-iteration top-3 proposals
-for t, tab in enumerate(results["best3_log"], start=1):
-    print(f"\nIteration {t:02d} top-3 proposals")
-    display(tab.style.hide(axis="index"))
-
 ```
 
 We can plot the results:
@@ -1380,7 +1376,7 @@ def compare_rf_gp_acq_8panels(search_space: List[Tuple[Any,Any,Any,Any,Any]],
 
     return traces
 ```
-```{code-cell} ipython3
+```python
 traces = compare_rf_gp_acq_8panels(
     search_space=search_space,
     run_experiment=run_experiment,
@@ -1395,9 +1391,18 @@ traces = compare_rf_gp_acq_8panels(
 )
 ```
 
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace1.png"))
+```
+
+
+
+
 Below, we will see when we change the weights, the MOBO will pay attention to objectives with higher weights and results can be different. 
 
-```{code-cell} ipython3
+```python
 traces2 = compare_rf_gp_acq_8panels(
     search_space=search_space,
     run_experiment=run_experiment,
@@ -1411,6 +1416,14 @@ traces2 = compare_rf_gp_acq_8panels(
     xi=0.01
 )
 ```
+
+```{code-cell} ipython3
+:tags: [hide-input]
+from IPython.display import Image, display
+display(Image(url="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace2.png"))
+```
+
+
 
 ---
 
@@ -2047,8 +2060,9 @@ print(suggestions)
 
 Now we can also consider **Version B** (more features), with UI and bottons for someone who does not code in your lab to use:
 ```{code-cell} ipython3
-
 :tags: [hide-input]
+
+
 promptB = """
 
 **Task:**  
@@ -2849,7 +2863,7 @@ ChemBOUI()
 # =========================
 
 def plot_scatter_2d(df: pd.DataFrame, x: str, y: str, color_by: Optional[str] = None):
-    """Quick 2D scatter with optional color. Works in Colab output cells."""
+    #Quick 2D scatter with optional color. Works in Colab output cells.
     import matplotlib.pyplot as plt
     xvals = df[x].values
     yvals = df[y].values

@@ -18,7 +18,7 @@ kernelspec:
 :depth: 1
 ```
 
-**Learning goals**
+## Learning goals
 
 - Explain the ideas behind **Bayesian Optimization** for expensive experiments.
 - Define **prior belief**, **surrogate model** (GP, RF, small NN), and **acquisition function** (EI, UCB, PI, greedy).

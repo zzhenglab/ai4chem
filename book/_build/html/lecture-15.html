@@ -374,6 +374,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-multiobjective-optimization">1. What is multiobjective optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-mof-toy-dataset">2. Load the MOF toy dataset</a></li>
@@ -412,28 +414,33 @@ document.write(`
 <h1>Lecture 15 - Multi-objective Bayesian Optimization<a class="headerlink" href="#lecture-15-multi-objective-bayesian-optimization" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#setup" id="id1">0. Setup</a></p></li>
-<li><p><a class="reference internal" href="#what-is-multiobjective-optimization" id="id2">1. What is multiobjective optimization</a></p></li>
-<li><p><a class="reference internal" href="#load-the-mof-toy-dataset" id="id3">2. Load the MOF toy dataset</a></p></li>
-<li><p><a class="reference internal" href="#feature-engineering-for-multiobjective-modeling" id="id4">3. Feature engineering for multiobjective modeling</a></p></li>
-<li><p><a class="reference internal" href="#pareto-utilities-and-hypervolume-in-2d" id="id5">4. Pareto utilities and hypervolume in 2D</a></p></li>
-<li><p><a class="reference internal" href="#scalarization-and-surrogate-models-for-each-objective" id="id6">5. Scalarization and surrogate models for each objective</a></p></li>
-<li><p><a class="reference internal" href="#acquisition-for-multiobjective-bo" id="id7">6. Acquisition for multiobjective BO</a></p></li>
-<li><p><a class="reference internal" href="#end-to-end-mobo-loop-on-the-mof-dataset" id="id8">7. End to end MOBO loop on the MOF dataset</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id9">8. Glossary</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity" id="id10">9. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#colab" id="id2">Colab</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id3">0. Setup</a></p></li>
+<li><p><a class="reference internal" href="#what-is-multiobjective-optimization" id="id4">1. What is multiobjective optimization</a></p></li>
+<li><p><a class="reference internal" href="#load-the-mof-toy-dataset" id="id5">2. Load the MOF toy dataset</a></p></li>
+<li><p><a class="reference internal" href="#feature-engineering-for-multiobjective-modeling" id="id6">3. Feature engineering for multiobjective modeling</a></p></li>
+<li><p><a class="reference internal" href="#pareto-utilities-and-hypervolume-in-2d" id="id7">4. Pareto utilities and hypervolume in 2D</a></p></li>
+<li><p><a class="reference internal" href="#scalarization-and-surrogate-models-for-each-objective" id="id8">5. Scalarization and surrogate models for each objective</a></p></li>
+<li><p><a class="reference internal" href="#acquisition-for-multiobjective-bo" id="id9">6. Acquisition for multiobjective BO</a></p></li>
+<li><p><a class="reference internal" href="#end-to-end-mobo-loop-on-the-mof-dataset" id="id10">7. End to end MOBO loop on the MOF dataset</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id11">8. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id12">9. In-class activity</a></p></li>
 </ul>
 </nav>
-<p><strong>Learning goals</strong></p>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Connect single objective Bayesian Optimization to multiobjective problems.</p></li>
 <li><p>Define Pareto dominance, Pareto front, scalarization, hypervolume, and expected hypervolume improvement.</p></li>
-<li><p>Build a simple <strong>multiobjective active learning</strong> loop on a materials.
-<a class="reference external" href="https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p>Build a simple <strong>multiobjective active learning</strong> loop on a materials.</p></li>
 </ul>
-<hr class="docutils" />
+</section>
+<section id="colab">
+<h2><a class="reference external" href="https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a><a class="headerlink" href="#colab" title="Permalink to this heading">#</a></h2>
+</section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -485,7 +492,7 @@ document.write(`
 </div>
 </section>
 <section id="what-is-multiobjective-optimization">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. What is multiobjective optimization</a><a class="headerlink" href="#what-is-multiobjective-optimization" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. What is multiobjective optimization</a><a class="headerlink" href="#what-is-multiobjective-optimization" title="Permalink to this heading">#</a></h2>
 <p>In previous lecture, we used a <strong>surrogate model</strong> to represent an expensive experiment, then selected the next experiment using an <strong>acquisition function</strong> like Expected Improvement to iteratively find the optimized yield by tuning reaction parameter such as temperature.</p>
 <p>We learned that we can:</p>
 <ol class="arabic simple">
@@ -564,7 +571,7 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </section>
 <hr class="docutils" />
 <section id="load-the-mof-toy-dataset">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Load the MOF toy dataset</a><a class="headerlink" href="#load-the-mof-toy-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Load the MOF toy dataset</a><a class="headerlink" href="#load-the-mof-toy-dataset" title="Permalink to this heading">#</a></h2>
 <p>We will use the provided full factorial style synthetic dataset that mimics MOF synthesis outcomes across temperature, time, concentration, solvent, and linker choice. The file includes yield, purity, and reproducibility.</p>
 <p>We will use a synthetic MOF dataset that records MOF synthesis outcomes across temperature, time, concentration, solvent, and linker choice. The file includes yield, purity, and reproducibility:</p>
 <ul class="simple">
@@ -869,7 +876,7 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </section>
 <hr class="docutils" />
 <section id="feature-engineering-for-multiobjective-modeling">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Feature engineering for multiobjective modeling</a><a class="headerlink" href="#feature-engineering-for-multiobjective-modeling" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Feature engineering for multiobjective modeling</a><a class="headerlink" href="#feature-engineering-for-multiobjective-modeling" title="Permalink to this heading">#</a></h2>
 <p>We will build a light feature set using both synthesis conditions and molecular structure information. This compact design provides chemical and process context without relying on heavy cheminformatics toolkits.</p>
 <section id="minimal-numeric-features">
 <h3>3.1 Minimal numeric features<a class="headerlink" href="#minimal-numeric-features" title="Permalink to this heading">#</a></h3>
@@ -1159,7 +1166,7 @@ To make this information usable by machine learning models, we convert it into a
 </section>
 <hr class="docutils" />
 <section id="pareto-utilities-and-hypervolume-in-2d">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Pareto utilities and hypervolume in 2D</a><a class="headerlink" href="#pareto-utilities-and-hypervolume-in-2d" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">4. Pareto utilities and hypervolume in 2D</a><a class="headerlink" href="#pareto-utilities-and-hypervolume-in-2d" title="Permalink to this heading">#</a></h2>
 <p>This section builds intuition for multiobjective comparison using two outcomes at a time before returning to three.</p>
 <p>We use <span class="math notranslate nohighlight">\(f_1=\)</span> = yield and <span class="math notranslate nohighlight">\(f_2=\)</span>  = purity. The goal is to identify the subset of experiments that are not outperformed by any other experiment across both objectives. These are the candidates on the Pareto front. Working in 2D makes it easy to see which points survive and how much area of the objective space they dominate relative to a chosen reference.</p>
 <div class="admonition-note admonition">
@@ -1469,7 +1476,7 @@ To make this information usable by machine learning models, we convert it into a
 </section>
 <hr class="docutils" />
 <section id="scalarization-and-surrogate-models-for-each-objective">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Scalarization and surrogate models for each objective</a><a class="headerlink" href="#scalarization-and-surrogate-models-for-each-objective" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. Scalarization and surrogate models for each objective</a><a class="headerlink" href="#scalarization-and-surrogate-models-for-each-objective" title="Permalink to this heading">#</a></h2>
 <p>A common way to turn multiple objectives into one is <strong>weighted sum</strong>:
 $<span class="math notranslate nohighlight">\(
 s_w(x) = \sum_{j=1}^m w_j \,\tilde f_j(x)
@@ -1572,8 +1579,8 @@ reproducibility R2: 0.02093233007473716 MAE: 0.13847277467947322
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yield R2: -0.2274340192709181 MAE: 0.1859363583750202
-purity R2: 0.4381175325313331 MAE: 0.0759627615113931
-reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961647
+purity R2: 0.43811753253133323 MAE: 0.07596276151139306
+reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961642
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1594,7 @@ reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961647
 </section>
 <hr class="docutils" />
 <section id="acquisition-for-multiobjective-bo">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Acquisition for multiobjective BO</a><a class="headerlink" href="#acquisition-for-multiobjective-bo" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Acquisition for multiobjective BO</a><a class="headerlink" href="#acquisition-for-multiobjective-bo" title="Permalink to this heading">#</a></h2>
 <p>We now simulate planning within the 50 point space. Think of each of the 50 rows as a candidate experiment. At each iteration we will:</p>
 <ol class="arabic simple">
 <li><p>fit the three RF surrogates on the experiments already “run” (a small seed set from the 50),</p></li>
@@ -1726,7 +1733,7 @@ reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961647
 </section>
 <hr class="docutils" />
 <section id="end-to-end-mobo-loop-on-the-mof-dataset">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. End to end MOBO loop on the MOF dataset</a><a class="headerlink" href="#end-to-end-mobo-loop-on-the-mof-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. End to end MOBO loop on the MOF dataset</a><a class="headerlink" href="#end-to-end-mobo-loop-on-the-mof-dataset" title="Permalink to this heading">#</a></h2>
 <p>We now put everything together as a small, complete multiobjective active learning loop that starts from 50 points and grows by proposing 10 new points per round for 15 rounds. The goal is to expand the Pareto set over yield, purity, and reproducibility while tracking a clear 2D hypervolume on yield and purity.</p>
 <p>Choices in this section:</p>
 <ul class="simple">
@@ -2045,11 +2052,6 @@ reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961647
     <span class="n">ref_2d</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
     <span class="n">rng_seed</span><span class="o">=</span><span class="mi">17</span>
 <span class="p">)</span>
-
-<span class="c1"># Print per-iteration top-3 proposals</span>
-<span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">tab</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;best3_log&quot;</span><span class="p">],</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iteration </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> top-3 proposals&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">tab</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2172,1028 +2174,9 @@ reproducibility R2: -0.10448172092762853 MAE: 0.13657568665961647
   #1: temp=25, time_h=60, conc=0.25, DMF=1, yield=0.650, purity=0.680, repro=1.000
   #2: temp=25, time_h=12, conc=0.3, DMF=1, yield=0.510, purity=0.650, repro=1.000
   #3: temp=25, time_h=72, conc=0.2, DMF=1, yield=0.530, purity=0.730, repro=1.000
-
-Iteration 01 top-3 proposals
 </pre></div>
 </div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_c8117">
-  <thead>
-    <tr>
-      <th id="T_c8117_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_c8117_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_c8117_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_c8117_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_c8117_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_c8117_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_c8117_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_c8117_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_c8117_row0_col0" class="data row0 col0" >85</td>
-      <td id="T_c8117_row0_col1" class="data row0 col1" >12</td>
-      <td id="T_c8117_row0_col2" class="data row0 col2" >0.05</td>
-      <td id="T_c8117_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_c8117_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_c8117_row0_col5" class="data row0 col5" >0.53</td>
-      <td id="T_c8117_row0_col6" class="data row0 col6" >0.71</td>
-      <td id="T_c8117_row0_col7" class="data row0 col7" >0.5</td>
-    </tr>
-    <tr>
-      <td id="T_c8117_row1_col0" class="data row1 col0" >70</td>
-      <td id="T_c8117_row1_col1" class="data row1 col1" >12</td>
-      <td id="T_c8117_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_c8117_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_c8117_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_c8117_row1_col5" class="data row1 col5" >0.64</td>
-      <td id="T_c8117_row1_col6" class="data row1 col6" >0.74</td>
-      <td id="T_c8117_row1_col7" class="data row1 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_c8117_row2_col0" class="data row2 col0" >70</td>
-      <td id="T_c8117_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_c8117_row2_col2" class="data row2 col2" >0.05</td>
-      <td id="T_c8117_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_c8117_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_c8117_row2_col5" class="data row2 col5" >0.57</td>
-      <td id="T_c8117_row2_col6" class="data row2 col6" >0.74</td>
-      <td id="T_c8117_row2_col7" class="data row2 col7" >0.75</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 02 top-3 proposals
-</pre></div>
 </div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_a9d4e">
-  <thead>
-    <tr>
-      <th id="T_a9d4e_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_a9d4e_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_a9d4e_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_a9d4e_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_a9d4e_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_a9d4e_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_a9d4e_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_a9d4e_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_a9d4e_row0_col0" class="data row0 col0" >100</td>
-      <td id="T_a9d4e_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_a9d4e_row0_col2" class="data row0 col2" >0.15</td>
-      <td id="T_a9d4e_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_a9d4e_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_a9d4e_row0_col5" class="data row0 col5" >0.48</td>
-      <td id="T_a9d4e_row0_col6" class="data row0 col6" >0.64</td>
-      <td id="T_a9d4e_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_a9d4e_row1_col0" class="data row1 col0" >115</td>
-      <td id="T_a9d4e_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_a9d4e_row1_col2" class="data row1 col2" >0.15</td>
-      <td id="T_a9d4e_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_a9d4e_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_a9d4e_row1_col5" class="data row1 col5" >0.42</td>
-      <td id="T_a9d4e_row1_col6" class="data row1 col6" >0.71</td>
-      <td id="T_a9d4e_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_a9d4e_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_a9d4e_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_a9d4e_row2_col2" class="data row2 col2" >0.15</td>
-      <td id="T_a9d4e_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_a9d4e_row2_col4" class="data row2 col4" >O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td id="T_a9d4e_row2_col5" class="data row2 col5" >0.41</td>
-      <td id="T_a9d4e_row2_col6" class="data row2 col6" >0.66</td>
-      <td id="T_a9d4e_row2_col7" class="data row2 col7" >0.25</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 03 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_11156">
-  <thead>
-    <tr>
-      <th id="T_11156_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_11156_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_11156_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_11156_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_11156_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_11156_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_11156_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_11156_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_11156_row0_col0" class="data row0 col0" >115</td>
-      <td id="T_11156_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_11156_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_11156_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_11156_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_11156_row0_col5" class="data row0 col5" >0.41</td>
-      <td id="T_11156_row0_col6" class="data row0 col6" >0.71</td>
-      <td id="T_11156_row0_col7" class="data row0 col7" >0.5</td>
-    </tr>
-    <tr>
-      <td id="T_11156_row1_col0" class="data row1 col0" >115</td>
-      <td id="T_11156_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_11156_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_11156_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_11156_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_11156_row1_col5" class="data row1 col5" >0.33</td>
-      <td id="T_11156_row1_col6" class="data row1 col6" >0.7</td>
-      <td id="T_11156_row1_col7" class="data row1 col7" >0.5</td>
-    </tr>
-    <tr>
-      <td id="T_11156_row2_col0" class="data row2 col0" >40</td>
-      <td id="T_11156_row2_col1" class="data row2 col1" >24</td>
-      <td id="T_11156_row2_col2" class="data row2 col2" >0.05</td>
-      <td id="T_11156_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_11156_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_11156_row2_col5" class="data row2 col5" >0.67</td>
-      <td id="T_11156_row2_col6" class="data row2 col6" >0.74</td>
-      <td id="T_11156_row2_col7" class="data row2 col7" >0.75</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 04 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_3bfee">
-  <thead>
-    <tr>
-      <th id="T_3bfee_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_3bfee_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_3bfee_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_3bfee_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_3bfee_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_3bfee_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_3bfee_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_3bfee_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_3bfee_row0_col0" class="data row0 col0" >40</td>
-      <td id="T_3bfee_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_3bfee_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_3bfee_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_3bfee_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_3bfee_row0_col5" class="data row0 col5" >0.66</td>
-      <td id="T_3bfee_row0_col6" class="data row0 col6" >0.76</td>
-      <td id="T_3bfee_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_3bfee_row1_col0" class="data row1 col0" >25</td>
-      <td id="T_3bfee_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_3bfee_row1_col2" class="data row1 col2" >0.15</td>
-      <td id="T_3bfee_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_3bfee_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_3bfee_row1_col5" class="data row1 col5" >0.0</td>
-      <td id="T_3bfee_row1_col6" class="data row1 col6" >0.72</td>
-      <td id="T_3bfee_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_3bfee_row2_col0" class="data row2 col0" >40</td>
-      <td id="T_3bfee_row2_col1" class="data row2 col1" >24</td>
-      <td id="T_3bfee_row2_col2" class="data row2 col2" >0.1</td>
-      <td id="T_3bfee_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_3bfee_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_3bfee_row2_col5" class="data row2 col5" >0.71</td>
-      <td id="T_3bfee_row2_col6" class="data row2 col6" >0.89</td>
-      <td id="T_3bfee_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 05 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_d29e2">
-  <thead>
-    <tr>
-      <th id="T_d29e2_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_d29e2_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_d29e2_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_d29e2_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_d29e2_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_d29e2_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_d29e2_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_d29e2_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_d29e2_row0_col0" class="data row0 col0" >55</td>
-      <td id="T_d29e2_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_d29e2_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_d29e2_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_d29e2_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_d29e2_row0_col5" class="data row0 col5" >0.79</td>
-      <td id="T_d29e2_row0_col6" class="data row0 col6" >0.46</td>
-      <td id="T_d29e2_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_d29e2_row1_col0" class="data row1 col0" >55</td>
-      <td id="T_d29e2_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_d29e2_row1_col2" class="data row1 col2" >0.15</td>
-      <td id="T_d29e2_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_d29e2_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_d29e2_row1_col5" class="data row1 col5" >0.73</td>
-      <td id="T_d29e2_row1_col6" class="data row1 col6" >0.79</td>
-      <td id="T_d29e2_row1_col7" class="data row1 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_d29e2_row2_col0" class="data row2 col0" >130</td>
-      <td id="T_d29e2_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_d29e2_row2_col2" class="data row2 col2" >0.15</td>
-      <td id="T_d29e2_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_d29e2_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_d29e2_row2_col5" class="data row2 col5" >0.47</td>
-      <td id="T_d29e2_row2_col6" class="data row2 col6" >0.47</td>
-      <td id="T_d29e2_row2_col7" class="data row2 col7" >0.75</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 06 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_7f7eb">
-  <thead>
-    <tr>
-      <th id="T_7f7eb_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_7f7eb_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_7f7eb_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_7f7eb_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_7f7eb_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_7f7eb_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_7f7eb_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_7f7eb_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_7f7eb_row0_col0" class="data row0 col0" >160</td>
-      <td id="T_7f7eb_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_7f7eb_row0_col2" class="data row0 col2" >0.15</td>
-      <td id="T_7f7eb_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_7f7eb_row0_col4" class="data row0 col4" >O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
-      <td id="T_7f7eb_row0_col5" class="data row0 col5" >0.37</td>
-      <td id="T_7f7eb_row0_col6" class="data row0 col6" >0.4</td>
-      <td id="T_7f7eb_row0_col7" class="data row0 col7" >0.5</td>
-    </tr>
-    <tr>
-      <td id="T_7f7eb_row1_col0" class="data row1 col0" >155</td>
-      <td id="T_7f7eb_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_7f7eb_row1_col2" class="data row1 col2" >0.15</td>
-      <td id="T_7f7eb_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_7f7eb_row1_col4" class="data row1 col4" >O=C(O)/C=C/C(=O)O</td>
-      <td id="T_7f7eb_row1_col5" class="data row1 col5" >0.67</td>
-      <td id="T_7f7eb_row1_col6" class="data row1 col6" >0.36</td>
-      <td id="T_7f7eb_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_7f7eb_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_7f7eb_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_7f7eb_row2_col2" class="data row2 col2" >0.1</td>
-      <td id="T_7f7eb_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_7f7eb_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_7f7eb_row2_col5" class="data row2 col5" >0.0</td>
-      <td id="T_7f7eb_row2_col6" class="data row2 col6" >0.63</td>
-      <td id="T_7f7eb_row2_col7" class="data row2 col7" >0.75</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 07 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_5472b">
-  <thead>
-    <tr>
-      <th id="T_5472b_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_5472b_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_5472b_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_5472b_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_5472b_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_5472b_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_5472b_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_5472b_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_5472b_row0_col0" class="data row0 col0" >85</td>
-      <td id="T_5472b_row0_col1" class="data row0 col1" >12</td>
-      <td id="T_5472b_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_5472b_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_5472b_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_5472b_row0_col5" class="data row0 col5" >0.55</td>
-      <td id="T_5472b_row0_col6" class="data row0 col6" >0.73</td>
-      <td id="T_5472b_row0_col7" class="data row0 col7" >0.5</td>
-    </tr>
-    <tr>
-      <td id="T_5472b_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_5472b_row1_col1" class="data row1 col1" >48</td>
-      <td id="T_5472b_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_5472b_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_5472b_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_5472b_row1_col5" class="data row1 col5" >0.62</td>
-      <td id="T_5472b_row1_col6" class="data row1 col6" >0.75</td>
-      <td id="T_5472b_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_5472b_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_5472b_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_5472b_row2_col2" class="data row2 col2" >0.2</td>
-      <td id="T_5472b_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_5472b_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_5472b_row2_col5" class="data row2 col5" >0.0</td>
-      <td id="T_5472b_row2_col6" class="data row2 col6" >0.71</td>
-      <td id="T_5472b_row2_col7" class="data row2 col7" >0.25</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 08 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_8327f">
-  <thead>
-    <tr>
-      <th id="T_8327f_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_8327f_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_8327f_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_8327f_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_8327f_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_8327f_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_8327f_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_8327f_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_8327f_row0_col0" class="data row0 col0" >55</td>
-      <td id="T_8327f_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_8327f_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_8327f_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_8327f_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_8327f_row0_col5" class="data row0 col5" >0.0</td>
-      <td id="T_8327f_row0_col6" class="data row0 col6" >0.63</td>
-      <td id="T_8327f_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_8327f_row1_col0" class="data row1 col0" >70</td>
-      <td id="T_8327f_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_8327f_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_8327f_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_8327f_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_8327f_row1_col5" class="data row1 col5" >0.97</td>
-      <td id="T_8327f_row1_col6" class="data row1 col6" >0.46</td>
-      <td id="T_8327f_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_8327f_row2_col0" class="data row2 col0" >160</td>
-      <td id="T_8327f_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_8327f_row2_col2" class="data row2 col2" >0.35</td>
-      <td id="T_8327f_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_8327f_row2_col4" class="data row2 col4" >O=C(O)/C=C/C(=O)O</td>
-      <td id="T_8327f_row2_col5" class="data row2 col5" >0.0</td>
-      <td id="T_8327f_row2_col6" class="data row2 col6" >0.19</td>
-      <td id="T_8327f_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 09 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_de840">
-  <thead>
-    <tr>
-      <th id="T_de840_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_de840_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_de840_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_de840_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_de840_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_de840_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_de840_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_de840_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_de840_row0_col0" class="data row0 col0" >160</td>
-      <td id="T_de840_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_de840_row0_col2" class="data row0 col2" >0.45</td>
-      <td id="T_de840_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_de840_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_de840_row0_col5" class="data row0 col5" >0.34</td>
-      <td id="T_de840_row0_col6" class="data row0 col6" >0.25</td>
-      <td id="T_de840_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_de840_row1_col0" class="data row1 col0" >160</td>
-      <td id="T_de840_row1_col1" class="data row1 col1" >48</td>
-      <td id="T_de840_row1_col2" class="data row1 col2" >0.5</td>
-      <td id="T_de840_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_de840_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_de840_row1_col5" class="data row1 col5" >0.54</td>
-      <td id="T_de840_row1_col6" class="data row1 col6" >0.24</td>
-      <td id="T_de840_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_de840_row2_col0" class="data row2 col0" >155</td>
-      <td id="T_de840_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_de840_row2_col2" class="data row2 col2" >0.35</td>
-      <td id="T_de840_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_de840_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_de840_row2_col5" class="data row2 col5" >0.56</td>
-      <td id="T_de840_row2_col6" class="data row2 col6" >0.47</td>
-      <td id="T_de840_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 10 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_e76b5">
-  <thead>
-    <tr>
-      <th id="T_e76b5_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_e76b5_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_e76b5_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_e76b5_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_e76b5_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_e76b5_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_e76b5_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_e76b5_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_e76b5_row0_col0" class="data row0 col0" >85</td>
-      <td id="T_e76b5_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_e76b5_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_e76b5_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_e76b5_row0_col4" class="data row0 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_e76b5_row0_col5" class="data row0 col5" >0.66</td>
-      <td id="T_e76b5_row0_col6" class="data row0 col6" >0.73</td>
-      <td id="T_e76b5_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_e76b5_row1_col0" class="data row1 col0" >70</td>
-      <td id="T_e76b5_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_e76b5_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_e76b5_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_e76b5_row1_col4" class="data row1 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_e76b5_row1_col5" class="data row1 col5" >0.74</td>
-      <td id="T_e76b5_row1_col6" class="data row1 col6" >0.54</td>
-      <td id="T_e76b5_row1_col7" class="data row1 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_e76b5_row2_col0" class="data row2 col0" >40</td>
-      <td id="T_e76b5_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_e76b5_row2_col2" class="data row2 col2" >0.2</td>
-      <td id="T_e76b5_row2_col3" class="data row2 col3" >0</td>
-      <td id="T_e76b5_row2_col4" class="data row2 col4" >c1ccc2[nH]cnc2c1</td>
-      <td id="T_e76b5_row2_col5" class="data row2 col5" >0.7</td>
-      <td id="T_e76b5_row2_col6" class="data row2 col6" >0.68</td>
-      <td id="T_e76b5_row2_col7" class="data row2 col7" >0.5</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 11 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_0c0ca">
-  <thead>
-    <tr>
-      <th id="T_0c0ca_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_0c0ca_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_0c0ca_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_0c0ca_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_0c0ca_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_0c0ca_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_0c0ca_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_0c0ca_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_0c0ca_row0_col0" class="data row0 col0" >155</td>
-      <td id="T_0c0ca_row0_col1" class="data row0 col1" >108</td>
-      <td id="T_0c0ca_row0_col2" class="data row0 col2" >0.35</td>
-      <td id="T_0c0ca_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_0c0ca_row0_col4" class="data row0 col4" >O=C(O)/C=C/C(=O)O</td>
-      <td id="T_0c0ca_row0_col5" class="data row0 col5" >0.22</td>
-      <td id="T_0c0ca_row0_col6" class="data row0 col6" >0.24</td>
-      <td id="T_0c0ca_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_0c0ca_row1_col0" class="data row1 col0" >155</td>
-      <td id="T_0c0ca_row1_col1" class="data row1 col1" >108</td>
-      <td id="T_0c0ca_row1_col2" class="data row1 col2" >0.25</td>
-      <td id="T_0c0ca_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_0c0ca_row1_col4" class="data row1 col4" >O=C(O)/C=C/C(=O)O</td>
-      <td id="T_0c0ca_row1_col5" class="data row1 col5" >0.37</td>
-      <td id="T_0c0ca_row1_col6" class="data row1 col6" >0.31</td>
-      <td id="T_0c0ca_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_0c0ca_row2_col0" class="data row2 col0" >155</td>
-      <td id="T_0c0ca_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_0c0ca_row2_col2" class="data row2 col2" >0.3</td>
-      <td id="T_0c0ca_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_0c0ca_row2_col4" class="data row2 col4" >O=C(O)/C=C/C(=O)O</td>
-      <td id="T_0c0ca_row2_col5" class="data row2 col5" >0.49</td>
-      <td id="T_0c0ca_row2_col6" class="data row2 col6" >0.28</td>
-      <td id="T_0c0ca_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 12 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_a9b00">
-  <thead>
-    <tr>
-      <th id="T_a9b00_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_a9b00_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_a9b00_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_a9b00_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_a9b00_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_a9b00_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_a9b00_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_a9b00_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_a9b00_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_a9b00_row0_col1" class="data row0 col1" >120</td>
-      <td id="T_a9b00_row0_col2" class="data row0 col2" >0.05</td>
-      <td id="T_a9b00_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_a9b00_row0_col4" class="data row0 col4" >O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td id="T_a9b00_row0_col5" class="data row0 col5" >0.31</td>
-      <td id="T_a9b00_row0_col6" class="data row0 col6" >0.71</td>
-      <td id="T_a9b00_row0_col7" class="data row0 col7" >0.25</td>
-    </tr>
-    <tr>
-      <td id="T_a9b00_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_a9b00_row1_col1" class="data row1 col1" >120</td>
-      <td id="T_a9b00_row1_col2" class="data row1 col2" >0.05</td>
-      <td id="T_a9b00_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_a9b00_row1_col4" class="data row1 col4" >O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td id="T_a9b00_row1_col5" class="data row1 col5" >0.32</td>
-      <td id="T_a9b00_row1_col6" class="data row1 col6" >0.68</td>
-      <td id="T_a9b00_row1_col7" class="data row1 col7" >0.25</td>
-    </tr>
-    <tr>
-      <td id="T_a9b00_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_a9b00_row2_col1" class="data row2 col1" >84</td>
-      <td id="T_a9b00_row2_col2" class="data row2 col2" >0.05</td>
-      <td id="T_a9b00_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_a9b00_row2_col4" class="data row2 col4" >O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td id="T_a9b00_row2_col5" class="data row2 col5" >0.4</td>
-      <td id="T_a9b00_row2_col6" class="data row2 col6" >0.71</td>
-      <td id="T_a9b00_row2_col7" class="data row2 col7" >0.25</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 13 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_6f3ea">
-  <thead>
-    <tr>
-      <th id="T_6f3ea_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_6f3ea_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_6f3ea_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_6f3ea_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_6f3ea_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_6f3ea_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_6f3ea_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_6f3ea_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_6f3ea_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_6f3ea_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_6f3ea_row0_col2" class="data row0 col2" >0.05</td>
-      <td id="T_6f3ea_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_6f3ea_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6f3ea_row0_col5" class="data row0 col5" >0.54</td>
-      <td id="T_6f3ea_row0_col6" class="data row0 col6" >0.63</td>
-      <td id="T_6f3ea_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_6f3ea_row1_col0" class="data row1 col0" >25</td>
-      <td id="T_6f3ea_row1_col1" class="data row1 col1" >12</td>
-      <td id="T_6f3ea_row1_col2" class="data row1 col2" >0.1</td>
-      <td id="T_6f3ea_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_6f3ea_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6f3ea_row1_col5" class="data row1 col5" >0.0</td>
-      <td id="T_6f3ea_row1_col6" class="data row1 col6" >0.61</td>
-      <td id="T_6f3ea_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_6f3ea_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_6f3ea_row2_col1" class="data row2 col1" >24</td>
-      <td id="T_6f3ea_row2_col2" class="data row2 col2" >0.1</td>
-      <td id="T_6f3ea_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_6f3ea_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6f3ea_row2_col5" class="data row2 col5" >0.47</td>
-      <td id="T_6f3ea_row2_col6" class="data row2 col6" >0.65</td>
-      <td id="T_6f3ea_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 14 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_9b57d">
-  <thead>
-    <tr>
-      <th id="T_9b57d_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_9b57d_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_9b57d_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_9b57d_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_9b57d_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_9b57d_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_9b57d_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_9b57d_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_9b57d_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_9b57d_row0_col1" class="data row0 col1" >12</td>
-      <td id="T_9b57d_row0_col2" class="data row0 col2" >0.05</td>
-      <td id="T_9b57d_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_9b57d_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_9b57d_row0_col5" class="data row0 col5" >0.49</td>
-      <td id="T_9b57d_row0_col6" class="data row0 col6" >0.63</td>
-      <td id="T_9b57d_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_9b57d_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_9b57d_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_9b57d_row1_col2" class="data row1 col2" >0.05</td>
-      <td id="T_9b57d_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_9b57d_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_9b57d_row1_col5" class="data row1 col5" >0.0</td>
-      <td id="T_9b57d_row1_col6" class="data row1 col6" >0.7</td>
-      <td id="T_9b57d_row1_col7" class="data row1 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_9b57d_row2_col0" class="data row2 col0" >70</td>
-      <td id="T_9b57d_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_9b57d_row2_col2" class="data row2 col2" >0.05</td>
-      <td id="T_9b57d_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_9b57d_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_9b57d_row2_col5" class="data row2 col5" >0.36</td>
-      <td id="T_9b57d_row2_col6" class="data row2 col6" >0.7</td>
-      <td id="T_9b57d_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 15 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_3744e">
-  <thead>
-    <tr>
-      <th id="T_3744e_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_3744e_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_3744e_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_3744e_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_3744e_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_3744e_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_3744e_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_3744e_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_3744e_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_3744e_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_3744e_row0_col2" class="data row0 col2" >0.1</td>
-      <td id="T_3744e_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_3744e_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_3744e_row0_col5" class="data row0 col5" >0.54</td>
-      <td id="T_3744e_row0_col6" class="data row0 col6" >0.66</td>
-      <td id="T_3744e_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_3744e_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_3744e_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_3744e_row1_col2" class="data row1 col2" >0.15</td>
-      <td id="T_3744e_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_3744e_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_3744e_row1_col5" class="data row1 col5" >0.59</td>
-      <td id="T_3744e_row1_col6" class="data row1 col6" >0.62</td>
-      <td id="T_3744e_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_3744e_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_3744e_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_3744e_row2_col2" class="data row2 col2" >0.05</td>
-      <td id="T_3744e_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_3744e_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_3744e_row2_col5" class="data row2 col5" >0.45</td>
-      <td id="T_3744e_row2_col6" class="data row2 col6" >0.62</td>
-      <td id="T_3744e_row2_col7" class="data row2 col7" >0.75</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 16 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_c690b">
-  <thead>
-    <tr>
-      <th id="T_c690b_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_c690b_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_c690b_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_c690b_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_c690b_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_c690b_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_c690b_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_c690b_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_c690b_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_c690b_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_c690b_row0_col2" class="data row0 col2" >0.15</td>
-      <td id="T_c690b_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_c690b_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_c690b_row0_col5" class="data row0 col5" >0.59</td>
-      <td id="T_c690b_row0_col6" class="data row0 col6" >0.72</td>
-      <td id="T_c690b_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_c690b_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_c690b_row1_col1" class="data row1 col1" >12</td>
-      <td id="T_c690b_row1_col2" class="data row1 col2" >0.2</td>
-      <td id="T_c690b_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_c690b_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_c690b_row1_col5" class="data row1 col5" >0.49</td>
-      <td id="T_c690b_row1_col6" class="data row1 col6" >0.61</td>
-      <td id="T_c690b_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_c690b_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_c690b_row2_col1" class="data row2 col1" >48</td>
-      <td id="T_c690b_row2_col2" class="data row2 col2" >0.25</td>
-      <td id="T_c690b_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_c690b_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_c690b_row2_col5" class="data row2 col5" >0.67</td>
-      <td id="T_c690b_row2_col6" class="data row2 col6" >0.68</td>
-      <td id="T_c690b_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 17 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_cdfc5">
-  <thead>
-    <tr>
-      <th id="T_cdfc5_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_cdfc5_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_cdfc5_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_cdfc5_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_cdfc5_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_cdfc5_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_cdfc5_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_cdfc5_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_cdfc5_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_cdfc5_row0_col1" class="data row0 col1" >36</td>
-      <td id="T_cdfc5_row0_col2" class="data row0 col2" >0.15</td>
-      <td id="T_cdfc5_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_cdfc5_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_cdfc5_row0_col5" class="data row0 col5" >0.4</td>
-      <td id="T_cdfc5_row0_col6" class="data row0 col6" >0.71</td>
-      <td id="T_cdfc5_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_cdfc5_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_cdfc5_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_cdfc5_row1_col2" class="data row1 col2" >0.2</td>
-      <td id="T_cdfc5_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_cdfc5_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_cdfc5_row1_col5" class="data row1 col5" >0.55</td>
-      <td id="T_cdfc5_row1_col6" class="data row1 col6" >0.61</td>
-      <td id="T_cdfc5_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_cdfc5_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_cdfc5_row2_col1" class="data row2 col1" >12</td>
-      <td id="T_cdfc5_row2_col2" class="data row2 col2" >0.35</td>
-      <td id="T_cdfc5_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_cdfc5_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_cdfc5_row2_col5" class="data row2 col5" >0.53</td>
-      <td id="T_cdfc5_row2_col6" class="data row2 col6" >0.65</td>
-      <td id="T_cdfc5_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 18 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_af410">
-  <thead>
-    <tr>
-      <th id="T_af410_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_af410_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_af410_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_af410_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_af410_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_af410_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_af410_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_af410_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_af410_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_af410_row0_col1" class="data row0 col1" >24</td>
-      <td id="T_af410_row0_col2" class="data row0 col2" >0.2</td>
-      <td id="T_af410_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_af410_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_af410_row0_col5" class="data row0 col5" >0.56</td>
-      <td id="T_af410_row0_col6" class="data row0 col6" >0.73</td>
-      <td id="T_af410_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_af410_row1_col0" class="data row1 col0" >25</td>
-      <td id="T_af410_row1_col1" class="data row1 col1" >24</td>
-      <td id="T_af410_row1_col2" class="data row1 col2" >0.35</td>
-      <td id="T_af410_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_af410_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_af410_row1_col5" class="data row1 col5" >0.59</td>
-      <td id="T_af410_row1_col6" class="data row1 col6" >0.65</td>
-      <td id="T_af410_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_af410_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_af410_row2_col1" class="data row2 col1" >36</td>
-      <td id="T_af410_row2_col2" class="data row2 col2" >0.3</td>
-      <td id="T_af410_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_af410_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_af410_row2_col5" class="data row2 col5" >0.6</td>
-      <td id="T_af410_row2_col6" class="data row2 col6" >0.66</td>
-      <td id="T_af410_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 19 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_05501">
-  <thead>
-    <tr>
-      <th id="T_05501_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_05501_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_05501_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_05501_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_05501_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_05501_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_05501_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_05501_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_05501_row0_col0" class="data row0 col0" >40</td>
-      <td id="T_05501_row0_col1" class="data row0 col1" >12</td>
-      <td id="T_05501_row0_col2" class="data row0 col2" >0.3</td>
-      <td id="T_05501_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_05501_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_05501_row0_col5" class="data row0 col5" >0.0</td>
-      <td id="T_05501_row0_col6" class="data row0 col6" >0.47</td>
-      <td id="T_05501_row0_col7" class="data row0 col7" >0.75</td>
-    </tr>
-    <tr>
-      <td id="T_05501_row1_col0" class="data row1 col0" >40</td>
-      <td id="T_05501_row1_col1" class="data row1 col1" >36</td>
-      <td id="T_05501_row1_col2" class="data row1 col2" >0.25</td>
-      <td id="T_05501_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_05501_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_05501_row1_col5" class="data row1 col5" >0.43</td>
-      <td id="T_05501_row1_col6" class="data row1 col6" >0.6</td>
-      <td id="T_05501_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_05501_row2_col0" class="data row2 col0" >40</td>
-      <td id="T_05501_row2_col1" class="data row2 col1" >24</td>
-      <td id="T_05501_row2_col2" class="data row2 col2" >0.35</td>
-      <td id="T_05501_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_05501_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_05501_row2_col5" class="data row2 col5" >0.49</td>
-      <td id="T_05501_row2_col6" class="data row2 col6" >0.48</td>
-      <td id="T_05501_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 20 top-3 proposals
-</pre></div>
-</div>
-<div class="output text_html"><style type="text/css">
-</style>
-<table id="T_6894f">
-  <thead>
-    <tr>
-      <th id="T_6894f_level0_col0" class="col_heading level0 col0" >temperature</th>
-      <th id="T_6894f_level0_col1" class="col_heading level0 col1" >time_h</th>
-      <th id="T_6894f_level0_col2" class="col_heading level0 col2" >concentration_M</th>
-      <th id="T_6894f_level0_col3" class="col_heading level0 col3" >solvent_DMF</th>
-      <th id="T_6894f_level0_col4" class="col_heading level0 col4" >smiles</th>
-      <th id="T_6894f_level0_col5" class="col_heading level0 col5" >yield</th>
-      <th id="T_6894f_level0_col6" class="col_heading level0 col6" >purity</th>
-      <th id="T_6894f_level0_col7" class="col_heading level0 col7" >reproducibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td id="T_6894f_row0_col0" class="data row0 col0" >25</td>
-      <td id="T_6894f_row0_col1" class="data row0 col1" >60</td>
-      <td id="T_6894f_row0_col2" class="data row0 col2" >0.25</td>
-      <td id="T_6894f_row0_col3" class="data row0 col3" >1</td>
-      <td id="T_6894f_row0_col4" class="data row0 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6894f_row0_col5" class="data row0 col5" >0.65</td>
-      <td id="T_6894f_row0_col6" class="data row0 col6" >0.68</td>
-      <td id="T_6894f_row0_col7" class="data row0 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_6894f_row1_col0" class="data row1 col0" >25</td>
-      <td id="T_6894f_row1_col1" class="data row1 col1" >12</td>
-      <td id="T_6894f_row1_col2" class="data row1 col2" >0.3</td>
-      <td id="T_6894f_row1_col3" class="data row1 col3" >1</td>
-      <td id="T_6894f_row1_col4" class="data row1 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6894f_row1_col5" class="data row1 col5" >0.51</td>
-      <td id="T_6894f_row1_col6" class="data row1 col6" >0.65</td>
-      <td id="T_6894f_row1_col7" class="data row1 col7" >1.0</td>
-    </tr>
-    <tr>
-      <td id="T_6894f_row2_col0" class="data row2 col0" >25</td>
-      <td id="T_6894f_row2_col1" class="data row2 col1" >72</td>
-      <td id="T_6894f_row2_col2" class="data row2 col2" >0.2</td>
-      <td id="T_6894f_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_6894f_row2_col4" class="data row2 col4" >O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td id="T_6894f_row2_col5" class="data row2 col5" >0.53</td>
-      <td id="T_6894f_row2_col6" class="data row2 col6" >0.73</td>
-      <td id="T_6894f_row2_col7" class="data row2 col7" >1.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
 </div>
 <p>We can plot the results:</p>
 <div class="cell tag_hide-input docutils container">
@@ -3515,9 +2498,7 @@ Iteration 01 top-3 proposals
 </div>
 </details>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traces</span> <span class="o">=</span> <span class="n">compare_rf_gp_acq_8panels</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">traces</span> <span class="o">=</span> <span class="n">compare_rf_gp_acq_8panels</span><span class="p">(</span>
     <span class="n">search_space</span><span class="o">=</span><span class="n">search_space</span><span class="p">,</span>
     <span class="n">run_experiment</span><span class="o">=</span><span class="n">run_experiment</span><span class="p">,</span>
     <span class="n">initial_idx</span><span class="o">=</span><span class="n">initial_idx</span><span class="p">,</span>   <span class="c1"># 50 starting indices in search_space</span>
@@ -3531,12 +2512,24 @@ Iteration 01 top-3 proposals
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace1.png&quot;</span><span class="p">))</span>
+</pre></div>
 </div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace1.png"/></div></div>
 </div>
 <p>Below, we will see when we change the weights, the MOBO will pay attention to objectives with higher weights and results can be different.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">traces2</span> <span class="o">=</span> <span class="n">compare_rf_gp_acq_8panels</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">traces2</span> <span class="o">=</span> <span class="n">compare_rf_gp_acq_8panels</span><span class="p">(</span>
     <span class="n">search_space</span><span class="o">=</span><span class="n">search_space</span><span class="p">,</span>
     <span class="n">run_experiment</span><span class="o">=</span><span class="n">run_experiment</span><span class="p">,</span>
     <span class="n">initial_idx</span><span class="o">=</span><span class="n">initial_idx</span><span class="p">,</span>   <span class="c1"># 50 starting indices in search_space</span>
@@ -3550,12 +2543,26 @@ Iteration 01 top-3 proposals
 <span class="p">)</span>
 </pre></div>
 </div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace2.png&quot;</span><span class="p">))</span>
+</pre></div>
 </div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lec-15-trace2.png"/></div></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
 <dt id="term-Pareto-dominance">Pareto dominance<a class="headerlink" href="#term-Pareto-dominance" title="Permalink to this term">#</a></dt><dd><p>Point <span class="math notranslate nohighlight">\(a\)</span> dominates <span class="math notranslate nohighlight">\(b\)</span> if <span class="math notranslate nohighlight">\(a\)</span> is at least as good on all objectives and strictly better on one.</p>
 </dd>
@@ -3570,7 +2577,7 @@ Iteration 01 top-3 proposals
 </dl>
 </section>
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <section id="q1-build-a-tiny-bo-coach-with-an-llm">
 <h3>Q1. Build a tiny BO “coach” with an LLM<a class="headerlink" href="#q1-build-a-tiny-bo-coach-with-an-llm" title="Permalink to this heading">#</a></h3>
 <p>Use an LLM (ChatGPT or Claude) as your coding buddy to create a function in Colab or a small UI that runs Bayesian Optimization (BO) on a reaction you choose. You define the variable space and the objectives, feed a few data points, and your tool suggests 3 new experiments. After you run them, you type in the results and the tool updates, ready to suggest 3 more.</p>
@@ -3785,6 +2792,14 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">76</span>
+    <span class="n">Returns</span><span class="p">:</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
+</pre></div>
+</div>
+</div>
 </div>
 <p>LLM output code from <strong>Version A</strong> prompt:</p>
 <div class="cell tag_hide-input docutils container">
@@ -4190,10 +3205,14 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 </details>
 </div>
 <p>Now we can also consider <strong>Version B</strong> (more features), with UI and bottons for someone who does not code in your lab to use:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">tags</span><span class="p">:</span> <span class="p">[</span><span class="n">hide</span><span class="o">-</span><span class="nb">input</span><span class="p">]</span>
-<span class="n">promptB</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">promptB</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="s2">**Task:**  </span>
 <span class="s2">In Google Colab, write Python code that creates a **popup-style interactive UI** for *multi-objective Bayesian optimization* for chemists. The tool should guide users through setting up or continuing an optimization experiment with intuitive inputs and automated CSV handling.</span>
@@ -4335,6 +3354,7 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>LLM output code from <strong>Version B</strong> prompt:</p>
 <div class="cell tag_hide-input docutils container">
@@ -4997,7 +4017,7 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 <span class="c1"># =========================</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">plot_scatter_2d</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">color_by</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Quick 2D scatter with optional color. Works in Colab output cells.&quot;&quot;&quot;</span>
+    <span class="c1">#Quick 2D scatter with optional color. Works in Colab output cells.</span>
     <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
     <span class="n">xvals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
     <span class="n">yvals</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -5076,6 +4096,8 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-multiobjective-optimization">1. What is multiobjective optimization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-mof-toy-dataset">2. Load the MOF toy dataset</a></li>
