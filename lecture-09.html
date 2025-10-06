@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-09';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -194,7 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De novo Molecule Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -210,7 +196,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -219,14 +205,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -351,10 +337,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -362,14 +348,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -440,10 +426,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-graph-neural-networks">
-<h1>Lecture 9 - Graph Neural Networks<a class="headerlink" href="#lecture-9-graph-neural-networks" title="Link to this heading">#</a></h1>
+<h1>Lecture 9 - Graph Neural Networks<a class="headerlink" href="#lecture-9-graph-neural-networks" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
@@ -459,7 +445,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Build basic MLP-style Neural Networks from scratch using <strong>PyTorch</strong>.</p></li>
 <li><p>Explain molecules as <strong>graphs</strong>: atoms = nodes, bonds = edges, features at each.</p></li>
@@ -471,13 +457,13 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setup">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <p>We reuse most of the stack from earlier lectures.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Setup</span>
@@ -541,11 +527,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="building-mlp-from-scratch">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2 Building MLP from scratch</a><a class="headerlink" href="#building-mlp-from-scratch" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2 Building MLP from scratch</a><a class="headerlink" href="#building-mlp-from-scratch" title="Permalink to this heading">#</a></h2>
 <p>In Lecture 8 we built MLPs with <code class="docutils literal notranslate"><span class="pre">scikit‑learn</span></code>. Today we start by doing the same with <strong>PyTorch</strong>. One advantage of using PyTorch is that it lets you write the forward pass directly, control the training loop, and later move to GPUs or custom layers. We start tiny and stay friendly.</p>
 <p>We will predict <strong>melting point</strong> from four descriptors: <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">NumRings</span></code>, same as before.</p>
 <section id="pytorch-regression-on-melting-point">
-<h3>2.1 PyTorch regression on melting point<a class="headerlink" href="#pytorch-regression-on-melting-point" title="Link to this heading">#</a></h3>
+<h3>2.1 PyTorch regression on melting point<a class="headerlink" href="#pytorch-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
 <p>Every PyTorch project has three parts:</p>
 <ol class="arabic simple">
 <li><p><strong>Model</strong>: stack of layers with weights and activations.</p></li>
@@ -826,7 +812,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="build-a-tiny-network">
-<h3>2.2 Build a tiny network<a class="headerlink" href="#build-a-tiny-network" title="Link to this heading">#</a></h3>
+<h3>2.2 Build a tiny network<a class="headerlink" href="#build-a-tiny-network" title="Permalink to this heading">#</a></h3>
 <p>Now we will start to build a network has one hidden layer of 32 units with ReLU activation.<br />
 Output is a single number (regression).</p>
 <p>This is equivalent to what we did before with:</p>
@@ -936,7 +922,7 @@ Output is a single number (regression).</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [-0.36155778  0.06239666  0.75588953]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Raw outputs using first 3 values on X-train: [-0.3615578   0.06239668  0.7558894 ]
 </pre></div>
 </div>
 </div>
@@ -945,7 +931,7 @@ Output is a single number (regression).</p>
 </section>
 <hr class="docutils" />
 <section id="loss-and-optimizer">
-<h3>2.3 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Link to this heading">#</a></h3>
+<h3>2.3 Loss and optimizer<a class="headerlink" href="#loss-and-optimizer" title="Permalink to this heading">#</a></h3>
 <p>For regression we use <strong>MSELoss</strong>.<br />
 The optimizer is <strong>Adam</strong>, which updates weights smoothly.</p>
 <div class="cell docutils container">
@@ -962,7 +948,6 @@ Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
     capturable: False
-    decoupled_weight_decay: False
     differentiable: False
     eps: 1e-08
     foreach: None
@@ -978,7 +963,7 @@ Parameter Group 0
 </section>
 <hr class="docutils" />
 <section id="one-training-step-demo">
-<h3>2.4 One training step demo<a class="headerlink" href="#one-training-step-demo" title="Link to this heading">#</a></h3>
+<h3>2.4 One training step demo<a class="headerlink" href="#one-training-step-demo" title="Permalink to this heading">#</a></h3>
 <p>To see the loop clearly: forward → loss → backward → update.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1005,7 +990,7 @@ Parameter Group 0
 </section>
 <hr class="docutils" />
 <section id="training-loop">
-<h3>2.5 Training loop<a class="headerlink" href="#training-loop" title="Link to this heading">#</a></h3>
+<h3>2.5 Training loop<a class="headerlink" href="#training-loop" title="Permalink to this heading">#</a></h3>
 <p>We train for 150 epochs. Each epoch goes through the dataset in batches.<br />
 We plot the loss to see if the model is learning.</p>
 <div class="cell docutils container">
@@ -1041,7 +1026,7 @@ We plot the loss to see if the model is learning.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4eaf5319e1492c0f1144a1014fa19b36ce0a2d8eea1c39245c26df230023c718.png" src="_images/4eaf5319e1492c0f1144a1014fa19b36ce0a2d8eea1c39245c26df230023c718.png" />
+<img alt="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" src="_images/b605293a623ff66c94b8ad5b0f351ff5f2bacf868feda73b5878f3b4df0134bb.png" />
 </div>
 </div>
 <p>Let’s break down what happened above step by step:</p>
@@ -1070,7 +1055,7 @@ This means the network predictions are getting closer to the true labels.</p></l
 </section>
 <hr class="docutils" />
 <section id="evaluate-regression">
-<h3>2.6 Evaluate regression<a class="headerlink" href="#evaluate-regression" title="Link to this heading">#</a></h3>
+<h3>2.6 Evaluate regression<a class="headerlink" href="#evaluate-regression" title="Permalink to this heading">#</a></h3>
 <p>We check mean squared error and plot predicted vs true <code class="docutils literal notranslate"><span class="pre">Meltig</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1093,17 +1078,17 @@ This means the network predictions are getting closer to the true labels.</p></l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 377.2237548828125
-R2: 0.8732098937034607
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 377.2238
+R2: 0.8732098882942341
 </pre></div>
 </div>
-<img alt="_images/e4ecec78a6913e3813cd405bce5e5826cd1af09da1c52ff41f0a1a6a29883d1c.png" src="_images/e4ecec78a6913e3813cd405bce5e5826cd1af09da1c52ff41f0a1a6a29883d1c.png" />
+<img alt="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" src="_images/c9c6afdc63d6c8c680630e1451c459e03f71a3f48413e8b977887385c3158007.png" />
 </div>
 </div>
 <p>This suggests our customized NN achieve a good performance on this task  :D</p>
 </section>
 <section id="baseline-comparison">
-<h3>2.7 Baseline comparison<a class="headerlink" href="#baseline-comparison" title="Link to this heading">#</a></h3>
+<h3>2.7 Baseline comparison<a class="headerlink" href="#baseline-comparison" title="Permalink to this heading">#</a></h3>
 <p>To understand how our PyTorch neural network compares to standard regressors,
 we evaluate three baselines:</p>
 <ul class="simple">
@@ -1143,7 +1128,7 @@ logic into a helper function to avoid repetition.</p>
 </div>
 </section>
 <section id="pytorch-regressor-with-sklearn-like-interface">
-<h3>2.8 PyTorch Regressor with sklearn-like Interface<a class="headerlink" href="#pytorch-regressor-with-sklearn-like-interface" title="Link to this heading">#</a></h3>
+<h3>2.8 PyTorch Regressor with sklearn-like Interface<a class="headerlink" href="#pytorch-regressor-with-sklearn-like-interface" title="Permalink to this heading">#</a></h3>
 <p>In earlier sections, we trained our custom PyTorch model by manually writing the
 training loop. How can we make our customized NN feel more convenient?</p>
 <p>We can introduce a small wrapper called <strong><code class="docutils literal notranslate"><span class="pre">CHEM5080Regressor</span></code></strong> that makes our
@@ -1222,18 +1207,18 @@ functions.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 387.4822998046875
-R2: 0.8697618246078491
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 387.48224
+R2: 0.8697618698517982
 </pre></div>
 </div>
 </div>
 </div>
 <p>It works exactly the same way as we see in previous lectures with <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>, but it was <strong>written by ourselves</strong>!</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Optional: Parity plot ---</span>
@@ -1251,16 +1236,16 @@ R2: 0.8697618246078491
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/96c1553e45bfca7be0554b77dbb735f62215def2828686e9e0b7fb4444b25ad2.png" src="_images/96c1553e45bfca7be0554b77dbb735f62215def2828686e9e0b7fb4444b25ad2.png" />
+<img alt="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" src="_images/11c7018f6c00c0750c22bb745b69b5d8878f9741bec87bd6d363a63a4840082d.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="molecules-as-graphs">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Molecules as graphs</a><a class="headerlink" href="#molecules-as-graphs" title="Permalink to this heading">#</a></h2>
 <section id="why-graph">
-<h3>3.1 Why Graph?<a class="headerlink" href="#why-graph" title="Link to this heading">#</a></h3>
+<h3>3.1 Why Graph?<a class="headerlink" href="#why-graph" title="Permalink to this heading">#</a></h3>
 <p>Graphs are sets of vertices connected by edges.</p>
 <p>Graphs are general language/data structure for describing and analyzing relational/interacting objects.</p>
 <p>Graph machine learning tasks:</p>
@@ -1277,10 +1262,10 @@ R2: 0.8697618246078491
 </div>
 <p>Now let’s look at a few examples. We first define a helper function called <code class="docutils literal notranslate"><span class="pre">draw_graph_structure()</span></code> which will take adjacency matrix to construct a graph.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get and helper function and routine to draw graph structure</span>
@@ -1359,7 +1344,7 @@ R2: 0.8697618246078491
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<img alt="_images/1a2f46a0f4d13de5381297bf1a85a03d3e203f23ebe60d6e2bd3d15a6c93a150.png" src="_images/1a2f46a0f4d13de5381297bf1a85a03d3e203f23ebe60d6e2bd3d15a6c93a150.png" />
+<img alt="_images/fdaa37ee2f929952c0f7458104df25a9b0b222569d564c7f469768c29546681a.png" src="_images/fdaa37ee2f929952c0f7458104df25a9b0b222569d564c7f469768c29546681a.png" />
 </div>
 </div>
 <p>Case 2:</p>
@@ -1418,7 +1403,7 @@ R2: 0.8697618246078491
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<img alt="_images/1049378142de561c0d2df70b26d2dab0a9227bab50086e306dd0e073da87ce2e.png" src="_images/1049378142de561c0d2df70b26d2dab0a9227bab50086e306dd0e073da87ce2e.png" />
+<img alt="_images/aa273963306faf89028cda04e4aef585fb553c47c0fb57d48567ccee0559aced.png" src="_images/aa273963306faf89028cda04e4aef585fb553c47c0fb57d48567ccee0559aced.png" />
 </div>
 </div>
 <p>Case 3:</p>
@@ -1482,7 +1467,7 @@ R2: 0.8697618246078491
  [0 0 0 0 1 1 0 0]]
 </pre></div>
 </div>
-<img alt="_images/8974e3a3dbe6ead6fe1ad4c207108ad5e656a1a894105413625bbfbec2ae20ba.png" src="_images/8974e3a3dbe6ead6fe1ad4c207108ad5e656a1a894105413625bbfbec2ae20ba.png" />
+<img alt="_images/365f474f1757eb8d561afaa6626f7ea3b1cb79c5a6263d830ccc0f1c8746c27a.png" src="_images/365f474f1757eb8d561afaa6626f7ea3b1cb79c5a6263d830ccc0f1c8746c27a.png" />
 </div>
 </div>
 <div class="admonition-exercises-3 admonition">
@@ -1491,7 +1476,7 @@ R2: 0.8697618246078491
 </div>
 </section>
 <section id="build-tiny-toy-molecules-graphs-by-hand">
-<h3>3.2 Build tiny toy molecules graphs by hand<a class="headerlink" href="#build-tiny-toy-molecules-graphs-by-hand" title="Link to this heading">#</a></h3>
+<h3>3.2 Build tiny toy molecules graphs by hand<a class="headerlink" href="#build-tiny-toy-molecules-graphs-by-hand" title="Permalink to this heading">#</a></h3>
 <p>Common node features:</p>
 <ul class="simple">
 <li><p>One‑hot element type, degree, formal charge, aromatic flag.<br />
@@ -1507,10 +1492,10 @@ Common edge features:</p></li>
 </ul>
 <p>We start with first build a helper function to draw molecule.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
@@ -1605,7 +1590,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e6e054e31751a0b392f8922ddce20d4084949181db71921d15023872e017a4c3.png" src="_images/e6e054e31751a0b392f8922ddce20d4084949181db71921d15023872e017a4c3.png" />
+<img alt="_images/37dc30917cdce1fcaad0023606d3fc3c448758aab8c765d0d637473d64ecb081.png" src="_images/37dc30917cdce1fcaad0023606d3fc3c448758aab8c765d0d637473d64ecb081.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Methane (CH4): x.shape (5, 4), edge_index.shape (2, 8), edge_attr.shape (8, 1)
 </pre></div>
 </div>
@@ -1640,7 +1625,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/24cd8949d2db2316cd93593d44ff8bd7c803f8a415a4766ba1f0aad57fce7b46.png" src="_images/24cd8949d2db2316cd93593d44ff8bd7c803f8a415a4766ba1f0aad57fce7b46.png" />
+<img alt="_images/c870de2f9d4c21bd903a1ca66a8f09006ca08b05ed2e0f3d2ed62408c341e44c.png" src="_images/c870de2f9d4c21bd903a1ca66a8f09006ca08b05ed2e0f3d2ed62408c341e44c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ethane (C2H6): x.shape (8, 4), edge_index.shape (2, 14), edge_attr.shape (14, 1)
 </pre></div>
 </div>
@@ -1670,7 +1655,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d1de7d682edc09190bfe92ae2232bafdca0105f18eb6ea1d9f53d1fef2c3b2e4.png" src="_images/d1de7d682edc09190bfe92ae2232bafdca0105f18eb6ea1d9f53d1fef2c3b2e4.png" />
+<img alt="_images/5d8c1c1c5aeb1bf9df651f9158d025b53488201aa408b8f08625fc706d0fde81.png" src="_images/5d8c1c1c5aeb1bf9df651f9158d025b53488201aa408b8f08625fc706d0fde81.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Formic acid (HCOOH): x.shape (5, 4), edge_index.shape (2, 8), edge_attr.shape (8, 1)
 </pre></div>
 </div>
@@ -1703,7 +1688,7 @@ Common edge features:</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8369d28ba67531180c7d3d7d68b7f5d6e778843aa408607914a7581afd98ff6e.png" src="_images/8369d28ba67531180c7d3d7d68b7f5d6e778843aa408607914a7581afd98ff6e.png" />
+<img alt="_images/1314f4fa0f9193d2f0b7aff81c1a22e9cde5f91c9202bdcb81b4055f76d9f3ec.png" src="_images/1314f4fa0f9193d2f0b7aff81c1a22e9cde5f91c9202bdcb81b4055f76d9f3ec.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trifluoropropyne (CF3–C≡C–H): x.shape (7, 4), edge_index.shape (2, 12), edge_attr.shape (12, 1)
 </pre></div>
 </div>
@@ -1715,7 +1700,7 @@ Common edge features:</p></li>
 </div>
 </section>
 <section id="id1">
-<h3>3.1 Molecules as graphs<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>3.1 Molecules as graphs<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>A molecule can be seen as a graph:</p>
 <ul class="simple">
 <li><p><strong>Nodes</strong> are atoms with a feature vector per atom.</p></li>
@@ -1724,7 +1709,7 @@ Common edge features:</p></li>
 </ul>
 </section>
 <section id="minimal-node-and-edge-features">
-<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Link to this heading">#</a></h3>
+<h3>3.1 Minimal node and edge features<a class="headerlink" href="#minimal-node-and-edge-features" title="Permalink to this heading">#</a></h3>
 <p>Common node features:</p>
 <ul class="simple">
 <li><p>One‑hot element type, degree, formal charge, aromatic flag.<br />
@@ -1740,7 +1725,7 @@ Common edge features:</p></li>
 </ul>
 </section>
 <section id="build-tiny-toy-graphs-by-hand">
-<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Link to this heading">#</a></h3>
+<h3>3.2 Build tiny toy graphs by hand<a class="headerlink" href="#build-tiny-toy-graphs-by-hand" title="Permalink to this heading">#</a></h3>
 <p>We start with two toy molecules: Methane and Ethane.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1818,7 +1803,7 @@ Methane edges (first 6 cols):
 </section>
 <hr class="docutils" />
 <section id="gnn-and-mpnn">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. GNN and MPNN</a><a class="headerlink" href="#gnn-and-mpnn" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. GNN and MPNN</a><a class="headerlink" href="#gnn-and-mpnn" title="Permalink to this heading">#</a></h2>
 <p>Let’s take <strong>Methanol (CH₃OH)</strong> graph as an example and run both a generic <strong>GNN</strong> formulation and a more specific <strong>MPNN</strong> with full 4-dimensional features:</p>
 <p><span class="math notranslate nohighlight">\(
 h_v^{(0)} = [Z, \text{degree}, \text{aromatic}, \text{charge}]
@@ -1952,10 +1937,10 @@ Training adjusts the weights in the update rules and output MLP to minimize a lo
 <p>We can draw a few molecules graph with features shown on each node before and after updates.<br />
 This lets us literally <strong>see numbers flowing through edges</strong> using below UI.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">WIDGETS_AVAILABLE</span><span class="p">:</span>
@@ -2029,7 +2014,7 @@ This lets us literally <strong>see numbers flowing through edges</strong> using 
 </div>
 </section>
 <section id="build-an-mpnn-from-scratch">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Build an MPNN from scratch</a><a class="headerlink" href="#build-an-mpnn-from-scratch" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Build an MPNN from scratch</a><a class="headerlink" href="#build-an-mpnn-from-scratch" title="Permalink to this heading">#</a></h2>
 <p>Now that we’ve seen the math for message passing, we will implement a
 simple <strong>MPNN layer</strong> in PyTorch and use it for a toxicity classification task.</p>
 <p>At each layer <code class="docutils literal notranslate"><span class="pre">t</span></code>, every node gets messages from its neighbors and updates its hidden state.</p>
@@ -2053,10 +2038,10 @@ h_\text{graph} = \text{POOL}\left(\{h_v^{(T)} : v \in \text{nodes}\}\right)
 <p>We will use RDKit to parse SMILES strings and turn molecules into
 graphs.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">smiles_to_graph</span><span class="p">(</span><span class="n">smiles</span><span class="p">):</span>
@@ -2152,10 +2137,10 @@ graphs.</p>
 </details>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">examples</span> <span class="o">=</span> <span class="p">{</span>
@@ -2351,10 +2336,10 @@ graphs.</p>
 <p>The other thing you may notice is that, since we use molecule as graph, this time we <strong>did not</strong> provide molecular level descritors like <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, <code class="docutils literal notranslate"><span class="pre">TPSA</span></code>, <code class="docutils literal notranslate"><span class="pre">#Rings</span></code>, instead we simply just put some simple atomic level information like atomic number and bond order.</p>
 <p>Similar to the case you see earlier today with MLP, we can also have customized <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> and <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> function.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">set_seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
@@ -2594,25 +2579,25 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Link to this term">#</a></dt><dd><p>A neural network that operates on graph-structured data, updating node features by aggregating information from neighbors.</p>
+<dt id="term-graph-neural-network">graph neural network<a class="headerlink" href="#term-graph-neural-network" title="Permalink to this term">#</a></dt><dd><p>A neural network that operates on graph-structured data, updating node features by aggregating information from neighbors.</p>
 </dd>
-<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Link to this term">#</a></dt><dd><p>The process in a GNN where node representations are updated by exchanging information with neighbors over edges.</p>
+<dt id="term-message-passing">message passing<a class="headerlink" href="#term-message-passing" title="Permalink to this term">#</a></dt><dd><p>The process in a GNN where node representations are updated by exchanging information with neighbors over edges.</p>
 </dd>
-<dt id="term-node-feature">node feature<a class="headerlink" href="#term-node-feature" title="Link to this term">#</a></dt><dd><p>A vector describing atom properties such as atomic number, degree, aromaticity, or formal charge.</p>
+<dt id="term-node-feature">node feature<a class="headerlink" href="#term-node-feature" title="Permalink to this term">#</a></dt><dd><p>A vector describing atom properties such as atomic number, degree, aromaticity, or formal charge.</p>
 </dd>
-<dt id="term-edge-feature">edge feature<a class="headerlink" href="#term-edge-feature" title="Link to this term">#</a></dt><dd><p>A vector describing bond properties such as single/double/triple/aromatic bond type.</p>
+<dt id="term-edge-feature">edge feature<a class="headerlink" href="#term-edge-feature" title="Permalink to this term">#</a></dt><dd><p>A vector describing bond properties such as single/double/triple/aromatic bond type.</p>
 </dd>
-<dt id="term-pooling">pooling<a class="headerlink" href="#term-pooling" title="Link to this term">#</a></dt><dd><p>Aggregation of all node embeddings into a single graph-level embedding (e.g., mean, sum, or max).</p>
+<dt id="term-pooling">pooling<a class="headerlink" href="#term-pooling" title="Permalink to this term">#</a></dt><dd><p>Aggregation of all node embeddings into a single graph-level embedding (e.g., mean, sum, or max).</p>
 </dd>
-<dt id="term-MPNN">MPNN<a class="headerlink" href="#term-MPNN" title="Link to this term">#</a></dt><dd><p>Message Passing Neural Network. A GNN variant where messages explicitly depend on both neighbor node features and edge features.</p>
+<dt id="term-MPNN">MPNN<a class="headerlink" href="#term-MPNN" title="Permalink to this term">#</a></dt><dd><p>Message Passing Neural Network. A GNN variant where messages explicitly depend on both neighbor node features and edge features.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -2646,9 +2631,9 @@ val_acc=0.8435
 </ul>
 </section>
 <section id="in-class-activities">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. In-class activities</a><a class="headerlink" href="#in-class-activities" title="Permalink to this heading">#</a></h2>
 <section id="q1-build-an-mlp-for-toxicity-classification">
-<h3>Q1. Build an MLP for toxicity classification<a class="headerlink" href="#q1-build-an-mlp-for-toxicity-classification" title="Link to this heading">#</a></h3>
+<h3>Q1. Build an MLP for toxicity classification<a class="headerlink" href="#q1-build-an-mlp-for-toxicity-classification" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use input features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
 <li><p>Build an <strong>MLP from scratch in PyTorch</strong> with one hidden layer of 32 units and ReLU.</p></li>
@@ -2661,7 +2646,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q2-build-an-mlp-for-regression-on-melting-point">
-<h3>Q2. Build an MLP for regression on melting point<a class="headerlink" href="#q2-build-an-mlp-for-regression-on-melting-point" title="Link to this heading">#</a></h3>
+<h3>Q2. Build an MLP for regression on melting point<a class="headerlink" href="#q2-build-an-mlp-for-regression-on-melting-point" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Same input features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
 <li><p>Build an MLP with two hidden layers <code class="docutils literal notranslate"><span class="pre">(64,</span> <span class="pre">32)</span></code> in PyTorch.</p></li>
@@ -2674,7 +2659,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q3-gnn-1-toxicity-with-a-slightly-different-architecture">
-<h3>Q3. GNN-1: Toxicity with a slightly different architecture<a class="headerlink" href="#q3-gnn-1-toxicity-with-a-slightly-different-architecture" title="Link to this heading">#</a></h3>
+<h3>Q3. GNN-1: Toxicity with a slightly different architecture<a class="headerlink" href="#q3-gnn-1-toxicity-with-a-slightly-different-architecture" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Build a GNN with <strong>3 message-passing layers</strong>, hidden size <strong>48</strong>, <strong>sum pooling</strong>, and <strong>dropout=0.2</strong>.</p></li>
 <li><p>Train on toxicity graphs from SMILES.</p></li>
@@ -2686,7 +2671,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q4-gnn-2-toxicity-with-5-fold-cross-validation">
-<h3>Q4. GNN-2: Toxicity with 5-fold cross validation<a class="headerlink" href="#q4-gnn-2-toxicity-with-5-fold-cross-validation" title="Link to this heading">#</a></h3>
+<h3>Q4. GNN-2: Toxicity with 5-fold cross validation<a class="headerlink" href="#q4-gnn-2-toxicity-with-5-fold-cross-validation" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Build a second GNN that differs again: <strong>2 layers</strong>, hidden <strong>96</strong>, <strong>max pooling</strong>.</p></li>
 <li><p>Run <code class="docutils literal notranslate"><span class="pre">KFold()</span></code> or <code class="docutils literal notranslate"><span class="pre">StratifiedKFold()</span></code> with <code class="docutils literal notranslate"><span class="pre">n_splits=5</span></code> on toxicity.</p></li>
@@ -2698,7 +2683,7 @@ val_acc=0.8435
 </section>
 <hr class="docutils" />
 <section id="q5-reactivity-classification-mlp-from-scratch">
-<h3>Q5. Reactivity classification (MLP from scratch)<a class="headerlink" href="#q5-reactivity-classification-mlp-from-scratch" title="Link to this heading">#</a></h3>
+<h3>Q5. Reactivity classification (MLP from scratch)<a class="headerlink" href="#q5-reactivity-classification-mlp-from-scratch" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Target = <code class="docutils literal notranslate"><span class="pre">Reactivity</span></code> (yes, this is a property exists in our C-H oxidation dataset that we have never touched before! basically it’s binary success/failure labels on the C-H reaction outcome if electrochemical conditions were applied ) in the dataset. Values are <code class="docutils literal notranslate"><span class="pre">−1</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
 <li><p>Map to 0 or 1 and train a <strong>PyTorch MLP</strong> on <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code>.</p></li>
@@ -2711,9 +2696,9 @@ val_acc=0.8435
 </section>
 </section>
 <section id="solutions">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">10. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <section id="solution-q1">
-<h3>Solution Q1<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h3>
+<h3>Solution Q1<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q1 solution</span>
@@ -2783,7 +2768,7 @@ val_acc=0.8435
 </div>
 </section>
 <section id="solution-q2">
-<h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h3>
+<h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_reg</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
@@ -2824,7 +2809,7 @@ val_acc=0.8435
 </div>
 </section>
 <section id="solution-q3">
-<h3>Solution Q3<a class="headerlink" href="#solution-q3" title="Link to this heading">#</a></h3>
+<h3>Solution Q3<a class="headerlink" href="#solution-q3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build toxicity graphs</span>
@@ -2929,7 +2914,7 @@ val_acc=0.8435
 </div>
 </section>
 <section id="solution-q4">
-<h3>Solution Q4<a class="headerlink" href="#solution-q4" title="Link to this heading">#</a></h3>
+<h3>Solution Q4<a class="headerlink" href="#solution-q4" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
 
@@ -2994,7 +2979,7 @@ val_acc=0.8435
 </div>
 </section>
 <section id="solution-q5">
-<h3>Solution Q5<a class="headerlink" href="#solution-q5" title="Link to this heading">#</a></h3>
+<h3>Solution Q5<a class="headerlink" href="#solution-q5" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reactivity classification with an MLP from scratch on descriptors</span>
 <span class="c1"># Reactivity is −1 or 1. Map to {0,1}.</span>
 <span class="n">df_rxn</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Reactivity&quot;</span><span class="p">,</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -3091,7 +3076,7 @@ val_acc=0.8435
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -3120,7 +3105,6 @@ val_acc=0.8435
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -3193,7 +3177,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -3217,8 +3201,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

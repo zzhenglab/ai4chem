@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,54 +14,57 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-12';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 13 - De Novo Molecule Generation" href="lecture-13.html" />
     <link rel="prev" title="Lecture 11 - Dimension Reduction for Data Visualization" href="lecture-11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -72,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -159,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -193,6 +180,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 </ul>
 
     </div>
@@ -208,7 +196,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -217,14 +205,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -349,10 +337,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -360,14 +348,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -425,10 +413,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-12-self-supervised-learning">
-<h1>Lecture 12 - Self-Supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Link to this heading">#</a></h1>
+<h1>Lecture 12 - Self-Supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -443,7 +431,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Build <strong>clustering</strong> workflows: pick features, scale, fit, visualize.</p></li>
 <li><p>Choose and justify distance metrics for descriptors vs fingerprints.</p></li>
@@ -452,12 +440,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
@@ -505,7 +493,7 @@ document.write(`
 </div>
 </section>
 <section id="data-loading">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Data Loading</a><a class="headerlink" href="#data-loading" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Data Loading</a><a class="headerlink" href="#data-loading" title="Permalink to this heading">#</a></h2>
 <p>Similar to we we did before, let’s first make small helper to compute 4 quick descriptors and a compact fingerprint.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -846,17 +834,17 @@ s_{\text{tan}}(i,j) = \frac{|A \cap B|}{|A| + |B| - |A \cap B|}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f6141b9f277f01496aae333a22d5521e6f5431a0fe1634a60c36a0094a9e6922.png" src="_images/f6141b9f277f01496aae333a22d5521e6f5431a0fe1634a60c36a0094a9e6922.png" />
+<img alt="_images/c48278e366f7415b73e4eeff02fedbc6b9d822639f04c6d2ab280f1dfbe08bea.png" src="_images/c48278e366f7415b73e4eeff02fedbc6b9d822639f04c6d2ab280f1dfbe08bea.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="kmeans-on-clustering">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. KMeans on clustering</a><a class="headerlink" href="#kmeans-on-clustering" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. KMeans on clustering</a><a class="headerlink" href="#kmeans-on-clustering" title="Permalink to this heading">#</a></h2>
 <p>We start with <strong>KMeans</strong> because it is one of the simplest and most widely used clustering algorithms. It gives us a baseline understanding of how groups may form in our dataset.</p>
 <hr class="docutils" />
 <section id="fit-kmeans-for-a-single-k">
-<h3>3.1 Fit KMeans for a single <span class="math notranslate nohighlight">\(k\)</span><a class="headerlink" href="#fit-kmeans-for-a-single-k" title="Link to this heading">#</a></h3>
+<h3>3.1 Fit KMeans for a single <span class="math notranslate nohighlight">\(k\)</span><a class="headerlink" href="#fit-kmeans-for-a-single-k" title="Permalink to this heading">#</a></h3>
 <p>In clustering, <span class="math notranslate nohighlight">\(k\)</span> is the number of groups we want to divide our data into.<br />
 KMeans works by alternating between two steps:</p>
 <ol class="arabic">
@@ -914,7 +902,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3716a0f38470faa126b9d7ec76f5e99eae2e791b0ee366b24df96968b0ac02f.png" src="_images/d3716a0f38470faa126b9d7ec76f5e99eae2e791b0ee366b24df96968b0ac02f.png" />
+<img alt="_images/7a6fc834f27d607b00c71de69ae83dca5a324e2b79e05ae84af3ce690fcda0c2.png" src="_images/7a6fc834f27d607b00c71de69ae83dca5a324e2b79e05ae84af3ce690fcda0c2.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -983,10 +971,10 @@ Name: count, dtype: int64
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot KMeans clusters with centroids as stars</span>
@@ -1003,12 +991,12 @@ Name: count, dtype: int64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9a88ce642855167684e382ffc242dbf728cf9050aedb64f5db8ad906876f061e.png" src="_images/9a88ce642855167684e382ffc242dbf728cf9050aedb64f5db8ad906876f061e.png" />
+<img alt="_images/ebeb41d07f005693391acc03e88e98044c42eb8e7143066202d5a17ecabc946b.png" src="_images/ebeb41d07f005693391acc03e88e98044c42eb8e7143066202d5a17ecabc946b.png" />
 </div>
 </div>
 </section>
 <section id="what-does-a-single-sample-look-like">
-<h3>3.2 What does a single sample look like<a class="headerlink" href="#what-does-a-single-sample-look-like" title="Link to this heading">#</a></h3>
+<h3>3.2 What does a single sample look like<a class="headerlink" href="#what-does-a-single-sample-look-like" title="Permalink to this heading">#</a></h3>
 <p>Sometimes it helps to print one row to see the scaled numbers and the assigned cluster.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1023,7 +1011,7 @@ Name: count, dtype: int64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Compound: methoxymethylbenzene
 Original desc: {&#39;MolWt&#39;: 122.16699999999996, &#39;LogP&#39;: 1.8330000000000002, &#39;TPSA&#39;: 9.23, &#39;NumRings&#39;: 1.0}
-Scaled desc: {&#39;MolWt&#39;: np.float64(-1.091), &#39;LogP&#39;: np.float64(-0.69), &#39;TPSA&#39;: np.float64(-0.773), &#39;NumRings&#39;: np.float64(-0.873)}
+Scaled desc: {&#39;MolWt&#39;: -1.091, &#39;LogP&#39;: -0.69, &#39;TPSA&#39;: -0.773, &#39;NumRings&#39;: -0.873}
 Cluster: 2
 </pre></div>
 </div>
@@ -1031,7 +1019,7 @@ Cluster: 2
 </div>
 </section>
 <section id="kmeans-on-t-sne-and-umap">
-<h3>3.3 KMeans on t-SNE and UMAP<a class="headerlink" href="#kmeans-on-t-sne-and-umap" title="Link to this heading">#</a></h3>
+<h3>3.3 KMeans on t-SNE and UMAP<a class="headerlink" href="#kmeans-on-t-sne-and-umap" title="Permalink to this heading">#</a></h3>
 <p>Let’s also take a look at how kmeans can be applied to t-SNE and UMAP we learned during the last lecture.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1070,7 +1058,7 @@ Cluster: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4591e6847f092a45757b2e31af2f8db15cde805e1183f9faa3e58c6f3d2d8711.png" src="_images/4591e6847f092a45757b2e31af2f8db15cde805e1183f9faa3e58c6f3d2d8711.png" />
+<img alt="_images/68bd4ea2560df52f9fd9a2b03652d8699a6892e195689f545fda59683af657f1.png" src="_images/68bd4ea2560df52f9fd9a2b03652d8699a6892e195689f545fda59683af657f1.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1080,10 +1068,10 @@ Cluster: 2
 <p>Run the cell below to see the difference.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">pick_two_per_cluster</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
@@ -1135,19 +1123,19 @@ Cluster: 2
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors UMAP(desc) cluster c0: showing up to 2 molecules
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors t-SNE(desc) cluster c0: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/69d906a88a8b97c4e328ff045b488a4140a34b36b8df65e64ca514604e553e3d.png" src="_images/69d906a88a8b97c4e328ff045b488a4140a34b36b8df65e64ca514604e553e3d.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors UMAP(desc) cluster c1: showing up to 2 molecules
+<img alt="_images/06a9e0060b272f805090324b19eb003e6457ebec0f9920cf7848f08e4b4b5c12.png" src="_images/06a9e0060b272f805090324b19eb003e6457ebec0f9920cf7848f08e4b4b5c12.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors t-SNE(desc) cluster c1: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/1aaac7b3af5159e555dea4425bd00cd9f96f3a5c6da9c7aaa755a1d3a9f38f8c.png" src="_images/1aaac7b3af5159e555dea4425bd00cd9f96f3a5c6da9c7aaa755a1d3a9f38f8c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors UMAP(desc) cluster c2: showing up to 2 molecules
+<img alt="_images/a67a2a3721edacf863cc76983ebb24e76402e8572ec6bd77123ba0f345356ba1.png" src="_images/a67a2a3721edacf863cc76983ebb24e76402e8572ec6bd77123ba0f345356ba1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Descriptors t-SNE(desc) cluster c2: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/1400bf97410a76230f72d6e1354f16dd8f5e369aae5830aaeb4d970b5a4cdc67.png" src="_images/1400bf97410a76230f72d6e1354f16dd8f5e369aae5830aaeb4d970b5a4cdc67.png" />
-<img alt="_images/79dba1bfe21f391a38232f1e30065af6310ea756a22038143e5388882df30295.png" src="_images/79dba1bfe21f391a38232f1e30065af6310ea756a22038143e5388882df30295.png" />
+<img alt="_images/e13af5fc9cd2afda9d704597818d2cc30106c8840f6781fbf180301989986969.png" src="_images/e13af5fc9cd2afda9d704597818d2cc30106c8840f6781fbf180301989986969.png" />
+<img alt="_images/9654b268ed4d0f60f04313ad56519a9bf3bb5f5db582cd8120ba12a821c643e8.png" src="_images/9654b268ed4d0f60f04313ad56519a9bf3bb5f5db582cd8120ba12a821c643e8.png" />
 </div>
 </div>
 <p>Instead of using descritors, we also try using fingerprints.</p>
@@ -1195,14 +1183,14 @@ s_T(A, B) = \frac{|A \cap B|}{|A| + |B| - |A \cap B|}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a5720e3eeb39e2c324aa472664794ada8e99bf226c9e549394283bff4257ccdb.png" src="_images/a5720e3eeb39e2c324aa472664794ada8e99bf226c9e549394283bff4257ccdb.png" />
+<img alt="_images/4e915cb79184769835aae7a1cd26ae971cd866472cef7866159adaffbcb18471.png" src="_images/4e915cb79184769835aae7a1cd26ae971cd866472cef7866159adaffbcb18471.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) pick two per cluster</span>
@@ -1234,31 +1222,31 @@ s_T(A, B) = \frac{|A \cap B|}{|A| + |B| - |A \cap B|}
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints UMAP(fp, Jaccard) cluster c0: showing up to 2 molecules
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints t-SNE(fp, Jaccard) cluster c0: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/a29e41a2a36e02831170ed569d52b3e8af5ccf359802f09777907421e50de52f.png" src="_images/a29e41a2a36e02831170ed569d52b3e8af5ccf359802f09777907421e50de52f.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints UMAP(fp, Jaccard) cluster c1: showing up to 2 molecules
+<img alt="_images/73891e06e27c9eed33a40fbe66c5e3379f20e896277bbe5cb83a8b511391dff6.png" src="_images/73891e06e27c9eed33a40fbe66c5e3379f20e896277bbe5cb83a8b511391dff6.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints t-SNE(fp, Jaccard) cluster c1: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/e9391cd577f018e42b415d68c0032f7cb6adee7050e71e5007972c100a4c1368.png" src="_images/e9391cd577f018e42b415d68c0032f7cb6adee7050e71e5007972c100a4c1368.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints UMAP(fp, Jaccard) cluster c2: showing up to 2 molecules
+<img alt="_images/1f63b54423bc4aa477080b4d55921330503e48d742a86614934865becf8bb9f1.png" src="_images/1f63b54423bc4aa477080b4d55921330503e48d742a86614934865becf8bb9f1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fingerprints t-SNE(fp, Jaccard) cluster c2: showing up to 2 molecules
 </pre></div>
 </div>
-<img alt="_images/276c143d4daba4690127a33bc4bb435e24f0a4e6c2569016640a3b60d63b0ce8.png" src="_images/276c143d4daba4690127a33bc4bb435e24f0a4e6c2569016640a3b60d63b0ce8.png" />
-<img alt="_images/3cda0e79459b4ee62ef12f9bac69c14c66e9ca6071f1dd687b1904e5f7c9475f.png" src="_images/3cda0e79459b4ee62ef12f9bac69c14c66e9ca6071f1dd687b1904e5f7c9475f.png" />
+<img alt="_images/89cf0eabc232ebc92d5e859b7222c4114c3e3ef51e19255244f6bfc67d2c9386.png" src="_images/89cf0eabc232ebc92d5e859b7222c4114c3e3ef51e19255244f6bfc67d2c9386.png" />
+<img alt="_images/a459d1277cb5019b1484981cc1e269b03c8155dfd439720afb970c2d36d58bd4.png" src="_images/a459d1277cb5019b1484981cc1e269b03c8155dfd439720afb970c2d36d58bd4.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="picking-k-and-validating-clusters">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Picking k and validating clusters</a><a class="headerlink" href="#picking-k-and-validating-clusters" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Picking k and validating clusters</a><a class="headerlink" href="#picking-k-and-validating-clusters" title="Permalink to this heading">#</a></h2>
 <p>Choosing the right number of clusters <span class="math notranslate nohighlight">\(k\)</span> is a central step in KMeans.<br />
 If <span class="math notranslate nohighlight">\(k\)</span> is too small, distinct groups may be forced together.<br />
 If <span class="math notranslate nohighlight">\(k\)</span> is too large, the algorithm may split natural groups unnecessarily.</p>
 <section id="elbow-plot">
-<h3>4.1 Elbow plot<a class="headerlink" href="#elbow-plot" title="Link to this heading">#</a></h3>
+<h3>4.1 Elbow plot<a class="headerlink" href="#elbow-plot" title="Permalink to this heading">#</a></h3>
 <p>KMeans optimizes the <strong>within-cluster sum of squares</strong> (WCSS), often denoted <span class="math notranslate nohighlight">\(W_k\)</span>:</p>
 <p><span class="math notranslate nohighlight">\(
 W_k = \sum_{j=1}^k \sum_{x_i \in S_j} \| x_i - c_j \|^2
@@ -1289,12 +1277,12 @@ beyond this point, adding clusters yields little gain.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/197ee9b894d973853830de6f9e075aa71190a61c9dbbfdbac70378904227c5b4.png" src="_images/197ee9b894d973853830de6f9e075aa71190a61c9dbbfdbac70378904227c5b4.png" />
+<img alt="_images/357a2d09376c83a4fd5611d2b85faffe44e1b41d977136d8c4a97eb7401d2368.png" src="_images/357a2d09376c83a4fd5611d2b85faffe44e1b41d977136d8c4a97eb7401d2368.png" />
 </div>
 </div>
 </section>
 <section id="silhouette-score">
-<h3>4.2 Silhouette score<a class="headerlink" href="#silhouette-score" title="Link to this heading">#</a></h3>
+<h3>4.2 Silhouette score<a class="headerlink" href="#silhouette-score" title="Permalink to this heading">#</a></h3>
 <p>Another way to decide <span class="math notranslate nohighlight">\(k\)</span> is the <strong>silhouette score</strong>, which measures how well each point fits within its cluster compared to others.</p>
 <p>For a point <span class="math notranslate nohighlight">\(i\)</span>:</p>
 <ol class="arabic simple">
@@ -1419,7 +1407,7 @@ s(i) = \frac{b(i) - a(i)}{\max \{ a(i), b(i) \}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f6f74c5443a9423b882a89dd452616293a50bb8d1308249b61c49e75e15e3df.png" src="_images/0f6f74c5443a9423b882a89dd452616293a50bb8d1308249b61c49e75e15e3df.png" />
+<img alt="_images/082c2e482234613e2ef3ea44b1e2e273ffaef2ff20e2bc24db539ba27d9a4388.png" src="_images/082c2e482234613e2ef3ea44b1e2e273ffaef2ff20e2bc24db539ba27d9a4388.png" />
 </div>
 </div>
 <div class="admonition-exercise-4 admonition">
@@ -1431,12 +1419,12 @@ s(i) = \frac{b(i) - a(i)}{\max \{ a(i), b(i) \}}
 </section>
 <hr class="docutils" />
 <section id="alternative-clustering-methods">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Alternative clustering methods</a><a class="headerlink" href="#alternative-clustering-methods" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Alternative clustering methods</a><a class="headerlink" href="#alternative-clustering-methods" title="Permalink to this heading">#</a></h2>
 <p>KMeans assumes clusters are roughly spherical and similar in size.<br />
 But real chemical or molecular data may not follow this pattern.<br />
 That is why it is useful to explore <strong>alternative clustering methods</strong> that can adapt to different cluster shapes.</p>
 <section id="agglomerative-ward">
-<h3>5.1 Agglomerative (Ward)<a class="headerlink" href="#agglomerative-ward" title="Link to this heading">#</a></h3>
+<h3>5.1 Agglomerative (Ward)<a class="headerlink" href="#agglomerative-ward" title="Permalink to this heading">#</a></h3>
 <p>Agglomerative clustering is a <strong>hierarchical method</strong>.<br />
 It does not start with predefined cluster centers. Instead, it begins by treating each point as its own cluster and then <strong>merges clusters step by step</strong> until only <span class="math notranslate nohighlight">\(k\)</span> remain. Here are the steps:</p>
 <ol class="arabic simple">
@@ -1470,7 +1458,7 @@ The <strong>Ward method</strong> merges the two clusters that cause the smallest
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/506d4bf90abcec5558cad66e35acce9e195219a2a85a45c1e8541d6a9a5da01f.png" src="_images/506d4bf90abcec5558cad66e35acce9e195219a2a85a45c1e8541d6a9a5da01f.png" />
+<img alt="_images/b510196c5d88543c9e2ed7ee4512161368219b4165b8c59ff96cea441c5894c8.png" src="_images/b510196c5d88543c9e2ed7ee4512161368219b4165b8c59ff96cea441c5894c8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ARI: 0.018 NMI: 0.075
 </pre></div>
 </div>
@@ -1478,7 +1466,7 @@ The <strong>Ward method</strong> merges the two clusters that cause the smallest
 </div>
 </section>
 <section id="dbscan">
-<h3>5.2 DBSCAN<a class="headerlink" href="#dbscan" title="Link to this heading">#</a></h3>
+<h3>5.2 DBSCAN<a class="headerlink" href="#dbscan" title="Permalink to this heading">#</a></h3>
 <p>Unlike KMeans or Agglomerative, <strong>DBSCAN</strong> (Density-Based Spatial Clustering of Applications with Noise) does not require <span class="math notranslate nohighlight">\(k\)</span> in advance.<br />
 Instead, it groups points based on density and labels sparse points as noise The key ideas are:</p>
 <ul class="simple">
@@ -1498,7 +1486,8 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-1,  0,  1,  2,  3,  4]), array([ 90, 154, 117, 161,  16,  37]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-1,  0,  1,  2,  3,  4], dtype=int64),
+ array([ 90, 154, 117, 161,  16,  37], dtype=int64))
 </pre></div>
 </div>
 </div>
@@ -1516,7 +1505,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d5f97df1dff9dcc80d09a083fe6f1386f4a6a4486b470c53cc01624ade03a06d.png" src="_images/d5f97df1dff9dcc80d09a083fe6f1386f4a6a4486b470c53cc01624ade03a06d.png" />
+<img alt="_images/d8049d395828f73fd32a8d2ebc64bdadfb1abb16c4e46ec9b9fff7dcea8c6d1a.png" src="_images/d8049d395828f73fd32a8d2ebc64bdadfb1abb16c4e46ec9b9fff7dcea8c6d1a.png" />
 </div>
 </div>
 <p>Tip: tune <code class="docutils literal notranslate"><span class="pre">eps</span></code> by scanning a small grid.</p>
@@ -1625,10 +1614,10 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 <p>Below are some examples for you to get a better idea on their difference.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -1844,7 +1833,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/b78875204aeb20cfa9a5999ad6b4a2f3f250e075f4d73c4ff5d0b52f1a392555.png" src="_images/b78875204aeb20cfa9a5999ad6b4a2f3f250e075f4d73c4ff5d0b52f1a392555.png" />
+<img alt="_images/e8b2693553b60935c9f7a5cf45ff225921e1fec3d6e508e89394c245a139d1d5.png" src="_images/e8b2693553b60935c9f7a5cf45ff225921e1fec3d6e508e89394c245a139d1d5.png" />
 </div>
 </div>
 <hr class="docutils" />
@@ -1852,29 +1841,29 @@ Instead, it groups points based on density and labels sparse points as noise The
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-clustering">clustering<a class="headerlink" href="#term-clustering" title="Link to this term">#</a></dt><dd><p>Group samples using only <span class="math notranslate nohighlight">\(X\)</span>, no labels during fit.</p>
+<dt id="term-clustering">clustering<a class="headerlink" href="#term-clustering" title="Permalink to this term">#</a></dt><dd><p>Group samples using only <span class="math notranslate nohighlight">\(X\)</span>, no labels during fit.</p>
 </dd>
-<dt id="term-KMeans">KMeans<a class="headerlink" href="#term-KMeans" title="Link to this term">#</a></dt><dd><p>A clustering algorithm that assigns points to k centroids, updating assignments and centroids to minimize within-cluster variance.</p>
+<dt id="term-KMeans">KMeans<a class="headerlink" href="#term-KMeans" title="Permalink to this term">#</a></dt><dd><p>A clustering algorithm that assigns points to k centroids, updating assignments and centroids to minimize within-cluster variance.</p>
 </dd>
-<dt id="term-Agglomerative-clustering">Agglomerative clustering<a class="headerlink" href="#term-Agglomerative-clustering" title="Link to this term">#</a></dt><dd><p>A hierarchical algorithm that starts with each point as its own cluster and merges clusters step by step until k remain.</p>
+<dt id="term-Agglomerative-clustering">Agglomerative clustering<a class="headerlink" href="#term-Agglomerative-clustering" title="Permalink to this term">#</a></dt><dd><p>A hierarchical algorithm that starts with each point as its own cluster and merges clusters step by step until k remain.</p>
 </dd>
-<dt id="term-DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise)<a class="headerlink" href="#term-DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise" title="Link to this term">#</a></dt><dd><p>A density-based clustering method that groups points when they have enough neighbors within a radius. Points that don’t belong to any dense region are labeled noise.</p>
+<dt id="term-DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise">DBSCAN (Density-Based Spatial Clustering of Applications with Noise)<a class="headerlink" href="#term-DBSCAN-Density-Based-Spatial-Clustering-of-Applications-with-Noise" title="Permalink to this term">#</a></dt><dd><p>A density-based clustering method that groups points when they have enough neighbors within a radius. Points that don’t belong to any dense region are labeled noise.</p>
 </dd>
-<dt id="term-elbow-method">elbow method<a class="headerlink" href="#term-elbow-method" title="Link to this term">#</a></dt><dd><p>A heuristic for selecting the number of clusters in KMeans by plotting inertia vs k. The “elbow” marks diminishing returns from adding more clusters.</p>
+<dt id="term-elbow-method">elbow method<a class="headerlink" href="#term-elbow-method" title="Permalink to this term">#</a></dt><dd><p>A heuristic for selecting the number of clusters in KMeans by plotting inertia vs k. The “elbow” marks diminishing returns from adding more clusters.</p>
 </dd>
-<dt id="term-silhouette-score">silhouette score<a class="headerlink" href="#term-silhouette-score" title="Link to this term">#</a></dt><dd><p>A metric for clustering quality. For each point, compares average distance to its own cluster vs the nearest other cluster. Ranges from -1 (bad) to +1 (good).</p>
+<dt id="term-silhouette-score">silhouette score<a class="headerlink" href="#term-silhouette-score" title="Permalink to this term">#</a></dt><dd><p>A metric for clustering quality. For each point, compares average distance to its own cluster vs the nearest other cluster. Ranges from -1 (bad) to +1 (good).</p>
 </dd>
-<dt id="term-Tanimoto-Jaccard-similarity">Tanimoto / Jaccard similarity<a class="headerlink" href="#term-Tanimoto-Jaccard-similarity" title="Link to this term">#</a></dt><dd><p>For binary fingerprints, both measure overlap divided by union. Often used to compare molecular fingerprints in chemoinformatics.</p>
+<dt id="term-Tanimoto-Jaccard-similarity">Tanimoto / Jaccard similarity<a class="headerlink" href="#term-Tanimoto-Jaccard-similarity" title="Permalink to this term">#</a></dt><dd><p>For binary fingerprints, both measure overlap divided by union. Often used to compare molecular fingerprints in chemoinformatics.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <section id="q1-t-sne-on-10-descriptors">
-<h3>Q1. t-SNE on 10 descriptors<a class="headerlink" href="#q1-t-sne-on-10-descriptors" title="Link to this heading">#</a></h3>
+<h3>Q1. t-SNE on 10 descriptors<a class="headerlink" href="#q1-t-sne-on-10-descriptors" title="Permalink to this heading">#</a></h3>
 <p>Rebuild features using 10 descriptors, embed with t-SNE, plot in 2D.</p>
 <p>Hint: copy and use function <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">calc_descriptors10(smiles:</span> <span class="pre">str)</span></code> from Lecture 11 if you forget how to define the 10 descriptor.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
@@ -1882,7 +1871,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </section>
 <section id="q2-elbow-on-kmeans">
-<h3>Q2. Elbow on KMeans<a class="headerlink" href="#q2-elbow-on-kmeans" title="Link to this heading">#</a></h3>
+<h3>Q2. Elbow on KMeans<a class="headerlink" href="#q2-elbow-on-kmeans" title="Permalink to this heading">#</a></h3>
 <p>Choose a reasonable k by inertia.</p>
 <ol class="arabic simple">
 <li><p>Fit <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> for k in {2..9}.</p></li>
@@ -1894,7 +1883,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </section>
 <section id="q3-silhouette-on-kmeans">
-<h3>Q3. Silhouette on KMeans<a class="headerlink" href="#q3-silhouette-on-kmeans" title="Link to this heading">#</a></h3>
+<h3>Q3. Silhouette on KMeans<a class="headerlink" href="#q3-silhouette-on-kmeans" title="Permalink to this heading">#</a></h3>
 <p>Choose k by separation vs compactness.</p>
 <ol class="arabic simple">
 <li><p>Fit <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> for k in {2..9}.</p></li>
@@ -1906,7 +1895,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </section>
 <section id="q4-agglomerative-sweep-with-plots">
-<h3>Q4. Agglomerative sweep with plots<a class="headerlink" href="#q4-agglomerative-sweep-with-plots" title="Link to this heading">#</a></h3>
+<h3>Q4. Agglomerative sweep with plots<a class="headerlink" href="#q4-agglomerative-sweep-with-plots" title="Permalink to this heading">#</a></h3>
 <p>Compare another clustering model and visualize the chosen solution.</p>
 <ol class="arabic simple">
 <li><p>For k in {2..9}, fit <code class="docutils literal notranslate"><span class="pre">AgglomerativeClustering(linkage=&quot;ward&quot;)</span></code>.</p></li>
@@ -1920,7 +1909,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </section>
 <hr class="docutils" />
 <section id="solutions">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
 <p><strong>Q1</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1980,7 +1969,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12b0d517156dbf5f576eac3fe1a2ae4456439ff4b0e79989ac7bb209d73e9c82.png" src="_images/12b0d517156dbf5f576eac3fe1a2ae4456439ff4b0e79989ac7bb209d73e9c82.png" />
+<img alt="_images/9ac667d5f8a40d33d4d3fc1481789d96c866bb663ac0c960e32e20c0918e6aeb.png" src="_images/9ac667d5f8a40d33d4d3fc1481789d96c866bb663ac0c960e32e20c0918e6aeb.png" />
 </div>
 </div>
 <p><strong>Q2</strong></p>
@@ -2006,7 +1995,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/800bca23ec64db4983fa6fc0dc0676d8e088c4cb0bf5cb3ea939cdd94ab18fb1.png" src="_images/800bca23ec64db4983fa6fc0dc0676d8e088c4cb0bf5cb3ea939cdd94ab18fb1.png" />
+<img alt="_images/bcd45c5386a89b7d40b5fca2d69ce968c63db4da0df26188c202393c849d00d8.png" src="_images/bcd45c5386a89b7d40b5fca2d69ce968c63db4da0df26188c202393c849d00d8.png" />
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2097,7 +2086,7 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/388878500895fe21dbe481d21871cfe8b3551527b70d627834708c04eb764011.png" src="_images/388878500895fe21dbe481d21871cfe8b3551527b70d627834708c04eb764011.png" />
+<img alt="_images/77d9a6e062bb7b0ec7683fac6a090965646dfb53652237c10ced13f5e7411ca9.png" src="_images/77d9a6e062bb7b0ec7683fac6a090965646dfb53652237c10ced13f5e7411ca9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k by silhouette: 2
 </pre></div>
 </div>
@@ -2204,11 +2193,11 @@ Instead, it groups points based on density and labels sparse points as noise The
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12812b3d99b0bfc4cd950968c5be852ee10abb916debd6a2a362f5c08ef9805d.png" src="_images/12812b3d99b0bfc4cd950968c5be852ee10abb916debd6a2a362f5c08ef9805d.png" />
+<img alt="_images/cff8048843cf4044d91377203af023a00cfea19be5f176a0309bec81399913c0.png" src="_images/cff8048843cf4044d91377203af023a00cfea19be5f176a0309bec81399913c0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best k for Agglomerative by silhouette: 2
 </pre></div>
 </div>
-<img alt="_images/b7a458e21328ffc2b493739c6f6c18becb3208c35adf48e1ed090877fcec80fc.png" src="_images/b7a458e21328ffc2b493739c6f6c18becb3208c35adf48e1ed090877fcec80fc.png" />
+<img alt="_images/35ceb64ce355634d555e49d56e4344b36c893633ae6abe2fef60959be619cc68.png" src="_images/35ceb64ce355634d555e49d56e4344b36c893633ae6abe2fef60959be619cc68.png" />
 </div>
 </div>
 </section>
@@ -2241,7 +2230,7 @@ Instead, it groups points based on density and labels sparse points as noise The
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2253,6 +2242,15 @@ Instead, it groups points based on density and labels sparse points as noise The
         <p class="prev-next-title">Lecture 11 - Dimension Reduction for Data Visualization</p>
       </div>
     </a>
+    <a class="right-next"
+       href="lecture-13.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 13 - De Novo Molecule Generation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2261,7 +2259,6 @@ Instead, it groups points based on density and labels sparse points as noise The
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2321,7 +2318,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -2345,8 +2342,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

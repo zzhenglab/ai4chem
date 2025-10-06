@@ -35,7 +35,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Oct 9** – De novo molecule generation   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 14 & Oct 16** - Chemical reaction optimization
 - **Oct 21** – No Class
-- **Oct 23** – Contrastive learning
+- **Oct 23** – Reinforcement learning
 - **Oct 28 & 30** – Computer vision techniques   
 - **Nov 4 & 6** – Transformers & large language models 
 - **Nov 11 & 13** – Multimodal models and literature data mining
