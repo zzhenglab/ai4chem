@@ -25,7 +25,7 @@ kernelspec:
 - Build a simple **multiobjective active learning** loop on a materials.
 
 [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
----
+
 
 ## 0. Setup
 
@@ -1568,11 +1568,11 @@ Write Python code for Google Colab that performs multi-objective Bayesian optimi
 - Provide a main function:
   python
   def suggest_experiments(variables, objectives, objective_weights, run_conditions, run_results, batch_size=3, seed=123, save_csv=False, csv_path=None):
-      """
-      Returns:
-        suggestions_df: DataFrame with the next set of suggested experiments (var_ columns only)
-        df_space: Updated master DataFrame with iteration values and any new writes
-      """
+      
+      #Returns:
+        #suggestions_df: DataFrame with the next set of suggested experiments (var_ columns only)
+        #df_space: Updated master DataFrame with iteration values and any new writes
+      #
 
 - Behavior:
   - Build or rebuild `df_space` from `variables`.
@@ -1852,11 +1852,11 @@ def _fit_gp_models(
     return models
 
 def _predict_objectives(models: List[GaussianProcessRegressor], X: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    Returns:
-      means: shape (n_points, n_obj)
-      stds:  shape (n_points, n_obj)
-    """
+    
+    #Returns:
+      #means: shape (n_points, n_obj)
+      #stds:  shape (n_points, n_obj)
+    
     n_points = X.shape[0]
     n_obj = len(models)
     means = np.full((n_points, n_obj), np.nan, dtype=float)
@@ -1905,11 +1905,11 @@ def suggest_experiments(
     save_csv: bool = False,
     csv_path: str = None
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """
-    Returns:
-      suggestions_df: DataFrame of suggested experiments (var_ columns only)
-      df_space: full updated DataFrame
-    """
+    #
+    #Returns:
+      #suggestions_df: DataFrame of suggested experiments (var_ columns only)
+      #df_space: full updated DataFrame
+    #
     rng = np.random.default_rng(seed)
     _validate_objectives_and_weights(objectives, objective_weights)
 
