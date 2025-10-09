@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,54 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"cd13a72c17fe4a32b49ff3e03ceeeadd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ecbe4b134c2146ea89e76bf81ff46e7c": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_15b241cb73a24979b60502313e82ab2f"], "layout": "IPY_MODEL_cd13a72c17fe4a32b49ff3e03ceeeadd", "tabbable": null, "tooltip": null}}, "53787820d7824085ac495c6c642073ac": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "990800a8523d4cfdb8c99b326e6506b8": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "0535183d97a0472d82a0c92017f9174a": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_53787820d7824085ac495c6c642073ac", "placeholder": "\u200b", "style": "IPY_MODEL_990800a8523d4cfdb8c99b326e6506b8", "tabbable": null, "tooltip": null, "value": "<h2>Multi-objective Bayesian Optimization</h2>"}}, "59aee5c82ebb4e038ac187b8ac48d49e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "871d75bb084c4bec86a60df3ddf2a899": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "f433877750fe40a4a32763c2d93d174b": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_59aee5c82ebb4e038ac187b8ac48d49e", "placeholder": "\u200b", "style": "IPY_MODEL_871d75bb084c4bec86a60df3ddf2a899", "tabbable": null, "tooltip": null, "value": "Choose a mode to begin"}}, "47c0dfce35034ec698293f78397e2fa1": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7a61b84c767a4b9c9bdb3295956a65cf": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "e20cc07ed8444b899b1be94e3fec5abc": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Establish New Experiment", "disabled": false, "icon": "plus", "layout": "IPY_MODEL_47c0dfce35034ec698293f78397e2fa1", "style": "IPY_MODEL_7a61b84c767a4b9c9bdb3295956a65cf", "tabbable": null, "tooltip": null}}, "5651df2d87624c62969df43109b7d38e": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b764a2e24f9840c5bf7c110e7e03f169": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "62e776a3ca7044f08c67b5e1708dd6d1": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Start from Existing Experiment", "disabled": false, "icon": "upload", "layout": "IPY_MODEL_5651df2d87624c62969df43109b7d38e", "style": "IPY_MODEL_b764a2e24f9840c5bf7c110e7e03f169", "tabbable": null, "tooltip": null}}, "4546358ba51e4c03a1306bd4836dd92c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d4d35f186be543eeb850f7e05b6d9093": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_e20cc07ed8444b899b1be94e3fec5abc", "IPY_MODEL_62e776a3ca7044f08c67b5e1708dd6d1"], "layout": "IPY_MODEL_4546358ba51e4c03a1306bd4836dd92c", "tabbable": null, "tooltip": null}}, "f18462b8ca844f65909627355e1d7606": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "15b241cb73a24979b60502313e82ab2f": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_0535183d97a0472d82a0c92017f9174a", "IPY_MODEL_f433877750fe40a4a32763c2d93d174b", "IPY_MODEL_d4d35f186be543eeb850f7e05b6d9093"], "layout": "IPY_MODEL_f18462b8ca844f65909627355e1d7606", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"2f64579a97ac4fb6937f0d3bb00d9c97": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7050781c98a94c7bb2bd9d238176b09e": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_f33a4adf5fc34cd0bb0a2e9e4b59cd56"], "layout": "IPY_MODEL_2f64579a97ac4fb6937f0d3bb00d9c97", "tabbable": null, "tooltip": null}}, "e46bdae345d54f3090619bf176b41627": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "5c65157ce14046ff8c52c8b9d13800ec": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "d0b714c909b5464885880d3dfb38bb96": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_e46bdae345d54f3090619bf176b41627", "placeholder": "\u200b", "style": "IPY_MODEL_5c65157ce14046ff8c52c8b9d13800ec", "tabbable": null, "tooltip": null, "value": "<h2>Multi-objective Bayesian Optimization</h2>"}}, "6de05d2982b04916b764814867cec4e4": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "63cf6e988efc49f2bcb7a7523eab9436": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "46240b8678bb4fe6aa7ff20654d8a2d4": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_6de05d2982b04916b764814867cec4e4", "placeholder": "\u200b", "style": "IPY_MODEL_63cf6e988efc49f2bcb7a7523eab9436", "tabbable": null, "tooltip": null, "value": "Choose a mode to begin"}}, "4a5cb9a57e2b46b2ac92582912364e58": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "31145af0126c451f9ef1ae62d215e4be": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "5eeb6ecece934ddb8208cc9a50f25f80": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "primary", "description": "Establish New Experiment", "disabled": false, "icon": "plus", "layout": "IPY_MODEL_4a5cb9a57e2b46b2ac92582912364e58", "style": "IPY_MODEL_31145af0126c451f9ef1ae62d215e4be", "tabbable": null, "tooltip": null}}, "c2cdae6241b145dfaed34fc94e11d365": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "1ebd88ab21444ece8fab6dc13b4d7ed0": {"model_name": "ButtonStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "button_color": null, "font_family": null, "font_size": null, "font_style": null, "font_variant": null, "font_weight": null, "text_color": null, "text_decoration": null}}, "354534d0c68a4f0da164a705f828baee": {"model_name": "ButtonModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ButtonModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ButtonView", "button_style": "", "description": "Start from Existing Experiment", "disabled": false, "icon": "upload", "layout": "IPY_MODEL_c2cdae6241b145dfaed34fc94e11d365", "style": "IPY_MODEL_1ebd88ab21444ece8fab6dc13b4d7ed0", "tabbable": null, "tooltip": null}}, "b4c4b251440f46088574feee641a1af7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "b68f872a86e44220b4a0c461563b4c84": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_5eeb6ecece934ddb8208cc9a50f25f80", "IPY_MODEL_354534d0c68a4f0da164a705f828baee"], "layout": "IPY_MODEL_b4c4b251440f46088574feee641a1af7", "tabbable": null, "tooltip": null}}, "e7a0602c07254107b559903b86722feb": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f33a4adf5fc34cd0bb0a2e9e4b59cd56": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_d0b714c909b5464885880d3dfb38bb96", "IPY_MODEL_46240b8678bb4fe6aa7ff20654d8a2d4", "IPY_MODEL_b68f872a86e44220b4a0c461563b4c84"], "layout": "IPY_MODEL_e7a0602c07254107b559903b86722feb", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-15';</script>
@@ -76,28 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -119,12 +112,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,6 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -158,7 +163,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,6 +198,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
 </ul>
 
     </div>
@@ -197,7 +214,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -206,14 +223,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -338,10 +355,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -349,14 +366,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -410,10 +427,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-15-multi-objective-bayesian-optimization">
-<h1>Lecture 15 - Multi-objective Bayesian Optimization<a class="headerlink" href="#lecture-15-multi-objective-bayesian-optimization" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 15 - Multi-objective Bayesian Optimization<a class="headerlink" href="#lecture-15-multi-objective-bayesian-optimization" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -430,7 +447,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Connect single objective Bayesian Optimization to multiobjective problems.</p></li>
 <li><p>Define Pareto dominance, Pareto front, scalarization, hypervolume, and expected hypervolume improvement.</p></li>
@@ -439,12 +456,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 0.1 Imports</span>
@@ -491,7 +508,7 @@ document.write(`
 </div>
 </section>
 <section id="what-is-multiobjective-optimization">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. What is multiobjective optimization</a><a class="headerlink" href="#what-is-multiobjective-optimization" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. What is multiobjective optimization</a><a class="headerlink" href="#what-is-multiobjective-optimization" title="Link to this heading">#</a></h2>
 <p>In previous lecture, we used a <strong>surrogate model</strong> to represent an expensive experiment, then selected the next experiment using an <strong>acquisition function</strong> like Expected Improvement to iteratively find the optimized yield by tuning reaction parameter such as temperature.</p>
 <p>We learned that we can:</p>
 <ol class="arabic simple">
@@ -560,7 +577,7 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f7e3fdd716d66fd683287a4958a3f5b697cc0ec651538d217df1134c37507c78.png" src="_images/f7e3fdd716d66fd683287a4958a3f5b697cc0ec651538d217df1134c37507c78.png" />
+<img alt="_images/6bbd0713b34297033b11f84ee68f4331e9bdb9464eee1cd7fee345c72a33ec4b.png" src="_images/6bbd0713b34297033b11f84ee68f4331e9bdb9464eee1cd7fee345c72a33ec4b.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -570,7 +587,7 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </section>
 <hr class="docutils" />
 <section id="load-the-mof-toy-dataset">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Load the MOF toy dataset</a><a class="headerlink" href="#load-the-mof-toy-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Load the MOF toy dataset</a><a class="headerlink" href="#load-the-mof-toy-dataset" title="Link to this heading">#</a></h2>
 <p>We will use the provided full factorial style synthetic dataset that mimics MOF synthesis outcomes across temperature, time, concentration, solvent, and linker choice. The file includes yield, purity, and reproducibility.</p>
 <p>We will use a synthetic MOF dataset that records MOF synthesis outcomes across temperature, time, concentration, solvent, and linker choice. The file includes yield, purity, and reproducibility:</p>
 <ul class="simple">
@@ -752,10 +769,10 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 <li><p>organic linker (10 choices), such as <code class="docutils literal notranslate"><span class="pre">Fumaric</span> <span class="pre">acid</span></code>, <code class="docutils literal notranslate"><span class="pre">Trimesic</span> <span class="pre">acid</span></code>, and <code class="docutils literal notranslate"><span class="pre">Benzimidazole</span></code>.</p></li>
 </ol>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># we use full set for now</span>
@@ -840,10 +857,10 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># How many linkers and a quick count</span>
@@ -875,10 +892,10 @@ $<span class="math notranslate nohighlight">\({\bf f}(x) = \big(f_1(x), f_2(x), 
 </section>
 <hr class="docutils" />
 <section id="feature-engineering-for-multiobjective-modeling">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Feature engineering for multiobjective modeling</a><a class="headerlink" href="#feature-engineering-for-multiobjective-modeling" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Feature engineering for multiobjective modeling</a><a class="headerlink" href="#feature-engineering-for-multiobjective-modeling" title="Link to this heading">#</a></h2>
 <p>We will build a light feature set using both synthesis conditions and molecular structure information. This compact design provides chemical and process context without relying on heavy cheminformatics toolkits.</p>
 <section id="minimal-numeric-features">
-<h3>3.1 Minimal numeric features<a class="headerlink" href="#minimal-numeric-features" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Minimal numeric features<a class="headerlink" href="#minimal-numeric-features" title="Link to this heading">#</a></h3>
 <p>We begin with numeric synthesis parameters that directly influence material outcomes:
 <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">time_h</span></code>, <code class="docutils literal notranslate"><span class="pre">concentration_M</span></code>, and <code class="docutils literal notranslate"><span class="pre">solvent_DMF</span></code>.
 These are copied into a numeric feature frame:</p>
@@ -1000,7 +1017,7 @@ These are copied into a numeric feature frame:</p>
 </div>
 </section>
 <section id="one-hot-encoding-for-smiles">
-<h3>3.2 One-hot encoding for SMILES<a class="headerlink" href="#one-hot-encoding-for-smiles" title="Permalink to this heading">#</a></h3>
+<h3>3.2 One-hot encoding for SMILES<a class="headerlink" href="#one-hot-encoding-for-smiles" title="Link to this heading">#</a></h3>
 <p>The SMILES column lists discrete molecular structures.
 To make this information usable by machine learning models, we convert it into a numeric form through <strong>one-hot encoding</strong>.</p>
 <p>One-hot encoding creates a binary vector for each category:</p>
@@ -1130,7 +1147,7 @@ To make this information usable by machine learning models, we convert it into a
 </div>
 </section>
 <section id="targets-for-multiobjective-learning">
-<h3>3.3 Targets for multiobjective learning<a class="headerlink" href="#targets-for-multiobjective-learning" title="Permalink to this heading">#</a></h3>
+<h3>3.3 Targets for multiobjective learning<a class="headerlink" href="#targets-for-multiobjective-learning" title="Link to this heading">#</a></h3>
 <p>We will form a 3 objective vector:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f_1\)</span>: <code class="docutils literal notranslate"><span class="pre">yield</span></code> to maximize.</p></li>
@@ -1156,7 +1173,7 @@ To make this information usable by machine learning models, we convert it into a
        ...,
        [0.19, 0.75, 0.25],
        [0.33, 0.68, 1.  ],
-       [0.28, 0.48, 0.5 ]])
+       [0.28, 0.48, 0.5 ]], shape=(20000, 3))
 </pre></div>
 </div>
 </div>
@@ -1165,7 +1182,7 @@ To make this information usable by machine learning models, we convert it into a
 </section>
 <hr class="docutils" />
 <section id="pareto-utilities-and-hypervolume-in-2d">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Pareto utilities and hypervolume in 2D</a><a class="headerlink" href="#pareto-utilities-and-hypervolume-in-2d" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Pareto utilities and hypervolume in 2D</a><a class="headerlink" href="#pareto-utilities-and-hypervolume-in-2d" title="Link to this heading">#</a></h2>
 <p>This section builds intuition for multiobjective comparison using two outcomes at a time before returning to three.</p>
 <p>We use <span class="math notranslate nohighlight">\(f_1=\)</span> = yield and <span class="math notranslate nohighlight">\(f_2=\)</span>  = purity. The goal is to identify the subset of experiments that are not outperformed by any other experiment across both objectives. These are the candidates on the Pareto front. Working in 2D makes it easy to see which points survive and how much area of the objective space they dominate relative to a chosen reference.</p>
 <div class="admonition-note admonition">
@@ -1173,10 +1190,10 @@ To make this information usable by machine learning models, we convert it into a
 <p>Note that in reality, we usually start with only a couple of experiments. So we will show the case for both <strong>50</strong> experiment and the full dataset (<strong>20000</strong> experiments).</p>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nondominated_mask</span><span class="p">(</span><span class="n">F</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -1222,17 +1239,17 @@ To make this information usable by machine learning models, we convert it into a
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/7ef0384f99728faf6f2ddab0e2e608c6e2bce11f879fe5ae4e08c54b16aa626a.png" src="_images/7ef0384f99728faf6f2ddab0e2e608c6e2bce11f879fe5ae4e08c54b16aa626a.png" />
-<img alt="_images/d5751662257aa36d88ad8486c7755e62b29b47ab2bf95b21c017ace098198ba1.png" src="_images/d5751662257aa36d88ad8486c7755e62b29b47ab2bf95b21c017ace098198ba1.png" />
-<img alt="_images/e5ab18456ec85b98186d25babf84e73c54b8b2a22ddcbdabe8673e23630640f0.png" src="_images/e5ab18456ec85b98186d25babf84e73c54b8b2a22ddcbdabe8673e23630640f0.png" />
+<img alt="_images/b7cd74337bbf958440f6ff9e1d5a5951ec2355b64cd6186471914908a1de417e.png" src="_images/b7cd74337bbf958440f6ff9e1d5a5951ec2355b64cd6186471914908a1de417e.png" />
+<img alt="_images/77fb375bb33a0f35522f7c42c78e15d8b94596c53f0cc4b8c1e1f9a8c9eecd0b.png" src="_images/77fb375bb33a0f35522f7c42c78e15d8b94596c53f0cc4b8c1e1f9a8c9eecd0b.png" />
+<img alt="_images/2bf608b2b18464e7dcb9f696708ec5d7304718289aaba26d762bf55b5f5a789d.png" src="_images/2bf608b2b18464e7dcb9f696708ec5d7304718289aaba26d762bf55b5f5a789d.png" />
 </div>
 </div>
 <p>Now let’s look at the full dataset. Again, note that in reality you will not be able to see this “final answer.”</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full set: pairwise plots</span>
@@ -1252,9 +1269,9 @@ To make this information usable by machine learning models, we convert it into a
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/6efda840a40ffac172eb4d48f8c82aa611a7e530e80d03cebf935da45799c711.png" src="_images/6efda840a40ffac172eb4d48f8c82aa611a7e530e80d03cebf935da45799c711.png" />
-<img alt="_images/c1acafd0e2cf797ec9ce2265eaeb8f5c77c2428aa2ccd741f01c7030f89204ac.png" src="_images/c1acafd0e2cf797ec9ce2265eaeb8f5c77c2428aa2ccd741f01c7030f89204ac.png" />
-<img alt="_images/af59906c356ee1c573ec58d7a29f7759772ce274198bdbba8963965f7dbf5eef.png" src="_images/af59906c356ee1c573ec58d7a29f7759772ce274198bdbba8963965f7dbf5eef.png" />
+<img alt="_images/84a087655cdae3e4ac37381ceb4d783ad9d027225fb1c7638e300c9b325a35de.png" src="_images/84a087655cdae3e4ac37381ceb4d783ad9d027225fb1c7638e300c9b325a35de.png" />
+<img alt="_images/b3216ca6e1bd93bd643598e7ead498b0ea7632d89c07fdf4ab028a636c66754e.png" src="_images/b3216ca6e1bd93bd643598e7ead498b0ea7632d89c07fdf4ab028a636c66754e.png" />
+<img alt="_images/274a70c032c60992c1f37428b038ae2bf8d36e3db7ee04af15796e5809a13127.png" src="_images/274a70c032c60992c1f37428b038ae2bf8d36e3db7ee04af15796e5809a13127.png" />
 </div>
 </div>
 <p>Next, we talk about an important idea, <strong>hypervolume (HV)</strong> which is the volume of the dominated region bounded by a reference point <span class="math notranslate nohighlight">\(r\)</span>. It is a way to measure how much of the “good” region of objective space is covered by your Pareto front. In two objectives (for example, <code class="docutils literal notranslate"><span class="pre">yield</span></code> and <code class="docutils literal notranslate"><span class="pre">purity</span></code>), each experiment corresponds to a point. The Pareto front marks those points that are not outperformed by any other in both metrics. The hypervolume is then the total area (or volume in higher dimensions) between that front and a chosen <strong>reference point</strong>.</p>
@@ -1265,10 +1282,10 @@ To make this information usable by machine learning models, we convert it into a
 <p>The reference point defines the lower bound of the region you measure against. It must be <strong>worse than all observed points</strong> in every objective because hypervolume represents improvement relative to that point. For yield and purity, which are maximized, this means picking a reference near the bottom left corner of the plot.</p>
 <p>If all your data are normalized between 0 and 1, the natural choice is <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> — representing the absolute worst case (zero yield, zero purity). You can also use <code class="docutils literal notranslate"><span class="pre">(0.2,</span> <span class="pre">0.2)</span></code> or another slightly higher reference if you want to focus only on improvements beyond a minimum acceptable performance threshold. That reference would mean: “We only care about the area above 20% yield and 20% purity.”</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">staircase_polygon_2d</span><span class="p">(</span><span class="n">front_2d</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">ref</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)):</span>
@@ -1339,17 +1356,17 @@ To make this information usable by machine learning models, we convert it into a
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/578c059c5f3c2888dc0209694ef08b7e875e2b55b1e3ef41c4973b46a315c64d.png" src="_images/578c059c5f3c2888dc0209694ef08b7e875e2b55b1e3ef41c4973b46a315c64d.png" />
-<img alt="_images/19ad0b6ce633461cd20e954f47aeefea56b7c1dfc71c29a8d69b110acf52555c.png" src="_images/19ad0b6ce633461cd20e954f47aeefea56b7c1dfc71c29a8d69b110acf52555c.png" />
+<img alt="_images/fa5c218b997591e96d61f1b4d16492e9116becd8946d80af79e39f2cfac1a750.png" src="_images/fa5c218b997591e96d61f1b4d16492e9116becd8946d80af79e39f2cfac1a750.png" />
+<img alt="_images/1449bb24a982d78625c93bc098e86aed9bf934a89876a06f29796031f72e04aa.png" src="_images/1449bb24a982d78625c93bc098e86aed9bf934a89876a06f29796031f72e04aa.png" />
 </div>
 </div>
 <p>Let’s assume we run 3 additional experiments and we are so lucky that they achieve strong outcomes around high yield and purity (<code class="docutils literal notranslate"><span class="pre">[0.90,</span> <span class="pre">0.80,</span> <span class="pre">0.70]</span></code>, <code class="docutils literal notranslate"><span class="pre">[0.92,</span> <span class="pre">0.78,</span> <span class="pre">0.75]</span></code>, and <code class="docutils literal notranslate"> <span class="pre">[0.88,</span> <span class="pre">0.82,</span> <span class="pre">0.65]</span></code>).</p>
 <p>We can take a look at the change to the hypervolume:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Simulate three new high-performing experiments and append to the 50-set</span>
@@ -1412,16 +1429,16 @@ To make this information usable by machine learning models, we convert it into a
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HV (old 50) = 0.704700 | HV (updated 53) = 0.793700 | ΔHV = 0.089000
 </pre></div>
 </div>
-<img alt="_images/d754324665f53d02d2d5a91c2146b5a453736a03f3337fef908ebb654700073e.png" src="_images/d754324665f53d02d2d5a91c2146b5a453736a03f3337fef908ebb654700073e.png" />
+<img alt="_images/ef346b8720bccd490ef694cac7188abf7f90bb26565175aaae3447c9965b260a.png" src="_images/ef346b8720bccd490ef694cac7188abf7f90bb26565175aaae3447c9965b260a.png" />
 </div>
 </div>
 <p>From above plot, we see that the <strong>hypervolume increase</strong> equals the additional “good” region covered by the improved front. Using the same reference point keeps comparisons fair. In synthesis terms, this reflects the <em>net expansion of acceptable performance space when higher yield and purity conditions are discovered</em>.</p>
 <p>We can compare with the full dataset, and this give you an idea of the maxiumn hypervolume you can achieve. But, again, keep in mind that the entire space / synthesis-yield relationship is usually a blackbox function and you won’t know the max hypervolume.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full set Pareto front and 2D plot</span>
@@ -1465,8 +1482,8 @@ To make this information usable by machine learning models, we convert it into a
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/fae949979d834f3e52db434b1d0b32db6086fdf60b0c5a0c6ebd67f5fdaa5eb0.png" src="_images/fae949979d834f3e52db434b1d0b32db6086fdf60b0c5a0c6ebd67f5fdaa5eb0.png" />
-<img alt="_images/832d261b368646fa4fc8ad61c49d8060cc8d5e4034b6a8cf9dabc860491b517e.png" src="_images/832d261b368646fa4fc8ad61c49d8060cc8d5e4034b6a8cf9dabc860491b517e.png" />
+<img alt="_images/213f31e2f008279da5fc42374ac7c7514cba42c1863e9947c22a78d2c93c3e5e.png" src="_images/213f31e2f008279da5fc42374ac7c7514cba42c1863e9947c22a78d2c93c3e5e.png" />
+<img alt="_images/3eef64cbe49403845187ed7c8c020e684fb3e66e6cfed91a8759cfbf9d3adb93.png" src="_images/3eef64cbe49403845187ed7c8c020e684fb3e66e6cfed91a8759cfbf9d3adb93.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hypervolume wrt ref (0.0, 0.0): 50 = 0.704700  |  full = 0.927000
 </pre></div>
 </div>
@@ -1475,7 +1492,7 @@ To make this information usable by machine learning models, we convert it into a
 </section>
 <hr class="docutils" />
 <section id="scalarization-and-surrogate-models-for-each-objective">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Scalarization and surrogate models for each objective</a><a class="headerlink" href="#scalarization-and-surrogate-models-for-each-objective" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Scalarization and surrogate models for each objective</a><a class="headerlink" href="#scalarization-and-surrogate-models-for-each-objective" title="Link to this heading">#</a></h2>
 <p>A common way to turn multiple objectives into one is <strong>weighted sum</strong>:
 $<span class="math notranslate nohighlight">\(
 s_w(x) = \sum_{j=1}^m w_j \,\tilde f_j(x)
@@ -1486,7 +1503,7 @@ with \)</span>w_j \ge 0<span class="math notranslate nohighlight">\( and \)</spa
 </div></blockquote>
 <p>We now assume we only have a 50 point subset in hand. All modeling, selection, and validation in this section uses only <code class="docutils literal notranslate"><span class="pre">X50</span></code> and <code class="docutils literal notranslate"><span class="pre">Y50</span></code>. The idea is simple: fit one surrogate per objective on the training split of these 50 points, evaluate on the held out split, and then use a scalarized acquisition to propose new experiments from the same 50 point design space.</p>
 <section id="train-test-split-and-scaling">
-<h3>5.1 Train test split and scaling<a class="headerlink" href="#train-test-split-and-scaling" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Train test split and scaling<a class="headerlink" href="#train-test-split-and-scaling" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y50</span> <span class="o">=</span> <span class="n">Y</span><span class="p">[</span><span class="n">idx_50</span><span class="p">]</span>
@@ -1516,7 +1533,7 @@ with \)</span>w_j \ge 0<span class="math notranslate nohighlight">\( and \)</spa
 </div>
 </section>
 <section id="three-gps-with-matern-on-the-50-point-split">
-<h3>5.2 Three GPs with Matern on the 50 point split<a class="headerlink" href="#three-gps-with-matern-on-the-50-point-split" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Three GPs with Matern on the 50 point split<a class="headerlink" href="#three-gps-with-matern-on-the-50-point-split" title="Link to this heading">#</a></h3>
 <p>Here we fit one GP per objective on <code class="docutils literal notranslate"><span class="pre">Xtr,</span> <span class="pre">Ytr</span></code>. We use a Matern kernel with a small white noise term for numerical stability. Scores are printed on <code class="docutils literal notranslate"><span class="pre">Xte,</span> <span class="pre">Yte</span></code>. GPs are flexible and give calibrated uncertainties for acquisition functions. On larger feature sets they can be slow, which is why we also show Random Forests.</p>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
@@ -1543,16 +1560,16 @@ with \)</span>w_j \ge 0<span class="math notranslate nohighlight">\( and \)</spa
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yield R2: -0.8404770597465008 MAE: 0.18228080760227366
-purity R2: 0.32667925593801894 MAE: 0.08269840210875393
-reproducibility R2: 0.02093233007473716 MAE: 0.13847277467947322
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yield R2: -0.8404770597465006 MAE: 0.18228080760227366
+purity R2: 0.32667907075696856 MAE: 0.08269839267071963
+reproducibility R2: 0.020932330074736827 MAE: 0.13847277467947322
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="rf-trio-trained-only-on-the-50-point-split">
-<h3>5.3 RF trio trained only on the 50 point split<a class="headerlink" href="#rf-trio-trained-only-on-the-50-point-split" title="Permalink to this heading">#</a></h3>
+<h3>5.3 RF trio trained only on the 50 point split<a class="headerlink" href="#rf-trio-trained-only-on-the-50-point-split" title="Link to this heading">#</a></h3>
 <p>Here we train three RF models on <code class="docutils literal notranslate"><span class="pre">Xtr,</span> <span class="pre">Ytr</span></code> and score on <code class="docutils literal notranslate"><span class="pre">Xte,</span> <span class="pre">Yte</span></code>. RFs scale well and give a simple uncertainty proxy from the spread across trees, which we will use for acquisition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1577,9 +1594,9 @@ reproducibility R2: 0.02093233007473716 MAE: 0.13847277467947322
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yield R2: -0.22743401927091855 MAE: 0.18593635837502026
-purity R2: 0.43811753253133323 MAE: 0.07596276151139307
-reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yield R2: -0.22743401927091833 MAE: 0.18593635837502026
+purity R2: 0.438117532531333 MAE: 0.0759627615113931
+reproducibility R2: -0.10448172092762809 MAE: 0.13657568665961642
 </pre></div>
 </div>
 </div>
@@ -1593,7 +1610,7 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </section>
 <hr class="docutils" />
 <section id="acquisition-for-multiobjective-bo">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Acquisition for multiobjective BO</a><a class="headerlink" href="#acquisition-for-multiobjective-bo" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Acquisition for multiobjective BO</a><a class="headerlink" href="#acquisition-for-multiobjective-bo" title="Link to this heading">#</a></h2>
 <p>We now simulate planning within the 50 point space. Think of each of the 50 rows as a candidate experiment. At each iteration we will:</p>
 <ol class="arabic simple">
 <li><p>fit the three RF surrogates on the experiments already “run” (a small seed set from the 50),</p></li>
@@ -1709,10 +1726,10 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 <p>We seed with a handful of points from <code class="docutils literal notranslate"><span class="pre">Xtr,</span> <span class="pre">Ytr</span></code>. Each round we refit the RF trio on the current observed set, score a candidate cloud from <code class="docutils literal notranslate"><span class="pre">Xtr</span></code> using random scalarization with EI, pick the best candidate, and emulate the measurement by nearest neighbor lookup inside <code class="docutils literal notranslate"><span class="pre">Xtr</span></code> to fetch its <code class="docutils literal notranslate"><span class="pre">Ytr</span></code>. Hypervolume in 3D is tracked after each addition.</p>
 <p>The curve below shows how the approximate 3D hypervolume grows as the loop adds points selected by random scalarization with EI. This is a quick way to judge whether the front is expanding within the 50 point design space.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_hv</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
@@ -1725,14 +1742,14 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/fb846b8a527f769b4ac654e6bc8361253531a4500dde99a3c08d40eafc48e6b6.png" src="_images/fb846b8a527f769b4ac654e6bc8361253531a4500dde99a3c08d40eafc48e6b6.png" />
+<img alt="_images/9c11a1825ee2f5fb6df42812eabda7d0170eff9f75a03e847d2bc6f6804e66cf.png" src="_images/9c11a1825ee2f5fb6df42812eabda7d0170eff9f75a03e847d2bc6f6804e66cf.png" />
 </div>
 </div>
 <hr class="docutils" />
 </section>
 <hr class="docutils" />
 <section id="end-to-end-mobo-loop-on-the-mof-dataset">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. End to end MOBO loop on the MOF dataset</a><a class="headerlink" href="#end-to-end-mobo-loop-on-the-mof-dataset" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. End to end MOBO loop on the MOF dataset</a><a class="headerlink" href="#end-to-end-mobo-loop-on-the-mof-dataset" title="Link to this heading">#</a></h2>
 <p>We now put everything together as a small, complete multiobjective active learning loop that starts from 50 points and grows by proposing 10 new points per round for 15 rounds. The goal is to expand the Pareto set over yield, purity, and reproducibility while tracking a clear 2D hypervolume on yield and purity.</p>
 <p>Choices in this section:</p>
 <ul class="simple">
@@ -1749,10 +1766,10 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 <li><p>A separate plot comparing the yield vs purity Pareto front at the start and at the end</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === 7. End to end MOBO with a strict oracle and discrete search space ===</span>
@@ -2059,9 +2076,7 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
   #1: temp=85, time_h=12, conc=0.05, DMF=1, yield=0.530, purity=0.710, repro=0.500
   #2: temp=70, time_h=12, conc=0.1, DMF=1, yield=0.640, purity=0.740, repro=0.750
   #3: temp=70, time_h=12, conc=0.05, DMF=1, yield=0.570, purity=0.740, repro=0.750
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 02 | HV=0.7047 | selected 10
+Iter 02 | HV=0.7047 | selected 10
   #1: temp=100, time_h=36, conc=0.15, DMF=1, yield=0.480, purity=0.640, repro=0.750
   #2: temp=115, time_h=36, conc=0.15, DMF=1, yield=0.420, purity=0.710, repro=1.000
   #3: temp=25, time_h=12, conc=0.15, DMF=1, yield=0.410, purity=0.660, repro=0.250
@@ -2071,9 +2086,7 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
   #1: temp=115, time_h=36, conc=0.1, DMF=1, yield=0.410, purity=0.710, repro=0.500
   #2: temp=115, time_h=24, conc=0.1, DMF=1, yield=0.330, purity=0.700, repro=0.500
   #3: temp=40, time_h=24, conc=0.05, DMF=0, yield=0.670, purity=0.740, repro=0.750
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 04 | HV=0.7287 | selected 10
+Iter 04 | HV=0.7287 | selected 10
   #1: temp=40, time_h=36, conc=0.1, DMF=0, yield=0.660, purity=0.760, repro=1.000
   #2: temp=25, time_h=36, conc=0.15, DMF=0, yield=0.000, purity=0.720, repro=1.000
   #3: temp=40, time_h=24, conc=0.1, DMF=0, yield=0.710, purity=0.890, repro=1.000
@@ -2179,10 +2192,10 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </div>
 <p>We can plot the results:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
@@ -2253,16 +2266,16 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/7924104ed4c5b27327227e39b0c6bef2fa983062f39bd68397257d7d8a1cfdd6.png" src="_images/7924104ed4c5b27327227e39b0c6bef2fa983062f39bd68397257d7d8a1cfdd6.png" />
-<img alt="_images/4d5762c5be69fb4d5e4a5939190fd5f499c4c86e012c78a8ebcbb46ac19279c0.png" src="_images/4d5762c5be69fb4d5e4a5939190fd5f499c4c86e012c78a8ebcbb46ac19279c0.png" />
+<img alt="_images/890c7e05ea830d79a8ff8318596d996ff9e09397d3ac3da11de72b4a8a0e63c9.png" src="_images/890c7e05ea830d79a8ff8318596d996ff9e09397d3ac3da11de72b4a8a0e63c9.png" />
+<img alt="_images/5481f515e385c3977bcbb7d60d2b28fb0da6d2ee5cf09f8491f59cc0d14f9fbb.png" src="_images/5481f515e385c3977bcbb7d60d2b28fb0da6d2ee5cf09f8491f59cc0d14f9fbb.png" />
 </div>
 </div>
 <p>Finally, we want to run the same MOBO loop four times per surrogate type (<code class="docutils literal notranslate"><span class="pre">GP</span></code> and <code class="docutils literal notranslate"><span class="pre">RF</span></code>), one for each acquisition: <code class="docutils literal notranslate"><span class="pre">EI</span></code>, <code class="docutils literal notranslate"><span class="pre">UCB</span></code>, <code class="docutils literal notranslate"><span class="pre">PI</span></code>, and <code class="docutils literal notranslate"><span class="pre">greedy</span> <span class="pre">mean</span></code>. The loop proposes only from the discrete <code class="docutils literal notranslate"><span class="pre">search_space</span></code>, gets outcomes only through <code class="docutils literal notranslate"><span class="pre">run_experiment(choice)</span></code>, and never reads targets from the dataframe. We track the <strong>user-defined scalarized value</strong> (fixed weights <code class="docutils literal notranslate"><span class="pre">[0.33,</span> <span class="pre">0.33,</span> <span class="pre">0.33]</span></code>) over iterations.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -2512,10 +2525,10 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </pre></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -2543,10 +2556,10 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </pre></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -2561,24 +2574,24 @@ reproducibility R2: -0.10448172092762831 MAE: 0.13657568665961645
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Pareto-dominance">Pareto dominance<a class="headerlink" href="#term-Pareto-dominance" title="Permalink to this term">#</a></dt><dd><p>Point <span class="math notranslate nohighlight">\(a\)</span> dominates <span class="math notranslate nohighlight">\(b\)</span> if <span class="math notranslate nohighlight">\(a\)</span> is at least as good on all objectives and strictly better on one.</p>
+<dt id="term-Pareto-dominance">Pareto dominance<a class="headerlink" href="#term-Pareto-dominance" title="Link to this term">#</a></dt><dd><p>Point <span class="math notranslate nohighlight">\(a\)</span> dominates <span class="math notranslate nohighlight">\(b\)</span> if <span class="math notranslate nohighlight">\(a\)</span> is at least as good on all objectives and strictly better on one.</p>
 </dd>
-<dt id="term-Pareto-front">Pareto front<a class="headerlink" href="#term-Pareto-front" title="Permalink to this term">#</a></dt><dd><p>The set of nondominated objective vectors. Moving along the front trades objectives.</p>
+<dt id="term-Pareto-front">Pareto front<a class="headerlink" href="#term-Pareto-front" title="Link to this term">#</a></dt><dd><p>The set of nondominated objective vectors. Moving along the front trades objectives.</p>
 </dd>
-<dt id="term-Scalarization">Scalarization<a class="headerlink" href="#term-Scalarization" title="Permalink to this term">#</a></dt><dd><p>Combine multiple objectives into one with weights <span class="math notranslate nohighlight">\(w_m \ge 0\)</span> and <span class="math notranslate nohighlight">\(\sum w_m = 1\)</span> to apply single objective methods.</p>
+<dt id="term-Scalarization">Scalarization<a class="headerlink" href="#term-Scalarization" title="Link to this term">#</a></dt><dd><p>Combine multiple objectives into one with weights <span class="math notranslate nohighlight">\(w_m \ge 0\)</span> and <span class="math notranslate nohighlight">\(\sum w_m = 1\)</span> to apply single objective methods.</p>
 </dd>
-<dt id="term-Hypervolume">Hypervolume<a class="headerlink" href="#term-Hypervolume" title="Permalink to this term">#</a></dt><dd><p>Measure of the volume dominated by the current Pareto front compared to a reference point. Larger is better.</p>
+<dt id="term-Hypervolume">Hypervolume<a class="headerlink" href="#term-Hypervolume" title="Link to this term">#</a></dt><dd><p>Measure of the volume dominated by the current Pareto front compared to a reference point. Larger is better.</p>
 </dd>
-<dt id="term-Expected-Hypervolume-Improvement">Expected Hypervolume Improvement<a class="headerlink" href="#term-Expected-Hypervolume-Improvement" title="Permalink to this term">#</a></dt><dd><p>Acquisition used in multiobjective BO that prefers candidates expected to increase hypervolume.</p>
+<dt id="term-Expected-Hypervolume-Improvement">Expected Hypervolume Improvement<a class="headerlink" href="#term-Expected-Hypervolume-Improvement" title="Link to this term">#</a></dt><dd><p>Acquisition used in multiobjective BO that prefers candidates expected to increase hypervolume.</p>
 </dd>
 </dl>
 </section>
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="q1-build-a-tiny-bo-coach-with-an-llm">
-<h3>Q1. Build a tiny BO “coach” with an LLM<a class="headerlink" href="#q1-build-a-tiny-bo-coach-with-an-llm" title="Permalink to this heading">#</a></h3>
+<h3>Q1. Build a tiny BO “coach” with an LLM<a class="headerlink" href="#q1-build-a-tiny-bo-coach-with-an-llm" title="Link to this heading">#</a></h3>
 <p>Use an LLM (ChatGPT or Claude) as your coding buddy to create a function in Colab or a small UI that runs Bayesian Optimization (BO) on a reaction you choose. You define the variable space and the objectives, feed a few data points, and your tool suggests 3 new experiments. After you run them, you type in the results and the tool updates, ready to suggest 3 more.</p>
 <p>What you will produce out of this activity:
 A function that:</p>
@@ -2617,10 +2630,10 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 </div>
 <p><strong>Version</strong> A (simpler):</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -2794,10 +2807,10 @@ Your objectives can be one or more of: yield, particle size, selectivity.</p></l
 </div>
 <p>LLM output code from <strong>Version A</strong> prompt:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Imports</span>
@@ -3215,10 +3228,10 @@ Next suggestions:
 </div>
 <p>Now we can also consider <strong>Version B</strong> (more features), with UI and bottons for someone who does not code in your lab to use:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">promptB</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -3367,10 +3380,10 @@ Next suggestions:
 </div>
 <p>LLM output code from <strong>Version B</strong> prompt:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
@@ -4056,7 +4069,7 @@ Next suggestions:
 </div>
 </details>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ecbe4b134c2146ea89e76bf81ff46e7c"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7050781c98a94c7bb2bd9d238176b09e"}</script></div>
 </div>
 </section>
 </section>
@@ -4089,7 +4102,7 @@ Next suggestions:
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -4100,6 +4113,7 @@ Next suggestions:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -4155,7 +4169,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -4179,8 +4193,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
