@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-20 back up contrast learning';</script>
@@ -73,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +109,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -155,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -179,6 +195,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
 </ul>
 
     </div>
@@ -194,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -203,14 +220,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,10 +352,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -346,14 +363,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -406,12 +423,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-12-self-supervised-learning">
-<h1>Lecture 12 — Self-supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 12 — Self-supervised Learning<a class="headerlink" href="#lecture-12-self-supervised-learning" title="Link to this heading">#</a></h1>
 <section id="sections-6-and-7-data-augmentation-and-contrastive-pretraining-for-mof-synthesis">
-<h2>Sections 6 and 7: Data augmentation and contrastive pretraining for MOF synthesis<a class="headerlink" href="#sections-6-and-7-data-augmentation-and-contrastive-pretraining-for-mof-synthesis" title="Permalink to this heading">#</a></h2>
+<h2>Sections 6 and 7: Data augmentation and contrastive pretraining for MOF synthesis<a class="headerlink" href="#sections-6-and-7-data-augmentation-and-contrastive-pretraining-for-mof-synthesis" title="Link to this heading">#</a></h2>
 <p>This handout walks through a compact self-supervised pipeline tailored to metal–organic framework (MOF) synthesis records. We construct chemistry-aware and process-aware augmentations, train a small encoder with a contrastive objective, then evaluate with a frozen linear probe for success prediction.</p>
 <p><strong>Design choices</strong></p>
 <ul class="simple">
@@ -428,14 +445,14 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="data-augmentation-for-mof-synthesis-tabular-molecular">
-<h2>6. Data augmentation for MOF synthesis (tabular + molecular)<a class="headerlink" href="#data-augmentation-for-mof-synthesis-tabular-molecular" title="Permalink to this heading">#</a></h2>
+<h2>6. Data augmentation for MOF synthesis (tabular + molecular)<a class="headerlink" href="#data-augmentation-for-mof-synthesis-tabular-molecular" title="Link to this heading">#</a></h2>
 <p><strong>Goal.</strong> Build label-free augmentations that keep both <strong>chemistry</strong> and <strong>process</strong> context. We pursue two objectives:</p>
 <ol class="arabic simple">
 <li><p>Create paired <em>views</em> of the same experiment for contrastive learning.</p></li>
 <li><p>Create simple synthetic variations for robustness when we later train a small classifier.</p></li>
 </ol>
 <section id="load-and-subset-the-mof-dataset">
-<h3>6.1 Load and subset the MOF dataset<a class="headerlink" href="#load-and-subset-the-mof-dataset" title="Permalink to this heading">#</a></h3>
+<h3>6.1 Load and subset the MOF dataset<a class="headerlink" href="#load-and-subset-the-mof-dataset" title="Link to this heading">#</a></h3>
 <p>We take a random subset of 100 rows to keep the runtime short. If your environment blocks network access, replace the URL with a local path.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -466,7 +483,7 @@ document.write(`
 </div>
 </section>
 <section id="descriptor-and-fingerprint-features">
-<h3>6.2 Descriptor and fingerprint features<a class="headerlink" href="#descriptor-and-fingerprint-features" title="Permalink to this heading">#</a></h3>
+<h3>6.2 Descriptor and fingerprint features<a class="headerlink" href="#descriptor-and-fingerprint-features" title="Link to this heading">#</a></h3>
 <p>We compute four light descriptors and a 256-bit Morgan fingerprint from the linker SMILES. If RDKit is not present we fall back to NaN descriptors and zero fingerprints so the notebook is still runnable.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -520,7 +537,7 @@ document.write(`
 </div>
 </section>
 <section id="split-into-process-and-chemistry-views">
-<h3>6.3 Split into process and chemistry views<a class="headerlink" href="#split-into-process-and-chemistry-views" title="Permalink to this heading">#</a></h3>
+<h3>6.3 Split into process and chemistry views<a class="headerlink" href="#split-into-process-and-chemistry-views" title="Link to this heading">#</a></h3>
 <p>For augmentation we split features into two views:</p>
 <ul class="simple">
 <li><p><strong>Process view</strong>: <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">time_h</span></code>, <code class="docutils literal notranslate"><span class="pre">concentration_M</span></code>, <code class="docutils literal notranslate"><span class="pre">solvent_DMF</span></code></p></li>
@@ -549,7 +566,7 @@ document.write(`
 </div>
 </section>
 <section id="why-these-augmentations">
-<h3>6.4 Why these augmentations<a class="headerlink" href="#why-these-augmentations" title="Permalink to this heading">#</a></h3>
+<h3>6.4 Why these augmentations<a class="headerlink" href="#why-these-augmentations" title="Link to this heading">#</a></h3>
 <p>We want augmentations that do not change the underlying identity of the experiment yet still add variability. Think of an invariance set <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> of transformations where <span class="math notranslate nohighlight">\(t \in \mathcal{T}\)</span> should preserve labels while changing nuisance factors. Contrastive learning tries to make the encoder <span class="math notranslate nohighlight">\(f_\theta\)</span> invariant to such <span class="math notranslate nohighlight">\(t\)</span> by pulling the two augmented views together.</p>
 <ul class="simple">
 <li><p><strong>Gaussian jitter (process)</strong>: after standardization, add zero-mean noise to simulate setpoint or measurement variance. If <span class="math notranslate nohighlight">\(x\)</span> is standardized, <span class="math notranslate nohighlight">\(x' = x + \epsilon\)</span>, <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0, \sigma^2 I)\)</span>.</p></li>
@@ -574,7 +591,7 @@ document.write(`
 </div>
 </section>
 <section id="augmentation-operators">
-<h3>6.5 Augmentation operators<a class="headerlink" href="#augmentation-operators" title="Permalink to this heading">#</a></h3>
+<h3>6.5 Augmentation operators<a class="headerlink" href="#augmentation-operators" title="Link to this heading">#</a></h3>
 <p>We provide two operators:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">augment_for_contrastive</span></code>: create two correlated views of the same row</p></li>
@@ -632,7 +649,7 @@ document.write(`
 </div>
 </section>
 <section id="inspect-the-effect-of-augmentation">
-<h3>6.6 Inspect the effect of augmentation<a class="headerlink" href="#inspect-the-effect-of-augmentation" title="Permalink to this heading">#</a></h3>
+<h3>6.6 Inspect the effect of augmentation<a class="headerlink" href="#inspect-the-effect-of-augmentation" title="Link to this heading">#</a></h3>
 <p>A quick histogram check shows that augmented standardized values remain close to the base distribution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
  
@@ -735,7 +752,7 @@ document.write(`
 </div>
 </section>
 <section id="math-for-contrastive-pairs">
-<h3>6.7 Math for contrastive pairs<a class="headerlink" href="#math-for-contrastive-pairs" title="Permalink to this heading">#</a></h3>
+<h3>6.7 Math for contrastive pairs<a class="headerlink" href="#math-for-contrastive-pairs" title="Link to this heading">#</a></h3>
 <p>For each example <span class="math notranslate nohighlight">\(x_i\)</span> we sample two views <span class="math notranslate nohighlight">\(x_i^{(1)} = t_1(x_i)\)</span> and <span class="math notranslate nohighlight">\(x_i^{(2)} = t_2(x_i)\)</span> with <span class="math notranslate nohighlight">\(t_1, t_2 \sim \mathcal{T}\)</span>. A positive pair is <span class="math notranslate nohighlight">\(\big(x_i^{(1)}, x_i^{(2)}\big)\)</span>. In a batch of size <span class="math notranslate nohighlight">\(B\)</span> we get <span class="math notranslate nohighlight">\(2B\)</span> projected embeddings
 [
 z_i^{(1)} = g_\phi!\left(f_\theta!\big(x_i^{(1)}\big)\right), \quad
@@ -755,10 +772,10 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </section>
 <hr class="docutils" />
 <section id="contrastive-pretraining-and-a-linear-probe">
-<h2>7. Contrastive pretraining and a linear probe<a class="headerlink" href="#contrastive-pretraining-and-a-linear-probe" title="Permalink to this heading">#</a></h2>
+<h2>7. Contrastive pretraining and a linear probe<a class="headerlink" href="#contrastive-pretraining-and-a-linear-probe" title="Link to this heading">#</a></h2>
 <p>We train a tiny MLP encoder <span class="math notranslate nohighlight">\(f_\theta\)</span> on augmented pairs using NT-Xent. We then <strong>freeze</strong> the encoder and fit a logistic regression probe on the frozen features <span class="math notranslate nohighlight">\(H\)</span> to predict <strong>success</strong> (yield &gt; 20). The probe is a small supervised head that tests whether the representation transfers to the downstream task.</p>
 <section id="torch-setup-and-data-wrappers">
-<h3>7.1 Torch setup and data wrappers<a class="headerlink" href="#torch-setup-and-data-wrappers" title="Permalink to this heading">#</a></h3>
+<h3>7.1 Torch setup and data wrappers<a class="headerlink" href="#torch-setup-and-data-wrappers" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -802,7 +819,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="encoder-and-projection-head">
-<h3>7.2 Encoder and projection head<a class="headerlink" href="#encoder-and-projection-head" title="Permalink to this heading">#</a></h3>
+<h3>7.2 Encoder and projection head<a class="headerlink" href="#encoder-and-projection-head" title="Link to this heading">#</a></h3>
 <p>The encoder maps the concatenated feature vector to a latent space. The projection head is used for the contrastive objective only. For the linear probe we use the encoder output before the head.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MLPEncoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">,</span> <span class="n">hid</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
@@ -836,7 +853,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="nt-xent-loss">
-<h3>7.3 NT-Xent loss<a class="headerlink" href="#nt-xent-loss" title="Permalink to this heading">#</a></h3>
+<h3>7.3 NT-Xent loss<a class="headerlink" href="#nt-xent-loss" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">nt_xent</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">temp</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    z1, z2: tensors of shape [B, D]</span>
@@ -865,7 +882,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="train-the-contrastive-model">
-<h3>7.4 Train the contrastive model<a class="headerlink" href="#train-the-contrastive-model" title="Permalink to this heading">#</a></h3>
+<h3>7.4 Train the contrastive model<a class="headerlink" href="#train-the-contrastive-model" title="Link to this heading">#</a></h3>
 <p>We keep epochs small to stay CPU friendly. Watch the training curve for stability.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">enc</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">proj</span><span class="o">.</span><span class="n">parameters</span><span class="p">()),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
  
@@ -898,7 +915,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="build-representations-and-visualize">
-<h3>7.5 Build representations and visualize<a class="headerlink" href="#build-representations-and-visualize" title="Permalink to this heading">#</a></h3>
+<h3>7.5 Build representations and visualize<a class="headerlink" href="#build-representations-and-visualize" title="Link to this heading">#</a></h3>
 <p>We compute embeddings using the encoder output before the projection head. Then we use PCA for a quick 2D visualization.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">enc</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
@@ -917,7 +934,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="linear-probe-success-vs-failure">
-<h3>7.6 Linear probe: success vs failure<a class="headerlink" href="#linear-probe-success-vs-failure" title="Permalink to this heading">#</a></h3>
+<h3>7.6 Linear probe: success vs failure<a class="headerlink" href="#linear-probe-success-vs-failure" title="Link to this heading">#</a></h3>
 <p>Freeze the encoder, then train a logistic regression on the frozen features <span class="math notranslate nohighlight">\(H\)</span> using 5-fold stratified splits. We report accuracy, F1, and ROC AUC.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
@@ -946,7 +963,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="baseline-without-pretraining">
-<h3>7.7 Baseline without pretraining<a class="headerlink" href="#baseline-without-pretraining" title="Permalink to this heading">#</a></h3>
+<h3>7.7 Baseline without pretraining<a class="headerlink" href="#baseline-without-pretraining" title="Link to this heading">#</a></h3>
 <p>We compare against a logistic regression trained directly on the raw standardized features. This clarifies whether contrastive pretraining helps in small data.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_pipeline</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -974,7 +991,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </div>
 </section>
 <section id="optional-training-time-augmentation-multiplicity-for-the-probe">
-<h3>7.8 Optional: training-time augmentation multiplicity for the probe<a class="headerlink" href="#optional-training-time-augmentation-multiplicity-for-the-probe" title="Permalink to this heading">#</a></h3>
+<h3>7.8 Optional: training-time augmentation multiplicity for the probe<a class="headerlink" href="#optional-training-time-augmentation-multiplicity-for-the-probe" title="Link to this heading">#</a></h3>
 <p>Sometimes repeating augmented copies of the training rows while fitting the probe improves stability. We keep the encoder frozen and only enlarge the probe training set with encoded augmentations of the training fold.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedKFold</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
@@ -1042,7 +1059,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
 </section>
 <hr class="docutils" />
 <section id="practical-notes-and-equations-at-a-glance">
-<h2>Practical notes and equations at a glance<a class="headerlink" href="#practical-notes-and-equations-at-a-glance" title="Permalink to this heading">#</a></h2>
+<h2>Practical notes and equations at a glance<a class="headerlink" href="#practical-notes-and-equations-at-a-glance" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Temperature</strong> <span class="math notranslate nohighlight">\(\tau\)</span>: controls the softness of the softmax in NT-Xent. Larger <span class="math notranslate nohighlight">\(\tau\)</span> reduces repulsion, smaller <span class="math notranslate nohighlight">\(\tau\)</span> increases it. Try <span class="math notranslate nohighlight">\(\tau \in \{0.1, 0.2, 0.5\}\)</span>.</p></li>
 <li><p><strong>Batch size</strong> <span class="math notranslate nohighlight">\(B\)</span>: more negatives generally help NT-Xent since each anchor sees <span class="math notranslate nohighlight">\(2B-2\)</span> negatives. With small CPU batches keep expectations modest.</p></li>
@@ -1088,7 +1105,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1099,6 +1116,7 @@ and the NT-Xent loss (InfoNCE) with temperature <span class="math notranslate no
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1153,7 +1171,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1177,8 +1195,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
