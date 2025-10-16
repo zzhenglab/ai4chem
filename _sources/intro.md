@@ -37,10 +37,10 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 
 - **Oct 21** – No Class
 - **Oct 23** – Reinforcement learning
-- **Oct 28 & 30** – Computer vision techniques   
-- **Nov 4 & 6** – Transformers & large language models 
-- **Nov 11 & 13** – Multimodal models and literature data mining
-- **Nov 18 & 20** – Multi-agent AI in chemistry labs   
+- **Oct 28 & 30** – Semi-supervised learning   
+- **Nov 4 & 6** –  Transformers & large language models 
+- **Nov 11 & 13** – Computer vision and multimodal models
+- **Nov 18 & 20** – Multi-agent AI and literature data mining   
 - **Nov 25** – Self-driving labs  
 - **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
