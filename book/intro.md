@@ -33,8 +33,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Sept 30 & Oct 2** – Unsupervised learning  methods [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing)
 - **Oct 7** - Fall Break
 - **Oct 9** – De novo molecule generation   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
-- **Oct 14 & Oct 16** - Chemical reaction optimization    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)   &  
-[![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
+- **Oct 14 & Oct 16** - Chemical reaction optimization    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 
 - **Oct 21** – No Class
 - **Oct 23** – Reinforcement learning
