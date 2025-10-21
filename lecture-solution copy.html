@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; My sample book</title>
+    <title>6. In-class activity &#8212; My sample book</title>
   
   
   
@@ -195,6 +195,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU learning</a></li>
 </ul>
 
     </div>
@@ -380,7 +382,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>6. In-class activity</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,9 +391,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-identify-pu-pieces-from-lu-toy-data">Q1. Identify PU pieces from LU toy data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-train-the-s-model-and-estimate-c-hat-under-scar">Q2. Train the s-model and estimate c-hat under SCAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-convert-s-scores-to-pu-probabilities-and-rank-candidates">Q3. Convert s-scores to PU probabilities and rank candidates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-threshold-selection-by-prior-and-by-quantile">Q4. Threshold selection by prior and by quantile</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -402,7 +407,137 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  
+  <section id="in-class-activity">
+<h1>6. In-class activity<a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h1>
+<section id="q1-identify-pu-pieces-from-lu-toy-data">
+<h2>Q1. Identify PU pieces from LU toy data<a class="headerlink" href="#q1-identify-pu-pieces-from-lu-toy-data" title="Link to this heading">#</a></h2>
+<p>Using the LU toy data you built (<code class="docutils literal notranslate"><span class="pre">X_lab</span></code>, <code class="docutils literal notranslate"><span class="pre">y_lab_noisy</span></code>, <code class="docutils literal notranslate"><span class="pre">X_unlab</span></code>), create a PU view by revealing only a fraction of the true positives as labeled. Report the shapes of P and U.</p>
+<p><strong>Task</strong></p>
+<ol class="arabic simple">
+<li><p>From <code class="docutils literal notranslate"><span class="pre">y_lab_noisy</span></code>, take indices where <code class="docutils literal notranslate"><span class="pre">y=1</span></code>.</p></li>
+<li><p>Reveal 30% at random as P.</p></li>
+<li><p>Put the rest of <code class="docutils literal notranslate"><span class="pre">X_lab</span></code> plus all <code class="docutils literal notranslate"><span class="pre">X_unlab</span></code> into U.</p></li>
+<li><p>Print shapes of P and U.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="n">pos_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">reveal</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_idx</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.30</span>
+<span class="n">P_idx</span> <span class="o">=</span> <span class="n">pos_idx</span><span class="p">[</span><span class="n">reveal</span><span class="p">]</span>
+
+<span class="n">X_P</span> <span class="o">=</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">P_idx</span><span class="p">]</span>
+<span class="n">mask_lab_rest</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_lab</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">mask_lab_rest</span><span class="p">[</span><span class="n">P_idx</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">X_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_lab</span><span class="p">[</span><span class="n">mask_lab_rest</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P shape:&quot;</span><span class="p">,</span> <span class="n">X_P</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot; U shape:&quot;</span><span class="p">,</span> <span class="n">X_U</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">pos_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">reveal</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_idx</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mf">0.30</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="q2-train-the-s-model-and-estimate-c-hat-under-scar">
+<h2>Q2. Train the s-model and estimate c-hat under SCAR<a class="headerlink" href="#q2-train-the-s-model-and-estimate-c-hat-under-scar" title="Link to this heading">#</a></h2>
+<p>Train a classifier to predict selection <code class="docutils literal notranslate"><span class="pre">s</span></code> using P vs U. Then estimate <code class="docutils literal notranslate"><span class="pre">ĉ</span></code> by averaging <code class="docutils literal notranslate"><span class="pre">P(s=1|x)</span></code> on a held out split of P.</p>
+<p><strong>Task</strong></p>
+<ol class="arabic simple">
+<li><p>Build <code class="docutils literal notranslate"><span class="pre">X_s</span></code>, <code class="docutils literal notranslate"><span class="pre">s_lab</span></code>.</p></li>
+<li><p>Fit <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> or <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> (you decide).</p></li>
+<li><p>Split P into train and holdout, compute <code class="docutils literal notranslate"><span class="pre">ĉ</span></code> as mean predicted probability on the holdout.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build s-dataset</span>
+<span class="n">X_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_P</span><span class="p">,</span> <span class="n">X_U</span><span class="p">])</span>
+<span class="n">s_lab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_P</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_U</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)])</span>
+
+<span class="n">sc_s</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+<span class="n">Xs_s</span> <span class="o">=</span> <span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+
+<span class="n">s_clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xs_s</span><span class="p">,</span> <span class="n">s_lab</span><span class="p">)</span>
+
+<span class="c1"># Estimate c-hat on a P holdout</span>
+<span class="n">XP_tr</span><span class="p">,</span> <span class="n">XP_ho</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_P</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">c_hat</span> <span class="o">=</span> <span class="n">s_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">XP_ho</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">XP_ho</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c_hat:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c_hat</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="q3-convert-s-scores-to-pu-probabilities-and-rank-candidates">
+<h2>Q3. Convert s-scores to PU probabilities and rank candidates<a class="headerlink" href="#q3-convert-s-scores-to-pu-probabilities-and-rank-candidates" title="Link to this heading">#</a></h2>
+<p>Use the Elkan–Noto link under SCAR. Compute <code class="docutils literal notranslate"><span class="pre">P(y=1|x)</span> <span class="pre">≈</span> <span class="pre">P(s=1|x)/ĉ</span></code> and rank the top 10 U points.</p>
+<p><strong>Task</strong></p>
+<ol class="arabic simple">
+<li><p>Score all U with the s-model.</p></li>
+<li><p>Divide by <code class="docutils literal notranslate"><span class="pre">ĉ</span></code> and clip to <code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>.</p></li>
+<li><p>Show indices of the top 10 U points by PU probability.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_s_u</span> <span class="o">=</span> <span class="n">s_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_U</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">p_y_u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_s_u</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">c_hat</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">top10</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">p_y_u</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;u_index&quot;</span><span class="p">:</span> <span class="n">top10</span><span class="p">,</span> <span class="s2">&quot;p_y_hat&quot;</span><span class="p">:</span> <span class="n">p_y_u</span><span class="p">[</span><span class="n">top10</span><span class="p">]})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="q4-threshold-selection-by-prior-and-by-quantile">
+<h2>Q4. Threshold selection by prior and by quantile<a class="headerlink" href="#q4-threshold-selection-by-prior-and-by-quantile" title="Link to this heading">#</a></h2>
+<p>Pick candidates from U using two rules. Compare how many items each rule selects.</p>
+<p><strong>Task</strong></p>
+<ol class="arabic simple">
+<li><p>Prior-guided threshold: estimate <code class="docutils literal notranslate"><span class="pre">π̂</span> <span class="pre">=</span> <span class="pre">mean(p_y)</span></code> on the full candidate set <code class="docutils literal notranslate"><span class="pre">X_lab</span> <span class="pre">∪</span> <span class="pre">X_unlab</span></code> then pick top <code class="docutils literal notranslate"><span class="pre">π̂</span></code> fraction of U.</p></li>
+<li><p>Fixed-quantile threshold: pick top 25% of U.</p></li>
+<li><p>Report counts.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Score everyone to estimate a coarse prior</span>
+<span class="n">X_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_lab</span><span class="p">,</span> <span class="n">X_unlab</span><span class="p">])</span>
+<span class="n">p_s_all</span> <span class="o">=</span> <span class="n">s_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_all</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">p_y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_s_all</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">c_hat</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">pi_hat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">p_y_all</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="c1"># 1) Prior-guided threshold</span>
+<span class="n">thr_pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">p_y_u</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">pi_hat</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="mf">0.99</span><span class="p">))</span>
+<span class="n">sel_pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_y_u</span> <span class="o">&gt;=</span> <span class="n">thr_pi</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 2) Fixed-quantile 25%</span>
+<span class="n">thr_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">p_y_u</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="n">sel_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_y_u</span> <span class="o">&gt;=</span> <span class="n">thr_q</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pi_hat=</span><span class="si">{</span><span class="n">pi_hat</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  thr_pi=</span><span class="si">{</span><span class="n">thr_pi</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  selected_by_prior=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sel_pi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;thr_q(25%)=</span><span class="si">{</span><span class="n">thr_q</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  selected_by_quantile=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sel_q</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -448,9 +583,12 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-identify-pu-pieces-from-lu-toy-data">Q1. Identify PU pieces from LU toy data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-train-the-s-model-and-estimate-c-hat-under-scar">Q2. Train the s-model and estimate c-hat under SCAR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-convert-s-scores-to-pu-probabilities-and-rank-candidates">Q3. Convert s-scores to PU probabilities and rank candidates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-threshold-selection-by-prior-and-by-quantile">Q4. Threshold selection by prior and by quantile</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

@@ -1,0 +1,1760 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 17 - PU learning &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-17';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Lecture 16 - Reinforcement Learning" href="lecture-16.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to CHEM 5080: AI for Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 17 - PU learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flecture-17.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture-17.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 17 - PU learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-learning-overview">2. Semi-supervised learning overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pu-learning-assumptions-and-key-quantities">3. PU learning: assumptions and key quantities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mof-pu-case-study">4. MOF PU case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">5. Glossary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-17-pu-learning">
+<h1>Lecture 17 - PU learning<a class="headerlink" href="#lecture-17-pu-learning" title="Link to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals**</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#semi-supervised-learning-overview" id="id3">2. Semi-supervised learning overview</a></p></li>
+<li><p><a class="reference internal" href="#pu-learning-assumptions-and-key-quantities" id="id4">3. PU learning: assumptions and key quantities</a></p></li>
+<li><p><a class="reference internal" href="#mof-pu-case-study" id="id5">4. MOF PU case study</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id6">5. Glossary</a></p></li>
+</ul>
+</nav>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals**</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Define <strong>semi-supervised learning</strong>, the LU setting (labeled + unlabeled), and the PU setting (positive + unlabeled).</p></li>
+<li><p>Understand assumptions used by common PU methods</p></li>
+<li><p>Build a simple PU workflow on a chemistry example</p></li>
+<li><p>Practice evaluation ideas when true negatives are missing.</p></li>
+</ul>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
+</section>
+<section id="setup">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports kept minimal and friendly for beginners</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">average_precision_score</span><span class="p">,</span> <span class="n">precision_recall_curve</span><span class="p">,</span> <span class="n">roc_curve</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.grid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="semi-supervised-learning-overview">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Semi-supervised learning overview</a><a class="headerlink" href="#semi-supervised-learning-overview" title="Link to this heading">#</a></h2>
+<p>Semi-supervised learning uses both labeled and unlabeled data. In chemistry, unlabeled examples come from historical experiments without reliable outcomes or from conditions that were not measured for the desired property.</p>
+<p>Two common settings:</p>
+<ul class="simple">
+<li><p><strong>LU</strong>: You have labeled points with <span class="math notranslate nohighlight">\(y\in\{0,1\}\)</span> and an unlabeled pool with unknown <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p><strong>PU</strong>: You only have some positives labeled (<span class="math notranslate nohighlight">\(s=1\)</span> indicates selected/labeled) and a large unlabeled pool that mixes positives and negatives. No confirmed negatives.</p></li>
+</ul>
+<p>We will connect LU to PU to build intuition. LU is often easier to evaluate because you do have negatives labeled. PU is closer to many lab scenarios where successes are reported, while failures and non-attempts blend in the unlabeled pool.</p>
+<p>We will first try tiny LU toy model. Imagine a feature <span class="math notranslate nohighlight">\(x\)</span> that combines a reaction temperature-like number and a simple composition flag. We learn <span class="math notranslate nohighlight">\(y=1\)</span> for successful outcomes and <span class="math notranslate nohighlight">\(y=0\)</span> for failures. This is LU, not PU. The goal is only to build intuition for semi-supervised ideas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build a tiny LU toy dataset (harder, still simple)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Keep sizes the same</span>
+<span class="n">n_pos</span><span class="p">,</span> <span class="n">n_neg</span><span class="p">,</span> <span class="n">n_unlab</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">500</span>
+
+<span class="c1"># Make classes closer and a bit wider to create overlap</span>
+<span class="n">x_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.68</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">,</span> <span class="n">n_pos</span><span class="p">),</span>   <span class="c1"># mean moved down, variance up</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_pos</span><span class="p">)</span>        <span class="c1"># binary flag</span>
+<span class="p">])</span>
+
+<span class="n">x_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.16</span><span class="p">,</span> <span class="n">n_neg</span><span class="p">),</span>   <span class="c1"># mean moved up, variance up</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_neg</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">X_lab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x_pos</span><span class="p">,</span> <span class="n">x_neg</span><span class="p">])</span>
+<span class="n">y_lab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_pos</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_neg</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)])</span>
+
+<span class="c1"># Unlabeled pool centered between the two with some spread</span>
+<span class="n">X_unlab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.56</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">,</span> <span class="n">n_unlab</span><span class="p">),</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">n_unlab</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># Small label noise to avoid perfect separability</span>
+<span class="n">flip_mask</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">y_lab</span><span class="o">.</span><span class="n">size</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.15</span>  <span class="c1"># 15% flips</span>
+<span class="n">y_lab_noisy</span> <span class="o">=</span> <span class="n">y_lab</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">y_lab_noisy</span><span class="p">[</span><span class="n">flip_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y_lab_noisy</span><span class="p">[</span><span class="n">flip_mask</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_lab</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_lab_noisy</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_unlab</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">X_lab</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(70, 2) (70,) (500, 2)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69760223, 1.        ],
+       [0.66150532, 1.        ],
+       [0.76965917, 0.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can inspect the distributions:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;500 Unlabeled&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;40 Labeled positives&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;30 Labeled negatives&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (solvent)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;labeled vs unlabeled&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;EtOH&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/df00d134bf977f611aed259f609ff54ff6701c5fbeaf69f1db5b92379fc94ecd.png" src="_images/df00d134bf977f611aed259f609ff54ff6701c5fbeaf69f1db5b92379fc94ecd.png" />
+</div>
+</div>
+<p><strong>LU learning</strong> assumes we have labeled positives and labeled negatives. We can train a standard classifier and use unlabeled data in helpful ways such as self-training or consistency regularization. Here we only sketch a minimal baseline: supervised learning on the labeled set, then scoring the unlabeled.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use y_lab_noisy from your tiny dataset cell</span>
+<span class="n">Xtr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">yte</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X_lab</span><span class="p">,</span> <span class="n">y_lab_noisy</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_lab_noisy</span>
+<span class="p">)</span>
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr</span><span class="p">)</span>
+<span class="n">Xtr_s</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xtr</span><span class="p">)</span>
+<span class="n">Xte_s</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xte</span><span class="p">)</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">base</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr_s</span><span class="p">,</span> <span class="n">ytr</span><span class="p">)</span>
+<span class="n">auc_base</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">base</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xte_s</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Supervised baseline ROC AUC:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">auc_base</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Supervised baseline ROC AUC: 0.688
+</pre></div>
+</div>
+</div>
+</div>
+<p>The LU baseline above shows ordinary supervised behavior. The unlabeled pool below is not needed to train, but later can be scored for prioritization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Semi-supervised: one simple self-training pass using the unlabeled pool</span>
+<span class="n">X_unlab_s</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">)</span>
+<span class="n">p_unlab</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_unlab_s</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Pick very confident pseudo-labels</span>
+<span class="n">hi_pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_unlab</span> <span class="o">&gt;=</span> <span class="mf">0.70</span><span class="p">)</span>
+<span class="n">hi_neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_unlab</span> <span class="o">&lt;=</span> <span class="mf">0.30</span><span class="p">)</span>
+
+<span class="c1"># Build an enlarged training set with pseudo-labels</span>
+<span class="n">X_st</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">Xtr_s</span><span class="p">,</span> <span class="n">X_unlab_s</span><span class="p">[</span><span class="n">hi_pos</span><span class="p">],</span> <span class="n">X_unlab_s</span><span class="p">[</span><span class="n">hi_neg</span><span class="p">]])</span>
+<span class="n">y_st</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span>
+    <span class="n">ytr</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">hi_pos</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">hi_neg</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Added </span><span class="si">{</span><span class="n">hi_pos</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> pseudo-positives and </span><span class="si">{</span><span class="n">hi_neg</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2"> pseudo-negatives&quot;</span><span class="p">)</span>
+
+<span class="c1"># Retrain on labeled + pseudo-labeled</span>
+<span class="n">st</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_st</span><span class="p">,</span> <span class="n">y_st</span><span class="p">)</span>
+
+<span class="n">auc_st</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span> <span class="n">st</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xte_s</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Self-training ROC AUC:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">auc_st</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Added 167 pseudo-positives and 66 pseudo-negatives
+Self-training ROC AUC: 0.714
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normal 2D plotting (no t-SNE): show labeled vs unlabeled, then highlight pseudo labels</span>
+<span class="c1"># Assumes the following are defined from your workflow:</span>
+<span class="c1"># X_lab, y_lab, X_unlab         -&gt; original features (not standardized) with shape (*, 2) for plotting</span>
+<span class="c1"># sc, base, Xtr_s, ytr, Xte_s, yte -&gt; scaler/model and splits already fit</span>
+<span class="c1"># hi_pos, hi_neg                -&gt; boolean masks over X_unlab selecting pseudo-positives/negatives</span>
+<span class="c1"># st                            -&gt; the retrained model (optional, only for the print above)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Convenience masks</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># --- Figure 1: BEFORE self-training (plain scatter) ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unlabeled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled negatives&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled positives&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;BEFORE self-training&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;EtOH&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># --- Figure 2: AFTER self-training (highlight pseudo labels with orange/purple) ---</span>
+<span class="c1"># hi_pos / hi_neg are boolean masks over the *unlabeled* pool</span>
+<span class="n">idx_hi_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hi_pos</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">idx_hi_neg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">hi_neg</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="c1"># base layer</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Unlabeled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled negatives&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled positives&#39;</span><span class="p">)</span>
+
+<span class="c1"># highlights on top</span>
+<span class="k">if</span> <span class="n">idx_hi_pos</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[</span><span class="n">idx_hi_pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[</span><span class="n">idx_hi_pos</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightpink&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">46</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Pseudo-positives (+)</span><span class="si">{</span><span class="n">idx_hi_pos</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">idx_hi_neg</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[</span><span class="n">idx_hi_neg</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[</span><span class="n">idx_hi_neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">46</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Pseudo-negatives (−)</span><span class="si">{</span><span class="n">idx_hi_neg</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;AFTER self-training (with pseudo labels)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;H2O&#39;</span><span class="p">,</span> <span class="s1">&#39;EtOH&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/1b3fa55530d8d5bc0da6cc516a5a65dcdc6c60289923627d6318ef96834feb5e.png" src="_images/1b3fa55530d8d5bc0da6cc516a5a65dcdc6c60289923627d6318ef96834feb5e.png" />
+<img alt="_images/19430b8b74eca2573b2aa8423a2d74393dde1c166fa95b9816c948abf418d983.png" src="_images/19430b8b74eca2573b2aa8423a2d74393dde1c166fa95b9816c948abf418d983.png" />
+</div>
+</div>
+<div class="admonition-exercise-3-1 admonition">
+<p class="admonition-title">Exercise 3.1</p>
+<p>Replace logistic regression with <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier(n_estimators=300,</span> <span class="pre">min_samples_leaf=5)</span></code> and compare AUC.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="pu-learning-assumptions-and-key-quantities">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. PU learning: assumptions and key quantities</a><a class="headerlink" href="#pu-learning-assumptions-and-key-quantities" title="Link to this heading">#</a></h2>
+<p>In PU we only have some positives labeled and many unlabeled points. Notation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\in\{0,1\}\)</span> is the true class, unknown for most points.</p></li>
+<li><p><span class="math notranslate nohighlight">\(s\in\{0,1\}\)</span> is the selection indicator. If <span class="math notranslate nohighlight">\(s=1\)</span> the example was labeled as positive.</p></li>
+<li><p>We assume no labeled negatives, so when <span class="math notranslate nohighlight">\(s=1\)</span> then <span class="math notranslate nohighlight">\(y=1\)</span>.</p></li>
+</ul>
+<p>Common assumptions:</p>
+<ul class="simple">
+<li><p><strong>SCAR</strong> (Selected Completely At Random): positives are labeled with a constant probability <span class="math notranslate nohighlight">\(c=P(s=1\mid y=1)\)</span>. Then <span class="math notranslate nohighlight">\(P(s=1\mid x)=c\,P(y=1\mid x)\)</span>.</p></li>
+<li><p><strong>SAR</strong> (Selected At Random): labeling probability can depend on <span class="math notranslate nohighlight">\(x\)</span>. This is harder. We will mostly use SCAR to get started.</p></li>
+</ul>
+<p>We also care about the <strong>class prior</strong> <span class="math notranslate nohighlight">\(\pi_p=P(y=1)\)</span> in the full population. It can be estimated from data and used in risk estimators and threshold tuning.</p>
+<p>Under SCAR, the probability a point is <em>selected</em> equals a constant times the probability it is truly positive:</p>
+<p><span class="math notranslate nohighlight">\(P(s=1 \mid x) = c \cdot P(y=1 \mid x)\)</span>.</p>
+<p>This gives a way to estimate <span class="math notranslate nohighlight">\(P(y=1\mid x)\)</span> if we can train a model that tries to predict <span class="math notranslate nohighlight">\(s\)</span> using positives as <span class="math notranslate nohighlight">\(s=1\)</span> and unlabeled as <span class="math notranslate nohighlight">\(s=0\)</span>. We still need a way to estimate <span class="math notranslate nohighlight">\(c\)</span>. A simple approach is to fit a model for <span class="math notranslate nohighlight">\(s\)</span> and then estimate <span class="math notranslate nohighlight">\(c\)</span> using held-out positives:</p>
+<p><span class="math notranslate nohighlight">\(\hat c = \frac{1}{|\mathcal{P}_{\text{holdout}}|}\sum_{i\in \mathcal{P}_{\text{holdout}}} \hat P(s=1\mid x_i)\)</span>.</p>
+<p>Then <span class="math notranslate nohighlight">\(\hat P(y=1\mid x) = \min\left(1, \frac{\hat P(s=1\mid x)}{\hat c}\right)\)</span>.</p>
+<p>We start from the <em>same tiny dataset you already created</em> for LU: <code class="docutils literal notranslate"><span class="pre">X_lab</span></code>, <code class="docutils literal notranslate"><span class="pre">y_lab_noisy</span></code> (labels with small flips to avoid easy separation), and <code class="docutils literal notranslate"><span class="pre">X_unlab</span></code>. We <strong>pretend</strong> we only see some positives as “reported successes” (P). Everything else is pooled into U.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># Reveal only a fraction of labeled positives as &quot;P&quot; (s=1)</span>
+<span class="n">pos_lab_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">c_true</span> <span class="o">=</span> <span class="mf">0.30</span>  <span class="c1"># teach-only knob to control how many positives get revealed</span>
+<span class="n">reveal_mask</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_lab_idx</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">c_true</span>
+<span class="n">s_pos_idx</span> <span class="o">=</span> <span class="n">pos_lab_idx</span><span class="p">[</span><span class="n">reveal_mask</span><span class="p">]</span>
+
+<span class="c1"># Build P and U</span>
+<span class="n">X_P</span> <span class="o">=</span> <span class="n">X_lab</span><span class="p">[</span><span class="n">s_pos_idx</span><span class="p">]</span>
+<span class="n">X_U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_lab</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_lab</span><span class="p">)),</span> <span class="n">s_pos_idx</span><span class="p">)],</span> <span class="n">X_unlab</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PU shapes: P (labeled +) =&quot;</span><span class="p">,</span> <span class="n">X_P</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot; | U (unlabeled) =&quot;</span><span class="p">,</span> <span class="n">X_U</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PU shapes: P (labeled +) = (15, 2)  | U (unlabeled) = (555, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>A fast scatter on the original two features helps sanity-check that P isn’t degenerate (all bunched in one corner) and that U spans a reasonable space.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U (unlabeled)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P (labeled +)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PU view: P vs U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/d3bfc47ec0de6dd62ea7b7e73300e2512eaf41f5eb821d63998116bb00f44eb6.png" src="_images/d3bfc47ec0de6dd62ea7b7e73300e2512eaf41f5eb821d63998116bb00f44eb6.png" />
+</div>
+</div>
+<p>Under SCAR, <span class="math notranslate nohighlight">\( P(s=1\mid x)=c\,P(y=1\mid x) \)</span>. We first fit a classifier to predict <strong>s</strong> (P vs U). Then we estimate <span class="math notranslate nohighlight">\( \hat c \)</span> by averaging the s‑model’s probabilities on a <strong>held‑out subset of P</strong>. Finally, we divide by <span class="math notranslate nohighlight">\( \hat c \)</span> to get <span class="math notranslate nohighlight">\( \hat P(y=1\mid x) \)</span>, clipping to <code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Build s-dataset</span>
+<span class="n">X_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_P</span><span class="p">,</span> <span class="n">X_U</span><span class="p">])</span>
+<span class="n">s_lab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_P</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_U</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)])</span>
+
+<span class="c1"># Fit s-model</span>
+<span class="n">sc_s</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+<span class="n">Xs_s</span> <span class="o">=</span> <span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+<span class="n">clf_s</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clf_s</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xs_s</span><span class="p">,</span> <span class="n">s_lab</span><span class="p">)</span>
+
+<span class="c1"># Estimate c-hat on a holdout of P</span>
+<span class="n">XP_tr</span><span class="p">,</span> <span class="n">XP_ho</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_P</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">c_hat</span> <span class="o">=</span> <span class="n">clf_s</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">XP_ho</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">XP_ho</span><span class="p">)</span> <span class="k">else</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;c_hat:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">c_hat</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Convert to PU probability on all candidates (labeled pool + unlabeled pool)</span>
+<span class="n">X_all_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_lab</span><span class="p">,</span> <span class="n">X_unlab</span><span class="p">])</span>
+<span class="n">p_s_all</span> <span class="o">=</span> <span class="n">clf_s</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_all_plot</span><span class="p">))[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">p_y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_s_all</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">c_hat</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Split back for inspection</span>
+<span class="n">n_lab_total</span> <span class="o">=</span> <span class="n">X_lab</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">p_y_lab</span> <span class="o">=</span> <span class="n">p_y_all</span><span class="p">[:</span><span class="n">n_lab_total</span><span class="p">]</span>
+<span class="n">p_y_unl</span> <span class="o">=</span> <span class="n">p_y_all</span><span class="p">[</span><span class="n">n_lab_total</span><span class="p">:]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">p_y_all</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c_hat: 0.0385
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    570.000000
+mean       0.652012
+std        0.224269
+min        0.152797
+25%        0.467893
+50%        0.632156
+75%        0.841057
+max        1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_lab</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p><span class="math notranslate nohighlight">\( \hat c \)</span> is the bridge from “probability of being revealed” to “probability of being truly positive.” Without it, the s‑model’s scores are systematically scaled.</p>
+</div>
+<p>At a fundamental level, we train model to predict “is this point from P or U?” and then rescale those scores to get a rough success probability. Keep the math light, the intuition strong.</p>
+<p>Intuition</p>
+<ul class="simple">
+<li><p>If a spot in feature space is often seen among reported successes, it’s more likely to be truly positive.</p></li>
+<li><p>We estimate that likelihood with a classifier trained on P vs U.</p></li>
+<li><p>We then rescale with a constant <code class="docutils literal notranslate"><span class="pre">c</span></code> so that “reported” and “true” are aligned on average.</p></li>
+</ul>
+<p>Below, we now visualize three views to build intuition.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">p_y_unl</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat P(y=1|x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (solvent family flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PU score map on U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/2ba2b933048ad835a172c11cefab89111d08dbb0714a9e7ac42ca95e16416f29.png" src="_images/2ba2b933048ad835a172c11cefab89111d08dbb0714a9e7ac42ca95e16416f29.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">griddata</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># Create a fine grid</span>
+<span class="n">xg</span><span class="p">,</span> <span class="n">yg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">:</span><span class="mf">1.2</span><span class="p">:</span><span class="mi">100</span><span class="n">j</span><span class="p">]</span>
+<span class="n">zg</span> <span class="o">=</span> <span class="n">griddata</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">,</span> <span class="n">p_y_unl</span><span class="p">,</span> <span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">yg</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xg</span><span class="p">,</span> <span class="n">yg</span><span class="p">,</span> <span class="n">zg</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat P(y=1|x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">36</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P (labeled +)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (solvent family flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Smoothed PU prediction surface&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/dcf646c266024c968321f17b1fd5fc46cb7220b41dea14023b7a4cc008f143c3.png" src="_images/dcf646c266024c968321f17b1fd5fc46cb7220b41dea14023b7a4cc008f143c3.png" />
+</div>
+</div>
+<p>How do PU scores distribute for labeled positives vs labeled negatives (teach‑only), and how does U compare? Below we have a plot to see this:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">neg</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p_y_lab</span><span class="p">[</span><span class="n">pos</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled + (teach-only)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">p_y_lab</span><span class="p">[</span><span class="n">neg</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Labeled − (teach-only)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;PU probability  $</span><span class="se">\\</span><span class="s1">hat P(y=1|x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Check: labeled + should skew right of labeled −&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/c24a4722b96256f18532f3685f3e8994c0e4c5a71469b92a9b14e9aa78d9240f.png" src="_images/c24a4722b96256f18532f3685f3e8994c0e4c5a71469b92a9b14e9aa78d9240f.png" />
+</div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>To read it, you should expect labeled <code class="docutils literal notranslate"><span class="pre">+</span></code> often sits to the <em>right</em> of labeled <code class="docutils literal notranslate"><span class="pre">−</span></code>, meaning the model is ranking correctly (the postive labels should have higher PU probability). U should often look bimodal or broad.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="mf">0.30</span>
+<span class="n">thr_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">p_y_unl</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">q</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Quantile threshold on U:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">thr_q</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">pick_q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_y_unl</span> <span class="o">&gt;=</span> <span class="n">thr_q</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.0</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;dimgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U (all)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_unlab</span><span class="p">[</span><span class="n">pick_q</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_unlab</span><span class="p">[</span><span class="n">pick_q</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">46</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Top </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">}</span><span class="s1">% of U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_P</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_P</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">34</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P (labeled +)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x0 (temperature-like)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x1 (flag)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quantile-selected candidates from U&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected </span><span class="si">{</span><span class="n">pick_q</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> candidates by quantile threshold.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantile threshold on U: 0.773
+</pre></div>
+</div>
+<img alt="_images/1c0ef00c0155eda0d31aa25b2630221e9def0bb8e092f934db1fd3902a2a66df.png" src="_images/1c0ef00c0155eda0d31aa25b2630221e9def0bb8e092f934db1fd3902a2a66df.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected 150 candidates by quantile threshold.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Medthod 2: Prior‑guided threshold (volume driven):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi_hat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">p_y_all</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated class prior pi_hat:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">pi_hat</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">thr_pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">p_y_unl</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">pi_hat</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">),</span> <span class="mf">0.99</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prior-guided threshold on U:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">thr_pi</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">pick_pi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">p_y_unl</span> <span class="o">&gt;=</span> <span class="n">thr_pi</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected </span><span class="si">{</span><span class="n">pick_pi</span><span class="o">.</span><span class="n">size</span><span class="si">}</span><span class="s2"> candidates by prior-guided threshold.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated class prior pi_hat: 0.652
+Prior-guided threshold on U: 0.53
+Selected 326 candidates by prior-guided threshold.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">ths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">prec_list</span><span class="p">,</span> <span class="n">rec_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ths</span><span class="p">:</span>
+    <span class="n">yhat</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_y_lab</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="n">prec_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">precision_score</span><span class="p">(</span><span class="n">y_lab_noisy</span><span class="p">,</span> <span class="n">yhat</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">rec_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_lab_noisy</span><span class="p">,</span> <span class="n">yhat</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">prec_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Precision&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ths</span><span class="p">,</span> <span class="n">rec_list</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Recall&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Threshold t on $</span><span class="se">\\</span><span class="s1">hat P(y=1|x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Score&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Precision and recall vs threshold (labeled set, teach-only)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/a924b0446465517e08143662c4212ae30040e4966e8abb0c5cb61cdb7a3d1160.png" src="_images/a924b0446465517e08143662c4212ae30040e4966e8abb0c5cb61cdb7a3d1160.png" />
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="mof-pu-case-study">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. MOF PU case study</a><a class="headerlink" href="#mof-pu-case-study" title="Link to this heading">#</a></h2>
+<p>Now use the provided MOF dataset and define positive as:</p>
+<ul class="simple">
+<li><p>yield <span class="math notranslate nohighlight">\(&gt; 0.75\)</span></p></li>
+<li><p>reproducibility <span class="math notranslate nohighlight">\(\ge 0.75\)</span></p></li>
+<li><p>purity <span class="math notranslate nohighlight">\(&gt; 0.50\)</span></p></li>
+</ul>
+<p>All other rows are considered failures, but in the <strong>PU scenario</strong> we will pretend we only observe a <strong>small portion</strong> of those true positives as labeled. Our goal is to recover <span class="math notranslate nohighlight">\(\hat P(y=1\mid x)\)</span> for all candidates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Load MOF data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/mof_yield_dataset.csv&#39;</span>
+<span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>smiles</th>
+      <th>temperature</th>
+      <th>time_h</th>
+      <th>concentration_M</th>
+      <th>solvent_DMF</th>
+      <th>yield</th>
+      <th>purity</th>
+      <th>reproducibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
+      <td>25</td>
+      <td>12</td>
+      <td>0.05</td>
+      <td>0</td>
+      <td>0.29</td>
+      <td>0.55</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>25</td>
+      <td>12</td>
+      <td>0.05</td>
+      <td>0</td>
+      <td>0.42</td>
+      <td>0.45</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>25</td>
+      <td>12</td>
+      <td>0.05</td>
+      <td>0</td>
+      <td>0.66</td>
+      <td>0.74</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Inspect basic columns and small sample</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_raw</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">df_raw</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;smiles&#39;, &#39;temperature&#39;, &#39;time_h&#39;, &#39;concentration_M&#39;, &#39;solvent_DMF&#39;, &#39;yield&#39;, &#39;purity&#39;, &#39;reproducibility&#39;]
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>smiles</th>
+      <th>temperature</th>
+      <th>time_h</th>
+      <th>concentration_M</th>
+      <th>solvent_DMF</th>
+      <th>yield</th>
+      <th>purity</th>
+      <th>reproducibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>11456</th>
+      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
+      <td>100</td>
+      <td>96</td>
+      <td>0.15</td>
+      <td>1</td>
+      <td>0.49</td>
+      <td>0.76</td>
+      <td>1.00</td>
+    </tr>
+    <tr>
+      <th>16528</th>
+      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
+      <td>155</td>
+      <td>36</td>
+      <td>0.35</td>
+      <td>0</td>
+      <td>0.35</td>
+      <td>0.26</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>3253</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>40</td>
+      <td>84</td>
+      <td>0.15</td>
+      <td>1</td>
+      <td>0.47</td>
+      <td>0.39</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>18614</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>160</td>
+      <td>48</td>
+      <td>0.05</td>
+      <td>1</td>
+      <td>0.70</td>
+      <td>0.42</td>
+      <td>0.25</td>
+    </tr>
+    <tr>
+      <th>1544</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>25</td>
+      <td>96</td>
+      <td>0.40</td>
+      <td>0</td>
+      <td>0.19</td>
+      <td>0.31</td>
+      <td>0.25</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Define the positive condition and create the true label <span class="math notranslate nohighlight">\(y\)</span> for teaching. In a real campaign you will not have <span class="math notranslate nohighlight">\(y\)</span> for all rows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define true positives (teaching) and simple features</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_pos_true&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;yield&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;reproducibility&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;purity&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.50</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;True positive rate:&#39;</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_pos_true&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Use simple numeric process features + one-hot for solvent</span>
+<span class="n">X_num</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span><span class="s1">&#39;time_h&#39;</span><span class="p">,</span><span class="s1">&#39;concentration_M&#39;</span><span class="p">,</span><span class="s1">&#39;solvent_DMF&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X_num</span><span class="o">.</span><span class="n">values</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;is_pos_true&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">y_true</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True positive rate: 0.006
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[25.  , 12.  ,  0.05,  0.  ],
+        [25.  , 12.  ,  0.05,  0.  ]]),
+ array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create the PU split: only a small fraction of the true positives are labeled as <span class="math notranslate nohighlight">\(s=1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create PU view: reveal only some positives as labeled s=1</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<span class="n">pi_p</span> <span class="o">=</span> <span class="n">y_true</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># true class prior (teaching)</span>
+<span class="n">c_true</span> <span class="o">=</span> <span class="mf">0.3</span>        <span class="c1"># reveal rate among positives, we decide this number in demo but in reality you have no control on this</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">pos_idx_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_true</span><span class="o">==</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">reveal</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pos_idx_all</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">c_true</span>
+<span class="n">s</span><span class="p">[</span><span class="n">pos_idx_all</span><span class="p">[</span><span class="n">reveal</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total rows:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;True positives:&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">y_true</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Labeled positives s=1:&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total rows: 20000
+True positives: 120
+Labeled positives s=1: 40
+</pre></div>
+</div>
+</div>
+</div>
+<p>Build the S-dataset for the MOF case: positives labeled vs unlabeled. Later we will fit a model for <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># S-dataset for MOF</span>
+<span class="n">X_pos_labeled</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">s</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">X_unl</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">s</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">X_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X_pos_labeled</span><span class="p">,</span> <span class="n">X_unl</span><span class="p">])</span>
+<span class="n">s_lab</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_pos_labeled</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_unl</span><span class="p">))])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shapes:&#39;</span><span class="p">,</span> <span class="n">X_s</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">s_lab</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># Train s-model on MOF S-dataset</span>
+<span class="n">sc_s</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+<span class="n">Xs_s</span> <span class="o">=</span> <span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_s</span><span class="p">)</span>
+<span class="n">clf_s</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">clf_s</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xs_s</span><span class="p">,</span> <span class="n">s_lab</span><span class="p">)</span>
+<span class="n">p_s_sdata</span> <span class="o">=</span> <span class="n">clf_s</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">Xs_s</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">p_s_sdata</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Shapes: (20000, 4) (20000,)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    20000.000000
+mean         0.002006
+std          0.001482
+min          0.000273
+25%          0.000845
+50%          0.001537
+75%          0.002807
+max          0.008545
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Estimate <span class="math notranslate nohighlight">\(\hat c\)</span> using a small holdout from the labeled positives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Estimate c-hat</span>
+<span class="n">Xp_tr</span><span class="p">,</span> <span class="n">Xp_ho</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_pos_labeled</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">p_s_pos_ho</span> <span class="o">=</span> <span class="n">clf_s</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">Xp_ho</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">c_hat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_s_pos_ho</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;c_hat (MOF):&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">c_hat</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c_hat (MOF): 0.0031
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute <span class="math notranslate nohighlight">\(\hat P(y=1\mid x)\)</span> for all rows and look at the distribution. This is your PU probability used for ranking and selection.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#PU probability for all MOF rows</span>
+<span class="n">p_s_all</span> <span class="o">=</span> <span class="n">clf_s</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">sc_s</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">))[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">p_y_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">p_s_all</span> <span class="o">/</span> <span class="n">c_hat</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">p_y_all</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    20000.000000
+mean         0.559463
+std          0.312000
+min          0.087774
+25%          0.272140
+50%          0.494926
+75%          0.904000
+max          1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rank the top 10 candidates and print their conditions so that a chemist can sanity check them. This is often the most helpful first view.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Top-10 by PU probability</span>
+<span class="n">top_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">p_y_all</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">cols_show</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">,</span><span class="s1">&#39;time_h&#39;</span><span class="p">,</span><span class="s1">&#39;concentration_M&#39;</span><span class="p">,</span><span class="s1">&#39;solvent_DMF&#39;</span><span class="p">,</span><span class="s1">&#39;yield&#39;</span><span class="p">,</span><span class="s1">&#39;purity&#39;</span><span class="p">,</span><span class="s1">&#39;reproducibility&#39;</span><span class="p">,</span><span class="s1">&#39;is_pos_true&#39;</span><span class="p">]</span>
+<span class="n">df_top</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">top_idx</span><span class="p">][</span><span class="n">cols_show</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_top</span><span class="p">[</span><span class="s1">&#39;p_y_hat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_y_all</span><span class="p">[</span><span class="n">top_idx</span><span class="p">]</span>
+<span class="n">df_top</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>temperature</th>
+      <th>time_h</th>
+      <th>concentration_M</th>
+      <th>solvent_DMF</th>
+      <th>yield</th>
+      <th>purity</th>
+      <th>reproducibility</th>
+      <th>is_pos_true</th>
+      <th>p_y_hat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25</td>
+      <td>12</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.53</td>
+      <td>0.65</td>
+      <td>1.00</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>25</td>
+      <td>12</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.48</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>25</td>
+      <td>12</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.48</td>
+      <td>0.53</td>
+      <td>0.25</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>25</td>
+      <td>12</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.42</td>
+      <td>0.68</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.72</td>
+      <td>0.85</td>
+      <td>0.75</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.34</td>
+      <td>0.41</td>
+      <td>1.00</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.36</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.30</td>
+      <td>0.54</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.14</td>
+      <td>0.66</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.49</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Teaching-only: if we use the hidden <span class="math notranslate nohighlight">\(y_{true}\)</span> we can compute AUC and PR AUC as a robustness check for this lecture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Teaching-only metrics</span>
+<span class="n">auc_mof</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">p_y_all</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MOF PU AUC (teaching only):&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">auc_mof</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MOF PU AUC (teaching only): 0.725
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot PR curve and a simple cumulative hit rate curve for top-k. Both are useful in experiment planning.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Curves (teaching only)</span>
+<span class="n">prec</span><span class="p">,</span> <span class="n">rec</span><span class="p">,</span> <span class="n">thr</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">p_y_all</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rec</span><span class="p">,</span> <span class="n">prec</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Recall&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precision&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PR curve (teaching only)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">p_y_all</span><span class="p">)</span>
+<span class="n">y_ordered</span> <span class="o">=</span> <span class="n">y_true</span><span class="p">[</span><span class="n">order</span><span class="p">]</span>
+<span class="n">topks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+<span class="n">hits</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">topks</span><span class="p">:</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_ordered</span><span class="p">))</span>
+    <span class="n">hits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_ordered</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">topks</span><span class="p">,</span> <span class="n">hits</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Hit rate in top-k&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top-k hit rate (teaching only)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2516a82127bd442cfa75d5338a4120b1406ce493c793ee50d5aad283b433ad59.png" src="_images/2516a82127bd442cfa75d5338a4120b1406ce493c793ee50d5aad283b433ad59.png" />
+<img alt="_images/21ba2386793a54989c17ff6e0deb1f9533b3b756a9b076547a69c0c1e014921b.png" src="_images/21ba2386793a54989c17ff6e0deb1f9533b3b756a9b076547a69c0c1e014921b.png" />
+</div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="admonition-title">⏰<strong>Exercise</strong></p>
+<p>Swap the base model to <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier(n_estimators=500,</span> <span class="pre">min_samples_leaf=3)</span></code>. Re-estimate <span class="math notranslate nohighlight">\(\hat c\)</span> and recompute <code class="docutils literal notranslate"><span class="pre">p_y_all</span></code>. Do the results change?</p>
+</div>
+<p>We can plot the probolities predicted by the model.
+To run the code please use Colab, and below is the result.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;lecture-17.umap1.png&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="lecture-17.umap1.png"/></div></div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>Now, chemist can start from the predictions done by semi-supervised learning to run the suggested experiments.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;lecture-17.umap2.png&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="lecture-17.umap2.png"/></div></div>
+</div>
+</section>
+<section id="glossary">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-SCAR">SCAR<a class="headerlink" href="#term-SCAR" title="Link to this term">#</a></dt><dd><p>Selected Completely At Random. Positives are labeled with a constant probability <span class="math notranslate nohighlight">\(c\)</span>, independent of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</dd>
+<dt id="term-SAR">SAR<a class="headerlink" href="#term-SAR" title="Link to this term">#</a></dt><dd><p>Selected At Random. Label selection may depend on <span class="math notranslate nohighlight">\(x\)</span>. Harder than SCAR.</p>
+</dd>
+<dt id="term-Class-prior">Class prior<a class="headerlink" href="#term-Class-prior" title="Link to this term">#</a></dt><dd><p><span class="math notranslate nohighlight">\(\pi_p=P(y=1)\)</span>. Fraction of positives in the population. Important for risk correction.</p>
+</dd>
+<dt id="term-ElkanNoto-link">Elkan–Noto link<a class="headerlink" href="#term-ElkanNoto-link" title="Link to this term">#</a></dt><dd><p>Under SCAR, <span class="math notranslate nohighlight">\(P(s=1\mid x)=c\,P(y=1\mid x)\)</span>. Estimate <span class="math notranslate nohighlight">\(c\)</span> on a holdout of positives and divide.</p>
+</dd>
+<dt id="term-PU-probability">PU probability<a class="headerlink" href="#term-PU-probability" title="Link to this term">#</a></dt><dd><p>An estimate of <span class="math notranslate nohighlight">\(P(y=1\mid x)\)</span> produced from PU methods for ranking and decision.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture-16.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 16 - Reinforcement Learning</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-learning-overview">2. Semi-supervised learning overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pu-learning-assumptions-and-key-quantities">3. PU learning: assumptions and key quantities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mof-pu-case-study">4. MOF PU case study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">5. Glossary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

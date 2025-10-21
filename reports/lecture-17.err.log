@@ -30,33 +30,22 @@ Traceback (most recent call last):
     await self.async_execute_cell(
         cell, index, execution_count=self.code_cells_executed + 1
     )
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-rng = np.random.default_rng(17)
-
-pos_idx = np.where(y_lab_noisy == 1)[0]
-reveal = rng.random(len(pos_idx)) < 0.30
-P_idx = pos_idx[reveal]
-
-X_P = X_lab[P_idx]
-mask_lab_rest = np.ones(len(X_lab), dtype=bool)
-mask_lab_rest[P_idx] = False
-X_U = np.vstack([X_lab[mask_lab_rest], X_unlab])
-
-print("P shape:", X_P.shape, " U shape:", X_U.shape)
-------------------
-
-
-[31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m rng = [43mnp[49m.random.default_rng([32m17[39m)
-[32m      3[39m pos_idx = np.where(y_lab_noisy == [32m1[39m)[[32m0[39m]
-[32m      4[39m reveal = rng.random([38;5;28mlen[39m(pos_idx)) < [32m0.30[39m
-
-[31mNameError[39m: name 'np' is not defined
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+        "Cell execution timed out", timeout, cell
+    )
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['# FINAL CELL: Full-set UMAP, BEFORE vs AFTER PU (up to 20000 rows)', 'X_all = np.asarray(X)', 'p_all = np.asarray(p_y_all).reshape(-1)', 'n = len(X_all)', '']
+...
+["cb.set_label(r'$\\hat{P}(y=1|x)$')", '', 'plt.suptitle(f"UMAP comparison on {n} points")', 'plt.tight_layout()', 'plt.show()']
+-------------------
 
