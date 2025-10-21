@@ -56,7 +56,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 | **Sept 21** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/18AIDo3hclJssMQc1hRgUfAsm-SpkFd5t?usp=sharing) | 
 | **Oct 5** | Project 1 due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
 | **Oct 14** | Project 1 Evaluation due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
-| **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing) |  
+| **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing) |  
 | **Nov 9** | Assignment 4 due |  
 | **Nov 30** | Assignment 5 due |  
 | **Dec 7** | Project 2 Evaluations due |  
