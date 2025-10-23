@@ -18,7 +18,7 @@ kernelspec:
 :depth: 1
 ```
 
-## Learning goals**
+## Learning goals
 - Define **semi-supervised learning**, the LU setting (labeled + unlabeled), and the PU setting (positive + unlabeled).
 - Understand assumptions used by common PU methods
 - Build a simple PU workflow on a chemistry example
