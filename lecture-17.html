@@ -393,7 +393,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-learning-overview">2. Semi-supervised learning overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pu-learning-assumptions-and-key-quantities">3. PU learning: assumptions and key quantities</a></li>
@@ -414,7 +414,7 @@ document.write(`
 <h1>Lecture 17 - PU Learning<a class="headerlink" href="#lecture-17-pu-learning" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals**</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
 <li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
 <li><p><a class="reference internal" href="#semi-supervised-learning-overview" id="id3">2. Semi-supervised learning overview</a></p></li>
 <li><p><a class="reference internal" href="#pu-learning-assumptions-and-key-quantities" id="id4">3. PU learning: assumptions and key quantities</a></p></li>
@@ -423,7 +423,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals**</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define <strong>semi-supervised learning</strong>, the LU setting (labeled + unlabeled), and the PU setting (positive + unlabeled).</p></li>
 <li><p>Understand assumptions used by common PU methods</p></li>
@@ -1596,88 +1596,15 @@ To run the code please use Colab, and below is the result.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png&quot;</span><span class="p">))</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1100,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: a bytes-like object is required, not &#39;str&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\formatters.py:1036,</span> in <span class="ni">MimeBundleFormatter.__call__</span><span class="nt">(self, obj, include, exclude)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1035</span>     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1036</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1037</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1090,</span> in <span class="ni">Image._repr_mimebundle_</span><span class="nt">(self, include, exclude)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1088</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="n">mimetype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mimetype</span>
-<span class="ne">-&gt; </span><span class="mi">1090</span>     <span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_and_metadata</span><span class="p">(</span><span class="n">always_both</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span>     <span class="k">if</span> <span class="n">metadata</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span>         <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="n">mimetype</span><span class="p">:</span> <span class="n">metadata</span><span class="p">}</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1102,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="s2">&quot;No such file or directory: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span> <span class="n">md</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: No such file or directory: &#39;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png&#39;
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1100,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: a bytes-like object is required, not &#39;str&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\formatters.py:406,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span>     <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">406</span>         <span class="k">return</span> <span class="n">method</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1122,</span> in <span class="ni">Image._repr_png_</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="k">def</span><span class="w"> </span><span class="nf">_repr_png_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_FMT_PNG</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1122</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_and_metadata</span><span class="p">()</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1102,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="s2">&quot;No such file or directory: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span> <span class="n">md</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: No such file or directory: &#39;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png&#39;
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.Image object&gt;
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><img src="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png"/></div></div>
 </div>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
@@ -1691,88 +1618,13 @@ To run the code please use Colab, and below is the result.</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png&quot;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1100,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: a bytes-like object is required, not &#39;str&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\formatters.py:1036,</span> in <span class="ni">MimeBundleFormatter.__call__</span><span class="nt">(self, obj, include, exclude)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1033</span>     <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1035</span>     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1036</span>         <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="n">include</span><span class="p">,</span> <span class="n">exclude</span><span class="o">=</span><span class="n">exclude</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1037</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1038</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1090,</span> in <span class="ni">Image._repr_mimebundle_</span><span class="nt">(self, include, exclude)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1088</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="n">mimetype</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mimetype</span>
-<span class="ne">-&gt; </span><span class="mi">1090</span>     <span class="n">data</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_and_metadata</span><span class="p">(</span><span class="n">always_both</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1091</span>     <span class="k">if</span> <span class="n">metadata</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span>         <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="n">mimetype</span><span class="p">:</span> <span class="n">metadata</span><span class="p">}</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1102,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="s2">&quot;No such file or directory: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span> <span class="n">md</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: No such file or directory: &#39;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png&#39;
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1100,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1099</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">TypeError</span>: a bytes-like object is required, not &#39;str&#39;
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\formatters.py:406,</span> in <span class="ni">BaseFormatter.__call__</span><span class="nt">(self, obj)</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span>     <span class="n">method</span> <span class="o">=</span> <span class="n">get_real_method</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">print_method</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>     <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">406</span>         <span class="k">return</span> <span class="n">method</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="k">return</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1122,</span> in <span class="ni">Image._repr_png_</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="k">def</span><span class="w"> </span><span class="nf">_repr_png_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1121</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">embed</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">format</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_FMT_PNG</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1122</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data_and_metadata</span><span class="p">()</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\IPython\core\display.py:1102,</span> in <span class="ni">Image._data_and_metadata</span><span class="nt">(self, always_both)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="n">b64_data</span> <span class="o">=</span> <span class="n">b2a_base64</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;ascii&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span> <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1102</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>         <span class="s2">&quot;No such file or directory: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">))</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">1104</span> <span class="n">md</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="p">:</span>
-
-<span class="ne">FileNotFoundError</span>: No such file or directory: &#39;url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png&#39;
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;IPython.core.display.Image object&gt;
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><img src="https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png"/></div></div>
 </div>
 </section>
 <section id="glossary">
@@ -1847,7 +1699,7 @@ To run the code please use Colab, and below is the result.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals**</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semi-supervised-learning-overview">2. Semi-supervised learning overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pu-learning-assumptions-and-key-quantities">3. PU learning: assumptions and key quantities</a></li>
