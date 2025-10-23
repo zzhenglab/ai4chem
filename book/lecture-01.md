@@ -68,7 +68,7 @@ Right-click the badge below and select “**Open link in new tab**”
 Log in to your Google account. Then in the top left menu, go to **File** > **Save a copy** in Drive to keep your own editable version.
 
 
-
+ 
 ```{note}
 You can also download and run locally on your laptop with Anaconda (JupyterLab) or Miniconda.  
 If this is your first time coding, we recommend starting with Google Colab for simplicity.

@@ -196,6 +196,9 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 </ul>
 
     </div>
@@ -2335,9 +2338,6 @@ Averaged R2: 0.869699219889096
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/2d2e9ae4a531980c0e8a245e736117a1af2853fe86cea0bc7f7587762e1ea641.png" src="_images/2d2e9ae4a531980c0e8a245e736117a1af2853fe86cea0bc7f7587762e1ea641.png" />
-</div>
 </div>
 <div class="admonition-difference admonition">
 <p class="admonition-title">Difference</p>
@@ -2389,12 +2389,6 @@ Averaged R2: 0.869699219889096
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Soft Voting classifier accuracy: 0.9652173913043478
-Hard Voting classifier accuracy: 0.9565217391304348
-</pre></div>
-</div>
-</div>
 </div>
 <p>Compare voting against individual models:</p>
 <div class="cell docutils container">
@@ -2409,53 +2403,6 @@ Hard Voting classifier accuracy: 0.9565217391304348
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Model</th>
-      <th>Accuracy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>LogReg</td>
-      <td>0.956522</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>RandomForest</td>
-      <td>0.939130</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Voting-Hard</td>
-      <td>0.956522</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Voting-Soft</td>
-      <td>0.965217</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="admonition-difference admonition">
 <p class="admonition-title">Difference</p>
@@ -2487,12 +2434,6 @@ Hard Voting classifier accuracy: 0.9565217391304348
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient Boosting R2: 0.856
-Gradient Boosting MAE: 16.17
-</pre></div>
-</div>
-</div>
 </div>
 <p>Compare <strong>Random Forest vs Gradient Boosting</strong> directly:</p>
 <div class="cell docutils container">
@@ -2508,46 +2449,6 @@ Gradient Boosting MAE: 16.17
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Model</th>
-      <th>R2</th>
-      <th>MAE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>RandomForest</td>
-      <td>0.826</td>
-      <td>16.777</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>GradientBoosting</td>
-      <td>0.856</td>
-      <td>16.172</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2562,9 +2463,6 @@ Gradient Boosting MAE: 16.17
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" src="_images/b549a677eead416208596d647710a179bf346c909dafaacdfb0b4a73bf9b6b0c.png" />
 </div>
 </div>
 <div class="admonition-compare admonition">
@@ -2602,13 +2500,6 @@ Gradient Boosting MAE: 16.17
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;OOB score: </span><span class="si">{</span><span class="n">rf</span><span class="o">.</span><span class="n">oob_score_</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_hat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC: </span><span class="si">{</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_proba</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OOB score: 0.939
-Accuracy: 0.922
-AUC: 0.955
 </pre></div>
 </div>
 </div>
@@ -2662,22 +2553,6 @@ AUC: 0.955
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best params: {&#39;max_depth&#39;: None, &#39;min_samples_leaf&#39;: 3, &#39;n_estimators&#39;: 500}
-Best CV AUC: 0.972
-Accuracy: 0.948
-AUC: 0.982
-              precision    recall  f1-score   support
-
-           0      0.850     0.850     0.850        20
-           1      0.968     0.968     0.968        95
-
-    accuracy                          0.948       115
-   macro avg      0.909     0.909     0.909       115
-weighted avg      0.948     0.948     0.948       115
-</pre></div>
-</div>
-</div>
 </div>
 <p>Additional plots demonstrating the performance:</p>
 <div class="cell docutils container">
@@ -2697,10 +2572,6 @@ weighted avg      0.948     0.948     0.948       115
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" src="_images/01db96f353bcf07ec20226525dc5a98554564d8870f8e2401eb955095db58aca.png" />
-<img alt="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" src="_images/77faf4f97ceee2b173882cbe56d5d8d833bcc9c936d43dd67302fd36a2ad3aae.png" />
 </div>
 </div>
 </section>
@@ -2826,12 +2697,6 @@ weighted avg      0.948     0.948     0.948       115
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tree R2:   0.918
-Forest R2: 0.947
-</pre></div>
-</div>
-</div>
 </div>
 <p>Parity plots for both models.</p>
 <div class="cell docutils container">
@@ -2856,10 +2721,6 @@ Forest R2: 0.947
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" src="_images/ff98c0a4bf59b2ab47248ec9f83ec4d2b90850e8c645791c3d9dfe1cb200b7c0.png" />
-<img alt="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" src="_images/7c9c76be345dcce9280fccfe0e252a6c5413c5dd0ad702559ef13177edbf20bb.png" />
-</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -2879,68 +2740,6 @@ Forest R2: 0.947
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>min_samples_leaf</th>
-      <th>Accuracy</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>0.922</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2</td>
-      <td>0.930</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>3</td>
-      <td>0.930</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>5</td>
-      <td>0.922</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>8</td>
-      <td>0.957</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>12</td>
-      <td>0.939</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>20</td>
-      <td>0.939</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2952,9 +2751,6 @@ Forest R2: 0.947
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" src="_images/33628e636ddbc2004d21c4d68124e46ce36ed3f8ee829d2881c308bc44a7fbaf.png" />
 </div>
 </div>
 <p>Hint for interpretation: very small leaves may overfit while very large leaves may underfit.</p>
@@ -2980,58 +2776,6 @@ Forest R2: 0.947
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>seed</th>
-      <th>OOB</th>
-      <th>TestAcc</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0.920</td>
-      <td>0.965</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>7</td>
-      <td>0.933</td>
-      <td>0.904</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21</td>
-      <td>0.937</td>
-      <td>0.957</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>42</td>
-      <td>0.928</td>
-      <td>0.939</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3046,9 +2790,6 @@ Forest R2: 0.947
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" src="_images/d83edf017ea2f059b149f0feb2f798292e32875eec5c866391d1479967c5096e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3074,14 +2815,6 @@ Forest R2: 0.947
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Root rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Left child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">left</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Left child is a leaf&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right child rule:&quot;</span><span class="p">,</span> <span class="n">node_rule</span><span class="p">(</span><span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">right</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;Right child is a leaf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" src="_images/af0f7199b51c3f9fea50654c53f3b57ce211cbfef0dfe68bcdf634995c0a7fee.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Root rule: MolWt &lt;= 134.200 ?
-Left child rule: LogP &lt;= 2.538 ?
-Right child rule: LogP &lt;= 1.248 ?
 </pre></div>
 </div>
 </div>
@@ -3121,55 +2854,6 @@ Right child rule: LogP &lt;= 1.248 ?
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" src="_images/2cbcf4daa181601c3257855ca6e8e1b3a9410f2e198049b174bc140c6aa920eb.png" />
-<img alt="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" src="_images/5062d89ba643a7c61e9c81054c437fd0b318ac4d032cb0964d80b6b1e0287d5d.png" />
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Built_in</th>
-      <th>Permutation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>LogP</th>
-      <td>0.135308</td>
-      <td>0.039454</td>
-    </tr>
-    <tr>
-      <th>MolWt</th>
-      <td>0.617161</td>
-      <td>0.839382</td>
-    </tr>
-    <tr>
-      <th>NumRings</th>
-      <td>0.177916</td>
-      <td>0.025688</td>
-    </tr>
-    <tr>
-      <th>TPSA</th>
-      <td>0.069615</td>
-      <td>0.017808</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>Look for agreement on the top features. Disagreements can signal correlation or overfitting in the training trees.</p>
 </section>
@@ -3239,128 +2923,6 @@ Right child rule: LogP &lt;= 1.248 ?
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;TPR&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC curve - RF with CV-tuned hyperparameters&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\externals\loky\backend\resource_tracker.py:146: UserWarning: resource_tracker: process died unexpectedly, relaunching. Some folders/semaphores might leak.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">52</span><span class="p">],</span> <span class="n">line</span> <span class="mi">43</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="n">rf_base</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="n">param_grid</span><span class="o">=</span><span class="n">param_grid</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">39</span>     <span class="n">return_train_score</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="c1"># 4) Fit and report</span>
-<span class="ne">---&gt; </span><span class="mi">43</span> <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best params:&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best CV AUC: </span><span class="si">{</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\base.py:1365,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1358</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1360</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1361</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1362</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1363</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1364</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1365</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\model_selection\_search.py:1051,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_results</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1046</span>         <span class="n">all_candidate_params</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">,</span> <span class="n">all_out</span><span class="p">,</span> <span class="n">all_more_results</span>
-<span class="g g-Whitespace">   </span><span class="mi">1047</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="k">return</span> <span class="n">results</span>
-<span class="ne">-&gt; </span><span class="mi">1051</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="c1"># multimetric is determined here because in the case of a callable</span>
-<span class="g g-Whitespace">   </span><span class="mi">1054</span> <span class="c1"># self.scoring the return type is only known after calling</span>
-<span class="g g-Whitespace">   </span><span class="mi">1055</span> <span class="n">first_test_score</span> <span class="o">=</span> <span class="n">all_out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;test_scores&quot;</span><span class="p">]</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\model_selection\_search.py:1605,</span> in <span class="ni">GridSearchCV._run_search</span><span class="nt">(self, evaluate_candidates)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1603</span> <span class="k">def</span><span class="w"> </span><span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1604</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1605</span>     <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\model_selection\_search.py:997,</span> in <span class="ni">BaseSearchCV.fit.&lt;locals&gt;.evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
-<span class="g g-Whitespace">    </span><span class="mi">989</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">990</span>     <span class="nb">print</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">991</span>         <span class="s2">&quot;Fitting </span><span class="si">{0}</span><span class="s2"> folds for each of </span><span class="si">{1}</span><span class="s2"> candidates,&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">992</span>         <span class="s2">&quot; totalling </span><span class="si">{2}</span><span class="s2"> fits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">993</span>             <span class="n">n_splits</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">,</span> <span class="n">n_candidates</span> <span class="o">*</span> <span class="n">n_splits</span>
-<span class="g g-Whitespace">    </span><span class="mi">994</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">995</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">997</span> <span class="n">out</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">998</span>     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
-<span class="g g-Whitespace">    </span><span class="mi">999</span>         <span class="n">clone</span><span class="p">(</span><span class="n">base_estimator</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1000</span>         <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1001</span>         <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1002</span>         <span class="n">train</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1003</span>         <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1004</span>         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1005</span>         <span class="n">split_progress</span><span class="o">=</span><span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1006</span>         <span class="n">candidate_progress</span><span class="o">=</span><span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1007</span>         <span class="o">**</span><span class="n">fit_and_score_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1008</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1009</span>     <span class="k">for</span> <span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span> <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1010</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1011</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">routed_params</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">)),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1012</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1016</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1017</span>         <span class="s2">&quot;No fits were performed. &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1018</span>         <span class="s2">&quot;Was the CV iterator empty? &quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1019</span>         <span class="s2">&quot;Were there no candidates?&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1020</span>     <span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\utils\parallel.py:82,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="n">warning_filters</span> <span class="o">=</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filters</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span> <span class="n">iterable_with_config_and_warning_filters</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="n">_with_config_and_warning_filters</span><span class="p">(</span><span class="n">delayed_func</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">warning_filters</span><span class="p">),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>     <span class="mi">80</span>     <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
-<span class="g g-Whitespace">     </span><span class="mi">81</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">82</span> <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config_and_warning_filters</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\parallel.py:2072,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2066</span> <span class="c1"># The first item from the output is blank, but it makes the interpreter</span>
-<span class="g g-Whitespace">   </span><span class="mi">2067</span> <span class="c1"># progress until it enters the Try/Except block of the generator and</span>
-<span class="g g-Whitespace">   </span><span class="mi">2068</span> <span class="c1"># reaches the first `yield` statement. This starts the asynchronous</span>
-<span class="g g-Whitespace">   </span><span class="mi">2069</span> <span class="c1"># dispatch of the tasks to the workers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2070</span> <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">2072</span> <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\parallel.py:1682,</span> in <span class="ni">Parallel._get_outputs</span><span class="nt">(self, iterator, pre_dispatch)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1679</span>     <span class="k">yield</span>
-<span class="g g-Whitespace">   </span><span class="mi">1681</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
-<span class="ne">-&gt; </span><span class="mi">1682</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1684</span> <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1685</span>     <span class="c1"># The generator has been garbage collected before being fully</span>
-<span class="g g-Whitespace">   </span><span class="mi">1686</span>     <span class="c1"># consumed. This aborts the remaining tasks if possible and warn</span>
-<span class="g g-Whitespace">   </span><span class="mi">1687</span>     <span class="c1"># the user if necessary.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1688</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exception</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\joblib\parallel.py:1800,</span> in <span class="ni">Parallel._retrieve</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1789</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_ordered</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1790</span>     <span class="c1"># Case ordered: wait for completion (or error) of the next job</span>
-<span class="g g-Whitespace">   </span><span class="mi">1791</span>     <span class="c1"># that have been dispatched and not retrieved yet. If no job</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">1795</span>     <span class="c1"># control only have to be done on the amount of time the next</span>
-<span class="g g-Whitespace">   </span><span class="mi">1796</span>     <span class="c1"># dispatched job is pending.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1797</span>     <span class="k">if</span> <span class="p">(</span><span class="n">nb_jobs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1798</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASK_PENDING</span>
-<span class="g g-Whitespace">   </span><span class="mi">1799</span>     <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1800</span>         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1801</span>         <span class="k">continue</span>
-<span class="g g-Whitespace">   </span><span class="mi">1803</span> <span class="k">elif</span> <span class="n">nb_jobs</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1804</span>     <span class="c1"># Case unordered: jobs are added to the list of jobs to</span>
-<span class="g g-Whitespace">   </span><span class="mi">1805</span>     <span class="c1"># retrieve `self._jobs` only once completed or in error, which</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>   <span class="mi">1811</span>     <span class="c1"># timeouts before any other dispatched job has completed and</span>
-<span class="g g-Whitespace">   </span><span class="mi">1812</span>     <span class="c1"># been added to `self._jobs` to be retrieved.</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

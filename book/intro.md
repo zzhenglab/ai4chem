@@ -36,8 +36,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Oct 14 & Oct 16** - Chemical reaction optimization    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 
 - **Oct 21** – No Class
-- **Oct 23** – Reinforcement learning
-- **Oct 28 & 30** – Semi-supervised learning   
+- **Oct 23** – Reinforcement learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)
+- **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)     
 - **Nov 4 & 6** –  Transformers & large language models 
 - **Nov 11 & 13** – Computer vision and multimodal models
 - **Nov 18 & 20** – Multi-agent AI and literature data mining   

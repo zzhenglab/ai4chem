@@ -197,6 +197,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 </ul>
 
     </div>
@@ -1488,12 +1490,12 @@ Greedy: [0.1 0.2 0.5]
 <span class="g g-Whitespace">    </span><span class="mi">968</span>     <span class="n">decoupled_weight_decay</span><span class="o">=</span><span class="n">decoupled_weight_decay</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">969</span> <span class="p">)</span>
 
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\optim\adam.py:420,</span> in <span class="ni">_single_tensor_adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, grad_scale, found_inf, amsgrad, has_complex, beta1, beta2, lr, weight_decay, eps, maximize, capturable, differentiable, decoupled_weight_decay)</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>                 <span class="n">grad</span> <span class="o">=</span> <span class="n">grad</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">420</span>             <span class="n">grad</span> <span class="o">=</span> <span class="n">grad</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">422</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">is_complex</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">423</span>     <span class="n">grad</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">view_as_real</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\optim\adam.py:447,</span> in <span class="ni">_single_tensor_adam</span><span class="nt">(params, grads, exp_avgs, exp_avg_sqs, max_exp_avg_sqs, state_steps, grad_scale, found_inf, amsgrad, has_complex, beta1, beta2, lr, weight_decay, eps, maximize, capturable, differentiable, decoupled_weight_decay)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>     <span class="n">device_beta1</span> <span class="o">=</span> <span class="n">beta1</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span> <span class="c1"># Decay the first and second moment running average coefficient</span>
+<span class="ne">--&gt; </span><span class="mi">447</span> <span class="n">exp_avg</span><span class="o">.</span><span class="n">lerp_</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">device_beta1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span> <span class="c1"># Nested if is necessary to bypass jitscript rules</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">if</span> <span class="n">differentiable</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">beta2</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">):</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

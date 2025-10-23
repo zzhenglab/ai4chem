@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-16';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 17 - PU Learning" href="lecture-17.html" />
     <link rel="prev" title="Lecture 15 - Multi-objective Bayesian Optimization" href="lecture-15.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -197,6 +198,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 </ul>
 
     </div>
@@ -4863,6 +4865,53 @@ Below only code is shown.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">curves</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">for</span> <span class="n">linker</span> <span class="ow">in</span> <span class="n">top_linkers</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">eps</span> <span class="o">=</span> <span class="n">run_eps_mean_linker</span>     <span class="p">(</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">linker</span><span class="p">,</span> <span class="n">Tsteps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">ucb</span> <span class="o">=</span> <span class="n">run_ucb1_mean_linker</span>    <span class="p">(</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">linker</span><span class="p">,</span> <span class="n">Tsteps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">ts</span>  <span class="o">=</span> <span class="n">run_thompson_beta_linker</span><span class="p">(</span><span class="n">df_raw</span><span class="p">,</span> <span class="n">linker</span><span class="p">,</span> <span class="n">Tsteps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nn">Cell In[13], line 12,</span> in <span class="ni">run_eps_mean_linker</span><span class="nt">(df_like, linker, Tsteps, eps, seed)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>         <span class="c1"># sum of yields</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">avg</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">pull</span> <span class="o">=</span> <span class="n">make_pull_yield</span><span class="p">(</span><span class="n">df_like</span><span class="p">,</span> <span class="n">linker</span><span class="p">,</span> <span class="n">acts</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Tsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">if</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+
+<span class="nn">Cell In[12], line 27,</span> in <span class="ni">make_pull_yield</span><span class="nt">(df_like, linker, acts)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">acts</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">T</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">S</span> <span class="o">=</span> <span class="n">a</span>
+<span class="ne">---&gt; </span><span class="mi">27</span>     <span class="n">pool</span> <span class="o">=</span> <span class="n">sub_all</span><span class="p">[</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>         <span class="p">(</span><span class="n">sub_all</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">T</span><span class="p">)</span> <span class="o">&amp;</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="p">(</span><span class="n">sub_all</span><span class="p">[</span><span class="s1">&#39;time_h&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">H</span><span class="p">)</span> <span class="o">&amp;</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>         <span class="p">(</span><span class="n">sub_all</span><span class="p">[</span><span class="s1">&#39;concentration_M&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">C</span><span class="p">)</span> <span class="o">&amp;</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span>         <span class="p">(</span><span class="n">sub_all</span><span class="p">[</span><span class="s1">&#39;solvent_DMF&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">S</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">pool</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span>         <span class="n">pools</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py:4098,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4096</span> <span class="c1"># Do we have a (boolean) 1d indexer?</span>
+<span class="g g-Whitespace">   </span><span class="mi">4097</span> <span class="k">if</span> <span class="n">com</span><span class="o">.</span><span class="n">is_bool_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">4098</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_bool_array</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4100</span> <span class="c1"># We are left with two options: a single key, and a collection of keys,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4101</span> <span class="c1"># We interpret tuples as collections only for non-MultiIndex</span>
+<span class="g g-Whitespace">   </span><span class="mi">4102</span> <span class="n">is_single_key</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">is_list_like</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\frame.py:4159,</span> in <span class="ni">DataFrame._getitem_bool_array</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4156</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">4157</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">4159</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">4160</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_take_with_is_copy</span><span class="p">(</span><span class="n">indexer</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5109,6 +5158,15 @@ Identify where the reward score is defined, and modify it in the code to observe
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lecture 15 - Multi-objective Bayesian Optimization</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="lecture-17.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 17 - PU Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

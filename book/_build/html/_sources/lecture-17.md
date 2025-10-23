@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 17 - PU learning
+# Lecture 17 - PU Learning
 
 ```{contents}
 :local:
@@ -639,7 +639,8 @@ To run the code please use Colab, and below is the result.
 ```{code-cell} ipython3
 :tags: [hide-input]
 from IPython.display import Image, display
-display(Image(url="lecture-17.umap1.png"))
+display(Image("url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap1.png"))
+
 ```
 
 
@@ -652,7 +653,7 @@ Now, chemist can start from the predictions done by semi-supervised learning to 
 ```{code-cell} ipython3
 :tags: [hide-input]
 from IPython.display import Image, display
-display(Image(url="lecture-17.umap2.png"))
+display(Image("url=https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/lecture-17.umap2.png"))
 ```
 
 

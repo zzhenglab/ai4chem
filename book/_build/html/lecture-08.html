@@ -196,6 +196,9 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 </ul>
 
     </div>
@@ -2191,6 +2194,130 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 80 candidates, totalling 400 fits
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best CV accuracy: 0.890
+Best params: {&#39;clf__hidden_layer_sizes&#39;: (np.int64(16), 16), &#39;clf__learning_rate_init&#39;: 0.001}
+Train accuracy (refit best): 0.953
+Test  accuracy (refit best): 0.890
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>hidden_layer_sizes</th>
+      <th>learning_rate_init</th>
+      <th>mean_test_score</th>
+      <th>std_test_score</th>
+      <th>rank_test_score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>(16, 16)</td>
+      <td>0.001</td>
+      <td>0.890000</td>
+      <td>0.027080</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>(8, 6, 3)</td>
+      <td>0.050</td>
+      <td>0.886667</td>
+      <td>0.038586</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>(24, 4, 4, 4, 4)</td>
+      <td>0.020</td>
+      <td>0.880000</td>
+      <td>0.012472</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>(16, 16)</td>
+      <td>0.050</td>
+      <td>0.876667</td>
+      <td>0.034319</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>(32, 24)</td>
+      <td>0.001</td>
+      <td>0.876667</td>
+      <td>0.037417</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>(12, 8)</td>
+      <td>0.010</td>
+      <td>0.876667</td>
+      <td>0.030912</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>(32, 28)</td>
+      <td>0.001</td>
+      <td>0.873333</td>
+      <td>0.038873</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(8, 6, 3)</td>
+      <td>0.010</td>
+      <td>0.873333</td>
+      <td>0.024944</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>(8, 6, 3)</td>
+      <td>0.020</td>
+      <td>0.870000</td>
+      <td>0.019437</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>(16, 8, 4)</td>
+      <td>0.001</td>
+      <td>0.866667</td>
+      <td>0.027889</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of layers (including input and output): 4
+Hidden layer sizes: (np.int64(16), 16)
+coefs_ length (weight matrices between layers): 3
+Layer 1 weight shape: (5, 16)   bias shape: (16,)
+Layer 2 weight shape: (16, 16)   bias shape: (16,)
+Layer 3 weight shape: (16, 1)   bias shape: (1,)
+</pre></div>
+</div>
+<img alt="_images/95702d67af14f5e8b94749454898085857dabc60de32ae3888a5e13e304dcf7d.png" src="_images/95702d67af14f5e8b94749454898085857dabc60de32ae3888a5e13e304dcf7d.png" />
+<img alt="_images/0652eb201fc7dc1bdb648865de9a5574fc159b151be5e0f654fa296c530b26af.png" src="_images/0652eb201fc7dc1bdb648865de9a5574fc159b151be5e0f654fa296c530b26af.png" />
 </div>
 </div>
 </section>
@@ -2207,6 +2334,76 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>CAS</th>
+      <th>SMILES</th>
+      <th>Solubility_mol_per_L</th>
+      <th>pKa</th>
+      <th>Toxicity</th>
+      <th>Melting Point</th>
+      <th>Reactivity</th>
+      <th>Oxidation Site</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>493-05-0</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>0.103906</td>
+      <td>5.80</td>
+      <td>non_toxic</td>
+      <td>65.8</td>
+      <td>1</td>
+      <td>8,10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>86-73-7</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>0.010460</td>
+      <td>5.82</td>
+      <td>toxic</td>
+      <td>90.0</td>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>119-64-2</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>0.020589</td>
+      <td>5.74</td>
+      <td>toxic</td>
+      <td>69.4</td>
+      <td>1</td>
+      <td>7,10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2229,6 +2426,100 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Compound Name</th>
+      <th>SMILES</th>
+      <th>MolWt</th>
+      <th>LogP</th>
+      <th>TPSA</th>
+      <th>NumRings</th>
+      <th>Melting Point</th>
+      <th>Solubility_mol_per_L</th>
+      <th>Toxicity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3,4-dihydro-1H-isochromene</td>
+      <td>c1ccc2c(c1)CCOC2</td>
+      <td>134.178</td>
+      <td>1.7593</td>
+      <td>9.23</td>
+      <td>2.0</td>
+      <td>65.8</td>
+      <td>0.103906</td>
+      <td>non_toxic</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>9H-fluorene</td>
+      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
+      <td>166.223</td>
+      <td>3.2578</td>
+      <td>0.00</td>
+      <td>3.0</td>
+      <td>90.0</td>
+      <td>0.010460</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1,2,3,4-tetrahydronaphthalene</td>
+      <td>c1ccc2c(c1)CCCC2</td>
+      <td>132.206</td>
+      <td>2.5654</td>
+      <td>0.00</td>
+      <td>2.0</td>
+      <td>69.4</td>
+      <td>0.020589</td>
+      <td>toxic</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>ethylbenzene</td>
+      <td>CCc1ccccc1</td>
+      <td>106.168</td>
+      <td>2.2490</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>65.0</td>
+      <td>0.048107</td>
+      <td>non_toxic</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cyclohexene</td>
+      <td>C1=CCCCC1</td>
+      <td>82.146</td>
+      <td>2.1166</td>
+      <td>0.00</td>
+      <td>1.0</td>
+      <td>96.4</td>
+      <td>0.060688</td>
+      <td>non_toxic</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="admonition-reminder admonition">
 <p class="admonition-title">Reminder</p>
@@ -2249,6 +2540,11 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>((460, 4), (115, 4))
+</pre></div>
+</div>
+</div>
 </div>
 <p>MLP without scaling:</p>
 <div class="cell docutils container">
@@ -2262,6 +2558,11 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="n">mlp_raw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_raw</span> <span class="o">=</span> <span class="n">mlp_raw</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 no scaling: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_raw</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 no scaling: 0.867
 </pre></div>
 </div>
 </div>
@@ -2281,6 +2582,11 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="n">mlp_scaled</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">y_pred_scaled</span> <span class="o">=</span> <span class="n">mlp_scaled</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2 with scaling: </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred_scaled</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R2 with scaling: 0.873
 </pre></div>
 </div>
 </div>
@@ -2308,6 +2614,9 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/e1b8c891082efbd6cdf03457e6cb59d07f8eec71b39e9d8b6f30b447d1ef902c.png" src="_images/e1b8c891082efbd6cdf03457e6cb59d07f8eec71b39e9d8b6f30b447d1ef902c.png" />
+</div>
 </div>
 <div class="admonition-exercises-2 admonition">
 <p class="admonition-title">⏰ <strong>Exercises 2</strong></p>
@@ -2339,6 +2648,14 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[174.243 ,   2.768 ,  17.07  ,   2.    ],
+        [250.725 ,   3.6854,  26.3   ,   3.    ],
+        [316.154 ,   3.2662,  46.17  ,   3.    ]]),
+ array([-1.33079381, -1.81944953, -1.66573637, -1.73461148, -1.83886568]))
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="build-the-pipeline-and-fit">
@@ -2359,6 +2676,871 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-2 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
+                (&#x27;mlp&#x27;,
+                 MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,),
+                              learning_rate_init=0.01, max_iter=1000,
+                              random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;scaler&#x27;, ...), (&#x27;mlp&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="scaler__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('copy',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">copy&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_mean',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_mean&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_std',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_std&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>MLPRegressor</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neural_network.MLPRegressor.html">?<span>Documentation for MLPRegressor</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="mlp__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('loss',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">loss&nbsp;</td>
+            <td class="value">&#x27;squared_error&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('hidden_layer_sizes',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">hidden_layer_sizes&nbsp;</td>
+            <td class="value">(32,)</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('activation',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">activation&nbsp;</td>
+            <td class="value">&#x27;relu&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;adam&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('alpha',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">alpha&nbsp;</td>
+            <td class="value">0.001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('batch_size',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">batch_size&nbsp;</td>
+            <td class="value">&#x27;auto&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate&nbsp;</td>
+            <td class="value">&#x27;constant&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate_init',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate_init&nbsp;</td>
+            <td class="value">0.01</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('power_t',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">power_t&nbsp;</td>
+            <td class="value">0.5</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">1000</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('shuffle',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">shuffle&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">momentum&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('nesterovs_momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">nesterovs_momentum&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('early_stopping',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">early_stopping&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('validation_fraction',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">validation_fraction&nbsp;</td>
+            <td class="value">0.1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_1',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_1&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_2',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_2&nbsp;</td>
+            <td class="value">0.999</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('epsilon',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">epsilon&nbsp;</td>
+            <td class="value">1e-08</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_iter_no_change',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_iter_no_change&nbsp;</td>
+            <td class="value">10</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_fun',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_fun&nbsp;</td>
+            <td class="value">15000</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <p>Note: You can click on MLPRehressor above to see the details.</p>
 </section>
@@ -2374,6 +3556,13 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE: </span><span class="si">{</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE: </span><span class="si">{</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;R2:  </span><span class="si">{</span><span class="n">r2_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yhat</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 0.0185
+MAE: 0.1075
+R2:  0.966
 </pre></div>
 </div>
 </div>
@@ -2406,6 +3595,10 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/93a599af6481db2221e2d3ac23c6594a48f896b06e8e01836e5ee75b670dcbae.png" src="_images/93a599af6481db2221e2d3ac23c6594a48f896b06e8e01836e5ee75b670dcbae.png" />
+<img alt="_images/73725694e53b41d9d33488e7df483fc421cbeeec649869f21cb756d0bb6aee91.png" src="_images/73725694e53b41d9d33488e7df483fc421cbeeec649869f21cb756d0bb6aee91.png" />
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
@@ -2425,6 +3618,9 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/953748af3a76660221432adb02253a14896eed64adc463830a1744300250bf4d.png" src="_images/953748af3a76660221432adb02253a14896eed64adc463830a1744300250bf4d.png" />
+</div>
 </div>
 </section>
 </section>
@@ -2457,6 +3653,861 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-3 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-3 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-3 pre {
+  padding: 0;
+}
+
+#sk-container-id-3 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-3 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-3 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-3 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-3 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-3 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-3 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-3 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-3 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-3 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-3 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label label.sk-toggleable__label,
+#sk-container-id-3 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-3 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-3 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-3 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-3 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-3 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-3 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
+                (&#x27;mlp&#x27;,
+                 MLPClassifier(hidden_layer_sizes=(16,),
+                               learning_rate_init=0.01, max_iter=2000,
+                               random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;scaler&#x27;, ...), (&#x27;mlp&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="scaler__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('copy',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">copy&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_mean',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_mean&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_std',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_std&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>MLPClassifier</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neural_network.MLPClassifier.html">?<span>Documentation for MLPClassifier</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="mlp__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('hidden_layer_sizes',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">hidden_layer_sizes&nbsp;</td>
+            <td class="value">(16,)</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('activation',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">activation&nbsp;</td>
+            <td class="value">&#x27;relu&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;adam&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('alpha',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">alpha&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('batch_size',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">batch_size&nbsp;</td>
+            <td class="value">&#x27;auto&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate&nbsp;</td>
+            <td class="value">&#x27;constant&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate_init',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate_init&nbsp;</td>
+            <td class="value">0.01</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('power_t',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">power_t&nbsp;</td>
+            <td class="value">0.5</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">2000</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('shuffle',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">shuffle&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">momentum&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('nesterovs_momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">nesterovs_momentum&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('early_stopping',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">early_stopping&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('validation_fraction',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">validation_fraction&nbsp;</td>
+            <td class="value">0.1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_1',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_1&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_2',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_2&nbsp;</td>
+            <td class="value">0.999</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('epsilon',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">epsilon&nbsp;</td>
+            <td class="value">1e-08</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_iter_no_change',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_iter_no_change&nbsp;</td>
+            <td class="value">10</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_fun',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_fun&nbsp;</td>
+            <td class="value">15000</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <p>Everything stays the same except we use <code class="docutils literal notranslate"><span class="pre">MLPClassifier()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">MLPRegressor()</span></code></p>
 <p>Now let’s fit and evaluate.</p>
@@ -2502,6 +4553,17 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.939
+Precision: 0.968
+Recall:    0.958
+F1:        0.963
+AUC:       0.986
+</pre></div>
+</div>
+<img alt="_images/cc0bc44c388d357591aaa9cdb536e9930999f194836f8bf926d00a310742cd75.png" src="_images/cc0bc44c388d357591aaa9cdb536e9930999f194836f8bf926d00a310742cd75.png" />
+<img alt="_images/ec88a6cee87e73915bc4fc711702658e84822ca72b57e521fc068fba0988e4f4.png" src="_images/ec88a6cee87e73915bc4fc711702658e84822ca72b57e521fc068fba0988e4f4.png" />
+</div>
 </div>
 <p>Threshold tuning demo.</p>
 <div class="cell docutils container">
@@ -2509,6 +4571,13 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]:</span>
     <span class="n">yp_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">yproba</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;threshold=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  acc=</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  prec=</span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  rec=</span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="w"> </span><span class="n">yp_t</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>threshold=0.30  acc=0.965  prec=0.969  rec=0.989
+threshold=0.50  acc=0.939  prec=0.968  rec=0.958
+threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </pre></div>
 </div>
 </div>
@@ -2544,6 +4613,9 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85a2d397c88e8b662b3ac009b5c7c572bbb86d9fd9e0e4be2c4a11f39b2a7465.png" src="_images/85a2d397c88e8b662b3ac009b5c7c572bbb86d9fd9e0e4be2c4a11f39b2a7465.png" />
 </div>
 </div>
 <p>How to read above plot:</p>
@@ -2606,6 +4678,9 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/e76b948b166fb9757928d0aec276ca54b77f5af382052e9cf4fd61a48490350e.png" src="_images/e76b948b166fb9757928d0aec276ca54b77f5af382052e9cf4fd61a48490350e.png" />
+</div>
 </div>
 </section>
 <hr class="docutils" />
@@ -2795,6 +4870,12 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE=409.35  MAE=16.27  R2=0.855
+</pre></div>
+</div>
+<img alt="_images/46316d5e29f3916917c9a6e9fdb8196a8b8fed47edf02531257ae655e5912a7a.png" src="_images/46316d5e29f3916917c9a6e9fdb8196a8b8fed47edf02531257ae655e5912a7a.png" />
+</div>
 </div>
 </section>
 <section id="solution-q2">
@@ -2831,6 +4912,15 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  hidden_sizes     R2
+0        (16,)  0.950
+1        (32,)  0.964
+2     (64, 32)  0.958
+</pre></div>
+</div>
+<img alt="_images/226ce0a4b70faa13f9dabc311f018f95032c8bf769ccfc818000a8722788c270.png" src="_images/226ce0a4b70faa13f9dabc311f018f95032c8bf769ccfc818000a8722788c270.png" />
+</div>
 </div>
 </section>
 <section id="solution-q3">
@@ -2854,6 +4944,13 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">]:</span>
     <span class="n">pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">proba</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  acc=</span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  prec=</span><span class="si">{</span><span class="n">precision_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  rec=</span><span class="si">{</span><span class="n">recall_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">  f1=</span><span class="si">{</span><span class="n">f1_score</span><span class="p">(</span><span class="n">yte</span><span class="p">,</span><span class="n">pred</span><span class="p">)</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t=0.3  acc=0.887  prec=0.887  rec=0.989  f1=0.935
+t=0.5  acc=0.896  prec=0.946  rec=0.926  f1=0.936
+t=0.7  acc=0.878  prec=0.976  rec=0.874  f1=0.922
 </pre></div>
 </div>
 </div>
@@ -2893,6 +4990,13 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear R2: 0.970
+MLP    R2: 0.966
+</pre></div>
+</div>
+<img alt="_images/9b5365caf8615431d924b7aee363f12cd2548f888d5a914a8c08a4673bc5175c.png" src="_images/9b5365caf8615431d924b7aee363f12cd2548f888d5a914a8c08a4673bc5175c.png" />
 </div>
 </div>
 </section>
@@ -2971,6 +5075,15 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 496.597
+MAE: 17.929
+R2:  0.766
+</pre></div>
+</div>
+<img alt="_images/9a2a4656c259bad9a357f2be9239edbc0c7800dfcaf693f8040f2c6538731e66.png" src="_images/9a2a4656c259bad9a357f2be9239edbc0c7800dfcaf693f8040f2c6538731e66.png" />
+<img alt="_images/3478815ec5d719f47a5de220432556acfa8fff2af287432e2c02e130c041f812.png" src="_images/3478815ec5d719f47a5de220432556acfa8fff2af287432e2c02e130c041f812.png" />
 </div>
 </div>
 </section>
