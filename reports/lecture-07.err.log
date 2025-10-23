@@ -44,8 +44,15 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['url = "https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv"', 'df_raw = pd.read_csv(url)', 'desc = df_raw["SMILES"].apply(calc_descriptors)', 'df = pd.concat([df_raw, desc], axis=1)', '']
-...
-['plt.plot([0, 1], [0, 1], "k--")', 'plt.xlabel("FPR")', 'plt.ylabel("TPR")', 'plt.title("ROC curve - RF with CV-tuned hyperparameters")', 'plt.show()']
+plt.scatter(yr_test, pred_tree, alpha=0.5, label="Tree")
+plt.scatter(yr_test, pred_lin, alpha=0.5, label="Linear")
+plt.scatter(yr_test, pred_avg, alpha=0.5, label="Average")
+lims = [min(yr_test.min(), pred_tree.min(), pred_lin.min()), max(yr_test.max(), pred_tree.max(), pred_lin.max())]
+plt.plot(lims, lims, "k--")
+plt.xlabel("True")
+plt.ylabel("Predicted")
+plt.title("Parity plot: Tree vs Linear vs Average")
+plt.legend()
+plt.show()
 -------------------
 
