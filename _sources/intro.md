@@ -34,10 +34,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Oct 7** - Fall Break
 - **Oct 9** – De novo molecule generation   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 14 & Oct 16** - Chemical reaction optimization    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
-
-- **Oct 21** – No Class
 - **Oct 23** – Reinforcement learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)
-- **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)     
+- **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
 - **Nov 4 & 6** –  Transformers & large language models 
 - **Nov 11 & 13** – Computer vision and multimodal models
 - **Nov 18 & 20** – Multi-agent AI and literature data mining   
@@ -45,7 +43,6 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
 ```
-
 
 
 ```{admonition} Assignments & Project Submissions (Canvas)  
@@ -56,8 +53,8 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 | **Sept 21** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/18AIDo3hclJssMQc1hRgUfAsm-SpkFd5t?usp=sharing) | 
 | **Oct 5** | Project 1 due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
 | **Oct 14** | Project 1 Evaluation due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
-| **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing) |  
-| **Nov 9** | Assignment 4 due |  
+| **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1hxsWsXf4KofWwgCmqwLTvu_NtONS5s6H?usp=sharing) | 
+| **Nov 9** | Assignment 4 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing)|  
 | **Nov 30** | Assignment 5 due |  
 | **Dec 7** | Project 2 Evaluations due |  
 ```
