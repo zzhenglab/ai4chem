@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-05';</script>
@@ -75,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -185,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
 </ul>
 
     </div>
@@ -200,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -209,14 +224,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -341,10 +356,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -352,14 +367,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -422,10 +437,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-regression-and-classification">
-<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id6">Learning goals</a></p></li>
@@ -442,7 +457,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tell classification from regression by the target type.</p></li>
 <li><p>Load small chemistry-like datasets with SMILES and simple text features.</p></li>
@@ -488,33 +503,35 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
+<details class="admonition hide below-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (1.3.2)Note: you may need to restart the kernel to use updated packages.
-
-Requirement already satisfied: pandas in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (2.0.3)
-Requirement already satisfied: matplotlib in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (3.7.5)
-Requirement already satisfied: numpy&lt;2.0,&gt;=1.17.3 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.24.4)
-Requirement already satisfied: scipy&gt;=1.5.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.10.1)
-Requirement already satisfied: joblib&gt;=1.1.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from scikit-learn) (3.5.0)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2.8.2)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2023.3.post1)
-Requirement already satisfied: tzdata&gt;=2022.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from pandas) (2023.3)
-Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (1.1.1)
-Requirement already satisfied: cycler&gt;=0.10 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (0.12.1)
-Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (4.57.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (1.4.7)
-Requirement already satisfied: packaging&gt;=20.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (25.0)
-Requirement already satisfied: pillow&gt;=6.2.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (10.1.0)
-Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (3.1.4)
-Requirement already satisfied: importlib-resources&gt;=3.2.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from matplotlib) (6.4.5)
-Requirement already satisfied: zipp&gt;=3.1.0 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib) (3.20.2)
-Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.16.0)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[notice] A new release of pip is available: 25.1.1 -&gt; 25.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (1.7.1)
+Requirement already satisfied: pandas in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (2.3.1)
+Requirement already satisfied: matplotlib in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (3.10.3)
+Requirement already satisfied: numpy&gt;=1.22.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (2.3.2)
+Requirement already satisfied: scipy&gt;=1.8.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (1.16.1)
+Requirement already satisfied: joblib&gt;=1.2.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (1.5.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from scikit-learn) (3.6.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from pandas) (2025.2)
+Requirement already satisfied: contourpy&gt;=1.0.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (4.59.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (1.4.8)
+Requirement already satisfied: packaging&gt;=20.0 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (25.0)
+Requirement already satisfied: pillow&gt;=8 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (11.3.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\programs\python\python313\lib\site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
+Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
 </div>
@@ -522,7 +539,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 </div>
 </section>
 <section id="what-is-supervised-learning">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Link to this heading">#</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <ul class="simple">
@@ -539,7 +556,7 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 </ul>
 </section>
 <section id="data-preview-and-descriptor-engineering">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Link to this heading">#</a></h2>
 <p>We will read a small CSV from a public repository and compute a handful of molecular descriptors from SMILES. These lightweight features are enough to practice the full workflow.</p>
 <div class="admonition-tip admonition">
 <p class="admonition-title">Tip</p>
@@ -553,173 +570,6 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>100-41-4</td>
-      <td>CCc1ccccc1</td>
-      <td>0.048107</td>
-      <td>5.87</td>
-      <td>non_toxic</td>
-      <td>65.0</td>
-      <td>1</td>
-      <td>1,2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>110-83-8</td>
-      <td>C1=CCCCC1</td>
-      <td>0.060688</td>
-      <td>5.66</td>
-      <td>non_toxic</td>
-      <td>96.4</td>
-      <td>1</td>
-      <td>3,6</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>570</th>
-      <td>2-naphthalen-2-ylpropan-2-amine</td>
-      <td>90299-04-0</td>
-      <td>CC(C)(N)c1ccc2ccccc2c1</td>
-      <td>0.018990</td>
-      <td>10.04</td>
-      <td>toxic</td>
-      <td>121.5</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>571</th>
-      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
-      <td>128-93-8</td>
-      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
-      <td>0.021590</td>
-      <td>7.81</td>
-      <td>toxic</td>
-      <td>154.0</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>572</th>
-      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
-      <td>86636-92-2</td>
-      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
-      <td>0.017866</td>
-      <td>8.58</td>
-      <td>toxic</td>
-      <td>128.3</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>573</th>
-      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
-      <td>34316-15-9</td>
-      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
-      <td>0.016210</td>
-      <td>5.54</td>
-      <td>toxic</td>
-      <td>215.6</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-    <tr>
-      <th>574</th>
-      <td>dimethyl anthracene-1,8-dicarboxylate</td>
-      <td>93655-34-6</td>
-      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
-      <td>0.016761</td>
-      <td>5.43</td>
-      <td>toxic</td>
-      <td>175.3</td>
-      <td>-1</td>
-      <td>-1</td>
-    </tr>
-  </tbody>
-</table>
-<p>575 rows × 9 columns</p>
-</div></div></div>
 </div>
 <div class="admonition-think-pair-share admonition">
 <p class="admonition-title">Think-pair-share</p>
@@ -756,226 +606,11 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>CAS</th>
-      <th>SMILES</th>
-      <th>Solubility_mol_per_L</th>
-      <th>pKa</th>
-      <th>Toxicity</th>
-      <th>Melting Point</th>
-      <th>Reactivity</th>
-      <th>Oxidation Site</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>493-05-0</td>
-      <td>c1ccc2c(c1)CCOC2</td>
-      <td>0.103906</td>
-      <td>5.80</td>
-      <td>non_toxic</td>
-      <td>65.8</td>
-      <td>1</td>
-      <td>8,10</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>86-73-7</td>
-      <td>c1ccc2c(c1)Cc1ccccc1-2</td>
-      <td>0.010460</td>
-      <td>5.82</td>
-      <td>toxic</td>
-      <td>90.0</td>
-      <td>1</td>
-      <td>7</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>119-64-2</td>
-      <td>c1ccc2c(c1)CCCC2</td>
-      <td>0.020589</td>
-      <td>5.74</td>
-      <td>toxic</td>
-      <td>69.4</td>
-      <td>1</td>
-      <td>7,10</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>100-41-4</td>
-      <td>CCc1ccccc1</td>
-      <td>0.048107</td>
-      <td>5.87</td>
-      <td>non_toxic</td>
-      <td>65.0</td>
-      <td>1</td>
-      <td>1,2</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>110-83-8</td>
-      <td>C1=CCCCC1</td>
-      <td>0.060688</td>
-      <td>5.66</td>
-      <td>non_toxic</td>
-      <td>96.4</td>
-      <td>1</td>
-      <td>3,6</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>570</th>
-      <td>2-naphthalen-2-ylpropan-2-amine</td>
-      <td>90299-04-0</td>
-      <td>CC(C)(N)c1ccc2ccccc2c1</td>
-      <td>0.018990</td>
-      <td>10.04</td>
-      <td>toxic</td>
-      <td>121.5</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>185.270</td>
-      <td>3.0336</td>
-      <td>26.02</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>571</th>
-      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
-      <td>128-93-8</td>
-      <td>CNc1ccc(Br)c2c1C(=O)c1ccccc1C2=O</td>
-      <td>0.021590</td>
-      <td>7.81</td>
-      <td>toxic</td>
-      <td>154.0</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>316.154</td>
-      <td>3.2662</td>
-      <td>46.17</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>572</th>
-      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
-      <td>86636-92-2</td>
-      <td>C=CC(=O)c1ccc2cc(N(C)C)ccc2c1</td>
-      <td>0.017866</td>
-      <td>8.58</td>
-      <td>toxic</td>
-      <td>128.3</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>225.291</td>
-      <td>3.2745</td>
-      <td>20.31</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>573</th>
-      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
-      <td>34316-15-9</td>
-      <td>COc1ccc2c(c[n+](C)c3c4cc5c(cc4ccc23)OCO5)c1OC</td>
-      <td>0.016210</td>
-      <td>5.54</td>
-      <td>toxic</td>
-      <td>215.6</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>348.378</td>
-      <td>3.7166</td>
-      <td>40.80</td>
-      <td>5.0</td>
-    </tr>
-    <tr>
-      <th>574</th>
-      <td>dimethyl anthracene-1,8-dicarboxylate</td>
-      <td>93655-34-6</td>
-      <td>COC(=O)c1cccc2cc3cccc(C(=O)OC)c3cc12</td>
-      <td>0.016761</td>
-      <td>5.43</td>
-      <td>toxic</td>
-      <td>175.3</td>
-      <td>-1</td>
-      <td>-1</td>
-      <td>294.306</td>
-      <td>3.5662</td>
-      <td>52.60</td>
-      <td>3.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>575 rows × 13 columns</p>
-</div></div></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="regression-workflow-on-melting-point">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Link to this heading">#</a></h2>
 <p>We start with a single property, the <strong>Melting Point</strong>, and use four descriptors as features.</p>
 <p>Now let’s first look at regression, we will focus one property prediction at a time. first create a new df”””</p>
 <div class="cell docutils container">
@@ -985,147 +620,16 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-      <th>Melting Point</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-      <td>65.8</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-      <td>90.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-      <td>69.4</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>65.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>96.4</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>570</th>
-      <td>2-naphthalen-2-ylpropan-2-amine</td>
-      <td>185.270</td>
-      <td>3.0336</td>
-      <td>26.02</td>
-      <td>2.0</td>
-      <td>121.5</td>
-    </tr>
-    <tr>
-      <th>571</th>
-      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
-      <td>316.154</td>
-      <td>3.2662</td>
-      <td>46.17</td>
-      <td>3.0</td>
-      <td>154.0</td>
-    </tr>
-    <tr>
-      <th>572</th>
-      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
-      <td>225.291</td>
-      <td>3.2745</td>
-      <td>20.31</td>
-      <td>2.0</td>
-      <td>128.3</td>
-    </tr>
-    <tr>
-      <th>573</th>
-      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
-      <td>348.378</td>
-      <td>3.7166</td>
-      <td>40.80</td>
-      <td>5.0</td>
-      <td>215.6</td>
-    </tr>
-    <tr>
-      <th>574</th>
-      <td>dimethyl anthracene-1,8-dicarboxylate</td>
-      <td>294.306</td>
-      <td>3.5662</td>
-      <td>52.60</td>
-      <td>3.0</td>
-      <td>175.3</td>
-    </tr>
-  </tbody>
-</table>
-<p>575 rows × 6 columns</p>
-</div></div></div>
 </div>
 <section id="train-and-test-split">
-<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h3>
 <div class="admonition-why-split admonition">
 <p class="admonition-title">Why split?</p>
 <p>We test on <strong>held-out</strong> data to estimate generalization. A common split is 80 percent train, 20 percent test with a fixed <code class="docutils literal notranslate"><span class="pre">random_state</span></code> for reproducibility.</p>
 </div>
 </section>
 <section id="splitting-the-data-and-train">
-<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Link to this heading">#</a></h3>
 <p>Before training, we need to separate the input features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) from the target (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Then we split into training and test sets to evaluate how well the model generalizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1145,22 +649,6 @@ Requirement already satisfied: six&gt;=1.5 in c:\users\52377\appdata\local\progr
 <span class="n">X_train</span>
 
 <span class="n">y_train</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>68     152.1
-231    169.4
-63     247.3
-436    160.0
-60     127.8
-       ...  
-71     126.6
-106    125.3
-270    207.8
-435    157.9
-102     57.5
-Name: Melting Point, Length: 460, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1187,9 +675,6 @@ Name: Melting Point, Length: 460, dtype: float64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/5872dfb030fd716143e05854ad7976fbf358aa252103221362fa4baa6c378a1a.png" src="_images/5872dfb030fd716143e05854ad7976fbf358aa252103221362fa4baa6c378a1a.png" />
-</div>
 </div>
 <p>Blue points are the training set and red points are the test set. We can see that the split looks balanced and the test set covers a different range of values.</p>
 <div class="cell docutils container">
@@ -1211,13 +696,6 @@ Name: Melting Point, Length: 460, dtype: float64
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MSE:&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mae</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 374.56773278929023
-MAE: 15.316390819320329
-R2: 0.8741026174988968
 </pre></div>
 </div>
 </div>
@@ -1268,12 +746,6 @@ Measures proportion of variance explained by the model.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted value: [86.80836978]
-Predicted value: [ 86.80836978 169.99905967  53.35729424]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-diagnostic-plots admonition">
 <p class="admonition-title">Diagnostic plots</p>
@@ -1303,14 +775,10 @@ Predicted value: [ 86.80836978 169.99905967  53.35729424]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/b5609f6cf098676de0b2091b85b9ff9c058d5622cf46260bbfd6f8f0a600b637.png" src="_images/b5609f6cf098676de0b2091b85b9ff9c058d5622cf46260bbfd6f8f0a600b637.png" />
-<img alt="_images/9f1d16077a44c590033038856aa6bae96ab2e73ada79ef02368d8f60e714a34d.png" src="_images/9f1d16077a44c590033038856aa6bae96ab2e73ada79ef02368d8f60e714a34d.png" />
-</div>
 </div>
 </section>
 <section id="how-split-choice-affects-accuracy">
-<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Permalink to this heading">#</a></h3>
+<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Link to this heading">#</a></h3>
 <p>Besides, we can examine how different splitting strategies influence the accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1368,86 +836,6 @@ Predicted value: [ 86.80836978 169.99905967  53.35729424]
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Effect of split on accuracy
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>test_size</th>
-      <th>MSE_mean</th>
-      <th>MSE_std</th>
-      <th>MAE_mean</th>
-      <th>MAE_std</th>
-      <th>R2_mean</th>
-      <th>R2_std</th>
-      <th>n_train_mean</th>
-      <th>n_test_mean</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0.1</td>
-      <td>389.5968</td>
-      <td>75.9762</td>
-      <td>15.5954</td>
-      <td>1.7249</td>
-      <td>0.8338</td>
-      <td>0.0559</td>
-      <td>517.0</td>
-      <td>58.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0.2</td>
-      <td>400.1363</td>
-      <td>47.3691</td>
-      <td>15.8006</td>
-      <td>1.0476</td>
-      <td>0.8433</td>
-      <td>0.0363</td>
-      <td>460.0</td>
-      <td>115.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0.3</td>
-      <td>401.9008</td>
-      <td>42.3394</td>
-      <td>15.8713</td>
-      <td>0.8514</td>
-      <td>0.8412</td>
-      <td>0.0268</td>
-      <td>402.0</td>
-      <td>173.0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><img alt="_images/4b55a0a9c3453da7b925db70f1e7c26c314efb717773161aae41432c703d271c.png" src="_images/4b55a0a9c3453da7b925db70f1e7c26c314efb717773161aae41432c703d271c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>test_size=0.2, seed=15 -&gt; MSE=415.498, MAE=16.380, R2=0.805
-test_size=0.2, seed=42 -&gt; MSE=374.568, MAE=15.316, R2=0.874
-test_size=0.1, seed=42 -&gt; MSE=324.998, MAE=13.861, R2=0.872
-test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-reproducibility admonition">
 <p class="admonition-title">Reproducibility</p>
@@ -1455,7 +843,7 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </div>
 </section>
 <section id="learning-curves">
-<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Link to this heading">#</a></h3>
 <p>A random <code class="docutils literal notranslate"><span class="pre">seed</span></code> is simply a number provided to a random number generator to ensure that it produces the same sequence of “random” results each time.</p>
 <p>For example, functions such as <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> shuffle the dataset before dividing it into training and testing sets. If you do not specify a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> (the seed), every run may produce a slightly different split. This variation can lead to different accuracy values across runs.</p>
 <p><strong>Same seed → same split → same results</strong></p>
@@ -1530,14 +918,10 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/de40d4e056e7620a90d99f59459683cbf9f1ee7dd45a9f39ec72ab0ed2bdd716.png" src="_images/de40d4e056e7620a90d99f59459683cbf9f1ee7dd45a9f39ec72ab0ed2bdd716.png" />
-<img alt="_images/63142f01011cc35b23b04591b4f982bae49f309efcafced3e62b1a1cb2105d8e.png" src="_images/63142f01011cc35b23b04591b4f982bae49f309efcafced3e62b1a1cb2105d8e.png" />
-</div>
 </div>
 </section>
 <section id="regularization-lasso-and-ridge">
-<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Permalink to this heading">#</a></h3>
+<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Link to this heading">#</a></h3>
 <p>Now, instead of using <strong>Linear Regression</strong>, we can also experiment with other models such as <strong>Lasso Regression</strong>. These alternatives add regularization, which helps prevent overfitting by penalizing overly complex models.</p>
 <p>So, how does <code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code> work?</p>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">model.fit(X,</span> <span class="pre">y)</span></code>, the following steps occur:</p>
@@ -1604,19 +988,6 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Lasso regression:
-MSE: 329.0917965850995
-MAE: 14.768600346156408
-R2: 0.8788521790542615
---------------
-For Linear regression:
-MSE: 374.56773278929023
-MAE: 15.316390819320329
-R2: 0.8741026174988968
-</pre></div>
-</div>
-</div>
 </div>
 <p>You can see here that, in fact, <strong>Lasso Regression performs slightly better Linear Regression</strong> in this particular example. You can also try changing alpha to 0.1, 1.0, 100 to see any difference.</p>
 <p>The prediction rule for Linear Regression is:</p>
@@ -1660,19 +1031,6 @@ R2: 0.8741026174988968
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Ridge regression:
-MSE: 329.17713339699617
-MAE: 14.763612712404363
-R2: 0.87882076420614
---------------
-For Linear regression:
-MSE: 374.56773278929023
-MAE: 15.316390819320329
-R2: 0.8741026174988968
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can see here that the models have very similar performance.</p>
 <p>Now, what about predicting actual values such as <strong>solubility</strong>?</p>
@@ -1680,7 +1038,7 @@ R2: 0.8741026174988968
 </section>
 <hr class="docutils" />
 <section id="another-regression-target-solubility-in-log-space">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Link to this heading">#</a></h2>
 <p>Let’s try doing the same process by defining the following molecular descriptors as our input features (<strong>X</strong>):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">molwt</span></code> (molecular weight)</p></li>
@@ -1744,25 +1102,6 @@ R2: 0.8741026174988968
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MAE:&quot;</span><span class="p">,</span> <span class="n">mae_lasso</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R2:&quot;</span><span class="p">,</span> <span class="n">r2_lasso</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------------&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
-MSE: 5445.949091807627
-MAE: 48.59778162610544
-R2: -22609.20768075587
---------------
-For Ridge regression:
-MSE: 5421.635487770039
-MAE: 48.47750955001047
-R2: -22508.263726361492
---------------
-For Lasso regression:
-MSE: 5445.226685332671
-MAE: 48.59194974571603
-R2: -22606.208431193794
---------------
 </pre></div>
 </div>
 </div>
@@ -1840,31 +1179,12 @@ y' = \log_{10}(\text{Solubility})
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For Linear regression:
-MSE: 0.01839145854075597
-MAE: 0.11527716464692464
-R2: 0.9596775333018727
---------------
-For Ridge regression:
-MSE: 0.018411193365126914
-MAE: 0.11530263164973845
-R2: 0.9596342655644756
---------------
-For Lasso regression:
-MSE: 0.018796068172089866
-MAE: 0.11631355339741077
-R2: 0.95879044442042
---------------
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now, much better, right? Now, what happen if instead transforming <code class="docutils literal notranslate"><span class="pre">y</span></code>, you actually transforming <code class="docutils literal notranslate"><span class="pre">x</span></code>? Try it by yourself after class.</p>
 </section>
 <hr class="docutils" />
 <section id="binary-classification-toxicity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Link to this heading">#</a></h2>
 <p>We turn to a yes or no outcome, using the same four descriptors. Logistic Regression outputs probabilities. A threshold converts those into class predictions.</p>
 <p>We will build a binary classifier for <strong>Toxicity</strong> using the pre-built table:</p>
 <div class="cell docutils container">
@@ -1874,137 +1194,6 @@ R2: 0.95879044442042
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Compound Name</th>
-      <th>MolWt</th>
-      <th>LogP</th>
-      <th>TPSA</th>
-      <th>NumRings</th>
-      <th>Toxicity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>3,4-dihydro-1H-isochromene</td>
-      <td>134.178</td>
-      <td>1.7593</td>
-      <td>9.23</td>
-      <td>2.0</td>
-      <td>non_toxic</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>9H-fluorene</td>
-      <td>166.223</td>
-      <td>3.2578</td>
-      <td>0.00</td>
-      <td>3.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1,2,3,4-tetrahydronaphthalene</td>
-      <td>132.206</td>
-      <td>2.5654</td>
-      <td>0.00</td>
-      <td>2.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>ethylbenzene</td>
-      <td>106.168</td>
-      <td>2.2490</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>non_toxic</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>cyclohexene</td>
-      <td>82.146</td>
-      <td>2.1166</td>
-      <td>0.00</td>
-      <td>1.0</td>
-      <td>non_toxic</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>570</th>
-      <td>2-naphthalen-2-ylpropan-2-amine</td>
-      <td>185.270</td>
-      <td>3.0336</td>
-      <td>26.02</td>
-      <td>2.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>571</th>
-      <td>1-bromo-4-(methylamino)anthracene-9,10-dione</td>
-      <td>316.154</td>
-      <td>3.2662</td>
-      <td>46.17</td>
-      <td>3.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>572</th>
-      <td>1-[6-(dimethylamino)naphthalen-2-yl]prop-2-en-...</td>
-      <td>225.291</td>
-      <td>3.2745</td>
-      <td>20.31</td>
-      <td>2.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>573</th>
-      <td>1,2-dimethoxy-12-methyl-[1,3]benzodioxolo[5,6-...</td>
-      <td>348.378</td>
-      <td>3.7166</td>
-      <td>40.80</td>
-      <td>5.0</td>
-      <td>toxic</td>
-    </tr>
-    <tr>
-      <th>574</th>
-      <td>dimethyl anthracene-1,8-dicarboxylate</td>
-      <td>294.306</td>
-      <td>3.5662</td>
-      <td>52.60</td>
-      <td>3.0</td>
-      <td>toxic</td>
-    </tr>
-  </tbody>
-</table>
-<p>575 rows × 6 columns</p>
-</div></div></div>
 </div>
 <div class="admonition-encoding admonition">
 <p class="admonition-title">Encoding</p>
@@ -2048,24 +1237,6 @@ R2: 0.95879044442042
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[134.178 ,   1.7593,   9.23  ,   2.    ],
-        [166.223 ,   3.2578,   0.    ,   3.    ],
-        [132.206 ,   2.5654,   0.    ,   2.    ]]),
- 0    0
- 1    1
- 2    1
- 3    0
- 4    0
- 5    0
- 6    0
- 7    0
- 8    1
- 9    1
- Name: Toxicity, dtype: int32)
-</pre></div>
-</div>
-</div>
 </div>
 <p>When splitting the data into training and test sets, we will use <strong>stratification</strong>.</p>
 <div class="admonition-why-stratification admonition">
@@ -2081,13 +1252,6 @@ R2: 0.95879044442042
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train shape:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s2">&quot; Test shape:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train class balance:&quot;</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s2">&quot; 1 = toxic&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test class balance:&quot;</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train shape: (460, 4)  Test shape: (115, 4)
-Train class balance: 0.824  1 = toxic
-Test class balance: 0.826
 </pre></div>
 </div>
 </div>
@@ -2111,39 +1275,6 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="n">y_proba</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># probability of toxic = 1</span>
 <span class="n">y_pred</span><span class="p">,</span>  <span class="n">y_proba</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1,
-        1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1,
-        0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 1, 0, 1]),
- array([0.97365453, 0.99999445, 0.07948438, 0.99928248, 0.99808894,
-        0.99988604, 0.38728779, 0.28315917, 0.98259346, 0.91108836,
-        1.        , 0.46860683, 0.98970239, 0.99999986, 1.        ,
-        0.99999072, 0.19729071, 0.60959888, 0.99975044, 0.99999457,
-        0.99998644, 0.99999999, 0.99971599, 1.        , 0.99875044,
-        0.99895988, 0.99643145, 0.99999997, 0.99982696, 0.54798505,
-        0.25983915, 0.99996566, 0.99016677, 0.99951381, 0.99997991,
-        0.99457012, 0.68031579, 0.07968588, 0.99462309, 0.99898626,
-        0.99837834, 0.19580473, 0.99981471, 0.99845567, 0.9982642 ,
-        0.99744574, 0.99966752, 0.99993182, 0.9999963 , 0.00365461,
-        0.9783477 , 0.99973712, 0.94541859, 0.94609243, 0.17159213,
-        0.41085436, 0.99978143, 0.97261623, 0.99824279, 0.93470549,
-        0.9999994 , 0.99999999, 0.99580643, 0.45320951, 0.99849263,
-        0.98080696, 0.98614835, 0.99925845, 0.99649485, 0.98067138,
-        0.9999999 , 0.89617463, 0.99855388, 0.69050936, 0.99952047,
-        0.80492459, 0.32769445, 0.9977953 , 0.11406556, 0.99999984,
-        0.99992031, 0.94609243, 0.6493381 , 0.99558517, 0.97095266,
-        0.99935527, 0.04302485, 0.99995445, 0.13724835, 0.99999072,
-        0.9999411 , 0.99999647, 0.99997381, 0.41529205, 0.77149276,
-        0.99999642, 0.99918531, 0.99998729, 0.12146743, 0.97989156,
-        0.78881416, 0.99498349, 0.13724835, 0.99997757, 0.99999981,
-        0.88004382, 0.99542661, 0.34878501, 0.9999999 , 0.99999966,
-        0.99956903, 0.99993734, 0.99997789, 0.13220892, 0.99999716]))
 </pre></div>
 </div>
 </div>
@@ -2195,17 +1326,6 @@ Logistic Regression is for classification. It models probability of class 1. Lin
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recall:    </span><span class="si">{</span><span class="n">rec</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;F1:        </span><span class="si">{</span><span class="n">f1</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC:       </span><span class="si">{</span><span class="n">auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.957
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precision: 0.979
-Recall:    0.968
-F1:        0.974
-AUC:       0.992
 </pre></div>
 </div>
 </div>
@@ -2271,18 +1391,6 @@ AUC:       0.992
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/a5356641ff676172ef5c5838a9e99f3790687bededbb2674e93dc0e7bfa24c88.png" src="_images/a5356641ff676172ef5c5838a9e99f3790687bededbb2674e93dc0e7bfa24c88.png" />
-<img alt="_images/ea2ced56c020b69e68333e323ced7bc663117ffe9f4d16386c9c372077974146.png" src="_images/ea2ced56c020b69e68333e323ced7bc663117ffe9f4d16386c9c372077974146.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>threshold: 0.350
-Accuracy: 0.965
-Precision: 0.960
-Recall: 1.000
-F1: 0.979
-AUC: 0.992
-</pre></div>
-</div>
-</div>
 </div>
 <p>Depending on how you set the classification threshold, the evaluation metrics will change.</p>
 <ul class="simple">
@@ -2323,14 +1431,11 @@ AUC: 0.992
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/dbfdcd386cd132a2d2d422bfac093fffd013ee3ec793b30a05019a08cd8e8ecb.png" src="_images/dbfdcd386cd132a2d2d422bfac093fffd013ee3ec793b30a05019a08cd8e8ecb.png" />
-</div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="from-regression-to-classes-melting-point-bins">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Link to this heading">#</a></h2>
 <p>Now, let’s think about this:
 <strong>Can regression question be turning into classificiation?</strong></p>
 <blockquote>
@@ -2369,38 +1474,6 @@ AUC: 0.992
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[226.703  ,   3.687  ,  26.3    ,   1.     ],
-        [282.295  ,   2.5255 ,  52.6    ,   3.     ],
-        [468.722  ,   7.5302 ,  43.37   ,   5.     ],
-        ...,
-        [277.106  ,   3.7688 ,  34.14   ,   3.     ],
-        [215.061  ,   1.32648,  42.25   ,   2.     ],
-        [134.222  ,   2.8114 ,   0.     ,   1.     ]]),
- array([1, 1, 2, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1,
-        0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0,
-        1, 1, 0, 0, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 2, 0, 1, 0, 1,
-        1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 0, 1, 1, 0, 2, 2, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 2,
-        0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 2, 0, 1, 2, 1, 0, 1, 1, 1, 1,
-        1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 2, 2, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1,
-        1, 0, 1, 1, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 1, 1, 1, 0, 2, 0, 0, 1,
-        1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 2, 0, 1, 1, 2, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 2, 0, 0, 2, 1, 1,
-        2, 1, 0, 1, 2, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1,
-        1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 2, 1, 1, 1, 1, 2, 0, 2, 1, 1, 0, 1,
-        2, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 2,
-        0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 2, 0, 1, 1, 0, 0, 0, 1,
-        1, 0, 1, 1, 2, 1, 1, 1, 1, 0, 1, 0, 2, 0, 0, 0, 1, 0, 2, 1, 2, 2,
-        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 0, 2, 1, 1, 1, 1, 0,
-        0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 2,
-        0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2, 1, 0, 1, 0, 1, 0, 1, 2, 1,
-        1, 0, 0, 2, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 2, 1, 0]))
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-multinomial-logistic-regression admonition">
 <p class="admonition-title">Multinomial logistic regression</p>
@@ -2436,14 +1509,6 @@ AUC: 0.992
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy:  0.826
-Precision: 0.795
-Recall:    0.797
-F1:        0.794
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-averaging-choices admonition">
 <p class="admonition-title">Averaging choices</p>
@@ -2452,7 +1517,7 @@ F1:        0.794
 <p>Note: When moving from <strong>binary classification</strong> to <strong>multi-class classification</strong>, metrics like precision, recall, and F1 score cannot be defined in just one way.<br />
 You need to decide <strong>how to average</strong> them across multiple classes. This is where strategies such as <strong>macro</strong>, <strong>micro</strong>, and <strong>weighted</strong> averaging come into play.</p>
 <section id="macro-averaging">
-<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Permalink to this heading">#</a></h3>
+<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compute the metric (precision, recall, or F1) <strong>for each class separately</strong>.</p></li>
 <li><p>Take the <strong>simple, unweighted average</strong> across all classes.</p></li>
@@ -2515,16 +1580,12 @@ This is because each class’s F1 score contributes equally to the final average
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/1e2db63f03a9c2ee167099c362c363ad325ab63b64bc89155059c450bf64ef71.png" src="_images/1e2db63f03a9c2ee167099c362c363ad325ab63b64bc89155059c450bf64ef71.png" />
-<img alt="_images/a79fab692ac3779eab5460eba3767dc91abe6c0ea6b39d591434d112f85362d7.png" src="_images/a79fab692ac3779eab5460eba3767dc91abe6c0ea6b39d591434d112f85362d7.png" />
-</div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-model-recipes admonition">
 <p class="admonition-title">Model recipes</p>
 <ul class="simple">
@@ -2552,35 +1613,35 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Permalink to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
+<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Link to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
 </dd>
-<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Permalink to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
+<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Link to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
 </dd>
-<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Permalink to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
+<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Link to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
 </dd>
-<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Permalink to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
+<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Link to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
 </dd>
-<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Permalink to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
+<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Link to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
 </dd>
-<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Permalink to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
+<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Link to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
 </dd>
-<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Permalink to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
+<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Link to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
 </dd>
-<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Permalink to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
+<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Link to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
 </dd>
-<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Permalink to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
+<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Link to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
 </dd>
-<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Permalink to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
+<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Link to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="linear-regression-with-two-features">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
@@ -2598,7 +1659,7 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="ridge-across-splits">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
 <span class="n">y</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
@@ -2625,14 +1686,14 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="pka-regression-two-ways">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1">#TO DO</span>
 </pre></div>
 </div>
 </section>
 <section id="pka-to-classification">
-<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2644,9 +1705,9 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 </section>
 <section id="id1">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2672,17 +1733,10 @@ This is because each class’s F1 score contributes equally to the final average
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 401.424
-MAE: 15.892
-R2:  0.729
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="id3">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2710,13 +1764,10 @@ R2:  0.729
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/66b2d8ff79b75beb6818a4fca95bace440b6f6f12cbcafbf1a25a368b171b2f7.png" src="_images/66b2d8ff79b75beb6818a4fca95bace440b6f6f12cbcafbf1a25a368b171b2f7.png" />
-</div>
 </div>
 </section>
 <section id="id4">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> and for <strong>exp(pKa)</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2753,17 +1804,10 @@ R2:  0.729
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test R2:  0.042
-Test MSE: 1.478
-</pre></div>
-</div>
-<img alt="_images/9195af60b17618079558034b65046da90fa2d2bbbcff15056e6220c8393ad352.png" src="_images/9195af60b17618079558034b65046da90fa2d2bbbcff15056e6220c8393ad352.png" />
-</div>
 </div>
 </section>
 <section id="id5">
-<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2824,26 +1868,6 @@ Test MSE: 1.478
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Rule A (pKa ≤ 7 = acidic) ---
-Accuracy:  0.809
-Precision: 0.814
-Recall:    0.989
-F1:        0.893
-AUC:       0.779
-</pre></div>
-</div>
-<img alt="_images/6e54c0aa7cd463afefb75b69ddfa791e79cefa3fa60e82daadaba2593291624e.png" src="_images/6e54c0aa7cd463afefb75b69ddfa791e79cefa3fa60e82daadaba2593291624e.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Rule B (≤ median pKa = acidic, median=5.90) ---
-Accuracy:  0.704
-Precision: 0.750
-Recall:    0.621
-F1:        0.679
-AUC:       0.743
-</pre></div>
-</div>
-<img alt="_images/c9e5182cd61ba8b749037035f18126a2fb1d1926f457201a14e3654c1801920c.png" src="_images/c9e5182cd61ba8b749037035f18126a2fb1d1926f457201a14e3654c1801920c.png" />
-</div>
 </div>
 </section>
 </section>
@@ -2876,7 +1900,7 @@ AUC:       0.743
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2905,6 +1929,7 @@ AUC:       0.743
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2969,7 +1994,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2993,8 +2018,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

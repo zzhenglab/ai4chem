@@ -36,44 +36,31 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-if Chem is not None:
-    import pandas as pd
-    rows = []
-    names = ["caffeine", "acetaminophen", "ibuprofen"]
-    for nm in names:
-        info = pubchem_by_name(nm)
-        smi = info["smiles"]
-        m = Chem.MolFromSmiles(smi)
-        rows.append({
-            "name": nm,
-            "smiles": smi,
-            "MolWt": Descriptors.MolWt(m),
-            "LogP": Crippen.MolLogP(m),
-            "HBD": rdMolDescriptors.CalcNumHBD(m),
-            "HBA": rdMolDescriptors.CalcNumHBA(m),
-            "TPSA": rdMolDescriptors.CalcTPSA(m)
-        })
-    pd.DataFrame(rows)
-else:
-    print("RDKit is not available here.")
+targets = ["caffeine", "ibuprofen", "acetaminophen"]
+for t in targets:
+    pc_key = pubchem_by_name(t)["inchikey"]
+    cir_key = cir_get(t, "stdinchikey")
+    print(f"{t:14s} PubChem={pc_key}  CIR={cir_key}  match={pc_key==cir_key}")
 ------------------
 
+----- stdout -----
+caffeine       PubChem=RYYVLZVUVIJVGH-UHFFFAOYSA-N  CIR=InChIKey=RYYVLZVUVIJVGH-UHFFFAOYSA-N  match=False
+------------------
 
 [31m---------------------------------------------------------------------------[39m
 [31mHTTPError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[23][39m[32m, line 6[39m
-[32m      4[39m names = [[33m"[39m[33mcaffeine[39m[33m"[39m, [33m"[39m[33macetaminophen[39m[33m"[39m, [33m"[39m[33mibuprofen[39m[33m"[39m]
-[32m      5[39m [38;5;28;01mfor[39;00m nm [38;5;129;01min[39;00m names:
-[32m----> [39m[32m6[39m     info = [43mpubchem_by_name[49m[43m([49m[43mnm[49m[43m)[49m
-[32m      7[39m     smi = info[[33m"[39m[33msmiles[39m[33m"[39m]
-[32m      8[39m     m = Chem.MolFromSmiles(smi)
+[36mCell[39m[36m [39m[32mIn[22][39m[32m, line 3[39m
+[32m      1[39m targets = [[33m"[39m[33mcaffeine[39m[33m"[39m, [33m"[39m[33mibuprofen[39m[33m"[39m, [33m"[39m[33macetaminophen[39m[33m"[39m]
+[32m      2[39m [38;5;28;01mfor[39;00m t [38;5;129;01min[39;00m targets:
+[32m----> [39m[32m3[39m     pc_key = [43mpubchem_by_name[49m[43m([49m[43mt[49m[43m)[49m[[33m"[39m[33minchikey[39m[33m"[39m]
+[32m      4[39m     cir_key = cir_get(t, [33m"[39m[33mstdinchikey[39m[33m"[39m)
+[32m      5[39m     [38;5;28mprint[39m([33mf[39m[33m"[39m[38;5;132;01m{[39;00mt[38;5;132;01m:[39;00m[33m14s[39m[38;5;132;01m}[39;00m[33m PubChem=[39m[38;5;132;01m{[39;00mpc_key[38;5;132;01m}[39;00m[33m  CIR=[39m[38;5;132;01m{[39;00mcir_key[38;5;132;01m}[39;00m[33m  match=[39m[38;5;132;01m{[39;00mpc_key==cir_key[38;5;132;01m}[39;00m[33m"[39m)
 
-[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 5[39m, in [36mpubchem_by_name[39m[34m(name, isomeric)[39m
-[32m      3[39m kind = [33m"[39m[33mIsomericSMILES[39m[33m"[39m [38;5;28;01mif[39;00m isomeric [38;5;28;01melse[39;00m [33m"[39m[33mCanonicalSMILES[39m[33m"[39m
-[32m      4[39m smi_url = [33mf[39m[33m"[39m[33mhttps://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/[39m[38;5;132;01m{[39;00menc[38;5;132;01m}[39;00m[33m/property/[39m[38;5;132;01m{[39;00mkind[38;5;132;01m}[39;00m[33m/TXT[39m[33m"[39m
-[32m----> [39m[32m5[39m smiles = [43msafe_get_text[49m[43m([49m[43msmi_url[49m[43m)[49m
-[32m      7[39m cid_url = [33mf[39m[33m"[39m[33mhttps://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/[39m[38;5;132;01m{[39;00menc[38;5;132;01m}[39;00m[33m/cids/JSON[39m[33m"[39m
-[32m      8[39m cid_list = safe_get_json(cid_url).get([33m"[39m[33mIdentifierList[39m[33m"[39m, {}).get([33m"[39m[33mCID[39m[33m"[39m, [])
+[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 17[39m, in [36mpubchem_by_name[39m[34m(name, isomeric)[39m
+[32m     14[39m iupac = safe_get_text(iupac_url)
+[32m     16[39m inchikey_url = [33mf[39m[33m"[39m[33mhttps://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/[39m[38;5;132;01m{[39;00mcid[38;5;132;01m}[39;00m[33m/property/InChIKey/TXT[39m[33m"[39m
+[32m---> [39m[32m17[39m inchikey = [43msafe_get_text[49m[43m([49m[43minchikey_url[49m[43m)[49m
+[32m     19[39m [38;5;28;01mreturn[39;00m {[33m"[39m[33minput[39m[33m"[39m: name, [33m"[39m[33mcid[39m[33m"[39m: cid, [33m"[39m[33msmiles[39m[33m"[39m: smiles, [33m"[39m[33miupac[39m[33m"[39m: iupac, [33m"[39m[33minchikey[39m[33m"[39m: inchikey}
 
 [36mCell[39m[36m [39m[32mIn[9][39m[32m, line 8[39m, in [36msafe_get_text[39m[34m(url, timeout)[39m
 [32m      6[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msafe_get_text[39m(url, timeout=[32m30[39m):
@@ -88,5 +75,5 @@ else:
 [32m   1025[39m [38;5;28;01mif[39;00m http_error_msg:
 [32m-> [39m[32m1026[39m     [38;5;28;01mraise[39;00m HTTPError(http_error_msg, response=[38;5;28mself[39m)
 
-[31mHTTPError[39m: 503 Server Error: PUGREST.ServerBusy for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/ibuprofen/property/IsomericSMILES/TXT
+[31mHTTPError[39m: 503 Server Error: PUGREST.ServerBusy for url: https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3672/property/InChIKey/TXT
 
