@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,56 +14,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-17';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 18 - Contrastive Learning" href="lecture-18.html" />
     <link rel="prev" title="Lecture 16 - Reinforcement Learning" href="lecture-16.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -74,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -138,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -156,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -184,6 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 17 - PU Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
 </ul>
 
     </div>
@@ -199,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -208,14 +224,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -340,10 +356,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -351,14 +367,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -401,10 +417,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-17-pu-learning">
-<h1>Lecture 17 - PU Learning<a class="headerlink" href="#lecture-17-pu-learning" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 17 - PU Learning<a class="headerlink" href="#lecture-17-pu-learning" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -417,7 +433,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define <strong>semi-supervised learning</strong>, the LU setting (labeled + unlabeled), and the PU setting (positive + unlabeled).</p></li>
 <li><p>Understand assumptions used by common PU methods</p></li>
@@ -427,12 +443,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports kept minimal and friendly for beginners</span>
@@ -461,7 +477,7 @@ document.write(`
 </div>
 </section>
 <section id="semi-supervised-learning-overview">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Semi-supervised learning overview</a><a class="headerlink" href="#semi-supervised-learning-overview" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Semi-supervised learning overview</a><a class="headerlink" href="#semi-supervised-learning-overview" title="Link to this heading">#</a></h2>
 <p>Semi-supervised learning uses both labeled and unlabeled data. In chemistry, unlabeled examples come from historical experiments without reliable outcomes or from conditions that were not measured for the desired property.</p>
 <p>Two common settings:</p>
 <ul class="simple">
@@ -523,10 +539,10 @@ document.write(`
 </div>
 <p>Now we can inspect the distributions:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -557,7 +573,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/d76c442b30a45217e3a8b0737737d50d4ff26a5ce0453210c98783f238dac452.png" src="_images/d76c442b30a45217e3a8b0737737d50d4ff26a5ce0453210c98783f238dac452.png" />
+<img alt="_images/df00d134bf977f611aed259f609ff54ff6701c5fbeaf69f1db5b92379fc94ecd.png" src="_images/df00d134bf977f611aed259f609ff54ff6701c5fbeaf69f1db5b92379fc94ecd.png" />
 </div>
 </div>
 <p><strong>LU learning</strong> assumes we have labeled positives and labeled negatives. We can train a standard classifier and use unlabeled data in helpful ways such as self-training or consistency regularization. Here we only sketch a minimal baseline: supervised learning on the labeled set, then scoring the unlabeled.</p>
@@ -623,10 +639,10 @@ Self-training ROC AUC: 0.714
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normal 2D plotting (no t-SNE): show labeled vs unlabeled, then highlight pseudo labels</span>
@@ -689,8 +705,8 @@ Self-training ROC AUC: 0.714
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/707eff2abe77258ef4b0df8131d32a3fe375baabe29a4a5751c42fcbf59f9aeb.png" src="_images/707eff2abe77258ef4b0df8131d32a3fe375baabe29a4a5751c42fcbf59f9aeb.png" />
-<img alt="_images/768669eacb17fcc192b7c51af59e7257ebff2f50f8fd4d72b013d1c7ea4a8d23.png" src="_images/768669eacb17fcc192b7c51af59e7257ebff2f50f8fd4d72b013d1c7ea4a8d23.png" />
+<img alt="_images/1b3fa55530d8d5bc0da6cc516a5a65dcdc6c60289923627d6318ef96834feb5e.png" src="_images/1b3fa55530d8d5bc0da6cc516a5a65dcdc6c60289923627d6318ef96834feb5e.png" />
+<img alt="_images/19430b8b74eca2573b2aa8423a2d74393dde1c166fa95b9816c948abf418d983.png" src="_images/19430b8b74eca2573b2aa8423a2d74393dde1c166fa95b9816c948abf418d983.png" />
 </div>
 </div>
 <div class="admonition-exercise-3-1 admonition">
@@ -700,7 +716,7 @@ Self-training ROC AUC: 0.714
 </section>
 <hr class="docutils" />
 <section id="pu-learning-assumptions-and-key-quantities">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. PU learning: assumptions and key quantities</a><a class="headerlink" href="#pu-learning-assumptions-and-key-quantities" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. PU learning: assumptions and key quantities</a><a class="headerlink" href="#pu-learning-assumptions-and-key-quantities" title="Link to this heading">#</a></h2>
 <p>In PU we only have some positives labeled and many unlabeled points. Notation:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(y\in\{0,1\}\)</span> is the true class, unknown for most points.</p></li>
@@ -745,10 +761,10 @@ Self-training ROC AUC: 0.714
 </div>
 <p>A fast scatter on the original two features helps sanity-check that P isn’t degenerate (all bunched in one corner) and that U spans a reasonable space.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -768,7 +784,7 @@ Self-training ROC AUC: 0.714
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/b373af59d3f4eb6a25fab1ffa157c829cad4b81ad714b609dabbacde8302873b.png" src="_images/b373af59d3f4eb6a25fab1ffa157c829cad4b81ad714b609dabbacde8302873b.png" />
+<img alt="_images/d3bfc47ec0de6dd62ea7b7e73300e2512eaf41f5eb821d63998116bb00f44eb6.png" src="_images/d3bfc47ec0de6dd62ea7b7e73300e2512eaf41f5eb821d63998116bb00f44eb6.png" />
 </div>
 </div>
 <p>Under SCAR, <span class="math notranslate nohighlight">\( P(s=1\mid x)=c\,P(y=1\mid x) \)</span>. We first fit a classifier to predict <strong>s</strong> (P vs U). Then we estimate <span class="math notranslate nohighlight">\( \hat c \)</span> by averaging the s‑model’s probabilities on a <strong>held‑out subset of P</strong>. Finally, we divide by <span class="math notranslate nohighlight">\( \hat c \)</span> to get <span class="math notranslate nohighlight">\( \hat P(y=1\mid x) \)</span>, clipping to <code class="docutils literal notranslate"><span class="pre">[0,1]</span></code>.</p>
@@ -803,16 +819,16 @@ Self-training ROC AUC: 0.714
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c_hat: 0.0384
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c_hat: 0.0385
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    570.000000
-mean       0.652330
-std        0.224119
-min        0.153117
-25%        0.468402
-50%        0.632455
-75%        0.841185
+mean       0.652012
+std        0.224269
+min        0.152797
+25%        0.467893
+50%        0.632156
+75%        0.841057
 max        1.000000
 dtype: float64
 </pre></div>
@@ -869,10 +885,10 @@ dtype: float64
 </ul>
 <p>Below, we now visualize three views to build intuition.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">))</span>
@@ -889,14 +905,14 @@ dtype: float64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/ddc2b479e195af9bec2899f578d62c870d4df09ee794f53537f077589b5ff2e5.png" src="_images/ddc2b479e195af9bec2899f578d62c870d4df09ee794f53537f077589b5ff2e5.png" />
+<img alt="_images/2ba2b933048ad835a172c11cefab89111d08dbb0714a9e7ac42ca95e16416f29.png" src="_images/2ba2b933048ad835a172c11cefab89111d08dbb0714a9e7ac42ca95e16416f29.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">griddata</span>
@@ -922,15 +938,15 @@ dtype: float64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/f3b8f3b0cde44b05f9df6765ce59a4f46fc76b744dc6f5cbc6b4174e47985e87.png" src="_images/f3b8f3b0cde44b05f9df6765ce59a4f46fc76b744dc6f5cbc6b4174e47985e87.png" />
+<img alt="_images/dcf646c266024c968321f17b1fd5fc46cb7220b41dea14023b7a4cc008f143c3.png" src="_images/dcf646c266024c968321f17b1fd5fc46cb7220b41dea14023b7a4cc008f143c3.png" />
 </div>
 </div>
 <p>How do PU scores distribute for labeled positives vs labeled negatives (teach‑only), and how does U compare? Below we have a plot to see this:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_lab_noisy</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
@@ -952,7 +968,7 @@ dtype: float64
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/dee8eb1e8fb90b1b1dec39ab69edd7a753a7d200d364566d680fa8c1d3d70b49.png" src="_images/dee8eb1e8fb90b1b1dec39ab69edd7a753a7d200d364566d680fa8c1d3d70b49.png" />
+<img alt="_images/c24a4722b96256f18532f3685f3e8994c0e4c5a71469b92a9b14e9aa78d9240f.png" src="_images/c24a4722b96256f18532f3685f3e8994c0e4c5a71469b92a9b14e9aa78d9240f.png" />
 </div>
 </div>
 <div class="admonition-note admonition">
@@ -988,7 +1004,7 @@ dtype: float64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Quantile threshold on U: 0.773
 </pre></div>
 </div>
-<img alt="_images/3d0aed7ec40e434bffb7b5aa94421d833cca929a852d56462e76b1a195e69390.png" src="_images/3d0aed7ec40e434bffb7b5aa94421d833cca929a852d56462e76b1a195e69390.png" />
+<img alt="_images/1c0ef00c0155eda0d31aa25b2630221e9def0bb8e092f934db1fd3902a2a66df.png" src="_images/1c0ef00c0155eda0d31aa25b2630221e9def0bb8e092f934db1fd3902a2a66df.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected 150 candidates by quantile threshold.
 </pre></div>
 </div>
@@ -1010,17 +1026,17 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimated class prior pi_hat: 0.652
-Prior-guided threshold on U: 0.531
+Prior-guided threshold on U: 0.53
 Selected 326 candidates by prior-guided threshold.
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
@@ -1048,13 +1064,13 @@ Selected 326 candidates by prior-guided threshold.
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/a132d9c7017ea3f5de055ea0dc9de28250643ea3739f6cc17206db932f14ed50.png" src="_images/a132d9c7017ea3f5de055ea0dc9de28250643ea3739f6cc17206db932f14ed50.png" />
+<img alt="_images/a924b0446465517e08143662c4212ae30040e4966e8abb0c5cb61cdb7a3d1160.png" src="_images/a924b0446465517e08143662c4212ae30040e4966e8abb0c5cb61cdb7a3d1160.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="mof-pu-case-study">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. MOF PU case study</a><a class="headerlink" href="#mof-pu-case-study" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. MOF PU case study</a><a class="headerlink" href="#mof-pu-case-study" title="Link to this heading">#</a></h2>
 <p>Now use the provided MOF dataset and define positive as:</p>
 <ul class="simple">
 <li><p>yield <span class="math notranslate nohighlight">\(&gt; 0.75\)</span></p></li>
@@ -1314,13 +1330,13 @@ Labeled positives s=1: 40
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    20000.000000
-mean         0.002000
-std          0.001514
-min          0.000257
-25%          0.000819
-50%          0.001513
-75%          0.002804
-max          0.008765
+mean         0.002006
+std          0.001482
+min          0.000273
+25%          0.000845
+50%          0.001537
+75%          0.002807
+max          0.008545
 dtype: float64
 </pre></div>
 </div>
@@ -1355,12 +1371,12 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    20000.000000
-mean         0.552614
-std          0.315032
-min          0.082458
-25%          0.262625
-50%          0.484961
-75%          0.898812
+mean         0.559463
+std          0.312000
+min          0.087774
+25%          0.272140
+50%          0.494926
+75%          0.904000
 max          1.000000
 dtype: float64
 </pre></div>
@@ -1414,119 +1430,119 @@ dtype: float64
       <th>0</th>
       <td>25</td>
       <td>12</td>
-      <td>0.05</td>
-      <td>0</td>
-      <td>0.29</td>
-      <td>0.55</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.53</td>
+      <td>0.65</td>
       <td>1.00</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>70</td>
+      <td>25</td>
       <td>12</td>
-      <td>0.20</td>
-      <td>0</td>
-      <td>0.96</td>
-      <td>0.87</td>
-      <td>0.75</td>
+      <td>0.25</td>
       <td>1</td>
+      <td>0.50</td>
+      <td>0.48</td>
+      <td>0.75</td>
+      <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>70</td>
+      <td>25</td>
       <td>12</td>
-      <td>0.20</td>
-      <td>0</td>
-      <td>0.64</td>
-      <td>0.57</td>
-      <td>0.75</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.48</td>
+      <td>0.53</td>
+      <td>0.25</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>70</td>
+      <td>25</td>
       <td>12</td>
-      <td>0.20</td>
-      <td>0</td>
-      <td>0.37</td>
-      <td>0.67</td>
-      <td>1.00</td>
+      <td>0.25</td>
+      <td>1</td>
+      <td>0.42</td>
+      <td>0.68</td>
+      <td>0.75</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>70</td>
+      <td>85</td>
       <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>0.75</td>
-      <td>0.58</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.72</td>
+      <td>0.85</td>
       <td>0.75</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>70</td>
+      <td>85</td>
       <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>0.37</td>
-      <td>0.62</td>
-      <td>0.75</td>
+      <td>0.50</td>
       <td>0</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>70</td>
-      <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>0.43</td>
-      <td>0.56</td>
+      <td>0.34</td>
+      <td>0.41</td>
       <td>1.00</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>70</td>
+      <th>6</th>
+      <td>85</td>
       <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
       <td>0.50</td>
-      <td>0.73</td>
+      <td>0</td>
+      <td>0.00</td>
+      <td>0.36</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>85</td>
+      <td>12</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.30</td>
+      <td>0.54</td>
       <td>0.50</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>70</td>
+      <td>85</td>
       <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
-      <td>0.43</td>
-      <td>0.70</td>
+      <td>0.50</td>
+      <td>0</td>
+      <td>0.14</td>
+      <td>0.66</td>
       <td>0.50</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>70</td>
+      <td>85</td>
       <td>12</td>
-      <td>0.15</td>
-      <td>1</td>
+      <td>0.50</td>
+      <td>0</td>
       <td>0.00</td>
-      <td>0.61</td>
-      <td>0.25</td>
+      <td>0.49</td>
+      <td>0.50</td>
       <td>0</td>
       <td>1.0</td>
     </tr>
@@ -1544,7 +1560,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MOF PU AUC (teaching only): 0.726
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MOF PU AUC (teaching only): 0.725
 </pre></div>
 </div>
 </div>
@@ -1572,8 +1588,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/829b864918265828c4d721c6c8420c659abb169e619ec49c390d564d0f19c91b.png" src="_images/829b864918265828c4d721c6c8420c659abb169e619ec49c390d564d0f19c91b.png" />
-<img alt="_images/e82ca05248b99c508f094c782cf3abde65eb5a8bf3037807ef63c9a3c82d50cc.png" src="_images/e82ca05248b99c508f094c782cf3abde65eb5a8bf3037807ef63c9a3c82d50cc.png" />
+<img alt="_images/2516a82127bd442cfa75d5338a4120b1406ce493c793ee50d5aad283b433ad59.png" src="_images/2516a82127bd442cfa75d5338a4120b1406ce493c793ee50d5aad283b433ad59.png" />
+<img alt="_images/21ba2386793a54989c17ff6e0deb1f9533b3b756a9b076547a69c0c1e014921b.png" src="_images/21ba2386793a54989c17ff6e0deb1f9533b3b756a9b076547a69c0c1e014921b.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1583,10 +1599,10 @@ dtype: float64
 <p>We can plot the probolities predicted by the model.
 To run the code please use Colab, and below is the result.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -1605,10 +1621,10 @@ To run the code please use Colab, and below is the result.</p>
 <p>Now, chemist can start from the predictions done by semi-supervised learning to run the suggested experiments.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -1622,25 +1638,25 @@ To run the code please use Colab, and below is the result.</p>
 </div>
 </section>
 <section id="glossary">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-SCAR">SCAR<a class="headerlink" href="#term-SCAR" title="Permalink to this term">#</a></dt><dd><p>Selected Completely At Random. Positives are labeled with a constant probability <span class="math notranslate nohighlight">\(c\)</span>, independent of <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<dt id="term-SCAR">SCAR<a class="headerlink" href="#term-SCAR" title="Link to this term">#</a></dt><dd><p>Selected Completely At Random. Positives are labeled with a constant probability <span class="math notranslate nohighlight">\(c\)</span>, independent of <span class="math notranslate nohighlight">\(x\)</span>.</p>
 </dd>
-<dt id="term-SAR">SAR<a class="headerlink" href="#term-SAR" title="Permalink to this term">#</a></dt><dd><p>Selected At Random. Label selection may depend on <span class="math notranslate nohighlight">\(x\)</span>. Harder than SCAR.</p>
+<dt id="term-SAR">SAR<a class="headerlink" href="#term-SAR" title="Link to this term">#</a></dt><dd><p>Selected At Random. Label selection may depend on <span class="math notranslate nohighlight">\(x\)</span>. Harder than SCAR.</p>
 </dd>
-<dt id="term-Class-prior">Class prior<a class="headerlink" href="#term-Class-prior" title="Permalink to this term">#</a></dt><dd><p><span class="math notranslate nohighlight">\(\pi_p=P(y=1)\)</span>. Fraction of positives in the population. Important for risk correction.</p>
+<dt id="term-Class-prior">Class prior<a class="headerlink" href="#term-Class-prior" title="Link to this term">#</a></dt><dd><p><span class="math notranslate nohighlight">\(\pi_p=P(y=1)\)</span>. Fraction of positives in the population. Important for risk correction.</p>
 </dd>
-<dt id="term-ElkanNoto-link">Elkan–Noto link<a class="headerlink" href="#term-ElkanNoto-link" title="Permalink to this term">#</a></dt><dd><p>Under SCAR, <span class="math notranslate nohighlight">\(P(s=1\mid x)=c\,P(y=1\mid x)\)</span>. Estimate <span class="math notranslate nohighlight">\(c\)</span> on a holdout of positives and divide.</p>
+<dt id="term-ElkanNoto-link">Elkan–Noto link<a class="headerlink" href="#term-ElkanNoto-link" title="Link to this term">#</a></dt><dd><p>Under SCAR, <span class="math notranslate nohighlight">\(P(s=1\mid x)=c\,P(y=1\mid x)\)</span>. Estimate <span class="math notranslate nohighlight">\(c\)</span> on a holdout of positives and divide.</p>
 </dd>
-<dt id="term-PU-probability">PU probability<a class="headerlink" href="#term-PU-probability" title="Permalink to this term">#</a></dt><dd><p>An estimate of <span class="math notranslate nohighlight">\(P(y=1\mid x)\)</span> produced from PU methods for ranking and decision.</p>
+<dt id="term-PU-probability">PU probability<a class="headerlink" href="#term-PU-probability" title="Link to this term">#</a></dt><dd><p>An estimate of <span class="math notranslate nohighlight">\(P(y=1\mid x)\)</span> produced from PU methods for ranking and decision.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="q1-identify-pu-pieces-from-lu-toy-data">
-<h3>Q1. Identify PU pieces from LU toy data<a class="headerlink" href="#q1-identify-pu-pieces-from-lu-toy-data" title="Permalink to this heading">#</a></h3>
+<h3>Q1. Identify PU pieces from LU toy data<a class="headerlink" href="#q1-identify-pu-pieces-from-lu-toy-data" title="Link to this heading">#</a></h3>
 <p>Using the LU toy data you built (<code class="docutils literal notranslate"><span class="pre">X_lab</span></code>, <code class="docutils literal notranslate"><span class="pre">y_lab_noisy</span></code>, <code class="docutils literal notranslate"><span class="pre">X_unlab</span></code>), create a PU view by revealing only a fraction of the true positives as labeled. Report the shapes of P and U.</p>
 <p><strong>Task</strong></p>
 <ol class="arabic simple">
@@ -1675,7 +1691,7 @@ To run the code please use Colab, and below is the result.</p>
 </section>
 <hr class="docutils" />
 <section id="q2-train-the-s-model-and-estimate-c-hat-under-scar">
-<h3>Q2. Train the s-model and estimate c-hat under SCAR<a class="headerlink" href="#q2-train-the-s-model-and-estimate-c-hat-under-scar" title="Permalink to this heading">#</a></h3>
+<h3>Q2. Train the s-model and estimate c-hat under SCAR<a class="headerlink" href="#q2-train-the-s-model-and-estimate-c-hat-under-scar" title="Link to this heading">#</a></h3>
 <p>Train a classifier to predict selection <code class="docutils literal notranslate"><span class="pre">s</span></code> using P vs U. Then estimate <code class="docutils literal notranslate"><span class="pre">ĉ</span></code> by averaging <code class="docutils literal notranslate"><span class="pre">P(s=1|x)</span></code> on a held out split of P.</p>
 <p><strong>Task</strong></p>
 <ol class="arabic simple">
@@ -1710,7 +1726,7 @@ To run the code please use Colab, and below is the result.</p>
 </section>
 <hr class="docutils" />
 <section id="q3-convert-s-scores-to-pu-probabilities-and-rank-candidates">
-<h3>Q3. Convert s-scores to PU probabilities and rank candidates<a class="headerlink" href="#q3-convert-s-scores-to-pu-probabilities-and-rank-candidates" title="Permalink to this heading">#</a></h3>
+<h3>Q3. Convert s-scores to PU probabilities and rank candidates<a class="headerlink" href="#q3-convert-s-scores-to-pu-probabilities-and-rank-candidates" title="Link to this heading">#</a></h3>
 <p>Use the Elkan–Noto link under SCAR. Compute <code class="docutils literal notranslate"><span class="pre">P(y=1|x)</span> <span class="pre">≈</span> <span class="pre">P(s=1|x)/ĉ</span></code> and rank the top 10 U points.</p>
 <p><strong>Task</strong></p>
 <ol class="arabic simple">
@@ -1754,52 +1770,52 @@ To run the code please use Colab, and below is the result.</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>388</td>
+      <td>1</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>121</td>
+      <td>556</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>349</td>
+      <td>5</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>117</td>
+      <td>4</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>356</td>
+      <td>47</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>358</td>
+      <td>519</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>360</td>
+      <td>495</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>364</td>
+      <td>69</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>371</td>
+      <td>516</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>374</td>
+      <td>511</td>
       <td>1.0</td>
     </tr>
   </tbody>
@@ -1809,7 +1825,7 @@ To run the code please use Colab, and below is the result.</p>
 </section>
 <hr class="docutils" />
 <section id="q4-threshold-selection-by-prior-and-by-quantile">
-<h3>Q4. Threshold selection by prior and by quantile<a class="headerlink" href="#q4-threshold-selection-by-prior-and-by-quantile" title="Permalink to this heading">#</a></h3>
+<h3>Q4. Threshold selection by prior and by quantile<a class="headerlink" href="#q4-threshold-selection-by-prior-and-by-quantile" title="Link to this heading">#</a></h3>
 <p>Pick candidates from U using two rules. Compare how many items each rule selects.</p>
 <p><strong>Task</strong></p>
 <ol class="arabic simple">
@@ -1877,7 +1893,7 @@ thr_q(25%)=0.815  selected_by_quantile=140
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1889,6 +1905,15 @@ thr_q(25%)=0.815  selected_by_quantile=140
         <p class="prev-next-title">Lecture 16 - Reinforcement Learning</p>
       </div>
     </a>
+    <a class="right-next"
+       href="lecture-18.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 18 - Contrastive Learning</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1897,6 +1922,7 @@ thr_q(25%)=0.815  selected_by_quantile=140
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1941,7 +1967,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1965,8 +1991,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

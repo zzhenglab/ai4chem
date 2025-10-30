@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 18 - Contrastive Learning for Experimental Chemistry
+# Lecture 18 - Contrastive Learning 
 
 ```{contents}
 :local:
