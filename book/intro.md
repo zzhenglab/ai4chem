@@ -7,20 +7,20 @@
 **Instructor:** Zhiling "Zach" Zheng (he/him)  
 Office: McMillen 411 | Email: z.z@wustl.edu 
 
+ course, please help spread the word and share the link so more chemists can benefit from it.
 
+```{card}  
 **This class is open to everyone and can be taken at your own pace.**
 
-*Designed for synthetic chemists with no coding or math background to learn how AI applies to chemistry. All Colab materials are free and shareable; lecture slides available on request.*
+- All tutorials are free and shareable.
+- Created for synthetic chemists with **no background in coding or math**.
+- Focuses on **practical applications** of AI in wet lab synthesis and experimental data analysis.
+- Lecture slides are available to registered students on Canvas or upon request.
+
 If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.
 
-For registered students:
-```{card}  
-**Course Format**  
-- **When:** Tue & Thu, 1:00–2:20 PM  
-- **Where:** Cupples II Room 200  
-- **Material Delivery:** Jupyter Book + Colab notebooks  
-Bring your laptop, bring your curiosity, and prepare to experiment.  
 ```
+
 
 ---
 **Contents**
