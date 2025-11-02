@@ -5,9 +5,7 @@
 **Washington University in St. Louis**  
 **Fall 2025**  
 **Instructor:** Zhiling "Zach" Zheng (he/him)  
-Office: McMillen 411 | Email: z.z@wustl.edu 
-
- course, please help spread the word and share the link so more chemists can benefit from it.
+Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | Email: z.z@wustl.edu 
 
 ```{card}  
 **This class is open to everyone and can be taken at your own pace.**
