@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -186,6 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 </ul>
 
     </div>
@@ -5692,48 +5693,69 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 192.29it/s]
 </section>
 <section id="solution-q1">
 <h3>Solution Q1:<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
-<p>df_reg = df[[“SMILES”,”Melting Point”]].dropna().copy()
-df_reg.to_csv(“mp_data.csv”, index=False)</p>
-<p>!chemprop train <br />
-–data-path mp_data.csv <br />
--t regression <br />
--s SMILES <br />
-–target-columns “Melting Point” <br />
--o mp_model_q4 <br />
-–num-replicates 1 <br />
-–epochs 20 <br />
-–metrics mae rmse r2 <br />
-–tracking-metric r2</p>
-<p>pd.DataFrame({“SMILES”: [“CCO”,”c1ccccc1”,”CC(=O)O”,”CCN(CC)CC”,”O=C(O)C(O)C”]}).to_csv(“q4_smiles.csv”, index=False)</p>
-<p>!chemprop predict <br />
-–test-path q4_smiles.csv <br />
-–model-paths mp_model_q4/replicate_0/model_0/best.pt <br />
-–preds-path q4_preds.csv</p>
-<p>pd.read_csv(“q4_preds.csv”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+df_reg = df[[&quot;SMILES&quot;,&quot;Melting Point&quot;]].dropna().copy()
+df_reg.to_csv(&quot;mp_data.csv&quot;, index=False)
+
+!chemprop train \
+  --data-path mp_data.csv \
+  -t regression \
+  -s SMILES \
+  --target-columns &quot;Melting Point&quot; \
+  -o mp_model_q4 \
+  --num-replicates 1 \
+  --epochs 20 \
+  --metrics mae rmse r2 \
+  --tracking-metric r2
+
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;CC(=O)O&quot;,&quot;CCN(CC)CC&quot;,&quot;O=C(O)C(O)C&quot;]}).to_csv(&quot;q4_smiles.csv&quot;, index=False)
+
+!chemprop predict \
+  --test-path q4_smiles.csv \
+  --model-paths mp_model_q4/replicate_0/model_0/best.pt \
+  --preds-path q4_preds.csv
+
+pd.read_csv(&quot;q4_preds.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="solution-q2">
 <h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
-<p>df = pd.read_csv(url)
-df = df[[“SMILES”,”Toxicity”]].dropna().copy()
-df[“Toxicity_bin”] = df[“Toxicity”].str.lower().map({“toxic”:1, “non_toxic”:0}).astype(int)
-df[[“SMILES”,”Toxicity_bin”]].to_csv(“tox_data.csv”, index=False)</p>
-<p>!chemprop train <br />
-–data-path tox_data.csv <br />
--t classification <br />
--s SMILES <br />
-–target-columns Toxicity_bin <br />
--o tox_model <br />
-–num-replicates 1 <br />
-–epochs 20 <br />
-–class-balance <br />
-–metrics roc prc accuracy <br />
-–tracking-metric roc</p>
-<p>pd.DataFrame({“SMILES”: [“CCO”,”c1ccccc1”,”O=<span class="xref myst">N+</span>[O-]”,”ClCCl”,”CC(=O)Cl”]}).to_csv(“q5_smiles.csv”, index=False)</p>
-<p>!chemprop predict <br />
-–test-path q5_smiles.csv <br />
-–model-paths tox_model/replicate_0/model_0/best.pt <br />
-–preds-path q5_preds.csv</p>
-<p>pd.read_csv(“q5_preds.csv”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(url)
+df = df[[&quot;SMILES&quot;,&quot;Toxicity&quot;]].dropna().copy()
+df[&quot;Toxicity_bin&quot;] = df[&quot;Toxicity&quot;].str.lower().map({&quot;toxic&quot;:1, &quot;non_toxic&quot;:0}).astype(int)
+df[[&quot;SMILES&quot;,&quot;Toxicity_bin&quot;]].to_csv(&quot;tox_data.csv&quot;, index=False)
+
+!chemprop train \
+  --data-path tox_data.csv \
+  -t classification \
+  -s SMILES \
+  --target-columns Toxicity_bin \
+  -o tox_model \
+  --num-replicates 1 \
+  --epochs 20 \
+  --class-balance \
+  --metrics roc prc accuracy \
+  --tracking-metric roc
+
+pd.DataFrame({&quot;SMILES&quot;: [&quot;CCO&quot;,&quot;c1ccccc1&quot;,&quot;O=[N+](=O)[O-]&quot;,&quot;ClCCl&quot;,&quot;CC(=O)Cl&quot;]}).to_csv(&quot;q5_smiles.csv&quot;, index=False)
+
+!chemprop predict \
+  --test-path q5_smiles.csv \
+  --model-paths tox_model/replicate_0/model_0/best.pt \
+  --preds-path q5_preds.csv
+
+pd.read_csv(&quot;q5_preds.csv&quot;)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>

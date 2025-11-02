@@ -11,14 +11,14 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 18 - Contrastive Learning 
+# Lecture 19 - Transformers 
 
 ```{contents}
 :local:
 :depth: 1
 ```
 
-**Learning goals**
+## Learning goals
 
 - Define tokens, embeddings, positional encodings, attention, and multi-head attention.
 - Visualize **attention** as heatmaps on SMILES examples.
@@ -67,10 +67,6 @@ from sklearn.metrics import (
 )
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
-
-print("Numpy:", np.__version__)
-print("Torch:", torch.__version__ if torch is not None else "not available")
-print("RDKit:", "available" if Chem is not None else "not available")
 
 def show_img(mat, title=""):
     plt.figure()
@@ -626,21 +622,33 @@ else:
 ---
 ## 6. Glossary
 
-> Token: a basic symbol in a sequence. We use characters from SMILES.
->
-> Embedding: a learned vector for each token.
->
-> Positional encoding: a vector added to embeddings so the model knows token order.
->
-> Query, Key, Value (Q, K, V): linear projections of hidden states used in attention.
-> 
-> Attention weights: softmax scores that say how much each position attends to others.
->
-> Head: one set of Q, K, V projections inside multi-head attention.
->
-> Residual connection: add input of a block to its output for stable optimization.
->
-> LayerNorm: normalization per token over channels.
->
-> Cross entropy: a loss for classification.
+```{glossary}
+Token 
+    a basic symbol in a sequence. We use characters from SMILES.
+
+Embedding
+    a learned vector for each token.
+
+Positional encoding
+    a vector added to embeddings so the model knows token order.
+
+Query, Key, Value (Q, K, V)
+    linear projections of hidden states used in attention.
+
+
+Attention weights
+    softmax scores that say how much each position attends to others.
+
+
+Head
+    one set of Q, K, V projections inside multi-head attention.
+
+Residual connection
+    add input of a block to its output for stable optimization.
+
+LayerNorm
+    normalization per token over channels.
+
+Cross entropy 
+    a loss for classification.
 ```

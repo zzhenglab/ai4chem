@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to CHEM 5080: AI for Chemistry
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
         </ul>
@@ -181,6 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 </ul>
 
     </div>
@@ -372,15 +373,17 @@ document.write(`
 </li>
       <li><a href="lecture-02.html#term-alpha"><strong>alpha</strong></a>, <a href="lecture-08.html#term-alpha"><strong>[1]</strong></a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-06.html#term-Alpha"><strong>Alpha (λ)</strong></a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-03.html#term-aromatic"><strong>aromatic</strong></a>
 </li>
       <li><a href="lecture-01.html#term-array"><strong>array</strong></a>
 </li>
       <li><a href="lecture-02.html#term-aspect"><strong>aspect</strong></a>
+</li>
+      <li><a href="lecture-19.html#term-Attention-weights"><strong>Attention weights</strong></a>
 </li>
       <li><a href="lecture-18.html#term-Augmentation"><strong>Augmentation</strong></a>
 </li>
@@ -430,6 +433,8 @@ document.write(`
 </li>
       <li><a href="lecture-18.html#term-Cosine-similarity"><strong>Cosine similarity</strong></a>
 </li>
+      <li><a href="lecture-19.html#term-Cross-entropy"><strong>Cross entropy</strong></a>
+</li>
       <li><a href="lecture-06.html#term-Cross-validation-CV"><strong>Cross validation (CV)</strong></a>
 </li>
       <li><a href="lecture-02.html#term-CSV"><strong>CSV</strong></a>
@@ -469,6 +474,8 @@ document.write(`
       <li><a href="lecture-12.html#term-elbow-method"><strong>elbow method</strong></a>
 </li>
       <li><a href="lecture-17.html#term-ElkanNoto-link"><strong>Elkan–Noto link</strong></a>
+</li>
+      <li><a href="lecture-19.html#term-Embedding"><strong>Embedding</strong></a>
 </li>
       <li><a href="lecture-16.html#term-Environment"><strong>Environment</strong></a>
 </li>
@@ -530,10 +537,12 @@ document.write(`
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-08.html#term-hidden-layer"><strong>hidden layer</strong></a>
+      <li><a href="lecture-19.html#term-Head"><strong>Head</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="lecture-08.html#term-hidden-layer"><strong>hidden layer</strong></a>
+</li>
       <li><a href="lecture-15.html#term-Hypervolume"><strong>Hypervolume</strong></a>
 </li>
   </ul></td>
@@ -576,10 +585,12 @@ document.write(`
 </li>
       <li><a href="lecture-06.html#term-Lasso-Regression"><strong>Lasso Regression</strong></a>
 </li>
-      <li><a href="lecture-18.html#term-Linear-probe"><strong>Linear probe</strong></a>
+      <li><a href="lecture-19.html#term-LayerNorm"><strong>LayerNorm</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="lecture-18.html#term-Linear-probe"><strong>Linear probe</strong></a>
+</li>
       <li><a href="lecture-01.html#term-list"><strong>list</strong></a>
 </li>
       <li><a href="lecture-11.html#term-loading"><strong>loading</strong></a>
@@ -662,6 +673,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-09.html#term-pooling"><strong>pooling</strong></a>
 </li>
+      <li><a href="lecture-19.html#term-Positional-encoding"><strong>Positional encoding</strong></a>
+</li>
       <li><a href="lecture-18.html#term-Positive-pair"><strong>Positive pair</strong></a>
 </li>
       <li><a href="lecture-14.html#term-Posterior"><strong>Posterior</strong></a>
@@ -685,6 +698,10 @@ document.write(`
       <li><a href="lecture-16.html#term-Q-value"><strong>Q value</strong></a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="lecture-19.html#term-Query-Key-Value-Q-K-V"><strong>Query, Key, Value (Q, K, V)</strong></a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
@@ -695,6 +712,8 @@ document.write(`
       <li><a href="lecture-05.html#term-regularization"><strong>regularization</strong></a>
 </li>
       <li><a href="lecture-05.html#term-residual"><strong>residual</strong></a>
+</li>
+      <li><a href="lecture-19.html#term-Residual-connection"><strong>Residual connection</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -750,11 +769,13 @@ document.write(`
 </li>
       <li><a href="lecture-12.html#term-Tanimoto-Jaccard-similarity"><strong>Tanimoto / Jaccard similarity</strong></a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-18.html#term-Temperature"><strong>Temperature</strong></a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-16.html#term-Thompson-sampling"><strong>Thompson sampling</strong></a>
+</li>
+      <li><a href="lecture-19.html#term-Token"><strong>Token</strong></a>
 </li>
       <li><a href="lecture-05.html#term-train-test-split"><strong>train test split</strong></a>
 </li>

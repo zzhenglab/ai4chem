@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Lecture 18 - Contrastive Learning &#8212; My sample book</title>
+    <title>Lecture 19 - Transformers &#8212; My sample book</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -166,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
@@ -185,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 19 - Transformers</a></li>
 </ul>
 
     </div>
@@ -370,7 +371,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture 18 - Contrastive Learning</h1>
+    <h1>Lecture 19 - Transformers</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -380,6 +381,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-smiles-to-tokens">1. From SMILES to tokens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-positional-encoding">2. Embeddings and positional encoding</a></li>
@@ -398,28 +400,31 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-18-contrastive-learning">
-<h1>Lecture 18 - Contrastive Learning<a class="headerlink" href="#lecture-18-contrastive-learning" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-19-transformers">
+<h1>Lecture 19 - Transformers<a class="headerlink" href="#lecture-19-transformers" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#setup" id="id1">1. Setup</a></p></li>
-<li><p><a class="reference internal" href="#from-smiles-to-tokens" id="id2">1. From SMILES to tokens</a></p></li>
-<li><p><a class="reference internal" href="#embeddings-and-positional-encoding" id="id3">2. Embeddings and positional encoding</a></p></li>
-<li><p><a class="reference internal" href="#scaled-dot-product-attention" id="id4">3. Scaled dot-product attention</a></p></li>
-<li><p><a class="reference internal" href="#multi-head-attention" id="id5">4. Multi-head attention</a></p></li>
-<li><p><a class="reference internal" href="#transformer-encoder-block-for-a-small-chemistry-task" id="id6">5. Transformer Encoder block for a small chemistry task</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id7">6. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#from-smiles-to-tokens" id="id3">1. From SMILES to tokens</a></p></li>
+<li><p><a class="reference internal" href="#embeddings-and-positional-encoding" id="id4">2. Embeddings and positional encoding</a></p></li>
+<li><p><a class="reference internal" href="#scaled-dot-product-attention" id="id5">3. Scaled dot-product attention</a></p></li>
+<li><p><a class="reference internal" href="#multi-head-attention" id="id6">4. Multi-head attention</a></p></li>
+<li><p><a class="reference internal" href="#transformer-encoder-block-for-a-small-chemistry-task" id="id7">5. Transformer Encoder block for a small chemistry task</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id8">6. Glossary</a></p></li>
 </ul>
 </nav>
-<p><strong>Learning goals</strong></p>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define tokens, embeddings, positional encodings, attention, and multi-head attention.</p></li>
 <li><p>Visualize <strong>attention</strong> as heatmaps on SMILES examples.</p></li>
 <li><p>Implement a mini Transformer Encoder block and train it on a chemistry task from SMILES.</p></li>
 </ul>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
+</section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -466,10 +471,6 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numpy:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Torch:&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">__version__</span> <span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;not available&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RDKit:&quot;</span><span class="p">,</span> <span class="s2">&quot;available&quot;</span> <span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s2">&quot;not available&quot;</span><span class="p">)</span>
-
 <span class="k">def</span><span class="w"> </span><span class="nf">show_img</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
@@ -488,18 +489,11 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numpy: 1.24.4
-Torch: 2.4.1+cpu
-RDKit: available
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="from-smiles-to-tokens">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. From SMILES to tokens</a><a class="headerlink" href="#from-smiles-to-tokens" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. From SMILES to tokens</a><a class="headerlink" href="#from-smiles-to-tokens" title="Permalink to this heading">#</a></h2>
 <p>We will treat a SMILES string as a sequence of characters. This is not the only way to tokenize chemistry, but it is simple and enough for a first pass.</p>
 <ul class="simple">
 <li><p><strong>Token</strong>: a symbol in a sequence. Here we use characters such as <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">O</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, digits for ring closures, and <code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code> for special atoms.</p></li>
@@ -696,7 +690,7 @@ Name: count, dtype: int64
 </section>
 <hr class="docutils" />
 <section id="embeddings-and-positional-encoding">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Embeddings and positional encoding</a><a class="headerlink" href="#embeddings-and-positional-encoding" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Embeddings and positional encoding</a><a class="headerlink" href="#embeddings-and-positional-encoding" title="Permalink to this heading">#</a></h2>
 <p>We map each token id to a vector of size <code class="docutils literal notranslate"><span class="pre">d_model</span></code>. We also add a position-dependent signal so the model can tell the difference between the same token at different positions.</p>
 <p><strong>Embeddings and positions</strong><br />
 For token id <span class="math notranslate nohighlight">\(x_t\)</span> and model size <span class="math notranslate nohighlight">\(d\)</span>:
@@ -750,7 +744,7 @@ Input to attention is \)</span>H_t = E_t + \text{PE}_t$.</p>
 </section>
 <hr class="docutils" />
 <section id="scaled-dot-product-attention">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Scaled dot-product attention</a><a class="headerlink" href="#scaled-dot-product-attention" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Scaled dot-product attention</a><a class="headerlink" href="#scaled-dot-product-attention" title="Permalink to this heading">#</a></h2>
 <p>Given query <code class="docutils literal notranslate"><span class="pre">Q</span></code>, key <code class="docutils literal notranslate"><span class="pre">K</span></code>, and value <code class="docutils literal notranslate"><span class="pre">V</span></code>, attention is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -830,7 +824,7 @@ out.shape = (1, 12, 16)
 </section>
 <hr class="docutils" />
 <section id="multi-head-attention">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Multi-head attention</a><a class="headerlink" href="#multi-head-attention" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Multi-head attention</a><a class="headerlink" href="#multi-head-attention" title="Permalink to this heading">#</a></h2>
 <p>Multiple heads split the model dimension into smaller subspaces that attend differently. We will build 2 heads for clarity.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Multi-head</span> <span class="pre">attention</span></code> with <span class="math notranslate nohighlight">\(h\)</span> heads have the following equation:
 $<span class="math notranslate nohighlight">\(
@@ -901,7 +895,7 @@ $<span class="math notranslate nohighlight">\(
 </section>
 <hr class="docutils" />
 <section id="transformer-encoder-block-for-a-small-chemistry-task">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Transformer Encoder block for a small chemistry task</a><a class="headerlink" href="#transformer-encoder-block-for-a-small-chemistry-task" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Transformer Encoder block for a small chemistry task</a><a class="headerlink" href="#transformer-encoder-block-for-a-small-chemistry-task" title="Permalink to this heading">#</a></h2>
 <p>Now, we will use what we learn before to do a demo.
 We train a small encoder on SMILES to predict <code class="docutils literal notranslate"><span class="pre">toxic</span></code> vs <code class="docutils literal notranslate"><span class="pre">non_toxic</span></code>.</p>
 <p>In the section, we will:</p>
@@ -1240,21 +1234,27 @@ weighted avg      0.937     0.939     0.937       115
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
-<blockquote>
-<div><p>Token: a basic symbol in a sequence. We use characters from SMILES.</p>
-<p>Embedding: a learned vector for each token.</p>
-<p>Positional encoding: a vector added to embeddings so the model knows token order.</p>
-<p>Query, Key, Value (Q, K, V): linear projections of hidden states used in attention.</p>
-<p>Attention weights: softmax scores that say how much each position attends to others.</p>
-<p>Head: one set of Q, K, V projections inside multi-head attention.</p>
-<p>Residual connection: add input of a block to its output for stable optimization.</p>
-<p>LayerNorm: normalization per token over channels.</p>
-<p>Cross entropy: a loss for classification.</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-Token">Token <a class="headerlink" href="#term-Token" title="Permalink to this term">#</a></dt><dd><p>a basic symbol in a sequence. We use characters from SMILES.</p>
+</dd>
+<dt id="term-Embedding">Embedding<a class="headerlink" href="#term-Embedding" title="Permalink to this term">#</a></dt><dd><p>a learned vector for each token.</p>
+</dd>
+<dt id="term-Positional-encoding">Positional encoding<a class="headerlink" href="#term-Positional-encoding" title="Permalink to this term">#</a></dt><dd><p>a vector added to embeddings so the model knows token order.</p>
+</dd>
+<dt id="term-Query-Key-Value-Q-K-V">Query, Key, Value (Q, K, V)<a class="headerlink" href="#term-Query-Key-Value-Q-K-V" title="Permalink to this term">#</a></dt><dd><p>linear projections of hidden states used in attention.</p>
+</dd>
+<dt id="term-Attention-weights">Attention weights<a class="headerlink" href="#term-Attention-weights" title="Permalink to this term">#</a></dt><dd><p>softmax scores that say how much each position attends to others.</p>
+</dd>
+<dt id="term-Head">Head<a class="headerlink" href="#term-Head" title="Permalink to this term">#</a></dt><dd><p>one set of Q, K, V projections inside multi-head attention.</p>
+</dd>
+<dt id="term-Residual-connection">Residual connection<a class="headerlink" href="#term-Residual-connection" title="Permalink to this term">#</a></dt><dd><p>add input of a block to its output for stable optimization.</p>
+</dd>
+<dt id="term-LayerNorm">LayerNorm<a class="headerlink" href="#term-LayerNorm" title="Permalink to this term">#</a></dt><dd><p>normalization per token over channels.</p>
+</dd>
+<dt id="term-Cross-entropy">Cross entropy <a class="headerlink" href="#term-Cross-entropy" title="Permalink to this term">#</a></dt><dd><p>a loss for classification.</p>
+</dd>
+</dl>
 </section>
 </section>
 
@@ -1312,6 +1312,7 @@ weighted avg      0.937     0.939     0.937       115
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-smiles-to-tokens">1. From SMILES to tokens</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embeddings-and-positional-encoding">2. Embeddings and positional encoding</a></li>

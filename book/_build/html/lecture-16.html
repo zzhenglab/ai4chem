@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -186,6 +186,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 </ul>
 
     </div>
@@ -4706,6 +4707,22 @@ Below only code is shown.</p>
 <span class="k">def</span><span class="w"> </span><span class="nf">fmt_action</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="n">T</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">S</span> <span class="o">=</span> <span class="n">a</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;T=</span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">°C, t=</span><span class="si">{</span><span class="n">H</span><span class="si">}</span><span class="s2">h, c=</span><span class="si">{</span><span class="n">C</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> M, solvent=</span><span class="si">{</span><span class="s1">&#39;DMF&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">S</span><span class="o">==</span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;H2O&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">top_linkers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;O=C(O)c1ccc(cc1)C(=O)O&#39;,
+ &#39;O=C(O)/C=C/C(=O)O&#39;,
+ &#39;Cc1ncc[nH]1&#39;,
+ &#39;O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1&#39;,
+ &#39;Nc1cc(C(=O)O)ccc1C(=O)O&#39;,
+ &#39;O=C(O)c1cc(F)ccc1C(=O)O&#39;,
+ &#39;O=C(O)c1ccc2cccc(C(=O)O)c2c1&#39;,
+ &#39;O=C(O)c1cccc2c1ccc(C(=O)O)c2&#39;,
+ &#39;O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O&#39;,
+ &#39;c1ccc2[nH]cnc2c1&#39;]
 </pre></div>
 </div>
 </div>
@@ -4852,6 +4869,135 @@ Below only code is shown.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Per-linker best by agent (first 12 rows):
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>linker</th>
+      <th>agent</th>
+      <th>recipe</th>
+      <th>pulls</th>
+      <th>mean_yield</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.10 M, solvent=H2O</td>
+      <td>2</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>eps_greedy</td>
+      <td>T=155°C, t=36h, c=0.40 M, solvent=DMF</td>
+      <td>24</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>33</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.25 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>2</td>
+      <td>0.61</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=85°C, t=48h, c=0.45 M, solvent=DMF</td>
+      <td>44</td>
+      <td>0.61</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>46</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=36h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.44</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4865,6 +5011,119 @@ Below only code is shown.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One recommended recipe per linker by highest mean yield across agents:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>linker</th>
+      <th>agent</th>
+      <th>recipe</th>
+      <th>pulls</th>
+      <th>mean_yield</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>46</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=130°C, t=48h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.98</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=160°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.83</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=60h, c=0.05 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
+      <td>eps_greedy</td>
+      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=72h, c=0.30 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>c1ccc2[nH]cnc2c1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.78</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="interpreting-the-results-and-tracking-learning">
@@ -4897,6 +5156,9 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/bf5d825a7a04cea3442e9d8990f79e4fc75cc74ce943b62a6163360589b223a7.png" src="_images/bf5d825a7a04cea3442e9d8990f79e4fc75cc74ce943b62a6163360589b223a7.png" />
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -4905,7 +5167,13 @@ Below only code is shown.</p>
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Top 3 recipes per linker so you can see near ties</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the columns </span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;linker&quot;</span><span class="p">,</span> <span class="s2">&quot;agent&quot;</span><span class="p">,</span> <span class="s2">&quot;recipe&quot;</span><span class="p">,</span> <span class="s2">&quot;pulls&quot;</span><span class="p">,</span> <span class="s2">&quot;mean_yield&quot;</span><span class="p">]</span>
+
+
+
+
+<span class="c1"># Top 3 recipes per linker so you can see near ties</span>
 <span class="n">top3</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">summary_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;linker&quot;</span><span class="p">,</span><span class="s2">&quot;mean_yield&quot;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
               <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;linker&quot;</span><span class="p">)</span>
@@ -4918,6 +5186,279 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 3 per linker
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>linker</th>
+      <th>agent</th>
+      <th>recipe</th>
+      <th>pulls</th>
+      <th>mean_yield</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.87</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.10 M, solvent=H2O</td>
+      <td>2</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Cc1ncc[nH]1</td>
+      <td>eps_greedy</td>
+      <td>T=155°C, t=36h, c=0.40 M, solvent=DMF</td>
+      <td>24</td>
+      <td>0.42</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>33</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.25 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.58</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>2</td>
+      <td>0.61</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>O=C(O)/C=C/C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=85°C, t=48h, c=0.45 M, solvent=DMF</td>
+      <td>44</td>
+      <td>0.61</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>46</td>
+      <td>0.79</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=36h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.74</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.44</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=130°C, t=48h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.98</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.20 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=160°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.83</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>46</td>
+      <td>0.69</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.30 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=60h, c=0.05 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.71</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
+      <td>eps_greedy</td>
+      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
+      <td>30</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.05 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.54</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
+      <td>eps_greedy</td>
+      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
+      <td>thompson_beta</td>
+      <td>T=155°C, t=84h, c=0.20 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
+      <td>thompson_beta</td>
+      <td>T=115°C, t=72h, c=0.30 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.82</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
+      <td>eps_greedy</td>
+      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
+      <td>1</td>
+      <td>0.81</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
+      <td>2</td>
+      <td>0.57</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>c1ccc2[nH]cnc2c1</td>
+      <td>ucb1</td>
+      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.78</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>c1ccc2[nH]cnc2c1</td>
+      <td>thompson_beta</td>
+      <td>T=55°C, t=24h, c=0.30 M, solvent=H2O</td>
+      <td>1</td>
+      <td>0.76</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>c1ccc2[nH]cnc2c1</td>
+      <td>eps_greedy</td>
+      <td>T=155°C, t=72h, c=0.45 M, solvent=H2O</td>
+      <td>32</td>
+      <td>0.36</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="general-synthesis-condition-works-best-across-all-linkers">
@@ -5009,6 +5550,23 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected 10 linkers
+Candidate shared recipes: 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== General synthesis condition (best average yield across linkers) ===
+recipe            T=130°C, t=60h, c=0.25 M, solvent=DMF
+coverage                                             10
+mean_yield_all                                     0.73
+median_yield                                      0.855
+min_yield                                          0.23
+max_yield                                          0.99
+
+--- Top 5 general recipes for reference ---
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
