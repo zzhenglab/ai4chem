@@ -1346,7 +1346,7 @@ Greedy: [0.1 0.2 0.5]
 
 <span class="c1"># Run BNN + EI for 15 iterations</span>
 <span class="n">hist_bnn_ei</span><span class="p">,</span> <span class="n">snaps</span> <span class="o">=</span> <span class="n">run_bo_bnn_ei</span><span class="p">(</span>
-    <span class="n">n_iter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="n">seed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
     <span class="n">noise_sd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
     <span class="n">dropout_p</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>   <span class="c1"># increase dropout to widen uncertainty if needed</span>
@@ -1376,7 +1376,7 @@ Greedy: [0.1 0.2 0.5]
 <span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">return</span> <span class="n">best_hist</span><span class="p">,</span> <span class="n">snapshots</span>
 <span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="c1"># Run BNN + EI for 15 iterations</span>
 <span class="ne">--&gt; </span><span class="mi">102</span> <span class="n">hist_bnn_ei</span><span class="p">,</span> <span class="n">snaps</span> <span class="o">=</span> <span class="n">run_bo_bnn_ei</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">n_iter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">seed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">noise_sd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">106</span>     <span class="n">dropout_p</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>   <span class="c1"># increase dropout to widen uncertainty if needed</span>
@@ -1394,47 +1394,43 @@ Greedy: [0.1 0.2 0.5]
 <span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="c1"># Posterior over grid by MC sampling</span>
 <span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="n">mu_nn</span><span class="p">,</span> <span class="n">sd_nn</span> <span class="o">=</span> <span class="n">predict_mcdropout</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_grid</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
 
-<span class="nn">Cell In[12], line 38,</span> in <span class="ni">fit_mcdropout</span><span class="nt">(model, X, y, epochs, lr, weight_decay, seed)</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_t</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">38</span> <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="nn">Cell In[12], line 35,</span> in <span class="ni">fit_mcdropout</span><span class="nt">(model, X, y, epochs, lr, weight_decay, seed)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">loss_fn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">35</span>     <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_t</span><span class="p">)</span>
 
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\_tensor.py:521,</span> in <span class="ni">Tensor.backward</span><span class="nt">(self, gradient, retain_graph, create_graph, inputs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span> <span class="k">if</span> <span class="n">has_torch_function_unary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="k">return</span> <span class="n">handle_torch_function</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="n">Tensor</span><span class="o">.</span><span class="n">backward</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>         <span class="p">(</span><span class="bp">self</span><span class="p">,),</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">520</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">521</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">gradient</span><span class="p">,</span> <span class="n">retain_graph</span><span class="p">,</span> <span class="n">create_graph</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span>
-<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="p">)</span>
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\_compile.py:31,</span> in <span class="ni">_disable_dynamo.&lt;locals&gt;.inner</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>     <span class="n">disable_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">disable</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">recursive</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>     <span class="n">fn</span><span class="o">.</span><span class="n">__dynamo_disable</span> <span class="o">=</span> <span class="n">disable_fn</span>
+<span class="ne">---&gt; </span><span class="mi">31</span> <span class="k">return</span> <span class="n">disable_fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\autograd\__init__.py:289,</span> in <span class="ni">backward</span><span class="nt">(tensors, grad_tensors, retain_graph, create_graph, grad_variables, inputs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="n">retain_graph</span> <span class="o">=</span> <span class="n">create_graph</span>
-<span class="g g-Whitespace">    </span><span class="mi">286</span> <span class="c1"># The reason we repeat the same comment below is that</span>
-<span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="c1"># some Python versions print out the first line of a multi-line function</span>
-<span class="g g-Whitespace">    </span><span class="mi">288</span> <span class="c1"># calls in the traceback and some print out the last line</span>
-<span class="ne">--&gt; </span><span class="mi">289</span> <span class="n">_engine_run_backward</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">290</span>     <span class="n">tensors</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span>     <span class="n">grad_tensors_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span>     <span class="n">retain_graph</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>     <span class="n">create_graph</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">294</span>     <span class="n">inputs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span>     <span class="n">allow_unreachable</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span>     <span class="n">accumulate_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="p">)</span>
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\_dynamo\eval_frame.py:600,</span> in <span class="ni">DisableContext.__call__.&lt;locals&gt;._fn</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">598</span> <span class="n">prior</span> <span class="o">=</span> <span class="n">set_eval_frame</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">600</span>     <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">601</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span>     <span class="n">set_eval_frame</span><span class="p">(</span><span class="n">prior</span><span class="p">)</span>
 
-<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\autograd\graph.py:769,</span> in <span class="ni">_engine_run_backward</span><span class="nt">(t_outputs, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span>     <span class="n">unregister_hooks</span> <span class="o">=</span> <span class="n">_register_logging_hooks_on_whole_graph</span><span class="p">(</span><span class="n">t_outputs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">769</span>     <span class="k">return</span> <span class="n">Variable</span><span class="o">.</span><span class="n">_execution_engine</span><span class="o">.</span><span class="n">run_backward</span><span class="p">(</span>  <span class="c1"># Calls into the C++ engine to run the backward pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span>         <span class="n">t_outputs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
-<span class="g g-Whitespace">    </span><span class="mi">771</span>     <span class="p">)</span>  <span class="c1"># Calls into the C++ engine to run the backward pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">773</span>     <span class="k">if</span> <span class="n">attach_logging_hooks</span><span class="p">:</span>
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\optim\optimizer.py:942,</span> in <span class="ni">Optimizer.zero_grad</span><span class="nt">(self, set_to_none)</span>
+<span class="g g-Whitespace">    </span><span class="mi">939</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">940</span>     <span class="n">per_device_and_dtype_grads</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">942</span> <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">record_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_zero_grad_profile_name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">943</span>     <span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_groups</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span>         <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;params&quot;</span><span class="p">]:</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\autograd\profiler.py:688,</span> in <span class="ni">record_function.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">688</span>     <span class="bp">self</span><span class="o">.</span><span class="n">record</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">_record_function_enter_new</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="k">return</span> <span class="bp">self</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\_ops.py:1061,</span> in <span class="ni">OpOverloadPacket.__call__</span><span class="nt">(self_, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span> <span class="k">if</span> <span class="n">self_</span><span class="o">.</span><span class="n">_has_torchbind_op_overload</span> <span class="ow">and</span> <span class="n">_must_dispatch_in_python</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span>     <span class="k">return</span> <span class="n">_call_overload_packet_from_python</span><span class="p">(</span><span class="n">self_</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1061</span> <span class="k">return</span> <span class="n">self_</span><span class="o">.</span><span class="n">_op</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">kwargs</span> <span class="ow">or</span> <span class="p">{}))</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

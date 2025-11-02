@@ -754,7 +754,7 @@ def run_bo_bnn_ei(n_iter=15, seed=1, noise_sd=0.05, dropout_p=0.1, epochs=800, T
 
 # Run BNN + EI for 15 iterations
 hist_bnn_ei, snaps = run_bo_bnn_ei(
-    n_iter=15,
+    n_iter=10,
     seed=3,
     noise_sd=0.05,
     dropout_p=0.15,   # increase dropout to widen uncertainty if needed
