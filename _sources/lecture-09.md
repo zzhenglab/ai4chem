@@ -1068,7 +1068,9 @@ Training adjusts the weights in the update rules and output MLP to minimize a lo
 
 We can draw a few molecules graph with features shown on each node before and after updates.  
 This lets us literally **see numbers flowing through edges** using below UI.
-
+```{admonition} Note
+For web users, please open Colab (link on the top of the page) to run below module. HTML will not be able to update the calculation.
+```
 
 ```{code-cell} ipython3
 :tags: [hide-input]

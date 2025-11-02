@@ -662,7 +662,7 @@ def argmax_on_grid(values, grid):
     i = int(np.argmax(values))
     return grid[i:i+1], i
 
-# Simple MLP with dropout. Keep dropout active at prediction time to sample.
+# Simple MLP with dropout. We will keep dropout active at prediction time to sample.
 class MCDropoutNet(nn.Module):
     def __init__(self, p=0.1):
         super().__init__()
@@ -708,16 +708,6 @@ def predict_mcdropout(model, Xc, T=200):
     sd = preds.std(axis=1)
     return mu, sd
 
-def acq_ei_from_mu_std(mu, sd, y_best, xi=0.01):
-    mu = np.asarray(mu).ravel()
-    sd = np.asarray(sd).ravel()
-    z = np.zeros_like(mu)
-    mask = sd > 0
-    z[mask] = (mu[mask] - y_best - xi) / sd[mask]
-    ei = np.zeros_like(mu)
-    ei[mask] = (mu[mask] - y_best - xi) * norm.cdf(z[mask]) + sd[mask] * norm.pdf(z[mask])
-    return ei
-
 def run_bo_bnn_ei(n_iter=15, seed=1, noise_sd=0.05, dropout_p=0.1, epochs=800, T=200):
     rng = np.random.RandomState(seed)
     X = X_init.copy()
@@ -754,7 +744,7 @@ def run_bo_bnn_ei(n_iter=15, seed=1, noise_sd=0.05, dropout_p=0.1, epochs=800, T
 
 # Run BNN + EI for 15 iterations
 hist_bnn_ei, snaps = run_bo_bnn_ei(
-    n_iter=10,
+    n_iter=15,
     seed=3,
     noise_sd=0.05,
     dropout_p=0.15,   # increase dropout to widen uncertainty if needed
@@ -774,6 +764,8 @@ plt.xlabel("x"); plt.ylabel("f(x)")
 plt.title("BNN surrogate posterior after 15 EI iterations")
 plt.legend(); plt.grid(False)
 plt.show()
+
+
 ```
 
 

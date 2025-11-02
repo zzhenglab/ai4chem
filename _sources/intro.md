@@ -1,4 +1,4 @@
-# Welcome to CHEM 5080: AI for Chemistry
+# Welcome to CHEM 5080: AI for Experimental Chemistry
 
 
 
@@ -8,6 +8,12 @@
 Office: McMillen 411 | Email: z.z@wustl.edu 
 
 
+**This class is open to everyone and can be taken at your own pace.**
+
+*Designed for synthetic chemists with no coding or math background to learn how AI applies to chemistry. All Colab materials are free and shareable; lecture slides available on request.*
+If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.
+
+For registered students:
 ```{card}  
 **Course Format**  
 - **When:** Tue & Thu, 1:00–2:20 PM  
