@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-01';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -215,7 +201,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -224,14 +210,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -356,10 +342,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -367,14 +353,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -468,10 +454,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-python-primer">
-<h1>Lecture 1 - Python Primer<a class="headerlink" href="#lecture-1-python-primer" title="Link to this heading">#</a></h1>
+<h1>Lecture 1 - Python Primer<a class="headerlink" href="#lecture-1-python-primer" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>Learn just enough Python to start doing chemistry right away.</p>
 </div></blockquote>
@@ -496,7 +482,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Run code cells in a notebook and switch between <strong>Code</strong> and <strong>Markdown</strong>.</p></li>
 <li><p>Use Python as a calculator for quick chemical math.</p></li>
@@ -546,7 +532,7 @@ Section 10</div>
 <hr class="docutils" />
 </section>
 <section id="setup-choose-your-path">
-<span id="content-setup"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">1. Setup - choose your path</a><a class="headerlink" href="#setup-choose-your-path" title="Link to this heading">#</a></h2>
+<span id="content-setup"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">1. Setup - choose your path</a><a class="headerlink" href="#setup-choose-your-path" title="Permalink to this heading">#</a></h2>
 <p>Right-click the badge below and select “<strong>Open link in new tab</strong>”</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 <p>Log in to your Google account. Then in the top left menu, go to <strong>File</strong> &gt; <strong>Save a copy</strong> in Drive to keep your own editable version.</p>
@@ -558,7 +544,7 @@ If this is your first time coding, we recommend starting with Google Colab for s
 <hr class="docutils" />
 </section>
 <section id="meet-the-notebook">
-<span id="content-notebooks"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Meet the notebook</a><a class="headerlink" href="#meet-the-notebook" title="Link to this heading">#</a></h2>
+<span id="content-notebooks"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Meet the notebook</a><a class="headerlink" href="#meet-the-notebook" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A notebook has <strong>cells</strong>.</p></li>
 <li><p><strong>Code cells</strong> run Python.</p></li>
@@ -586,10 +572,10 @@ The first run may take a few seconds while the runtime starts.</p>
 </section>
 <hr class="docutils" />
 <section id="python-as-a-calculator">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Python as a calculator</a><a class="headerlink" href="#python-as-a-calculator" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Python as a calculator</a><a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
 <p>We will run a few short cells and see results right away.</p>
 <section id="run-your-first-cell">
-<h3>3.1 Run your first cell<a class="headerlink" href="#run-your-first-cell" title="Link to this heading">#</a></h3>
+<h3>3.1 Run your first cell<a class="headerlink" href="#run-your-first-cell" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
@@ -608,7 +594,7 @@ The first run may take a few seconds while the runtime starts.</p>
 </ul>
 </section>
 <section id="simple-arithmetic">
-<h3>3.2 Simple arithmetic<a class="headerlink" href="#simple-arithmetic" title="Link to this heading">#</a></h3>
+<h3>3.2 Simple arithmetic<a class="headerlink" href="#simple-arithmetic" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
@@ -628,7 +614,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="comments-do-not-run">
-<h3>3.3 Comments do not run<a class="headerlink" href="#comments-do-not-run" title="Link to this heading">#</a></h3>
+<h3>3.3 Comments do not run<a class="headerlink" href="#comments-do-not-run" title="Permalink to this heading">#</a></h3>
 <p>Lines that start with <code class="docutils literal notranslate"><span class="pre">#</span></code> are <strong>comments</strong>. Python ignores them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,7 +639,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="only-the-last-line-shows-by-default">
-<h3>3.4 Only the last line shows by default<a class="headerlink" href="#only-the-last-line-shows-by-default" title="Link to this heading">#</a></h3>
+<h3>3.4 Only the last line shows by default<a class="headerlink" href="#only-the-last-line-shows-by-default" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
@@ -690,7 +676,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="common-operators">
-<h3>3.5 Common operators<a class="headerlink" href="#common-operators" title="Link to this heading">#</a></h3>
+<h3>3.5 Common operators<a class="headerlink" href="#common-operators" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>      <span class="c1"># multiply</span>
@@ -709,7 +695,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="order-of-operations">
-<h3>3.6 Order of operations<a class="headerlink" href="#order-of-operations" title="Link to this heading">#</a></h3>
+<h3>3.6 Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span>        <span class="c1"># multiplication first</span>
@@ -725,7 +711,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="types-from-division">
-<h3>3.7 Types from division<a class="headerlink" href="#types-from-division" title="Link to this heading">#</a></h3>
+<h3>3.7 Types from division<a class="headerlink" href="#types-from-division" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="mi">10</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
@@ -756,10 +742,10 @@ In this web page, you will only be able to view input and output.</p>
 </section>
 </section>
 <section id="variables-names-for-values">
-<span id="content-variables"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Variables - names for values</a><a class="headerlink" href="#variables-names-for-values" title="Link to this heading">#</a></h2>
+<span id="content-variables"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Variables - names for values</a><a class="headerlink" href="#variables-names-for-values" title="Permalink to this heading">#</a></h2>
 <p>A variable is a <strong>name</strong> that points to a value. You can reuse it.</p>
 <section id="create-and-read-a-variable">
-<h3>4.1 Create and read a variable<a class="headerlink" href="#create-and-read-a-variable" title="Link to this heading">#</a></h3>
+<h3>4.1 Create and read a variable<a class="headerlink" href="#create-and-read-a-variable" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">100</span>        <span class="c1"># set x to one hundred</span>
@@ -788,7 +774,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="update-a-variable">
-<h3>4.2 Update a variable<a class="headerlink" href="#update-a-variable" title="Link to this heading">#</a></h3>
+<h3>4.2 Update a variable<a class="headerlink" href="#update-a-variable" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">1.1</span>        <span class="c1"># replace the old value with a new one</span>
@@ -804,7 +790,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="descriptive-names-and-units">
-<h3>4.3 Descriptive names and units<a class="headerlink" href="#descriptive-names-and-units" title="Link to this heading">#</a></h3>
+<h3>4.3 Descriptive names and units<a class="headerlink" href="#descriptive-names-and-units" title="Permalink to this heading">#</a></h3>
 <p>Choose names that tell you what the value is and, if helpful, its units.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,10 +822,10 @@ In this web page, you will only be able to view input and output.</p>
 </section>
 </section>
 <section id="quick-chemistry-molar-mass-and-moles">
-<span id="content-chem-quick"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Quick chemistry - molar mass and moles</a><a class="headerlink" href="#quick-chemistry-molar-mass-and-moles" title="Link to this heading">#</a></h2>
+<span id="content-chem-quick"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Quick chemistry - molar mass and moles</a><a class="headerlink" href="#quick-chemistry-molar-mass-and-moles" title="Permalink to this heading">#</a></h2>
 <p>We will compute a molar mass, then convert mass to moles.</p>
 <section id="molar-mass-of-co2">
-<h3>5.1 Molar mass of CO₂<a class="headerlink" href="#molar-mass-of-co2" title="Link to this heading">#</a></h3>
+<h3>5.1 Molar mass of CO₂<a class="headerlink" href="#molar-mass-of-co2" title="Permalink to this heading">#</a></h3>
 <p>Define atomic weights and add them with the correct counts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,7 +858,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="mass-to-moles">
-<h3>5.2 Mass to moles<a class="headerlink" href="#mass-to-moles" title="Link to this heading">#</a></h3>
+<h3>5.2 Mass to moles<a class="headerlink" href="#mass-to-moles" title="Permalink to this heading">#</a></h3>
 <p>Use ( n = \dfrac{m}{M} ). Keep units consistent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,7 +897,7 @@ In this web page, you will only be able to view input and output.</p>
 </div>
 </section>
 <section id="small-sanity-checks">
-<h3>5.3 Small sanity checks<a class="headerlink" href="#small-sanity-checks" title="Link to this heading">#</a></h3>
+<h3>5.3 Small sanity checks<a class="headerlink" href="#small-sanity-checks" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>If you double the mass, moles should double.</p></li>
 <li><p>If you switch to kilograms by mistake, the result will be off by 1000. Keep everything in grams here.</p></li>
@@ -927,7 +913,11 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="mf">1.008</span>
 <span class="n">O</span> <span class="o">=</span> <span class="mf">15.999</span>
 <span class="n">M_H2O</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">H</span> <span class="o">+</span> <span class="n">O</span>
@@ -940,10 +930,10 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </section>
 <hr class="docutils" />
 <section id="tiny-data-structures-lists-and-dictionaries">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. Tiny data structures - lists and dictionaries</a><a class="headerlink" href="#tiny-data-structures-lists-and-dictionaries" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. Tiny data structures - lists and dictionaries</a><a class="headerlink" href="#tiny-data-structures-lists-and-dictionaries" title="Permalink to this heading">#</a></h2>
 <p>Lists keep an ordered set of items. Dictionaries map keys to values.</p>
 <section id="make-a-list-and-read-from-it">
-<h3>6.1 Make a list and read from it<a class="headerlink" href="#make-a-list-and-read-from-it" title="Link to this heading">#</a></h3>
+<h3>6.1 Make a list and read from it<a class="headerlink" href="#make-a-list-and-read-from-it" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acids</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;HCl&quot;</span><span class="p">,</span> <span class="s2">&quot;HNO3&quot;</span><span class="p">,</span> <span class="s2">&quot;H2SO4&quot;</span><span class="p">]</span>   <span class="c1"># a list of strings</span>
@@ -992,7 +982,7 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </div>
 </section>
 <section id="change-a-list">
-<h3>6.2 Change a list<a class="headerlink" href="#change-a-list" title="Link to this heading">#</a></h3>
+<h3>6.2 Change a list<a class="headerlink" href="#change-a-list" title="Permalink to this heading">#</a></h3>
 <p>Replace, append, insert, and remove.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1048,7 +1038,7 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </div>
 </section>
 <section id="check-membership-and-find-positions">
-<h3>6.3 Check membership and find positions<a class="headerlink" href="#check-membership-and-find-positions" title="Link to this heading">#</a></h3>
+<h3>6.3 Check membership and find positions<a class="headerlink" href="#check-membership-and-find-positions" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;HBr&quot;</span> <span class="ow">in</span> <span class="n">acids</span><span class="p">,</span> <span class="s2">&quot;NaOH&quot;</span> <span class="ow">in</span> <span class="n">acids</span>   <span class="c1"># True or False</span>
@@ -1092,7 +1082,7 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </div>
 </section>
 <section id="make-a-dictionary-and-read-from-it">
-<h3>6.4 Make a dictionary and read from it<a class="headerlink" href="#make-a-dictionary-and-read-from-it" title="Link to this heading">#</a></h3>
+<h3>6.4 Make a dictionary and read from it<a class="headerlink" href="#make-a-dictionary-and-read-from-it" title="Permalink to this heading">#</a></h3>
 <p>Dictionaries use curly braces and <code class="docutils literal notranslate"><span class="pre">key:</span> <span class="pre">value</span></code> pairs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1158,7 +1148,7 @@ Atomic weights: H = 1.008, O = 15.999</p>
 </div>
 </section>
 <section id="use-the-dictionary-for-quick-chemistry">
-<h3>6.5 Use the dictionary for quick chemistry<a class="headerlink" href="#use-the-dictionary-for-quick-chemistry" title="Link to this heading">#</a></h3>
+<h3>6.5 Use the dictionary for quick chemistry<a class="headerlink" href="#use-the-dictionary-for-quick-chemistry" title="Permalink to this heading">#</a></h3>
 <p>Compute molar mass directly from atomic weights in <code class="docutils literal notranslate"><span class="pre">aw</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1191,7 +1181,7 @@ M_H2O = 18.015 g mol^-1
 </div>
 </section>
 <section id="small-practice">
-<h3>6.6 Small practice<a class="headerlink" href="#small-practice" title="Link to this heading">#</a></h3>
+<h3>6.6 Small practice<a class="headerlink" href="#small-practice" title="Permalink to this heading">#</a></h3>
 <div class="admonition-try-it admonition">
 <p class="admonition-title">Try it</p>
 <ul class="simple">
@@ -1221,10 +1211,10 @@ M_H2O = 18.015 g mol^-1
 </section>
 <hr class="docutils" />
 <section id="control-flow-if-for-while">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">7. Control flow - if, for, while</a><a class="headerlink" href="#control-flow-if-for-while" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">7. Control flow - if, for, while</a><a class="headerlink" href="#control-flow-if-for-while" title="Permalink to this heading">#</a></h2>
 <p>Control flow lets your code make choices and repeat steps.</p>
 <section id="if-pick-a-path">
-<h3>7.1 if - pick a path<a class="headerlink" href="#if-pick-a-path" title="Link to this heading">#</a></h3>
+<h3>7.1 if - pick a path<a class="headerlink" href="#if-pick-a-path" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">classify_pH</span><span class="p">(</span><span class="n">pH</span><span class="p">):</span>
@@ -1254,7 +1244,7 @@ M_H2O = 18.015 g mol^-1
 </div>
 </section>
 <section id="for-loop-over-a-collection">
-<h3>7.2 for - loop over a collection<a class="headerlink" href="#for-loop-over-a-collection" title="Link to this heading">#</a></h3>
+<h3>7.2 for - loop over a collection<a class="headerlink" href="#for-loop-over-a-collection" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formulas</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CO2&quot;</span><span class="p">,</span> <span class="s2">&quot;H2O&quot;</span><span class="p">,</span> <span class="s2">&quot;NH3&quot;</span><span class="p">]</span>
@@ -1277,7 +1267,7 @@ Formula: NH3
 </div>
 </section>
 <section id="while-repeat-until-a-condition-is-false">
-<h3>7.3 while - repeat until a condition is false<a class="headerlink" href="#while-repeat-until-a-condition-is-false" title="Link to this heading">#</a></h3>
+<h3>7.3 while - repeat until a condition is false<a class="headerlink" href="#while-repeat-until-a-condition-is-false" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count up to 3</span>
@@ -1333,10 +1323,10 @@ i = 3
 </section>
 </section>
 <section id="functions-small-reusable-steps">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">8. Functions - small reusable steps</a><a class="headerlink" href="#functions-small-reusable-steps" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">8. Functions - small reusable steps</a><a class="headerlink" href="#functions-small-reusable-steps" title="Permalink to this heading">#</a></h2>
 <p>A function is a named recipe. Inputs go in parentheses. The result is returned.</p>
 <section id="tiny-functions-without-control-flow">
-<h3>8.1 Tiny functions without control flow<a class="headerlink" href="#tiny-functions-without-control-flow" title="Link to this heading">#</a></h3>
+<h3>8.1 Tiny functions without control flow<a class="headerlink" href="#tiny-functions-without-control-flow" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">celsius_to_kelvin</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
@@ -1364,7 +1354,7 @@ i = 3
 </div>
 </section>
 <section id="molar-mass-from-element-counts-uses-for">
-<h3>8.2 Molar mass from element counts (uses <code class="docutils literal notranslate"><span class="pre">for</span></code>)<a class="headerlink" href="#molar-mass-from-element-counts-uses-for" title="Link to this heading">#</a></h3>
+<h3>8.2 Molar mass from element counts (uses <code class="docutils literal notranslate"><span class="pre">for</span></code>)<a class="headerlink" href="#molar-mass-from-element-counts-uses-for" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">molar_mass_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">atomic_weights</span><span class="p">):</span>
@@ -1389,7 +1379,7 @@ i = 3
 </div>
 </section>
 <section id="parse-a-simple-formula-string-uses-if-and-while">
-<h3>8.3 Parse a simple formula string (uses <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code>)<a class="headerlink" href="#parse-a-simple-formula-string-uses-if-and-while" title="Link to this heading">#</a></h3>
+<h3>8.3 Parse a simple formula string (uses <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code>)<a class="headerlink" href="#parse-a-simple-formula-string-uses-if-and-while" title="Permalink to this heading">#</a></h3>
 <p>We now turn “CO2” into <code class="docutils literal notranslate"><span class="pre">{&quot;C&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;O&quot;:</span> <span class="pre">2}</span></code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1428,7 +1418,7 @@ i = 3
 </div>
 </section>
 <section id="final-convenience-function">
-<h3>8.4 Final convenience function<a class="headerlink" href="#final-convenience-function" title="Link to this heading">#</a></h3>
+<h3>8.4 Final convenience function<a class="headerlink" href="#final-convenience-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">molar_mass</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">atomic_weights</span><span class="p">):</span>
@@ -1456,48 +1446,48 @@ i = 3
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Link to this term">#</a></dt><dd><p>A name that points to a value, like a label on a box. Example: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
+<dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">#</a></dt><dd><p>A name that points to a value, like a label on a box. Example: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
 </dd>
-<dt id="term-function">function<a class="headerlink" href="#term-function" title="Link to this term">#</a></dt><dd><p>A named block of code that performs a task and returns a result. Example: <code class="docutils literal notranslate"><span class="pre">print()</span></code>, or your own <code class="docutils literal notranslate"><span class="pre">grams_to_moles()</span></code>.</p>
+<dt id="term-function">function<a class="headerlink" href="#term-function" title="Permalink to this term">#</a></dt><dd><p>A named block of code that performs a task and returns a result. Example: <code class="docutils literal notranslate"><span class="pre">print()</span></code>, or your own <code class="docutils literal notranslate"><span class="pre">grams_to_moles()</span></code>.</p>
 </dd>
-<dt id="term-dictionary">dictionary<a class="headerlink" href="#term-dictionary" title="Link to this term">#</a></dt><dd><p>A mapping from keys to values, written with curly braces. Example: <code class="docutils literal notranslate"><span class="pre">{&quot;H&quot;:</span> <span class="pre">1.008,</span> <span class="pre">&quot;O&quot;:</span> <span class="pre">15.999}</span></code>.</p>
+<dt id="term-dictionary">dictionary<a class="headerlink" href="#term-dictionary" title="Permalink to this term">#</a></dt><dd><p>A mapping from keys to values, written with curly braces. Example: <code class="docutils literal notranslate"><span class="pre">{&quot;H&quot;:</span> <span class="pre">1.008,</span> <span class="pre">&quot;O&quot;:</span> <span class="pre">15.999}</span></code>.</p>
 </dd>
-<dt id="term-list">list<a class="headerlink" href="#term-list" title="Link to this term">#</a></dt><dd><p>An ordered collection of items, written with square brackets. Example: <code class="docutils literal notranslate"><span class="pre">[&quot;HCl&quot;,</span> <span class="pre">&quot;HNO3&quot;,</span> <span class="pre">&quot;H2SO4&quot;]</span></code>.</p>
+<dt id="term-list">list<a class="headerlink" href="#term-list" title="Permalink to this term">#</a></dt><dd><p>An ordered collection of items, written with square brackets. Example: <code class="docutils literal notranslate"><span class="pre">[&quot;HCl&quot;,</span> <span class="pre">&quot;HNO3&quot;,</span> <span class="pre">&quot;H2SO4&quot;]</span></code>.</p>
 </dd>
-<dt id="term-comment">comment<a class="headerlink" href="#term-comment" title="Link to this term">#</a></dt><dd><p>Text starting with <code class="docutils literal notranslate"><span class="pre">#</span></code> in code. Ignored by Python. Useful for notes and explanations.</p>
+<dt id="term-comment">comment<a class="headerlink" href="#term-comment" title="Permalink to this term">#</a></dt><dd><p>Text starting with <code class="docutils literal notranslate"><span class="pre">#</span></code> in code. Ignored by Python. Useful for notes and explanations.</p>
 </dd>
-<dt id="term-float">float<a class="headerlink" href="#term-float" title="Link to this term">#</a></dt><dd><p>A number with a decimal point. Example: <code class="docutils literal notranslate"><span class="pre">3.14</span></code>.</p>
+<dt id="term-float">float<a class="headerlink" href="#term-float" title="Permalink to this term">#</a></dt><dd><p>A number with a decimal point. Example: <code class="docutils literal notranslate"><span class="pre">3.14</span></code>.</p>
 </dd>
-<dt id="term-integer">integer<a class="headerlink" href="#term-integer" title="Link to this term">#</a></dt><dd><p>A whole number without a decimal point. Example: <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p>
+<dt id="term-integer">integer<a class="headerlink" href="#term-integer" title="Permalink to this term">#</a></dt><dd><p>A whole number without a decimal point. Example: <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p>
 </dd>
-<dt id="term-string">string<a class="headerlink" href="#term-string" title="Link to this term">#</a></dt><dd><p>Text written between quotes. Example: <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>.</p>
+<dt id="term-string">string<a class="headerlink" href="#term-string" title="Permalink to this term">#</a></dt><dd><p>Text written between quotes. Example: <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>.</p>
 </dd>
-<dt id="term-if-statement">if statement<a class="headerlink" href="#term-if-statement" title="Link to this term">#</a></dt><dd><p>A way to make decisions in code: run different blocks depending on a condition.</p>
+<dt id="term-if-statement">if statement<a class="headerlink" href="#term-if-statement" title="Permalink to this term">#</a></dt><dd><p>A way to make decisions in code: run different blocks depending on a condition.</p>
 </dd>
-<dt id="term-for-loop">for loop<a class="headerlink" href="#term-for-loop" title="Link to this term">#</a></dt><dd><p>A way to repeat an action for each item in a list or sequence.</p>
+<dt id="term-for-loop">for loop<a class="headerlink" href="#term-for-loop" title="Permalink to this term">#</a></dt><dd><p>A way to repeat an action for each item in a list or sequence.</p>
 </dd>
-<dt id="term-while-loop">while loop<a class="headerlink" href="#term-while-loop" title="Link to this term">#</a></dt><dd><p>A way to repeat an action until a condition is no longer true.</p>
+<dt id="term-while-loop">while loop<a class="headerlink" href="#term-while-loop" title="Permalink to this term">#</a></dt><dd><p>A way to repeat an action until a condition is no longer true.</p>
 </dd>
-<dt id="term-module">module<a class="headerlink" href="#term-module" title="Link to this term">#</a></dt><dd><p>A file or library that provides extra tools for Python. Example: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>.</p>
+<dt id="term-module">module<a class="headerlink" href="#term-module" title="Permalink to this term">#</a></dt><dd><p>A file or library that provides extra tools for Python. Example: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code>.</p>
 </dd>
-<dt id="term-array">array<a class="headerlink" href="#term-array" title="Link to this term">#</a></dt><dd><p>A grid of values from NumPy that supports math on entire sets of numbers at once.</p>
+<dt id="term-array">array<a class="headerlink" href="#term-array" title="Permalink to this term">#</a></dt><dd><p>A grid of values from NumPy that supports math on entire sets of numbers at once.</p>
 </dd>
-<dt id="term-plot">plot<a class="headerlink" href="#term-plot" title="Link to this term">#</a></dt><dd><p>A figure showing data graphically. Made here with Matplotlib using commands like <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>.</p>
+<dt id="term-plot">plot<a class="headerlink" href="#term-plot" title="Permalink to this term">#</a></dt><dd><p>A figure showing data graphically. Made here with Matplotlib using commands like <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>.</p>
 </dd>
-<dt id="term-error">error<a class="headerlink" href="#term-error" title="Link to this term">#</a></dt><dd><p>A message from Python when something goes wrong. Example: <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+<dt id="term-error">error<a class="headerlink" href="#term-error" title="Permalink to this term">#</a></dt><dd><p>A message from Python when something goes wrong. Example: <code class="docutils literal notranslate"><span class="pre">NameError</span></code>, <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
 </dd>
-<dt id="term-operator">operator<a class="headerlink" href="#term-operator" title="Link to this term">#</a></dt><dd><p>A symbol that performs an action on values. Examples: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p>
+<dt id="term-operator">operator<a class="headerlink" href="#term-operator" title="Permalink to this term">#</a></dt><dd><p>A symbol that performs an action on values. Examples: <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p>Work in groups of 2 to 3. Each challenge is about 5 minutes. These are new scenarios that mirror what you practiced, and each task is self-contained. Stay within Sections 1 to 8.</p>
 <section id="ethanol-mass-to-moles">
-<h3>10.1 Ethanol mass to moles<a class="headerlink" href="#ethanol-mass-to-moles" title="Link to this heading">#</a></h3>
+<h3>10.1 Ethanol mass to moles<a class="headerlink" href="#ethanol-mass-to-moles" title="Permalink to this heading">#</a></h3>
 <p>Compute the moles of ethanol C2H6O in 9.2 g using only arithmetic and variables.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Atomic weights (g mol^-1)</span>
@@ -1518,12 +1508,16 @@ i = 3
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Use Section 3 for arithmetic and Section 5 for n = m / M.</p>
 </div>
 </details></section>
 <section id="classify-ph-values-in-a-list">
-<h3>10.2 Classify pH values in a list<a class="headerlink" href="#classify-ph-values-in-a-list" title="Link to this heading">#</a></h3>
+<h3>10.2 Classify pH values in a list<a class="headerlink" href="#classify-ph-values-in-a-list" title="Permalink to this heading">#</a></h3>
 <p>Given several pH readings “2.5”, “7.0”, “8.1”, “6.9”, “7.3”, print a line for each saying acidic, basic, or neutral. Do not define a helper function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">pH_values</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TODO</span>
@@ -1540,13 +1534,17 @@ i = 3
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">See Section 7.2 for for-loops and Section 7.1 for if / elif / else.</p>
 </div>
 </details></section>
 <hr class="docutils" />
 <section id="molar-mass-from-a-counts-dictionary">
-<h3>10.3 Molar mass from a counts dictionary<a class="headerlink" href="#molar-mass-from-a-counts-dictionary" title="Link to this heading">#</a></h3>
+<h3>10.3 Molar mass from a counts dictionary<a class="headerlink" href="#molar-mass-from-a-counts-dictionary" title="Permalink to this heading">#</a></h3>
 <p>Compute the molar mass of glucose using a small dictionary of atomic weights and a counts dictionary. Do not reuse any earlier functions.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Atomic weights</span>
@@ -1564,12 +1562,16 @@ i = 3
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Section 6.4 covers dictionaries and Section 8.2 shows looping over dict items to build a sum.</p>
 </div>
 </details></section>
 <section id="read-leading-integer-from-a-string-then-convert-c-to-k">
-<h3>10.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#read-leading-integer-from-a-string-then-convert-c-to-k" title="Link to this heading">#</a></h3>
+<h3>10.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#read-leading-integer-from-a-string-then-convert-c-to-k" title="Permalink to this heading">#</a></h3>
 <p>A temperature string has digits followed by a letter, for example “25C” or “298K”. Read the leading digits using a while-loop and convert Celsius to Kelvin. If the unit is K, leave it as is.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;25C&quot;</span>   <span class="c1"># try &quot;298K&quot; too</span>
 
@@ -1593,13 +1595,17 @@ i = 3
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Section 7.3 shows isdigit with a while-loop. Section 8.1 has the C to K relation.</p>
 </div>
 </details></section>
 <hr class="docutils" />
 <section id="which-sample-has-more-moles">
-<h3>10.5 Which sample has more moles<a class="headerlink" href="#which-sample-has-more-moles" title="Link to this heading">#</a></h3>
+<h3>10.5 Which sample has more moles<a class="headerlink" href="#which-sample-has-more-moles" title="Permalink to this heading">#</a></h3>
 <p>You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -&gt; count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;H&quot;</span><span class="p">:</span> <span class="mf">1.008</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mf">12.011</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">:</span> <span class="mf">15.999</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span> <span class="mf">14.007</span><span class="p">}</span>
 
@@ -1628,16 +1634,20 @@ i = 3
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+Hint<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Section 6.1 lists and tuples, Section 6.4 dictionaries, Section 7.2 for-loops, Section 5.2 for moles = mass / M.</p>
 </div>
 </details></section>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity-solution">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">11. In-class activity solution</a><a class="headerlink" href="#in-class-activity-solution" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">11. In-class activity solution</a><a class="headerlink" href="#in-class-activity-solution" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>11.1 Ethanol mass to moles<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>11.1 Ethanol mass to moles<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Compute the moles of ethanol C2H6O in 9.2 g using only arithmetic and variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1668,7 +1678,7 @@ moles in 9.2 g = 0.19970044932601097
 </section>
 <hr class="docutils" />
 <section id="id2">
-<h3>11.2 Classify pH values in a list<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3>11.2 Classify pH values in a list<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Given several pH readings “2.5”, “7.0”, “8.1”, “6.9”, “7.3”, print a line for each saying acidic, basic, or neutral. Do not define a helper function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1698,7 +1708,7 @@ moles in 9.2 g = 0.19970044932601097
 </section>
 <hr class="docutils" />
 <section id="id3">
-<h3>11.3 Molar mass from a counts dictionary<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3>11.3 Molar mass from a counts dictionary<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>Compute the molar mass of glucose using a small dictionary of atomic weights and a counts dictionary. Do not reuse any earlier functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1724,7 +1734,7 @@ moles in 9.2 g = 0.19970044932601097
 </div>
 </section>
 <section id="id4">
-<h3>11.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3>11.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>A temperature string has digits followed by a letter, for example “25C” or “298K”. Read the leading digits using a while-loop and convert Celsius to Kelvin. If the unit is K, leave it as is.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1759,7 +1769,7 @@ Temperature in K: 298.15
 </section>
 <hr class="docutils" />
 <section id="id5">
-<h3>11.5 Which sample has more moles<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3>11.5 Which sample has more moles<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -&gt; count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1826,7 +1836,7 @@ Temperature in K: 298.15
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1855,7 +1865,6 @@ Temperature in K: 298.15
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1951,7 +1960,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1975,8 +1984,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

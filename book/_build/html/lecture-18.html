@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-18';</script>
@@ -72,23 +74,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,20 +117,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,8 +138,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -159,18 +156,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -214,7 +200,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -223,14 +209,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -355,10 +341,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -366,14 +352,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -442,10 +428,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-18-contrastive-learning">
-<h1>Lecture 18 - Contrastive Learning<a class="headerlink" href="#lecture-18-contrastive-learning" title="Link to this heading">#</a></h1>
+<h1>Lecture 18 - Contrastive Learning<a class="headerlink" href="#lecture-18-contrastive-learning" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
@@ -468,12 +454,12 @@ document.write(`
 </ul>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Setup</span>
@@ -532,7 +518,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="contrastive-learning-concepts">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Contrastive learning concepts</a><a class="headerlink" href="#contrastive-learning-concepts" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Contrastive learning concepts</a><a class="headerlink" href="#contrastive-learning-concepts" title="Permalink to this heading">#</a></h2>
 <p>Why contrastive learning?
 In many lab projects, positive results are rare and negatives are mixed with non-attempts.<br />
 Contrastive learning can pretrain an embedding using instance agreement without needing full labels, then a small labeled set can train a light classifier on top.</p>
@@ -543,7 +529,7 @@ Contrastive learning can pretrain an embedding using instance agreement without 
 </ul>
 <p>We will keep the math light and the code step-by-step.</p>
 <section id="what-is-a-positive-pair-and-a-negative-pair">
-<h3>2.1 What is a positive pair and a negative pair<a class="headerlink" href="#what-is-a-positive-pair-and-a-negative-pair" title="Link to this heading">#</a></h3>
+<h3>2.1 What is a positive pair and a negative pair<a class="headerlink" href="#what-is-a-positive-pair-and-a-negative-pair" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Positive pair</strong>: two views of the same experiment or the same molecule.</p></li>
 <li><p><strong>Negative pair</strong>: two views that come from different experiments or different molecules.</p></li>
@@ -556,7 +542,7 @@ These two readings form a <strong>positive pair</strong>. Two readings from diff
 </ul>
 </section>
 <section id="cosine-similarity">
-<h3>2.2 Cosine similarity<a class="headerlink" href="#cosine-similarity" title="Link to this heading">#</a></h3>
+<h3>2.2 Cosine similarity<a class="headerlink" href="#cosine-similarity" title="Permalink to this heading">#</a></h3>
 <p>Cosine similarity measures the angle between vectors. It is large when vectors point in the same direction.</p>
 <p><span class="math notranslate nohighlight">\(
 \operatorname{cos\_sim}(u,v)=\frac{u\cdot v}{\|u\|\,\|v\|}
@@ -590,10 +576,10 @@ cos(a,c) = -0.9999999900000002
 </div>
 <p>Below is the verctor visualization. You can see a b are similar to each other which a c are very different (opposite).</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -642,14 +628,14 @@ cos(a,c) = -0.9999999900000002
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/4310657f642ff13168efd3563a4f5a0dc306ab3c59be57ce6709db4251a64551.png" src="_images/4310657f642ff13168efd3563a4f5a0dc306ab3c59be57ce6709db4251a64551.png" />
+<img alt="_images/023a43c3f7faa729a96d47313869922e2ebc468237728227d1cd23c9400bc163.png" src="_images/023a43c3f7faa729a96d47313869922e2ebc468237728227d1cd23c9400bc163.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="contrastive-learning-in-chemistry">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Contrastive learning in chemistry</a><a class="headerlink" href="#contrastive-learning-in-chemistry" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Contrastive learning in chemistry</a><a class="headerlink" href="#contrastive-learning-in-chemistry" title="Permalink to this heading">#</a></h2>
 <p>We simulate two experiment classes.<br />
 Think of them as two reaction regimes.<br />
 Each point is a pair of features:</p>
@@ -692,10 +678,10 @@ X head:
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the two groups</span>
@@ -712,17 +698,17 @@ X head:
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/57b98f484a5369ceb455b602e2b589e4950fda7e086a73e9db62e99930018624.png" src="_images/57b98f484a5369ceb455b602e2b589e4950fda7e086a73e9db62e99930018624.png" />
+<img alt="_images/e85017fa0c986ffeec455768274555ba2f2ab07e55d0b8b299fdf78d91233f55.png" src="_images/e85017fa0c986ffeec455768274555ba2f2ab07e55d0b8b299fdf78d91233f55.png" />
 </div>
 </div>
 <section id="simple-train-and-test-split">
-<h3>3.2 Simple train and test split<a class="headerlink" href="#simple-train-and-test-split" title="Link to this heading">#</a></h3>
+<h3>3.2 Simple train and test split<a class="headerlink" href="#simple-train-and-test-split" title="Permalink to this heading">#</a></h3>
 <p>We keep a fixed split for repeatability.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
@@ -746,7 +732,7 @@ X head:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train size: 180  Test size: 60
 </pre></div>
 </div>
-<img alt="_images/d8c07960abad0fec2b5d3f32d4c7a1c589b0d8d44e28f3c2cfc5903290015c46.png" src="_images/d8c07960abad0fec2b5d3f32d4c7a1c589b0d8d44e28f3c2cfc5903290015c46.png" />
+<img alt="_images/e367eb50101a02ec4beb23169728d9c6ee5e2d03ae5ffb6e075fa01b5fcb8c99.png" src="_images/e367eb50101a02ec4beb23169728d9c6ee5e2d03ae5ffb6e075fa01b5fcb8c99.png" />
 </div>
 </div>
 <p>Now, let’s keep the spirit of the 2D toy example but uses chemistry units.</p>
@@ -846,10 +832,10 @@ X head:
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scatter of chemistry 2D with limits</span>
@@ -869,18 +855,18 @@ X head:
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/27837864354b179e46a9c2bec7cd6a6acc1d99becb7529eb1ccd10dd45c2b2d0.png" src="_images/27837864354b179e46a9c2bec7cd6a6acc1d99becb7529eb1ccd10dd45c2b2d0.png" />
+<img alt="_images/cc3f66a147c2d0239ed918a42af796e2d465c9540d0200f38fe41ed778f04f4e.png" src="_images/cc3f66a147c2d0239ed918a42af796e2d465c9540d0200f38fe41ed778f04f4e.png" />
 </div>
 </div>
 </section>
 <section id="add-current-and-time">
-<h3>3.4 Add current and time<a class="headerlink" href="#add-current-and-time" title="Link to this heading">#</a></h3>
+<h3>3.4 Add current and time<a class="headerlink" href="#add-current-and-time" title="Permalink to this heading">#</a></h3>
 <p>We extend the features to <code class="docutils literal notranslate"><span class="pre">[T_C,</span> <span class="pre">conc_M,</span> <span class="pre">current_mA,</span> <span class="pre">time_h]</span></code> and synthesize a label that is more graded.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4D chemistry dataset</span>
@@ -1070,10 +1056,10 @@ X head:
 </div>
 <p>As you can see here (and we have been seen similar cases many times this semester), when we go into high dimensional space with more and more reaction parameters, classification become challenging. In the previous lectures, we have many molecular descriptors, and now we have too many reaction parameters.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pairwise quick looks: T vs conc and T vs current</span>
@@ -1091,19 +1077,19 @@ X head:
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/b49d924821deba68f5386b50aa1d047dc9ec2c67eef751bcec1706f8981f0e6c.png" src="_images/b49d924821deba68f5386b50aa1d047dc9ec2c67eef751bcec1706f8981f0e6c.png" />
+<img alt="_images/2e2c8e79c5988141fbf00ca705de7e2376f9d0459ee211a424764893dd2500a1.png" src="_images/2e2c8e79c5988141fbf00ca705de7e2376f9d0459ee211a424764893dd2500a1.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="building-positive-and-negative-pairs-with-easy-augmentations">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Building positive and negative pairs with easy augmentations</a><a class="headerlink" href="#building-positive-and-negative-pairs-with-easy-augmentations" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Building positive and negative pairs with easy augmentations</a><a class="headerlink" href="#building-positive-and-negative-pairs-with-easy-augmentations" title="Permalink to this heading">#</a></h2>
 <p>Contrastive learning needs pairs.<br />
 We will define augmentations that keep the identity of the same sample.<br />
 These are small changes that simulate instrument noise or small condition jitter.</p>
 <section id="augmentations-for-the-toy-2d-data">
-<h3>4.1 Augmentations for the toy 2D data<a class="headerlink" href="#augmentations-for-the-toy-2d-data" title="Link to this heading">#</a></h3>
+<h3>4.1 Augmentations for the toy 2D data<a class="headerlink" href="#augmentations-for-the-toy-2d-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jitter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">noise_std</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
@@ -1144,10 +1130,10 @@ View B   : [0.8054 0.773 ]
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the two views and the original</span>
@@ -1170,19 +1156,19 @@ View B   : [0.8054 0.773 ]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/2806db87d91d9ca3f00be02d25b291576791475fcefa70c85bc9e69cb36a831f.png" src="_images/2806db87d91d9ca3f00be02d25b291576791475fcefa70c85bc9e69cb36a831f.png" />
+<img alt="_images/034aca0bbd4acc2c3b4c4bc6c02c704f1663bd30de949e47000acb4eb730ab97.png" src="_images/034aca0bbd4acc2c3b4c4bc6c02c704f1663bd30de949e47000acb4eb730ab97.png" />
 </div>
 </div>
 </section>
 <section id="build-a-small-batch-of-pairs">
-<h3>4.2 Build a small batch of pairs<a class="headerlink" href="#build-a-small-batch-of-pairs" title="Link to this heading">#</a></h3>
+<h3>4.2 Build a small batch of pairs<a class="headerlink" href="#build-a-small-batch-of-pairs" title="Permalink to this heading">#</a></h3>
 <p>We now collect a tiny batch from the training set for demonstration.<br />
 We will keep it small to print everything clearly.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot original + both views, with connecting lines</span>
@@ -1224,7 +1210,7 @@ We will keep it small to print everything clearly.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/1bd439a9ef4b8a014c7f56d320ab7bfb9e0566126e39e8eae77705cca90a4eec.png" src="_images/1bd439a9ef4b8a014c7f56d320ab7bfb9e0566126e39e8eae77705cca90a4eec.png" />
+<img alt="_images/f5ad10179cf54257ed3d7c3d8a2c034c3e7b7cc036020ccc40a41bc4bab76647.png" src="_images/f5ad10179cf54257ed3d7c3d8a2c034c3e7b7cc036020ccc40a41bc4bab76647.png" />
 </div>
 </div>
 <div class="admonition-what-counts-as-a-negative-here admonition">
@@ -1234,7 +1220,7 @@ We do not need explicit negative labels, the batch itself supplies them.</p>
 </div>
 </section>
 <section id="augmentations-for-chemistry-conditions">
-<h3>4.3 Augmentations for chemistry conditions<a class="headerlink" href="#augmentations-for-chemistry-conditions" title="Link to this heading">#</a></h3>
+<h3>4.3 Augmentations for chemistry conditions<a class="headerlink" href="#augmentations-for-chemistry-conditions" title="Permalink to this heading">#</a></h3>
 <p>We now design a view function for the 4D chemistry conditions.<br />
 The function applies small jitters and clips to the physical bounds.<br />
 We also view changes step by step.</p>
@@ -1294,10 +1280,10 @@ after_current: [76.087  0.466 80.534  2.013]
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1369,7 +1355,7 @@ after_current: [76.087  0.466 80.534  2.013]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/718bad5f1cc2753f31a8851ebd7406c8d0d854a78d647c4a5f9e79b41ff80ae6.png" src="_images/718bad5f1cc2753f31a8851ebd7406c8d0d854a78d647c4a5f9e79b41ff80ae6.png" />
+<img alt="_images/8c3d25a6859ddbcdb017ffe23d058e931b2959952f263799cf6fd6c212e2126e.png" src="_images/8c3d25a6859ddbcdb017ffe23d058e931b2959952f263799cf6fd6c212e2126e.png" />
 </div>
 </div>
 <div class="admonition-labeling-pairs admonition">
@@ -1382,10 +1368,10 @@ after_current: [76.087  0.466 80.534  2.013]
 </div></blockquote>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Build positive and negative pairs from orig and aug ---</span>
@@ -1468,7 +1454,7 @@ after_current: [76.087  0.466 80.534  2.013]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/de8fbc21d2c8403ee970ed802883dc57a9df16f992cc51a04ca36fff79ff60e2.png" src="_images/de8fbc21d2c8403ee970ed802883dc57a9df16f992cc51a04ca36fff79ff60e2.png" />
+<img alt="_images/a0060bc482cd72f5f89e1bdcb634f633021d08e87eeb361d3bab5085d4568a09.png" src="_images/a0060bc482cd72f5f89e1bdcb634f633021d08e87eeb361d3bab5085d4568a09.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pairs matrix shapes: (240, 4) (240, 4) (240,)
 Example rows:
 y=1  orig=[83.973  0.846 45.915  2.133]  pair=[81.87   0.846 38.295  2.078]
@@ -1481,14 +1467,14 @@ y=1  orig=[ 56.027   1.012 133.294   7.148]  pair=[ 56.635   0.99  137.152   7.3
 </section>
 </section>
 <section id="with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a><a class="headerlink" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a><a class="headerlink" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="infonce-loss-step-by-step">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#infonce-loss-step-by-step" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#infonce-loss-step-by-step" title="Permalink to this heading">#</a></h2>
 </section>
 <hr class="docutils" />
 <section id="id1">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>The <strong>InfoNCE loss</strong> is a core objective in contrastive learning. It makes embeddings of <strong>positive pairs</strong> (two augmentations of the same input) close, and <strong>negative pairs</strong> (different samples) far apart.</p>
 <p><strong>Step 1: Normalize the embeddings</strong></p>
 <p>Given two batches of embeddings <span class="math notranslate nohighlight">\(x_a\)</span> and <span class="math notranslate nohighlight">\(x_b\)</span> of shape <span class="math notranslate nohighlight">\(N \times d\)</span>, normalize them along the feature dimension:</p>
@@ -1652,7 +1638,7 @@ First 3x3 block of S:
 Large diagonal values are good for this loss.</p>
 </div>
 <section id="infonce-with-a-temperature-scalar">
-<h3>5.2 InfoNCE with a temperature scalar<a class="headerlink" href="#infonce-with-a-temperature-scalar" title="Link to this heading">#</a></h3>
+<h3>5.2 InfoNCE with a temperature scalar<a class="headerlink" href="#infonce-with-a-temperature-scalar" title="Permalink to this heading">#</a></h3>
 <p>We use a small positive constant <code class="docutils literal notranslate"><span class="pre">tau</span></code> that controls the softness of the softmax.<br />
 Smaller <code class="docutils literal notranslate"><span class="pre">tau</span></code> makes the softmax sharper.</p>
 <p>The per-item loss with positive at index <code class="docutils literal notranslate"><span class="pre">i</span></code> is:</p>
@@ -1689,7 +1675,7 @@ Prob of positive pair per item: [0.4156 0.1772 0.1667 0.1692 0.1723 0.1825 0.150
 </div>
 </section>
 <section id="symmetric-loss">
-<h3>5.3 Symmetric loss<a class="headerlink" href="#symmetric-loss" title="Link to this heading">#</a></h3>
+<h3>5.3 Symmetric loss<a class="headerlink" href="#symmetric-loss" title="Permalink to this heading">#</a></h3>
 <p>Often we also compute the reverse direction by swapping the roles of A and B, then average the two losses.<br />
 This can improve stability.</p>
 <div class="cell docutils container">
@@ -1717,12 +1703,12 @@ You can catch indexing mistakes with human eyes before moving to larger experime
 </div>
 </section>
 <section id="tiny-encoder-for-contrastive-learning">
-<h3>5.4 Tiny encoder for contrastive learning<a class="headerlink" href="#tiny-encoder-for-contrastive-learning" title="Link to this heading">#</a></h3>
+<h3>5.4 Tiny encoder for contrastive learning<a class="headerlink" href="#tiny-encoder-for-contrastive-learning" title="Permalink to this heading">#</a></h3>
 <p>With <code class="docutils literal notranslate"><span class="pre">torch</span></code> installed, we fit a small encoder that maps 2D inputs to a 2D embedding and uses InfoNCE.</p>
 <p>The goal is to see the points cluster by identity.</p>
 </section>
 <section id="define-a-simple-dataset-and-encoder">
-<h3>6.1 Define a simple dataset and encoder<a class="headerlink" href="#define-a-simple-dataset-and-encoder" title="Link to this heading">#</a></h3>
+<h3>6.1 Define a simple dataset and encoder<a class="headerlink" href="#define-a-simple-dataset-and-encoder" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1798,7 +1784,7 @@ We print shapes to keep it clear.</p>
 xb_b torch.shape: torch.Size([64, 2])
 z_a.shape: torch.Size([64, 2])
 z_b.shape: torch.Size([64, 2])
-Loss (one step): 3.9695420265197754
+Loss (one step): 4.07347297668457
 </pre></div>
 </div>
 </div>
@@ -1863,10 +1849,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.6875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.9823
 </pre></div>
 </div>
-<img alt="_images/439605e32fdbb87ce3ddf5d31c38ce43e3278c231a7c2e70be14bf72e6a4c142.png" src="_images/439605e32fdbb87ce3ddf5d31c38ce43e3278c231a7c2e70be14bf72e6a4c142.png" />
+<img alt="_images/3b0b33fb1e40490c128e5f5184729fd0b624ed30b53908326709b32602973560.png" src="_images/3b0b33fb1e40490c128e5f5184729fd0b624ed30b53908326709b32602973560.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1892,10 +1878,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.4664
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.3576
 </pre></div>
 </div>
-<img alt="_images/75aa55be63ed47228d21581fa93390b1a1d86282b28b9cf6d3bc1a25e3ef29e8.png" src="_images/75aa55be63ed47228d21581fa93390b1a1d86282b28b9cf6d3bc1a25e3ef29e8.png" />
+<img alt="_images/2774a746b7acf1ae8b1383e421ec236ac9fa7d42e11286b010ab1164ee3a9fed.png" src="_images/2774a746b7acf1ae8b1383e421ec236ac9fa7d42e11286b010ab1164ee3a9fed.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1905,7 +1891,7 @@ Does the loss curve become smoother or noisier?</p>
 </div>
 </section>
 <section id="visualize-the-learned-embedding-with-t-sne">
-<h3>5.5 Visualize the learned embedding with T-SNE<a class="headerlink" href="#visualize-the-learned-embedding-with-t-sne" title="Link to this heading">#</a></h3>
+<h3>5.5 Visualize the learned embedding with T-SNE<a class="headerlink" href="#visualize-the-learned-embedding-with-t-sne" title="Permalink to this heading">#</a></h3>
 <p>We embed the test set using the trained encoder.<br />
 Then we color by the hidden class to see clusters.</p>
 <div class="cell docutils container">
@@ -1935,19 +1921,19 @@ Then we color by the hidden class to see clusters.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z_test_np.shape: (60, 2)
 </pre></div>
 </div>
-<img alt="_images/0485b62f314778e4300c53e44ab24449574bd62c0fc2d7c4193345f3ec45b946.png" src="_images/0485b62f314778e4300c53e44ab24449574bd62c0fc2d7c4193345f3ec45b946.png" />
+<img alt="_images/7390ab2a9afd65417879cdd001297bae4fe6e9a726a0a37c3724850d53e06e25.png" src="_images/7390ab2a9afd65417879cdd001297bae4fe6e9a726a0a37c3724850d53e06e25.png" />
 </div>
 </div>
 </section>
 <section id="tiny-encoder-trained-on-chemistry-4d-conditions">
-<h3>5.6 Tiny encoder trained on chemistry 4D conditions<a class="headerlink" href="#tiny-encoder-trained-on-chemistry-4d-conditions" title="Link to this heading">#</a></h3>
+<h3>5.6 Tiny encoder trained on chemistry 4D conditions<a class="headerlink" href="#tiny-encoder-trained-on-chemistry-4d-conditions" title="Permalink to this heading">#</a></h3>
 <p>We now repeat the training on the chemistry dataset with 4 features.<br />
 We monitor the InfoNCE loss and later run a linear probe.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1993,17 +1979,17 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.2960
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.4879
 </pre></div>
 </div>
-<img alt="_images/7915b3137161f723b55fc21fd565004d61060206280da0936e2c6dd3a0b84e75.png" src="_images/7915b3137161f723b55fc21fd565004d61060206280da0936e2c6dd3a0b84e75.png" />
+<img alt="_images/ee6562b306cb23189e5dce395be90b7f10b40c324b8cf7b40984545f37aa71da.png" src="_images/ee6562b306cb23189e5dce395be90b7f10b40c324b8cf7b40984545f37aa71da.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -2039,7 +2025,7 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z_chem.shape: (1500, 8)
 </pre></div>
 </div>
-<img alt="_images/720369b617c6a7427f3a1beec2743fc5bd64ac1d4f57ca8963b861622fedd2cc.png" src="_images/720369b617c6a7427f3a1beec2743fc5bd64ac1d4f57ca8963b861622fedd2cc.png" />
+<img alt="_images/0bf542f064e714b0f68f3a1eac1c5583ab97121eedd7808c475beb5ecf8b2733.png" src="_images/0bf542f064e714b0f68f3a1eac1c5583ab97121eedd7808c475beb5ecf8b2733.png" />
 </div>
 </div>
 <p>Here is how encoded reaction conditions look like.</p>
@@ -2050,14 +2036,14 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.4259,  0.0205, -0.2948, ..., -0.0523, -0.7503,  0.2525],
-       [ 0.6347,  0.2963, -0.1477, ..., -0.1518, -0.6101,  0.2146],
-       [ 0.6566,  0.414 , -0.1352, ..., -0.1398, -0.4845,  0.2465],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.8484,  0.0995, -0.2223, ..., -0.1977, -0.3491, -0.1421],
+       [ 0.9131, -0.0191, -0.0123, ...,  0.2354,  0.0023, -0.3273],
+       [ 0.9157, -0.0572, -0.009 , ...,  0.2289,  0.0161, -0.3184],
        ...,
-       [ 0.2175, -0.1512, -0.2172, ..., -0.034 , -0.7713,  0.196 ],
-       [ 0.6602,  0.4203, -0.1285, ..., -0.1389, -0.4698,  0.2523],
-       [ 0.6567,  0.5112,  0.024 , ..., -0.1651, -0.2456,  0.1964]],
-      shape=(1497, 8), dtype=float32)
+       [ 0.5459,  0.1297, -0.309 , ..., -0.4247, -0.5438,  0.0455],
+       [ 0.9156, -0.0571, -0.0086, ...,  0.2327,  0.0168, -0.3163],
+       [ 0.8609, -0.0728,  0.0729, ...,  0.3511,  0.1123, -0.3097]],
+      dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -2071,11 +2057,11 @@ See if the classes are more separated or less separated.</p>
 </section>
 <hr class="docutils" />
 <section id="linear-evaluation-and-simple-retrieval">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Linear evaluation and simple retrieval</a><a class="headerlink" href="#linear-evaluation-and-simple-retrieval" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Linear evaluation and simple retrieval</a><a class="headerlink" href="#linear-evaluation-and-simple-retrieval" title="Permalink to this heading">#</a></h2>
 <p>After contrastive pretraining, a common step is <strong>linear evaluation</strong>.<br />
 We freeze the encoder and train a simple classifier on top with a small labeled set.</p>
 <section id="linear-probe-using-logistic-regression">
-<h3>6.1 Linear probe using logistic regression<a class="headerlink" href="#linear-probe-using-logistic-regression" title="Link to this heading">#</a></h3>
+<h3>6.1 Linear probe using logistic regression<a class="headerlink" href="#linear-probe-using-logistic-regression" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If torch is missing, we will use raw features as a dummy &quot;embedding&quot;</span>
@@ -2107,9 +2093,9 @@ Z_test.shape: (60, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.3646, -0.9312],
-       [ 0.7863, -0.6179],
-       [ 0.6959, -0.7181]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.999 , -0.0448],
+       [-0.6108,  0.7918],
+       [-0.4008,  0.9162]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -2140,10 +2126,10 @@ AUC: 1.0
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Confusion matrix for a quick look</span>
@@ -2162,7 +2148,7 @@ AUC: 1.0
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/e241f8d897477796a9b49e46f20993908c0527b9c6c3318c63f396f5954289cb.png" src="_images/e241f8d897477796a9b49e46f20993908c0527b9c6c3318c63f396f5954289cb.png" />
+<img alt="_images/2bb7a2ada1b27ce59d3579f7bffa77627ada901831bd12a3ec57f49e9e0e2286.png" src="_images/2bb7a2ada1b27ce59d3579f7bffa77627ada901831bd12a3ec57f49e9e0e2286.png" />
 </div>
 </div>
 <div class="admonition-exercise-7-1 admonition">
@@ -2173,7 +2159,7 @@ Discuss how the tradeoff moves.</p>
 </div>
 </section>
 <section id="retrieval-with-cosine-similarity">
-<h3>6.2 Retrieval with cosine similarity<a class="headerlink" href="#retrieval-with-cosine-similarity" title="Link to this heading">#</a></h3>
+<h3>6.2 Retrieval with cosine similarity<a class="headerlink" href="#retrieval-with-cosine-similarity" title="Permalink to this heading">#</a></h3>
 <p>We take one query from the test set and retrieve the nearest neighbors in the embedding space.<br />
 This is useful to propose similar conditions or spectra for follow up experiments.</p>
 <div class="cell docutils container">
@@ -2198,8 +2184,8 @@ This is useful to propose similar conditions or spectra for follow up experiment
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query is index 2 with class 1
-Top indices: [ 2 42 58 17 47 15]
-Top sims   : [1. 1. 1. 1. 1. 1.]
+Top indices: [ 2 42 17 47 15 58]
+Top sims   : [1.    1.    1.    0.999 0.999 0.999]
 </pre></div>
 </div>
 </div>
@@ -2219,7 +2205,7 @@ Top sims   : [1. 1. 1. 1. 1. 1.]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef708fa7c585eb2408aa6d70f941a7631edf946d93068bf03330279e9503a58c.png" src="_images/ef708fa7c585eb2408aa6d70f941a7631edf946d93068bf03330279e9503a58c.png" />
+<img alt="_images/bc909d0d2ba854938c60ad9564f5f828ba99596f7fad39deab0de845b3da3057.png" src="_images/bc909d0d2ba854938c60ad9564f5f828ba99596f7fad39deab0de845b3da3057.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -2229,14 +2215,14 @@ Check if the nearest neighbors share the same label more often than random picks
 </div>
 </section>
 <section id="linear-probe-and-curves-on-chemistry-4d">
-<h3>6.3 Linear probe and curves on chemistry 4D<a class="headerlink" href="#linear-probe-and-curves-on-chemistry-4d" title="Link to this heading">#</a></h3>
+<h3>6.3 Linear probe and curves on chemistry 4D<a class="headerlink" href="#linear-probe-and-curves-on-chemistry-4d" title="Permalink to this heading">#</a></h3>
 <p>We embed the chemistry dataset if an encoder was trained, then fit a probe.<br />
 We plot ROC and Precision-Recall.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">torch</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2267,23 +2253,23 @@ We plot ROC and Precision-Recall.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.693
-Chemistry 4D AUC: 0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.68
+Chemistry 4D AUC: 0.778
 </pre></div>
 </div>
-<img alt="_images/43add8b46dd33653652a247bb63635b0344a6796458cded71971857380ea8886.png" src="_images/43add8b46dd33653652a247bb63635b0344a6796458cded71971857380ea8886.png" />
-<img alt="_images/367c0d57979f41845f445ac671002159ebe8e959d57aeb2bde98f45781209cb9.png" src="_images/367c0d57979f41845f445ac671002159ebe8e959d57aeb2bde98f45781209cb9.png" />
+<img alt="_images/18dc417dc225171bba6a400621c1e98660a88c9ea4d1ad46c556c0f3a5871321.png" src="_images/18dc417dc225171bba6a400621c1e98660a88c9ea4d1ad46c556c0f3a5871321.png" />
+<img alt="_images/ec86ff0f2ed0ff5bfe4ed5efeef5cc294b105cc480aa37603aa3ea1dec6f61f8.png" src="_images/ec86ff0f2ed0ff5bfe4ed5efeef5cc294b105cc480aa37603aa3ea1dec6f61f8.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="mini-case-studies">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. Mini case studies</a><a class="headerlink" href="#mini-case-studies" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. Mini case studies</a><a class="headerlink" href="#mini-case-studies" title="Permalink to this heading">#</a></h2>
 <p>Contrastive learning depends on good view design.<br />
 In chemistry, the view should preserve the identity of the sample while adding realistic variation.</p>
 <section id="spectra-toy-example-ir-like-peaks-with-noise">
-<h3>7.1 Spectra toy example: IR-like peaks with noise<a class="headerlink" href="#spectra-toy-example-ir-like-peaks-with-noise" title="Link to this heading">#</a></h3>
+<h3>7.1 Spectra toy example: IR-like peaks with noise<a class="headerlink" href="#spectra-toy-example-ir-like-peaks-with-noise" title="Permalink to this heading">#</a></h3>
 <p>We synthesize spectra as sums of Gaussians.<br />
 Two views of the same sample will get small baseline shifts and noise.</p>
 <div class="cell docutils container">
@@ -2317,7 +2303,7 @@ Two views of the same sample will get small baseline shifts and noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2dff319165a37778a5c18a2a8c0382dc29b809aa7970e8bce7c6dbfa2fc61db9.png" src="_images/2dff319165a37778a5c18a2a8c0382dc29b809aa7970e8bce7c6dbfa2fc61db9.png" />
+<img alt="_images/4dabe32e74e9d48607dd209bc93a58e96bb1ecfd8dbedf9c43c30628357e734d.png" src="_images/4dabe32e74e9d48607dd209bc93a58e96bb1ecfd8dbedf9c43c30628357e734d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2363,15 +2349,15 @@ Two views of the same sample will get small baseline shifts and noise.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e7335917bcd19a9feba3d2d065580259bb7fd04c206a9ce92cca3d957eba2339.png" src="_images/e7335917bcd19a9feba3d2d065580259bb7fd04c206a9ce92cca3d957eba2339.png" />
+<img alt="_images/0758776bbebc0b5e1c7a89033fd44daa948a71fa2ac43652d4543b9cc853ffcc.png" src="_images/0758776bbebc0b5e1c7a89033fd44daa948a71fa2ac43652d4543b9cc853ffcc.png" />
 </div>
 </div>
 <p>Below, you will see how constrative learning helps convert the spectrum data into embeddings with careful data augmentation and these embeddings are used to downstream tasks like classification.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Spectra demo: three classes with different peak centers, stronger augmentation,</span>
@@ -2660,8 +2646,8 @@ Two views of the same sample will get small baseline shifts and noise.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/92bdee7261b0346773a1e6afc7d40b00e83e616b99305491ba548e86e2d23ced.png" src="_images/92bdee7261b0346773a1e6afc7d40b00e83e616b99305491ba548e86e2d23ced.png" />
-<img alt="_images/4a0c9ccce7137c9a720d2b3ea266dde8e3b3d22197619d7c3aedcc9fba62b27a.png" src="_images/4a0c9ccce7137c9a720d2b3ea266dde8e3b3d22197619d7c3aedcc9fba62b27a.png" />
+<img alt="_images/3ea652cdd2c14f8907cdfb7686dd5368175928a5c22a0c7cadf7a88b7414e76f.png" src="_images/3ea652cdd2c14f8907cdfb7686dd5368175928a5c22a0c7cadf7a88b7414e76f.png" />
+<img alt="_images/ae7b7b8bf16972477a532ed58506c405a327b0547966442c3a6d74aba4a8be70.png" src="_images/ae7b7b8bf16972477a532ed58506c405a327b0547966442c3a6d74aba4a8be70.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset:
   spectra array shape: (90, 600) dtype: float32
   labels array shape: (90,) classes: [0, 1, 2]
@@ -2673,30 +2659,26 @@ Picked spectrum index: 7 class: 0
   neg view source idx: 8 class: 0
 
 Encoded representations (first 6 of 16):
-  enc(original): [-0.6394 -0.1221  0.3154 -0.0527  0.1503  0.0918]
-  enc(pos1):     [-0.6039 -0.0262  0.3024  0.114  -0.0049 -0.1507]
-  enc(pos2):     [-0.6696 -0.0954  0.31   -0.0413  0.1284 -0.0727]
-  enc(neg):      [-0.6283 -0.0531  0.3089  0.0696  0.0225 -0.1561]
+  enc(original): [-0.3815 -0.3319  0.1696  0.0769 -0.1569  0.1104]
+  enc(pos1):     [-0.4102 -0.2253  0.1303  0.1272 -0.259  -0.034 ]
+  enc(pos2):     [-0.4311 -0.2246  0.2618  0.0819 -0.0446  0.1318]
+  enc(neg):      [-0.4548 -0.1855  0.2434  0.1455 -0.1222  0.0305]
 </pre></div>
 </div>
-<img alt="_images/be7d7dcee9385b1c1c9e886842fd5250aa3ac05cf995faa50817f908a8181ba4.png" src="_images/be7d7dcee9385b1c1c9e886842fd5250aa3ac05cf995faa50817f908a8181ba4.png" />
+<img alt="_images/8a6a2c06e58d9068f9b90abed625fb1bd56f61eff042b99d793494d363ac4f8a.png" src="_images/8a6a2c06e58d9068f9b90abed625fb1bd56f61eff042b99d793494d363ac4f8a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier on embeddings:
   train size: 36 test size: 54
   test accuracy: 1.0
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\linear_model\_logistic.py:1281: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. Use OneVsRestClassifier(LogisticRegression(..)) instead. Leave it to its default value to avoid this warning.
-  warnings.warn(
 </pre></div>
 </div>
 </div>
 </div>
 <p>Now we have a new spectrum and we turn it to embedding with the encoder and feed the embedding to trained model to give prediction.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === New spectrum: create, plot, encode, classify, compare (single cell) ===</span>
@@ -2813,45 +2795,45 @@ Encoded representations (first 6 of 16):
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/dfdeb503fd0280638ea0b7647a2a877259e43b66e293ad7cf93c0799208be896.png" src="_images/dfdeb503fd0280638ea0b7647a2a877259e43b66e293ad7cf93c0799208be896.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [-0.5671 -0.2001 -0.0316 -0.1021  0.174   0.2673 -0.0077  0.2175]
+<img alt="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" src="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [-0.4548 -0.2571  0.0146  0.1174  0.0199  0.2485  0.3516 -0.0034]
 </pre></div>
 </div>
-<img alt="_images/29292715c9c483409fb8fba90833ca05d4493b9cf9eda92bb09a7530c29fd83d.png" src="_images/29292715c9c483409fb8fba90833ca05d4493b9cf9eda92bb09a7530c29fd83d.png" />
+<img alt="_images/3ad5518a321574d5766f513330ae8237636644e635ba49ae02875c82c6c0ee6d.png" src="_images/3ad5518a321574d5766f513330ae8237636644e635ba49ae02875c82c6c0ee6d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class: 0
-Class probabilities: [0.972, 0.009, 0.019]
-Nearest neighbor index in existing set: 6
+Class probabilities: [0.962, 0.008, 0.03]
+Nearest neighbor index in existing set: 8
 Nearest neighbor label: 0
-Cosine similarity in embedding space: 0.8538
+Cosine similarity in embedding space: 0.871
 </pre></div>
 </div>
-<img alt="_images/d15ace7f380a18d883ae8f76786fd0b5b5434e4d8e15139752ff85dca7616df9.png" src="_images/d15ace7f380a18d883ae8f76786fd0b5b5434e4d8e15139752ff85dca7616df9.png" />
+<img alt="_images/a84deddfc056e9c04939450e6b01f8bd242a5ad536ea5f4e991969cd5758c79e.png" src="_images/a84deddfc056e9c04939450e6b01f8bd242a5ad536ea5f4e991969cd5758c79e.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h3>8. Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h3>
+<h3>8. Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h3>
 <dl class="simple glossary">
-<dt id="term-Contrastive-learning">Contrastive learning<a class="headerlink" href="#term-Contrastive-learning" title="Link to this term">#</a></dt><dd><p>A method that trains an embedding so that two views of the same item are close and different items are far.</p>
+<dt id="term-Contrastive-learning">Contrastive learning<a class="headerlink" href="#term-Contrastive-learning" title="Permalink to this term">#</a></dt><dd><p>A method that trains an embedding so that two views of the same item are close and different items are far.</p>
 </dd>
-<dt id="term-Positive-pair">Positive pair<a class="headerlink" href="#term-Positive-pair" title="Link to this term">#</a></dt><dd><p>Two augmented views of the same sample. They should remain close in the embedding.</p>
+<dt id="term-Positive-pair">Positive pair<a class="headerlink" href="#term-Positive-pair" title="Permalink to this term">#</a></dt><dd><p>Two augmented views of the same sample. They should remain close in the embedding.</p>
 </dd>
-<dt id="term-Negative-pair">Negative pair<a class="headerlink" href="#term-Negative-pair" title="Link to this term">#</a></dt><dd><p>Two views from different samples. They should be far in the embedding.</p>
+<dt id="term-Negative-pair">Negative pair<a class="headerlink" href="#term-Negative-pair" title="Permalink to this term">#</a></dt><dd><p>Two views from different samples. They should be far in the embedding.</p>
 </dd>
-<dt id="term-Cosine-similarity">Cosine similarity<a class="headerlink" href="#term-Cosine-similarity" title="Link to this term">#</a></dt><dd><p>The dot product of normalized vectors. It measures alignment of directions.</p>
+<dt id="term-Cosine-similarity">Cosine similarity<a class="headerlink" href="#term-Cosine-similarity" title="Permalink to this term">#</a></dt><dd><p>The dot product of normalized vectors. It measures alignment of directions.</p>
 </dd>
-<dt id="term-Temperature">Temperature<a class="headerlink" href="#term-Temperature" title="Link to this term">#</a></dt><dd><p>A positive scalar in softmax that controls smoothness. Smaller values make distributions peakier.</p>
+<dt id="term-Temperature">Temperature<a class="headerlink" href="#term-Temperature" title="Permalink to this term">#</a></dt><dd><p>A positive scalar in softmax that controls smoothness. Smaller values make distributions peakier.</p>
 </dd>
-<dt id="term-InfoNCE-loss">InfoNCE loss<a class="headerlink" href="#term-InfoNCE-loss" title="Link to this term">#</a></dt><dd><p>A loss that maximizes agreement of the correct pair while contrasting against other items in the batch.</p>
+<dt id="term-InfoNCE-loss">InfoNCE loss<a class="headerlink" href="#term-InfoNCE-loss" title="Permalink to this term">#</a></dt><dd><p>A loss that maximizes agreement of the correct pair while contrasting against other items in the batch.</p>
 </dd>
-<dt id="term-Linear-probe">Linear probe<a class="headerlink" href="#term-Linear-probe" title="Link to this term">#</a></dt><dd><p>A simple classifier trained on frozen embeddings to check if information is linearly recoverable.</p>
+<dt id="term-Linear-probe">Linear probe<a class="headerlink" href="#term-Linear-probe" title="Permalink to this term">#</a></dt><dd><p>A simple classifier trained on frozen embeddings to check if information is linearly recoverable.</p>
 </dd>
-<dt id="term-Augmentation">Augmentation<a class="headerlink" href="#term-Augmentation" title="Link to this term">#</a></dt><dd><p>A transformation that preserves identity while adding variation such as noise or small jitters.</p>
+<dt id="term-Augmentation">Augmentation<a class="headerlink" href="#term-Augmentation" title="Permalink to this term">#</a></dt><dd><p>A transformation that preserves identity while adding variation such as noise or small jitters.</p>
 </dd>
-<dt id="term-View">View<a class="headerlink" href="#term-View" title="Link to this term">#</a></dt><dd><p>The result of applying an augmentation to a sample. Two views of the same sample form a positive pair.</p>
+<dt id="term-View">View<a class="headerlink" href="#term-View" title="Permalink to this term">#</a></dt><dd><p>The result of applying an augmentation to a sample. Two views of the same sample form a positive pair.</p>
 </dd>
-<dt id="term-Retrieval">Retrieval<a class="headerlink" href="#term-Retrieval" title="Link to this term">#</a></dt><dd><p>Given a query in embedding space, return nearest neighbors by a similarity such as cosine.</p>
+<dt id="term-Retrieval">Retrieval<a class="headerlink" href="#term-Retrieval" title="Permalink to this term">#</a></dt><dd><p>Given a query in embedding space, return nearest neighbors by a similarity such as cosine.</p>
 </dd>
 </dl>
 </section>
@@ -2885,7 +2867,7 @@ Cosine similarity in embedding space: 0.8538
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2905,7 +2887,6 @@ Cosine similarity in embedding space: 0.8538
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2976,7 +2957,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -3000,8 +2981,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
