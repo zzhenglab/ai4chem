@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to CHEM 5080: AI for Chemistry
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
         </ul>
@@ -200,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 </ul>
 
     </div>
@@ -5705,48 +5707,68 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 192.29it/s]
 </section>
 <section id="solution-q1">
 <h3>Solution Q1:<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h3>
-<p>df_reg = df[[“SMILES”,”Melting Point”]].dropna().copy()
-df_reg.to_csv(“mp_data.csv”, index=False)</p>
-<p>!chemprop train <br />
-–data-path mp_data.csv <br />
--t regression <br />
--s SMILES <br />
-–target-columns “Melting Point” <br />
--o mp_model_q4 <br />
-–num-replicates 1 <br />
-–epochs 20 <br />
-–metrics mae rmse r2 <br />
-–tracking-metric r2</p>
-<p>pd.DataFrame({“SMILES”: [“CCO”,”c1ccccc1”,”CC(=O)O”,”CCN(CC)CC”,”O=C(O)C(O)C”]}).to_csv(“q4_smiles.csv”, index=False)</p>
-<p>!chemprop predict <br />
-–test-path q4_smiles.csv <br />
-–model-paths mp_model_q4/replicate_0/model_0/best.pt <br />
-–preds-path q4_preds.csv</p>
-<p>pd.read_csv(“q4_preds.csv”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_reg</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;mp_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">mp_data</span><span class="o">.</span><span class="n">csv</span> \
+  <span class="o">-</span><span class="n">t</span> <span class="n">regression</span> \
+  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
+  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="s2">&quot;Melting Point&quot;</span> \
+  <span class="o">-</span><span class="n">o</span> <span class="n">mp_model_q4</span> \
+  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
+  <span class="o">--</span><span class="n">epochs</span> <span class="mi">20</span> \
+  <span class="o">--</span><span class="n">metrics</span> <span class="n">mae</span> <span class="n">rmse</span> <span class="n">r2</span> \
+  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">r2</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span><span class="s2">&quot;CC(=O)O&quot;</span><span class="p">,</span><span class="s2">&quot;CCN(CC)CC&quot;</span><span class="p">,</span><span class="s2">&quot;O=C(O)C(O)C&quot;</span><span class="p">]})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;q4_smiles.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">q4_smiles</span><span class="o">.</span><span class="n">csv</span> \
+  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">mp_model_q4</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
+  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">q4_preds</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;q4_preds.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="solution-q2">
 <h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h3>
-<p>df = pd.read_csv(url)
-df = df[[“SMILES”,”Toxicity”]].dropna().copy()
-df[“Toxicity_bin”] = df[“Toxicity”].str.lower().map({“toxic”:1, “non_toxic”:0}).astype(int)
-df[[“SMILES”,”Toxicity_bin”]].to_csv(“tox_data.csv”, index=False)</p>
-<p>!chemprop train <br />
-–data-path tox_data.csv <br />
--t classification <br />
--s SMILES <br />
-–target-columns Toxicity_bin <br />
--o tox_model <br />
-–num-replicates 1 <br />
-–epochs 20 <br />
-–class-balance <br />
-–metrics roc prc accuracy <br />
-–tracking-metric roc</p>
-<p>pd.DataFrame({“SMILES”: [“CCO”,”c1ccccc1”,”O=<a class="reference internal" href="#=O"><span class="xref myst">N+</span></a>[O-]”,”ClCCl”,”CC(=O)Cl”]}).to_csv(“q5_smiles.csv”, index=False)</p>
-<p>!chemprop predict <br />
-–test-path q5_smiles.csv <br />
-–model-paths tox_model/replicate_0/model_0/best.pt <br />
-–preds-path q5_preds.csv</p>
-<p>pd.read_csv(“q5_preds.csv”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Toxicity_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="s2">&quot;toxic&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;non_toxic&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;tox_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="o">!</span>chemprop<span class="w"> </span>train<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="n">tox_data</span><span class="o">.</span><span class="n">csv</span> \
+  <span class="o">-</span><span class="n">t</span> <span class="n">classification</span> \
+  <span class="o">-</span><span class="n">s</span> <span class="n">SMILES</span> \
+  <span class="o">--</span><span class="n">target</span><span class="o">-</span><span class="n">columns</span> <span class="n">Toxicity_bin</span> \
+  <span class="o">-</span><span class="n">o</span> <span class="n">tox_model</span> \
+  <span class="o">--</span><span class="n">num</span><span class="o">-</span><span class="n">replicates</span> <span class="mi">1</span> \
+  <span class="o">--</span><span class="n">epochs</span> <span class="mi">20</span> \
+  <span class="o">--</span><span class="n">class</span><span class="o">-</span><span class="n">balance</span> \
+  <span class="o">--</span><span class="n">metrics</span> <span class="n">roc</span> <span class="n">prc</span> <span class="n">accuracy</span> \
+  <span class="o">--</span><span class="n">tracking</span><span class="o">-</span><span class="n">metric</span> <span class="n">roc</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;SMILES&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CCO&quot;</span><span class="p">,</span><span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span><span class="s2">&quot;O=[N+](=O)[O-]&quot;</span><span class="p">,</span><span class="s2">&quot;ClCCl&quot;</span><span class="p">,</span><span class="s2">&quot;CC(=O)Cl&quot;</span><span class="p">]})</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;q5_smiles.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="o">!</span>chemprop<span class="w"> </span>predict<span class="w"> </span><span class="err">\</span>
+  <span class="o">--</span><span class="n">test</span><span class="o">-</span><span class="n">path</span> <span class="n">q5_smiles</span><span class="o">.</span><span class="n">csv</span> \
+  <span class="o">--</span><span class="n">model</span><span class="o">-</span><span class="n">paths</span> <span class="n">tox_model</span><span class="o">/</span><span class="n">replicate_0</span><span class="o">/</span><span class="n">model_0</span><span class="o">/</span><span class="n">best</span><span class="o">.</span><span class="n">pt</span> \
+  <span class="o">--</span><span class="n">preds</span><span class="o">-</span><span class="n">path</span> <span class="n">q5_preds</span><span class="o">.</span><span class="n">csv</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;q5_preds.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>

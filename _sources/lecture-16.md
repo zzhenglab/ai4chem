@@ -2565,6 +2565,8 @@ def make_pull_yield(df_like, linker, acts):
 def fmt_action(a):
     T,H,C,S = a
     return f"T={T}°C, t={H}h, c={C:.2f} M, solvent={'DMF' if S==1 else 'H2O'}"
+
+top_linkers
 ```
 ### 5.2 Bandit framing and algorithms
 We treat each unique recipe as an arm and the yield as the reward. Rewards are bounded in `[0, 1]`, which suits UCB1 on sample means. 
@@ -2741,6 +2743,14 @@ plt.show()
 ```
 ```{code-cell} ipython3
 :tags: [hide-input]
+
+
+# Define the columns 
+cols = ["linker", "agent", "recipe", "pulls", "mean_yield"]
+
+
+
+
 # Top 3 recipes per linker so you can see near ties
 top3 = (
     summary_df.sort_values(["linker","mean_yield"], ascending=[True, False])
