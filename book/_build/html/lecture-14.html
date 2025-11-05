@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to CHEM 5080: AI for Chemistry
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
         </ul>
@@ -200,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 </ul>
 
     </div>
@@ -1268,7 +1270,7 @@ Greedy: [0.1 0.2 0.5]
     <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span>
 
-<span class="c1"># Simple MLP with dropout. Keep dropout active at prediction time to sample.</span>
+<span class="c1"># Simple MLP with dropout. We will keep dropout active at prediction time to sample.</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">MCDropoutNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -1313,16 +1315,6 @@ Greedy: [0.1 0.2 0.5]
     <span class="n">mu</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">sd</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sd</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">acq_ei_from_mu_std</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sd</span><span class="p">,</span> <span class="n">y_best</span><span class="p">,</span> <span class="n">xi</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
-    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">sd</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">sd</span> <span class="o">&gt;</span> <span class="mi">0</span>
-    <span class="n">z</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_best</span> <span class="o">-</span> <span class="n">xi</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-    <span class="n">ei</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
-    <span class="n">ei</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">-</span> <span class="n">y_best</span> <span class="o">-</span> <span class="n">xi</span><span class="p">)</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span> <span class="o">+</span> <span class="n">sd</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">*</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">ei</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">run_bo_bnn_ei</span><span class="p">(</span><span class="n">n_iter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noise_sd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">dropout_p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
     <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -1384,105 +1376,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">102</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="k">return</span> <span class="n">best_hist</span><span class="p">,</span> <span class="n">snapshots</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="c1"># Run BNN + EI for 15 iterations</span>
-<span class="ne">--&gt; </span><span class="mi">102</span> <span class="n">hist_bnn_ei</span><span class="p">,</span> <span class="n">snaps</span> <span class="o">=</span> <span class="n">run_bo_bnn_ei</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>     <span class="n">n_iter</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="n">seed</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">noise_sd</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span>     <span class="n">dropout_p</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>   <span class="c1"># increase dropout to widen uncertainty if needed</span>
-<span class="g g-Whitespace">    </span><span class="mi">107</span>     <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>      <span class="c1"># a bit more training since data are small</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="n">T</span><span class="o">=</span><span class="mi">300</span>             <span class="c1"># more MC samples for a smoother band</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">111</span> <span class="c1"># Posterior after 15 iterations</span>
-<span class="g g-Whitespace">    </span><span class="mi">112</span> <span class="n">X_obs</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">,</span> <span class="n">mu_final</span><span class="p">,</span> <span class="n">sd_final</span> <span class="o">=</span> <span class="n">snaps</span><span class="p">[</span><span class="s2">&quot;final&quot;</span><span class="p">]</span>
-
-<span class="nn">Cell In[12], line 80,</span> in <span class="ni">run_bo_bnn_ei</span><span class="nt">(n_iter, seed, noise_sd, dropout_p, epochs, T)</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span> <span class="n">fit_mcdropout</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="n">epochs</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">weight_decay</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span> <span class="o">+</span> <span class="n">t</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="c1"># Posterior over grid by MC sampling</span>
-<span class="ne">---&gt; </span><span class="mi">80</span> <span class="n">mu_nn</span><span class="p">,</span> <span class="n">sd_nn</span> <span class="o">=</span> <span class="n">predict_mcdropout</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">x_grid</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">82</span> <span class="c1"># EI on grid</span>
-<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="n">acq_vals</span> <span class="o">=</span> <span class="n">acq_ei_from_mu_std</span><span class="p">(</span><span class="n">mu_nn</span><span class="p">,</span> <span class="n">sd_nn</span><span class="p">,</span> <span class="n">y_best</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">xi</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-
-<span class="nn">Cell In[12], line 51,</span> in <span class="ni">predict_mcdropout</span><span class="nt">(model, Xc, T)</span>
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">51</span>         <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">X_t</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>  <span class="c1"># shape (n, T)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">mu</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1773,</span> in <span class="ni">Module._wrapped_call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1771</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1772</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1773</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1784,</span> in <span class="ni">Module._call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1779</span> <span class="c1"># If we don&#39;t have any hooks, we want to skip the rest of the logic in</span>
-<span class="g g-Whitespace">   </span><span class="mi">1780</span> <span class="c1"># this function, and just call forward.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1781</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backward_pre_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1782</span>         <span class="ow">or</span> <span class="n">_global_backward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1783</span>         <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1784</span>     <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1786</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1787</span> <span class="n">called_always_called_hooks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-<span class="nn">Cell In[12], line 25,</span> in <span class="ni">MCDropoutNet.forward</span><span class="nt">(self, x)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">25</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1773,</span> in <span class="ni">Module._wrapped_call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1771</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1772</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1773</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1784,</span> in <span class="ni">Module._call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1779</span> <span class="c1"># If we don&#39;t have any hooks, we want to skip the rest of the logic in</span>
-<span class="g g-Whitespace">   </span><span class="mi">1780</span> <span class="c1"># this function, and just call forward.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1781</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backward_pre_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1782</span>         <span class="ow">or</span> <span class="n">_global_backward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1783</span>         <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1784</span>     <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1786</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1787</span> <span class="n">called_always_called_hooks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\container.py:244,</span> in <span class="ni">Sequential.forward</span><span class="nt">(self, input)</span>
-<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">244</span>         <span class="nb">input</span> <span class="o">=</span> <span class="n">module</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span>     <span class="k">return</span> <span class="nb">input</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1773,</span> in <span class="ni">Module._wrapped_call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1771</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>  <span class="c1"># type: ignore[misc]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1772</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1773</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_impl</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\module.py:1784,</span> in <span class="ni">Module._call_impl</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1779</span> <span class="c1"># If we don&#39;t have any hooks, we want to skip the rest of the logic in</span>
-<span class="g g-Whitespace">   </span><span class="mi">1780</span> <span class="c1"># this function, and just call forward.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1781</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_backward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backward_pre_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_hooks</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_pre_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1782</span>         <span class="ow">or</span> <span class="n">_global_backward_pre_hooks</span> <span class="ow">or</span> <span class="n">_global_backward_hooks</span>
-<span class="g g-Whitespace">   </span><span class="mi">1783</span>         <span class="ow">or</span> <span class="n">_global_forward_hooks</span> <span class="ow">or</span> <span class="n">_global_forward_pre_hooks</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1784</span>     <span class="k">return</span> <span class="n">forward_call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1786</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1787</span> <span class="n">called_always_called_hooks</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\modules\dropout.py:70,</span> in <span class="ni">Dropout.forward</span><span class="nt">(self, input)</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span> <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">70</span>     <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">inplace</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\Programs\Python\Python313\Lib\site-packages\torch\nn\functional.py:1422,</span> in <span class="ni">dropout</span><span class="nt">(input, p, training, inplace)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1419</span> <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="mf">0.0</span> <span class="ow">or</span> <span class="n">p</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1420</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dropout probability has to be between 0 and 1, but got </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1421</span> <span class="k">return</span> <span class="p">(</span>
-<span class="ne">-&gt; </span><span class="mi">1422</span>     <span class="n">_VF</span><span class="o">.</span><span class="n">dropout_</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">training</span><span class="p">)</span> <span class="k">if</span> <span class="n">inplace</span> <span class="k">else</span> <span class="n">_VF</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">training</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1423</span> <span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
+<img alt="_images/a15970de8b2c9078aaf841273c95d28c0b2f724576d3dbfcd5fcf4e1ea39e355.png" src="_images/a15970de8b2c9078aaf841273c95d28c0b2f724576d3dbfcd5fcf4e1ea39e355.png" />
 </div>
 </div>
 </section>
@@ -1564,6 +1458,91 @@ Greedy: [0.1 0.2 0.5]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>time_min</th>
+      <th>temp_c</th>
+      <th>conc_m</th>
+      <th>yield</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+      <td>800.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>94.616242</td>
+      <td>79.418759</td>
+      <td>0.510738</td>
+      <td>14.535193</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>49.425893</td>
+      <td>17.436767</td>
+      <td>0.274654</td>
+      <td>22.092498</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>10.031436</td>
+      <td>50.102473</td>
+      <td>0.051375</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>51.989009</td>
+      <td>64.015690</td>
+      <td>0.276434</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>92.955198</td>
+      <td>80.123321</td>
+      <td>0.493572</td>
+      <td>2.801323</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>138.782055</td>
+      <td>94.581001</td>
+      <td>0.740081</td>
+      <td>22.791306</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>179.954612</td>
+      <td>109.870879</td>
+      <td>0.998107</td>
+      <td>97.916358</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="visual-slices-of-the-surface">
@@ -1601,6 +1580,10 @@ Greedy: [0.1 0.2 0.5]
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/00e952f35af12478a7ede37c0c3471c6c683dc36ff1f0eacc93a792dc4158aaf.png" src="_images/00e952f35af12478a7ede37c0c3471c6c683dc36ff1f0eacc93a792dc4158aaf.png" />
+<img alt="_images/dd2141b37e27f2793d44f9015ca01702288b14f1c8b791847f2ab512d0eaffe5.png" src="_images/dd2141b37e27f2793d44f9015ca01702288b14f1c8b791847f2ab512d0eaffe5.png" />
+</div>
 </div>
 <p>These slices show a sweet region that we want BO to find in as few trials as possible.</p>
 </section>
@@ -1617,6 +1600,14 @@ Greedy: [0.1 0.2 0.5]
 <span class="n">y_all</span> <span class="o">=</span> <span class="n">df_suzuki</span><span class="p">[</span><span class="s2">&quot;yield&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="n">X_all</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">y_all</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[0.07615779, 0.23310162, 0.31037802],
+        [0.7800864 , 0.06377678, 0.60385531],
+        [0.43842244, 0.27146366, 0.4054797 ]]),
+ array([0.39303965, 0.        , 4.34222798]))
 </pre></div>
 </div>
 </div>
@@ -1709,6 +1700,10 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/9aec50f42d59dcb8acb30c0a747edbaf0c2a5ece2bc0011b123bd7794b0a15cb.png" src="_images/9aec50f42d59dcb8acb30c0a747edbaf0c2a5ece2bc0011b123bd7794b0a15cb.png" />
+<img alt="_images/26f0e0c1f32427998820b14eae6f5ff9eb9792d6c0aaec291a2b78959b918310.png" src="_images/26f0e0c1f32427998820b14eae6f5ff9eb9792d6c0aaec291a2b78959b918310.png" />
+</div>
 </div>
 </section>
 <section id="compare-to-grid-and-random-for-the-same-number-of-lab-runs">
@@ -1766,6 +1761,9 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/2b8e61e663a9ed7689d4f7083b5881156d3923d0e71c0b79c7e2ac48d9538f45.png" src="_images/2b8e61e663a9ed7689d4f7083b5881156d3923d0e71c0b79c7e2ac48d9538f45.png" />
+</div>
 </div>
 </section>
 <section id="a-quick-rf-surrogate-on-suzuki">
@@ -1812,6 +1810,9 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="_images/b852f646257cc9166ade9be6ffb22598c7da3d829521bc56be37c624d956bb44.png" src="_images/b852f646257cc9166ade9be6ffb22598c7da3d829521bc56be37c624d956bb44.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1958,6 +1959,11 @@ Greedy: [0.1 0.2 0.5]
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;sd across trees&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/87fcd013ee20f51db3a5df3eca4b51f0f9941b3b6f4cf3d57def3c78e38de775.png" src="_images/87fcd013ee20f51db3a5df3eca4b51f0f9941b3b6f4cf3d57def3c78e38de775.png" />
+<img alt="_images/297710f019d5657ad1afcf5985d3ef1a00d8df4c11f141eb3d72b9cf75c4d4dc.png" src="_images/297710f019d5657ad1afcf5985d3ef1a00d8df4c11f141eb3d72b9cf75c4d4dc.png" />
+<img alt="_images/7cf6516a7b3b22b7f60ebe426cb5274de921fcb23986358a579e8d23c7d4a8ae.png" src="_images/7cf6516a7b3b22b7f60ebe426cb5274de921fcb23986358a579e8d23c7d4a8ae.png" />
 </div>
 </div>
 </section>

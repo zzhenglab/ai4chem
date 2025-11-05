@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to CHEM 5080: AI for Chemistry
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
         </ul>
@@ -200,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 </ul>
 
     </div>
@@ -1274,35 +1276,35 @@ Different analogs may have the same core scaffold but different substituents tha
       <td>2-Methylimidazole</td>
       <td>CC1=NC=CN1</td>
       <td>82.106</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000018212A...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000023BAEC...</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1-Ethyl-3-vinylimidazolium bromide</td>
       <td>C=C[N+]1=CN(CC)C=C1.[Br-]</td>
       <td>203.083</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000018212A...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000023BAEC...</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1-Methyl-1,4-diazabicyclo[2.2.2]octan-1-iumchl...</td>
       <td>[Cl-].N12CC[N+](C)(CC1)CC2</td>
       <td>162.660</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000018212A...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000023BAEC...</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Oxazole-4-carboxylic acid</td>
       <td>O=C(C1=COC=N1)O</td>
       <td>113.072</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000018212A...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000023BAEC...</td>
     </tr>
     <tr>
       <th>4</th>
       <td>3-Ethyl-2-methylbenzo[d]thiazol-3-ium iodide</td>
       <td>CC[N+]1=C(C)SC2=CC=CC=C21.[I-]</td>
       <td>305.184</td>
-      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000018212A...</td>
+      <td>&lt;rdkit.Chem.rdchem.Mol object at 0x0000023BAEC...</td>
     </tr>
   </tbody>
 </table>
@@ -1675,7 +1677,7 @@ bc) Print the list of bonds with begin and end atom indices and bond orders.</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" src="_images/8d684575496d592c6f31701af2168169b7e533b522ea4f1c2cb135e5381f14b4.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x0000018227179B40&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rings: &lt;rdkit.rdBase._vectclass std::vector&lt;int,class std::allocator&lt;int&gt; &gt; object at 0x0000023BC35B9E40&gt;
 bond 0 0 - 1 order 2
 bond 1 1 - 2 order 1
 bond 2 1 - 3 order 1

@@ -18,7 +18,7 @@ kernelspec:
 :depth: 1
 ```
 
-**Learning goals**
+## Learning goals
 
 - Understand the idea of **contrastive learning**.
 - Construct **positive pairs** and **negative pairs** using easy augmentations that mimic lab variability.

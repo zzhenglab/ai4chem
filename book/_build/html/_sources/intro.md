@@ -1,20 +1,24 @@
-# Welcome to CHEM 5080: AI for Chemistry
+# Welcome to CHEM 5080: AI for Experimental Chemistry
 
 
 
 **Washington University in St. Louis**  
 **Fall 2025**  
 **Instructor:** Zhiling "Zach" Zheng (he/him)  
-Office: McMillen 411 | Email: z.z@wustl.edu 
-
+Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | Email: z.z@wustl.edu 
 
 ```{card}  
-**Course Format**  
-- **When:** Tue & Thu, 1:00–2:20 PM  
-- **Where:** Cupples II Room 200  
-- **Material Delivery:** Jupyter Book + Colab notebooks  
-Bring your laptop, bring your curiosity, and prepare to experiment.  
+**This class is open to everyone and can be taken at your own pace.**
+
+- All tutorials are free and shareable.
+- Created for synthetic chemists with **no background in coding or math**.
+- Focuses on **practical applications** of AI in wet lab synthesis and experimental data analysis.
+- Lecture slides are available to registered students on Canvas or upon request.
+
+If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.
+
 ```
+
 
 ---
 **Contents**
@@ -36,7 +40,7 @@ Bring your laptop, bring your curiosity, and prepare to experiment.
 - **Oct 14 & Oct 16** - Chemical reaction optimization    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 - **Oct 23** – Reinforcement learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)
 - **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
-- **Nov 4 & 6** –  Transformers & large language models 
+- **Nov 4 & 6** –  Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)        
 - **Nov 11 & 13** – Computer vision and multimodal models
 - **Nov 18 & 20** – Multi-agent AI and literature data mining   
 - **Nov 25** – Self-driving labs  

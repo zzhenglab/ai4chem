@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-18';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lecture 19 - Transformers" href="lecture-19.html" />
     <link rel="prev" title="Lecture 17 - PU Learning" href="lecture-17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to CHEM 5080: AI for Chemistry
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
         </ul>
@@ -199,6 +200,8 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 </ul>
 
     </div>
@@ -394,6 +397,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning-concepts">2. Contrastive learning concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-positive-pair-and-a-negative-pair">2.1 What is a positive pair and a negative pair</a></li>
@@ -448,18 +452,20 @@ document.write(`
 <h1>Lecture 18 - Contrastive Learning<a class="headerlink" href="#lecture-18-contrastive-learning" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
-<li><p><a class="reference internal" href="#contrastive-learning-concepts" id="id3">2. Contrastive learning concepts</a></p></li>
-<li><p><a class="reference internal" href="#contrastive-learning-in-chemistry" id="id4">3. Contrastive learning in chemistry</a></p></li>
-<li><p><a class="reference internal" href="#building-positive-and-negative-pairs-with-easy-augmentations" id="id5">4. Building positive and negative pairs with easy augmentations</a></p></li>
-<li><p><a class="reference internal" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" id="id6">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a></p></li>
-<li><p><a class="reference internal" href="#infonce-loss-step-by-step" id="id7">5. InfoNCE loss step-by-step</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id8">5. InfoNCE loss step-by-step</a></p></li>
-<li><p><a class="reference internal" href="#linear-evaluation-and-simple-retrieval" id="id9">6. Linear evaluation and simple retrieval</a></p></li>
-<li><p><a class="reference internal" href="#mini-case-studies" id="id10">7. Mini case studies</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id3">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#contrastive-learning-concepts" id="id4">2. Contrastive learning concepts</a></p></li>
+<li><p><a class="reference internal" href="#contrastive-learning-in-chemistry" id="id5">3. Contrastive learning in chemistry</a></p></li>
+<li><p><a class="reference internal" href="#building-positive-and-negative-pairs-with-easy-augmentations" id="id6">4. Building positive and negative pairs with easy augmentations</a></p></li>
+<li><p><a class="reference internal" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" id="id7">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a></p></li>
+<li><p><a class="reference internal" href="#infonce-loss-step-by-step" id="id8">5. InfoNCE loss step-by-step</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id9">5. InfoNCE loss step-by-step</a></p></li>
+<li><p><a class="reference internal" href="#linear-evaluation-and-simple-retrieval" id="id10">6. Linear evaluation and simple retrieval</a></p></li>
+<li><p><a class="reference internal" href="#mini-case-studies" id="id11">7. Mini case studies</a></p></li>
 </ul>
 </nav>
-<p><strong>Learning goals</strong></p>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand the idea of <strong>contrastive learning</strong>.</p></li>
 <li><p>Construct <strong>positive pairs</strong> and <strong>negative pairs</strong> using easy augmentations that mimic lab variability.</p></li>
@@ -467,8 +473,9 @@ document.write(`
 <li><p>Practice designing <strong>augmentations</strong> for spectra and reaction conditions.</p></li>
 </ul>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
+</section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -532,7 +539,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="contrastive-learning-concepts">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Contrastive learning concepts</a><a class="headerlink" href="#contrastive-learning-concepts" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Contrastive learning concepts</a><a class="headerlink" href="#contrastive-learning-concepts" title="Link to this heading">#</a></h2>
 <p>Why contrastive learning?
 In many lab projects, positive results are rare and negatives are mixed with non-attempts.<br />
 Contrastive learning can pretrain an embedding using instance agreement without needing full labels, then a small labeled set can train a light classifier on top.</p>
@@ -649,7 +656,7 @@ cos(a,c) = -0.9999999900000002
 </section>
 <hr class="docutils" />
 <section id="contrastive-learning-in-chemistry">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Contrastive learning in chemistry</a><a class="headerlink" href="#contrastive-learning-in-chemistry" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Contrastive learning in chemistry</a><a class="headerlink" href="#contrastive-learning-in-chemistry" title="Link to this heading">#</a></h2>
 <p>We simulate two experiment classes.<br />
 Think of them as two reaction regimes.<br />
 Each point is a pair of features:</p>
@@ -1098,7 +1105,7 @@ X head:
 </section>
 <hr class="docutils" />
 <section id="building-positive-and-negative-pairs-with-easy-augmentations">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Building positive and negative pairs with easy augmentations</a><a class="headerlink" href="#building-positive-and-negative-pairs-with-easy-augmentations" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Building positive and negative pairs with easy augmentations</a><a class="headerlink" href="#building-positive-and-negative-pairs-with-easy-augmentations" title="Link to this heading">#</a></h2>
 <p>Contrastive learning needs pairs.<br />
 We will define augmentations that keep the identity of the same sample.<br />
 These are small changes that simulate instrument noise or small condition jitter.</p>
@@ -1481,14 +1488,14 @@ y=1  orig=[ 56.027   1.012 133.294   7.148]  pair=[ 56.635   0.99  137.152   7.3
 </section>
 </section>
 <section id="with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a><a class="headerlink" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">With data augmentation, without doing any new experiments, we “create” labels by pairing.</a><a class="headerlink" href="#with-data-augmentation-without-doing-any-new-experiments-we-create-labels-by-pairing" title="Link to this heading">#</a></h2>
 </section>
 <section id="infonce-loss-step-by-step">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#infonce-loss-step-by-step" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#infonce-loss-step-by-step" title="Link to this heading">#</a></h2>
 </section>
 <hr class="docutils" />
 <section id="id1">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">5. InfoNCE loss step-by-step</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>The <strong>InfoNCE loss</strong> is a core objective in contrastive learning. It makes embeddings of <strong>positive pairs</strong> (two augmentations of the same input) close, and <strong>negative pairs</strong> (different samples) far apart.</p>
 <p><strong>Step 1: Normalize the embeddings</strong></p>
 <p>Given two batches of embeddings <span class="math notranslate nohighlight">\(x_a\)</span> and <span class="math notranslate nohighlight">\(x_b\)</span> of shape <span class="math notranslate nohighlight">\(N \times d\)</span>, normalize them along the feature dimension:</p>
@@ -1798,7 +1805,7 @@ We print shapes to keep it clear.</p>
 xb_b torch.shape: torch.Size([64, 2])
 z_a.shape: torch.Size([64, 2])
 z_b.shape: torch.Size([64, 2])
-Loss (one step): 3.880275249481201
+Loss (one step): 3.623032569885254
 </pre></div>
 </div>
 </div>
@@ -1863,10 +1870,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.9318
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.8455
 </pre></div>
 </div>
-<img alt="_images/c9a28889bb322ede829ef4f28c1239d05fd3cb043450069a17a807b7aa4baaf0.png" src="_images/c9a28889bb322ede829ef4f28c1239d05fd3cb043450069a17a807b7aa4baaf0.png" />
+<img alt="_images/eea57ffe5085617e17f5b5da85d0e2c24b09d6945348f2077af048a46f41a8d2.png" src="_images/eea57ffe5085617e17f5b5da85d0e2c24b09d6945348f2077af048a46f41a8d2.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1892,10 +1899,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.1611
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.3513
 </pre></div>
 </div>
-<img alt="_images/4b5eeae8bcc1a46a6845c9af7f8ebacf135d67abf4db4154ddde65b002a0d6d5.png" src="_images/4b5eeae8bcc1a46a6845c9af7f8ebacf135d67abf4db4154ddde65b002a0d6d5.png" />
+<img alt="_images/b512942c6c78e09e3e7809909d9b4cf92edafcfb246a7e56a22d5572d8a5f676.png" src="_images/b512942c6c78e09e3e7809909d9b4cf92edafcfb246a7e56a22d5572d8a5f676.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1935,7 +1942,7 @@ Then we color by the hidden class to see clusters.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z_test_np.shape: (60, 2)
 </pre></div>
 </div>
-<img alt="_images/e6e98c8e1d13747117017a01d973b21d1476ee76ebcb4b062d17d42f421839d4.png" src="_images/e6e98c8e1d13747117017a01d973b21d1476ee76ebcb4b062d17d42f421839d4.png" />
+<img alt="_images/7c658b29ccf3a4b8ee345227e44a180f0edd7754b3e84ffe8ae7b5d26dd4043d.png" src="_images/7c658b29ccf3a4b8ee345227e44a180f0edd7754b3e84ffe8ae7b5d26dd4043d.png" />
 </div>
 </div>
 </section>
@@ -1993,10 +2000,10 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.5104
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.4054
 </pre></div>
 </div>
-<img alt="_images/7e9c93f3a2754b80d0070d09e7db5e32203ff52946761c97a93806424d79d528.png" src="_images/7e9c93f3a2754b80d0070d09e7db5e32203ff52946761c97a93806424d79d528.png" />
+<img alt="_images/0ffce8ec7ae95d8c444b1f5ac806482698819c6ce6bda5472f3e7728fded78d0.png" src="_images/0ffce8ec7ae95d8c444b1f5ac806482698819c6ce6bda5472f3e7728fded78d0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -2039,7 +2046,7 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z_chem.shape: (1500, 8)
 </pre></div>
 </div>
-<img alt="_images/4eab606c4bd44ef00ef08f70aa33e68450a1a6290878049c7405d67d26f03f61.png" src="_images/4eab606c4bd44ef00ef08f70aa33e68450a1a6290878049c7405d67d26f03f61.png" />
+<img alt="_images/9f2478fbe62542418dcac60b253cb38aa122858b869aff7ee96c5b5f1b3dd396.png" src="_images/9f2478fbe62542418dcac60b253cb38aa122858b869aff7ee96c5b5f1b3dd396.png" />
 </div>
 </div>
 <p>Here is how encoded reaction conditions look like.</p>
@@ -2050,13 +2057,13 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.3774, -0.0671, -0.3289, ...,  0.2484,  0.2479,  0.3608],
-       [-0.5051, -0.1294, -0.0723, ..., -0.1609, -0.0412,  0.1268],
-       [-0.5335, -0.1025, -0.0166, ..., -0.1515, -0.1029,  0.0774],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.1266,  0.1971,  0.095 , ..., -0.2307, -0.3907, -0.1946],
+       [-0.3256,  0.5274, -0.1337, ..., -0.1144, -0.1326,  0.1813],
+       [-0.1222,  0.6524, -0.1686, ..., -0.1878, -0.0422,  0.1375],
        ...,
-       [-0.0384, -0.0597, -0.4262, ...,  0.3815,  0.4959,  0.4415],
-       [-0.5341, -0.1024, -0.011 , ..., -0.1525, -0.1054,  0.0746],
-       [-0.5121, -0.1056,  0.0804, ..., -0.2198, -0.1624, -0.0149]],
+       [ 0.0164, -0.2179,  0.0898, ..., -0.248 , -0.4691, -0.3414],
+       [-0.1033,  0.6545, -0.1575, ..., -0.1913, -0.0434,  0.1543],
+       [-0.0414,  0.5193, -0.2331, ..., -0.0684,  0.1518,  0.3013]],
       shape=(1497, 8), dtype=float32)
 </pre></div>
 </div>
@@ -2071,7 +2078,7 @@ See if the classes are more separated or less separated.</p>
 </section>
 <hr class="docutils" />
 <section id="linear-evaluation-and-simple-retrieval">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Linear evaluation and simple retrieval</a><a class="headerlink" href="#linear-evaluation-and-simple-retrieval" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">6. Linear evaluation and simple retrieval</a><a class="headerlink" href="#linear-evaluation-and-simple-retrieval" title="Link to this heading">#</a></h2>
 <p>After contrastive pretraining, a common step is <strong>linear evaluation</strong>.<br />
 We freeze the encoder and train a simple classifier on top with a small labeled set.</p>
 <section id="linear-probe-using-logistic-regression">
@@ -2107,9 +2114,9 @@ Z_test.shape: (60, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.2661,  0.9639],
-       [-0.884 ,  0.4675],
-       [-0.3905,  0.9206]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.0041,  1.    ],
+       [-0.0967, -0.9953],
+       [ 0.0827, -0.9966]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -2198,7 +2205,7 @@ This is useful to propose similar conditions or spectra for follow up experiment
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query is index 2 with class 1
-Top indices: [ 2 58 42 43 49 15]
+Top indices: [ 2 56 40 12  1 22]
 Top sims   : [1. 1. 1. 1. 1. 1.]
 </pre></div>
 </div>
@@ -2219,7 +2226,7 @@ Top sims   : [1. 1. 1. 1. 1. 1.]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/be3993755c4f128c685a11048a66ea19b9ee55af6a572bd3f5dd70206342f5a7.png" src="_images/be3993755c4f128c685a11048a66ea19b9ee55af6a572bd3f5dd70206342f5a7.png" />
+<img alt="_images/3afbea06fb88e50945131e81f3710db6f28162af1d20496f8355aa76f4520458.png" src="_images/3afbea06fb88e50945131e81f3710db6f28162af1d20496f8355aa76f4520458.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -2267,19 +2274,19 @@ We plot ROC and Precision-Recall.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.704
-Chemistry 4D AUC: 0.763
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.691
+Chemistry 4D AUC: 0.773
 </pre></div>
 </div>
-<img alt="_images/93f0ee5c1eb24da4d29c55d54208581d0010b68d7d4068efa70eba65a9a60a77.png" src="_images/93f0ee5c1eb24da4d29c55d54208581d0010b68d7d4068efa70eba65a9a60a77.png" />
-<img alt="_images/a3817797b69fd6b8e8572b1e7aa9c5b092a6d0bc9f61cacb05dc6a31e71ac465.png" src="_images/a3817797b69fd6b8e8572b1e7aa9c5b092a6d0bc9f61cacb05dc6a31e71ac465.png" />
+<img alt="_images/e8836542dbb07cec4ab033b354928c2399aa7071f358cd380fea3d8ff05c3f89.png" src="_images/e8836542dbb07cec4ab033b354928c2399aa7071f358cd380fea3d8ff05c3f89.png" />
+<img alt="_images/c3d2932131838f8c18f3f885b43d683c1134b34f757c229a47ffe25179e42173.png" src="_images/c3d2932131838f8c18f3f885b43d683c1134b34f757c229a47ffe25179e42173.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="mini-case-studies">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. Mini case studies</a><a class="headerlink" href="#mini-case-studies" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">7. Mini case studies</a><a class="headerlink" href="#mini-case-studies" title="Link to this heading">#</a></h2>
 <p>Contrastive learning depends on good view design.<br />
 In chemistry, the view should preserve the identity of the sample while adding realistic variation.</p>
 <section id="spectra-toy-example-ir-like-peaks-with-noise">
@@ -2673,13 +2680,13 @@ Picked spectrum index: 7 class: 0
   neg view source idx: 8 class: 0
 
 Encoded representations (first 6 of 16):
-  enc(original): [ 0.2405  0.3901  0.0404  0.0448  0.0384 -0.4534]
-  enc(pos1):     [ 0.079   0.4712 -0.0014  0.1769  0.0065 -0.4767]
-  enc(pos2):     [ 0.2844  0.2496 -0.0043  0.0928  0.0464 -0.515 ]
-  enc(neg):      [ 0.1967  0.3172  0.0338  0.1879  0.0506 -0.498 ]
+  enc(original): [ 0.0284  0.1034 -0.184   0.3427  0.2627  0.2021]
+  enc(pos1):     [-0.0894  0.1297 -0.0768  0.4818  0.2426  0.2199]
+  enc(pos2):     [ 0.0302  0.1045 -0.1575  0.3563  0.1496  0.3048]
+  enc(neg):      [-0.0208  0.1638 -0.0887  0.4348  0.1415  0.3133]
 </pre></div>
 </div>
-<img alt="_images/67fa290697722129a81e6a200d0f84a765db25fe6c3bf91c48ad647c1b6b8764.png" src="_images/67fa290697722129a81e6a200d0f84a765db25fe6c3bf91c48ad647c1b6b8764.png" />
+<img alt="_images/2cf1be3ca03430b1f60771df1fa1ce32ecdaaf7941ea46cad127d516937ca0b4.png" src="_images/2cf1be3ca03430b1f60771df1fa1ce32ecdaaf7941ea46cad127d516937ca0b4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier on embeddings:
   train size: 36 test size: 54
   test accuracy: 1.0
@@ -2814,18 +2821,18 @@ Encoded representations (first 6 of 16):
 </details>
 <div class="cell_output docutils container">
 <img alt="_images/dfdeb503fd0280638ea0b7647a2a877259e43b66e293ad7cf93c0799208be896.png" src="_images/dfdeb503fd0280638ea0b7647a2a877259e43b66e293ad7cf93c0799208be896.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [ 0.4584  0.3636  0.078  -0.1559 -0.1334 -0.4547 -0.3357 -0.2243]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [0.3146 0.3283 0.1237 0.3676 0.0225 0.1276 0.2218 0.4988]
 </pre></div>
 </div>
-<img alt="_images/8b4415638f0f02a4cf02b515c66a1b384fa91787550974966a77f0f39f492a06.png" src="_images/8b4415638f0f02a4cf02b515c66a1b384fa91787550974966a77f0f39f492a06.png" />
+<img alt="_images/2f57ec754a50bca6ad03d3dc2560617c379f18d702ebffa7d90afb227a649119.png" src="_images/2f57ec754a50bca6ad03d3dc2560617c379f18d702ebffa7d90afb227a649119.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class: 0
-Class probabilities: [0.883, 0.105, 0.012]
-Nearest neighbor index in existing set: 6
+Class probabilities: [0.895, 0.014, 0.09]
+Nearest neighbor index in existing set: 26
 Nearest neighbor label: 0
-Cosine similarity in embedding space: 0.8453
+Cosine similarity in embedding space: 0.843
 </pre></div>
 </div>
-<img alt="_images/d15ace7f380a18d883ae8f76786fd0b5b5434e4d8e15139752ff85dca7616df9.png" src="_images/d15ace7f380a18d883ae8f76786fd0b5b5434e4d8e15139752ff85dca7616df9.png" />
+<img alt="_images/9d841e8c7bf57bfce9c930a31374862e51906cdfbedd5a179993e8de3ecc0780.png" src="_images/9d841e8c7bf57bfce9c930a31374862e51906cdfbedd5a179993e8de3ecc0780.png" />
 </div>
 </div>
 </section>
@@ -2897,6 +2904,15 @@ Cosine similarity in embedding space: 0.8453
         <p class="prev-next-title">Lecture 17 - PU Learning</p>
       </div>
     </a>
+    <a class="right-next"
+       href="lecture-19.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 19 - Transformers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2913,6 +2929,7 @@ Cosine similarity in embedding space: 0.8453
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-learning-concepts">2. Contrastive learning concepts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-positive-pair-and-a-negative-pair">2.1 What is a positive pair and a negative pair</a></li>
