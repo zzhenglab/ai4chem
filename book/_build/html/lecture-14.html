@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-14';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -217,7 +203,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -226,14 +212,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -358,10 +344,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -369,14 +355,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -398,7 +384,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-bayesian-optimization">2. What is Bayesian Optimization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tiny-1d-objective-for-intuition">2.1 A tiny 1D objective for intuition</a></li>
@@ -447,28 +433,28 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-14-bayesian-optimization-for-synthesis-conditions">
-<h1>Lecture 14 - Bayesian Optimization for Synthesis Conditions<a class="headerlink" href="#lecture-14-bayesian-optimization-for-synthesis-conditions" title="Link to this heading">#</a></h1>
+<h1>Lecture 14 - Bayesian Optimization for Synthesis Conditions<a class="headerlink" href="#lecture-14-bayesian-optimization-for-synthesis-conditions" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
-<li><p><a class="reference internal" href="#id1" id="id3">Colab</a></p></li>
-<li><p><a class="reference internal" href="#setup" id="id4">1. Setup</a></p></li>
-<li><p><a class="reference internal" href="#what-is-bayesian-optimization" id="id5">2. What is Bayesian Optimization</a></p></li>
-<li><p><a class="reference internal" href="#gaussian-process-surrogate-prior-posterior-kernel" id="id6">3. Gaussian Process surrogate: prior, posterior, kernel</a></p></li>
-<li><p><a class="reference internal" href="#acquisition-functions-ei-ucb-pi-greedy" id="id7">4. Acquisition functions: EI, UCB, PI, greedy</a></p></li>
-<li><p><a class="reference internal" href="#the-bo-loop-in-1d-step-by-step" id="id8">5. The BO loop in 1D step by step</a></p></li>
-<li><p><a class="reference internal" href="#surrogate-alternatives-and-simple-diagnostics" id="id9">6. Surrogate alternatives and simple diagnostics</a></p></li>
-<li><p><a class="reference internal" href="#chemistry-case-study-suzuki-coupling-toy-dataset" id="id10">7. Chemistry case study: Suzuki coupling toy dataset</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id11">8. Glossary</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity" id="id12">9. In-class activity</a></p></li>
-<li><p><a class="reference internal" href="#solution" id="id13">10. Solution</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#colab" id="id2">Colab</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id3">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#what-is-bayesian-optimization" id="id4">2. What is Bayesian Optimization</a></p></li>
+<li><p><a class="reference internal" href="#gaussian-process-surrogate-prior-posterior-kernel" id="id5">3. Gaussian Process surrogate: prior, posterior, kernel</a></p></li>
+<li><p><a class="reference internal" href="#acquisition-functions-ei-ucb-pi-greedy" id="id6">4. Acquisition functions: EI, UCB, PI, greedy</a></p></li>
+<li><p><a class="reference internal" href="#the-bo-loop-in-1d-step-by-step" id="id7">5. The BO loop in 1D step by step</a></p></li>
+<li><p><a class="reference internal" href="#surrogate-alternatives-and-simple-diagnostics" id="id8">6. Surrogate alternatives and simple diagnostics</a></p></li>
+<li><p><a class="reference internal" href="#chemistry-case-study-suzuki-coupling-toy-dataset" id="id9">7. Chemistry case study: Suzuki coupling toy dataset</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id10">8. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id11">9. In-class activity</a></p></li>
+<li><p><a class="reference internal" href="#solution" id="id12">10. Solution</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Explain the ideas behind <strong>Bayesian Optimization</strong> for expensive experiments.</p></li>
 <li><p>Define <strong>prior belief</strong>, <strong>surrogate model</strong> (GP, RF, small NN), and <strong>acquisition function</strong> (EI, UCB, PI, greedy).</p></li>
@@ -476,16 +462,16 @@ document.write(`
 <li><p>Run a chemistry case study: toy <strong>Suzuki coupling</strong> with three controllable factors (time, temperature, concentration) to optimize yield.</p></li>
 </ul>
 </section>
-<section id="id1">
-<h2><a class="reference external" href="https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="colab">
+<h2><a class="reference external" href="https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a><a class="headerlink" href="#colab" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1.1 Imports and global settings</span>
@@ -542,7 +528,7 @@ document.write(`
 </div>
 </section>
 <section id="what-is-bayesian-optimization">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. What is Bayesian Optimization</a><a class="headerlink" href="#what-is-bayesian-optimization" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. What is Bayesian Optimization</a><a class="headerlink" href="#what-is-bayesian-optimization" title="Permalink to this heading">#</a></h2>
 <p>Bayesian Optimization (BO) is a strategy to optimize an unknown objective <span class="math notranslate nohighlight">\(f(x)\)</span> when evaluations are expensive. Think of <span class="math notranslate nohighlight">\(f(x)\)</span> as a reaction yield produced by a full experiment. We want to find <span class="math notranslate nohighlight">\(x^*\)</span> that maximizes <span class="math notranslate nohighlight">\(f(x)\)</span> using as few experiments as possible.</p>
 <p>The workflow:</p>
 <ol class="arabic simple">
@@ -553,13 +539,13 @@ document.write(`
 </ol>
 <p>We repeat 2 to 4 until the budget is used.</p>
 <section id="a-tiny-1d-objective-for-intuition">
-<h3>2.1 A tiny 1D objective for intuition<a class="headerlink" href="#a-tiny-1d-objective-for-intuition" title="Link to this heading">#</a></h3>
+<h3>2.1 A tiny 1D objective for intuition<a class="headerlink" href="#a-tiny-1d-objective-for-intuition" title="Permalink to this heading">#</a></h3>
 <p>We define a 1D function as a stand-in for an expensive lab run. The optimizer only sees measured points.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2.1 A 1D &quot;hidden&quot; objective</span>
@@ -624,7 +610,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_grid shape: (400, 1) y_grid shape: (400, 1)
 </pre></div>
 </div>
-<img alt="_images/b0b4d0b380be3f8032c06aa27cc7de5ebea630e5e53bfdac531438352cc6059f.png" src="_images/b0b4d0b380be3f8032c06aa27cc7de5ebea630e5e53bfdac531438352cc6059f.png" />
+<img alt="_images/e4c6bdfd39f81c100548c48e7fbc6ef7a76285f6ec5912c1a1e5ce085d3966dd.png" src="_images/e4c6bdfd39f81c100548c48e7fbc6ef7a76285f6ec5912c1a1e5ce085d3966dd.png" />
 </div>
 </div>
 <div class="admonition-try-it admonition">
@@ -634,7 +620,7 @@ document.write(`
 </section>
 </section>
 <section id="gaussian-process-surrogate-prior-posterior-kernel">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Gaussian Process surrogate: prior, posterior, kernel</a><a class="headerlink" href="#gaussian-process-surrogate-prior-posterior-kernel" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Gaussian Process surrogate: prior, posterior, kernel</a><a class="headerlink" href="#gaussian-process-surrogate-prior-posterior-kernel" title="Permalink to this heading">#</a></h2>
 <p>A <strong>Gaussian Process (GP)</strong> defines a distribution over functions. You can think of it as a smooth prior belief about how <span class="math notranslate nohighlight">\(f\)</span> behaves.</p>
 <ul class="simple">
 <li><p><em>Prior</em>: Your belief about the function before you see any data. <span class="math notranslate nohighlight">\(f(x) \sim \mathcal{GP}(m(x), k(x, x'))\)</span> with mean <span class="math notranslate nohighlight">\(m(x)\)</span> (often zero) and kernel <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
@@ -656,13 +642,13 @@ Imagine you want to optimize a synthetic reaction yield (say, % yield of a new p
 </ol>
 <p>The posterior reflects both your data and your initial assumption (kernel).</p>
 <section id="draw-function-samples-from-the-prior">
-<h3>3.1 Draw function samples from the prior<a class="headerlink" href="#draw-function-samples-from-the-prior" title="Link to this heading">#</a></h3>
+<h3>3.1 Draw function samples from the prior<a class="headerlink" href="#draw-function-samples-from-the-prior" title="Permalink to this heading">#</a></h3>
 <p>Below let’s look at sample from a GP prior to feel how kernels shape functions.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kernel_prior</span> <span class="o">=</span> <span class="n">C</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="n">RBF</span><span class="p">(</span><span class="n">length_scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span> <span class="c1"># ConstantKernel + RBF</span>
@@ -705,21 +691,21 @@ Imagine you want to optimize a synthetic reaction yield (say, % yield of a new p
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prior sample matrix shape: (400, 3)
 </pre></div>
 </div>
-<img alt="_images/360ea3e651bd11352a9a520e650542557f2db0e530a49eacb339a4b2674ba068.png" src="_images/360ea3e651bd11352a9a520e650542557f2db0e530a49eacb339a4b2674ba068.png" />
-<img alt="_images/da61e0d7a1ff0bba72b927ea8fea4dded1ea3fe5113779e6463d95559cc066c3.png" src="_images/da61e0d7a1ff0bba72b927ea8fea4dded1ea3fe5113779e6463d95559cc066c3.png" />
-<img alt="_images/ccc3a36af51a86564c42487a6ae203caa3ec36d109b6c261208760cd78df13ba.png" src="_images/ccc3a36af51a86564c42487a6ae203caa3ec36d109b6c261208760cd78df13ba.png" />
+<img alt="_images/84853fd677318a85fbdbb1a688b8d2e067916818a8545d1d6431736b500f154f.png" src="_images/84853fd677318a85fbdbb1a688b8d2e067916818a8545d1d6431736b500f154f.png" />
+<img alt="_images/e248005a6ecc1cf27557077ab71b0437b40b092ec439437824fb8656b7963597.png" src="_images/e248005a6ecc1cf27557077ab71b0437b40b092ec439437824fb8656b7963597.png" />
+<img alt="_images/1ffb8ec09570977b51d3d94559a76d802b9050df1eb8b2675245daa3dfa1db68.png" src="_images/1ffb8ec09570977b51d3d94559a76d802b9050df1eb8b2675245daa3dfa1db68.png" />
 </div>
 </div>
 </section>
 <section id="fit-gp-posterior-on-a-few-points">
-<h3>3.2 Fit GP posterior on a few points<a class="headerlink" href="#fit-gp-posterior-on-a-few-points" title="Link to this heading">#</a></h3>
+<h3>3.2 Fit GP posterior on a few points<a class="headerlink" href="#fit-gp-posterior-on-a-few-points" title="Permalink to this heading">#</a></h3>
 <p>We start with 3 points <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">0.5)</span></code>, <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1.7)</span></code>, <code class="docutils literal notranslate"><span class="pre">(3.5,</span> <span class="pre">1.2)</span></code>.
 Think about we run 3 reactions and got the actual yields.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3.2 Initial data</span>
@@ -756,8 +742,8 @@ Think about we run 3 reactions and got the actual yields.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Learned kernel: 1**2 * RBF(length_scale=0.293)
 </pre></div>
 </div>
-<img alt="_images/b72fcdd355e040fb792bb797191d26cf6a7b09a6170a58af9c71e04620337e02.png" src="_images/b72fcdd355e040fb792bb797191d26cf6a7b09a6170a58af9c71e04620337e02.png" />
-<img alt="_images/e989695d76c5ed0c01ad0874fd2b16506b8f63c09f6f6d3182b0370bc2fbd595.png" src="_images/e989695d76c5ed0c01ad0874fd2b16506b8f63c09f6f6d3182b0370bc2fbd595.png" />
+<img alt="_images/609b71236b41e3beae12797e6f8d487668bb9657f5f4b2e471f2a97a86826970.png" src="_images/609b71236b41e3beae12797e6f8d487668bb9657f5f4b2e471f2a97a86826970.png" />
+<img alt="_images/0508b81151cdaf588f829315fd9e9478980d174b59f7de61b35eda77152570a0.png" src="_images/0508b81151cdaf588f829315fd9e9478980d174b59f7de61b35eda77152570a0.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -774,7 +760,7 @@ where:</p>
 </section>
 </section>
 <section id="acquisition-functions-ei-ucb-pi-greedy">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">4. Acquisition functions: EI, UCB, PI, greedy</a><a class="headerlink" href="#acquisition-functions-ei-ucb-pi-greedy" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Acquisition functions: EI, UCB, PI, greedy</a><a class="headerlink" href="#acquisition-functions-ei-ucb-pi-greedy" title="Permalink to this heading">#</a></h2>
 <p>An <strong>acquisition function</strong> <span class="math notranslate nohighlight">\(a(x)\)</span> scores how useful a new evaluation at <span class="math notranslate nohighlight">\(x\)</span> would be. It uses <span class="math notranslate nohighlight">\(\mu(x)\)</span> and <span class="math notranslate nohighlight">\(\sigma(x)\)</span> from the surrogate.</p>
 <p>We will maximize the acquisition (so higher is better) for <strong>maximization</strong> problems.</p>
 <p>Let <span class="math notranslate nohighlight">\(y^+\)</span> be the best observed value so far and <span class="math notranslate nohighlight">\(\xi \ge 0\)</span> a small margin to encourage exploration.</p>
@@ -799,7 +785,7 @@ a(x) = \mu(x)
 \)</span>$</p></li>
 </ul>
 <section id="implement-acquisition-functions">
-<h3>4.1 Implement acquisition functions<a class="headerlink" href="#implement-acquisition-functions" title="Link to this heading">#</a></h3>
+<h3>4.1 Implement acquisition functions<a class="headerlink" href="#implement-acquisition-functions" title="Permalink to this heading">#</a></h3>
 <p>We write short functions that accept arrays of <span class="math notranslate nohighlight">\(\mu\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span>, and the current best <span class="math notranslate nohighlight">\(y^+\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -841,7 +827,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="visualize-acquisition-shapes">
-<h3>4.2 Visualize acquisition shapes<a class="headerlink" href="#visualize-acquisition-shapes" title="Link to this heading">#</a></h3>
+<h3>4.2 Visualize acquisition shapes<a class="headerlink" href="#visualize-acquisition-shapes" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4.2 Acquisition profiles over x_grid with current GP</span>
@@ -871,7 +857,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ebb8531ff887ad19de8699727202b6537e0ef5e4351db852c462ba5929285cf.png" src="_images/8ebb8531ff887ad19de8699727202b6537e0ef5e4351db852c462ba5929285cf.png" />
+<img alt="_images/2e81e1860e417a37e1b5c63bf2be740a35d6d590fccc510920693ee99af35e63.png" src="_images/2e81e1860e417a37e1b5c63bf2be740a35d6d590fccc510920693ee99af35e63.png" />
 </div>
 </div>
 <div class="admonition-tip admonition">
@@ -885,7 +871,7 @@ Greedy: [0.1 0.2 0.5]
 </section>
 </section>
 <section id="the-bo-loop-in-1d-step-by-step">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. The BO loop in 1D step by step</a><a class="headerlink" href="#the-bo-loop-in-1d-step-by-step" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. The BO loop in 1D step by step</a><a class="headerlink" href="#the-bo-loop-in-1d-step-by-step" title="Permalink to this heading">#</a></h2>
 <p>We now implement the loop:</p>
 <ol class="arabic simple">
 <li><p>Fit surrogate to <span class="math notranslate nohighlight">\((X, y)\)</span>.</p></li>
@@ -896,7 +882,7 @@ Greedy: [0.1 0.2 0.5]
 </ol>
 <p>We will do 15 to 20 iterations and look at the history.</p>
 <section id="small-utility-argmax-on-a-grid">
-<h3>5.1 Small utility: argmax on a grid<a class="headerlink" href="#small-utility-argmax-on-a-grid" title="Link to this heading">#</a></h3>
+<h3>5.1 Small utility: argmax on a grid<a class="headerlink" href="#small-utility-argmax-on-a-grid" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5.1 Argmax on a grid</span>
@@ -913,14 +899,14 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[40]]), np.int64(3))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[40]]), 3)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="run-bo-with-ei">
-<h3>5.2 Run BO with EI<a class="headerlink" href="#run-bo-with-ei" title="Link to this heading">#</a></h3>
+<h3>5.2 Run BO with EI<a class="headerlink" href="#run-bo-with-ei" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ----- Initial data -----</span>
@@ -1017,65 +1003,65 @@ Greedy: [0.1 0.2 0.5]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 1: x_next=2.987468671679198, y_next=1.751929766965282, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/749b82d368b409221d7a2dcb03fff6cfcbe24341ae92ff3d8f6ea9559dfded41.png" src="_images/749b82d368b409221d7a2dcb03fff6cfcbe24341ae92ff3d8f6ea9559dfded41.png" />
+<img alt="_images/f5dc1679facf85420d937acad14b69679ec7e6362c4947b2a82f9604d9dc169f.png" src="_images/f5dc1679facf85420d937acad14b69679ec7e6362c4947b2a82f9604d9dc169f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 2: x_next=2.756892230576441, y_next=0.6551551807430195, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/7f7e9e532f33aefefdc52a3b4e592021693a1f63628f9634e47bd453172825ff.png" src="_images/7f7e9e532f33aefefdc52a3b4e592021693a1f63628f9634e47bd453172825ff.png" />
+<img alt="_images/5dddf9d5a4e4de19095145eb4a51b4f4ade9441ec5b15a43c1a6920109f0143b.png" src="_images/5dddf9d5a4e4de19095145eb4a51b4f4ade9441ec5b15a43c1a6920109f0143b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 3: x_next=2.9373433583959896, y_next=1.440981135962244, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/1d92fc673d73e920de33815007a1e4f36e77df2af42bfe223b7482ebcffbef4c.png" src="_images/1d92fc673d73e920de33815007a1e4f36e77df2af42bfe223b7482ebcffbef4c.png" />
+<img alt="_images/cc428b7d31892e407ec2910e3a7131b73de57a5e097b4b5e4903b60c25a698d3.png" src="_images/cc428b7d31892e407ec2910e3a7131b73de57a5e097b4b5e4903b60c25a698d3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 4: x_next=3.0977443609022552, y_next=1.5688864052195108, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/bde726f19bc3063f3f03f43f9757e9bf76bf1ea0fc85515a6710b3c0ad953df0.png" src="_images/bde726f19bc3063f3f03f43f9757e9bf76bf1ea0fc85515a6710b3c0ad953df0.png" />
+<img alt="_images/84257489aac8f4a3ead74157367807f9690cd2146daae6d6b1c77e29b3703abe.png" src="_images/84257489aac8f4a3ead74157367807f9690cd2146daae6d6b1c77e29b3703abe.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 5: x_next=0.0, y_next=-1.1855296185337663, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/8ccea2fd5d333cd294d0856a53acb148c9531bd5769a2dd43721ee0b721aad00.png" src="_images/8ccea2fd5d333cd294d0856a53acb148c9531bd5769a2dd43721ee0b721aad00.png" />
+<img alt="_images/818227d995350d476d117d681fda97f1c4cdc12bf31531e39fb3b79833b3734c.png" src="_images/818227d995350d476d117d681fda97f1c4cdc12bf31531e39fb3b79833b3734c.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 6: x_next=3.789473684210526, y_next=0.7607467191519236, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/ce5a5d0a5e109371e68353ce27757ee02277ad0fc417f2a2ee371514685a453d.png" src="_images/ce5a5d0a5e109371e68353ce27757ee02277ad0fc417f2a2ee371514685a453d.png" />
+<img alt="_images/3d1f17474bf69a15e19031c828fb3d41c674278da7527873a131443c84375d17.png" src="_images/3d1f17474bf69a15e19031c828fb3d41c674278da7527873a131443c84375d17.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 7: x_next=1.0225563909774436, y_next=-0.4062831800840925, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/759af5623d2d48775ddcd545dc76f5d881157c868834a2b3227c7fe51f5bf97b.png" src="_images/759af5623d2d48775ddcd545dc76f5d881157c868834a2b3227c7fe51f5bf97b.png" />
+<img alt="_images/f537f5a8a06e5896ea3547f2786f16a2da8dab724729f5be75e9dd6dc2141df3.png" src="_images/f537f5a8a06e5896ea3547f2786f16a2da8dab724729f5be75e9dd6dc2141df3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 8: x_next=2.406015037593985, y_next=0.9081980588839931, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/98a9fcbb01313405140713db2934323cea5e28275ac1b1d97a7db33743151aa5.png" src="_images/98a9fcbb01313405140713db2934323cea5e28275ac1b1d97a7db33743151aa5.png" />
+<img alt="_images/b93ec5994abfae68719e2fb78879a2234b5994152d1f256976ecb920c1e61e18.png" src="_images/b93ec5994abfae68719e2fb78879a2234b5994152d1f256976ecb920c1e61e18.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 9: x_next=1.5538847117794485, y_next=-0.20037966426685516, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/f45d0fa445de0566d683997a62965432bad638f4c5c29bb6229c8159e482e1e7.png" src="_images/f45d0fa445de0566d683997a62965432bad638f4c5c29bb6229c8159e482e1e7.png" />
+<img alt="_images/9317b892c1a2397ffde1a8fcad88df7e17a80dc105ba083c0afa8257bb81c9ea.png" src="_images/9317b892c1a2397ffde1a8fcad88df7e17a80dc105ba083c0afa8257bb81c9ea.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 10: x_next=3.1378446115288217, y_next=1.4854980266232756, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/017c1795d2810120f8022604d5087a4c6ace517739bf1d3b33727e55774dad81.png" src="_images/017c1795d2810120f8022604d5087a4c6ace517739bf1d3b33727e55774dad81.png" />
+<img alt="_images/0e99d79cbf4384aa6f5e0104f79a5615293ca56ef2fb09fe18ec99a8c43fbf5f.png" src="_images/0e99d79cbf4384aa6f5e0104f79a5615293ca56ef2fb09fe18ec99a8c43fbf5f.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 11: x_next=3.117794486215539, y_next=1.6351712270821586, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/b1052abad0f4df872e9b1011ca1d821fcdad0d42d26315e241aa5ced96257af8.png" src="_images/b1052abad0f4df872e9b1011ca1d821fcdad0d42d26315e241aa5ced96257af8.png" />
+<img alt="_images/66d58d043f186211707d1b7fcb2a2ceb2f2b65070de30a03fd31dfe48314eadf.png" src="_images/66d58d043f186211707d1b7fcb2a2ceb2f2b65070de30a03fd31dfe48314eadf.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 12: x_next=0.5413533834586466, y_next=-0.9191920723545901, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/6e20dc467071c3b224961d1cdc0e6fb5ce92117bfaa42f4fe01f1ba8844f28af.png" src="_images/6e20dc467071c3b224961d1cdc0e6fb5ce92117bfaa42f4fe01f1ba8844f28af.png" />
+<img alt="_images/2713cce8dd9f1da6e3aafd40b00415ebef87c88fa91178a5b9d9f7eeba02fe35.png" src="_images/2713cce8dd9f1da6e3aafd40b00415ebef87c88fa91178a5b9d9f7eeba02fe35.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 13: x_next=3.1278195488721803, y_next=1.51403716027239, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/b967ed1704c91de220faa602413eec78edf02fb8db17b6da61ee4e4a012b982e.png" src="_images/b967ed1704c91de220faa602413eec78edf02fb8db17b6da61ee4e4a012b982e.png" />
+<img alt="_images/531bd15adc60073e0ccf1f379f11783b81b6d94a2962c4e95e9ea2c1a2bd84da.png" src="_images/531bd15adc60073e0ccf1f379f11783b81b6d94a2962c4e95e9ea2c1a2bd84da.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 14: x_next=3.1278195488721803, y_next=1.5109553027396445, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/b3e597cbd8a9f18184e16361de2936f34dfe828e719951d2e4b736724fff1f2d.png" src="_images/b3e597cbd8a9f18184e16361de2936f34dfe828e719951d2e4b736724fff1f2d.png" />
+<img alt="_images/aedbc6855e2a7543fb090a6db861183344215d3320de17df168985ef3e56cef8.png" src="_images/aedbc6855e2a7543fb090a6db861183344215d3320de17df168985ef3e56cef8.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iter 15: x_next=4.0, y_next=0.8618457095301242, best_so_far=1.751929766965282
 </pre></div>
 </div>
-<img alt="_images/be7454cfd185516b245d3b1c17609b1c5b5a72f7dd476ef514e3d99a1a3bfe0f.png" src="_images/be7454cfd185516b245d3b1c17609b1c5b5a72f7dd476ef514e3d99a1a3bfe0f.png" />
-<img alt="_images/32a7ec41b81a292c3f735be3e4dd718b071c5a61283af3787750b91cee529e73.png" src="_images/32a7ec41b81a292c3f735be3e4dd718b071c5a61283af3787750b91cee529e73.png" />
-<img alt="_images/1f7fccf366e41f2e29b33adf0886cef218ee5b66816d2505d683a94a6c1efc82.png" src="_images/1f7fccf366e41f2e29b33adf0886cef218ee5b66816d2505d683a94a6c1efc82.png" />
+<img alt="_images/7f60bd1c62fc9425a962ccdbe39c380728e92e39336ffc9eb8552bfe4574e580.png" src="_images/7f60bd1c62fc9425a962ccdbe39c380728e92e39336ffc9eb8552bfe4574e580.png" />
+<img alt="_images/da0aeaa15a27f3290c2e07feca3863141f1179269f74be3a2dd5c27d43e940bc.png" src="_images/da0aeaa15a27f3290c2e07feca3863141f1179269f74be3a2dd5c27d43e940bc.png" />
+<img alt="_images/b9935fc61eee072219311872a812be3bb2a2952a271b3a79bf6ff11258ce7bc9.png" src="_images/b9935fc61eee072219311872a812be3bb2a2952a271b3a79bf6ff11258ce7bc9.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1084,7 +1070,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="where-did-bo-sample">
-<h3>5.3 Where did BO sample<a class="headerlink" href="#where-did-bo-sample" title="Link to this heading">#</a></h3>
+<h3>5.3 Where did BO sample<a class="headerlink" href="#where-did-bo-sample" title="Permalink to this heading">#</a></h3>
 <p>A healthy pattern often shows some early exploration across the space, then a focus on promising regions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1100,17 +1086,17 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0223887d1f9cb03dea8d48e687f0bd82923c7a38b529b14ff885c425768a0935.png" src="_images/0223887d1f9cb03dea8d48e687f0bd82923c7a38b529b14ff885c425768a0935.png" />
+<img alt="_images/d250dd987eb51a5b1a8e91f592f4cd0e10de87dd4cd76a01aef936ff556803f3.png" src="_images/d250dd987eb51a5b1a8e91f592f4cd0e10de87dd4cd76a01aef936ff556803f3.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="surrogate-alternatives-and-simple-diagnostics">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Surrogate alternatives and simple diagnostics</a><a class="headerlink" href="#surrogate-alternatives-and-simple-diagnostics" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Surrogate alternatives and simple diagnostics</a><a class="headerlink" href="#surrogate-alternatives-and-simple-diagnostics" title="Permalink to this heading">#</a></h2>
 <p>Gaussian Processes are a common surrogate for low to moderate dimensional spaces. For higher dimensions or larger datasets, tree ensembles and small neural surrogates can help.</p>
 <p>We try a <strong>RandomForestRegressor</strong> as a surrogate. Its mean is the average prediction across trees, and an uncertainty <em>proxy</em> is the <strong>standard deviation across trees</strong>.</p>
 <section id="random-forest-surrogate-mean-and-std-from-trees">
-<h3>6.1 Random Forest surrogate: mean and std from trees<a class="headerlink" href="#random-forest-surrogate-mean-and-std-from-trees" title="Link to this heading">#</a></h3>
+<h3>6.1 Random Forest surrogate: mean and std from trees<a class="headerlink" href="#random-forest-surrogate-mean-and-std-from-trees" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 6.1 RF surrogate: using tree-wise predictions for mean and std</span>
@@ -1137,7 +1123,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="bo-loop-with-rf-surrogate-ei">
-<h3>6.2 BO loop with RF surrogate (EI)<a class="headerlink" href="#bo-loop-with-rf-surrogate-ei" title="Link to this heading">#</a></h3>
+<h3>6.2 BO loop with RF surrogate (EI)<a class="headerlink" href="#bo-loop-with-rf-surrogate-ei" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RF surrogate + EI, 15 iterations</span>
@@ -1240,8 +1226,8 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/93e2b2987b9eed983f1f79c437eeb885a9887b55b87f08df40f41a99c5e698d9.png" src="_images/93e2b2987b9eed983f1f79c437eeb885a9887b55b87f08df40f41a99c5e698d9.png" />
-<img alt="_images/09efa0030ea4dcfe83446626622cf61e6d94160d754c3b14be376bbc83f813a8.png" src="_images/09efa0030ea4dcfe83446626622cf61e6d94160d754c3b14be376bbc83f813a8.png" />
+<img alt="_images/b2b8f5a50e9b0e283a3a2feeb662cfba1a5cb8463018a7d87495cea3868cab76.png" src="_images/b2b8f5a50e9b0e283a3a2feeb662cfba1a5cb8463018a7d87495cea3868cab76.png" />
+<img alt="_images/21afcd3afd174457855b6627bb953a4e122462f5eae50b186df0aee98905e10e.png" src="_images/21afcd3afd174457855b6627bb953a4e122462f5eae50b186df0aee98905e10e.png" />
 </div>
 </div>
 <p>The RF surrogate can handle more points without much tuning, and the spread across trees gives a simple uncertainty estimate.</p>
@@ -1251,7 +1237,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="small-neural-surrogate-via-mc-dropout">
-<h3>6.3 Small neural surrogate via MC Dropout<a class="headerlink" href="#small-neural-surrogate-via-mc-dropout" title="Link to this heading">#</a></h3>
+<h3>6.3 Small neural surrogate via MC Dropout<a class="headerlink" href="#small-neural-surrogate-via-mc-dropout" title="Permalink to this heading">#</a></h3>
 <p>Bayesian Optimization needs a surrogate that gives a prediction and an uncertainty. A Bayesian Neural Network does this by treating the network’s predictions as random rather than fixed. A simple and practical way to get there is MC Dropout. You train a normal MLP with dropout, then at prediction time you keep dropout on and run many stochastic forward passes.</p>
 <ol class="arabic simple">
 <li><p>Mean: Consider the mean as the network’s best guess of the function value at a point, averaged over many dropout passes (or weight samples).</p></li>
@@ -1376,13 +1362,13 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a15970de8b2c9078aaf841273c95d28c0b2f724576d3dbfcd5fcf4e1ea39e355.png" src="_images/a15970de8b2c9078aaf841273c95d28c0b2f724576d3dbfcd5fcf4e1ea39e355.png" />
+<img alt="_images/d4e17d55638073d6f8c329d25d1bc7f37e32483b3435a9116cdd91bb077193f9.png" src="_images/d4e17d55638073d6f8c329d25d1bc7f37e32483b3435a9116cdd91bb077193f9.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="chemistry-case-study-suzuki-coupling-toy-dataset">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. Chemistry case study: Suzuki coupling toy dataset</a><a class="headerlink" href="#chemistry-case-study-suzuki-coupling-toy-dataset" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. Chemistry case study: Suzuki coupling toy dataset</a><a class="headerlink" href="#chemistry-case-study-suzuki-coupling-toy-dataset" title="Permalink to this heading">#</a></h2>
 <p>We now switch to a chemistry example that mirrors a common experimental optimization. Consider <strong>Suzuki cross coupling</strong> where you can control:</p>
 <ul class="simple">
 <li><p>Reaction time <span class="math notranslate nohighlight">\(t\)</span> in minutes</p></li>
@@ -1392,7 +1378,7 @@ Greedy: [0.1 0.2 0.5]
 <p>Our goal is to <strong>maximize yield</strong>. We will build a toy function that captures a plausible shape: yield grows with time then plateaus, has a sweet spot in temperature, and prefers a moderate concentration. We also add mild interactions and noise.</p>
 <p>We generate 800 points to form a dataset you can explore and also use as an oracle to simulate experiments.</p>
 <section id="create-the-toy-suzuki-dataset">
-<h3>7.1 Create the toy Suzuki dataset<a class="headerlink" href="#create-the-toy-suzuki-dataset" title="Link to this heading">#</a></h3>
+<h3>7.1 Create the toy Suzuki dataset<a class="headerlink" href="#create-the-toy-suzuki-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 7.1 Simulated Suzuki yield function</span>
@@ -1546,7 +1532,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="visual-slices-of-the-surface">
-<h3>7.2 Visual slices of the surface<a class="headerlink" href="#visual-slices-of-the-surface" title="Link to this heading">#</a></h3>
+<h3>7.2 Visual slices of the surface<a class="headerlink" href="#visual-slices-of-the-surface" title="Permalink to this heading">#</a></h3>
 <p>We fix one variable and show how yield changes with the other two.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1581,14 +1567,14 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00e952f35af12478a7ede37c0c3471c6c683dc36ff1f0eacc93a792dc4158aaf.png" src="_images/00e952f35af12478a7ede37c0c3471c6c683dc36ff1f0eacc93a792dc4158aaf.png" />
-<img alt="_images/dd2141b37e27f2793d44f9015ca01702288b14f1c8b791847f2ab512d0eaffe5.png" src="_images/dd2141b37e27f2793d44f9015ca01702288b14f1c8b791847f2ab512d0eaffe5.png" />
+<img alt="_images/635698deb2708f00bfbf7bb4944038d8c46a43b37ddb6a6f06479c357f9b4008.png" src="_images/635698deb2708f00bfbf7bb4944038d8c46a43b37ddb6a6f06479c357f9b4008.png" />
+<img alt="_images/847bb9e6ec8da0b0c8e0ed2bc1e0dc4e577f34aca0c04121d774a89b0ca2af92.png" src="_images/847bb9e6ec8da0b0c8e0ed2bc1e0dc4e577f34aca0c04121d774a89b0ca2af92.png" />
 </div>
 </div>
 <p>These slices show a sweet region that we want BO to find in as few trials as possible.</p>
 </section>
 <section id="normalize-the-space-to-0-1-3">
-<h3>7.3 Normalize the space to [0,1]^3<a class="headerlink" href="#normalize-the-space-to-0-1-3" title="Link to this heading">#</a></h3>
+<h3>7.3 Normalize the space to [0,1]^3<a class="headerlink" href="#normalize-the-space-to-0-1-3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helpers to decode to lab units</span>
@@ -1614,7 +1600,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="bo-on-the-suzuki-surface-with-a-gp-surrogate">
-<h3>7.4 BO on the Suzuki surface with a GP surrogate<a class="headerlink" href="#bo-on-the-suzuki-surface-with-a-gp-surrogate" title="Link to this heading">#</a></h3>
+<h3>7.4 BO on the Suzuki surface with a GP surrogate<a class="headerlink" href="#bo-on-the-suzuki-surface-with-a-gp-surrogate" title="Permalink to this heading">#</a></h3>
 <p>We treat <code class="docutils literal notranslate"><span class="pre">suzuki_yield</span></code> as the lab experiment. At each step, BO proposes a normalized point <code class="docutils literal notranslate"><span class="pre">u</span></code> in [0,1]^3, we decode to lab units, run the experiment, and get a yield.</p>
 <p>We use <strong>EI</strong> as the acquisition.</p>
 <div class="cell docutils container">
@@ -1660,10 +1646,10 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot improvement</span>
@@ -1701,13 +1687,13 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9aec50f42d59dcb8acb30c0a747edbaf0c2a5ece2bc0011b123bd7794b0a15cb.png" src="_images/9aec50f42d59dcb8acb30c0a747edbaf0c2a5ece2bc0011b123bd7794b0a15cb.png" />
-<img alt="_images/26f0e0c1f32427998820b14eae6f5ff9eb9792d6c0aaec291a2b78959b918310.png" src="_images/26f0e0c1f32427998820b14eae6f5ff9eb9792d6c0aaec291a2b78959b918310.png" />
+<img alt="_images/ef980e852a98d289978fd680ec19682498c97ee1c129e18e54a40339daa38fe2.png" src="_images/ef980e852a98d289978fd680ec19682498c97ee1c129e18e54a40339daa38fe2.png" />
+<img alt="_images/b452fe23ee8dfbd7c328845ca65253bbac91953198100f8e7d15484cd2f2d01b.png" src="_images/b452fe23ee8dfbd7c328845ca65253bbac91953198100f8e7d15484cd2f2d01b.png" />
 </div>
 </div>
 </section>
 <section id="compare-to-grid-and-random-for-the-same-number-of-lab-runs">
-<h3>7.5 Compare to grid and random for the same number of lab runs<a class="headerlink" href="#compare-to-grid-and-random-for-the-same-number-of-lab-runs" title="Link to this heading">#</a></h3>
+<h3>7.5 Compare to grid and random for the same number of lab runs<a class="headerlink" href="#compare-to-grid-and-random-for-the-same-number-of-lab-runs" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define budgets you want to test</span>
@@ -1744,10 +1730,10 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot</span>
@@ -1762,12 +1748,12 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/2b8e61e663a9ed7689d4f7083b5881156d3923d0e71c0b79c7e2ac48d9538f45.png" src="_images/2b8e61e663a9ed7689d4f7083b5881156d3923d0e71c0b79c7e2ac48d9538f45.png" />
+<img alt="_images/9837b834d426c2c8d4ab44e1f7a31a253a0461832a36846f85e6eb78688f301e.png" src="_images/9837b834d426c2c8d4ab44e1f7a31a253a0461832a36846f85e6eb78688f301e.png" />
 </div>
 </div>
 </section>
 <section id="a-quick-rf-surrogate-on-suzuki">
-<h3>7.6 A quick RF surrogate on Suzuki<a class="headerlink" href="#a-quick-rf-surrogate-on-suzuki" title="Link to this heading">#</a></h3>
+<h3>7.6 A quick RF surrogate on Suzuki<a class="headerlink" href="#a-quick-rf-surrogate-on-suzuki" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 7.6 Repeat BO with RF + UCB on Suzuki</span>
@@ -1795,10 +1781,10 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">best_hist_rf</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
@@ -1811,38 +1797,38 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/b852f646257cc9166ade9be6ffb22598c7da3d829521bc56be37c624d956bb44.png" src="_images/b852f646257cc9166ade9be6ffb22598c7da3d829521bc56be37c624d956bb44.png" />
+<img alt="_images/8dc5a0a77848853f65af0a66b3d8a6eff4e0004e9f3164dcbae5004f434dc510.png" src="_images/8dc5a0a77848853f65af0a66b3d8a6eff4e0004e9f3164dcbae5004f434dc510.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="glossary">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Bayesian-Optimization">Bayesian Optimization<a class="headerlink" href="#term-Bayesian-Optimization" title="Link to this term">#</a></dt><dd><p>A method to optimize expensive black-box functions by fitting a surrogate with uncertainty and choosing the next experiment via an acquisition function.</p>
+<dt id="term-Bayesian-Optimization">Bayesian Optimization<a class="headerlink" href="#term-Bayesian-Optimization" title="Permalink to this term">#</a></dt><dd><p>A method to optimize expensive black-box functions by fitting a surrogate with uncertainty and choosing the next experiment via an acquisition function.</p>
 </dd>
-<dt id="term-Surrogate-model">Surrogate model<a class="headerlink" href="#term-Surrogate-model" title="Link to this term">#</a></dt><dd><p>A fast predictive model (GP, random forest, small NN) that provides a mean <span class="math notranslate nohighlight">\(\mu(x)\)</span> and an uncertainty proxy <span class="math notranslate nohighlight">\(\sigma(x)\)</span>.</p>
+<dt id="term-Surrogate-model">Surrogate model<a class="headerlink" href="#term-Surrogate-model" title="Permalink to this term">#</a></dt><dd><p>A fast predictive model (GP, random forest, small NN) that provides a mean <span class="math notranslate nohighlight">\(\mu(x)\)</span> and an uncertainty proxy <span class="math notranslate nohighlight">\(\sigma(x)\)</span>.</p>
 </dd>
-<dt id="term-Prior-belief">Prior belief<a class="headerlink" href="#term-Prior-belief" title="Link to this term">#</a></dt><dd><p>Initial assumption about the shape of the objective before data, such as a GP with a chosen kernel.</p>
+<dt id="term-Prior-belief">Prior belief<a class="headerlink" href="#term-Prior-belief" title="Permalink to this term">#</a></dt><dd><p>Initial assumption about the shape of the objective before data, such as a GP with a chosen kernel.</p>
 </dd>
-<dt id="term-Posterior">Posterior<a class="headerlink" href="#term-Posterior" title="Link to this term">#</a></dt><dd><p>Updated belief after seeing data. For a GP this yields closed-form <span class="math notranslate nohighlight">\(\mu(x)\)</span> and <span class="math notranslate nohighlight">\(\sigma(x)\)</span>.</p>
+<dt id="term-Posterior">Posterior<a class="headerlink" href="#term-Posterior" title="Permalink to this term">#</a></dt><dd><p>Updated belief after seeing data. For a GP this yields closed-form <span class="math notranslate nohighlight">\(\mu(x)\)</span> and <span class="math notranslate nohighlight">\(\sigma(x)\)</span>.</p>
 </dd>
-<dt id="term-Kernel-covariance-function">Kernel (covariance function)<a class="headerlink" href="#term-Kernel-covariance-function" title="Link to this term">#</a></dt><dd><p>Function defining similarity between inputs. Common choices: RBF, Matern. The length scale sets smoothness.</p>
+<dt id="term-Kernel-covariance-function">Kernel (covariance function)<a class="headerlink" href="#term-Kernel-covariance-function" title="Permalink to this term">#</a></dt><dd><p>Function defining similarity between inputs. Common choices: RBF, Matern. The length scale sets smoothness.</p>
 </dd>
-<dt id="term-Expected-Improvement-EI">Expected Improvement (EI)<a class="headerlink" href="#term-Expected-Improvement-EI" title="Link to this term">#</a></dt><dd><p>Acquisition that scores the expected gain over the current best.</p>
+<dt id="term-Expected-Improvement-EI">Expected Improvement (EI)<a class="headerlink" href="#term-Expected-Improvement-EI" title="Permalink to this term">#</a></dt><dd><p>Acquisition that scores the expected gain over the current best.</p>
 </dd>
-<dt id="term-Upper-Confidence-Bound-UCB">Upper Confidence Bound (UCB)<a class="headerlink" href="#term-Upper-Confidence-Bound-UCB" title="Link to this term">#</a></dt><dd><p>Acquisition that adds a multiple of uncertainty to the mean: <span class="math notranslate nohighlight">\(\mu + \kappa \sigma\)</span>.</p>
+<dt id="term-Upper-Confidence-Bound-UCB">Upper Confidence Bound (UCB)<a class="headerlink" href="#term-Upper-Confidence-Bound-UCB" title="Permalink to this term">#</a></dt><dd><p>Acquisition that adds a multiple of uncertainty to the mean: <span class="math notranslate nohighlight">\(\mu + \kappa \sigma\)</span>.</p>
 </dd>
-<dt id="term-Probability-of-Improvement-PI">Probability of Improvement (PI)<a class="headerlink" href="#term-Probability-of-Improvement-PI" title="Link to this term">#</a></dt><dd><p>Acquisition that scores the probability to improve over the best by at least a margin.</p>
+<dt id="term-Probability-of-Improvement-PI">Probability of Improvement (PI)<a class="headerlink" href="#term-Probability-of-Improvement-PI" title="Permalink to this term">#</a></dt><dd><p>Acquisition that scores the probability to improve over the best by at least a margin.</p>
 </dd>
-<dt id="term-Exploration">Exploration<a class="headerlink" href="#term-Exploration" title="Link to this term">#</a></dt><dd><p>Trying uncertain regions with high <span class="math notranslate nohighlight">\(\sigma(x)\)</span> to gain information.</p>
+<dt id="term-Exploration">Exploration<a class="headerlink" href="#term-Exploration" title="Permalink to this term">#</a></dt><dd><p>Trying uncertain regions with high <span class="math notranslate nohighlight">\(\sigma(x)\)</span> to gain information.</p>
 </dd>
-<dt id="term-Exploitation">Exploitation<a class="headerlink" href="#term-Exploitation" title="Link to this term">#</a></dt><dd><p>Focusing near known good regions with high <span class="math notranslate nohighlight">\(\mu(x)\)</span>.</p>
+<dt id="term-Exploitation">Exploitation<a class="headerlink" href="#term-Exploitation" title="Permalink to this term">#</a></dt><dd><p>Focusing near known good regions with high <span class="math notranslate nohighlight">\(\mu(x)\)</span>.</p>
 </dd>
 </dl>
 </section>
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p><strong>Q1</strong></p>
 <ol class="arabic simple">
 <li><p>Run BO on the Suzuki surface using RF + EI for 20 rounds with <code class="docutils literal notranslate"><span class="pre">n_estimators=100</span></code>, same initial design. Capture best yield per round.</p></li>
@@ -1860,7 +1846,7 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </section>
 <section id="solution">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">10. Solution</a><a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">10. Solution</a><a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Shared pieces</span>
@@ -1961,9 +1947,9 @@ Greedy: [0.1 0.2 0.5]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/87fcd013ee20f51db3a5df3eca4b51f0f9941b3b6f4cf3d57def3c78e38de775.png" src="_images/87fcd013ee20f51db3a5df3eca4b51f0f9941b3b6f4cf3d57def3c78e38de775.png" />
-<img alt="_images/297710f019d5657ad1afcf5985d3ef1a00d8df4c11f141eb3d72b9cf75c4d4dc.png" src="_images/297710f019d5657ad1afcf5985d3ef1a00d8df4c11f141eb3d72b9cf75c4d4dc.png" />
-<img alt="_images/7cf6516a7b3b22b7f60ebe426cb5274de921fcb23986358a579e8d23c7d4a8ae.png" src="_images/7cf6516a7b3b22b7f60ebe426cb5274de921fcb23986358a579e8d23c7d4a8ae.png" />
+<img alt="_images/4cd29cbfb6ab94cd83d315a5361b2463993ad8cdf0da873b75b79bb4c1225c5d.png" src="_images/4cd29cbfb6ab94cd83d315a5361b2463993ad8cdf0da873b75b79bb4c1225c5d.png" />
+<img alt="_images/314542632c76ecdfaa71f08501452872d9bf654ab9242440db88539943c3d14e.png" src="_images/314542632c76ecdfaa71f08501452872d9bf654ab9242440db88539943c3d14e.png" />
+<img alt="_images/61b592eebd5a5aa91063cdad66b079a19e90d8e11b3b1a738f4695e0dd8a2608.png" src="_images/61b592eebd5a5aa91063cdad66b079a19e90d8e11b3b1a738f4695e0dd8a2608.png" />
 </div>
 </div>
 </section>
@@ -1996,7 +1982,7 @@ Greedy: [0.1 0.2 0.5]
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2026,7 +2012,6 @@ Greedy: [0.1 0.2 0.5]
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -2034,7 +2019,7 @@ Greedy: [0.1 0.2 0.5]
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#colab"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-bayesian-optimization">2. What is Bayesian Optimization</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tiny-1d-objective-for-intuition">2.1 A tiny 1D objective for intuition</a></li>
@@ -2098,7 +2083,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -2122,8 +2107,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

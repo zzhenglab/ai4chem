@@ -1,0 +1,149 @@
+Traceback (most recent call last):
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 154, in wrapped
+    asyncio.get_running_loop()
+RuntimeError: no running event loop
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\jupyter_core\utils\__init__.py", line 158, in wrapped
+    return loop.run_until_complete(inner)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+model = SmallCNN().to(device)
+print("Params:", f"{sum(p.numel() for p in model.parameters()):,}")
+
+epochs = EPOCHS
+optimizer = torch.optim.Adam(model.parameters(), lr=LR)   # Adam is a good default
+criterion = nn.CrossEntropyLoss()                          # expects raw logits and int labels
+
+train_losses, test_losses, test_accs = [], [], []
+
+for epoch in range(1, epochs+1):
+    # ---- Training loop ----
+    model.train()                      # enable dropout and grads
+    running = 0.0                      # accumulate loss*batch_size for epoch avg
+    pbar = tqdm(train_loader, desc=f"Epoch {epoch}/{epochs} [train]")
+    for x, y in pbar:
+        x, y = x.to(device), y.to(device)
+        optimizer.zero_grad()          # clear previous gradients
+        logits = model(x)              # forward pass
+        loss = criterion(logits, y)    # compute loss
+        loss.backward()                # backpropagate
+        optimizer.step()               # update weights
+        running += loss.item() * x.size(0)
+        pbar.set_postfix(loss=loss.item())
+
+    tr_loss = running / len(train_loader.dataset)
+    train_losses.append(tr_loss)
+
+    # ---- Evaluation loop (no grad) ----
+    model.eval()                       # eval mode disables dropout
+    te_running, correct, total = 0.0, 0, 0
+    with torch.no_grad():
+        for x, y in tqdm(test_loader, desc=f"Epoch {epoch}/{epochs} [eval]"):
+            x, y = x.to(device), y.to(device)
+            logits = model(x)
+            loss = criterion(logits, y)
+            te_running += loss.item() * x.size(0)
+            pred = logits.argmax(dim=1)
+            correct += (pred == y).sum().item()
+            total += y.numel()
+
+    te_loss = te_running / len(test_loader.dataset) if len(test_loader.dataset) else 0.0
+    te_acc  = correct / total if total else 0.0
+    test_losses.append(te_loss); test_accs.append(te_acc)
+
+    print(f"Epoch {epoch}: train loss {tr_loss:.4f}  test loss {te_loss:.4f}  acc {te_acc:.4f}")
+------------------
+
+----- stdout -----
+Params: 314,690
+----- stderr -----
+Epoch 1/10 [train]:   0%|                                                                                                                                      | 0/3 [00:00<?, ?it/s]
+----- stderr -----
+Epoch 1/10 [train]:   0%|                                                                                                                                      | 0/3 [00:10<?, ?it/s]
+----- stderr -----
+
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mEmpty[0m                                     Traceback (most recent call last)
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\utils\data\dataloader.py:1131[0m, in [0;36m_MultiProcessingDataLoaderIter._try_get_data[1;34m(self, timeout)[0m
+[0;32m   1130[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 1131[0m     data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_data_queue[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m)[49m
+[0;32m   1132[0m     [38;5;28;01mreturn[39;00m ([38;5;28;01mTrue[39;00m, data)
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\multiprocessing\queues.py:108[0m, in [0;36mQueue.get[1;34m(self, block, timeout)[0m
+[0;32m    107[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_poll(timeout):
+[1;32m--> 108[0m         [38;5;28;01mraise[39;00m Empty
+[0;32m    109[0m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_poll():
+
+[1;31mEmpty[0m: 
+
+The above exception was the direct cause of the following exception:
+
+[1;31mRuntimeError[0m                              Traceback (most recent call last)
+Cell [1;32mIn[12], line 15[0m
+[0;32m     13[0m running [38;5;241m=[39m [38;5;241m0.0[39m                      [38;5;66;03m# accumulate loss*batch_size for epoch avg[39;00m
+[0;32m     14[0m pbar [38;5;241m=[39m tqdm(train_loader, desc[38;5;241m=[39m[38;5;124mf[39m[38;5;124m"[39m[38;5;124mEpoch [39m[38;5;132;01m{[39;00mepoch[38;5;132;01m}[39;00m[38;5;124m/[39m[38;5;132;01m{[39;00mepochs[38;5;132;01m}[39;00m[38;5;124m [train][39m[38;5;124m"[39m)
+[1;32m---> 15[0m [38;5;28;01mfor[39;00m x, y [38;5;129;01min[39;00m pbar:
+[0;32m     16[0m     x, y [38;5;241m=[39m x[38;5;241m.[39mto(device), y[38;5;241m.[39mto(device)
+[0;32m     17[0m     optimizer[38;5;241m.[39mzero_grad()          [38;5;66;03m# clear previous gradients[39;00m
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\tqdm\std.py:1182[0m, in [0;36mtqdm.__iter__[1;34m(self)[0m
+[0;32m   1179[0m time [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_time
+[0;32m   1181[0m [38;5;28;01mtry[39;00m:
+[1;32m-> 1182[0m     [38;5;28;01mfor[39;00m obj [38;5;129;01min[39;00m iterable:
+[0;32m   1183[0m         [38;5;28;01myield[39;00m obj
+[0;32m   1184[0m         [38;5;66;03m# Update and possibly print the progressbar.[39;00m
+[0;32m   1185[0m         [38;5;66;03m# Note: does not call self.update(1) for speed optimisation.[39;00m
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\utils\data\dataloader.py:630[0m, in [0;36m_BaseDataLoaderIter.__next__[1;34m(self)[0m
+[0;32m    627[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_sampler_iter [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m    628[0m     [38;5;66;03m# TODO(https://github.com/pytorch/pytorch/issues/76750)[39;00m
+[0;32m    629[0m     [38;5;28mself[39m[38;5;241m.[39m_reset()  [38;5;66;03m# type: ignore[call-arg][39;00m
+[1;32m--> 630[0m data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_next_data[49m[43m([49m[43m)[49m
+[0;32m    631[0m [38;5;28mself[39m[38;5;241m.[39m_num_yielded [38;5;241m+[39m[38;5;241m=[39m [38;5;241m1[39m
+[0;32m    632[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_dataset_kind [38;5;241m==[39m _DatasetKind[38;5;241m.[39mIterable [38;5;129;01mand[39;00m \
+[0;32m    633[0m         [38;5;28mself[39m[38;5;241m.[39m_IterableDataset_len_called [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m \
+[0;32m    634[0m         [38;5;28mself[39m[38;5;241m.[39m_num_yielded [38;5;241m>[39m [38;5;28mself[39m[38;5;241m.[39m_IterableDataset_len_called:
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\utils\data\dataloader.py:1327[0m, in [0;36m_MultiProcessingDataLoaderIter._next_data[1;34m(self)[0m
+[0;32m   1324[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_process_data(data)
+[0;32m   1326[0m [38;5;28;01massert[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_shutdown [38;5;129;01mand[39;00m [38;5;28mself[39m[38;5;241m.[39m_tasks_outstanding [38;5;241m>[39m [38;5;241m0[39m
+[1;32m-> 1327[0m idx, data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_data[49m[43m([49m[43m)[49m
+[0;32m   1328[0m [38;5;28mself[39m[38;5;241m.[39m_tasks_outstanding [38;5;241m-[39m[38;5;241m=[39m [38;5;241m1[39m
+[0;32m   1329[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_dataset_kind [38;5;241m==[39m _DatasetKind[38;5;241m.[39mIterable:
+[0;32m   1330[0m     [38;5;66;03m# Check for _IterableDatasetStopIteration[39;00m
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\utils\data\dataloader.py:1293[0m, in [0;36m_MultiProcessingDataLoaderIter._get_data[1;34m(self)[0m
+[0;32m   1289[0m     [38;5;66;03m# In this case, `self._data_queue` is a `queue.Queue`,. But we don't[39;00m
+[0;32m   1290[0m     [38;5;66;03m# need to call `.task_done()` because we don't use `.join()`.[39;00m
+[0;32m   1291[0m [38;5;28;01melse[39;00m:
+[0;32m   1292[0m     [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[1;32m-> 1293[0m         success, data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_try_get_data[49m[43m([49m[43m)[49m
+[0;32m   1294[0m         [38;5;28;01mif[39;00m success:
+[0;32m   1295[0m             [38;5;28;01mreturn[39;00m data
+
+File [1;32mc:\users\52377\appdata\local\programs\python\python38\lib\site-packages\torch\utils\data\dataloader.py:1144[0m, in [0;36m_MultiProcessingDataLoaderIter._try_get_data[1;34m(self, timeout)[0m
+[0;32m   1142[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(failed_workers) [38;5;241m>[39m [38;5;241m0[39m:
+[0;32m   1143[0m     pids_str [38;5;241m=[39m [38;5;124m'[39m[38;5;124m, [39m[38;5;124m'[39m[38;5;241m.[39mjoin([38;5;28mstr[39m(w[38;5;241m.[39mpid) [38;5;28;01mfor[39;00m w [38;5;129;01min[39;00m failed_workers)
+[1;32m-> 1144[0m     [38;5;28;01mraise[39;00m [38;5;167;01mRuntimeError[39;00m([38;5;124mf[39m[38;5;124m'[39m[38;5;124mDataLoader worker (pid(s) [39m[38;5;132;01m{[39;00mpids_str[38;5;132;01m}[39;00m[38;5;124m) exited unexpectedly[39m[38;5;124m'[39m) [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01me[39;00m
+[0;32m   1145[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e, queue[38;5;241m.[39mEmpty):
+[0;32m   1146[0m     [38;5;28;01mreturn[39;00m ([38;5;28;01mFalse[39;00m, [38;5;28;01mNone[39;00m)
+
+[1;31mRuntimeError[0m: DataLoader worker (pid(s) 37972, 36264) exited unexpectedly
+
