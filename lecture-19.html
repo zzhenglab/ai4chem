@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-19';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -217,7 +203,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -226,14 +212,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -358,10 +344,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -369,14 +355,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -414,10 +400,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-19-transformers">
-<h1>Lecture 19 - Transformers<a class="headerlink" href="#lecture-19-transformers" title="Link to this heading">#</a></h1>
+<h1>Lecture 19 - Transformers<a class="headerlink" href="#lecture-19-transformers" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -431,7 +417,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Define tokens, embeddings, positional encodings, attention, and multi-head attention.</p></li>
 <li><p>Visualize <strong>attention</strong> as heatmaps on SMILES examples.</p></li>
@@ -440,12 +426,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commented out IPython magic to ensure Python compatibility.</span>
@@ -509,7 +495,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="from-smiles-to-tokens">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. From SMILES to tokens</a><a class="headerlink" href="#from-smiles-to-tokens" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. From SMILES to tokens</a><a class="headerlink" href="#from-smiles-to-tokens" title="Permalink to this heading">#</a></h2>
 <p>We will treat a SMILES string as a sequence of characters. This is not the only way to tokenize chemistry, but it is simple and enough for a first pass.</p>
 <ul class="simple">
 <li><p><strong>Token</strong>: a symbol in a sequence. Here we use characters such as <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">O</span></code>, <code class="docutils literal notranslate"><span class="pre">(</span></code>, <code class="docutils literal notranslate"><span class="pre">)</span></code>, <code class="docutils literal notranslate"><span class="pre">=</span></code>, digits for ring closures, and <code class="docutils literal notranslate"><span class="pre">[</span></code> <code class="docutils literal notranslate"><span class="pre">]</span></code> for special atoms.</p></li>
@@ -706,7 +692,7 @@ Name: count, dtype: int64
 </section>
 <hr class="docutils" />
 <section id="embeddings-and-positional-encoding">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Embeddings and positional encoding</a><a class="headerlink" href="#embeddings-and-positional-encoding" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Embeddings and positional encoding</a><a class="headerlink" href="#embeddings-and-positional-encoding" title="Permalink to this heading">#</a></h2>
 <p>We map each token id to a vector of size <code class="docutils literal notranslate"><span class="pre">d_model</span></code>. We also add a position-dependent signal so the model can tell the difference between the same token at different positions.</p>
 <p><strong>Embeddings and positions</strong><br />
 For token id <span class="math notranslate nohighlight">\(x_t\)</span> and model size <span class="math notranslate nohighlight">\(d\)</span>:
@@ -754,13 +740,13 @@ Input to attention is \)</span>H_t = E_t + \text{PE}_t$.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pe.shape = (16, 32)
 </pre></div>
 </div>
-<img alt="_images/18a2ec4a4d6c0013968b383b65ecf761f86b14563805be0c6da559a296679fe1.png" src="_images/18a2ec4a4d6c0013968b383b65ecf761f86b14563805be0c6da559a296679fe1.png" />
+<img alt="_images/419cd6b5f99c46461e90e8a5ffaecb9ff87421e05b0f30434fb1564bc10e9d1a.png" src="_images/419cd6b5f99c46461e90e8a5ffaecb9ff87421e05b0f30434fb1564bc10e9d1a.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="scaled-dot-product-attention">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Scaled dot-product attention</a><a class="headerlink" href="#scaled-dot-product-attention" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Scaled dot-product attention</a><a class="headerlink" href="#scaled-dot-product-attention" title="Permalink to this heading">#</a></h2>
 <p>Given query <code class="docutils literal notranslate"><span class="pre">Q</span></code>, key <code class="docutils literal notranslate"><span class="pre">K</span></code>, and value <code class="docutils literal notranslate"><span class="pre">V</span></code>, attention is:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -834,13 +820,13 @@ weights.shape = (1, 12, 12)
 out.shape = (1, 12, 16)
 </pre></div>
 </div>
-<img alt="_images/44c5598b5e0e96c7a9ab1039da977bfad09750aa744ca8dd4fa804b0c10b26b1.png" src="_images/44c5598b5e0e96c7a9ab1039da977bfad09750aa744ca8dd4fa804b0c10b26b1.png" />
+<img alt="_images/6807f6ce4b7aab6f16e1db3cf8f2532bf4606b049acacad36e1d53322e173b4a.png" src="_images/6807f6ce4b7aab6f16e1db3cf8f2532bf4606b049acacad36e1d53322e173b4a.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="multi-head-attention">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Multi-head attention</a><a class="headerlink" href="#multi-head-attention" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Multi-head attention</a><a class="headerlink" href="#multi-head-attention" title="Permalink to this heading">#</a></h2>
 <p>Multiple heads split the model dimension into smaller subspaces that attend differently. We will build 2 heads for clarity.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Multi-head</span> <span class="pre">attention</span></code> with <span class="math notranslate nohighlight">\(h\)</span> heads have the following equation:
 $<span class="math notranslate nohighlight">\(
@@ -904,14 +890,14 @@ $<span class="math notranslate nohighlight">\(
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Y (mha output).shape = (12, 16)
 </pre></div>
 </div>
-<img alt="_images/3299795fb3e3889808ed4a4731a1086c3099117d162e6433d1eceaac86b0aad3.png" src="_images/3299795fb3e3889808ed4a4731a1086c3099117d162e6433d1eceaac86b0aad3.png" />
-<img alt="_images/a92831ffb94d1eb6c8131747117461a266beb4cb073113e5763f3b1caa7a4eda.png" src="_images/a92831ffb94d1eb6c8131747117461a266beb4cb073113e5763f3b1caa7a4eda.png" />
+<img alt="_images/bdd1f581531c08ab3e9e4acf2a3142faf7e6a6976738fd58193496d854ad46f5.png" src="_images/bdd1f581531c08ab3e9e4acf2a3142faf7e6a6976738fd58193496d854ad46f5.png" />
+<img alt="_images/603a1f138470c28e5c27b350cd7421628c1c1c5bd57e44bcf92da6bee01fc734.png" src="_images/603a1f138470c28e5c27b350cd7421628c1c1c5bd57e44bcf92da6bee01fc734.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="transformer-encoder-block-for-a-small-chemistry-task">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Transformer Encoder block for a small chemistry task</a><a class="headerlink" href="#transformer-encoder-block-for-a-small-chemistry-task" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Transformer Encoder block for a small chemistry task</a><a class="headerlink" href="#transformer-encoder-block-for-a-small-chemistry-task" title="Permalink to this heading">#</a></h2>
 <p>Now, we will use what we learn before to do a demo.
 We train a small encoder on SMILES to predict <code class="docutils literal notranslate"><span class="pre">toxic</span></code> vs <code class="docutils literal notranslate"><span class="pre">non_toxic</span></code>.</p>
 <p>In the section, we will:</p>
@@ -1118,10 +1104,10 @@ L \;=\; -\frac{1}{N}\sum_{i=1}^{N} \sum_{c \in \{0,1\}} y_{ic}\,\log p_{ic}.
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 10  train_loss=0.1285  train_acc=0.930  test_acc=0.913
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 15  train_loss=0.1079  train_acc=0.941  test_acc=0.930
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>epoch 15  train_loss=0.1076  train_acc=0.941  test_acc=0.939
 </pre></div>
 </div>
-<img alt="_images/ea59e47adaf91caf73b84ffd2c376dd4d64983c20a7e153f80eeaf80c559a16a.png" src="_images/ea59e47adaf91caf73b84ffd2c376dd4d64983c20a7e153f80eeaf80c559a16a.png" />
+<img alt="_images/0523d8896b7b4273309f9b827c12c0ef898ef390fcd12ab8b0df179ce958ccf1.png" src="_images/0523d8896b7b4273309f9b827c12c0ef898ef390fcd12ab8b0df179ce958ccf1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1150,16 +1136,16 @@ L \;=\; -\frac{1}{N}\sum_{i=1}^{N} \sum_{c \in \{0,1\}} y_{ic}\,\log p_{ic}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test accuracy: 0.930
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test accuracy: 0.939
 Test ROC AUC:  0.957
               precision    recall  f1-score   support
 
-           0      0.833     0.750     0.789        20
-           1      0.948     0.968     0.958        95
+           0      0.882     0.750     0.811        20
+           1      0.949     0.979     0.964        95
 
-    accuracy                          0.930       115
-   macro avg      0.891     0.859     0.874       115
-weighted avg      0.928     0.930     0.929       115
+    accuracy                          0.939       115
+   macro avg      0.916     0.864     0.887       115
+weighted avg      0.937     0.939     0.937       115
 </pre></div>
 </div>
 </div>
@@ -1196,8 +1182,8 @@ weighted avg      0.928     0.930     0.929       115
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a97cf1f1493823e21e230780b7c935668d948054f2b2d339b92a8f35cc43d3e.png" src="_images/2a97cf1f1493823e21e230780b7c935668d948054f2b2d339b92a8f35cc43d3e.png" />
-<img alt="_images/c0cdd74a8891405b7ac32308139a97c7e680f7064c9ccc904c27b35e519be3f9.png" src="_images/c0cdd74a8891405b7ac32308139a97c7e680f7064c9ccc904c27b35e519be3f9.png" />
+<img alt="_images/c3322d8e0ccc0f86a8fd90ee719914379d0bf08ee1fd3cef8d8f2fa358654c1b.png" src="_images/c3322d8e0ccc0f86a8fd90ee719914379d0bf08ee1fd3cef8d8f2fa358654c1b.png" />
+<img alt="_images/ba2a8e4ff46b77b20780d3a343c56c2c961a3630c9e31a63234ba1e84786e023.png" src="_images/ba2a8e4ff46b77b20780d3a343c56c2c961a3630c9e31a63234ba1e84786e023.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1241,7 +1227,7 @@ weighted avg      0.928     0.930     0.929       115
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5360e0523ef5b91eccd598fb1650ea1c9cc5f2a1dc55bc1d72b58d63e0800595.png" src="_images/5360e0523ef5b91eccd598fb1650ea1c9cc5f2a1dc55bc1d72b58d63e0800595.png" />
+<img alt="_images/f8d2158e234cfe8f9cc355be434c2861ee24f363e604eaf9df6c987c2a389cd2.png" src="_images/f8d2158e234cfe8f9cc355be434c2861ee24f363e604eaf9df6c987c2a389cd2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokens: [&#39;O&#39;, &#39;=&#39;, &#39;C&#39;, &#39;(&#39;, &#39;O&#39;, &#39;)&#39;, &#39;C&#39;, &#39;(&#39;, &#39;=&#39;, &#39;O&#39;, &#39;)&#39;, &#39;c&#39;, &#39;1&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;2&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;c&#39;, &#39;2&#39;, &#39;c&#39;, &#39;1&#39;]
 </pre></div>
 </div>
@@ -1250,25 +1236,25 @@ weighted avg      0.928     0.930     0.929       115
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Token">Token <a class="headerlink" href="#term-Token" title="Link to this term">#</a></dt><dd><p>a basic symbol in a sequence. We use characters from SMILES.</p>
+<dt id="term-Token">Token <a class="headerlink" href="#term-Token" title="Permalink to this term">#</a></dt><dd><p>a basic symbol in a sequence. We use characters from SMILES.</p>
 </dd>
-<dt id="term-Embedding">Embedding<a class="headerlink" href="#term-Embedding" title="Link to this term">#</a></dt><dd><p>a learned vector for each token.</p>
+<dt id="term-Embedding">Embedding<a class="headerlink" href="#term-Embedding" title="Permalink to this term">#</a></dt><dd><p>a learned vector for each token.</p>
 </dd>
-<dt id="term-Positional-encoding">Positional encoding<a class="headerlink" href="#term-Positional-encoding" title="Link to this term">#</a></dt><dd><p>a vector added to embeddings so the model knows token order.</p>
+<dt id="term-Positional-encoding">Positional encoding<a class="headerlink" href="#term-Positional-encoding" title="Permalink to this term">#</a></dt><dd><p>a vector added to embeddings so the model knows token order.</p>
 </dd>
-<dt id="term-Query-Key-Value-Q-K-V">Query, Key, Value (Q, K, V)<a class="headerlink" href="#term-Query-Key-Value-Q-K-V" title="Link to this term">#</a></dt><dd><p>linear projections of hidden states used in attention.</p>
+<dt id="term-Query-Key-Value-Q-K-V">Query, Key, Value (Q, K, V)<a class="headerlink" href="#term-Query-Key-Value-Q-K-V" title="Permalink to this term">#</a></dt><dd><p>linear projections of hidden states used in attention.</p>
 </dd>
-<dt id="term-Attention-weights">Attention weights<a class="headerlink" href="#term-Attention-weights" title="Link to this term">#</a></dt><dd><p>softmax scores that say how much each position attends to others.</p>
+<dt id="term-Attention-weights">Attention weights<a class="headerlink" href="#term-Attention-weights" title="Permalink to this term">#</a></dt><dd><p>softmax scores that say how much each position attends to others.</p>
 </dd>
-<dt id="term-Head">Head<a class="headerlink" href="#term-Head" title="Link to this term">#</a></dt><dd><p>one set of Q, K, V projections inside multi-head attention.</p>
+<dt id="term-Head">Head<a class="headerlink" href="#term-Head" title="Permalink to this term">#</a></dt><dd><p>one set of Q, K, V projections inside multi-head attention.</p>
 </dd>
-<dt id="term-Residual-connection">Residual connection<a class="headerlink" href="#term-Residual-connection" title="Link to this term">#</a></dt><dd><p>add input of a block to its output for stable optimization.</p>
+<dt id="term-Residual-connection">Residual connection<a class="headerlink" href="#term-Residual-connection" title="Permalink to this term">#</a></dt><dd><p>add input of a block to its output for stable optimization.</p>
 </dd>
-<dt id="term-LayerNorm">LayerNorm<a class="headerlink" href="#term-LayerNorm" title="Link to this term">#</a></dt><dd><p>normalization per token over channels.</p>
+<dt id="term-LayerNorm">LayerNorm<a class="headerlink" href="#term-LayerNorm" title="Permalink to this term">#</a></dt><dd><p>normalization per token over channels.</p>
 </dd>
-<dt id="term-Cross-entropy">Cross entropy <a class="headerlink" href="#term-Cross-entropy" title="Link to this term">#</a></dt><dd><p>a loss for classification.</p>
+<dt id="term-Cross-entropy">Cross entropy <a class="headerlink" href="#term-Cross-entropy" title="Permalink to this term">#</a></dt><dd><p>a loss for classification.</p>
 </dd>
 </dl>
 </section>
@@ -1301,7 +1287,7 @@ weighted avg      0.928     0.930     0.929       115
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1330,7 +1316,6 @@ weighted avg      0.928     0.930     0.929       115
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1370,7 +1355,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1394,8 +1379,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

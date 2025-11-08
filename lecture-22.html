@@ -1,0 +1,1629 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lecture 22 - Vision Languge Models &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-22';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to CHEM 5080: AI for Experimental Chemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-objective Bayesian Optimization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-18.html">Lecture 18 - Contrastive Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flecture-22.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/lecture-22.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 22 - Vision Languge Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-connecting-text-and-images">2. CLIP: Connecting Text and Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-based-on-embeddings">3. Prediction based on Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagetext-retrieval">4. Image–text Retrieval</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-chat-with-a-gpt-model">5. Vision Chat with a GPT Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-22-vision-languge-models">
+<h1>Lecture 22 - Vision Languge Models<a class="headerlink" href="#lecture-22-vision-languge-models" title="Permalink to this heading">#</a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup" id="id2">1. Setup</a></p></li>
+<li><p><a class="reference internal" href="#clip-connecting-text-and-images" id="id3">2. CLIP: Connecting Text and Images</a></p></li>
+<li><p><a class="reference internal" href="#prediction-based-on-embeddings" id="id4">3. Prediction based on Embeddings</a></p></li>
+<li><p><a class="reference internal" href="#imagetext-retrieval" id="id5">4. Image–text Retrieval</a></p></li>
+<li><p><a class="reference internal" href="#vision-chat-with-a-gpt-model" id="id6">5. Vision Chat with a GPT Model</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id7">6. Glossary</a></p></li>
+</ul>
+</nav>
+<section id="learning-goals">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Understand the core idea of <strong>CLIP</strong>: aligning image and text representations with a contrastive loss.</p></li>
+<li><p>Build a tiny <strong>zero-shot classifier</strong> for crystal images and compute simple metrics.</p></li>
+<li><p>Train a small <strong>linear probe</strong> on top of frozen CLIP embeddings.</p></li>
+<li><p>Visualize <strong>embedding structure</strong> with PCA and t-SNE.</p></li>
+<li><p>Start a <strong>vision chat</strong> with a GPT model using the Responses API.</p></li>
+</ul>
+<p><a class="reference external" href="https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
+</section>
+<section id="setup">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip installs are kept separate so you can see which step fails.</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">torchvision</span><span class="o">,</span><span class="w"> </span><span class="nn">PIL</span><span class="o">,</span><span class="w"> </span><span class="nn">sklearn</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span>  <span class="c1"># quick smoke test</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Installing required packages...&quot;</span><span class="p">)</span>
+<span class="c1">#     %pip -q install torch torchvision --index-url https://download.pytorch.org/whl/cpu</span>
+<span class="c1">#     %pip -q install ftfy regex tqdm onnxruntime matplotlib scikit-learn pillow einops requests</span>
+
+<span class="c1"># Install CLIP from the official repository</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">clip</span>  <span class="c1"># noqa</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="o">%</span><span class="k">pip</span> -q install git+https://github.com/openai/CLIP.git
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>  <span class="c1"># noqa</span>
+
+<span class="c1">#     %pip -q install openai&gt;=1.40.0</span>
+<span class="c1"># 0.2 Imports and basic config</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span><span class="o">,</span><span class="w"> </span><span class="nn">io</span><span class="o">,</span><span class="w"> </span><span class="nn">textwrap</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">pathlib</span><span class="o">,</span><span class="w"> </span><span class="nn">itertools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.manifold</span><span class="w"> </span><span class="kn">import</span> <span class="n">TSNE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedShuffleSplit</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.offsetbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">OffsetImage</span><span class="p">,</span> <span class="n">AnnotationBbox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">clip</span>  <span class="c1"># OpenAI CLIP</span>
+<span class="n">SEED</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">);</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">);</span> <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">SEED</span><span class="p">)</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Device:&quot;</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device: cpu
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="clip-connecting-text-and-images">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. CLIP: Connecting Text and Images</a><a class="headerlink" href="#clip-connecting-text-and-images" title="Permalink to this heading">#</a></h2>
+<p>CLIP learns two encoders:</p>
+<ol class="arabic simple">
+<li><p>an <strong>image encoder</strong> <span class="math notranslate nohighlight">\(f_{\theta}(\cdot)\)</span></p></li>
+<li><p>a <strong>text encoder</strong> <span class="math notranslate nohighlight">\(g_{\phi}(\cdot)\)</span></p></li>
+</ol>
+<p>Each image–text pair in a batch is projected into a common space. Similar pairs should have <strong>high cosine similarity</strong>, mismatched pairs should be low.</p>
+<p>We scale cosine similarities by a learnable temperature <span class="math notranslate nohighlight">\(\tau\)</span> and use a symmetric cross entropy.
+For a batch of size <span class="math notranslate nohighlight">\(N\)</span> with normalized embeddings
+<span class="math notranslate nohighlight">\(U = \{u_i\}\)</span> for images and <span class="math notranslate nohighlight">\(V = \{v_i\}\)</span> for texts,</p>
+<p><span class="math notranslate nohighlight">\(
+s_{ij} = \frac{u_i^\top v_j}{\tau}
+\)</span></p>
+<p>The loss is:
+<span class="math notranslate nohighlight">\(
+\mathcal{L} = \frac{1}{2}
+\left[
+  \frac{1}{N}\sum_{i=1}^N -\log \frac{e^{s_{ii}}}{\sum_{j=1}^N e^{s_{ij}}}
+  +
+  \frac{1}{N}\sum_{i=1}^N -\log \frac{e^{s_{ii}}}{\sum_{j=1}^N e^{s_{ji}}}
+\right]
+\)</span></p>
+<p>In plain words, matching image–text pairs get pushed together and everything else gets pushed apart.
+This simple recipe is very effective for <strong>zero-shot</strong> use.</p>
+<p>We start with a small ViT model to keep memory use friendly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_name</span> <span class="o">=</span> <span class="s2">&quot;ViT-B/32&quot;</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">model_name</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">jit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="p">))</span>
+<span class="c1">#print(preprocess)  </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;clip.model.CLIP&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> transform will resize, center-crop, and normalize images. We apply it before encoding.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Peek at text tokenizer behavior</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">tokenize</span><span class="p">([</span><span class="s2">&quot;a microscopy image of a crystal&quot;</span><span class="p">,</span> <span class="s2">&quot;a photo of a dog&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Token tensor shape:&quot;</span><span class="p">,</span> <span class="n">tokens</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Token tensor shape: torch.Size([2, 77])
+tensor([49406,   320, 38431,  2867,   539,   320,  6517, 49407,     0,     0],
+       dtype=torch.int32)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s bring in crystal images from a GitHub folder.</p>
+<p>We will use the same dataset from the last lecture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GITHUB_DIR_API</span> <span class="o">=</span> <span class="s2">&quot;https://api.github.com/repos/zzhenglab/ai4chem/contents/book/_data?ref=main&quot;</span>
+
+<span class="c1"># Labels are determined from filename prefixes.</span>
+<span class="c1"># Images whose names start with &quot;crystal_&quot; will be labeled &quot;crystal&quot;,</span>
+<span class="c1"># and those starting with &quot;nocrystal_&quot; will be labeled &quot;nocrystal&quot;.</span>
+<span class="n">LABELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;crystal&quot;</span><span class="p">,</span> <span class="s2">&quot;nocrystal&quot;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Folder (GitHub API):&quot;</span><span class="p">,</span> <span class="n">GITHUB_DIR_API</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Labels:&quot;</span><span class="p">,</span> <span class="n">LABELS</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fetch_image</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads an image from the given URL and returns it as a Pillow Image object.</span>
+<span class="sd">    Converts the image to RGB format for consistency.</span>
+<span class="sd">    If the download or decoding fails, returns None instead of crashing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># Fetch the image file from GitHub</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>                <span class="c1"># Raise an error for bad responses (e.g., 404)</span>
+        <span class="k">return</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">))</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>  <span class="c1"># Convert bytes to image</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skip:&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>         <span class="c1"># Log and skip any problematic file</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">list_relevant_files</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Queries the GitHub folder for all files and filters them to include only</span>
+<span class="sd">    PNG images whose filenames start with &#39;crystal_&#39; or &#39;nocrystal_&#39;.</span>
+<span class="sd">    Returns a list of dictionaries containing filenames and direct download URLs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">GITHUB_DIR_API</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>  <span class="c1"># Get folder contents from GitHub API</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>                              <span class="c1"># Parse JSON response into Python objects</span>
+    <span class="n">wanted</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;file&quot;</span><span class="p">:</span>              <span class="c1"># Skip subfolders or non-file items</span>
+            <span class="k">continue</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.png&quot;</span><span class="p">):</span>     <span class="c1"># Skip non-PNG files</span>
+            <span class="k">continue</span>
+        <span class="n">low</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">low</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;crystal_&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">low</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;nocrystal_&quot;</span><span class="p">):</span>
+            <span class="c1"># If file name matches one of the two prefixes, save it</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;download_url&quot;</span><span class="p">)</span>          <span class="c1"># Direct link to the raw file</span>
+            <span class="k">if</span> <span class="n">url</span><span class="p">:</span>
+                <span class="n">wanted</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">wanted</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">make_dataset</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds a dataset by downloading all relevant PNG files,</span>
+<span class="sd">    assigning each a label based on its filename prefix,</span>
+<span class="sd">    and storing both the image and its metadata.</span>
+<span class="sd">    Returns a list of records (dicts).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">records</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">list_relevant_files</span><span class="p">():</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span>
+        <span class="c1"># Infer the label from the filename prefix</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;crystal&quot;</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;crystal_&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;nocrystal&quot;</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">fetch_image</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>                  <span class="c1"># Download and decode the image</span>
+        <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>                            <span class="c1"># Skip missing or broken images</span>
+        <span class="n">records</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;pil&quot;</span><span class="p">:</span> <span class="n">img</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">records</span>
+
+<span class="c1"># Build the dataset by fetching and labeling all matching images</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">make_dataset</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Images loaded:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+
+<span class="c1"># Display one sample image (in Jupyter or similar environment)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;pil&quot;</span><span class="p">])</span>
+
+<span class="c1"># Create a tidy DataFrame summarizing the dataset for later analysis</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">],</span>       <span class="c1"># filename</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">],</span>     <span class="c1"># crystal or nocrystal</span>
+        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">],</span>         <span class="c1"># direct GitHub URL</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;pil&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">width</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">],</span> <span class="c1"># image width in pixels</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;pil&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">height</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span><span class="c1"># image height in pixels</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Show the first few rows to confirm the data structure</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Folder (GitHub API): https://api.github.com/repos/zzhenglab/ai4chem/contents/book/_data?ref=main
+Labels: [&#39;crystal&#39;, &#39;nocrystal&#39;]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Images loaded: 240
+</pre></div>
+</div>
+<img alt="_images/f0c3fd82f3455a3bdf251a5e6f4550e4f6083462ca386858be3fa1fbb79c1b9d.png" src="_images/f0c3fd82f3455a3bdf251a5e6f4550e4f6083462ca386858be3fa1fbb79c1b9d.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>label</th>
+      <th>url</th>
+      <th>width</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>crystal_test10_tile0_rot0.png</td>
+      <td>crystal</td>
+      <td>https://raw.githubusercontent.com/zzhenglab/ai...</td>
+      <td>67</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>crystal_test10_tile0_rot180.png</td>
+      <td>crystal</td>
+      <td>https://raw.githubusercontent.com/zzhenglab/ai...</td>
+      <td>67</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>crystal_test10_tile0_rot90.png</td>
+      <td>crystal</td>
+      <td>https://raw.githubusercontent.com/zzhenglab/ai...</td>
+      <td>100</td>
+      <td>67</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>crystal_test10_tile1_rot0.png</td>
+      <td>crystal</td>
+      <td>https://raw.githubusercontent.com/zzhenglab/ai...</td>
+      <td>67</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>crystal_test10_tile1_rot180.png</td>
+      <td>crystal</td>
+      <td>https://raw.githubusercontent.com/zzhenglab/ai...</td>
+      <td>67</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now we will encode images and texts with CLIP.</p>
+<p>We compute normalized embeddings for both modalities. Shapes matter a lot, so we print them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4.1 Build a small image batch</span>
+<span class="n">image_tensors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">image_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">image_urls</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="n">image_tensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preprocess</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;pil&quot;</span><span class="p">]))</span>
+    <span class="n">image_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">])</span>
+    <span class="n">image_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;url&quot;</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No images in dataset. Please fix paths in CLASS_TO_FILES.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">image_batch</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;image_batch:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">image_batch</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="s2">&quot;dtype:&quot;</span><span class="p">,</span> <span class="n">image_batch</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c1"># 4.2 Build text prompts</span>
+<span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;crystal&quot;</span><span class="p">,</span> <span class="s2">&quot;nocrystal&quot;</span><span class="p">]</span>
+
+<span class="n">nice_label</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;crystal&quot;</span><span class="p">:</span>   <span class="s2">&quot;a crystal&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;nocrystal&quot;</span><span class="p">:</span> <span class="s2">&quot;nothing present&quot;</span>
+<span class="p">}</span>
+
+<span class="n">templates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;an image showing </span><span class="si">{label}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;a photo of </span><span class="si">{label}</span><span class="s2"> structure&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;a scientific image of </span><span class="si">{label}</span><span class="s2">&quot;</span>
+<span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_prompts</span><span class="p">(</span><span class="n">class_names</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">nice_label</span><span class="p">):</span>
+    <span class="c1"># Order: for each class i, all templates j  -&gt; matches zero_shot_classify pooling</span>
+    <span class="n">prompts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">cname</span> <span class="ow">in</span> <span class="n">class_names</span><span class="p">:</span>
+        <span class="n">text_label</span> <span class="o">=</span> <span class="n">nice_label</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cname</span><span class="p">,</span> <span class="n">cname</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">templates</span><span class="p">:</span>
+            <span class="n">prompts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">text_label</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">prompts</span>
+
+<span class="n">prompts</span> <span class="o">=</span> <span class="n">build_prompts</span><span class="p">(</span><span class="n">class_names</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">nice_label</span><span class="p">)</span>
+<span class="n">tokenized</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">prompts</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">prompts</span><span class="p">)</span><span class="si">}</span><span class="s2"> prompts built:&quot;</span><span class="p">,</span> <span class="n">prompts</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of prompts:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">prompts</span><span class="p">),</span> <span class="s2">&quot;tokenized:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">tokenized</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+<span class="c1"># 4.3 Forward through CLIP to get embeddings</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">img_feats</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode_image</span><span class="p">(</span><span class="n">image_batch</span><span class="p">)</span>
+        <span class="n">txt_feats</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode_text</span><span class="p">(</span><span class="n">tokenized</span><span class="p">)</span>
+
+    <span class="c1"># Normalize to unit length</span>
+    <span class="n">img_feats</span> <span class="o">=</span> <span class="n">img_feats</span> <span class="o">/</span> <span class="n">img_feats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">txt_feats</span> <span class="o">=</span> <span class="n">txt_feats</span> <span class="o">/</span> <span class="n">txt_feats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;img_feats:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">img_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;txt_feats:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">txt_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>image_batch: (240, 3, 224, 224) dtype: torch.float32
+6 prompts built: [&#39;an image showing a crystal&#39;, &#39;a photo of a crystal structure&#39;, &#39;a scientific image of a crystal&#39;, &#39;an image showing nothing present&#39;] ...
+Number of prompts: 6 tokenized: (6, 77)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>img_feats: (240, 512)
+txt_feats: (6, 512)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below you will see how the image embeddings looks like for images.
+We have 240 images and each are 512D.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;img_feats:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">img_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">img_feats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>img_feats: (240, 512)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.0151, -0.0108, -0.0012,  ...,  0.0869,  0.0058, -0.0252],
+        [-0.0104, -0.0084,  0.0115,  ...,  0.0837,  0.0092, -0.0207],
+        [-0.0093, -0.0091,  0.0074,  ...,  0.0853,  0.0081, -0.0234],
+        ...,
+        [-0.0083, -0.0009,  0.0182,  ...,  0.0495,  0.0122, -0.0181],
+        [-0.0155, -0.0005,  0.0130,  ...,  0.0491,  0.0062, -0.0201],
+        [-0.0047, -0.0107,  0.0181,  ...,  0.0521,  0.0176, -0.0201]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below you will see how the text embeddings looks like.
+We have 8 text embeddings and each are 512D.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;txt_feats:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">txt_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="n">txt_feats</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>txt_feats: (6, 512)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([[-0.0068,  0.0512,  0.0147,  ..., -0.0265,  0.0198, -0.0232],
+        [-0.0074,  0.0487, -0.0029,  ..., -0.0006, -0.0432, -0.0203],
+        [-0.0061,  0.0436,  0.0131,  ...,  0.0141, -0.0021,  0.0008],
+        [-0.0028, -0.0146, -0.0155,  ..., -0.0433,  0.0047, -0.0198],
+        [ 0.0108, -0.0063, -0.0289,  ..., -0.0393, -0.0305, -0.0033],
+        [ 0.0081, -0.0164, -0.0182,  ..., -0.0337,  0.0004,  0.0052]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>What do the embeddings look like?</p>
+<p>We reduce dimensionality to 2D so we can plot and inspect cluster structure.
+We expect images from the same label to be near each other.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">img_feats</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">X_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">image_labels</span><span class="p">)):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">lab</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_pca</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_pca</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CLIP image embeddings - PCA&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No images to plot&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/50d72fdb2ffa68c5b11e1c26533b8065194a32f443abc70428e80c44c143db87.png" src="_images/50d72fdb2ffa68c5b11e1c26533b8065194a32f443abc70428e80c44c143db87.png" />
+</div>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>PCA is linear and fast. t-SNE can separate clusters further but is slower and higher variance.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">200</span><span class="p">:</span>
+    <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">perplexity</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">lab</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">image_labels</span><span class="p">)):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">image_labels</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="n">lab</span><span class="p">]</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_tsne</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;CLIP image embeddings - t-SNE&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;tSNE-1&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;tSNE-2&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction-based-on-embeddings">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Prediction based on Embeddings</a><a class="headerlink" href="#prediction-based-on-embeddings" title="Permalink to this heading">#</a></h2>
+<p>Before we evaluate performance, we’ll compare each image embedding to the text embeddings created from our prompts.</p>
+<p>Both image and text vectors come from the same pretrained model, so we can measure how similar they are using cosine similarity.</p>
+<p>Each image is assigned to the class whose text description is most similar to it — no training, just comparison in the shared embedding space.
+Then we check how well those predictions match the true labels from our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">zero_shot_classify</span><span class="p">(</span><span class="n">img_feats</span><span class="p">,</span> <span class="n">txt_feats</span><span class="p">,</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="c1"># Normalize both sets of features so cosine similarity = dot product</span>
+    <span class="n">img_z</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">img_feats</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># [N, d] image embeddings</span>
+    <span class="n">txt_z</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">txt_feats</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># [C*T, d] text embeddings (C classes × T templates)</span>
+
+    <span class="c1"># Group text prompts belonging to each class</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">templates</span><span class="p">)</span>
+    <span class="n">per_class</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">))]</span>
+
+    <span class="c1"># Compute image–text similarities and average over prompts of the same class</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="n">img_z</span> <span class="o">@</span> <span class="n">txt_z</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>                         <span class="c1"># [N, C*T] cosine similarities</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="n">sims</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">temperature</span><span class="p">)</span>             <span class="c1"># optional scaling (lower = sharper differences)</span>
+    <span class="n">pooled</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">sims</span><span class="p">[:,</span> <span class="n">idxs</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">idxs</span> <span class="ow">in</span> <span class="n">per_class</span><span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N, C]</span>
+
+    <span class="c1"># Take the class with the highest mean similarity as prediction</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">pooled</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">preds</span><span class="p">,</span> <span class="n">pooled</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="c1"># Run zero-shot classification and evaluate</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># Convert string labels in the dataset to numeric indices</span>
+    <span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">class_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">])</span>
+
+    <span class="c1"># Predict using the zero-shot classifier</span>
+    <span class="n">preds</span><span class="p">,</span> <span class="n">pooled</span> <span class="o">=</span> <span class="n">zero_shot_classify</span><span class="p">(</span><span class="n">img_feats</span><span class="p">,</span> <span class="n">txt_feats</span><span class="p">,</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">templates</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="c1"># Report accuracy and detailed metrics</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">preds</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.8125
+              precision    recall  f1-score   support
+
+     crystal      1.000     0.766     0.867       192
+   nocrystal      0.516     1.000     0.681        48
+
+    accuracy                          0.812       240
+   macro avg      0.758     0.883     0.774       240
+weighted avg      0.903     0.812     0.830       240
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we will run linear probe on frozen embeddings.</p>
+<p>A simple linear model can be trained quickly on top of CLIP features when you have a few labeled images.</p>
+<p>Note: below we only use <code class="docutils literal notranslate"><span class="pre">img_feats</span></code> for the prediction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># Features and integer labels</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">img_feats</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">class_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">image_labels</span><span class="p">])</span>
+
+    <span class="c1"># Try a stratified 80:20 split for balanced class representation</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sss</span> <span class="o">=</span> <span class="n">StratifiedShuffleSplit</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+        <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">sss</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># Happens when at least one class has only a single sample</span>
+        <span class="c1"># Fall back to a plain random 80:20 split without stratify</span>
+        <span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">)</span>
+
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span>
+    <span class="n">X_test</span><span class="p">,</span>  <span class="n">y_test</span>  <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">test_idx</span><span class="p">],</span>  <span class="n">y</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> | Test size: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear probe test accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">class_names</span><span class="p">,</span> <span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train size: 192 | Test size: 48
+Linear probe test accuracy: 0.9791666666666666
+              precision    recall  f1-score   support
+
+     crystal      0.974     1.000     0.987        38
+   nocrystal      1.000     0.900     0.947        10
+
+    accuracy                          0.979        48
+   macro avg      0.987     0.950     0.967        48
+weighted avg      0.980     0.979     0.979        48
+</pre></div>
+</div>
+</div>
+</div>
+<p>Below shows the confusion matrix and the ROC curve for our test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Confusion matrix (counts and normalized)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">)))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">class_names</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion matrix&quot;</span><span class="p">)</span>
+
+<span class="n">cm_norm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">cm_norm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">class_names</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">values_format</span><span class="o">=</span><span class="s2">&quot;.2f&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Confusion matrix (normalized)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># ROC curve for binary case (optional)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="s2">&quot;decision_function&quot;</span><span class="p">):</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">scores</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="n">class_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">roc_auc</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_auc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;FPR&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;TPR&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC curve&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC skipped:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/13e86a1b6cae4e7c58bf2de98034cc0b96ae3568ba1c19929906ac4a6f2170ed.png" src="_images/13e86a1b6cae4e7c58bf2de98034cc0b96ae3568ba1c19929906ac4a6f2170ed.png" />
+<img alt="_images/ad258e63df6b3e060eac3e1787c74c5edeeb22509db920ea994d553074a922aa.png" src="_images/ad258e63df6b3e060eac3e1787c74c5edeeb22509db920ea994d553074a922aa.png" />
+</div>
+</div>
+<p>To better visualize this. First, we prep features, score zero shot, pick up to two correct hits per class, and print quick snapshots of the first 8 dims for image, text, and the simple average merge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Part 1: prep, scoring, picks, and 8-dim snapshots ===</span>
+<span class="c1"># Idea:</span>
+<span class="c1"># 1) normalize features for cosine math</span>
+<span class="c1"># 2) compute zero-shot scores per class (average over templates)</span>
+<span class="c1"># 3) choose up to 2 correct examples per class</span>
+<span class="c1"># 4) print a compact peek of the first 8 dims for image, text, and merged</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">torch</span><span class="o">,</span><span class="w"> </span><span class="nn">torch.nn.functional</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">F</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Repro for any random sampling below</span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="c1"># ----- Normalize features -----</span>
+<span class="c1"># img_feats: [N, d], txt_feats: [C*T, d]</span>
+<span class="n">img_test</span> <span class="o">=</span> <span class="n">img_feats</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">img_feats</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">img_feats</span><span class="p">[</span><span class="n">test_idx</span><span class="p">])</span>
+<span class="n">img_test_z</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">img_test</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># [N_test, d]</span>
+
+<span class="n">T</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">templates</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">class_names</span><span class="p">)</span>
+<span class="n">txt_z_in</span> <span class="o">=</span> <span class="n">txt_feats</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">txt_feats</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">txt_feats</span><span class="p">)</span>
+<span class="n">txt_z</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">txt_z_in</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>       <span class="c1"># [C*T, d]</span>
+
+<span class="c1"># ----- Zero-shot scores and predictions -----</span>
+<span class="c1"># sims: pairwise cosine similarities to all prompts</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="n">img_test_z</span> <span class="o">@</span> <span class="n">txt_z</span><span class="o">.</span><span class="n">t</span><span class="p">()</span>  <span class="c1"># [N_test, C*T]</span>
+
+<span class="c1"># pool templates per class by mean</span>
+<span class="n">pooled</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">sims</span><span class="p">[:,</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">)]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">)],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">preds</span> <span class="o">=</span> <span class="n">pooled</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="c1"># ----- Pick up to 2 correct examples per class -----</span>
+<span class="n">picks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+    <span class="n">ok</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">c</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ok</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">picks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">ok</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">min</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ok</span><span class="p">)),</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+
+<span class="c1"># ----- Print 8-dim snapshots -----</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Embedding snapshots (first 8 dims) ===&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">loc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">picks</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">preds</span><span class="p">[</span><span class="n">loc</span><span class="p">])</span>
+    <span class="n">v_img</span>   <span class="o">=</span> <span class="n">img_test_z</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">v_text</span>  <span class="o">=</span> <span class="n">txt_z</span><span class="p">[</span><span class="n">c</span><span class="o">*</span><span class="n">T</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">v_merge</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">((</span><span class="n">img_test_z</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">+</span> <span class="n">txt_z</span><span class="p">[</span><span class="n">c</span><span class="o">*</span><span class="n">T</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="c1"># Clear labeling helps when scanning outputs</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Example </span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> | Label=</span><span class="si">{</span><span class="n">class_names</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;image :&quot;</span><span class="p">,</span> <span class="n">v_img</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text  :&quot;</span><span class="p">,</span> <span class="n">v_text</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;merged:&quot;</span><span class="p">,</span> <span class="n">v_merge</span><span class="p">[:</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># Quick sanity display</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Picked </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">picks</span><span class="p">)</span><span class="si">}</span><span class="s2"> examples across </span><span class="si">{</span><span class="n">C</span><span class="si">}</span><span class="s2"> classes.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Embedding snapshots (first 8 dims) ===
+
+Example 1 | Label=crystal
+image : [-0.0134 -0.0128  0.0425  0.0124  0.0175  0.0037  0.0315  0.012 ]
+text  : [-0.0068  0.0512  0.0147 -0.0033  0.0193 -0.0121  0.0157 -0.0576]
+merged: [-0.0126  0.024   0.0358  0.0057  0.023  -0.0052  0.0295 -0.0285]
+
+Example 2 | Label=crystal
+image : [-0.0222 -0.0058  0.0028 -0.0042  0.0449  0.0043  0.0157  0.0588]
+text  : [-0.0068  0.0512  0.0147 -0.0033  0.0193 -0.0121  0.0157 -0.0576]
+merged: [-0.018   0.0284  0.011  -0.0047  0.0401 -0.0048  0.0196  0.0008]
+
+Example 3 | Label=nocrystal
+image : [-0.0084 -0.0094  0.0046 -0.0284  0.002  -0.0242 -0.031   0.1046]
+text  : [-0.0028 -0.0146 -0.0155  0.0167 -0.0004 -0.013   0.0059 -0.0894]
+merged: [-0.0071 -0.0152 -0.0069 -0.0074  0.001  -0.0235 -0.0159  0.0096]
+
+Example 4 | Label=nocrystal
+image : [-0.0083 -0.0009  0.0182 -0.0269 -0.0008 -0.0051 -0.0447  0.1144]
+text  : [-0.0028 -0.0146 -0.0155  0.0167 -0.0004 -0.013   0.0059 -0.0894]
+merged: [-0.0071 -0.0099  0.0017 -0.0065 -0.0008 -0.0115 -0.0247  0.0159]
+
+Picked 4 examples across 2 classes.
+</pre></div>
+</div>
+</div>
+</div>
+<p>between steps, we also want a 2D view to compare spaces with a shared projector. next, we fit PCA on the image-only space, then project the text and merged points with the same transform. to make this cell display something even without plotting, it prints explained variance and a tiny table of projected coords for the chosen examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Part 2: PCA fit on image space; project text and merged ===</span>
+<span class="c1"># Plan: fit PCA on image embeddings, then transform text-only and merged pairs</span>
+<span class="c1"># We also print explained variance and a small table of the 2D coords.</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># Fit PCA on image-only space</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">X2_img</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">img_test_z</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>  <span class="c1"># [N_test, 2]</span>
+
+<span class="c1"># Project the chosen text and merged vectors using the same PCA</span>
+<span class="n">X2_text</span><span class="p">,</span> <span class="n">X2_merge</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">picks</span><span class="p">:</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">preds</span><span class="p">[</span><span class="n">loc</span><span class="p">])</span>
+    <span class="n">v_text</span>  <span class="o">=</span> <span class="n">txt_z</span><span class="p">[</span><span class="n">c</span><span class="o">*</span><span class="n">T</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>  <span class="c1"># shape [1, d]</span>
+    <span class="n">v_merge</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">normalize</span><span class="p">((</span><span class="n">img_test_z</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span> <span class="o">+</span> <span class="n">txt_z</span><span class="p">[</span><span class="n">c</span><span class="o">*</span><span class="n">T</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+
+    <span class="n">X2_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">v_text</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X2_merge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">v_merge</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">X2_text</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X2_text</span><span class="p">)</span>
+<span class="n">X2_merge</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X2_merge</span><span class="p">)</span>
+
+<span class="c1"># ----- Display: explained variance and a tiny coordinate table -----</span>
+<span class="n">evr</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== PCA explained variance ratio ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PC1: </span><span class="si">{</span><span class="n">evr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, PC2: </span><span class="si">{</span><span class="n">evr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Sample 2D coords for picks ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;idx | label             | text_x   text_y   | merge_x  merge_y&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">tx</span><span class="p">,</span> <span class="n">ty</span><span class="p">),</span> <span class="p">(</span><span class="n">mx</span><span class="p">,</span> <span class="n">my</span><span class="p">),</span> <span class="n">loc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X2_text</span><span class="p">,</span> <span class="n">X2_merge</span><span class="p">,</span> <span class="n">picks</span><span class="p">):</span>
+    <span class="n">lab</span> <span class="o">=</span> <span class="n">class_names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">loc</span><span class="p">])]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">loc</span><span class="si">:</span><span class="s2">3d</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">lab</span><span class="si">:</span><span class="s2">&lt;16</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">tx</span><span class="si">:</span><span class="s2">7.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ty</span><span class="si">:</span><span class="s2">7.3f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">mx</span><span class="si">:</span><span class="s2">7.3f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">my</span><span class="si">:</span><span class="s2">7.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PCA explained variance ratio ===
+PC1: 0.5070, PC2: 0.1180
+
+=== Sample 2D coords for picks ===
+idx | label             | text_x   text_y   | merge_x  merge_y
+ 14 | crystal          |  -0.064  -0.115 |  -0.301  -0.141
+ 42 | crystal          |  -0.064  -0.115 |  -0.028   0.071
+ 19 | nocrystal        |   0.034  -0.093 |   0.273  -0.104
+ 10 | nocrystal        |   0.034  -0.093 |   0.274  -0.113
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, the side by side figure. Left is the image cloud with thumbnails for the chosen points. Middle places the projected text points. Right shows the merged points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === Part 3: 3-panel plot: image-only, text-only, merged ===</span>
+<span class="c1"># Notes:</span>
+<span class="c1"># - left: image embeddings with per-class scatter and thumbnails for picks</span>
+<span class="c1"># - middle: text points for the picks</span>
+<span class="c1"># - right: merged (image + predicted-class text) for the picks</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.offsetbox</span><span class="w"> </span><span class="kn">import</span> <span class="n">OffsetImage</span><span class="p">,</span> <span class="n">AnnotationBbox</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># ----- Panel 1: image-only with thumbnails -----</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">class_names</span><span class="p">):</span>
+    <span class="n">pts</span> <span class="o">=</span> <span class="n">X2_img</span><span class="p">[</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">c</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pts</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pts</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># Add thumbnails for chosen examples for quick visual inspection</span>
+<span class="k">for</span> <span class="n">loc</span> <span class="ow">in</span> <span class="n">picks</span><span class="p">:</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">X2_img</span><span class="p">[</span><span class="n">loc</span><span class="p">]</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">test_idx</span><span class="p">[</span><span class="n">loc</span><span class="p">]][</span><span class="s2">&quot;pil&quot;</span><span class="p">])</span>
+    <span class="n">ab</span> <span class="o">=</span> <span class="n">AnnotationBbox</span><span class="p">(</span>
+        <span class="n">OffsetImage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.25</span><span class="p">),</span>
+        <span class="n">p</span><span class="p">,</span>
+        <span class="n">frameon</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">bboxprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">boxstyle</span><span class="o">=</span><span class="s2">&quot;round,pad=0.2&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.6</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">ab</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Image embeddings&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># ----- Panel 2: text-only at chosen points (one template per pick) -----</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2_img</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2_img</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;_all_&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2_text</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2_text</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">loc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X2_text</span><span class="p">,</span> <span class="n">picks</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">class_names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">loc</span><span class="p">])],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Text embeddings&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+
+<span class="c1"># ----- Panel 3: merged points (image + predicted-class text) -----</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2_img</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2_img</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;_all_&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X2_merge</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X2_merge</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">loc</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X2_merge</span><span class="p">,</span> <span class="n">picks</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">class_names</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="n">loc</span><span class="p">])],</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Merged embeddings&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PC2&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/71015c93c1fc9a4625a2cdb16178897114f3656f2b088b2bcb54d8f0b444c585.png" src="_images/71015c93c1fc9a4625a2cdb16178897114f3656f2b088b2bcb54d8f0b444c585.png" />
+</div>
+</div>
+<p>Also, to view the results, we can display the images and show the predicted value vs. the ground truth.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;pil&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">]</span>  <span class="c1"># same order as X/y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show_predictions_linear_idx</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">class_names</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="o">,</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+    <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">picks</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)),</span> <span class="nb">min</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)))</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">picks</span><span class="p">):</span>
+        <span class="n">orig_i</span> <span class="o">=</span> <span class="n">test_idx</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>                  <span class="c1"># map back to original dataset index</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">orig_i</span><span class="p">]</span>                  <span class="c1"># already a PIL.Image in RGB</span>
+        <span class="n">img_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+        <span class="n">true</span> <span class="o">=</span> <span class="n">class_names</span><span class="p">[</span><span class="n">y_test</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">class_names</span><span class="p">[</span><span class="n">y_pred</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;green&quot;</span> <span class="k">if</span> <span class="n">pred</span> <span class="o">==</span> <span class="n">true</span> <span class="k">else</span> <span class="s2">&quot;red&quot;</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_np</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pred: </span><span class="si">{</span><span class="n">pred</span><span class="si">}</span><span class="se">\n</span><span class="s2">True: </span><span class="si">{</span><span class="n">true</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Random Test Samples with Linear Model Predictions&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.93</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="n">show_predictions_linear_idx</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">test_idx</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">class_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bf434634f8fdd64306074c5b9586d09d9c7c9c0301ce55185ed4e9011becab27.png" src="_images/bf434634f8fdd64306074c5b9586d09d9c7c9c0301ce55185ed4e9011becab27.png" />
+</div>
+</div>
+</section>
+<section id="imagetext-retrieval">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Image–text Retrieval</a><a class="headerlink" href="#imagetext-retrieval" title="Permalink to this heading">#</a></h2>
+<p>We can also use the fact that we have embeddings across two modalities (image and text) to conduct image–text retrieval:</p>
+<blockquote>
+<div><p>Given an image, find the best matching prompt.</p>
+</div></blockquote>
+<p>or</p>
+<blockquote>
+<div><p>Given a prompt, find the best matching image.</p>
+</div></blockquote>
+<p>Note that below you will see the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator there performs matrix multiplication — specifically between the image feature matrix and the transpose of the text feature matrix.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">img_feats</span></code> has shape <code class="docutils literal notranslate"><span class="pre">[N_img,</span> <span class="pre">D]</span></code> (one D-dimensional embedding per image)</p>
+<p>and <code class="docutils literal notranslate"><span class="pre">txt_feats</span></code> has shape <code class="docutils literal notranslate"><span class="pre">[N_txt,</span> <span class="pre">D]</span></code> (one D-dimensional embedding per text prompt)</p>
+<p>doing <code class="docutils literal notranslate"><span class="pre">img_feats</span> <span class="pre">&#64;</span> <span class="pre">txt_feats.T</span></code> yields a similarity matrix of shape <code class="docutils literal notranslate"><span class="pre">[N_img,</span> <span class="pre">N_txt]</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given an image, find the best matching text prompts</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_feats</span> <span class="o">@</span> <span class="n">txt_feats</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>  <span class="c1"># [n_img, n_prompts]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># top-k prompts to show</span>
+    <span class="n">img_examples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>  <span class="c1"># two example images, No 101 and No 201</span>
+
+    <span class="k">for</span> <span class="n">idx_img</span> <span class="ow">in</span> <span class="n">img_examples</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">sims</span><span class="p">[</span><span class="n">idx_img</span><span class="p">])[:</span><span class="n">k</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Image </span><span class="si">{</span><span class="n">idx_img</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">image_labels</span><span class="p">[</span><span class="n">idx_img</span><span class="p">]</span><span class="si">}</span><span class="s2">): top-</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> prompts&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  -&gt; </span><span class="si">{</span><span class="n">prompts</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">  score=</span><span class="si">{</span><span class="n">sims</span><span class="p">[</span><span class="n">idx_img</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># show the image</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">idx_img</span><span class="p">][</span><span class="s2">&quot;pil&quot;</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Query Image </span><span class="si">{</span><span class="n">idx_img</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">image_labels</span><span class="p">[</span><span class="n">idx_img</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image 100 (crystal): top-3 prompts
+  -&gt; an image showing a crystal  score=0.292
+  -&gt; a scientific image of a crystal  score=0.277
+  -&gt; a photo of a crystal structure  score=0.276
+</pre></div>
+</div>
+<img alt="_images/9f0ea9b6a8889973969e2b5c568c7604659b1c0633df7895bbd1162ae146faf1.png" src="_images/9f0ea9b6a8889973969e2b5c568c7604659b1c0633df7895bbd1162ae146faf1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image 200 (nocrystal): top-3 prompts
+  -&gt; a scientific image of nothing present  score=0.249
+  -&gt; an image showing nothing present  score=0.245
+  -&gt; a photo of nothing present structure  score=0.238
+</pre></div>
+</div>
+<img alt="_images/7798a76a0601ce93bf1de85b36bab0be0708cbae2e73924eb12c78ca21310ace.png" src="_images/7798a76a0601ce93bf1de85b36bab0be0708cbae2e73924eb12c78ca21310ace.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given a text prompt, find the best matching images</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">image_tensors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_feats</span> <span class="o">@</span> <span class="n">txt_feats</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># top-k images to show</span>
+    <span class="n">text_examples</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># two example prompts</span>
+
+    <span class="k">for</span> <span class="n">idx_text</span> <span class="ow">in</span> <span class="n">text_examples</span><span class="p">:</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="o">-</span><span class="n">sims</span><span class="p">[:,</span> <span class="n">idx_text</span><span class="p">])[:</span><span class="n">k</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Prompt: &#39;</span><span class="si">{</span><span class="n">prompts</span><span class="p">[</span><span class="n">idx_text</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; → top-</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> matching images&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">order</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  -&gt; Image </span><span class="si">{</span><span class="n">j</span><span class="si">:</span><span class="s2">&gt;3</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">image_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">  score=</span><span class="si">{</span><span class="n">sims</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">idx_text</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># show top-k retrieved images</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">order</span><span class="p">):</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s2">&quot;pil&quot;</span><span class="p">])</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">sims</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">idx_text</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Top-</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> images for: &#39;</span><span class="si">{</span><span class="n">prompts</span><span class="p">[</span><span class="n">idx_text</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">])</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prompt: &#39;an image showing a crystal&#39; → top-3 matching images
+  -&gt; Image 141: crystal  score=0.313
+  -&gt; Image   8: crystal  score=0.308
+  -&gt; Image  91: crystal  score=0.305
+</pre></div>
+</div>
+<img alt="_images/8cf950bd40c223885bb9ceb84c817bd28eee70a1a79a2983c8548d530542eb62.png" src="_images/8cf950bd40c223885bb9ceb84c817bd28eee70a1a79a2983c8548d530542eb62.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prompt: &#39;a photo of a crystal structure&#39; → top-3 matching images
+  -&gt; Image 177: crystal  score=0.303
+  -&gt; Image   8: crystal  score=0.301
+  -&gt; Image 186: crystal  score=0.299
+</pre></div>
+</div>
+<img alt="_images/4f7e473adf98f9a129e2a5aa97b5c63f1333d7acadba0315e2c2e0232251b47b.png" src="_images/4f7e473adf98f9a129e2a5aa97b5c63f1333d7acadba0315e2c2e0232251b47b.png" />
+</div>
+</div>
+</section>
+<section id="vision-chat-with-a-gpt-model">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Vision Chat with a GPT Model</a><a class="headerlink" href="#vision-chat-with-a-gpt-model" title="Permalink to this heading">#</a></h2>
+<p>We now send an image URL together with a question using the <strong>Responses API</strong>.
+This part requires a valid API key.</p>
+<p>First let’s load one image from <code class="docutils literal notranslate"><span class="pre">wikipedia</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/8/85/NiPc_MOF_wiki.png&quot;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">))</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">OpenAI</span>
+
+<span class="c1"># set your OpenAI API key</span>
+<span class="n">OPENAI_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;sk-..............&quot;</span>
+
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">OPENAI_API_KEY</span><span class="p">)</span>
+
+
+<span class="c1"># Note: This key will expire after the lecture.</span>
+<span class="c1"># To run this code later, generate a new API key at:</span>
+<span class="c1"># https://platform.openai.com/api-keys</span>
+
+
+<span class="c1"># Pick the first image in our small dataset</span>
+<span class="n">img_url</span> <span class="o">=</span> <span class="s2">&quot;https://upload.wikimedia.org/wikipedia/commons/8/85/NiPc_MOF_wiki.png&quot;</span>
+<span class="n">user_question</span> <span class="o">=</span> <span class="s2">&quot;Describe this image in 1 sentence.&quot;</span>
+
+<span class="c1"># Build the input as a list with one user item containing text and image</span>
+<span class="n">inp</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">user_question</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_image&quot;</span><span class="p">,</span> <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="n">img_url</span><span class="p">}</span> <span class="c1">#we put image here after the text</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span> <span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">inp</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vision chat failed:&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+
+<span class="c1">#Please run the code in Google Colab</span>
+</pre></div>
+</div>
+<p>Alternatively, you can also load image from your local folder.</p>
+<p><img alt="image.png" src="data:image/png;base64,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" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+
+<span class="c1"># Function to encode the image</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image_file</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">image_file</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Path to your image</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;NiPc_MOF_wiki.png&quot;</span>
+
+<span class="c1"># Getting the Base64 string</span>
+<span class="n">base64_image</span> <span class="o">=</span> <span class="n">encode_image</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
+
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
+    <span class="nb">input</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;what&#39;s reaction condition in this image?&quot;</span> <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;input_image&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;data:image/jpeg;base64,</span><span class="si">{</span><span class="n">base64_image</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="p">},</span>
+            <span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+
+<span class="c1">#print(response.output_text)</span>
+<span class="c1">#Please  run this in Google Colab</span>
+</pre></div>
+</div>
+<p>Why this is useful for chemist?</p>
+<p>This approach is efficient when dealing with a large body of scientific literature—say, 6,000 papers in a specific field—where manually reviewing each figure or diagram would be impossible.</p>
+<p>You can guide vision languge models annotate and classify them according to their content (for example, identifying microscopy images, spectra, or molecular structures). Once labeled, the collection becomes a searchable dataset that allows you to quickly locate and analyze only the figures relevant to a specific research question or data-mining goal. Such automated image annotation and retrieval accelerate insight generation and support large-scale visual pattern discovery in scientific texts.</p>
+<p>(See* Digital Discovery*, <strong>2024</strong>, 3, 491–501 for further discussion.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://pubs.rsc.org/image/article/2024/dd/d3dd00239j/d3dd00239j-f1_hi-res.gif&quot;</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="https://pubs.rsc.org/image/article/2024/dd/d3dd00239j/d3dd00239j-f1_hi-res.gif" width="800" height="800"/></div></div>
+</div>
+</section>
+<section id="glossary">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<dl class="simple glossary">
+<dt id="term-CLIP"><strong>CLIP</strong><a class="headerlink" href="#term-CLIP" title="Permalink to this term">#</a></dt><dd><p>Contrastive Language–Image Pretraining. Learns aligned image and text spaces.</p>
+</dd>
+<dt id="term-Contrastive-loss"><strong>Contrastive loss</strong><a class="headerlink" href="#term-Contrastive-loss" title="Permalink to this term">#</a></dt><dd><p>Objective that raises similarity of matched pairs and lowers mismatched pairs.</p>
+</dd>
+<dt id="term-InfoNCE"><strong>InfoNCE</strong><a class="headerlink" href="#term-InfoNCE" title="Permalink to this term">#</a></dt><dd><p>A popular contrastive objective that treats each batch example as the only positive.</p>
+</dd>
+<dt id="term-Projection-head"><strong>Projection head</strong><a class="headerlink" href="#term-Projection-head" title="Permalink to this term">#</a></dt><dd><p>The final linear layer that maps encoder features into the shared space.</p>
+</dd>
+<dt id="term-Zero-shot"><strong>Zero-shot</strong><a class="headerlink" href="#term-Zero-shot" title="Permalink to this term">#</a></dt><dd><p>Using text prompts alone to classify images without training on task labels.</p>
+</dd>
+<dt id="term-Linear-probe"><strong>Linear probe</strong><a class="headerlink" href="#term-Linear-probe" title="Permalink to this term">#</a></dt><dd><p>A linear classifier trained on frozen embeddings.</p>
+</dd>
+<dt id="term-Cosine-similarity"><strong>Cosine similarity</strong><a class="headerlink" href="#term-Cosine-similarity" title="Permalink to this term">#</a></dt><dd><p>The dot product of two unit vectors.</p>
+</dd>
+<dt id="term-Temperature-tau"><strong>Temperature (<span class="math notranslate nohighlight">\(\tau\)</span>)</strong><a class="headerlink" href="#term-Temperature-tau" title="Permalink to this term">#</a></dt><dd><p>Scales logits in the contrastive loss. Lower means sharper distributions.</p>
+</dd>
+<dt id="term-Retrieval"><strong>Retrieval</strong><a class="headerlink" href="#term-Retrieval" title="Permalink to this term">#</a></dt><dd><p>Ranking images for a text query or texts for an image query based on similarity.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">1. Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clip-connecting-text-and-images">2. CLIP: Connecting Text and Images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-based-on-embeddings">3. Prediction based on Embeddings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imagetext-retrieval">4. Image–text Retrieval</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vision-chat-with-a-gpt-model">5. Vision Chat with a GPT Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glossary">6. Glossary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
