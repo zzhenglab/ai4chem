@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -359,6 +359,7 @@ document.write(`
  | <a href="#V"><strong>V</strong></a>
  | <a href="#W"><strong>W</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
 <h2 id="A">A</h2>
@@ -424,6 +425,8 @@ document.write(`
 </li>
       <li><a href="lecture-05.html#term-classification"><strong>classification</strong></a>
 </li>
+      <li><a href="lecture-22.html#term-CLIP"><strong>CLIP</strong></a>
+</li>
       <li><a href="lecture-12.html#term-clustering"><strong>clustering</strong></a>
 </li>
       <li><a href="lecture-06.html#term-Coefficient-importance"><strong>Coefficient importance</strong></a>
@@ -436,9 +439,11 @@ document.write(`
 </li>
       <li><a href="lecture-18.html#term-Contrastive-learning"><strong>Contrastive learning</strong></a>
 </li>
+      <li><a href="lecture-22.html#term-Contrastive-loss"><strong>Contrastive loss</strong></a>
+</li>
       <li><a href="lecture-21.html#term-Convolution-Conv"><strong>Convolution (Conv)</strong></a>
 </li>
-      <li><a href="lecture-18.html#term-Cosine-similarity"><strong>Cosine similarity</strong></a>
+      <li><a href="lecture-18.html#term-Cosine-similarity"><strong>Cosine similarity</strong></a>, <a href="lecture-22.html#term-Cosine-similarity"><strong>[1]</strong></a>
 </li>
       <li><a href="lecture-19.html#term-Cross-entropy"><strong>Cross entropy</strong></a>
 </li>
@@ -570,9 +575,11 @@ document.write(`
 </li>
       <li><a href="lecture-04.html#term-InChI-and-InChIKey"><strong>InChI and InChIKey</strong></a>
 </li>
+      <li><a href="lecture-02.html#term-index"><strong>index</strong></a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="lecture-02.html#term-index"><strong>index</strong></a>
+      <li><a href="lecture-22.html#term-InfoNCE"><strong>InfoNCE</strong></a>
 </li>
       <li><a href="lecture-18.html#term-InfoNCE-loss"><strong>InfoNCE loss</strong></a>
 </li>
@@ -604,7 +611,7 @@ document.write(`
 </li>
       <li><a href="lecture-19.html#term-LayerNorm"><strong>LayerNorm</strong></a>
 </li>
-      <li><a href="lecture-18.html#term-Linear-probe"><strong>Linear probe</strong></a>
+      <li><a href="lecture-18.html#term-Linear-probe"><strong>Linear probe</strong></a>, <a href="lecture-22.html#term-Linear-probe"><strong>[1]</strong></a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -708,6 +715,8 @@ document.write(`
 </li>
       <li><a href="lecture-14.html#term-Probability-of-Improvement-PI"><strong>Probability of Improvement (PI)</strong></a>
 </li>
+      <li><a href="lecture-22.html#term-Projection-head"><strong>Projection head</strong></a>
+</li>
       <li><a href="lecture-17.html#term-PU-probability"><strong>PU probability</strong></a>
 </li>
       <li><a href="lecture-04.html#term-PUG-REST"><strong>PUG-REST</strong></a>
@@ -744,7 +753,7 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-19.html#term-Residual-connection"><strong>Residual connection</strong></a>
 </li>
-      <li><a href="lecture-18.html#term-Retrieval"><strong>Retrieval</strong></a>
+      <li><a href="lecture-18.html#term-Retrieval"><strong>Retrieval</strong></a>, <a href="lecture-22.html#term-Retrieval"><strong>[1]</strong></a>
 </li>
       <li><a href="lecture-16.html#term-Return"><strong>Return</strong></a>
 </li>
@@ -797,7 +806,11 @@ document.write(`
       <li><a href="lecture-12.html#term-Tanimoto-Jaccard-similarity"><strong>Tanimoto / Jaccard similarity</strong></a>
 </li>
       <li><a href="lecture-18.html#term-Temperature"><strong>Temperature</strong></a>
+
+      <ul>
+        <li><a href="lecture-22.html#term-Temperature-tau"><strong>(\tau)</strong></a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-16.html#term-Thompson-sampling"><strong>Thompson sampling</strong></a>
@@ -847,6 +860,14 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="lecture-02.html#term-yerr"><strong>yerr</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="lecture-22.html#term-Zero-shot"><strong>Zero-shot</strong></a>
 </li>
   </ul></td>
 </tr></table>

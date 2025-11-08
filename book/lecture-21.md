@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 19 - Computer Vision
+# Lecture 21 - Computer Vision
 
 ```{contents}
 :local:
@@ -30,6 +30,7 @@ Suggested reading for this section: https://poloclub.github.io/cnn-explainer/
 ## 1. Setup
 
 ```{code-cell} ipython3
+:tags: [hide-input]
 #pip install torch torchvision torchaudio matplotlib scikit-learn onnx onnxruntime opencv-python tqdm
 # 0. setup
 import os, random, math, random, requests, numpy as np, matplotlib.pyplot as plt
