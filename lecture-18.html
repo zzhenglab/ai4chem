@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -188,6 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 18 - Contrastive Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
 </ul>
 
     </div>
@@ -1791,7 +1792,7 @@ We print shapes to keep it clear.</p>
 xb_b torch.shape: torch.Size([64, 2])
 z_a.shape: torch.Size([64, 2])
 z_b.shape: torch.Size([64, 2])
-Loss (one step): 3.635906219482422
+Loss (one step): 4.12499475479126
 </pre></div>
 </div>
 </div>
@@ -1856,10 +1857,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.8085
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.0217
 </pre></div>
 </div>
-<img alt="_images/b08e85daaaa72717e55f81571d75c8c93c9dc617cb5ccdac87e18234ff6bc1e6.png" src="_images/b08e85daaaa72717e55f81571d75c8c93c9dc617cb5ccdac87e18234ff6bc1e6.png" />
+<img alt="_images/ece5711cae681d75d460f5b8df4857999afed7ef23f4412f205862fd64c89e14.png" src="_images/ece5711cae681d75d460f5b8df4857999afed7ef23f4412f205862fd64c89e14.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1885,10 +1886,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.3508
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.3243
 </pre></div>
 </div>
-<img alt="_images/3d8097d7c7be74803dec93d811a8cb6791bbde7ecb7fca3cdda872e81a6c760f.png" src="_images/3d8097d7c7be74803dec93d811a8cb6791bbde7ecb7fca3cdda872e81a6c760f.png" />
+<img alt="_images/59d3d8596738e770761fc2b4a3fe568b136ccec21c6fb3683c470c1454bd31be.png" src="_images/59d3d8596738e770761fc2b4a3fe568b136ccec21c6fb3683c470c1454bd31be.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1928,7 +1929,7 @@ Then we color by the hidden class to see clusters.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z_test_np.shape: (60, 2)
 </pre></div>
 </div>
-<img alt="_images/eaff0ce4e74da2fa1bdb08d7a4bd9cb98a0d480ba8022efdebd96aba93a78217.png" src="_images/eaff0ce4e74da2fa1bdb08d7a4bd9cb98a0d480ba8022efdebd96aba93a78217.png" />
+<img alt="_images/ee2a556dd8cb423d7e29f32f2809b4ce4fd56be1d7f5a7ebb2eb22f36e133570.png" src="_images/ee2a556dd8cb423d7e29f32f2809b4ce4fd56be1d7f5a7ebb2eb22f36e133570.png" />
 </div>
 </div>
 </section>
@@ -1986,10 +1987,10 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.2241
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.7208
 </pre></div>
 </div>
-<img alt="_images/632fe3232b8159cb4b9e98cc1d3374ff653e87dd2304550db3f53f08ac4ea08b.png" src="_images/632fe3232b8159cb4b9e98cc1d3374ff653e87dd2304550db3f53f08ac4ea08b.png" />
+<img alt="_images/57613a3544aa561b28037091a70a4132208f97c663de56f011e7373cd98c4fba.png" src="_images/57613a3544aa561b28037091a70a4132208f97c663de56f011e7373cd98c4fba.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -2032,7 +2033,7 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z_chem.shape: (1500, 8)
 </pre></div>
 </div>
-<img alt="_images/cecfdbe58311ee04dd1316ef6491ec26d1a525afac82f14af7f6ee92bbdbcbd2.png" src="_images/cecfdbe58311ee04dd1316ef6491ec26d1a525afac82f14af7f6ee92bbdbcbd2.png" />
+<img alt="_images/88d58a4fb8f620cb840a71ac71f594198b4ed3ea3b92e745fdb1abca37dbad5f.png" src="_images/88d58a4fb8f620cb840a71ac71f594198b4ed3ea3b92e745fdb1abca37dbad5f.png" />
 </div>
 </div>
 <p>Here is how encoded reaction conditions look like.</p>
@@ -2043,13 +2044,13 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.589 , -0.656 , -0.365 , ..., -0.0607,  0.0106, -0.1921],
-       [ 0.766 , -0.0685, -0.2584, ..., -0.491 , -0.0115, -0.1454],
-       [ 0.7658,  0.0087, -0.2676, ..., -0.4512, -0.1255, -0.1601],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.3261,  0.2814,  0.1706, ..., -0.5996, -0.3927, -0.5079],
+       [-0.2665,  0.3164,  0.206 , ..., -0.5711, -0.214 , -0.634 ],
+       [-0.2286,  0.3229,  0.2052, ..., -0.5581, -0.1516, -0.6722],
        ...,
-       [ 0.3331, -0.831 , -0.2865, ...,  0.0359,  0.1412, -0.2289],
-       [ 0.7672,  0.0154, -0.2664, ..., -0.4504, -0.1358, -0.1596],
-       [ 0.6727,  0.2788, -0.139 , ..., -0.5753, -0.084 , -0.0384]],
+       [-0.3694,  0.1796,  0.1087, ..., -0.6135, -0.4938, -0.3834],
+       [-0.2263,  0.3224,  0.2064, ..., -0.5575, -0.1482, -0.6742],
+       [-0.2012,  0.3268,  0.2109, ..., -0.5336, -0.0912, -0.7043]],
       dtype=float32)
 </pre></div>
 </div>
@@ -2100,9 +2101,9 @@ Z_test.shape: (60, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.9981, -0.0611],
-       [-0.8566, -0.516 ],
-       [-0.4838, -0.8752]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.7706, -0.6373],
+       [ 0.949 , -0.3154],
+       [ 0.3536, -0.9354]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -2126,7 +2127,7 @@ Z_test.shape: (60, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 0.983
 AUC: 1.0
 </pre></div>
 </div>
@@ -2155,7 +2156,7 @@ AUC: 1.0
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/2bb7a2ada1b27ce59d3579f7bffa77627ada901831bd12a3ec57f49e9e0e2286.png" src="_images/2bb7a2ada1b27ce59d3579f7bffa77627ada901831bd12a3ec57f49e9e0e2286.png" />
+<img alt="_images/f3fbc652663947ddb2954e48d710deedcfa1ce49e98bd4193123e640af7df8ba.png" src="_images/f3fbc652663947ddb2954e48d710deedcfa1ce49e98bd4193123e640af7df8ba.png" />
 </div>
 </div>
 <div class="admonition-exercise-7-1 admonition">
@@ -2191,8 +2192,8 @@ This is useful to propose similar conditions or spectra for follow up experiment
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query is index 2 with class 1
-Top indices: [ 2 17  8 47 14 44]
-Top sims   : [1.    1.    1.    1.    0.999 0.999]
+Top indices: [ 2 42 58 17 15 43]
+Top sims   : [1. 1. 1. 1. 1. 1.]
 </pre></div>
 </div>
 </div>
@@ -2212,7 +2213,7 @@ Top sims   : [1.    1.    1.    1.    0.999 0.999]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6374b82cb304e7f7255cffd3b7e0675c77a5a202213b6f6a1ae7750b6a7ff3f8.png" src="_images/6374b82cb304e7f7255cffd3b7e0675c77a5a202213b6f6a1ae7750b6a7ff3f8.png" />
+<img alt="_images/820a37c409b7551d979681234144c283c3945c7786cce50be9ee3749ec6e3db8.png" src="_images/820a37c409b7551d979681234144c283c3945c7786cce50be9ee3749ec6e3db8.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -2260,12 +2261,12 @@ We plot ROC and Precision-Recall.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.72
-Chemistry 4D AUC: 0.825
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.662
+Chemistry 4D AUC: 0.741
 </pre></div>
 </div>
-<img alt="_images/1398519be0ac264a9d0ffcc7ad84d542c09e9c54f4ed9f994b4eda6218e35850.png" src="_images/1398519be0ac264a9d0ffcc7ad84d542c09e9c54f4ed9f994b4eda6218e35850.png" />
-<img alt="_images/07735e9adc6d94273657785dc89e4b22ed5c6b89ddcda2aa4d0d4a8aa9bff049.png" src="_images/07735e9adc6d94273657785dc89e4b22ed5c6b89ddcda2aa4d0d4a8aa9bff049.png" />
+<img alt="_images/80dd00d851548cd0277ffbf7cfe4060ec6935084464f331c0c69f48e7ef8e860.png" src="_images/80dd00d851548cd0277ffbf7cfe4060ec6935084464f331c0c69f48e7ef8e860.png" />
+<img alt="_images/8613e597df529fc2b2ee205756c5979f18333b4027ce5c8f6b9a7f4635a1f6f9.png" src="_images/8613e597df529fc2b2ee205756c5979f18333b4027ce5c8f6b9a7f4635a1f6f9.png" />
 </div>
 </div>
 </section>
@@ -2666,13 +2667,13 @@ Picked spectrum index: 7 class: 0
   neg view source idx: 8 class: 0
 
 Encoded representations (first 6 of 16):
-  enc(original): [ 0.1526 -0.1947  0.0316  0.1334  0.1828  0.1149]
-  enc(pos1):     [ 0.0428 -0.1114  0.0209  0.0228  0.2033  0.1094]
-  enc(pos2):     [ 0.2054 -0.2963  0.0222  0.0695  0.2295  0.1511]
-  enc(neg):      [ 0.1729 -0.1768  0.0791  0.0774  0.2152  0.1013]
+  enc(original): [ 0.2324  0.3394  0.2931 -0.516  -0.2906 -0.2387]
+  enc(pos1):     [ 0.2304  0.3628  0.3573 -0.5307 -0.1474 -0.1383]
+  enc(pos2):     [ 0.2412  0.4428  0.1519 -0.5418 -0.2597 -0.0794]
+  enc(neg):      [ 0.2543  0.4152  0.2243 -0.5504 -0.1822 -0.1309]
 </pre></div>
 </div>
-<img alt="_images/675378c7491573e2016ea2fb41521fdb07a413f68be711d38fb4ed0e33da945d.png" src="_images/675378c7491573e2016ea2fb41521fdb07a413f68be711d38fb4ed0e33da945d.png" />
+<img alt="_images/2a56cddb025bce6500f03a465c8dc4eda1eda2dd0ae210af19963bbbe18d70bf.png" src="_images/2a56cddb025bce6500f03a465c8dc4eda1eda2dd0ae210af19963bbbe18d70bf.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier on embeddings:
   train size: 36 test size: 54
   test accuracy: 1.0
@@ -2803,15 +2804,15 @@ Encoded representations (first 6 of 16):
 </details>
 <div class="cell_output docutils container">
 <img alt="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" src="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [-0.0101 -0.2618 -0.2033  0.185   0.1236 -0.0892 -0.2774  0.0728]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [ 0.4085  0.0577  0.1504 -0.107  -0.526  -0.3766 -0.0873  0.1979]
 </pre></div>
 </div>
-<img alt="_images/2ab62600ec95b1424269cbcfea36fb10af06eb70cdf353524485a62fde56293f.png" src="_images/2ab62600ec95b1424269cbcfea36fb10af06eb70cdf353524485a62fde56293f.png" />
+<img alt="_images/b6630fe8012d2d100b2e55905a36c7f2ef156600a89fe247378bca2d518b57ae.png" src="_images/b6630fe8012d2d100b2e55905a36c7f2ef156600a89fe247378bca2d518b57ae.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class: 0
-Class probabilities: [0.785, 0.147, 0.069]
+Class probabilities: [0.857, 0.0, 0.143]
 Nearest neighbor index in existing set: 6
 Nearest neighbor label: 0
-Cosine similarity in embedding space: 0.7693
+Cosine similarity in embedding space: 0.6967
 </pre></div>
 </div>
 <img alt="_images/ec1739a0883bd604e87c175fe73eddbfc34c075b44fbbbbbbf8145b0696007c6.png" src="_images/ec1739a0883bd604e87c175fe73eddbfc34c075b44fbbbbbbf8145b0696007c6.png" />
