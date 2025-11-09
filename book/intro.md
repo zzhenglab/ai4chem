@@ -41,8 +41,10 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 23** – Reinforcement learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)
 - **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
 - **Nov 4 & 6** –  Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)        
-- **Nov 11 & 13** – Computer vision and multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing)
-- **Nov 18 & 20** – Multi-agent AI and literature data mining   
+- **Nov 11 & 13** – Computer vision and multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing) 
+- **Nov 18 & 20** – Multi-agent AI and literature data mining [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/18NZIvGg0hd0P5oOTwfQ61x9K3dS6qdU_?usp=sharing)   
+
+
 - **Nov 25** – Self-driving labs  
 - **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
@@ -59,10 +61,9 @@ If you enjoy the course, please help spread the word and share the link so more 
 | **Oct 14** | Project 1 Evaluation due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|  
 | **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1l3xeFktRU4kAkkqfMN_wp57BNRGBUXpt?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1hxsWsXf4KofWwgCmqwLTvu_NtONS5s6H?usp=sharing) | 
 | **Nov 9** | Assignment 4 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing)|  
-| **Nov 30** | Assignment 5 due |  
+| **Nov 30** | Assignment 5 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1aOL9hfP6JmFqkg5eVpDyl6sxYiaTAHEq?usp=sharing)|  
 | **Dec 7** | Project 2 Evaluations due |  
 ```
-
 
 
 
