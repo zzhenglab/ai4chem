@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -202,6 +202,7 @@
 <li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-23.html">Lecture 23 - Prompt Engineering and Function Calling</a></li>
 </ul>
 
     </div>
@@ -1394,9 +1395,7 @@ C(F)(F)(F)CC=CCO   90.429280
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lasso coefficients (feature importance):
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MolWt       0.492808
+MolWt       0.492808
 TPSA        0.021167
 LogP       -0.000000
 NumRings   -0.000000
@@ -1405,7 +1404,9 @@ dtype: float64
 </div>
 <img alt="_images/014a98b5151c634dab01b31e406166d7a7636434e440a7ceee670b7c00b82c91.png" src="_images/014a98b5151c634dab01b31e406166d7a7636434e440a7ceee670b7c00b82c91.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Permutation importance (mean decrease in R²):
-LogP        0.000000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LogP        0.000000
 NumRings    0.000000
 TPSA        0.002218
 MolWt       1.607811
