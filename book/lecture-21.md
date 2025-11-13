@@ -35,7 +35,7 @@ Suggested reading for this section: https://poloclub.github.io/cnn-explainer/
 # 0. setup
 import os, random, math, random, requests, numpy as np, matplotlib.pyplot as plt
 from tqdm import tqdm
-
+os.environ["TQDM_DISABLE"] = "1"
 import torch, torch.nn as nn, torch.nn.functional as F
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms, utils as vutils
@@ -43,6 +43,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader, random_split
 import seaborn as sns
+from tqdm.auto import tqdm            # better in notebooks than "from tqdm import tqdm"
+SHOW_PBAR = False                     # toggle here
 ```
 
 ## 2. CNN Model for MNIST
@@ -182,7 +184,12 @@ for epoch in range(1, epochs+1):
     # ---- Training loop ----
     model.train()
     running = 0.0                     # accumulate loss*batch_size for epoch average
-    pbar = tqdm(train_loader, desc=f"Epoch {epoch}/{epochs} [train]")
+    pbar = tqdm(train_loader,
+            desc=f"Epoch {epoch}/{epochs} [train]",
+            disable=not SHOW_PBAR,    # off when SHOW_PBAR=False
+            leave=False,              # do not leave a finished bar on screen
+            mininterval=0.5,          # throttles updates
+            dynamic_ncols=True)       # adjusts width nicely
     for x, y in pbar:
         x, y = x.to(device), y.to(device)
         optimizer.zero_grad()         # clear previous gradients
@@ -432,9 +439,18 @@ train_set, test_set = random_split(
     full_set, [n_train, n_test],
     generator=torch.Generator().manual_seed(42)
 )
+import platform
+on_windows = platform.system() == "Windows"
 
-train_loader = DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=True, num_workers=2, pin_memory=True)
-test_loader  = DataLoader(test_set,  batch_size=BATCH_SIZE*4, shuffle=False, num_workers=2, pin_memory=True)
+NUM_WORKERS = 0 if on_windows else 2
+PIN_MEMORY  = torch.cuda.is_available()
+
+train_loader = DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=True,
+                          num_workers=NUM_WORKERS, pin_memory=PIN_MEMORY,
+                          persistent_workers=False)
+test_loader  = DataLoader(test_set,  batch_size=BATCH_SIZE*4, shuffle=False,
+                          num_workers=NUM_WORKERS, pin_memory=PIN_MEMORY,
+                          persistent_workers=False)
 
 print("Train batches:", len(train_loader), "| Test batches:", len(test_loader))
 ```
@@ -504,7 +520,12 @@ for epoch in range(1, epochs+1):
     # ---- Training loop ----
     model.train()                      # enable dropout and grads
     running = 0.0                      # accumulate loss*batch_size for epoch avg
-    pbar = tqdm(train_loader, desc=f"Epoch {epoch}/{epochs} [train]")
+    pbar = tqdm(train_loader,
+            desc=f"Epoch {epoch}/{epochs} [train]",
+            disable=not SHOW_PBAR,    # off when SHOW_PBAR=False
+            leave=False,              # do not leave a finished bar on screen
+            mininterval=0.5,          # throttles updates
+            dynamic_ncols=True)       # adjusts width nicely
     for x, y in pbar:
         x, y = x.to(device), y.to(device)
         optimizer.zero_grad()          # clear previous gradients
@@ -555,7 +576,7 @@ def plot_curves(train_losses, test_losses, test_accs):
     plt.show()
 
 plot_curves(train_losses, test_losses, test_accs)
-torch.save(model.state_dict(), "artifacts/crystal_cnn.pt")
+torch.save(model.state_dict(), "crystal_cnn.pt")
 ```
 
 A grid of random test images with predicted and true labels is a fast way to judge errors. Inspect misclassified samples and ask what features might be missing. This often suggests simple fixes such as better normalization or mild augmentation.

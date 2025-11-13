@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-02';</script>
@@ -75,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
 </ul>
 
     </div>
@@ -204,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -213,14 +228,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -345,10 +360,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -356,14 +371,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -437,10 +452,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-pandas-and-plotting">
-<h1>Lecture 2 - Pandas and Plotting<a class="headerlink" href="#lecture-2-pandas-and-plotting" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 2 - Pandas and Plotting<a class="headerlink" href="#lecture-2-pandas-and-plotting" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>Data in, plots out. You will learn the core pandas objects and a gallery of plot types.</p>
 </div></blockquote>
@@ -463,7 +478,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand what pandas is (<code class="docutils literal notranslate"><span class="pre">pd</span></code>) and what a <strong>DataFrame</strong> is (<code class="docutils literal notranslate"><span class="pre">df</span></code>), plus the usual naming conventions.</p></li>
 <li><p>Read a CSV into a pandas <strong>DataFrame</strong> and inspect it.</p></li>
@@ -479,7 +494,7 @@ document.write(`
 for more documentation</p>
 </section>
 <section id="first-plot-a-beer-lambert-style-line">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. First plot - a Beer-Lambert style line</a><a class="headerlink" href="#first-plot-a-beer-lambert-style-line" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. First plot - a Beer-Lambert style line</a><a class="headerlink" href="#first-plot-a-beer-lambert-style-line" title="Link to this heading">#</a></h2>
 <p>Assume path length <span class="math notranslate nohighlight">\(b=1\)</span> cm and molar absorptivity <span class="math notranslate nohighlight">\(\epsilon=120\ \mathrm{L\ mol^{-1}\ cm^{-1}}\)</span>. Plot absorbance vs concentration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -501,11 +516,11 @@ for more documentation</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/456859773a87329438f657e695e864d6a90b44cdcf091d37c1f288a1cccc83fc.png" src="_images/456859773a87329438f657e695e864d6a90b44cdcf091d37c1f288a1cccc83fc.png" />
+<img alt="_images/c85d7c77a430cff853b209e272d34e8aa3134eac49eea520e746293e21d9eaae.png" src="_images/c85d7c77a430cff853b209e272d34e8aa3134eac49eea520e746293e21d9eaae.png" />
 </div>
 </div>
 <section id="what-each-plotting-call-means">
-<h3>1.1 What each plotting call means<a class="headerlink" href="#what-each-plotting-call-means" title="Permalink to this heading">#</a></h3>
+<h3>1.1 What each plotting call means<a class="headerlink" href="#what-each-plotting-call-means" title="Link to this heading">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(w,</span> <span class="pre">h))</span></code></strong><br />
 Start a new blank figure. Use it when you do not want a new plot to draw on top of an old one.</p>
 <ul class="simple">
@@ -544,7 +559,7 @@ Save the current figure to a file.</p>
 </section>
 <hr class="docutils" />
 <section id="mini-examples">
-<h3>1.2 Mini examples<a class="headerlink" href="#mini-examples" title="Permalink to this heading">#</a></h3>
+<h3>1.2 Mini examples<a class="headerlink" href="#mini-examples" title="Link to this heading">#</a></h3>
 <p><strong>1) Basic line with markers</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +576,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a8696074bad8fd3dfdce9f06000bcaf5d33320d9ed36bc49a55f21d80aa4f4db.png" src="_images/a8696074bad8fd3dfdce9f06000bcaf5d33320d9ed36bc49a55f21d80aa4f4db.png" />
+<img alt="_images/f4aa2f03c3bbd6978e6457aaf2e467b7d21a1eb1b7c8a31cc334c8f530bfea3a.png" src="_images/f4aa2f03c3bbd6978e6457aaf2e467b7d21a1eb1b7c8a31cc334c8f530bfea3a.png" />
 </div>
 </div>
 <p><strong>2) Change style and set limits</strong></p>
@@ -582,7 +597,7 @@ Save the current figure to a file.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 25.0)
 </pre></div>
 </div>
-<img alt="_images/4528206e4c2ff4e041b7cdd0df9b915b33572465cd33cee77309b301a78e5b23.png" src="_images/4528206e4c2ff4e041b7cdd0df9b915b33572465cd33cee77309b301a78e5b23.png" />
+<img alt="_images/29aa27c22fa7cc21d8963c6815188fe46d2f66fb7f21ae04359574ed85f3c413.png" src="_images/29aa27c22fa7cc21d8963c6815188fe46d2f66fb7f21ae04359574ed85f3c413.png" />
 </div>
 </div>
 <p><strong>3) Two lines and a legend</strong></p>
@@ -608,10 +623,10 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1983c145970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1632cf2c440&gt;
 </pre></div>
 </div>
-<img alt="_images/afb83d3508f4ca96fe72007bbb60a1d58103cfc19dd5d314130928c41ecfcc52.png" src="_images/afb83d3508f4ca96fe72007bbb60a1d58103cfc19dd5d314130928c41ecfcc52.png" />
+<img alt="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" src="_images/04b559bf60fc563b37fd12769134c6b8a0f37583cd0afb802faf52b708c3b37c.png" />
 </div>
 </div>
 <p><strong>4) Save the figure to a file</strong></p>
@@ -634,7 +649,7 @@ Save the current figure to a file.</p>
 </section>
 <hr class="docutils" />
 <section id="quick-troubleshooting">
-<h3>1.3 Quick troubleshooting<a class="headerlink" href="#quick-troubleshooting" title="Permalink to this heading">#</a></h3>
+<h3>1.3 Quick troubleshooting<a class="headerlink" href="#quick-troubleshooting" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>New plot drew on top of the old one<br />
 → Call <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> before the new <code class="docutils literal notranslate"><span class="pre">plt.plot(...)</span></code>.</p></li>
@@ -665,7 +680,7 @@ Save the current figure to a file.</p>
 </section>
 <hr class="docutils" />
 <section id="quick-gallery-of-plot-types">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Quick gallery of plot types</a><a class="headerlink" href="#quick-gallery-of-plot-types" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Quick gallery of plot types</a><a class="headerlink" href="#quick-gallery-of-plot-types" title="Link to this heading">#</a></h2>
 <p>We will generate small arrays and plot them. Run each cell and read the comments.</p>
 <div class="admonition-parameters-to-know-for-line-plots admonition">
 <p class="admonition-title">Parameters to know for line plots</p>
@@ -694,10 +709,10 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1983d3c94c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1633e018910&gt;
 </pre></div>
 </div>
-<img alt="_images/64a60014c4a36464824ef10ef811e400e918dab22346c93ab7ccae452d630db0.png" src="_images/64a60014c4a36464824ef10ef811e400e918dab22346c93ab7ccae452d630db0.png" />
+<img alt="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" src="_images/9d221f748a9d6334aa62832834bfed7f97636c85e43d98e0c2ea326829764408.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-scatter admonition">
@@ -727,7 +742,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3c1dc392199b2ac2c989ff9835ac2bb5899b0ab0a5caf81e7c410b815906636b.png" src="_images/3c1dc392199b2ac2c989ff9835ac2bb5899b0ab0a5caf81e7c410b815906636b.png" />
+<img alt="_images/494a30b293b6d13816e97481ae3b3e3490e99280e94e35104efbef3643cd2064.png" src="_images/494a30b293b6d13816e97481ae3b3e3490e99280e94e35104efbef3643cd2064.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-bar-charts admonition">
@@ -755,7 +770,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3286a7b9fbae4317cc60337b5217622f433b44c87efec6ffa2b49e558b908366.png" src="_images/3286a7b9fbae4317cc60337b5217622f433b44c87efec6ffa2b49e558b908366.png" />
+<img alt="_images/bb7238f17e93e08cc434a3a6396ec0adb85a84ab0331d6f9311aeda7ab028dc3.png" src="_images/bb7238f17e93e08cc434a3a6396ec0adb85a84ab0331d6f9311aeda7ab028dc3.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-histograms admonition">
@@ -782,7 +797,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/deb919a9616c91becf0c2af0e3b1ba11759ebd66efd28bfa42c8e675aaa181b2.png" src="_images/deb919a9616c91becf0c2af0e3b1ba11759ebd66efd28bfa42c8e675aaa181b2.png" />
+<img alt="_images/891e3f6e8e0ccd4a3b5bddc81f3588b425d4d6edb500eef925c74c41441a981b.png" src="_images/891e3f6e8e0ccd4a3b5bddc81f3588b425d4d6edb500eef925c74c41441a981b.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-box-plots admonition">
@@ -808,7 +823,11 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3107f65557b73c0f13b56bfa25ec4025cd0c8e93e65630791b5a07d70eeb2c52.png" src="_images/3107f65557b73c0f13b56bfa25ec4025cd0c8e93e65630791b5a07d70eeb2c52.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_201060\2700000940.py:5: MatplotlibDeprecationWarning: The &#39;labels&#39; parameter of boxplot() has been renamed &#39;tick_labels&#39; since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  plt.boxplot([group1, group2], labels=[&quot;g1&quot;, &quot;g2&quot;])
+</pre></div>
+</div>
+<img alt="_images/214984557b553aa28cd340aa9052c28d49cd481fc9bfd65d9a753799f52be55f.png" src="_images/214984557b553aa28cd340aa9052c28d49cd481fc9bfd65d9a753799f52be55f.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-violin-plots admonition">
@@ -830,7 +849,7 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5a5e8ea7f482c506039e05f12992a0eac35a8f8e0f7728bbd638cc62a36a101.png" src="_images/b5a5e8ea7f482c506039e05f12992a0eac35a8f8e0f7728bbd638cc62a36a101.png" />
+<img alt="_images/8bf40c0b13cc198c04bf9ce532346d20b12fb01e57b7c01d2ab635c941715ea1.png" src="_images/8bf40c0b13cc198c04bf9ce532346d20b12fb01e57b7c01d2ab635c941715ea1.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-heatmaps-with-imshow admonition">
@@ -864,7 +883,7 @@ Save the current figure to a file.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Heatmap style with imshow&#39;)
 </pre></div>
 </div>
-<img alt="_images/7c6212287edfeec9448622a14a0c43ba8a6f5533d37aee751e5dad6583d6fef2.png" src="_images/7c6212287edfeec9448622a14a0c43ba8a6f5533d37aee751e5dad6583d6fef2.png" />
+<img alt="_images/874384dc7a5c69ab5e2f95e9f30943067d70a8dab654d7a18a8686d92da8e794.png" src="_images/874384dc7a5c69ab5e2f95e9f30943067d70a8dab654d7a18a8686d92da8e794.png" />
 </div>
 </div>
 <div class="admonition-parameters-to-know-for-error-bars admonition">
@@ -894,14 +913,14 @@ Save the current figure to a file.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3ef5f6817126b7aa31b391ab0cc5fa1e61d644d570d7fafe8ac72416b7b3fb13.png" src="_images/3ef5f6817126b7aa31b391ab0cc5fa1e61d644d570d7fafe8ac72416b7b3fb13.png" />
+<img alt="_images/c6619b2035032d14976bd692ff2115b0b8062c96ba57e77b74b105596977509b.png" src="_images/c6619b2035032d14976bd692ff2115b0b8062c96ba57e77b74b105596977509b.png" />
 </div>
 </div>
 </section>
 <section id="pandas-essentials">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Pandas essentials</a><a class="headerlink" href="#pandas-essentials" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Pandas essentials</a><a class="headerlink" href="#pandas-essentials" title="Link to this heading">#</a></h2>
 <section id="what-is-pandas-and-why-pd">
-<h3>3.1 What is pandas and why <code class="docutils literal notranslate"><span class="pre">pd</span></code>?<a class="headerlink" href="#what-is-pandas-and-why-pd" title="Permalink to this heading">#</a></h3>
+<h3>3.1 What is pandas and why <code class="docutils literal notranslate"><span class="pre">pd</span></code>?<a class="headerlink" href="#what-is-pandas-and-why-pd" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p><strong>pandas</strong> is a Python library for working with tabular data. It gives you two core objects:</p>
@@ -923,7 +942,7 @@ Save the current figure to a file.</p>
 </div>
 </section>
 <section id="what-is-a-dataframe-and-why-do-people-name-it-df">
-<h3>3.2 What is a DataFrame and why do people name it <code class="docutils literal notranslate"><span class="pre">df</span></code>?<a class="headerlink" href="#what-is-a-dataframe-and-why-do-people-name-it-df" title="Permalink to this heading">#</a></h3>
+<h3>3.2 What is a DataFrame and why do people name it <code class="docutils literal notranslate"><span class="pre">df</span></code>?<a class="headerlink" href="#what-is-a-dataframe-and-why-do-people-name-it-df" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>A <strong>DataFrame</strong> is a 2D table with labeled rows and columns. It keeps:</p>
@@ -1101,7 +1120,7 @@ Data columns (total 4 columns):
  2   state                4 non-null      object 
  3   mass_ratio_to_water  4 non-null      float64
 dtypes: float64(2), object(2)
-memory usage: 256.0+ bytes
+memory usage: 260.0+ bytes
 </pre></div>
 </div>
 </div>
@@ -1186,7 +1205,7 @@ memory usage: 256.0+ bytes
 </div>
 </section>
 <section id="selecting-rows-and-columns">
-<h3>3.2 Selecting rows and columns<a class="headerlink" href="#selecting-rows-and-columns" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Selecting rows and columns<a class="headerlink" href="#selecting-rows-and-columns" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">[]</span></code> for a single column, <code class="docutils literal notranslate"><span class="pre">.loc</span></code> for names, <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> for positions, and boolean masks for filters.</p>
@@ -1424,7 +1443,7 @@ Name: molar_mass, dtype: float64
 </div>
 </section>
 <section id="new-columns-sorting-missing-values">
-<h3>3.3 New columns, sorting, missing values<a class="headerlink" href="#new-columns-sorting-missing-values" title="Permalink to this heading">#</a></h3>
+<h3>3.3 New columns, sorting, missing values<a class="headerlink" href="#new-columns-sorting-missing-values" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>You can compute new columns from old ones. Handle missing values with <code class="docutils literal notranslate"><span class="pre">isna</span></code>, <code class="docutils literal notranslate"><span class="pre">fillna</span></code>, or <code class="docutils literal notranslate"><span class="pre">dropna</span></code>.</p>
@@ -1525,7 +1544,7 @@ Name: molar_mass, dtype: float64
 </section>
 <hr class="docutils" />
 <section id="read-a-csv">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Read a CSV</a><a class="headerlink" href="#read-a-csv" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Read a CSV</a><a class="headerlink" href="#read-a-csv" title="Link to this heading">#</a></h2>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Use one of the three options. If you have trouble, use Option C to generate the file inside the notebook.</p>
@@ -1723,9 +1742,9 @@ Name: molar_mass, dtype: float64
 <hr class="docutils" />
 </section>
 <section id="from-csv-to-plots">
-<span id="l2-csv-plots"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">5. From CSV to plots</a><a class="headerlink" href="#from-csv-to-plots" title="Permalink to this heading">#</a></h2>
+<span id="l2-csv-plots"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">5. From CSV to plots</a><a class="headerlink" href="#from-csv-to-plots" title="Link to this heading">#</a></h2>
 <section id="inspect-and-clean">
-<h3>5.1 Inspect and clean<a class="headerlink" href="#inspect-and-clean" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Inspect and clean<a class="headerlink" href="#inspect-and-clean" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Always inspect, then remove impossible values.</p>
@@ -1825,7 +1844,7 @@ Name: molar_mass, dtype: float64
 </div>
 </section>
 <section id="scatter-of-absorbance-vs-concentration">
-<h3>5.2 Scatter of absorbance vs concentration<a class="headerlink" href="#scatter-of-absorbance-vs-concentration" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Scatter of absorbance vs concentration<a class="headerlink" href="#scatter-of-absorbance-vs-concentration" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Scatter shows the spread around the line.</p>
@@ -1842,7 +1861,7 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a81de0cd69817df3e32339e0960213521392cdbb042a9dcc5301aa41df4dfa3d.png" src="_images/a81de0cd69817df3e32339e0960213521392cdbb042a9dcc5301aa41df4dfa3d.png" />
+<img alt="_images/0df58c3ea6f48fd225cc5dba62c0a6a500e61b3291c4890b0ffc4c70d2da27eb.png" src="_images/0df58c3ea6f48fd225cc5dba62c0a6a500e61b3291c4890b0ffc4c70d2da27eb.png" />
 </div>
 </div>
 <div class="admonition-practice admonition">
@@ -1851,7 +1870,7 @@ Name: molar_mass, dtype: float64
 </div>
 </section>
 <section id="fit-a-straight-line">
-<h3>5.3 Fit a straight line<a class="headerlink" href="#fit-a-straight-line" title="Permalink to this heading">#</a></h3>
+<h3>5.3 Fit a straight line<a class="headerlink" href="#fit-a-straight-line" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Fit <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">m</span> <span class="pre">c</span> <span class="pre">+</span> <span class="pre">b</span></code>. Expect <code class="docutils literal notranslate"><span class="pre">m</span></code> near ε b.</p>
@@ -1866,7 +1885,7 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(121.43060606060605, -0.017903030303029907)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(121.43060606060605), np.float64(-0.017903030303029907))
 </pre></div>
 </div>
 </div>
@@ -1888,10 +1907,10 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1983e8bec70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x16341690f50&gt;
 </pre></div>
 </div>
-<img alt="_images/22e452d95b06f1650f889f3af8d4291d25fc59c4cbc8a245c702ae73387e3f2e.png" src="_images/22e452d95b06f1650f889f3af8d4291d25fc59c4cbc8a245c702ae73387e3f2e.png" />
+<img alt="_images/428c4789c148598ace978baaabf98b7c1601167b09b56ac3103ec5d22e88792b.png" src="_images/428c4789c148598ace978baaabf98b7c1601167b09b56ac3103ec5d22e88792b.png" />
 </div>
 </div>
 <div class="admonition-practice admonition">
@@ -1900,7 +1919,7 @@ Name: molar_mass, dtype: float64
 </div>
 </section>
 <section id="group-by-concentration-and-show-a-bar-chart-with-error-bars">
-<h3>5.4 Group by concentration and show a bar chart with error bars<a class="headerlink" href="#group-by-concentration-and-show-a-bar-chart-with-error-bars" title="Permalink to this heading">#</a></h3>
+<h3>5.4 Group by concentration and show a bar chart with error bars<a class="headerlink" href="#group-by-concentration-and-show-a-bar-chart-with-error-bars" title="Link to this heading">#</a></h3>
 <div class="admonition-read admonition">
 <p class="admonition-title">Read</p>
 <p>Summarize replicates per concentration.</p>
@@ -1997,7 +2016,7 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/acc583222b0a0f74a55a23ac12f580eb7e532db22d9a322f068052e772a43d7d.png" src="_images/acc583222b0a0f74a55a23ac12f580eb7e532db22d9a322f068052e772a43d7d.png" />
+<img alt="_images/e027297ca82a78f69bd10d74711a643397e48beedd59490676bf372441d86e7f.png" src="_images/e027297ca82a78f69bd10d74711a643397e48beedd59490676bf372441d86e7f.png" />
 </div>
 </div>
 <div class="admonition-practice admonition">
@@ -2006,7 +2025,7 @@ Name: molar_mass, dtype: float64
 </div>
 </section>
 <section id="violin-plot-by-concentration">
-<h3>5.5 Violin plot by concentration<a class="headerlink" href="#violin-plot-by-concentration" title="Permalink to this heading">#</a></h3>
+<h3>5.5 Violin plot by concentration<a class="headerlink" href="#violin-plot-by-concentration" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="n">grp</span><span class="p">[</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">grp</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">)]</span>
@@ -2023,12 +2042,12 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b416fe513c8e16c7dce9b5f1f17ab628a3bc2847b035984635b178e9df58a76e.png" src="_images/b416fe513c8e16c7dce9b5f1f17ab628a3bc2847b035984635b178e9df58a76e.png" />
+<img alt="_images/b30ec922470b9d259f3b5a9680a89243dda98923f79913ab869985dc12d28f74.png" src="_images/b30ec922470b9d259f3b5a9680a89243dda98923f79913ab869985dc12d28f74.png" />
 </div>
 </div>
 </section>
 <section id="heatmap-of-a-pivot-table">
-<h3>5.6 Heatmap of a pivot table<a class="headerlink" href="#heatmap-of-a-pivot-table" title="Permalink to this heading">#</a></h3>
+<h3>5.6 Heatmap of a pivot table<a class="headerlink" href="#heatmap-of-a-pivot-table" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pivot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;concentration_mol_L&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;replicate&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;absorbance_A&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
@@ -2152,12 +2171,12 @@ Name: molar_mass, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec94f5346da487be05c384ac00578ad72eb8488b1dea2723dc3bcf5df8206a0a.png" src="_images/ec94f5346da487be05c384ac00578ad72eb8488b1dea2723dc3bcf5df8206a0a.png" />
+<img alt="_images/8b8ad70bb98eb4aafc121f96b616002d30c7fa0f6600d467fc65f62fc031d508.png" src="_images/8b8ad70bb98eb4aafc121f96b616002d30c7fa0f6600d467fc65f62fc031d508.png" />
 </div>
 </div>
 </section>
 <section id="save-a-figure">
-<h3>5.7 Save a figure<a class="headerlink" href="#save-a-figure" title="Permalink to this heading">#</a></h3>
+<h3>5.7 Save a figure<a class="headerlink" href="#save-a-figure" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -2175,14 +2194,14 @@ Name: molar_mass, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Saved: scatter_absorbance_vs_conc.png&#39;
 </pre></div>
 </div>
-<img alt="_images/96c335f0010f077996a300d0d50ac457f0ba1462343a85aa6926165fa85ef5e6.png" src="_images/96c335f0010f077996a300d0d50ac457f0ba1462343a85aa6926165fa85ef5e6.png" />
+<img alt="_images/0ead3590bbcd8880b8c2c20e3e4cda59421e4f5d89607980c0ea523807d1ae5f.png" src="_images/0ead3590bbcd8880b8c2c20e3e4cda59421e4f5d89607980c0ea523807d1ae5f.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-pandas admonition">
 <p class="admonition-title">Pandas</p>
 <ul class="simple">
@@ -2209,54 +2228,54 @@ Name: molar_mass, dtype: float64
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Series">Series<a class="headerlink" href="#term-Series" title="Permalink to this term">#</a></dt><dd><p>One labeled column in pandas. Think of a vector with an index. Example: <code class="docutils literal notranslate"><span class="pre">df[&quot;yield_percent&quot;]</span></code>.</p>
+<dt id="term-Series">Series<a class="headerlink" href="#term-Series" title="Link to this term">#</a></dt><dd><p>One labeled column in pandas. Think of a vector with an index. Example: <code class="docutils literal notranslate"><span class="pre">df[&quot;yield_percent&quot;]</span></code>.</p>
 </dd>
-<dt id="term-DataFrame">DataFrame<a class="headerlink" href="#term-DataFrame" title="Permalink to this term">#</a></dt><dd><p>A 2D table of columns, each a Series. Example: <code class="docutils literal notranslate"><span class="pre">pd.read_csv(&quot;file.csv&quot;)</span></code>.</p>
+<dt id="term-DataFrame">DataFrame<a class="headerlink" href="#term-DataFrame" title="Link to this term">#</a></dt><dd><p>A 2D table of columns, each a Series. Example: <code class="docutils literal notranslate"><span class="pre">pd.read_csv(&quot;file.csv&quot;)</span></code>.</p>
 </dd>
-<dt id="term-index">index<a class="headerlink" href="#term-index" title="Permalink to this term">#</a></dt><dd><p>The row labels of a Series or DataFrame. Access with <code class="docutils literal notranslate"><span class="pre">.index</span></code>.</p>
+<dt id="term-index">index<a class="headerlink" href="#term-index" title="Link to this term">#</a></dt><dd><p>The row labels of a Series or DataFrame. Access with <code class="docutils literal notranslate"><span class="pre">.index</span></code>.</p>
 </dd>
-<dt id="term-dtype">dtype<a class="headerlink" href="#term-dtype" title="Permalink to this term">#</a></dt><dd><p>The data type for a column. See with <code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code>.</p>
+<dt id="term-dtype">dtype<a class="headerlink" href="#term-dtype" title="Link to this term">#</a></dt><dd><p>The data type for a column. See with <code class="docutils literal notranslate"><span class="pre">df.dtypes</span></code>.</p>
 </dd>
-<dt id="term-boolean-mask">boolean mask<a class="headerlink" href="#term-boolean-mask" title="Permalink to this term">#</a></dt><dd><p>True or False array used to filter rows. Example: <code class="docutils literal notranslate"><span class="pre">df[df[&quot;yield_percent&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50]</span></code>.</p>
+<dt id="term-boolean-mask">boolean mask<a class="headerlink" href="#term-boolean-mask" title="Link to this term">#</a></dt><dd><p>True or False array used to filter rows. Example: <code class="docutils literal notranslate"><span class="pre">df[df[&quot;yield_percent&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50]</span></code>.</p>
 </dd>
-<dt id="term-groupby">groupby<a class="headerlink" href="#term-groupby" title="Permalink to this term">#</a></dt><dd><p>Split rows by a key, then compute summaries. Example: <code class="docutils literal notranslate"><span class="pre">df.groupby(&quot;state&quot;)[&quot;molar_mass&quot;].mean()</span></code>.</p>
+<dt id="term-groupby">groupby<a class="headerlink" href="#term-groupby" title="Link to this term">#</a></dt><dd><p>Split rows by a key, then compute summaries. Example: <code class="docutils literal notranslate"><span class="pre">df.groupby(&quot;state&quot;)[&quot;molar_mass&quot;].mean()</span></code>.</p>
 </dd>
-<dt id="term-pivot-table">pivot table<a class="headerlink" href="#term-pivot-table" title="Permalink to this term">#</a></dt><dd><p>Reshape long data into a 2D grid of values. Example: <code class="docutils literal notranslate"><span class="pre">df.pivot_table(index=&quot;temp&quot;,</span> <span class="pre">columns=&quot;time&quot;,</span> <span class="pre">values=&quot;yield&quot;)</span></code>.</p>
+<dt id="term-pivot-table">pivot table<a class="headerlink" href="#term-pivot-table" title="Link to this term">#</a></dt><dd><p>Reshape long data into a 2D grid of values. Example: <code class="docutils literal notranslate"><span class="pre">df.pivot_table(index=&quot;temp&quot;,</span> <span class="pre">columns=&quot;time&quot;,</span> <span class="pre">values=&quot;yield&quot;)</span></code>.</p>
 </dd>
-<dt id="term-NaN">NaN<a class="headerlink" href="#term-NaN" title="Permalink to this term">#</a></dt><dd><p>A missing value. Handle with <code class="docutils literal notranslate"><span class="pre">isna</span></code>, <code class="docutils literal notranslate"><span class="pre">fillna</span></code>, or <code class="docutils literal notranslate"><span class="pre">dropna</span></code>.</p>
+<dt id="term-NaN">NaN<a class="headerlink" href="#term-NaN" title="Link to this term">#</a></dt><dd><p>A missing value. Handle with <code class="docutils literal notranslate"><span class="pre">isna</span></code>, <code class="docutils literal notranslate"><span class="pre">fillna</span></code>, or <code class="docutils literal notranslate"><span class="pre">dropna</span></code>.</p>
 </dd>
-<dt id="term-CSV">CSV<a class="headerlink" href="#term-CSV" title="Permalink to this term">#</a></dt><dd><p>Comma-separated values text file. Read with <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, write with <code class="docutils literal notranslate"><span class="pre">df.to_csv</span></code>.</p>
+<dt id="term-CSV">CSV<a class="headerlink" href="#term-CSV" title="Link to this term">#</a></dt><dd><p>Comma-separated values text file. Read with <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>, write with <code class="docutils literal notranslate"><span class="pre">df.to_csv</span></code>.</p>
 </dd>
-<dt id="term-figure">figure<a class="headerlink" href="#term-figure" title="Permalink to this term">#</a></dt><dd><p>The canvas for a plot. Create with <code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(w,</span> <span class="pre">h))</span></code>.</p>
+<dt id="term-figure">figure<a class="headerlink" href="#term-figure" title="Link to this term">#</a></dt><dd><p>The canvas for a plot. Create with <code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(w,</span> <span class="pre">h))</span></code>.</p>
 </dd>
-<dt id="term-axes">axes<a class="headerlink" href="#term-axes" title="Permalink to this term">#</a></dt><dd><p>The plotting area inside a figure. Most <code class="docutils literal notranslate"><span class="pre">plt.*</span></code> calls draw to the current axes.</p>
+<dt id="term-axes">axes<a class="headerlink" href="#term-axes" title="Link to this term">#</a></dt><dd><p>The plotting area inside a figure. Most <code class="docutils literal notranslate"><span class="pre">plt.*</span></code> calls draw to the current axes.</p>
 </dd>
-<dt id="term-label">label<a class="headerlink" href="#term-label" title="Permalink to this term">#</a></dt><dd><p>The text used in legends. Set with <code class="docutils literal notranslate"><span class="pre">label=</span></code> in plotting functions.</p>
+<dt id="term-label">label<a class="headerlink" href="#term-label" title="Link to this term">#</a></dt><dd><p>The text used in legends. Set with <code class="docutils literal notranslate"><span class="pre">label=</span></code> in plotting functions.</p>
 </dd>
-<dt id="term-alpha">alpha<a class="headerlink" href="#term-alpha" title="Permalink to this term">#</a></dt><dd><p>Transparency from 0 to 1 in plots.</p>
+<dt id="term-alpha">alpha<a class="headerlink" href="#term-alpha" title="Link to this term">#</a></dt><dd><p>Transparency from 0 to 1 in plots.</p>
 </dd>
-<dt id="term-bins">bins<a class="headerlink" href="#term-bins" title="Permalink to this term">#</a></dt><dd><p>Controls histogram resolution. More bins show more detail, fewer bins smooth the shape.</p>
+<dt id="term-bins">bins<a class="headerlink" href="#term-bins" title="Link to this term">#</a></dt><dd><p>Controls histogram resolution. More bins show more detail, fewer bins smooth the shape.</p>
 </dd>
-<dt id="term-yerr">yerr<a class="headerlink" href="#term-yerr" title="Permalink to this term">#</a></dt><dd><p>Error bar sizes along y for <code class="docutils literal notranslate"><span class="pre">plt.errorbar</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.bar</span></code>.</p>
+<dt id="term-yerr">yerr<a class="headerlink" href="#term-yerr" title="Link to this term">#</a></dt><dd><p>Error bar sizes along y for <code class="docutils literal notranslate"><span class="pre">plt.errorbar</span></code> or <code class="docutils literal notranslate"><span class="pre">plt.bar</span></code>.</p>
 </dd>
-<dt id="term-colormap">colormap<a class="headerlink" href="#term-colormap" title="Permalink to this term">#</a></dt><dd><p>Maps numeric values to colors in heatmaps. Set with <code class="docutils literal notranslate"><span class="pre">cmap=...</span></code>.</p>
+<dt id="term-colormap">colormap<a class="headerlink" href="#term-colormap" title="Link to this term">#</a></dt><dd><p>Maps numeric values to colors in heatmaps. Set with <code class="docutils literal notranslate"><span class="pre">cmap=...</span></code>.</p>
 </dd>
-<dt id="term-aspect">aspect<a class="headerlink" href="#term-aspect" title="Permalink to this term">#</a></dt><dd><p>Ratio of the axes. Use <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code> for data-driven scaling in <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code>.</p>
+<dt id="term-aspect">aspect<a class="headerlink" href="#term-aspect" title="Link to this term">#</a></dt><dd><p>Ratio of the axes. Use <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code> for data-driven scaling in <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code>.</p>
 </dd>
-<dt id="term-extent">extent<a class="headerlink" href="#term-extent" title="Permalink to this term">#</a></dt><dd><p>Maps array indices to axis coordinates in <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code>.</p>
+<dt id="term-extent">extent<a class="headerlink" href="#term-extent" title="Link to this term">#</a></dt><dd><p>Maps array indices to axis coordinates in <code class="docutils literal notranslate"><span class="pre">plt.imshow</span></code>.</p>
 </dd>
-<dt id="term-figsize">figsize<a class="headerlink" href="#term-figsize" title="Permalink to this term">#</a></dt><dd><p>Plot size in inches as <code class="docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code> passed to <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>.</p>
+<dt id="term-figsize">figsize<a class="headerlink" href="#term-figsize" title="Link to this term">#</a></dt><dd><p>Plot size in inches as <code class="docutils literal notranslate"><span class="pre">(width,</span> <span class="pre">height)</span></code> passed to <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">8. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <p>Each task mirrors what you practiced. Fill in <code class="docutils literal notranslate"><span class="pre">...</span></code> and later compare with the solutions in Section 9. Keep your edits near the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> lines.</p>
 <section id="read-and-inspect-a-csv">
-<h3>8.1 Read and inspect a CSV<a class="headerlink" href="#read-and-inspect-a-csv" title="Permalink to this heading">#</a></h3>
+<h3>8.1 Read and inspect a CSV<a class="headerlink" href="#read-and-inspect-a-csv" title="Link to this heading">#</a></h3>
 <p>Read a CSV, preview structure, and count rows where a chosen column is greater than a threshold.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -2276,17 +2295,13 @@ Name: molar_mass, dtype: float64
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Hint<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Use <code class="docutils literal notranslate"><span class="pre">pd.read_csv(path)</span></code> then <code class="docutils literal notranslate"><span class="pre">df.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.info()</span></code>, <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code>. A boolean mask is an expression like <code class="docutils literal notranslate"><span class="pre">df[&quot;col&quot;]</span> <span class="pre">&gt;</span> <span class="pre">value</span></code>.</p>
 </div>
 </details></section>
 <hr class="docutils" />
 <section id="scatter-with-style-controls">
-<h3>8.2 Scatter with style controls<a class="headerlink" href="#scatter-with-style-controls" title="Permalink to this heading">#</a></h3>
+<h3>8.2 Scatter with style controls<a class="headerlink" href="#scatter-with-style-controls" title="Link to this heading">#</a></h3>
 <p>Make a scatter of one column vs another, then adjust style parameters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
@@ -2310,17 +2325,13 @@ Hint<div class="sd-summary-down docutils">
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Hint<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">See Section 2 for <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> plus <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">alpha</span></code>, and <code class="docutils literal notranslate"><span class="pre">marker</span></code>.</p>
 </div>
 </details></section>
 <hr class="docutils" />
 <section id="group-summarize-and-draw-error-bars">
-<h3>8.3 Group, summarize, and draw error bars<a class="headerlink" href="#group-summarize-and-draw-error-bars" title="Permalink to this heading">#</a></h3>
+<h3>8.3 Group, summarize, and draw error bars<a class="headerlink" href="#group-summarize-and-draw-error-bars" title="Link to this heading">#</a></h3>
 <p>Group by a key and plot group means with standard deviation as error bars.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO</span>
 <span class="n">val_col</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO</span>
@@ -2345,17 +2356,13 @@ Hint<div class="sd-summary-down docutils">
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Hint<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Look back at 5.4 and the error bar example in Section 2.</p>
 </div>
 </details></section>
 <hr class="docutils" />
 <section id="new-dataset-organic-synthesis-yields">
-<h3>8.4 New dataset — organic synthesis yields<a class="headerlink" href="#new-dataset-organic-synthesis-yields" title="Permalink to this heading">#</a></h3>
+<h3>8.4 New dataset — organic synthesis yields<a class="headerlink" href="#new-dataset-organic-synthesis-yields" title="Link to this heading">#</a></h3>
 <p>Work with <code class="docutils literal notranslate"><span class="pre">organic_synthesis_yields.csv</span></code> which has columns <code class="docutils literal notranslate"><span class="pre">reaction_id</span></code>, <code class="docutils literal notranslate"><span class="pre">temperature_C</span></code>, <code class="docutils literal notranslate"><span class="pre">time_min</span></code>, <code class="docutils literal notranslate"><span class="pre">yield_percent</span></code>. The yields are skewed toward lower values but still include some high yields. Tasks:</p>
 <ol class="arabic simple">
 <li><p>Read the CSV</p></li>
@@ -2428,7 +2435,7 @@ Hint<div class="sd-summary-down docutils">
 </section>
 <hr class="docutils" />
 <section id="box-and-violin-by-binned-temperature">
-<h3>8.5 Box and violin by binned temperature<a class="headerlink" href="#box-and-violin-by-binned-temperature" title="Permalink to this heading">#</a></h3>
+<h3>8.5 Box and violin by binned temperature<a class="headerlink" href="#box-and-violin-by-binned-temperature" title="Link to this heading">#</a></h3>
 <p>Bin <code class="docutils literal notranslate"><span class="pre">temperature_C</span></code> into categories and compare yield distributions across bins.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define bins and labels for temperature</span>
 <span class="n">bins</span> <span class="o">=</span> <span class="o">...</span>    <span class="c1"># TO DO: e.g., 40, 60, 80, 100, 120</span>
@@ -2452,20 +2459,16 @@ Hint<div class="sd-summary-down docutils">
 </div>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
-Hint<div class="sd-summary-down docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="sd-summary-up docutils">
-<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="sd-summary-content sd-card-body docutils">
+<span class="sd-summary-text">Hint</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
 <p class="sd-card-text">Use <code class="docutils literal notranslate"><span class="pre">pd.cut</span></code> to form bins. For violins, pass a list of arrays in the same order as your labels.</p>
 </div>
 </details></section>
 </section>
 <section id="solutions">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">9. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
 <p>Search for <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> in each block above and compare to the full code here.</p>
 <section id="solution-8-1">
-<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Permalink to this heading">#</a></h3>
+<h3>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2501,7 +2504,7 @@ Data columns (total 3 columns):
  1   replicate            33 non-null     int64  
  2   absorbance_A         33 non-null     float64
 dtypes: float64(2), int64(1)
-memory usage: 920.0 bytes
+memory usage: 924.0 bytes
 None
        concentration_mol_L  replicate  absorbance_A
 count            33.000000  33.000000     33.000000
@@ -2520,7 +2523,7 @@ rows with condition: 32
 </section>
 <hr class="docutils" />
 <section id="solution-8-2">
-<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Permalink to this heading">#</a></h3>
+<h3>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -2543,13 +2546,13 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b8b4cb6d93b5f73acce8ca291cc5c41f26d250a3cb24cc0f35aca39af4b44c3f.png" src="_images/b8b4cb6d93b5f73acce8ca291cc5c41f26d250a3cb24cc0f35aca39af4b44c3f.png" />
+<img alt="_images/1dec0e386532566b4d38ee455039cdc713438c933770fd4f33273eba1cf7c359.png" src="_images/1dec0e386532566b4d38ee455039cdc713438c933770fd4f33273eba1cf7c359.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="solution-8-3">
-<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Permalink to this heading">#</a></h3>
+<h3>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_col</span> <span class="o">=</span> <span class="s2">&quot;concentration_mol_L&quot;</span>
@@ -2576,13 +2579,13 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9509abaa57014654d08bf211c3fa6b7bb2fa4515af32fa6e19f374aae1ed6edf.png" src="_images/9509abaa57014654d08bf211c3fa6b7bb2fa4515af32fa6e19f374aae1ed6edf.png" />
+<img alt="_images/d72bee302a8c618e93db1919912b570d244b5d6fd43b9f939c3088f30952455e.png" src="_images/d72bee302a8c618e93db1919912b570d244b5d6fd43b9f939c3088f30952455e.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="solution-8-4">
-<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Permalink to this heading">#</a></h3>
+<h3>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -2676,7 +2679,7 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4466e5072c59b5520e13ae7e4cce9601b069c0596722d7412598e5b8ffa56e07.png" src="_images/4466e5072c59b5520e13ae7e4cce9601b069c0596722d7412598e5b8ffa56e07.png" />
+<img alt="_images/40622b0fc3a39c2e7ece6feb079c4331cf3e1c2b742438c491ebf0b44a840e2d.png" src="_images/40622b0fc3a39c2e7ece6feb079c4331cf3e1c2b742438c491ebf0b44a840e2d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2694,7 +2697,7 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c45172b0393dbd9ee357cdd786d89d679e373d43b09c159795294733c726608d.png" src="_images/c45172b0393dbd9ee357cdd786d89d679e373d43b09c159795294733c726608d.png" />
+<img alt="_images/3a727554dddfccc0799f076582150d50a4862dee5ae9e12f814b7c67833b1439.png" src="_images/3a727554dddfccc0799f076582150d50a4862dee5ae9e12f814b7c67833b1439.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2715,7 +2718,7 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/449262bcdeaed8a0e16550efd627b6894e205a3bbf7ea647d1b3561d1b7aaa58.png" src="_images/449262bcdeaed8a0e16550efd627b6894e205a3bbf7ea647d1b3561d1b7aaa58.png" />
+<img alt="_images/dc51cf5a70e69329639dcd88ca4a68773b1b76d1d07ee98b3dbb7a1443fbe3df.png" src="_images/dc51cf5a70e69329639dcd88ca4a68773b1b76d1d07ee98b3dbb7a1443fbe3df.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2731,13 +2734,13 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/244f356f41130faf9df49cadcfc672967e1ed0ef6bf9be07d7a1681ec6b55492.png" src="_images/244f356f41130faf9df49cadcfc672967e1ed0ef6bf9be07d7a1681ec6b55492.png" />
+<img alt="_images/c37a87789943ec714f1d65b2b32f50b75ea8b53c41aefc82b6e69f062c4587f0.png" src="_images/c37a87789943ec714f1d65b2b32f50b75ea8b53c41aefc82b6e69f062c4587f0.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="solution-8-5">
-<h3>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Permalink to this heading">#</a></h3>
+<h3>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2764,7 +2767,11 @@ rows with condition: 32
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/273aa2a15e89954526f7004e878aaecb39101f998806acb5839154fa7437e697.png" src="_images/273aa2a15e89954526f7004e878aaecb39101f998806acb5839154fa7437e697.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Temp\ipykernel_201060\742241996.py:13: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  groups = [grp[&quot;yield_percent&quot;].to_numpy() for _, grp in df_y.groupby(&quot;temp_bin&quot;)]
+</pre></div>
+</div>
+<img alt="_images/375ca59fcc9f11420f89cf49244b3867c58e5333c66f0b2623a6f3274d62da38.png" src="_images/375ca59fcc9f11420f89cf49244b3867c58e5333c66f0b2623a6f3274d62da38.png" />
 </div>
 </div>
 <p>In case you are curious how <code class="docutils literal notranslate"><span class="pre">&quot;organic_synthesis_yields.csv&quot;</span></code> is prepared (it’s synthesized dataset of synthesis!), here is the code:</p>
@@ -2817,7 +2824,7 @@ rows with condition: 32
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2846,6 +2853,7 @@ rows with condition: 32
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2921,7 +2929,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2945,8 +2953,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

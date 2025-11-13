@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-08';</script>
@@ -75,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -189,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
 </ul>
 
     </div>
@@ -204,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -213,14 +228,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -345,10 +360,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -356,14 +371,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -437,10 +452,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-8-neural-networks">
-<h1>Lecture 8 - Neural Networks<a class="headerlink" href="#lecture-8-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 8 - Neural Networks<a class="headerlink" href="#lecture-8-neural-networks" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -458,7 +473,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Explain a simple multilayer perceptron: layers, weights, bias, activation, loss, optimizer.</p></li>
 <li><p>Build your first neural network for a toy problem, then for small chemistry tasks.</p></li>
@@ -469,13 +484,13 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
 <p>We will stick to a light stack so it runs everywhere.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
@@ -508,7 +523,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="what-is-a-neural-network">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. What is a neural network</a><a class="headerlink" href="#what-is-a-neural-network" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">1. What is a neural network</a><a class="headerlink" href="#what-is-a-neural-network" title="Link to this heading">#</a></h2>
 <div class="admonition-picture-in-words admonition">
 <p class="admonition-title">Picture in words</p>
 <p>A multilayer perceptron (MLP) takes an input vector x, multiplies by a weight matrix, adds a bias, applies a nonlinear activation like ReLU or tanh, then repeats for one or more hidden layers, and finally outputs a number (regression) or class score (classification).</p>
@@ -522,7 +537,7 @@ document.write(`
 </ul>
 <p>We start tiny with a simulated dataset so we can see each piece clearly.</p>
 <section id="generate-a-toy-dataset-and-plot">
-<h3>1.1 Generate a toy dataset and plot<a class="headerlink" href="#generate-a-toy-dataset-and-plot" title="Permalink to this heading">#</a></h3>
+<h3>1.1 Generate a toy dataset and plot<a class="headerlink" href="#generate-a-toy-dataset-and-plot" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -572,12 +587,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2932a01ad3d756bb5dcddc002343cf689d5e5e2ec81b9e9e54e6b8c90f65c25b.png" src="_images/2932a01ad3d756bb5dcddc002343cf689d5e5e2ec81b9e9e54e6b8c90f65c25b.png" />
+<img alt="_images/376355fcac331e38b755f6d860e1e4ee242b2cb9501acc85fde6c9c199c48ca4.png" src="_images/376355fcac331e38b755f6d860e1e4ee242b2cb9501acc85fde6c9c199c48ca4.png" />
 </div>
 </div>
 </section>
 <section id="split-and-try-a-linear-model">
-<h3>1.2 Split and try a linear model<a class="headerlink" href="#split-and-try-a-linear-model" title="Permalink to this heading">#</a></h3>
+<h3>1.2 Split and try a linear model<a class="headerlink" href="#split-and-try-a-linear-model" title="Link to this heading">#</a></h3>
 <div class="admonition-why-a-baseline admonition">
 <p class="admonition-title">Why a baseline</p>
 <p>As in past lectures, a simple baseline tells us if a complex model is truly needed.</p>
@@ -625,7 +640,7 @@ Here, our pipeline has two steps:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear baseline accuracy without scaler: 0.560
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear baseline accuracy without scaler: 0.540
 </pre></div>
 </div>
 </div>
@@ -662,12 +677,12 @@ Here, our pipeline has two steps:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f1e7b1d4363834a027338bb1ad4f441c21b8a4e0d0f57f9481c7db42d068f77.png" src="_images/0f1e7b1d4363834a027338bb1ad4f441c21b8a4e0d0f57f9481c7db42d068f77.png" />
+<img alt="_images/17972caf8e2fc5345fc672cfa5169baa33c8eb78e556cd4aeefc188c53295402.png" src="_images/17972caf8e2fc5345fc672cfa5169baa33c8eb78e556cd4aeefc188c53295402.png" />
 </div>
 </div>
 </section>
 <section id="build-a-small-mlp-step-by-step">
-<h3>1.3 Build a small MLP step by step<a class="headerlink" href="#build-a-small-mlp-step-by-step" title="Permalink to this heading">#</a></h3>
+<h3>1.3 Build a small MLP step by step<a class="headerlink" href="#build-a-small-mlp-step-by-step" title="Link to this heading">#</a></h3>
 <p>Now let’s see if we can solve this classification challenge with simple and shallow neural network.</p>
 <p>We will build a MLP classifier by adding one hidden layer with 8 units and ReLU activation. Before we start to do it, we will first look at key concepts:</p>
 <p>A multilayer perceptron (MLP) stacks simple building blocks:</p>
@@ -690,10 +705,10 @@ Here, our pipeline has two steps:</p>
 </ul>
 <p>Below we first look at the shapes of common activations, then we build a small MLP and read its learned shapes.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mini gallery of activation functions in three panels</span>
@@ -728,7 +743,7 @@ Here, our pipeline has two steps:</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/57a7617ccc756d6cf6ef45853ffb79f430b078af97396614046163569eb7faa6.png" src="_images/57a7617ccc756d6cf6ef45853ffb79f430b078af97396614046163569eb7faa6.png" />
+<img alt="_images/d1336a6c990b4ecfe4fd0c39f5a87dc87415844cfa39ad45635d5a609e459a42.png" src="_images/d1336a6c990b4ecfe4fd0c39f5a87dc87415844cfa39ad45635d5a609e459a42.png" />
 </div>
 </div>
 <p>To keep it simple, imagine we have just <strong>one input <span class="math notranslate nohighlight">\(x\)</span></strong>, two hidden ReLU units, and one sigmoid output.</p>
@@ -792,10 +807,10 @@ z^{(2)} = 1.0 \cdot 0.4 + (-2.0) \cdot 0 + 0.1 = 0.5
 \)</span>$</p>
 <p>So with this set of weights, input <span class="math notranslate nohighlight">\(x=0.5\)</span> is classified with probability <span class="math notranslate nohighlight">\(\hat{p} \approx 0.62\)</span> for class 1.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">FancyArrowPatch</span>
@@ -886,7 +901,7 @@ z^{(2)} = 1.0 \cdot 0.4 + (-2.0) \cdot 0 + 0.1 = 0.5
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/d461d47c3c313edb0d50a5bbbba903349d8ae72264f9f39513fe4364a792acca.png" src="_images/d461d47c3c313edb0d50a5bbbba903349d8ae72264f9f39513fe4364a792acca.png" />
+<img alt="_images/966c435780615aa56faec7fbec786d4d75deb8b84446dd6f10db64e732e278ef.png" src="_images/966c435780615aa56faec7fbec786d4d75deb8b84446dd6f10db64e732e278ef.png" />
 </div>
 </div>
 <p>Note that in above example we already have a set of paramters so the calculation can be demonstrated.</p>
@@ -919,14 +934,859 @@ For teaching, we instead pick <strong>round numbers</strong> so it’s easier to
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
                 (&#x27;clf&#x27;,
                  MLPClassifier(hidden_layer_sizes=(8,), learning_rate_init=0.05,
-                               max_iter=500, random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;clf&#x27;,
-                 MLPClassifier(hidden_layer_sizes=(8,), learning_rate_init=0.05,
-                               max_iter=500, random_state=0))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">MLPClassifier</label><div class="sk-toggleable__content"><pre>MLPClassifier(hidden_layer_sizes=(8,), learning_rate_init=0.05, max_iter=500,
-              random_state=0)</pre></div></div></div></div></div></div></div></div></div>
+                               max_iter=500, random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" ><label for="sk-estimator-id-1" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;scaler&#x27;, ...), (&#x27;clf&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" ><label for="sk-estimator-id-2" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="scaler__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('copy',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">copy&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_mean',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_mean&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_std',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_std&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" ><label for="sk-estimator-id-3" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>MLPClassifier</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neural_network.MLPClassifier.html">?<span>Documentation for MLPClassifier</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="clf__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('hidden_layer_sizes',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">hidden_layer_sizes&nbsp;</td>
+            <td class="value">(8,)</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('activation',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">activation&nbsp;</td>
+            <td class="value">&#x27;relu&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;adam&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('alpha',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">alpha&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('batch_size',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">batch_size&nbsp;</td>
+            <td class="value">&#x27;auto&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate&nbsp;</td>
+            <td class="value">&#x27;constant&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate_init',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate_init&nbsp;</td>
+            <td class="value">0.05</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('power_t',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">power_t&nbsp;</td>
+            <td class="value">0.5</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">500</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('shuffle',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">shuffle&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">momentum&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('nesterovs_momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">nesterovs_momentum&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('early_stopping',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">early_stopping&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('validation_fraction',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">validation_fraction&nbsp;</td>
+            <td class="value">0.1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_1',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_1&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_2',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_2&nbsp;</td>
+            <td class="value">0.999</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('epsilon',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">epsilon&nbsp;</td>
+            <td class="value">1e-08</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_iter_no_change',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_iter_no_change&nbsp;</td>
+            <td class="value">10</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_fun',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_fun&nbsp;</td>
+            <td class="value">15000</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <p>Fit and evaluate.</p>
 <div class="cell docutils container">
@@ -946,14 +1806,14 @@ For teaching, we instead pick <strong>round numbers</strong> so it’s easier to
 <p>Compared with linear regression (<code class="docutils literal notranslate"><span class="pre">baseline</span> <span class="pre">accuracy:</span> <span class="pre">0.560</span></code>), we now get an <code class="docutils literal notranslate"><span class="pre">MLP</span> <span class="pre">accuracy:</span> <span class="pre">0.870</span></code>, which is much higher!</p>
 </section>
 <section id="analyzing-the-mlp-models">
-<h3>1.5 Analyzing the MLP models<a class="headerlink" href="#analyzing-the-mlp-models" title="Permalink to this heading">#</a></h3>
+<h3>1.5 Analyzing the MLP models<a class="headerlink" href="#analyzing-the-mlp-models" title="Link to this heading">#</a></h3>
 <p>Now let’s look at the plot below to see the structure of the MLP model we built.</p>
 <p>Remember, we have 5 input <code class="docutils literal notranslate"><span class="pre">x</span></code> features. In the earlier plot we only showed the first two (X–Y) for visualization, but each point actually comes from all 5 features — that 2D scatter is just a projection. Think back to the earlier lecture where a molecule could be represented by multiple features such as <code class="docutils literal notranslate"><span class="pre">MolWt</span></code>, <code class="docutils literal notranslate"><span class="pre">LogP</span></code>, etc. In the same way, here all 5 features are connected to the hidden layer (with 5 units in this example).</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circle</span><span class="p">,</span> <span class="n">FancyArrowPatch</span><span class="p">,</span> <span class="n">FancyBboxPatch</span>
@@ -1069,7 +1929,7 @@ Layer 1 weight shape: (5, 8)   bias shape: (8,)
 Layer 2 weight shape: (8, 1)   bias shape: (1,)
 </pre></div>
 </div>
-<img alt="_images/202ef43c6003e37e2f4818da0e9b5aa473df409b34a2fd078c2ac35bccc5b088.png" src="_images/202ef43c6003e37e2f4818da0e9b5aa473df409b34a2fd078c2ac35bccc5b088.png" />
+<img alt="_images/2078753ea17c95be7b8f89c9626e1ec669a6c9c5e43ef30e4ed122edd61ccde1.png" src="_images/2078753ea17c95be7b8f89c9626e1ec669a6c9c5e43ef30e4ed122edd61ccde1.png" />
 </div>
 </div>
 <p>Does it mean that the more complex the MLP, the better results we can? Well, not necessaily. Look at the examlple below, where instead of just 1 layer we have <strong>3 hidden layers</strong> (4 layers in total including the final output layer):</p>
@@ -1102,7 +1962,7 @@ Layer 3 weight shape: (5, 3)   bias shape: (3,)
 Layer 4 weight shape: (3, 1)   bias shape: (1,)
 </pre></div>
 </div>
-<img alt="_images/e3203f36f39511483f47b8bd4f1a52a08691638ef22f7a743135f05da6a0bb4f.png" src="_images/e3203f36f39511483f47b8bd4f1a52a08691638ef22f7a743135f05da6a0bb4f.png" />
+<img alt="_images/be658a668c2ff401e6ad5b0ff08010cb4de461ab1ea13c65fdc9eb648e311fd1.png" src="_images/be658a668c2ff401e6ad5b0ff08010cb4de461ab1ea13c65fdc9eb648e311fd1.png" />
 </div>
 </div>
 <p>The accuray actually drops down! If you look at the loss function above, it’s also worse than the simple 5-5-1 shallow MLP we showed as the first example. Just recall the decision tree lecture we had before, the lesson is that you can’t just make super complex model to increase the accuracy because the overfitting issue will come at a certain point.</p>
@@ -1137,12 +1997,12 @@ Layer 4 weight shape: (6, 4)   bias shape: (4,)
 Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
-<img alt="_images/d4f4d5075037546313790917f4f70ce08807c80cabedfe2f177a2c4f45d88626.png" src="_images/d4f4d5075037546313790917f4f70ce08807c80cabedfe2f177a2c4f45d88626.png" />
+<img alt="_images/95a0b7d8feafc20810603566cbc652811b7216fcfd1604a9d9d9b50b75eece46.png" src="_images/95a0b7d8feafc20810603566cbc652811b7216fcfd1604a9d9d9b50b75eece46.png" />
 </div>
 </div>
 </section>
 <section id="decision-surface">
-<h3>1.6 Decision surface<a class="headerlink" href="#decision-surface" title="Permalink to this heading">#</a></h3>
+<h3>1.6 Decision surface<a class="headerlink" href="#decision-surface" title="Link to this heading">#</a></h3>
 <p>We can plot a decision surface to see the boundary and compare all these three models.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1193,7 +2053,7 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/609190c152d1d309abe1c1e34f63b24e292ab58a04857b02f9eda0d152166ae8.png" src="_images/609190c152d1d309abe1c1e34f63b24e292ab58a04857b02f9eda0d152166ae8.png" />
+<img alt="_images/5b07ef6e3b9671240c9fe33d59e6cfc791faa16083252ec5eb81d044451c3ec6.png" src="_images/5b07ef6e3b9671240c9fe33d59e6cfc791faa16083252ec5eb81d044451c3ec6.png" />
 </div>
 </div>
 <p>Color near 0 is class 0 and near 1 is class 1. A curved boundary shows that the hidden layer and activation created a nonlinear rule.</p>
@@ -1208,14 +2068,14 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </div>
 </section>
 <section id="hyperparamter-tuning">
-<h3>1.7 Hyperparamter tuning<a class="headerlink" href="#hyperparamter-tuning" title="Permalink to this heading">#</a></h3>
+<h3>1.7 Hyperparamter tuning<a class="headerlink" href="#hyperparamter-tuning" title="Link to this heading">#</a></h3>
 <p>As we see in previous lectures, we can use <strong>cross-validation</strong> to search for the best hyperparamters. In the MLP example below, to demonstrate this idea, we can try different <code class="docutils literal notranslate"><span class="pre">layer</span></code> choice and <code class="docutils literal notranslate"><span class="pre">learning</span> <span class="pre">rate</span></code>. But keep in mind that there are multiple hyperparameters we can also tune. To make the demo simple we just fix most of them.</p>
 <p>Below code will take around <strong>2 minutes</strong> to complete, since it’s alreay 10 x 4 = 40 choices of hyperparamters.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">StratifiedKFold</span>
@@ -1340,7 +2200,7 @@ Layer 5 weight shape: (4, 1)   bias shape: (1,)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best CV accuracy: 0.890
-Best params: {&#39;clf__hidden_layer_sizes&#39;: (16, 16), &#39;clf__learning_rate_init&#39;: 0.001}
+Best params: {&#39;clf__hidden_layer_sizes&#39;: (np.int64(16), 16), &#39;clf__learning_rate_init&#39;: 0.001}
 Train accuracy (refit best): 0.953
 Test  accuracy (refit best): 0.890
 </pre></div>
@@ -1405,14 +2265,6 @@ Test  accuracy (refit best): 0.890
     </tr>
     <tr>
       <th>4</th>
-      <td>(12, 8)</td>
-      <td>0.010</td>
-      <td>0.876667</td>
-      <td>0.030912</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>(32, 24)</td>
       <td>0.001</td>
       <td>0.876667</td>
@@ -1420,19 +2272,27 @@ Test  accuracy (refit best): 0.890
       <td>4</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>(8, 6, 3)</td>
+      <th>5</th>
+      <td>(12, 8)</td>
       <td>0.010</td>
-      <td>0.873333</td>
-      <td>0.024944</td>
-      <td>7</td>
+      <td>0.876667</td>
+      <td>0.030912</td>
+      <td>4</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>6</th>
       <td>(32, 28)</td>
       <td>0.001</td>
       <td>0.873333</td>
       <td>0.038873</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>(8, 6, 3)</td>
+      <td>0.010</td>
+      <td>0.873333</td>
+      <td>0.024944</td>
       <td>7</td>
     </tr>
     <tr>
@@ -1454,22 +2314,22 @@ Test  accuracy (refit best): 0.890
   </tbody>
 </table>
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of layers (including input and output): 4
-Hidden layer sizes: (16, 16)
+Hidden layer sizes: (np.int64(16), 16)
 coefs_ length (weight matrices between layers): 3
 Layer 1 weight shape: (5, 16)   bias shape: (16,)
 Layer 2 weight shape: (16, 16)   bias shape: (16,)
 Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </pre></div>
 </div>
-<img alt="_images/8bbc2d3aec14ee6bc6aa6fa94e4a25762fd9158d687219d57b5eff3d5f6381eb.png" src="_images/8bbc2d3aec14ee6bc6aa6fa94e4a25762fd9158d687219d57b5eff3d5f6381eb.png" />
-<img alt="_images/91bd7208e9df2677c96d093df8c61d1940b6be76beeb2bd7ab1a46e678fcf299.png" src="_images/91bd7208e9df2677c96d093df8c61d1940b6be76beeb2bd7ab1a46e678fcf299.png" />
+<img alt="_images/95702d67af14f5e8b94749454898085857dabc60de32ae3888a5e13e304dcf7d.png" src="_images/95702d67af14f5e8b94749454898085857dabc60de32ae3888a5e13e304dcf7d.png" />
+<img alt="_images/0652eb201fc7dc1bdb648865de9a5574fc159b151be5e0f654fa296c530b26af.png" src="_images/0652eb201fc7dc1bdb648865de9a5574fc159b151be5e0f654fa296c530b26af.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="neural-nets-for-chemical-property-prediction">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Neural nets for chemical property prediction</a><a class="headerlink" href="#neural-nets-for-chemical-property-prediction" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">2. Neural nets for chemical property prediction</a><a class="headerlink" href="#neural-nets-for-chemical-property-prediction" title="Link to this heading">#</a></h2>
 <p>We reuse the same CSV from earlier lectures and compute four quick descriptors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1673,7 +2533,7 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 <p>Neural nets are sensitive to feature scales. Always standardize inputs.</p>
 <p>We will show MLP performance with and without <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> on a quick regression target.</p>
 <section id="target-choice-melting-point">
-<h3>2.1 Target choice: melting point<a class="headerlink" href="#target-choice-melting-point" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Target choice: melting point<a class="headerlink" href="#target-choice-melting-point" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1738,10 +2598,10 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </div>
 <p>Parity plots to compare:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -1760,7 +2620,7 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/06440213b5760c5625f4d7145cd60314cd38f2fa1d708ed712d47fd99e02568b.png" src="_images/06440213b5760c5625f4d7145cd60314cd38f2fa1d708ed712d47fd99e02568b.png" />
+<img alt="_images/e1b8c891082efbd6cdf03457e6cb59d07f8eec71b39e9d8b6f30b447d1ef902c.png" src="_images/e1b8c891082efbd6cdf03457e6cb59d07f8eec71b39e9d8b6f30b447d1ef902c.png" />
 </div>
 </div>
 <div class="admonition-exercises-2 admonition">
@@ -1775,10 +2635,10 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </section>
 <hr class="docutils" />
 <section id="regression-with-mlp-on-log-solubility">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Regression with MLP on log-solubility</a><a class="headerlink" href="#regression-with-mlp-on-log-solubility" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">3. Regression with MLP on log-solubility</a><a class="headerlink" href="#regression-with-mlp-on-log-solubility" title="Link to this heading">#</a></h2>
 <p>Solubility has a long tail. We saw in Lecture 5 that log transform helped.</p>
 <section id="prepare-data">
-<h3>3.1 Prepare data<a class="headerlink" href="#prepare-data" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Prepare data<a class="headerlink" href="#prepare-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sol</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1804,7 +2664,7 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </div>
 </section>
 <section id="build-the-pipeline-and-fit">
-<h3>3.2 Build the pipeline and fit<a class="headerlink" href="#build-the-pipeline-and-fit" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Build the pipeline and fit<a class="headerlink" href="#build-the-pipeline-and-fit" title="Link to this heading">#</a></h3>
 <p>We start small then expand.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1822,21 +2682,875 @@ Layer 3 weight shape: (16, 1)   bias shape: (1,)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-2 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
                 (&#x27;mlp&#x27;,
                  MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,),
                               learning_rate_init=0.01, max_iter=1000,
-                              random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,),
-                              learning_rate_init=0.01, max_iter=1000,
-                              random_state=0))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">MLPRegressor</label><div class="sk-toggleable__content"><pre>MLPRegressor(alpha=0.001, hidden_layer_sizes=(32,), learning_rate_init=0.01,
-             max_iter=1000, random_state=0)</pre></div></div></div></div></div></div></div></div></div>
+                              random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" ><label for="sk-estimator-id-4" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;scaler&#x27;, ...), (&#x27;mlp&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="scaler__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('copy',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">copy&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_mean',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_mean&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_std',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_std&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>MLPRegressor</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neural_network.MLPRegressor.html">?<span>Documentation for MLPRegressor</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="mlp__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('loss',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">loss&nbsp;</td>
+            <td class="value">&#x27;squared_error&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('hidden_layer_sizes',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">hidden_layer_sizes&nbsp;</td>
+            <td class="value">(32,)</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('activation',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">activation&nbsp;</td>
+            <td class="value">&#x27;relu&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;adam&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('alpha',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">alpha&nbsp;</td>
+            <td class="value">0.001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('batch_size',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">batch_size&nbsp;</td>
+            <td class="value">&#x27;auto&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate&nbsp;</td>
+            <td class="value">&#x27;constant&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate_init',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate_init&nbsp;</td>
+            <td class="value">0.01</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('power_t',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">power_t&nbsp;</td>
+            <td class="value">0.5</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">1000</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('shuffle',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">shuffle&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">momentum&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('nesterovs_momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">nesterovs_momentum&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('early_stopping',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">early_stopping&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('validation_fraction',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">validation_fraction&nbsp;</td>
+            <td class="value">0.1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_1',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_1&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_2',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_2&nbsp;</td>
+            <td class="value">0.999</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('epsilon',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">epsilon&nbsp;</td>
+            <td class="value">1e-08</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_iter_no_change',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_iter_no_change&nbsp;</td>
+            <td class="value">10</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_fun',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_fun&nbsp;</td>
+            <td class="value">15000</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <p>Note: You can click on MLPRehressor above to see the details.</p>
 </section>
 <section id="parity-and-training-curve">
-<h3>3.3 Parity and training curve<a class="headerlink" href="#parity-and-training-curve" title="Permalink to this heading">#</a></h3>
+<h3>3.3 Parity and training curve<a class="headerlink" href="#parity-and-training-curve" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code> exposes <code class="docutils literal notranslate"><span class="pre">loss_curve_</span></code> after fit. This is the average loss per epoch on the training data.</p>
 <p>Compare with lasso (optimized with <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0.1</span></code>) we learned in Lecture 5, you can see its performance is better even without optimizing the hyperparameters.</p>
 <div class="cell docutils container">
@@ -1859,10 +3573,10 @@ R2:  0.966
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">4.6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
@@ -1887,15 +3601,15 @@ R2:  0.966
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/30a717b8c7e5aa4a698813a97983a195d234dce84280c362c315cb5b5385e106.png" src="_images/30a717b8c7e5aa4a698813a97983a195d234dce84280c362c315cb5b5385e106.png" />
-<img alt="_images/8420743f8c33d12fd73e0ab55ca98c8adf928d8edf69a2a6a5431963c6469356.png" src="_images/8420743f8c33d12fd73e0ab55ca98c8adf928d8edf69a2a6a5431963c6469356.png" />
+<img alt="_images/93a599af6481db2221e2d3ac23c6594a48f896b06e8e01836e5ee75b670dcbae.png" src="_images/93a599af6481db2221e2d3ac23c6594a48f896b06e8e01836e5ee75b670dcbae.png" />
+<img alt="_images/73725694e53b41d9d33488e7df483fc421cbeeec649869f21cb756d0bb6aee91.png" src="_images/73725694e53b41d9d33488e7df483fc421cbeeec649869f21cb756d0bb6aee91.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlp_reg</span> <span class="o">=</span> <span class="n">reg1</span><span class="o">.</span><span class="n">named_steps</span><span class="p">[</span><span class="s2">&quot;mlp&quot;</span><span class="p">]</span>
@@ -1910,18 +3624,18 @@ R2:  0.966
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/843e5d3e8ce0a64b9e616474238e38e21b0b0423a2d0dfe644375cbb8791ed4b.png" src="_images/843e5d3e8ce0a64b9e616474238e38e21b0b0423a2d0dfe644375cbb8791ed4b.png" />
+<img alt="_images/953748af3a76660221432adb02253a14896eed64adc463830a1744300250bf4d.png" src="_images/953748af3a76660221432adb02253a14896eed64adc463830a1744300250bf4d.png" />
 </div>
 </div>
 </section>
 </section>
 <hr class="docutils" />
 <section id="classification-with-mlp-on-toxicity">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Classification with MLP on toxicity</a><a class="headerlink" href="#classification-with-mlp-on-toxicity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">4. Classification with MLP on toxicity</a><a class="headerlink" href="#classification-with-mlp-on-toxicity" title="Link to this heading">#</a></h2>
 <p>Moving beyond regression, let’s look an example on the classification.</p>
 <p>We will predict <code class="docutils literal notranslate"><span class="pre">toxic</span></code> vs <code class="docutils literal notranslate"><span class="pre">non_toxic</span></code> from the same four descriptors.</p>
 <section id="prepare-labels-and-build-classifier">
-<h3>4.1 Prepare labels and build classifier<a class="headerlink" href="#prepare-labels-and-build-classifier" title="Permalink to this heading">#</a></h3>
+<h3>4.1 Prepare labels and build classifier<a class="headerlink" href="#prepare-labels-and-build-classifier" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -1945,16 +3659,860 @@ R2:  0.966
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-3 {color: black;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
+<div class="output text_html"><style>#sk-container-id-3 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-3 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-3 pre {
+  padding: 0;
+}
+
+#sk-container-id-3 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-3 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-3 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-3 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-3 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-3 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-3 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-3 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-3 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-3 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-3 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-3 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-3 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-3 div.sk-label label.sk-toggleable__label,
+#sk-container-id-3 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-3 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-3 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-3 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-3 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-3 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-3 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-3 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-3 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-3 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><body><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
                 (&#x27;mlp&#x27;,
                  MLPClassifier(hidden_layer_sizes=(16,),
                                learning_rate_init=0.01, max_iter=2000,
-                               random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, StandardScaler()),
-                (&#x27;mlp&#x27;,
-                 MLPClassifier(hidden_layer_sizes=(16,),
-                               learning_rate_init=0.01, max_iter=2000,
-                               random_state=0))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">MLPClassifier</label><div class="sk-toggleable__content"><pre>MLPClassifier(hidden_layer_sizes=(16,), learning_rate_init=0.01, max_iter=2000,
-              random_state=0)</pre></div></div></div></div></div></div></div></div></div>
+                               random_state=0))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>Pipeline</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.pipeline.Pipeline.html">?<span>Documentation for Pipeline</span></a><span class="sk-estimator-doc-link ">i<span>Not fitted</span></span></div></label><div class="sk-toggleable__content " data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('steps',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">steps&nbsp;</td>
+            <td class="value">[(&#x27;scaler&#x27;, ...), (&#x27;mlp&#x27;, ...)]</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('transform_input',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">transform_input&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('memory',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">memory&nbsp;</td>
+            <td class="value">None</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>StandardScaler</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.preprocessing.StandardScaler.html">?<span>Documentation for StandardScaler</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="scaler__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('copy',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">copy&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_mean',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_mean&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('with_std',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">with_std&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div><div class="sk-item"><div class="sk-estimator  sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label  sk-toggleable__label-arrow"><div><div>MLPClassifier</div></div><div><a class="sk-estimator-doc-link " rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.neural_network.MLPClassifier.html">?<span>Documentation for MLPClassifier</span></a></div></label><div class="sk-toggleable__content " data-param-prefix="mlp__">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                <table class="parameters-table">
+                  <tbody>
+                    
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('hidden_layer_sizes',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">hidden_layer_sizes&nbsp;</td>
+            <td class="value">(16,)</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('activation',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">activation&nbsp;</td>
+            <td class="value">&#x27;relu&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('solver',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">solver&nbsp;</td>
+            <td class="value">&#x27;adam&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('alpha',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">alpha&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('batch_size',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">batch_size&nbsp;</td>
+            <td class="value">&#x27;auto&#x27;</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate&nbsp;</td>
+            <td class="value">&#x27;constant&#x27;</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('learning_rate_init',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">learning_rate_init&nbsp;</td>
+            <td class="value">0.01</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('power_t',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">power_t&nbsp;</td>
+            <td class="value">0.5</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_iter',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_iter&nbsp;</td>
+            <td class="value">2000</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('shuffle',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">shuffle&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="user-set">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('random_state',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">random_state&nbsp;</td>
+            <td class="value">0</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('tol',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">tol&nbsp;</td>
+            <td class="value">0.0001</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('verbose',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">verbose&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('warm_start',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">warm_start&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">momentum&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('nesterovs_momentum',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">nesterovs_momentum&nbsp;</td>
+            <td class="value">True</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('early_stopping',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">early_stopping&nbsp;</td>
+            <td class="value">False</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('validation_fraction',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">validation_fraction&nbsp;</td>
+            <td class="value">0.1</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_1',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_1&nbsp;</td>
+            <td class="value">0.9</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('beta_2',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">beta_2&nbsp;</td>
+            <td class="value">0.999</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('epsilon',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">epsilon&nbsp;</td>
+            <td class="value">1e-08</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('n_iter_no_change',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">n_iter_no_change&nbsp;</td>
+            <td class="value">10</td>
+        </tr>
+    
+
+        <tr class="default">
+            <td><i class="copy-paste-icon"
+                 onclick="copyToClipboard('max_fun',
+                          this.parentElement.nextElementSibling)"
+            ></i></td>
+            <td class="param">max_fun&nbsp;</td>
+            <td class="value">15000</td>
+        </tr>
+    
+                  </tbody>
+                </table>
+            </details>
+        </div>
+    </div></div></div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script></body></div></div>
 </div>
 <p>Everything stays the same except we use <code class="docutils literal notranslate"><span class="pre">MLPClassifier()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">MLPRegressor()</span></code></p>
 <p>Now let’s fit and evaluate.</p>
@@ -2008,8 +4566,8 @@ F1:        0.963
 AUC:       0.986
 </pre></div>
 </div>
-<img alt="_images/6640270415cfa6ac5b383ac79ade7114d2a94e6fd6622b1e10d3a9df192880ec.png" src="_images/6640270415cfa6ac5b383ac79ade7114d2a94e6fd6622b1e10d3a9df192880ec.png" />
-<img alt="_images/b502ac5082bc886a9af3bbe45985ec928ba8e0e21b97cc669ec4c8a389f3ed70.png" src="_images/b502ac5082bc886a9af3bbe45985ec928ba8e0e21b97cc669ec4c8a389f3ed70.png" />
+<img alt="_images/cc0bc44c388d357591aaa9cdb536e9930999f194836f8bf926d00a310742cd75.png" src="_images/cc0bc44c388d357591aaa9cdb536e9930999f194836f8bf926d00a310742cd75.png" />
+<img alt="_images/ec88a6cee87e73915bc4fc711702658e84822ca72b57e521fc068fba0988e4f4.png" src="_images/ec88a6cee87e73915bc4fc711702658e84822ca72b57e521fc068fba0988e4f4.png" />
 </div>
 </div>
 <p>Threshold tuning demo.</p>
@@ -2033,7 +4591,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="peek-inside-the-network">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Peek inside the network</a><a class="headerlink" href="#peek-inside-the-network" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">5. Peek inside the network</a><a class="headerlink" href="#peek-inside-the-network" title="Link to this heading">#</a></h2>
 <p>While scikit-learn MLP is a black box in training, you can still inspect weights.</p>
 <p>We will look at the first layer weights for regression on log-solubility and see which descriptors each hidden unit is sensitive to.</p>
 <div class="cell docutils container">
@@ -2062,7 +4620,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/94db7ae2056cfe43164f1d618882b4e6f11fa7e1b9401036916a10ef28f9ba0c.png" src="_images/94db7ae2056cfe43164f1d618882b4e6f11fa7e1b9401036916a10ef28f9ba0c.png" />
+<img alt="_images/85a2d397c88e8b662b3ac009b5c7c572bbb86d9fd9e0e4be2c4a11f39b2a7465.png" src="_images/85a2d397c88e8b662b3ac009b5c7c572bbb86d9fd9e0e4be2c4a11f39b2a7465.png" />
 </div>
 </div>
 <p>How to read above plot:</p>
@@ -2074,7 +4632,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="overfitting-regularization-and-early-stopping">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Overfitting, regularization, and early stopping</a><a class="headerlink" href="#overfitting-regularization-and-early-stopping" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">6. Overfitting, regularization, and early stopping</a><a class="headerlink" href="#overfitting-regularization-and-early-stopping" title="Link to this heading">#</a></h2>
 <p>Neural nets can overfit small chemistry tables. Two easy controls:</p>
 <ul class="simple">
 <li><p><strong>L2 penalty</strong> via <code class="docutils literal notranslate"><span class="pre">alpha</span></code>. Larger alpha shrinks weights.</p></li>
@@ -2082,10 +4640,10 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </ul>
 <p>We will show a sweep of <code class="docutils literal notranslate"><span class="pre">alpha</span></code> for log-solubility.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#reload and overwrite solubility training set</span>
@@ -2126,39 +4684,39 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/b9c3e133a45b13243c37cede9b532aebdf5aa74b465db2bf3a1270bc6da20fe5.png" src="_images/b9c3e133a45b13243c37cede9b532aebdf5aa74b465db2bf3a1270bc6da20fe5.png" />
+<img alt="_images/e76b948b166fb9757928d0aec276ca54b77f5af382052e9cf4fd61a48490350e.png" src="_images/e76b948b166fb9757928d0aec276ca54b77f5af382052e9cf4fd61a48490350e.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">7. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-multilayer-perceptron">multilayer perceptron<a class="headerlink" href="#term-multilayer-perceptron" title="Permalink to this term">#</a></dt><dd><p>A network of layers that apply linear transforms plus nonlinear activations.</p>
+<dt id="term-multilayer-perceptron">multilayer perceptron<a class="headerlink" href="#term-multilayer-perceptron" title="Link to this term">#</a></dt><dd><p>A network of layers that apply linear transforms plus nonlinear activations.</p>
 </dd>
-<dt id="term-activation">activation<a class="headerlink" href="#term-activation" title="Permalink to this term">#</a></dt><dd><p>Nonlinear function applied elementwise. Common choices: ReLU, tanh, logistic.</p>
+<dt id="term-activation">activation<a class="headerlink" href="#term-activation" title="Link to this term">#</a></dt><dd><p>Nonlinear function applied elementwise. Common choices: ReLU, tanh, logistic.</p>
 </dd>
-<dt id="term-loss">loss<a class="headerlink" href="#term-loss" title="Permalink to this term">#</a></dt><dd><p>A number that measures how wrong the predictions are on training data.</p>
+<dt id="term-loss">loss<a class="headerlink" href="#term-loss" title="Link to this term">#</a></dt><dd><p>A number that measures how wrong the predictions are on training data.</p>
 </dd>
-<dt id="term-optimizer">optimizer<a class="headerlink" href="#term-optimizer" title="Permalink to this term">#</a></dt><dd><p>Method that updates weights to reduce loss. Scikit-learn uses variants of SGD or LBFGS under the hood.</p>
+<dt id="term-optimizer">optimizer<a class="headerlink" href="#term-optimizer" title="Link to this term">#</a></dt><dd><p>Method that updates weights to reduce loss. Scikit-learn uses variants of SGD or LBFGS under the hood.</p>
 </dd>
-<dt id="term-alpha">alpha<a class="headerlink" href="#term-alpha" title="Permalink to this term">#</a></dt><dd><p>L2 penalty strength in scikit-learn MLP. Larger means more shrinkage.</p>
+<dt id="term-alpha">alpha<a class="headerlink" href="#term-alpha" title="Link to this term">#</a></dt><dd><p>L2 penalty strength in scikit-learn MLP. Larger means more shrinkage.</p>
 </dd>
-<dt id="term-early-stopping">early stopping<a class="headerlink" href="#term-early-stopping" title="Permalink to this term">#</a></dt><dd><p>Stop training when validation score does not improve for a patience window.</p>
+<dt id="term-early-stopping">early stopping<a class="headerlink" href="#term-early-stopping" title="Link to this term">#</a></dt><dd><p>Stop training when validation score does not improve for a patience window.</p>
 </dd>
-<dt id="term-scaling">scaling<a class="headerlink" href="#term-scaling" title="Permalink to this term">#</a></dt><dd><p>Standardize features to zero mean and unit variance. Critical for neural nets.</p>
+<dt id="term-scaling">scaling<a class="headerlink" href="#term-scaling" title="Link to this term">#</a></dt><dd><p>Standardize features to zero mean and unit variance. Critical for neural nets.</p>
 </dd>
-<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Permalink to this term">#</a></dt><dd><p>Scatter of predicted vs true values for regression.</p>
+<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Link to this term">#</a></dt><dd><p>Scatter of predicted vs true values for regression.</p>
 </dd>
-<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Permalink to this term">#</a></dt><dd><p>Area under the Receiver Operating Characteristic curve. Threshold free ranking metric.</p>
+<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Link to this term">#</a></dt><dd><p>Area under the Receiver Operating Characteristic curve. Threshold free ranking metric.</p>
 </dd>
-<dt id="term-hidden-layer">hidden layer<a class="headerlink" href="#term-hidden-layer" title="Permalink to this term">#</a></dt><dd><p>A layer between input and output that lets the model learn nonlinear combinations.</p>
+<dt id="term-hidden-layer">hidden layer<a class="headerlink" href="#term-hidden-layer" title="Link to this term">#</a></dt><dd><p>A layer between input and output that lets the model learn nonlinear combinations.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-recipes admonition">
 <p class="admonition-title">Recipes</p>
 <ul class="simple">
@@ -2184,9 +4742,9 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">9. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="q1-tiny-mlp-for-melting-point">
-<h3>Q1. Tiny MLP for melting point<a class="headerlink" href="#q1-tiny-mlp-for-melting-point" title="Permalink to this heading">#</a></h3>
+<h3>Q1. Tiny MLP for melting point<a class="headerlink" href="#q1-tiny-mlp-for-melting-point" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Use features <code class="docutils literal notranslate"><span class="pre">[MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings]</span></code></p></li>
 <li><p>Split 80/20 with <code class="docutils literal notranslate"><span class="pre">random_state=7</span></code></p></li>
@@ -2219,7 +4777,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="q2-depth-vs-width-on-log-solubility">
-<h3>Q2. Depth vs width on log-solubility<a class="headerlink" href="#q2-depth-vs-width-on-log-solubility" title="Permalink to this heading">#</a></h3>
+<h3>Q2. Depth vs width on log-solubility<a class="headerlink" href="#q2-depth-vs-width-on-log-solubility" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Train three models on <code class="docutils literal notranslate"><span class="pre">logS</span></code> with hidden sizes <code class="docutils literal notranslate"><span class="pre">(16,)</span></code>, <code class="docutils literal notranslate"><span class="pre">(32,)</span></code>, <code class="docutils literal notranslate"><span class="pre">(64,32)</span></code></p></li>
 <li><p>Keep <code class="docutils literal notranslate"><span class="pre">alpha=1e-3</span></code>, <code class="docutils literal notranslate"><span class="pre">learning_rate_init=0.01</span></code>, early stopping on</p></li>
@@ -2264,7 +4822,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="q3-toxicity-classification-with-threshold-tuning">
-<h3>Q3. Toxicity classification with threshold tuning<a class="headerlink" href="#q3-toxicity-classification-with-threshold-tuning" title="Permalink to this heading">#</a></h3>
+<h3>Q3. Toxicity classification with threshold tuning<a class="headerlink" href="#q3-toxicity-classification-with-threshold-tuning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>For <code class="docutils literal notranslate"><span class="pre">Toxicity</span></code>, train <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> with <code class="docutils literal notranslate"><span class="pre">(32,)</span></code>, <code class="docutils literal notranslate"><span class="pre">alpha=1e-3</span></code>, early stopping on</p></li>
 <li><p>Compute probabilities on test</p></li>
@@ -2276,7 +4834,7 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 <hr class="docutils" />
 <section id="q4-compare-mlp-to-linear-regression-on-logs">
-<h3>Q4. Compare MLP to Linear Regression on logS<a class="headerlink" href="#q4-compare-mlp-to-linear-regression-on-logs" title="Permalink to this heading">#</a></h3>
+<h3>Q4. Compare MLP to Linear Regression on logS<a class="headerlink" href="#q4-compare-mlp-to-linear-regression-on-logs" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Same train test split as Q2</p></li>
 <li><p>Fit Linear Regression on scaled inputs for <code class="docutils literal notranslate"><span class="pre">logS</span></code></p></li>
@@ -2288,9 +4846,9 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 </section>
 </section>
 <section id="solutions">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">11. Solutions</a><a class="headerlink" href="#solutions" title="Link to this heading">#</a></h2>
 <section id="solution-q1">
-<h3>Solution Q1<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
+<h3>Solution Q1<a class="headerlink" href="#solution-q1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -2321,12 +4879,12 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE=409.35  MAE=16.27  R2=0.855
 </pre></div>
 </div>
-<img alt="_images/d6d9a41ccdd6d807f19fdd29f61acc63b58ab3b408a8c4ddeacda5535337b9ca.png" src="_images/d6d9a41ccdd6d807f19fdd29f61acc63b58ab3b408a8c4ddeacda5535337b9ca.png" />
+<img alt="_images/46316d5e29f3916917c9a6e9fdb8196a8b8fed47edf02531257ae655e5912a7a.png" src="_images/46316d5e29f3916917c9a6e9fdb8196a8b8fed47edf02531257ae655e5912a7a.png" />
 </div>
 </div>
 </section>
 <section id="solution-q2">
-<h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
+<h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sizes</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">16</span><span class="p">,),</span> <span class="p">(</span><span class="mi">32</span><span class="p">,),</span> <span class="p">(</span><span class="mi">64</span><span class="p">,</span><span class="mi">32</span><span class="p">)]</span>
@@ -2366,12 +4924,12 @@ threshold=0.70  acc=0.930  prec=0.978  rec=0.937
 2     (64, 32)  0.958
 </pre></div>
 </div>
-<img alt="_images/a650324d246e6ffe4e4ae4b44dcca0d95748909504913f5a22cb39a60673a1c0.png" src="_images/a650324d246e6ffe4e4ae4b44dcca0d95748909504913f5a22cb39a60673a1c0.png" />
+<img alt="_images/226ce0a4b70faa13f9dabc311f018f95032c8bf769ccfc818000a8722788c270.png" src="_images/226ce0a4b70faa13f9dabc311f018f95032c8bf769ccfc818000a8722788c270.png" />
 </div>
 </div>
 </section>
 <section id="solution-q3">
-<h3>Solution Q3<a class="headerlink" href="#solution-q3" title="Permalink to this heading">#</a></h3>
+<h3>Solution Q3<a class="headerlink" href="#solution-q3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_clf</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Toxicity&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -2404,7 +4962,7 @@ t=0.7  acc=0.878  prec=0.976  rec=0.874  f1=0.922
 </div>
 </section>
 <section id="solution-q4">
-<h3>Solution Q4<a class="headerlink" href="#solution-q4" title="Permalink to this heading">#</a></h3>
+<h3>Solution Q4<a class="headerlink" href="#solution-q4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sol</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span><span class="s2">&quot;LogP&quot;</span><span class="p">,</span><span class="s2">&quot;TPSA&quot;</span><span class="p">,</span><span class="s2">&quot;NumRings&quot;</span><span class="p">,</span><span class="s2">&quot;Solubility_mol_per_L&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -2443,12 +5001,12 @@ t=0.7  acc=0.878  prec=0.976  rec=0.874  f1=0.922
 MLP    R2: 0.966
 </pre></div>
 </div>
-<img alt="_images/22bded6c1425a4509c214a94e36ca196272a4efa76445cd7b98a3aa03d8df46c.png" src="_images/22bded6c1425a4509c214a94e36ca196272a4efa76445cd7b98a3aa03d8df46c.png" />
+<img alt="_images/9b5365caf8615431d924b7aee363f12cd2548f888d5a914a8c08a4673bc5175c.png" src="_images/9b5365caf8615431d924b7aee363f12cd2548f888d5a914a8c08a4673bc5175c.png" />
 </div>
 </div>
 </section>
 <section id="solution-q5">
-<h3>Solution Q5<a class="headerlink" href="#solution-q5" title="Permalink to this heading">#</a></h3>
+<h3>Solution Q5<a class="headerlink" href="#solution-q5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution Q5 (full run + metrics + plots)</span>
@@ -2524,13 +5082,13 @@ MLP    R2: 0.966
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 468.774
-MAE: 17.079
-R2:  0.780
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE: 478.871
+MAE: 17.440
+R2:  0.775
 </pre></div>
 </div>
-<img alt="_images/56b058503935143270cfbbb23f56fa68aaa4b81c6cbb4dc86b20ccaaf64dff00.png" src="_images/56b058503935143270cfbbb23f56fa68aaa4b81c6cbb4dc86b20ccaaf64dff00.png" />
-<img alt="_images/b0bb2291ce21eee72f5a9ad95543f1d6279b816dc3daee0b1b461915f3448df8.png" src="_images/b0bb2291ce21eee72f5a9ad95543f1d6279b816dc3daee0b1b461915f3448df8.png" />
+<img alt="_images/94283a3673be7ffef088152aee1c6a6542bc3d088c214ee93e233d8b6573a7ce.png" src="_images/94283a3673be7ffef088152aee1c6a6542bc3d088c214ee93e233d8b6573a7ce.png" />
+<img alt="_images/114a087c231b1a43639d54b00f269c648d267957e01821cfc45ddadd1de94473.png" src="_images/114a087c231b1a43639d54b00f269c648d267957e01821cfc45ddadd1de94473.png" />
 </div>
 </div>
 </section>
@@ -2564,7 +5122,7 @@ R2:  0.780
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2593,6 +5151,7 @@ R2:  0.780
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2668,7 +5227,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2692,8 +5251,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
