@@ -34,6 +34,10 @@ kernelspec:
 ```{code-cell} ipython3
 :tags: [hide-input]
 # pip installs are kept separate so you can see which step fails.
+import os
+os.environ["TQDM_DISABLE"] = "1"
+
+
 try:
     import torch, torchvision, PIL, sklearn, matplotlib, numpy  # quick smoke test
 except Exception as e:
@@ -112,6 +116,7 @@ This simple recipe is very effective for **zero-shot** use.
 We start with a small ViT model to keep memory use friendly.
 
 ```{code-cell} ipython3
+:tags: [remove-output]
 
 model_name = "ViT-B/32"
 model, preprocess = clip.load(model_name, device=device, jit=False)
