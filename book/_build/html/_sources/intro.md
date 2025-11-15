@@ -62,8 +62,10 @@ If you enjoy the course, please help spread the word and share the link so more 
 | **Oct 26** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1l3xeFktRU4kAkkqfMN_wp57BNRGBUXpt?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1hxsWsXf4KofWwgCmqwLTvu_NtONS5s6H?usp=sharing) | 
 | **Nov 9** | Assignment 4 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing)|  
 | **Nov 30** | Assignment 5 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1aOL9hfP6JmFqkg5eVpDyl6sxYiaTAHEq?usp=sharing)|  
-| **Dec 7** | Project 2 Evaluations due |  
+| **Dec 7** | Project 2 Evaluations due [![Colab](https://img.shields.io/badge/Groups-blue)](https://docs.google.com/document/d/13q21lpcjc1jcU3FSaWJaKAo8WAqIwrCPhRPCqQ4n-mM/edit?usp=sharing)|  |  
 ```
+
+
 
 
 
