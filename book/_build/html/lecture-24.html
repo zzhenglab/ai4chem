@@ -451,24 +451,13 @@ except:
     from pdf2image import convert_from_bytes
     PDF2IMAGE_AVAILABLE = True
 
-OPENAI_API_KEY = &quot;sk-add key here&quot;
+OPENAI_API_KEY = &quot;sk-................................&quot;
 # Create a client. This will read OPENAI_API_KEY from your environment.
 client = OpenAI(api_key = OPENAI_API_KEY )
 </pre></div>
 </div>
 </div>
 </div>
-<p>To use the OpenAI API you need an API key stored in the environment variable <code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code>.</p>
-<p>Some good practices for handling API keys:</p>
-<ul class="simple">
-<li><p>Never paste the key directly into the notebook in plain text.</p></li>
-<li><p>Use environment variables or a local <code class="docutils literal notranslate"><span class="pre">.env</span></code> file that is not tracked by git.</p></li>
-<li><p>Treat the key like a password and avoid sharing it.</p></li>
-</ul>
-<p>The official Python SDK reads <code class="docutils literal notranslate"><span class="pre">OPENAI_API_KEY</span></code> automatically when you create an <code class="docutils literal notranslate"><span class="pre">OpenAI</span></code> client.</p>
-<blockquote>
-<div><p>To get you own OpenAI Key, please visit: <a class="reference external" href="https://platform.openai.com/api-keys">https://platform.openai.com/api-keys</a></p>
-</div></blockquote>
 </section>
 <section id="loading-and-inspecting-the-paper-list">
 <h2>2. Loading and inspecting the paper list<a class="headerlink" href="#loading-and-inspecting-the-paper-list" title="Permalink to this heading">#</a></h2>
