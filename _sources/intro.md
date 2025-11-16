@@ -42,10 +42,8 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 28 & 30** – Semi-supervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
 - **Nov 4 & 6** –  Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)        
 - **Nov 11 & 13** – Computer vision and multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing) 
-- **Nov 18 & 20** – Multi-agent AI and literature data mining [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/18NZIvGg0hd0P5oOTwfQ61x9K3dS6qdU_?usp=sharing)   
-
-
-- **Nov 25** – Self-driving labs  
+- **Nov 18 & 20** – Multi-agent AI and literature data mining [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/18NZIvGg0hd0P5oOTwfQ61x9K3dS6qdU_?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1aQPq-vP0DhK2_CyAK10vfuAmByIymruO?usp=sharing)    
+- **Nov 25** – Self-driving labs  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1aQPq-vP0DhK2_CyAK10vfuAmByIymruO?usp=sharing) 
 - **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
 ```
