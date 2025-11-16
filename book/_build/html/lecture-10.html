@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -448,23 +448,6 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 <p>For this lecture 10, it is recommended to run everything in Colab.
 On this HTML page, some outputs are disabled due to execution limits.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
-
-<span class="ne">RuntimeError</span>: Intentional stop: ending execution here.
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="directed-message-passing-neural-network-d-mpnn">
 <h2>1. Directed message-passing neural network (D-MPNN)<a class="headerlink" href="#directed-message-passing-neural-network-d-mpnn" title="Permalink to this heading">#</a></h2>
@@ -515,7 +498,7 @@ $<span class="math notranslate nohighlight">\(
 <h2>2. Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
@@ -830,7 +813,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean a copy and normalize a few columns</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean a copy and normalize a few columns</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df_raw</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># Toxicity -&gt; binary string &#39;toxic&#39;/&#39;non_toxic&#39; to 1/0 if present</span>
@@ -1193,7 +1176,7 @@ Our first target will be <code class="docutils literal notranslate"><span class=
 This is the <em>atomic unit</em> Chemprop will pass to the featurizer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep rows that have both SMILES and solubility</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Keep rows that have both SMILES and solubility</span>
 <span class="n">df_sol</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;logS&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">smis</span> <span class="o">=</span> <span class="n">df_sol</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">ys</span>   <span class="o">=</span> <span class="n">df_sol</span><span class="p">[</span><span class="s2">&quot;logS&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -1211,7 +1194,7 @@ This is the <em>atomic unit</em> Chemprop will pass to the featurizer.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sol_datapoints</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sol_datapoints</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1233,7 +1216,7 @@ Even though we used a random split here, Chemprop also supports scaffold-based s
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">dp</span><span class="o">.</span><span class="n">mol</span> <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">sol_datapoints</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">dp</span><span class="o">.</span><span class="n">mol</span> <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">sol_datapoints</span><span class="p">]</span>
 
 <span class="n">train_lists</span><span class="p">,</span> <span class="n">val_lists</span><span class="p">,</span> <span class="n">test_lists</span> <span class="o">=</span> <span class="n">make_split_indices</span><span class="p">(</span>
     <span class="n">mols</span><span class="o">=</span><span class="n">mols</span><span class="p">,</span>
@@ -1267,7 +1250,7 @@ Even though we used a random split here, Chemprop also supports scaffold-based s
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">featurizers</span><span class="o">.</span><span class="n">SimpleMoleculeMolGraphFeaturizer</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span> <span class="o">=</span> <span class="n">featurizers</span><span class="o">.</span><span class="n">SimpleMoleculeMolGraphFeaturizer</span><span class="p">()</span>
 <span class="n">train_set</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">MoleculeDataset</span><span class="p">(</span><span class="n">train_dpss</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">featurizer</span><span class="o">=</span><span class="n">feat</span><span class="p">)</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">train_set</span><span class="o">.</span><span class="n">normalize_targets</span><span class="p">()</span>  <span class="c1"># store mean/var</span>
 
@@ -1290,7 +1273,7 @@ Even though we used a random split here, Chemprop also supports scaffold-based s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#uncomment below and take a look!</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#uncomment below and take a look!</span>
 <span class="c1">#val_set [0]</span>
 </pre></div>
 </div>
@@ -1307,7 +1290,7 @@ Batching is automatic: molecules of different sizes are packed together and mask
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">build_dataloader</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">train_loader</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">build_dataloader</span><span class="p">(</span><span class="n">train_set</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">val_loader</span>   <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">build_dataloader</span><span class="p">(</span><span class="n">val_set</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">test_loader</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">build_dataloader</span><span class="p">(</span><span class="n">test_set</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">train_loader</span>
@@ -1335,7 +1318,7 @@ Batching is automatic: molecules of different sizes are packed together and mask
 <h3>3.1 Pick blocks<a class="headerlink" href="#pick-blocks" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BondMessagePassing</span><span class="p">()</span>        <span class="c1"># node/edge update</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BondMessagePassing</span><span class="p">()</span>        <span class="c1"># node/edge update</span>
 <span class="n">agg</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MeanAggregation</span><span class="p">()</span>           <span class="c1"># pool node vectors</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">RegressionFFN</span><span class="p">(</span>              <span class="c1"># simple FFN head</span>
     <span class="n">output_transform</span><span class="o">=</span><span class="n">nn</span><span class="o">.</span><span class="n">UnscaleTransform</span><span class="o">.</span><span class="n">from_standard_scaler</span><span class="p">(</span><span class="n">scaler</span><span class="p">)</span>
@@ -1364,7 +1347,8 @@ Batching is automatic: molecules of different sizes are packed together and mask
 <p>We set epoch number at the beginning of this notebook, you can go all the way up and change this number if you feel it takes too long. You can use 15 here for demonstration, but in practice you might extend this depending on dataset size and convergence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpnn_sol</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">MPNN</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">agg</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">batch_norm</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">mpnn_sol</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">MPNN</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">agg</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">batch_norm</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)</span>
 
 <span class="n">checkpoint_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;checkpoints_sol&quot;</span><span class="p">)</span>
 <span class="n">checkpoint_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1438,7 +1422,7 @@ INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs
 <p>During training, you can monitor validation loss to see whether the model is underfitting, overfitting, or converging as expected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mpnn_sol</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">mpnn_sol</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1489,7 +1473,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 <p>After training, we hold back the test set for final evaluation. We then visualize predicted vs. true values with a parity plot. We have practiced doing so many times so far.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">mpnn_sol</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">mpnn_sol</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">)</span>
 
 <span class="c1"># Gather predictions for parity</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
@@ -1542,7 +1526,7 @@ Change the aggregation from <code class="docutils literal notranslate"><span cla
 <h3>4.1 Build classification dataset<a class="headerlink" href="#build-classification-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tox</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;tox_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_tox</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;tox_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">smis</span> <span class="o">=</span> <span class="n">df_tox</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">ys</span>   <span class="o">=</span> <span class="n">df_tox</span><span class="p">[</span><span class="s2">&quot;tox_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
@@ -1564,7 +1548,7 @@ Change the aggregation from <code class="docutils literal notranslate"><span cla
 <h3>4.2 Model and training<a class="headerlink" href="#model-and-training" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BondMessagePassing</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span>  <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BondMessagePassing</span><span class="p">()</span>
 <span class="n">agg</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MeanAggregation</span><span class="p">()</span>
 <span class="n">ffn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BinaryClassificationFFN</span><span class="p">(</span><span class="n">n_tasks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">mpnn_tox</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">MPNN</span><span class="p">(</span><span class="n">mp</span><span class="p">,</span> <span class="n">agg</span><span class="p">,</span> <span class="n">ffn</span><span class="p">,</span> <span class="n">batch_norm</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1639,7 +1623,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 <h3>4.3 ROC curve<a class="headerlink" href="#roc-curve" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gather probabilities</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gather probabilities</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">():</span>
     <span class="n">pred_chunks</span> <span class="o">=</span> <span class="n">trainer_tox</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">mpnn_tox</span><span class="p">,</span> <span class="n">te_loader</span><span class="p">)</span>
 <span class="n">proba</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">pred_chunks</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
@@ -1679,7 +1663,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 <p>Before we train models, let’s <strong>look at the labels</strong>. Let’s pick three representative molecules from the C-H oxidation dataset and see their reactivity and selectivity label.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper selection: one negative (no reaction), one positive with a single site, one positive with multiple sites</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper selection: one negative (no reaction), one positive with a single site, one positive with multiple sites</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">pick_representatives</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">df_pos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;react_bin&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;site_list&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">df_pos_multi</span> <span class="o">=</span> <span class="n">df_pos</span><span class="p">[</span><span class="n">df_pos</span><span class="p">[</span><span class="s2">&quot;site_list&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -2031,7 +2015,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 <p>Let’s draw them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdMolDraw2D</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem.Draw</span><span class="w"> </span><span class="kn">import</span> <span class="n">rdMolDraw2D</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">make_annotated_copy</span><span class="p">(</span><span class="n">mol</span><span class="p">,</span> <span class="n">site_list_1based</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tag_c123</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">m</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">Mol</span><span class="p">(</span><span class="n">mol</span><span class="p">)</span>  <span class="c1"># copy</span>
@@ -2098,7 +2082,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 <p>This mirrors the toxicity classification workflow we saw before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_rxn</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;react_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_rxn</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;react_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">smis</span> <span class="o">=</span> <span class="n">df_rxn</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="n">ys</span>   <span class="o">=</span> <span class="n">df_rxn</span><span class="p">[</span><span class="s2">&quot;react_bin&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
@@ -2184,7 +2168,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">atoms_labels_from_smiles</span><span class="p">(</span><span class="n">smi</span><span class="p">,</span> <span class="n">positive_idxs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">Chem</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2226,7 +2210,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">sel_dps</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">dp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">sel_dps</span><span class="p">]</span>
 <span class="c1"># For structure-based split we need RDKit Mol. Build directly from SMILES fallback:</span>
 <span class="n">mols</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">==</span><span class="n">dp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;SMILES&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">if</span> <span class="n">Chem</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dp</span> <span class="ow">in</span> <span class="n">sel_dps</span><span class="p">]</span>
 
@@ -2252,7 +2236,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MABBondMessagePassing</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MABBondMessagePassing</span><span class="p">(</span>
     <span class="n">d_v</span><span class="o">=</span><span class="n">feat</span><span class="o">.</span><span class="n">atom_fdim</span><span class="p">,</span> <span class="n">d_e</span><span class="o">=</span><span class="n">feat</span><span class="o">.</span><span class="n">bond_fdim</span><span class="p">,</span> <span class="n">d_h</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span>
 <span class="p">)</span>
 <span class="n">agg</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MeanAggregation</span><span class="p">()</span>
@@ -2332,7 +2316,7 @@ INFO:lightning.pytorch.callbacks.model_summary:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Pick which test item to visualize</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Pick which test item to visualize</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1"># change as you like</span>
 
 <span class="c1"># 2) Grab the original datapoint (not the already-featurized datum)</span>
@@ -2391,7 +2375,7 @@ First 10 probabilities: [0.5        0.5000001  0.5        0.5        0.5000006  
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Shared helpers for both tasks (Chemprop v2.2.1) =====</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Shared helpers for both tasks (Chemprop v2.2.1) =====</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
@@ -2594,7 +2578,7 @@ First 10 probabilities: [0.5        0.5000001  0.5        0.5        0.5000006  
 <h3>6.1 Solubility prediction rationale<a class="headerlink" href="#solubility-prediction-rationale" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Solubility summary table with top-1 rationale =====</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Solubility summary table with top-1 rationale =====</span>
 <span class="c1"># Uses your trained mpnn_sol and trainer, and df_sol[&quot;SMILES&quot;]</span>
 
 <span class="n">models_sol</span> <span class="o">=</span> <span class="p">[</span><span class="n">mpnn_sol</span><span class="p">]</span>  <span class="c1"># must be single-task regression</span>
@@ -2649,6 +2633,7 @@ First 10 probabilities: [0.5        0.5000001  0.5        0.5        0.5000006  
 
 <span class="n">solubility_rationales</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
 <span class="n">solubility_rationales</span>
+
 </pre></div>
 </div>
 </div>
@@ -3059,7 +3044,7 @@ First 10 probabilities: [0.5        0.5000001  0.5        0.5        0.5000006  
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">solubility_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">solubility_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]):</span>
     <span class="n">parent</span> <span class="o">=</span> <span class="n">solubility_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
     <span class="n">rat</span>    <span class="o">=</span> <span class="n">solubility_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent:&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
@@ -3081,7 +3066,7 @@ Rationale 0: C1C[CH:1]=[CH:1]CO1  score= -0.5051385164260864
 <h3>6.2 Reactivity prediction rationale<a class="headerlink" href="#reactivity-prediction-rationale" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Reactivity summary table with top-1 rationale =====</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ===== Reactivity summary table with top-1 rationale =====</span>
 <span class="c1"># Uses your trained mpnn_rxn and trainer_rxn, and df_rxn[&quot;SMILES&quot;]</span>
 
 <span class="n">models_rxn</span> <span class="o">=</span> <span class="p">[</span><span class="n">mpnn_rxn</span><span class="p">]</span>     <span class="c1"># single-task binary classification head</span>
@@ -3546,7 +3531,7 @@ Rationale 0: C1C[CH:1]=[CH:1]CO1  score= -0.5051385164260864
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">reactivity_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">reactivity_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]):</span>
     <span class="n">parent</span> <span class="o">=</span> <span class="n">reactivity_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;smiles&quot;</span><span class="p">]</span>
     <span class="n">rat</span>    <span class="o">=</span> <span class="n">reactivity_rationales</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;rationale_0&quot;</span><span class="p">]</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parent:&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">)</span>
@@ -3570,7 +3555,7 @@ Rationale 0: C1C[CH:1]=[CH:1]CO1  score= 0.9167211055755615
 <p>Prepare a minimal CSV: <code class="docutils literal notranslate"><span class="pre">SMILES,Melting</span> <span class="pre">Point</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data and write a small CSV</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data and write a small CSV</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">reg_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span> <span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
@@ -3837,7 +3822,7 @@ Rationale 0: C1C[CH:1]=[CH:1]CO1  score= 0.9167211055755615
 <p>Save to disk for Chemprop CLI.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;mp_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_reg</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;mp_data.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">df_reg</span><span class="p">),</span> <span class="n">df_reg</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3854,7 +3839,7 @@ Rationale 0: C1C[CH:1]=[CH:1]CO1  score= 0.9167211055755615
 <p>Train a <strong>small</strong> model so it runs in class. We log common metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 !chemprop train \
   --data-path mp_data.csv \
   -t regression \
@@ -4511,7 +4496,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 19.21it/s]
 <p>Make quick predictions on a few molecules.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>smiles_list = [
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>smiles_list = [
     &quot;CO&quot;,
     &quot;c1ccc2c(c1)CCCC2&quot;,
     &quot;CCCCCCCCC(=O)O&quot;,
@@ -4808,7 +4793,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 219.64it/s]
 <p>We use the <code class="docutils literal notranslate"><span class="pre">Reactivity</span></code> column and convert it to <strong>binary</strong> 0/1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Reactivity_bin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Reactivity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span><span class="s2">&quot;Reactivity&quot;</span><span class="p">,</span><span class="s2">&quot;Reactivity_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
@@ -5076,7 +5061,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 219.64it/s]
 <p>Write a minimal file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span> <span class="s2">&quot;Reactivity_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;reactivity_data_bin.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;SMILES&quot;</span><span class="p">,</span> <span class="s2">&quot;Reactivity_bin&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;reactivity_data_bin.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Optional: sanity check the class balance</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Reactivity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
@@ -5094,7 +5079,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 219.64it/s]
 <p>Train a short classification model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!chemprop train \
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!chemprop train \
   --data-path reactivity_data_bin.csv \
   -t classification \
   -s SMILES \
@@ -5311,7 +5296,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00,  7.23it/s]
 <p>Predict on new SMILES.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>smiles_list = [
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>smiles_list = [
     &quot;CCO&quot;,
     &quot;c1ccccc1C(F)&quot;,
     &quot;C1=C([C@@H]2C[C@H](C1)C2(C)C)&quot;,
@@ -5671,7 +5656,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 192.29it/s]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
 </pre></div>
 </div>
 </div>
@@ -5689,7 +5674,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 192.29it/s]
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TO DO</span>
 </pre></div>
 </div>
 </div>
@@ -5699,7 +5684,7 @@ Predicting DataLoader 0: 100% 1/1 [00:00&lt;00:00, 192.29it/s]
 <h3>Solution Q1:<a class="headerlink" href="#solution-q1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 df_reg = df[[&quot;SMILES&quot;,&quot;Melting Point&quot;]].dropna().copy()
 df_reg.to_csv(&quot;mp_data.csv&quot;, index=False)
 
@@ -5731,7 +5716,7 @@ pd.read_csv(&quot;q4_preds.csv&quot;)
 <h3>Solution Q2<a class="headerlink" href="#solution-q2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(url)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(url)
 df = df[[&quot;SMILES&quot;,&quot;Toxicity&quot;]].dropna().copy()
 df[&quot;Toxicity_bin&quot;] = df[&quot;Toxicity&quot;].str.lower().map({&quot;toxic&quot;:1, &quot;non_toxic&quot;:0}).astype(int)
 df[[&quot;SMILES&quot;,&quot;Toxicity_bin&quot;]].to_csv(&quot;tox_data.csv&quot;, index=False)
