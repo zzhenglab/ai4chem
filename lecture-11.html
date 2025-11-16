@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -52,7 +52,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -191,6 +191,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-23.html">Lecture 23 - Prompt Engineering and Function Calling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-24.html">Lecture 23 - Literature Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-25.html">Lecture 23 - Literature Data Mining</a></li>
 </ul>
 
     </div>
@@ -2120,15 +2122,12 @@ We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbo
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN for query
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 196 -&gt; [237, 414, 434, 11, 107]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN for query 196 -&gt; [237, 414, 434, 11, 107]
 Cosine   NN for query 196 -&gt; [237, 414, 434, 107, 11]
 Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
 </pre></div>
 </div>
-<img alt="_images/e2a16ac2bb169bf6682e55c265870d964fe72c7450b58aca185eaa0314335c41.png" src="_images/e2a16ac2bb169bf6682e55c265870d964fe72c7450b58aca185eaa0314335c41.png" />
+<img alt="_images/b2e7f07692812430fbea79836b5eddcc93e1871ecdb6df13ac420b8c3ce57cb8.png" src="_images/b2e7f07692812430fbea79836b5eddcc93e1871ecdb6df13ac420b8c3ce57cb8.png" />
 </div>
 </div>
 <p>We can plot both the query molecule and the found neighbors to take a look:</p>
