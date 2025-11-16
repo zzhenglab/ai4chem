@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -385,7 +385,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-models">1. Listing available models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oneround-conversation">2. One‑round conversation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiturn-conversation">3. Multi‑turn conversation</a></li>
@@ -415,36 +414,16 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 <p>For this lecture 20, it is recommended to run everything in Colab.</p>
 </section>
-<section id="setup">
-<h2>0. Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
-<p>Install packages if needed and place an API key placeholder.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
-
-<span class="ne">RuntimeError</span>: Intentional stop: ending execution here.
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="listing-available-models">
 <h2>1. Listing available models<a class="headerlink" href="#listing-available-models" title="Permalink to this heading">#</a></h2>
 <p>The OpenAI API exposes many models. Use the <code class="docutils literal notranslate"><span class="pre">models.list()</span></code> method to see models available to your account. This call requires a valid API key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models (requires a valid API key)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># List available models (requires a valid API key)</span>
 <span class="n">models</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">available_models</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">data</span><span class="p">[:</span><span class="mi">50</span><span class="p">]:</span>
   <span class="nb">print</span><span class="p">(</span><span class="n">available_models</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -510,7 +489,7 @@ o3-mini
 <p>We will calculate the number of moles of <strong>ethanol (C₂H₅OH)</strong> in 50 mL given a density of 0.789 g/mL. The request is supplied via the <code class="docutils literal notranslate"><span class="pre">input</span></code> parameter rather than <code class="docutils literal notranslate"><span class="pre">messages</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the prompt for a one‑round question</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the prompt for a one‑round question</span>
 <span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Calculate the number of moles of ethanol in 50 mL. Just show your results in one sentence.&quot;</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -530,7 +509,7 @@ o3-mini
 <p>For your reference below is the correct answer based on accurate calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given data</span>
 <span class="n">volume_ml</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">density_ethanol</span> <span class="o">=</span> <span class="mf">0.789</span>  <span class="c1"># g/mL</span>
 <span class="n">molar_mass_ethanol</span> <span class="o">=</span> <span class="mf">46.07</span>  <span class="c1"># g/mol</span>
@@ -552,7 +531,7 @@ o3-mini
 <p>You can also ask questions like SMILES and IUPAC names in this way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
 
 <span class="n">response1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
@@ -573,7 +552,7 @@ The IUPAC name for aspirin is 2-(acetyloxy)benzoic acid.
 <p>Now you can change the model to <code class="docutils literal notranslate"><span class="pre">gpt-4.1</span></code> and see it behaves slightly differently:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span>
      <span class="nb">input</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
 
@@ -607,7 +586,7 @@ Let me know if you need the structure or any additional details!
 <p>Here is for <code class="docutils literal notranslate"><span class="pre">gpt-3.5</span></code> response:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response3</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response3</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">,</span>
      <span class="nb">input</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
 
@@ -627,7 +606,7 @@ The IUPAC name for aspirin is 2-acetyloxybenzoic acid.
 <p>Below you will see, even if the answer to asprin question will be the same, the model answers differently at <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">=</span> <span class="pre">1</span></code> while gives the same answer in <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">=</span> <span class="pre">0</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
 
 
 <span class="c1"># Run three times with temperature = 1</span>
@@ -691,7 +670,7 @@ The IUPAC name of aspirin is **2-acetyloxybenzoic acid**.
 <p>Another paramter <code class="docutils literal notranslate"><span class="pre">max_output_tokens</span></code> will control how long the answer will be.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
 
 <span class="n">response4</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
@@ -712,7 +691,7 @@ The IUPAC name of aspirin is **2-acetyloxybenzoic acid**.
 <p>In above case it actually doesnt finish answering the entire question.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;What are the SMILES notation and IUPAC name of aspirin?&quot;</span>
 
 <span class="n">response5</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
@@ -735,7 +714,7 @@ The IUPAC name for aspirin is **2-acetyloxybenzoic acid**.
 <p>You can also control your prompt to guide the model answer the questions in designed format.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin? Answer Y or N. No explaination needed.&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin? Answer Y or N. No explaination needed.&quot;</span>
 
 <span class="n">response6a</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
@@ -755,7 +734,7 @@ The IUPAC name for aspirin is **2-acetyloxybenzoic acid**.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `3-acetoxybenzoic acid` the IUPAC name for aspirin? Answer Y or N. No explaination needed.&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `3-acetoxybenzoic acid` the IUPAC name for aspirin? Answer Y or N. No explaination needed.&quot;</span>
 
 <span class="n">response6b</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
      <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
@@ -778,7 +757,7 @@ The IUPAC name for aspirin is **2-acetyloxybenzoic acid**.
 The <code class="docutils literal notranslate"><span class="pre">verbosity</span></code> parameter controls the length of the response (<code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code>, or <code class="docutils literal notranslate"><span class="pre">high</span></code>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">If aspirin is synthesized using ^18O-labeled acetic anhydride, which atom in aspirin retains the ^18O label, and what are its labeled SMILES and IUPAC name?</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
@@ -806,7 +785,7 @@ While a user prompt you see above is what you type to ask a question or request 
 The system sets context; the user drives each response.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin?&quot;</span>
 
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -828,7 +807,7 @@ The system sets context; the user drives each response.</p>
 <p>As you see below, when there is a conflict, the system prompt will likely <strong>overide</strong> the user prompt.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin?  Always answer only with &#39;Yes!&#39; or &#39;No!&#39; and give 10 words explanation. &quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="s2">&quot;Is `2-acetoxybenzoic acid` the IUPAC name for aspirin?  Always answer only with &#39;Yes!&#39; or &#39;No!&#39; and give 10 words explanation. &quot;</span>
 
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -850,7 +829,7 @@ The system sets context; the user drives each response.</p>
 <p>Above <code class="docutils literal notranslate"><span class="pre">instructions</span></code> will work similarly as below using <code class="docutils literal notranslate"><span class="pre">role</span> <span class="pre">=</span> <span class="pre">system</span></code> and put the text in <code class="docutils literal notranslate"><span class="pre">content</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span>
     <span class="nb">input</span><span class="o">=</span><span class="p">[</span>
         <span class="p">{</span>
@@ -879,7 +858,7 @@ The system sets context; the user drives each response.</p>
 In the web chat, you’d have to paste and check them one by one, but with the API, you can run a for loop to evaluate all 10 automatically and collect the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;Aspirin is also known as 2-acetoxybenzoic acid.&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Water is essential for life.&quot;</span><span class="p">,</span>
     <span class="s2">&quot;The compound N-(4-hydroxyphenyl)acetamide is commonly called paracetamol.&quot;</span><span class="p">,</span>
@@ -921,7 +900,7 @@ Oxygen supports combustion. -&gt; Y
 <p>Below is another example when you try to unify the name entities in your inventory of lab notebook, which will later make you calculation of MW easier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">&quot;zinc nitrate heptahydrate&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Zn(NO3)37H2O&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Zn(NO3)3 7H2O&quot;</span><span class="p">,</span>
@@ -966,7 +945,7 @@ NiSO46H2O -&gt; NiSO4·6H2O
 <p>To maintain context across turns with the Responses API, pass a list of items to the <code class="docutils literal notranslate"><span class="pre">input</span></code> parameter. Each item is a dictionary with a <code class="docutils literal notranslate"><span class="pre">role</span></code> (“system”, “developer”, “user”, or “assistant”) and <code class="docutils literal notranslate"><span class="pre">content</span></code>. The API stores conversation history by default; you can also manage history manually by appending previous outputs. Here we build a small dialogue about <strong>metal–organic frameworks (MOFs)</strong> and SMILES notation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the conversation history</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the conversation history</span>
 <span class="n">history</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;You are a helpful chemistry tutor. Keep your answers short.&quot;</span><span class="p">},</span>
     <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;What is the most widely reported metal organic framework (MOF)?&quot;</span><span class="p">}</span>
@@ -988,7 +967,7 @@ For practical/stability-focused work, ZIF‑8 (Zn(mIm)2) is also extremely widel
 <p>Now, we basically add the latest <code class="docutils literal notranslate"><span class="pre">output_text</span></code> back to <code class="docutils literal notranslate"><span class="pre">history</span></code>, add follow-up questions, and use it as the <code class="docutils literal notranslate"><span class="pre">input</span></code> for next round, so model will “see” the previous conversation (including the answer from itself) to answer next around of conversation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">first_resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">first_resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">})</span>
 <span class="n">history</span>
 </pre></div>
 </div>
@@ -1007,7 +986,7 @@ For practical/stability-focused work, ZIF‑8 (Zn(mIm)2) is also extremely widel
 <p>Below we add the follow up quetsions and sent to the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>  <span class="s2">&quot;content&quot;</span><span class="p">:</span>  <span class="s2">&quot;I dont quite understand the MOFs you mentioned in your previous answer, explain in short.&quot;</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;assistant&quot;</span><span class="p">,</span>  <span class="s2">&quot;content&quot;</span><span class="p">:</span>  <span class="s2">&quot;I dont quite understand the MOFs you mentioned in your previous answer, explain in short.&quot;</span><span class="p">})</span>
 <span class="n">history</span>
 </pre></div>
 </div>
@@ -1027,7 +1006,7 @@ For practical/stability-focused work, ZIF‑8 (Zn(mIm)2) is also extremely widel
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">second_resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5-mini&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">history</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">second_resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5-mini&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">history</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">second_resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1052,7 +1031,7 @@ ZIF‑8 (Zn(mIm)2)
 <p>Alternatively, in the <code class="docutils literal notranslate"><span class="pre">responses</span></code> API you can also pass a previous <code class="docutils literal notranslate"><span class="pre">response.id</span></code> to manage conversation state:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
     <span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5-mini&quot;</span><span class="p">,</span>
     <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;You are a helpful chemistry tutor. Keep your answers short.&quot;</span><span class="p">,</span>
     <span class="nb">input</span><span class="o">=</span><span class="s2">&quot;What is the most widely reported metal organic framework (MOF)?&quot;</span><span class="p">)</span>
@@ -1092,7 +1071,7 @@ If you want, I can show a simple diagram or compare them by stability, pore size
 <p>Now, let’s consider, we can talk to agent to help us improve the reaction yield by asking it to improve the conditions iteratively. In this case the agent will be able to see previous reaction suggestion history and the respective reaction outcome. Note that LLM generally gives such “prediction” mostly by “educated guess” and their “chemical intutitions” obtained during the training. There is actually no calculation or math done in this suggesting condition steps. Still, it will show you how they can act like a human chemist to gradually improve the reaction condition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Load dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Load dataset</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/mof_yield_dataset.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -1480,7 +1459,8 @@ If you want, I can show a simple diagram or compare them by stability, pore size
 <p>Now we will guide LLM to propose one reaction condition for each conversation, then use the real data from this dataet to provide the result outcome as the follow-up conversation and ask it to suggest the next one.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4) Utility functions</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># 4) Utility functions</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">snap_to_grid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">grid</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">grid</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">argmin</span><span class="p">()])</span>
 
@@ -1667,7 +1647,8 @@ T: 115 °C, t: 48 h, yield: 0.76
 <p>In this example, the model wasn’t given much background information—so its behavior resembles that of a chemist starting from limited context. While the absolute performance isn’t optimal, it clearly demonstrates how an LLM can be integrated into an <strong>active learning</strong> workflow to iteratively guide experimental optimization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 8) Plot best-over-time for LLM vs random baseline</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># 8) Plot best-over-time for LLM vs random baseline</span>
 <span class="n">iters</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ROUNDS</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">gpt_best_over_time</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LLM best-so-far&quot;</span><span class="p">)</span>
@@ -1688,7 +1669,7 @@ T: 115 °C, t: 48 h, yield: 0.76
 <p>Below is the history record of this entire conversational reaction improvement process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">history</span>
 </pre></div>
 </div>
 </div>
@@ -1754,11 +1735,12 @@ T: 115 °C, t: 48 h, yield: 0.76
 <p>Note that this aluminum MOF <strong>does exist</strong> ( <a class="reference external" href="https://onlinelibrary.wiley.com/doi/full/10.1002/anie.202311983">link </a>). However, it was reported on Oct. 2023 and after the checkpoint for earlier models like <code class="docutils literal notranslate"><span class="pre">gpt-3.5</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a hallucination‑inducing prompt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a hallucination‑inducing prompt</span>
 <span class="n">hallucination_prompt</span> <span class="o">=</span> <span class="s2">&quot;Describe the metal and organic linker used in synthesis of the MOF-521 in 20 words.&quot;</span>
 
 <span class="n">response_h1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-3.5-turbo&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response_h1</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -1771,7 +1753,7 @@ T: 115 °C, t: 48 h, yield: 0.76
 <p>As you see, the model does not answer with Al (aluminium) before this MOF is not on the training set. The name <code class="docutils literal notranslate"><span class="pre">MOF-521</span></code> itself sounds similar to other more common MOFs like <code class="docutils literal notranslate"><span class="pre">MOF-5</span></code>, <code class="docutils literal notranslate"><span class="pre">MOF-125</span></code> or <code class="docutils literal notranslate"><span class="pre">521-MOF</span></code>, therefore the model starts to halluciate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_h2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response_h2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4.1&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response_h2</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1784,7 +1766,7 @@ T: 115 °C, t: 48 h, yield: 0.76
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_h3</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response_h3</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response_h3</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1797,7 +1779,7 @@ T: 115 °C, t: 48 h, yield: 0.76
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response_h4</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response_h4</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-5&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">hallucination_prompt</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response_h4</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1812,7 +1794,7 @@ T: 115 °C, t: 48 h, yield: 0.76
 <p>The correct answer is 330.24 g/mol (<a class="reference external" href="https://pubchem.ncbi.nlm.nih.gov/compound/15840397">link</a>). You will see except gpt-5, all guessing are wrong, while gpt-5 use the reasoning to improve the performance (so it takes longer to answer).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_response_time</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">instruction</span><span class="p">,</span> <span class="n">models</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
@@ -1850,7 +1832,7 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Below is a minimal example of how you might implement a naive retrieval step using text embedding and cosine similarity. We create a small document collection of chemistry snippets and then retrieve the most similar document for a query.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
 <span class="c1"># 1) Data: 10 chunks (20–100 words each)</span>
 <span class="c1">#    One chunk contains PubChem info with molecular weight 330.24 g/mol, CID 15840397.</span>
 <span class="c1"># ---------------------------</span>
@@ -1957,7 +1939,7 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Below is how they look like before turning into vectors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emb_inputs</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">emb_inputs</span>
 </pre></div>
 </div>
 </div>
@@ -1980,7 +1962,7 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Now we turn all text chunks (including our query) into vectors, one by one:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
 <span class="c1"># 2) Embeddings with ada</span>
 <span class="c1"># ---------------------------</span>
 
@@ -2019,7 +2001,7 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Now we retrieve top-k by cosine similarity:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
 <span class="c1"># 3) Retrieve top-k by cosine similarity</span>
 <span class="c1"># ---------------------------</span>
 
@@ -2050,7 +2032,8 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Now, the top 1 retrived information was provided as a part of input message (so the agent will see <strong>both</strong> user’s question and this piece of information before answering the question):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># ---------------------------</span>
 <span class="c1"># 4) Build combined prompt from retrieved chunks</span>
 <span class="c1"># ---------------------------</span>
 <span class="n">context_lines</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2097,7 +2080,8 @@ gpt-5: Molar mass is 330.24 g/mol.  ⏱ 15.75s
 <p>Below you will see with this “cheating” workflow by providing external information, even <code class="docutils literal notranslate"><span class="pre">gpt-3.5</span></code> can answer this question correctly without “guessing” the answer, thus reducing the halluciations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># ---------------------------</span>
 <span class="c1"># 5) Ask the model</span>
 <span class="c1"># ---------------------------</span>
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
@@ -2220,7 +2204,6 @@ The molecular weight of biphenyl-3,3&#39;,5,5&#39;-tetracarboxylic acid is 330.2
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-goals">Learning goals</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">0. Setup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-available-models">1. Listing available models</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oneround-conversation">2. One‑round conversation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiturn-conversation">3. Multi‑turn conversation</a></li>
