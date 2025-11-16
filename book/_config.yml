@@ -8,10 +8,10 @@ logo: logo.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  #exclude_patterns:
+  exclude_patterns:
   #  - lecture-10
   #  - lecture-10-old
-  #  - lecture-10.ipynb
+    - lecture-23.ipynb
   timeout: 600          # 10 minutes for long ML cells
   execute_notebooks: auto
   #exclude_patterns:

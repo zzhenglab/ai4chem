@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-22';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -220,7 +206,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -229,14 +215,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -361,10 +347,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -372,14 +358,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -416,10 +402,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-22-vision-languge-models">
-<h1>Lecture 22 - Vision Languge Models<a class="headerlink" href="#lecture-22-vision-languge-models" title="Link to this heading">#</a></h1>
+<h1>Lecture 22 - Vision Languge Models<a class="headerlink" href="#lecture-22-vision-languge-models" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -432,7 +418,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand the core idea of <strong>CLIP</strong>: aligning image and text representations with a contrastive loss.</p></li>
 <li><p>Build a tiny <strong>zero-shot classifier</strong> for crystal images and compute simple metrics.</p></li>
@@ -443,12 +429,12 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip installs are kept separate so you can see which step fails.</span>
@@ -510,7 +496,7 @@ document.write(`
 </div>
 </section>
 <section id="clip-connecting-text-and-images">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. CLIP: Connecting Text and Images</a><a class="headerlink" href="#clip-connecting-text-and-images" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. CLIP: Connecting Text and Images</a><a class="headerlink" href="#clip-connecting-text-and-images" title="Permalink to this heading">#</a></h2>
 <p>CLIP learns two encoders:</p>
 <ol class="arabic simple">
 <li><p>an <strong>image encoder</strong> <span class="math notranslate nohighlight">\(f_{\theta}(\cdot)\)</span></p></li>
@@ -667,7 +653,7 @@ Labels: [&#39;crystal&#39;, &#39;nocrystal&#39;]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Images loaded: 240
 </pre></div>
 </div>
-<img alt="_images/0bc471aef25b990d07e8e8a5ae403672c43eb2b85470b901d4dfb1e34fb2d744.png" src="_images/0bc471aef25b990d07e8e8a5ae403672c43eb2b85470b901d4dfb1e34fb2d744.png" />
+<img alt="_images/f0c3fd82f3455a3bdf251a5e6f4550e4f6083462ca386858be3fa1fbb79c1b9d.png" src="_images/f0c3fd82f3455a3bdf251a5e6f4550e4f6083462ca386858be3fa1fbb79c1b9d.png" />
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -884,7 +870,7 @@ We expect images from the same label to be near each other.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dfa3392f8b618305cadb8825a6475e2b80d235caac6a4713f0594e691dba091f.png" src="_images/dfa3392f8b618305cadb8825a6475e2b80d235caac6a4713f0594e691dba091f.png" />
+<img alt="_images/50d72fdb2ffa68c5b11e1c26533b8065194a32f443abc70428e80c44c143db87.png" src="_images/50d72fdb2ffa68c5b11e1c26533b8065194a32f443abc70428e80c44c143db87.png" />
 </div>
 </div>
 <div class="admonition-note admonition">
@@ -911,7 +897,7 @@ We expect images from the same label to be near each other.</p>
 </div>
 </section>
 <section id="prediction-based-on-embeddings">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Prediction based on Embeddings</a><a class="headerlink" href="#prediction-based-on-embeddings" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Prediction based on Embeddings</a><a class="headerlink" href="#prediction-based-on-embeddings" title="Permalink to this heading">#</a></h2>
 <p>Before we evaluate performance, we’ll compare each image embedding to the text embeddings created from our prompts.</p>
 <p>Both image and text vectors come from the same pretrained model, so we can measure how similar they are using cosine similarity.</p>
 <p>Each image is assigned to the class whose text description is most similar to it — no training, just comparison in the shared embedding space.
@@ -1011,10 +997,6 @@ Linear probe test accuracy: 0.9791666666666666
 weighted avg      0.980     0.979     0.979        48
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\52377\AppData\Local\Programs\Python\Python313\Lib\site-packages\sklearn\linear_model\_logistic.py:1272: FutureWarning: &#39;multi_class&#39; was deprecated in version 1.5 and will be removed in 1.7. From then on, it will always use &#39;multinomial&#39;. Leave it to its default value to avoid this warning.
-  warnings.warn(
-</pre></div>
-</div>
 </div>
 </div>
 <p>Below shows the confusion matrix and the ROC curve for our test set.</p>
@@ -1059,8 +1041,8 @@ weighted avg      0.980     0.979     0.979        48
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5226136b005eb45c4963786b2c17672198ce22c0e86a6e9163edc3beebdc8a51.png" src="_images/5226136b005eb45c4963786b2c17672198ce22c0e86a6e9163edc3beebdc8a51.png" />
-<img alt="_images/748b3b25ba55e5591b0841648d8a5dda6d9705da3f2108ae42a9a842b91c6f17.png" src="_images/748b3b25ba55e5591b0841648d8a5dda6d9705da3f2108ae42a9a842b91c6f17.png" />
+<img alt="_images/13e86a1b6cae4e7c58bf2de98034cc0b96ae3568ba1c19929906ac4a6f2170ed.png" src="_images/13e86a1b6cae4e7c58bf2de98034cc0b96ae3568ba1c19929906ac4a6f2170ed.png" />
+<img alt="_images/ad258e63df6b3e060eac3e1787c74c5edeeb22509db920ea994d553074a922aa.png" src="_images/ad258e63df6b3e060eac3e1787c74c5edeeb22509db920ea994d553074a922aa.png" />
 </div>
 </div>
 <p>To better visualize this. First, we prep features, score zero shot, pick up to two correct hits per class, and print quick snapshots of the first 8 dims for image, text, and the simple average merge.</p>
@@ -1195,10 +1177,10 @@ PC1: 0.5070, PC2: 0.1180
 
 === Sample 2D coords for picks ===
 idx | label             | text_x   text_y   | merge_x  merge_y
- 14 | crystal          |   0.064  -0.115 |   0.301  -0.141
- 42 | crystal          |   0.064  -0.115 |   0.028   0.071
- 19 | nocrystal        |  -0.034  -0.093 |  -0.273  -0.104
- 10 | nocrystal        |  -0.034  -0.093 |  -0.274  -0.113
+ 14 | crystal          |  -0.064  -0.115 |  -0.301  -0.141
+ 42 | crystal          |  -0.064  -0.115 |  -0.028   0.071
+ 19 | nocrystal        |   0.034  -0.093 |   0.273  -0.104
+ 10 | nocrystal        |   0.034  -0.093 |   0.274  -0.113
 </pre></div>
 </div>
 </div>
@@ -1263,7 +1245,7 @@ idx | label             | text_x   text_y   | merge_x  merge_y
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/29239d4314f019ca3d3ea99fa65af421f76b1f2b0ddc6059dbfbb73b6c54ca12.png" src="_images/29239d4314f019ca3d3ea99fa65af421f76b1f2b0ddc6059dbfbb73b6c54ca12.png" />
+<img alt="_images/71015c93c1fc9a4625a2cdb16178897114f3656f2b088b2bcb54d8f0b444c585.png" src="_images/71015c93c1fc9a4625a2cdb16178897114f3656f2b088b2bcb54d8f0b444c585.png" />
 </div>
 </div>
 <p>Also, to view the results, we can display the images and show the predicted value vs. the ground truth.</p>
@@ -1302,12 +1284,12 @@ idx | label             | text_x   text_y   | merge_x  merge_y
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/deb8723e7301188a06a2732a59421767a5a0b3a582bbd6442116d87cddc0b1f3.png" src="_images/deb8723e7301188a06a2732a59421767a5a0b3a582bbd6442116d87cddc0b1f3.png" />
+<img alt="_images/bf434634f8fdd64306074c5b9586d09d9c7c9c0301ce55185ed4e9011becab27.png" src="_images/bf434634f8fdd64306074c5b9586d09d9c7c9c0301ce55185ed4e9011becab27.png" />
 </div>
 </div>
 </section>
 <section id="imagetext-retrieval">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Image–text Retrieval</a><a class="headerlink" href="#imagetext-retrieval" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Image–text Retrieval</a><a class="headerlink" href="#imagetext-retrieval" title="Permalink to this heading">#</a></h2>
 <p>We can also use the fact that we have embeddings across two modalities (image and text) to conduct image–text retrieval:</p>
 <blockquote>
 <div><p>Given an image, find the best matching prompt.</p>
@@ -1354,14 +1336,14 @@ idx | label             | text_x   text_y   | merge_x  merge_y
   -&gt; a photo of a crystal structure  score=0.276
 </pre></div>
 </div>
-<img alt="_images/f1ca6000a4d11fd20cc86fef95a63281e726e49d2b70937a2f6a6d99c1a80287.png" src="_images/f1ca6000a4d11fd20cc86fef95a63281e726e49d2b70937a2f6a6d99c1a80287.png" />
+<img alt="_images/9f0ea9b6a8889973969e2b5c568c7604659b1c0633df7895bbd1162ae146faf1.png" src="_images/9f0ea9b6a8889973969e2b5c568c7604659b1c0633df7895bbd1162ae146faf1.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Image 200 (nocrystal): top-3 prompts
   -&gt; a scientific image of nothing present  score=0.249
   -&gt; an image showing nothing present  score=0.245
   -&gt; a photo of nothing present structure  score=0.238
 </pre></div>
 </div>
-<img alt="_images/1dcee4255c1f338a363de18a013d219d259e560dea13f7b077209224862257ae.png" src="_images/1dcee4255c1f338a363de18a013d219d259e560dea13f7b077209224862257ae.png" />
+<img alt="_images/7798a76a0601ce93bf1de85b36bab0be0708cbae2e73924eb12c78ca21310ace.png" src="_images/7798a76a0601ce93bf1de85b36bab0be0708cbae2e73924eb12c78ca21310ace.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1402,19 +1384,19 @@ idx | label             | text_x   text_y   | merge_x  merge_y
   -&gt; Image  91: crystal  score=0.305
 </pre></div>
 </div>
-<img alt="_images/c973cd83336e9841e3d86818322bcf1e8b07f3f5784041b9e6b87ab65a195806.png" src="_images/c973cd83336e9841e3d86818322bcf1e8b07f3f5784041b9e6b87ab65a195806.png" />
+<img alt="_images/8cf950bd40c223885bb9ceb84c817bd28eee70a1a79a2983c8548d530542eb62.png" src="_images/8cf950bd40c223885bb9ceb84c817bd28eee70a1a79a2983c8548d530542eb62.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prompt: &#39;a photo of a crystal structure&#39; → top-3 matching images
   -&gt; Image 177: crystal  score=0.303
   -&gt; Image   8: crystal  score=0.301
   -&gt; Image 186: crystal  score=0.299
 </pre></div>
 </div>
-<img alt="_images/297fe926e5a42087ea226b442089b14ac20e2ba6a0c9382c625dd3976a6c942d.png" src="_images/297fe926e5a42087ea226b442089b14ac20e2ba6a0c9382c625dd3976a6c942d.png" />
+<img alt="_images/4f7e473adf98f9a129e2a5aa97b5c63f1333d7acadba0315e2c2e0232251b47b.png" src="_images/4f7e473adf98f9a129e2a5aa97b5c63f1333d7acadba0315e2c2e0232251b47b.png" />
 </div>
 </div>
 </section>
 <section id="vision-chat-with-a-gpt-model">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Vision Chat with a GPT Model</a><a class="headerlink" href="#vision-chat-with-a-gpt-model" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Vision Chat with a GPT Model</a><a class="headerlink" href="#vision-chat-with-a-gpt-model" title="Permalink to this heading">#</a></h2>
 <p>We now send an image URL together with a question using the <strong>Responses API</strong>.
 This part requires a valid API key.</p>
 <p>First let’s load one image from <code class="docutils literal notranslate"><span class="pre">wikipedia</span></code>.</p>
@@ -1518,25 +1500,25 @@ This part requires a valid API key.</p>
 </div>
 </section>
 <section id="glossary">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-CLIP"><strong>CLIP</strong><a class="headerlink" href="#term-CLIP" title="Link to this term">#</a></dt><dd><p>Contrastive Language–Image Pretraining. Learns aligned image and text spaces.</p>
+<dt id="term-CLIP"><strong>CLIP</strong><a class="headerlink" href="#term-CLIP" title="Permalink to this term">#</a></dt><dd><p>Contrastive Language–Image Pretraining. Learns aligned image and text spaces.</p>
 </dd>
-<dt id="term-Contrastive-loss"><strong>Contrastive loss</strong><a class="headerlink" href="#term-Contrastive-loss" title="Link to this term">#</a></dt><dd><p>Objective that raises similarity of matched pairs and lowers mismatched pairs.</p>
+<dt id="term-Contrastive-loss"><strong>Contrastive loss</strong><a class="headerlink" href="#term-Contrastive-loss" title="Permalink to this term">#</a></dt><dd><p>Objective that raises similarity of matched pairs and lowers mismatched pairs.</p>
 </dd>
-<dt id="term-InfoNCE"><strong>InfoNCE</strong><a class="headerlink" href="#term-InfoNCE" title="Link to this term">#</a></dt><dd><p>A popular contrastive objective that treats each batch example as the only positive.</p>
+<dt id="term-InfoNCE"><strong>InfoNCE</strong><a class="headerlink" href="#term-InfoNCE" title="Permalink to this term">#</a></dt><dd><p>A popular contrastive objective that treats each batch example as the only positive.</p>
 </dd>
-<dt id="term-Projection-head"><strong>Projection head</strong><a class="headerlink" href="#term-Projection-head" title="Link to this term">#</a></dt><dd><p>The final linear layer that maps encoder features into the shared space.</p>
+<dt id="term-Projection-head"><strong>Projection head</strong><a class="headerlink" href="#term-Projection-head" title="Permalink to this term">#</a></dt><dd><p>The final linear layer that maps encoder features into the shared space.</p>
 </dd>
-<dt id="term-Zero-shot"><strong>Zero-shot</strong><a class="headerlink" href="#term-Zero-shot" title="Link to this term">#</a></dt><dd><p>Using text prompts alone to classify images without training on task labels.</p>
+<dt id="term-Zero-shot"><strong>Zero-shot</strong><a class="headerlink" href="#term-Zero-shot" title="Permalink to this term">#</a></dt><dd><p>Using text prompts alone to classify images without training on task labels.</p>
 </dd>
-<dt id="term-Linear-probe"><strong>Linear probe</strong><a class="headerlink" href="#term-Linear-probe" title="Link to this term">#</a></dt><dd><p>A linear classifier trained on frozen embeddings.</p>
+<dt id="term-Linear-probe"><strong>Linear probe</strong><a class="headerlink" href="#term-Linear-probe" title="Permalink to this term">#</a></dt><dd><p>A linear classifier trained on frozen embeddings.</p>
 </dd>
-<dt id="term-Cosine-similarity"><strong>Cosine similarity</strong><a class="headerlink" href="#term-Cosine-similarity" title="Link to this term">#</a></dt><dd><p>The dot product of two unit vectors.</p>
+<dt id="term-Cosine-similarity"><strong>Cosine similarity</strong><a class="headerlink" href="#term-Cosine-similarity" title="Permalink to this term">#</a></dt><dd><p>The dot product of two unit vectors.</p>
 </dd>
-<dt id="term-Temperature-tau"><strong>Temperature (<span class="math notranslate nohighlight">\(\tau\)</span>)</strong><a class="headerlink" href="#term-Temperature-tau" title="Link to this term">#</a></dt><dd><p>Scales logits in the contrastive loss. Lower means sharper distributions.</p>
+<dt id="term-Temperature-tau"><strong>Temperature (<span class="math notranslate nohighlight">\(\tau\)</span>)</strong><a class="headerlink" href="#term-Temperature-tau" title="Permalink to this term">#</a></dt><dd><p>Scales logits in the contrastive loss. Lower means sharper distributions.</p>
 </dd>
-<dt id="term-Retrieval"><strong>Retrieval</strong><a class="headerlink" href="#term-Retrieval" title="Link to this term">#</a></dt><dd><p>Ranking images for a text query or texts for an image query based on similarity.</p>
+<dt id="term-Retrieval"><strong>Retrieval</strong><a class="headerlink" href="#term-Retrieval" title="Permalink to this term">#</a></dt><dd><p>Ranking images for a text query or texts for an image query based on similarity.</p>
 </dd>
 </dl>
 </section>
@@ -1569,7 +1551,7 @@ This part requires a valid API key.</p>
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1598,7 +1580,6 @@ This part requires a valid API key.</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1637,7 +1618,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1661,8 +1642,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
