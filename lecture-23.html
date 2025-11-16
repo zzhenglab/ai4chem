@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-23';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -70,23 +72,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -108,20 +115,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,8 +136,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,18 +154,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -217,7 +203,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -226,14 +212,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -358,10 +344,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -369,14 +355,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -429,14 +415,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-23-prompt-engineering-and-function-calling">
-<h1>Lecture 23 - Prompt Engineering and Function Calling<a class="headerlink" href="#lecture-23-prompt-engineering-and-function-calling" title="Link to this heading">#</a></h1>
+<h1>Lecture 23 - Prompt Engineering and Function Calling<a class="headerlink" href="#lecture-23-prompt-engineering-and-function-calling" title="Permalink to this heading">#</a></h1>
 <p><em>Important Note</em>:</p>
 <p>Always verify model suggestions against trusted sources and follow laboratory safety rules. LLM responses are not a substitute for method validation, risk assessment, or supervisor approval.</p>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Explain zero-shot, one-shot, and few-shot prompting in a chemistry setting.</p></li>
 <li><p>Use <strong>structured prompts</strong> and ask for <strong>JSON</strong> outputs for easier downstream processing.</p></li>
@@ -446,27 +432,23 @@ document.write(`
 <p>For this lecture 20, it is recommended to run everything in Colab.</p>
 </section>
 <section id="setup">
-<h2>1. Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2>1. Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Intentional stop: ending execution here.&quot;</span><span class="p">)</span>
-
-<span class="ne">RuntimeError</span>: Intentional stop: ending execution here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>duckduckgo_search available.
+scikit-learn loaded.
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="zero-shot-prompts-for-chemistry">
-<h2>2. Zero-shot prompts for chemistry<a class="headerlink" href="#zero-shot-prompts-for-chemistry" title="Link to this heading">#</a></h2>
+<h2>2. Zero-shot prompts for chemistry<a class="headerlink" href="#zero-shot-prompts-for-chemistry" title="Permalink to this heading">#</a></h2>
 <p>As we learned in the previous lecture, <strong>zero-shot</strong> means we ask a question without giving examples. The model relies on general knowledge and the instructions in our prompt.</p>
 <p>Just a recap on the concepts on LLMs we covered before:</p>
 <ul class="simple">
@@ -488,12 +470,13 @@ document.write(`
 <p>Chemical: Include the relevant context so the model can apply chemistry reasoning rather than guessing.</p>
 <p>Further reading: <em>J. Am. Chem. Soc.</em> 2023, 145, 32, 18048–18062</p>
 <section id="ask-for-a-single-value">
-<h3>2.1 Ask for a single value<a class="headerlink" href="#ask-for-a-single-value" title="Link to this heading">#</a></h3>
+<h3>2.1 Ask for a single value<a class="headerlink" href="#ask-for-a-single-value" title="Permalink to this heading">#</a></h3>
 <p>Request: moles of ethanol in a volume at a given density. We also compute the reference answer in Python to compare later.</p>
 <p>We will ask the model to answer with a JSON object. This format is easy to parse. Keep field names short and explicit.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reference calculation in pure Python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Reference calculation in pure Python</span>
 <span class="n">volume_ml</span> <span class="o">=</span> <span class="mf">50.0</span>
 <span class="n">density_g_per_ml</span> <span class="o">=</span> <span class="mf">0.789</span>
 <span class="n">mw_ethanol</span> <span class="o">=</span> <span class="mf">46.07</span>  <span class="c1"># g/mol</span>
@@ -511,7 +494,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zero-shot prompt - live call only if client is configured</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Zero-shot prompt - live call only if client is configured</span>
 <span class="n">prompt</span> <span class="o">=</span> <span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate moles of ethanol in 50 mL.</span>
 <span class="sd">    Use density 0.789 g/mL and MW 46.07 g/mol.</span>
@@ -554,7 +538,7 @@ document.write(`
 <p>Below is you see that if we suggest a <em>table</em> instead of JSON, sometimes it’s hard to collect the answers across different calls as the format may differ slightly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt_table</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt_table</span> <span class="o">=</span> <span class="p">(</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculate moles of ethanol in 50 mL.</span>
 <span class="sd">    Use density 0.789 g/mL and MW 46.07 g/mol.</span>
 <span class="sd">    At the end, you start with **Answer:** and</span>
@@ -643,17 +627,18 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 </div>
 </section>
 <section id="request-a-list-with-structure">
-<h3>2.2 Request a list with structure<a class="headerlink" href="#request-a-list-with-structure" title="Link to this heading">#</a></h3>
+<h3>2.2 Request a list with structure<a class="headerlink" href="#request-a-list-with-structure" title="Permalink to this heading">#</a></h3>
 <p>Chemists often want properties in a table. Ask for a list of small items and show the structure as a preview.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prompt</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;Give three physical properties of ethanol. &quot;</span>
     <span class="s2">&quot;Return a JSON list with objects having keys: name, value, unit, source.&quot;</span>
 <span class="p">)</span>
 
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -687,15 +672,16 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 </section>
 </section>
 <section id="one-shot-and-few-shot-patterns">
-<h2>3. One-shot and few-shot patterns<a class="headerlink" href="#one-shot-and-few-shot-patterns" title="Link to this heading">#</a></h2>
+<h2>3. One-shot and few-shot patterns<a class="headerlink" href="#one-shot-and-few-shot-patterns" title="Permalink to this heading">#</a></h2>
 <p><strong>One-shot</strong> gives a single example. <strong>Few-shot</strong> gives several. These examples define a template that the model mimics. We will parse a chemical name into <strong>SMILES</strong> and then classify short safety statements.</p>
 <p>When giving examples keep them clear and compact. Do not load too many examples at once or the model may copy phrasing rather than follow the idea.</p>
 <section id="one-shot-name-to-smiles">
-<h3>3.1 One-shot: name to SMILES<a class="headerlink" href="#one-shot-name-to-smiles" title="Link to this heading">#</a></h3>
+<h3>3.1 One-shot: name to SMILES<a class="headerlink" href="#one-shot-name-to-smiles" title="Permalink to this heading">#</a></h3>
 <p>We show one input-output pair, then request a different compound with the same output shape. If RDKit is available, we validate the SMILES by constructing a molecule.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_name</span> <span class="o">=</span> <span class="s2">&quot;aspirin&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">example_name</span> <span class="o">=</span> <span class="s2">&quot;aspirin&quot;</span>
 <span class="n">example_smiles</span> <span class="o">=</span> <span class="s2">&quot;O=C(O)C1=CC=CC=C1OC(=O)C&quot;</span>  <span class="c1"># a common representation</span>
 <span class="n">target_name</span> <span class="o">=</span> <span class="s2">&quot;paracetamol&quot;</span>
 
@@ -712,7 +698,7 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 <p><code class="docutils literal notranslate"><span class="pre">{{&quot;name&quot;:&quot;{aspirin}&quot;,&quot;smiles&quot;:&quot;{O=C(O)C1=CC=CC=C1OC(=O)C}&quot;}}</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oneshot_prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">oneshot_prompt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">You convert chemical names to SMILES in JSON.</span>
 <span class="s1">Example input: &quot;</span><span class="si">{aspirin}</span><span class="s1">&quot;</span>
 <span class="s1">Example output: {{&quot;name&quot;:&quot;</span><span class="si">{aspirin}</span><span class="s1">&quot;,&quot;smiles&quot;:&quot;{O=C(O)C1=CC=CC=C1OC(=O)C}&quot;}}</span>
@@ -734,7 +720,7 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 <p>You can also use f-block to replace the examples in the prompt</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_name</span> <span class="o">=</span> <span class="s2">&quot;(S)-lactic acid&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_name</span> <span class="o">=</span> <span class="s2">&quot;(S)-lactic acid&quot;</span>
 <span class="n">example_smiles</span> <span class="o">=</span> <span class="s2">&quot;C[C@H](O)C(=O)O&quot;</span>
 <span class="n">target_name</span> <span class="o">=</span> <span class="s2">&quot;L-alanine&quot;</span>
 
@@ -749,6 +735,7 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 
 <span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">oneshot_prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -761,7 +748,7 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 <p>Again, note that LLM can halluciate! Always verify the answer produced.</p>
 </section>
 <section id="few-shot-classify-short-safety-statements">
-<h3>3.2 Few-shot: classify short safety statements<a class="headerlink" href="#few-shot-classify-short-safety-statements" title="Link to this heading">#</a></h3>
+<h3>3.2 Few-shot: classify short safety statements<a class="headerlink" href="#few-shot-classify-short-safety-statements" title="Permalink to this heading">#</a></h3>
 <p>As you see below, we we do <em>few-shot</em>, we show possible inputs and the respective label outputs.</p>
 <p>Few-shot design depends on the <strong>selection</strong> and <strong>ordering</strong> of examples. Guide rails:</p>
 <ul class="simple">
@@ -775,7 +762,8 @@ To calculate the moles of ethanol in 50 mL, follow these steps:
 <p>Below task: mark each sentence as <code class="docutils literal notranslate"><span class="pre">ok_for_lab</span></code> or <code class="docutils literal notranslate"><span class="pre">needs_review</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fewshot_instructions</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">fewshot_instructions</span> <span class="o">=</span> <span class="p">(</span>
     <span class="s2">&quot;Classify short safety statements. If the statement is uncertain or suggests a hazardous step without controls, &quot;</span>
     <span class="s2">&quot;mark as needs_review. Return JSON with fields text and label.&quot;</span>
 <span class="p">)</span>
@@ -819,7 +807,8 @@ Now classify:
 <p>Now let’s see result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">fewshot_prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">responses</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">fewshot_prompt</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resp</span><span class="o">.</span><span class="n">output_text</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -839,14 +828,14 @@ Now classify:
 </section>
 </section>
 <section id="function-calling-from-prompt-to-tools">
-<h2>5. Function calling: from prompt to tools<a class="headerlink" href="#function-calling-from-prompt-to-tools" title="Link to this heading">#</a></h2>
+<h2>5. Function calling: from prompt to tools<a class="headerlink" href="#function-calling-from-prompt-to-tools" title="Permalink to this heading">#</a></h2>
 <p>Function calling routes a prompt to a <strong>tool</strong>. The tool performs structured work and returns data that the model can use. We define small tools for unit conversions and RDKit descriptors, then invite the model to pick the right tool given a user question.</p>
 <section id="tool-specs-for-an-llm">
-<h3>5.1 Tool specs for an LLM<a class="headerlink" href="#tool-specs-for-an-llm" title="Link to this heading">#</a></h3>
+<h3>5.1 Tool specs for an LLM<a class="headerlink" href="#tool-specs-for-an-llm" title="Permalink to this heading">#</a></h3>
 <p>You will see the tool specification as a JSON schema. In production you would keep schemas short and stable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">re</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="o">,</span><span class="w"> </span><span class="nn">re</span>
 <span class="c1"># Tool 1 - unit conversion</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">grams_to_moles</span><span class="p">(</span><span class="n">mass_g</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">mw</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass_g</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">mw</span><span class="p">)</span>
@@ -915,14 +904,14 @@ quick_search: [{&#39;CID&#39;: 702, &#39;Compound Complexity&#39;: 2.8, &#39;IUP
 </section>
 </section>
 <section id="defining-function-specifications">
-<h2>5.2 Defining Function Specifications<a class="headerlink" href="#defining-function-specifications" title="Link to this heading">#</a></h2>
+<h2>5.2 Defining Function Specifications<a class="headerlink" href="#defining-function-specifications" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s learn how we “teach” LLMs to use these functions we alreay have!</p>
 <p>So, how do LLMs know <strong>when</strong> and <strong>how</strong> to call functions?</p>
 <p>The short answer is we just write the definition for all function we have available locally.</p>
 <p>Below is a compact schema description. Different SDKs have slightly different parameter names for function calling. The important piece is the argument schema and the tool name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tools</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;grams_to_moles&quot;</span><span class="p">,</span>
@@ -990,11 +979,11 @@ quick_search: [{&#39;CID&#39;: 702, &#39;Compound Complexity&#39;: 2.8, &#39;IUP
 </div>
 </section>
 <section id="example-on-grams-to-moles">
-<h2>5.3 Example on <code class="docutils literal notranslate"><span class="pre">grams_to_moles</span></code><a class="headerlink" href="#example-on-grams-to-moles" title="Link to this heading">#</a></h2>
+<h2>5.3 Example on <code class="docutils literal notranslate"><span class="pre">grams_to_moles</span></code><a class="headerlink" href="#example-on-grams-to-moles" title="Permalink to this heading">#</a></h2>
 <p>Now, let’s test with a simple case to calculate the moles of EtOH.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 1</span>
 <span class="n">MODEL</span> <span class="o">=</span> <span class="s2">&quot;gpt-4o&quot;</span>
 <span class="n">input_msgs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;How many moles are in 39154151.45 g of ethanol if MW is 46.07 g/mol?&quot;</span><span class="p">}]</span>
 
@@ -1039,7 +1028,7 @@ quick_search: [{&#39;CID&#39;: 702, &#39;Compound Complexity&#39;: 2.8, &#39;IUP
 <p>It has exactly same input as the one above, but we just add more print statements to show how this is done step by step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 1 — step by step trace</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 1 — step by step trace</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pprint</span>
 
@@ -1182,10 +1171,10 @@ There are approximately 849,884 moles in 39,154,151.45 grams of ethanol.
 </div>
 </section>
 <section id="example-on-rdkit-basic">
-<h2>5.4 Example on <code class="docutils literal notranslate"><span class="pre">rdkit_basic</span></code><a class="headerlink" href="#example-on-rdkit-basic" title="Link to this heading">#</a></h2>
+<h2>5.4 Example on <code class="docutils literal notranslate"><span class="pre">rdkit_basic</span></code><a class="headerlink" href="#example-on-rdkit-basic" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 3: Example 2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 3: Example 2</span>
 
 <span class="n">input_msgs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Give MolWt, LogP, TPSA, and NumRings for ethanol, SMILES CCO.&quot;</span><span class="p">}]</span>
 
@@ -1232,10 +1221,10 @@ There are approximately 849,884 moles in 39,154,151.45 grams of ethanol.
 </div>
 </section>
 <section id="example-on-pubchem-search">
-<h2>5.5 Example on PubChem search<a class="headerlink" href="#example-on-pubchem-search" title="Link to this heading">#</a></h2>
+<h2>5.5 Example on PubChem search<a class="headerlink" href="#example-on-pubchem-search" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 4: Example 3</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 4: Example 3</span>
 
 <span class="n">input_msgs</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Find asprin on PubChem by name and give IUPAC name, MW, formula.&quot;</span><span class="p">}]</span>
 
@@ -1278,10 +1267,10 @@ There are approximately 849,884 moles in 39,154,151.45 grams of ethanol.
 </div>
 </section>
 <section id="using-multiple-tools-in-one-conversation">
-<h2>5.6 Using multiple tools in one conversation<a class="headerlink" href="#using-multiple-tools-in-one-conversation" title="Link to this heading">#</a></h2>
+<h2>5.6 Using multiple tools in one conversation<a class="headerlink" href="#using-multiple-tools-in-one-conversation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multi-tool loop: the model can keep calling tools until no more function_call items appear.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multi-tool loop: the model can keep calling tools until no more function_call items appear.</span>
 <span class="c1"># Assumes you already defined: client, MODEL, tools, grams_to_moles, moles_to_grams, rdkit_basic, quick_search</span>
 
 <span class="n">prompt</span> <span class="o">=</span> <span class="p">(</span>
@@ -1405,7 +1394,7 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Further reading: <a class="reference external" href="https://platform.openai.com/docs/guides/function-calling">https://platform.openai.com/docs/guides/function-calling</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://cdn.openai.com/API/docs/images/function-calling-diagram-steps.png&quot;</span><span class="p">,</span>    <span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1415,11 +1404,12 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 </div>
 </section>
 <section id="use-a-pre-trained-model-as-a-tool">
-<h2>5.7 Use a pre-trained model as a tool<a class="headerlink" href="#use-a-pre-trained-model-as-a-tool" title="Link to this heading">#</a></h2>
+<h2>5.7 Use a pre-trained model as a tool<a class="headerlink" href="#use-a-pre-trained-model-as-a-tool" title="Permalink to this heading">#</a></h2>
 <p>Many labs fit scikit-learn models to predict properties. Here we train a small random forest on a chemistry dataset, then expose a function <code class="docutils literal notranslate"><span class="pre">rf_predict</span></code> that the model can call. This turns a model into a tool in the same style as unit converters. We reuse the <strong>C_H_oxidation_dataset.csv</strong> from Lecture 7.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/C_H_oxidation_dataset.csv&quot;</span>
 <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loaded rows:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_raw</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df_raw</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
@@ -2010,7 +2000,8 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Now we train a small random forest. For demo purpose, we use a simple target such as <strong>Melting Point</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">base_feats</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;LogP&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">,</span> <span class="s2">&quot;NumRings&quot;</span><span class="p">]</span>
 
 <span class="c1"># Compute descriptors if missing</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span><span class="n">base_feats</span><span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="n">df_model</span><span class="o">.</span><span class="n">columns</span><span class="p">):</span>
@@ -2051,7 +2042,7 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Now we wrap a SMILES toxicity predictor</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FEATURES_USED</span> <span class="o">=</span> <span class="n">base_feats</span>  <span class="c1"># keep the order for inference</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">FEATURES_USED</span> <span class="o">=</span> <span class="n">base_feats</span>  <span class="c1"># keep the order for inference</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">predict_toxicity_from_smiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
   <span class="c1"># SMILES -&gt; descriptors -&gt; toxicity prediction</span>
@@ -2094,7 +2085,7 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Similarly, we need to write tool specifications so later LLMs will know how to use it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tox_tool</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tox_tool</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;predict_toxicity_from_smiles&quot;</span><span class="p">,</span>
     <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Given a SMILES, compute RDKit descriptors and predict toxicity (toxic/non_toxic) using the trained classifier.&quot;</span><span class="p">,</span>
@@ -2117,7 +2108,9 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Now we can ask LLMs questions, and they will use our in-house functions to make predictions and interpret the answers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_msg</span> <span class="o">=</span> <span class="s2">&quot;Is Lactic acid toxic? How likely?&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">user_msg</span> <span class="o">=</span> <span class="s2">&quot;Is Lactic acid toxic? How likely?&quot;</span>
 
 <span class="n">messages</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">user_msg</span><span class="p">}]</span>
 
@@ -2163,7 +2156,7 @@ The molecular weight of aspirin is 180.16 g/mol. You have approximately 55,506.1
 <p>Now, we cab combine in-house functions together with search tools and do function callings. In this case, you just ask questions in human natural languge, the LLM help search for the SMILES notations and put it to the ML tools for prediction.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_tool</span> <span class="o">=</span><span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">search_tool</span> <span class="o">=</span><span class="p">{</span>
         <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;function&quot;</span><span class="p">,</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;quick_search&quot;</span><span class="p">,</span>
         <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Search PubChem by compound name and return identifiers/properties. Use this to find a SMILES.&quot;</span><span class="p">,</span>
@@ -2286,7 +2279,7 @@ The EGFR inhibitor with the given structure is predicted to be toxic, with a hig
 </div>
 </section>
 <section id="glossary">
-<h2>6. Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2>6. Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Zero-shot</strong>: a prompt with no examples. The request must define the desired shape and scope.</p></li>
 <li><p><strong>One-shot</strong>: a prompt with one example. The model mimics the pattern in your example.</p></li>
@@ -2325,7 +2318,7 @@ The EGFR inhibitor with the given structure is predicted to be toxic, with a hig
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2345,7 +2338,6 @@ The EGFR inhibitor with the given structure is predicted to be toxic, with a hig
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2400,7 +2392,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -2424,8 +2416,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

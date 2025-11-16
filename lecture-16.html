@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,49 +14,51 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=9a2dae69"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-16';</script>
@@ -73,23 +75,28 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,20 +118,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -140,8 +139,6 @@
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -160,18 +157,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -220,7 +206,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -229,14 +215,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -361,10 +347,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -372,14 +358,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -434,10 +420,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-16-reinforcement-learning">
-<h1>Lecture 16 - Reinforcement Learning<a class="headerlink" href="#lecture-16-reinforcement-learning" title="Link to this heading">#</a></h1>
+<h1>Lecture 16 - Reinforcement Learning<a class="headerlink" href="#lecture-16-reinforcement-learning" title="Permalink to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id2">Learning goals</a></p></li>
@@ -452,7 +438,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand the definition of agent, environment, state, action, reward, trajectory, policy, and value.</p></li>
 <li><p>Build a tiny grid world with a chemistry flavor and implement tabular Q-learning step by step.</p></li>
@@ -462,12 +448,12 @@ document.write(`
 </ul>
 </section>
 <section id="setup">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">0. Setup</a><a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -488,7 +474,7 @@ document.write(`
 </div>
 </section>
 <section id="reinforcement-learning-concepts">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. Reinforcement learning concepts</a><a class="headerlink" href="#reinforcement-learning-concepts" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">1. Reinforcement learning concepts</a><a class="headerlink" href="#reinforcement-learning-concepts" title="Permalink to this heading">#</a></h2>
 <p>Reinforcement learning studies decision making through repeated interaction.</p>
 <p>An agent observes a state <span class="math notranslate nohighlight">\(s\)</span>, chooses an action <span class="math notranslate nohighlight">\(a\)</span>, gets a reward <span class="math notranslate nohighlight">\(r\)</span>, and moves to a new state <span class="math notranslate nohighlight">\(s'\)</span>.</p>
 <p>The aim is to maximize expected return <span class="math notranslate nohighlight">\(G = r_0 + \gamma r_1 + \gamma^2 r_2 + \cdots\)</span> with <span class="math notranslate nohighlight">\(\gamma \in [0,1)\)</span>.</p>
@@ -505,10 +491,10 @@ document.write(`
 </ul>
 <p>The next plot shows this loop visually.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">_outlined_text</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">):</span>
@@ -560,12 +546,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5f900c37f4970af665f8c8a43feaacda2c3cb618b0fd85f2a82a52f6e1b3515e.png" src="_images/5f900c37f4970af665f8c8a43feaacda2c3cb618b0fd85f2a82a52f6e1b3515e.png" />
+<img alt="_images/f7211d164a34bba1b2b9bffad2a138b877235734bd446797e380071c65722b8c.png" src="_images/f7211d164a34bba1b2b9bffad2a138b877235734bd446797e380071c65722b8c.png" />
 </div>
 </div>
 </section>
 <section id="let-s-play-games-to-understand-q-learning">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Let’s play games to understand Q-Learning!</a><a class="headerlink" href="#let-s-play-games-to-understand-q-learning" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">2. Let’s play games to understand Q-Learning!</a><a class="headerlink" href="#let-s-play-games-to-understand-q-learning" title="Permalink to this heading">#</a></h2>
 <p>One of the simplest ways of doing Reinforcement Learning is called Q-learning. Here we want to estimate so-called <strong>Q-values</strong> which are also called action-values, because they map a state of the game-environment to a numerical value for <em>each possible action that the agent may take</em>. The Q-values indicate which action is expected to result in the highest <strong>future reward</strong>, thus telling the agent which action to take.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -578,7 +564,7 @@ document.write(`
 </div></blockquote>
 <p>Next, we’ll play interactive “games” that make these updates visible.</p>
 <section id="interactive-game-1-breakout">
-<h3>2.1 Interactive Game 1 — Breakout<a class="headerlink" href="#interactive-game-1-breakout" title="Link to this heading">#</a></h3>
+<h3>2.1 Interactive Game 1 — Breakout<a class="headerlink" href="#interactive-game-1-breakout" title="Permalink to this heading">#</a></h3>
 <p><strong>State</strong></p>
 <p>Binned ball and paddle positions plus ball velocity signs.</p>
 <p><strong>Actions</strong></p>
@@ -605,10 +591,10 @@ document.write(`
 </ul>
 <p>Try training for several episodes and then watch the agent’s learned behavior.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
@@ -1559,7 +1545,7 @@ document.write(`
 </div>
 </section>
 <section id="interactive-game-2-maze">
-<h3>2.2 Interactive Game 2 — Maze<a class="headerlink" href="#interactive-game-2-maze" title="Link to this heading">#</a></h3>
+<h3>2.2 Interactive Game 2 — Maze<a class="headerlink" href="#interactive-game-2-maze" title="Permalink to this heading">#</a></h3>
 <p>In this grid world, each cell is a <strong>state</strong>, and the agent learns to reach the goal.</p>
 <p><strong>Reward:</strong></p>
 <p>−1 per move, +100 at the goal → shorter paths yield higher return</p>
@@ -1571,10 +1557,10 @@ $<span class="math notranslate nohighlight">\(
   \)</span>$</p>
 <p>Enable the agent, train for multiple episodes, and observe how the route shortens over time.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
@@ -2343,10 +2329,10 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </section>
 <section id="interactive-game-3-reaction-surface-screening">
-<h3>2.3 Interactive Game 3 — Reaction Surface Screening<a class="headerlink" href="#interactive-game-3-reaction-surface-screening" title="Link to this heading">#</a></h3>
+<h3>2.3 Interactive Game 3 — Reaction Surface Screening<a class="headerlink" href="#interactive-game-3-reaction-surface-screening" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="id1">
-<h3>2.3 Interactive Game 3 — Reaction Surface Screening<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>2.3 Interactive Game 3 — Reaction Surface Screening<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>This environment resembles a reaction optimization problem.<br />
 Cells represent combinations of temperature <span class="math notranslate nohighlight">\(T\)</span> and composition <span class="math notranslate nohighlight">\(x\)</span>.<br />
 There are:</p>
@@ -2359,10 +2345,10 @@ There are:</p>
 The agent uses ε-greedy Q-learning to find the best route.</p>
 <p>Watch how, after enough training, it learns to avoid the decoy and reach the true goal.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
@@ -3319,7 +3305,7 @@ The agent uses ε-greedy Q-learning to find the best route.</p>
 </section>
 <hr class="docutils" />
 <section id="q-learning-on-a-chemistry-grid">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Q-learning on a Chemistry Grid</a><a class="headerlink" href="#q-learning-on-a-chemistry-grid" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">3. Q-learning on a Chemistry Grid</a><a class="headerlink" href="#q-learning-on-a-chemistry-grid" title="Permalink to this heading">#</a></h2>
 <p>Similar to the Demo 3, this part we build a <span class="math notranslate nohighlight">\((T,x)\)</span> grid environment in Python.<br />
 It places two reward peaks (true and decoy) and scripted walls separating regions.</p>
 <p>We train tabular Q-learning with decaying ε and compare:</p>
@@ -3330,10 +3316,10 @@ It places two reward peaks (true and decoy) and scripted walls separating region
 <p>Why? Early training underestimates distant rewards.<br />
 As updates propagate, the agent learns that long paths with small penalties lead to higher return overall.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q-learning on a chemistry (T, x) grid</span>
@@ -3728,12 +3714,12 @@ As updates propagate, the agent learns that long paths with small penalties lead
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true goal: (np.int64(11), np.int64(7)) decoy: (17, 17)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true goal: (11, 7) decoy: (17, 17)
 </pre></div>
 </div>
-<img alt="_images/8ee7dd421b3ffc90987054924f932c225b6f7741197b5aa62013e7b59336fb9f.png" src="_images/8ee7dd421b3ffc90987054924f932c225b6f7741197b5aa62013e7b59336fb9f.png" />
-<img alt="_images/cf21871c2c9689ba9c66dd216d4577f800b8ca8348229938134f6fe3cda4c238.png" src="_images/cf21871c2c9689ba9c66dd216d4577f800b8ca8348229938134f6fe3cda4c238.png" />
-<img alt="_images/31bb6a2e81fbe5823eba1ef31ad28129a490d669877fdca66b0bd76eb7d42220.png" src="_images/31bb6a2e81fbe5823eba1ef31ad28129a490d669877fdca66b0bd76eb7d42220.png" />
+<img alt="_images/00fd885db971b2aad2f515e6ac2c7e48da4cae52cbc972e7cac827243aaa70dd.png" src="_images/00fd885db971b2aad2f515e6ac2c7e48da4cae52cbc972e7cac827243aaa70dd.png" />
+<img alt="_images/ace605611c801c8639ecf4a4842b594ad35bdc2c92c764c91c6cabef56ace301.png" src="_images/ace605611c801c8639ecf4a4842b594ad35bdc2c92c764c91c6cabef56ace301.png" />
+<img alt="_images/47a3e092288ff062e03f8a48ece4ca9a051471d6f1cf0beda247aa2ca702373d.png" src="_images/47a3e092288ff062e03f8a48ece4ca9a051471d6f1cf0beda247aa2ca702373d.png" />
 </div>
 </div>
 <p>Early training has fewer updates. The path to the true goal is long and costs many <code class="docutils literal notranslate"><span class="pre">-1</span></code> steps before the +100 reward at the goal.</p>
@@ -3745,7 +3731,7 @@ As updates propagate, the agent learns that long paths with small penalties lead
 </section>
 <hr class="docutils" />
 <section id="bridge-to-multi-armed-bandits">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">4. Bridge to Multi-Armed Bandits</a><a class="headerlink" href="#bridge-to-multi-armed-bandits" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">4. Bridge to Multi-Armed Bandits</a><a class="headerlink" href="#bridge-to-multi-armed-bandits" title="Permalink to this heading">#</a></h2>
 <p>In chemical research we often choose the <strong>next experiment anywhere in the space</strong>, informed by past data (as in Bayesian optimization and active learning we learned in the previous lecture). Unlike a reinforcement learning (RL) grid world shown above, in practice it’s less frequent that we move only to <em>neighboring</em> conditions (like “up”, “down”, “left”, “right”) after each reaction.</p>
 <p>Instead, every experiment can be any point in the search space.</p>
 <p>Because there is no meaningful notion of “current position” (enviroment), we can simplify the RL setup:<br />
@@ -3779,10 +3765,10 @@ This simplification leads to the <strong>multi-armed bandit</strong> formulation
 <li><p>Decide whether to <strong>explore</strong> new arms or <strong>exploit</strong> the best one so far.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
@@ -4556,7 +4542,7 @@ This simplification leads to the <strong>multi-armed bandit</strong> formulation
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00465b327c376e2d3ecfadd13469d48cc70ed4feaa286c7b3e7ce2f09d6809c5.png" src="_images/00465b327c376e2d3ecfadd13469d48cc70ed4feaa286c7b3e7ce2f09d6809c5.png" />
+<img alt="_images/1e850e523b8baa019d032d57b13265b0ec405a51836d6b230ed6caa351348a9f.png" src="_images/1e850e523b8baa019d032d57b13265b0ec405a51836d6b230ed6caa351348a9f.png" />
 </div>
 </div>
 <p><strong>UCB1</strong>: each arm starts once; after that use <code class="docutils literal notranslate"><span class="pre">est</span> <span class="pre">+</span> <span class="pre">sqrt(2</span> <span class="pre">ln</span> <span class="pre">t</span> <span class="pre">/</span> <span class="pre">n)</span></code>.
@@ -4588,7 +4574,7 @@ This bonus term encourages <strong>early exploration</strong> and <strong>later 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d79a9f0d0ab7836efb4f07358c1dd145df3c4a7dfbad028a92e60802390f9d0e.png" src="_images/d79a9f0d0ab7836efb4f07358c1dd145df3c4a7dfbad028a92e60802390f9d0e.png" />
+<img alt="_images/ca73986d534054210fb306c2530a9a36a43594d88acf7dc954c89b8daec4ca28.png" src="_images/ca73986d534054210fb306c2530a9a36a43594d88acf7dc954c89b8daec4ca28.png" />
 </div>
 </div>
 <p><strong>Thompson sampling</strong>: each arm has <code class="docutils literal notranslate"><span class="pre">Beta(a,b)</span></code> belief; sample, pick highest.
@@ -4615,7 +4601,7 @@ Update <code class="docutils literal notranslate"><span class="pre">a+=r</span><
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d67f53867be9935cbba870aa8636d14088c2923f71ef8ce42f0ec7f289be279c.png" src="_images/d67f53867be9935cbba870aa8636d14088c2923f71ef8ce42f0ec7f289be279c.png" />
+<img alt="_images/121bf78ac435e6574857add38f4863dcaae7de7257475455b41cb29a81940a27.png" src="_images/121bf78ac435e6574857add38f4863dcaae7de7257475455b41cb29a81940a27.png" />
 </div>
 </div>
 <p>Beta(a,b) belief:
@@ -4630,10 +4616,10 @@ Each curve below shows how the distribution changes as successes (<code class="d
 <p><code class="docutils literal notranslate"><span class="pre">Beta(2,5)</span></code> → skewed left (mostly failures).</p>
 <p>As counts rise (e.g., <code class="docutils literal notranslate"><span class="pre">Beta(20,5)</span></code>), the curve narrows — higher confidence in the estimate.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -4660,13 +4646,13 @@ Each curve below shows how the distribution changes as successes (<code class="d
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/94f761b6d688463b221b35f43c056998c530ccd55374c0b62ef3a4257f0e002d.png" src="_images/94f761b6d688463b221b35f43c056998c530ccd55374c0b62ef3a4257f0e002d.png" />
+<img alt="_images/9af59cf72b13582ce63c2f8887d9e5799c5c464cda56941526b71baeb0a7ef71.png" src="_images/9af59cf72b13582ce63c2f8887d9e5799c5c464cda56941526b71baeb0a7ef71.png" />
 </div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="case-study-mof-synthesis-as-a-bandit-on-yield">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. Case study: MOF synthesis as a bandit on yield</a><a class="headerlink" href="#case-study-mof-synthesis-as-a-bandit-on-yield" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">5. Case study: MOF synthesis as a bandit on yield</a><a class="headerlink" href="#case-study-mof-synthesis-as-a-bandit-on-yield" title="Permalink to this heading">#</a></h2>
 <p>We will use the synthetic MOF dataset we seen in the last lecture. It records outcomes for combinations of <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, <code class="docutils literal notranslate"><span class="pre">concentration</span></code>, <code class="docutils literal notranslate"><span class="pre">solvent</span> <span class="pre">identity</span></code>, and the <code class="docutils literal notranslate"><span class="pre">organic</span> <span class="pre">linker</span></code>.</p>
 <p>For this version we focus on <strong>yield only</strong> in the range [0, 1]. The goal is to find <strong>general synthesis conditions</strong> that give high yield for each of 10 linkers.</p>
 <p>The dataset acts as our simulator. Each time the bandit chooses a recipe the simulator samples a matching row and returns its yield.</p>
@@ -4676,7 +4662,7 @@ Each curve below shows how the distribution changes as successes (<code class="d
 Below only code is shown.</p>
 </div>
 <section id="load-and-process-the-dataset">
-<h3>5.1 Load and process the dataset<a class="headerlink" href="#load-and-process-the-dataset" title="Link to this heading">#</a></h3>
+<h3>5.1 Load and process the dataset<a class="headerlink" href="#load-and-process-the-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load full dataset</span>
@@ -4731,23 +4717,125 @@ Below only code is shown.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;O=C(O)c1ccc(cc1)C(=O)O&#39;,
- &#39;O=C(O)/C=C/C(=O)O&#39;,
- &#39;Cc1ncc[nH]1&#39;,
- &#39;O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1&#39;,
- &#39;Nc1cc(C(=O)O)ccc1C(=O)O&#39;,
- &#39;O=C(O)c1cc(F)ccc1C(=O)O&#39;,
- &#39;O=C(O)c1ccc2cccc(C(=O)O)c2c1&#39;,
- &#39;O=C(O)c1cccc2c1ccc(C(=O)O)c2&#39;,
- &#39;O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O&#39;,
- &#39;c1ccc2[nH]cnc2c1&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Load full dataset</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/zzhenglab/ai4chem/main/book/_data/mof_yield_dataset.csv&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">df_raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Pick the 10 most frequent linkers so each has adequate coverage in the table</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">top_linkers</span> <span class="o">=</span> <span class="n">df_raw</span><span class="p">[</span><span class="s1">&#39;smiles&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">908</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\parsers\readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1662</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1663</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1664</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1665</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1666</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1667</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1668</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1669</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1670</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\common.py:716,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">716</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">718</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">719</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\common.py:368,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">368</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">370</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\site-packages\pandas\io\common.py:270,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">268</span> <span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">270</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:222,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">222</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:531,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">530</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">531</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">533</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:640,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">640</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:569,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">567</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">568</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">569</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:502,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">502</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File c:\users\52377\appdata\local\programs\python\python38\lib\urllib\request.py:649,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="k">def</span><span class="w"> </span><span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">649</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="bandit-framing-and-algorithms">
-<h3>5.2 Bandit framing and algorithms<a class="headerlink" href="#bandit-framing-and-algorithms" title="Link to this heading">#</a></h3>
+<h3>5.2 Bandit framing and algorithms<a class="headerlink" href="#bandit-framing-and-algorithms" title="Permalink to this heading">#</a></h3>
 <p>We treat each unique recipe as an arm and the yield as the reward. Rewards are bounded in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>, which suits UCB1 on sample means.</p>
 <p>For Thompson sampling we use a Beta posterior heuristic that accumulates alpha plus equal to yield and beta plus equal to 1 minus yield. This gives a simple way to sample optimistic beliefs for continuous bounded outcomes without converting to binary success. We also include ε greedy on the mean yield for a familiar baseline.</p>
 <p>All algorithms run per linker so each linker gets a focused search over the actions that actually appear in the data.</p>
@@ -4859,7 +4947,7 @@ Below only code is shown.</p>
 </div>
 </section>
 <section id="running-the-agents-and-building-a-compact-report">
-<h3>5.3  Running the agents and building a compact report<a class="headerlink" href="#running-the-agents-and-building-a-compact-report" title="Link to this heading">#</a></h3>
+<h3>5.3  Running the agents and building a compact report<a class="headerlink" href="#running-the-agents-and-building-a-compact-report" title="Permalink to this heading">#</a></h3>
 <p>We now run <code class="docutils literal notranslate"><span class="pre">ε</span> <span class="pre">greedy</span></code>, <code class="docutils literal notranslate"><span class="pre">UCB1</span></code>, and <code class="docutils literal notranslate"><span class="pre">Thompson</span> <span class="pre">Beta</span></code> for <strong>each of the 10 linkers</strong>. Each agent interacts with a simulator that returns yields for recipes that are actually in the table for that linker.</p>
 <p>We then summarize the <strong>best recipe per agent</strong> by its <em>mean</em> yield and also produce one recommended recipe per linker by taking the top mean yield across agents. This gives a short list of general conditions to try first in the lab for each linker.</p>
 <div class="cell docutils container">
@@ -4887,135 +4975,6 @@ Below only code is shown.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Per-linker best by agent (first 12 rows):
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>linker</th>
-      <th>agent</th>
-      <th>recipe</th>
-      <th>pulls</th>
-      <th>mean_yield</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.87</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.10 M, solvent=H2O</td>
-      <td>2</td>
-      <td>0.80</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>eps_greedy</td>
-      <td>T=155°C, t=36h, c=0.40 M, solvent=DMF</td>
-      <td>24</td>
-      <td>0.42</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>33</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.25 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.58</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>2</td>
-      <td>0.61</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=85°C, t=48h, c=0.45 M, solvent=DMF</td>
-      <td>44</td>
-      <td>0.61</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>46</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=36h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.74</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.44</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5029,129 +4988,16 @@ Below only code is shown.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>One recommended recipe per linker by highest mean yield across agents:
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>linker</th>
-      <th>agent</th>
-      <th>recipe</th>
-      <th>pulls</th>
-      <th>mean_yield</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.87</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>46</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=130°C, t=48h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.98</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=160°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.83</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=60h, c=0.05 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.71</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
-      <td>eps_greedy</td>
-      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=72h, c=0.30 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>c1ccc2[nH]cnc2c1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.78</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="interpreting-the-results-and-tracking-learning">
-<h3>5.4 Interpreting the results and tracking learning<a class="headerlink" href="#interpreting-the-results-and-tracking-learning" title="Link to this heading">#</a></h3>
+<h3>5.4 Interpreting the results and tracking learning<a class="headerlink" href="#interpreting-the-results-and-tracking-learning" title="Permalink to this heading">#</a></h3>
 <p>The table lists a best recipe per agent for each linker together with the number of pulls used to estimate its mean yield. If a best recipe shows very few pulls you can increase the step budget or run another pass to confirm stability. Learning curves help you see whether the agent is still exploring or has stabilized on a high yielding recipe. Consistent upward trends suggest the action set has a clear winner for that linker. Flat or noisy curves suggest multiple near ties or limited coverage in the dataset for that linker.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Section 4: Plot learning curves for a few linkers</span>
@@ -5174,15 +5020,12 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/ba6b2accafe0e497ef1a18f20d68209a8c83a9c1f713c1891c2fc22f5fa5bed8.png" src="_images/ba6b2accafe0e497ef1a18f20d68209a8c83a9c1f713c1891c2fc22f5fa5bed8.png" />
-</div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the columns </span>
@@ -5204,289 +5047,16 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Top 3 per linker
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>linker</th>
-      <th>agent</th>
-      <th>recipe</th>
-      <th>pulls</th>
-      <th>mean_yield</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.87</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.10 M, solvent=H2O</td>
-      <td>2</td>
-      <td>0.80</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Cc1ncc[nH]1</td>
-      <td>eps_greedy</td>
-      <td>T=155°C, t=36h, c=0.40 M, solvent=DMF</td>
-      <td>24</td>
-      <td>0.42</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=24h, c=0.25 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>33</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Nc1cc(C(=O)O)ccc1C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.25 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.58</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=85°C, t=24h, c=0.30 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>2</td>
-      <td>0.61</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>O=C(O)/C=C/C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=85°C, t=48h, c=0.45 M, solvent=DMF</td>
-      <td>44</td>
-      <td>0.61</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>46</td>
-      <td>0.79</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=36h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.74</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>O=C(O)c1cc(C(=O)O)cc(C(=O)O)c1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.44</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=130°C, t=48h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.98</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>O=C(O)c1cc(F)ccc1C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.20 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.56</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=160°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.83</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>46</td>
-      <td>0.69</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>O=C(O)c1ccc(cc1)-c2ccc(cc2)C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.30 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.57</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=60h, c=0.05 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.71</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td>eps_greedy</td>
-      <td>T=115°C, t=72h, c=0.25 M, solvent=DMF</td>
-      <td>30</td>
-      <td>0.55</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>O=C(O)c1ccc(cc1)C(=O)O</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.05 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.54</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
-      <td>eps_greedy</td>
-      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
-      <td>thompson_beta</td>
-      <td>T=155°C, t=84h, c=0.20 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.75</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>O=C(O)c1ccc2cccc(C(=O)O)c2c1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.56</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
-      <td>thompson_beta</td>
-      <td>T=115°C, t=72h, c=0.30 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.82</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
-      <td>eps_greedy</td>
-      <td>T=130°C, t=120h, c=0.35 M, solvent=DMF</td>
-      <td>1</td>
-      <td>0.81</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>O=C(O)c1cccc2c1ccc(C(=O)O)c2</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=12h, c=0.35 M, solvent=DMF</td>
-      <td>2</td>
-      <td>0.57</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>c1ccc2[nH]cnc2c1</td>
-      <td>ucb1</td>
-      <td>T=25°C, t=24h, c=0.15 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.78</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>c1ccc2[nH]cnc2c1</td>
-      <td>thompson_beta</td>
-      <td>T=55°C, t=24h, c=0.30 M, solvent=H2O</td>
-      <td>1</td>
-      <td>0.76</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>c1ccc2[nH]cnc2c1</td>
-      <td>eps_greedy</td>
-      <td>T=155°C, t=72h, c=0.45 M, solvent=H2O</td>
-      <td>32</td>
-      <td>0.36</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 </section>
 <section id="general-synthesis-condition-works-best-across-all-linkers">
-<h3>5.5 General synthesis condition works best across all linkers<a class="headerlink" href="#general-synthesis-condition-works-best-across-all-linkers" title="Link to this heading">#</a></h3>
+<h3>5.5 General synthesis condition works best across all linkers<a class="headerlink" href="#general-synthesis-condition-works-best-across-all-linkers" title="Permalink to this heading">#</a></h3>
 <p>Finally, instead of looking at <strong>per-linker optima</strong>, we can also look at if there is a <strong>a single “general” synthesis condition across the 10 linkers</strong>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
+<details class="hide above-input">
 <summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find one general synthesis condition that works best across linkers</span>
@@ -5568,23 +5138,6 @@ Below only code is shown.</p>
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selected 10 linkers
-Candidate shared recipes: 2000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== General synthesis condition (best average yield across linkers) ===
-recipe            T=130°C, t=60h, c=0.25 M, solvent=DMF
-coverage                                             10
-mean_yield_all                                     0.73
-median_yield                                      0.855
-min_yield                                          0.23
-max_yield                                          0.99
-
---- Top 5 general recipes for reference ---
-</pre></div>
-</div>
-</div>
 </div>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
@@ -5603,32 +5156,32 @@ max_yield                                          0.99</p>
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">6. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-Agent">Agent  <a class="headerlink" href="#term-Agent" title="Link to this term">#</a></dt><dd><p>The decision maker that picks the next experiment.</p>
+<dt id="term-Agent">Agent  <a class="headerlink" href="#term-Agent" title="Permalink to this term">#</a></dt><dd><p>The decision maker that picks the next experiment.</p>
 </dd>
-<dt id="term-Environment">Environment  <a class="headerlink" href="#term-Environment" title="Link to this term">#</a></dt><dd><p>The lab or simulator returning outcomes.</p>
+<dt id="term-Environment">Environment  <a class="headerlink" href="#term-Environment" title="Permalink to this term">#</a></dt><dd><p>The lab or simulator returning outcomes.</p>
 </dd>
-<dt id="term-Policy">Policy  <a class="headerlink" href="#term-Policy" title="Link to this term">#</a></dt><dd><p>Mapping from states to actions.</p>
+<dt id="term-Policy">Policy  <a class="headerlink" href="#term-Policy" title="Permalink to this term">#</a></dt><dd><p>Mapping from states to actions.</p>
 </dd>
-<dt id="term-Q-value">Q value  <a class="headerlink" href="#term-Q-value" title="Link to this term">#</a></dt><dd><p>Expected return from a state-action pair.</p>
+<dt id="term-Q-value">Q value  <a class="headerlink" href="#term-Q-value" title="Permalink to this term">#</a></dt><dd><p>Expected return from a state-action pair.</p>
 </dd>
-<dt id="term-Return">Return  <a class="headerlink" href="#term-Return" title="Link to this term">#</a></dt><dd><p>Discounted sum of future rewards.</p>
+<dt id="term-Return">Return  <a class="headerlink" href="#term-Return" title="Permalink to this term">#</a></dt><dd><p>Discounted sum of future rewards.</p>
 </dd>
-<dt id="term-Epsilon-greedy">Epsilon greedy  <a class="headerlink" href="#term-Epsilon-greedy" title="Link to this term">#</a></dt><dd><p>Random with probability epsilon, else greedy.</p>
+<dt id="term-Epsilon-greedy">Epsilon greedy  <a class="headerlink" href="#term-Epsilon-greedy" title="Permalink to this term">#</a></dt><dd><p>Random with probability epsilon, else greedy.</p>
 </dd>
-<dt id="term-UCB1">UCB1  <a class="headerlink" href="#term-UCB1" title="Link to this term">#</a></dt><dd><p>Bonus for uncertainty to balance exploration.</p>
+<dt id="term-UCB1">UCB1  <a class="headerlink" href="#term-UCB1" title="Permalink to this term">#</a></dt><dd><p>Bonus for uncertainty to balance exploration.</p>
 </dd>
-<dt id="term-Thompson-sampling">Thompson sampling  <a class="headerlink" href="#term-Thompson-sampling" title="Link to this term">#</a></dt><dd><p>Posterior sampling strategy.</p>
+<dt id="term-Thompson-sampling">Thompson sampling  <a class="headerlink" href="#term-Thompson-sampling" title="Permalink to this term">#</a></dt><dd><p>Posterior sampling strategy.</p>
 </dd>
-<dt id="term-On-policy">On policy  <a class="headerlink" href="#term-On-policy" title="Link to this term">#</a></dt><dd><p>Learn about the policy you execute.</p>
+<dt id="term-On-policy">On policy  <a class="headerlink" href="#term-On-policy" title="Permalink to this term">#</a></dt><dd><p>Learn about the policy you execute.</p>
 </dd>
 </dl>
 </section>
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">7. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <section id="q1">
-<h3>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
+<h3>Q1<a class="headerlink" href="#q1" title="Permalink to this heading">#</a></h3>
 <p>Now it’s time to review the detailed code for the three demo games.
 Identify where the reward score is defined, and modify it in the code to observe how the behavior changes.</p>
 <p>You can also adjust the design of the games. For example, change <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">1</span></code> in demo 3 to see how this influences the agent in finding the optimal strategy.</p>
@@ -5663,7 +5216,7 @@ Identify where the reward score is defined, and modify it in the code to observe
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -5692,7 +5245,6 @@ Identify where the reward score is defined, and modify it in the code to observe
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -5749,7 +5301,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -5773,8 +5325,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
