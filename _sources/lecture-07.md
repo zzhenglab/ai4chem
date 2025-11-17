@@ -666,7 +666,6 @@ rf_clf = RandomForestClassifier(
     max_features="sqrt",
     oob_score=True,          # enable OOB estimation, if you dont specify, the default RF will not give you oob
     random_state=0,
-    n_jobs=-1
 )
 rf_clf.fit(X_train, y_train)
 
@@ -715,7 +714,6 @@ rf_reg_mp = RandomForestRegressor(
     max_depth=None,
     max_features="sqrt",
     random_state=0,
-    n_jobs=-1
 )
 rf_reg_mp.fit(Xr_mp_train, yr_mp_train)
 
@@ -777,7 +775,7 @@ rows = []
 for seed in splits:
     X_tr, X_te, y_tr, y_te = train_test_split(Xr, yr, test_size=0.2, random_state=seed)
     t = DecisionTreeRegressor(max_depth=None, min_samples_leaf=3, random_state=seed).fit(X_tr, y_tr)
-    f = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=seed, n_jobs=-1).fit(X_tr, y_tr)
+    f = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=seed).fit(X_tr, y_tr)
     r2_t = r2_score(y_te, t.predict(X_te))
     r2_f = r2_score(y_te, f.predict(X_te))
     rows.append({"seed": seed, "Tree_R2": r2_t, "Forest_R2": r2_f})
@@ -870,8 +868,8 @@ vote_clf_soft = VotingClassifier(
     estimators=[
         ("lr", LogisticRegression(max_iter=500, random_state=0)),
         ("lr2", LogisticRegression(max_iter=11000, random_state=0)),
-        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1)),
-        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0, n_jobs=-1))
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0)),
+        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0))
     ],
     voting="soft"
 ).fit(X_train, y_train)
@@ -883,8 +881,8 @@ vote_clf_hard = VotingClassifier(
     estimators=[
         ("lr", LogisticRegression(max_iter=500, random_state=0)),
         ("lr2", LogisticRegression(max_iter=11000, random_state=0)),
-        ("rf", RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1)),
-        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0, n_jobs=-1))
+        ("rf", RandomForestClassifier(n_estimators=100, random_state=0)),
+        ("rf2", RandomForestClassifier(n_estimators=30, random_state=0))
     ],
     voting="hard"
 ).fit(X_train, y_train)
@@ -896,7 +894,7 @@ Compare voting against individual models:
 
 ```{code-cell} ipython3
 acc_lr = accuracy_score(y_test, LogisticRegression(max_iter=500, random_state=0).fit(X_train,y_train).predict(X_test))
-acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0, n_jobs=-1).fit(X_train,y_train).predict(X_test))
+acc_rf  = accuracy_score(y_test, RandomForestClassifier(n_estimators=100, random_state=0).fit(X_train,y_train).predict(X_test))
 
 pd.DataFrame({
     "Model": ["LogReg", "RandomForest", "Voting-Hard", "Voting-Soft"],
@@ -934,7 +932,7 @@ print(f"Gradient Boosting MAE: {mean_absolute_error(yr_test, yhat_gb):.2f}")
 Compare **Random Forest vs Gradient Boosting** directly:
 
 ```{code-cell} ipython3
-rf_reg = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=0, n_jobs=-1).fit(Xr_train, yr_train)
+rf_reg = RandomForestRegressor(n_estimators=300, min_samples_leaf=3, random_state=0).fit(Xr_train, yr_train)
 yhat_rf = rf_reg.predict(Xr_test)
 
 pd.DataFrame({
@@ -979,7 +977,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # 2) Model
 rf = RandomForestClassifier(
     n_estimators=400, max_depth=None, max_features="sqrt",
-    min_samples_leaf=3, oob_score=True, random_state=15, n_jobs=-1
+    min_samples_leaf=3, oob_score=True, random_state=15
 ).fit(X_train, y_train)
 
 # 3) Evaluate
@@ -1010,7 +1008,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # KFold CV search
 cv = KFold(n_splits=5, shuffle=True, random_state=15)
 
-rf = RandomForestClassifier(random_state=15, n_jobs=-1)
+rf = RandomForestClassifier(random_state=15)
 param_grid = {
     "n_estimators": [50, 500],
     "max_depth": [None, 20],
@@ -1022,7 +1020,6 @@ gs = GridSearchCV(
     param_grid=param_grid,
     scoring="roc_auc",
     cv=cv,
-    n_jobs=-1,
     refit=True,
 )
 
@@ -1174,7 +1171,7 @@ Xs_train, Xs_test, ys_train, ys_test = train_test_split(
 
 # Models
 tree_sol = DecisionTreeRegressor(max_depth=4, min_samples_leaf=5, random_state=0).fit(Xs_train, ys_train)
-rf_sol   = RandomForestRegressor(n_estimators=300, min_samples_leaf=5, random_state=0, n_jobs=-1).fit(Xs_train, ys_train)
+rf_sol   = RandomForestRegressor(n_estimators=300, min_samples_leaf=5, random_state=0).fit(Xs_train, ys_train)
 
 # Scores
 yhat_tree = tree_sol.predict(Xs_test)
@@ -1248,7 +1245,7 @@ for s in seeds:
     X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.2, random_state=s, stratify=y)
     rf = RandomForestClassifier(
         n_estimators=300, max_features="sqrt", min_samples_leaf=3,
-        oob_score=True, random_state=s, n_jobs=-1
+        oob_score=True, random_state=s
     ).fit(X_tr, y_tr)
     acc_test = accuracy_score(y_te, rf.predict(X_te))
     rows_oob.append({"seed": s, "OOB": rf.oob_score_, "TestAcc": acc_test})
@@ -1306,7 +1303,7 @@ Compare built-in importance to permutation importance for a random forest regres
 ```{code-cell} ipython3
 rf_imp = RandomForestRegressor(
     n_estimators=400, min_samples_leaf=3, max_features="sqrt",
-    random_state=0, n_jobs=-1
+    random_state=0
 ).fit(Xr_train, yr_train)
 
 # Built-in importance
@@ -1367,14 +1364,13 @@ param_grid = {
     "max_features": ["sqrt", 0.8],
 }
 
-rf_base = RandomForestClassifier(random_state=0, n_jobs=-1)
+rf_base = RandomForestClassifier(random_state=0)
 
 grid = GridSearchCV(
     rf_base,
     param_grid=param_grid,
     scoring="roc_auc",
     cv=cv,
-    n_jobs=-1,
     refit=True,
     return_train_score=False,
 )
