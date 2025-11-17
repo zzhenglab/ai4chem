@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-11';</script>
@@ -75,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -118,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -139,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -157,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -191,8 +205,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-23.html">Lecture 23 - Prompt Engineering and Function Calling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-24.html">Lecture 23 - Literature Data Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-25.html">Lecture 23 - Literature Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-24.html">Lecture 24 - Literature Data Mining</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-25.html">Lecture 25 - Self-driving Labs</a></li>
 </ul>
 
     </div>
@@ -208,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -217,14 +231,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -349,10 +363,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -360,14 +374,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -431,10 +445,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-11-dimension-reduction-for-data-visualization">
-<h1>Lecture 11 - Dimension Reduction for Data Visualization<a class="headerlink" href="#lecture-11-dimension-reduction-for-data-visualization" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 11 - Dimension Reduction for Data Visualization<a class="headerlink" href="#lecture-11-dimension-reduction-for-data-visualization" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id1">Learning goals</a></p></li>
@@ -448,7 +462,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understand <strong>unsupervised learning</strong> vs <strong>supervised learning</strong> in chemistry.</p></li>
 <li><p>Explain the intuition and math of <strong>PCA</strong> and read <strong>loadings</strong>, <strong>scores</strong>, and <strong>explained variance</strong>.</p></li>
@@ -457,13 +471,13 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup-and-data">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">1. Setup and data</a><a class="headerlink" href="#setup-and-data" title="Link to this heading">#</a></h2>
 <p>We will reuse the C-H oxidation dataset and compute a small set of descriptors.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Core</span>
@@ -1109,7 +1123,7 @@ Rows x Cols (10 desc): (575, 19)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/760dcf9794540efd72f90319c4122a60df78bf053e07e241bc6b6777d2f1f3e0.png" src="_images/760dcf9794540efd72f90319c4122a60df78bf053e07e241bc6b6777d2f1f3e0.png" />
+<img alt="_images/10810f37ef4d5aa4e2d5a13d66780bb8d3db2ecfd7626cf83c6a461441cea5f4.png" src="_images/10810f37ef4d5aa4e2d5a13d66780bb8d3db2ecfd7626cf83c6a461441cea5f4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 9H-fluorene ===
 SMILES: c1ccc2c(c1)Cc1ccccc1-2
 Descriptors [MolWt, LogP, TPSA, NumRings]: [166.22   3.26   0.     3.  ]
@@ -1118,7 +1132,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [166.22   3.26   0.     3.  ]
 Fingerprint: 11000000000000100100101010001010
 </pre></div>
 </div>
-<img alt="_images/f3f8944f421eb1729e5555fd4b4c20c30d71702da731d3836a52d75e1433998b.png" src="_images/f3f8944f421eb1729e5555fd4b4c20c30d71702da731d3836a52d75e1433998b.png" />
+<img alt="_images/1600b4cbadffb76293987051222bb9022aa87bf15758f5216aab0f178f16c301.png" src="_images/1600b4cbadffb76293987051222bb9022aa87bf15758f5216aab0f178f16c301.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== thiolane ===
 SMILES: C1CCSC1
 Descriptors [MolWt, LogP, TPSA, NumRings]: [88.18  1.51  0.    1.  ]
@@ -1126,7 +1140,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [88.18  1.51  0.    1.  ]
 Fingerprint: 00001100000000010000010000000010
 </pre></div>
 </div>
-<img alt="_images/7849d306ab4eb79df56edcbf11d2a3574fc05b0ea1d62088fae6876b50bccf8b.png" src="_images/7849d306ab4eb79df56edcbf11d2a3574fc05b0ea1d62088fae6876b50bccf8b.png" />
+<img alt="_images/67446e7bb88633d57000d0ee1e4490dfa2154b7e644786016381dead3102f97d.png" src="_images/67446e7bb88633d57000d0ee1e4490dfa2154b7e644786016381dead3102f97d.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== methoxymethylbenzene ===
 SMILES: COCc1ccccc1
 Descriptors [MolWt, LogP, TPSA, NumRings]: [122.17   1.83   9.23   1.  ]
@@ -1134,7 +1148,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [122.17   1.83   9.23   1.  ]
 Fingerprint: 10000100010000001100001000100000
 </pre></div>
 </div>
-<img alt="_images/9df9aa4433eaa344446429d5f65310b9b0745455a8664068aef6dbd2bc1ad8e0.png" src="_images/9df9aa4433eaa344446429d5f65310b9b0745455a8664068aef6dbd2bc1ad8e0.png" />
+<img alt="_images/93dd371c696525e3a1692128c4d5a4771d224b80d4414d9b52c246cf9bd9ce10.png" src="_images/93dd371c696525e3a1692128c4d5a4771d224b80d4414d9b52c246cf9bd9ce10.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== oct-1-ene ===
 SMILES: C=CCCCCCC
 Descriptors [MolWt, LogP, TPSA, NumRings]: [112.22   3.14   0.     0.  ]
@@ -1142,7 +1156,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [112.22   3.14   0.     0.  ]
 Fingerprint: 00000000000000011100001000100001
 </pre></div>
 </div>
-<img alt="_images/6bef7bfd49dce8cac1023f03cc87fb37b0f643ce08dbacaed9360ccaf234db0a.png" src="_images/6bef7bfd49dce8cac1023f03cc87fb37b0f643ce08dbacaed9360ccaf234db0a.png" />
+<img alt="_images/f44efd41a08bd9f2bee16c5b1d9fae7d190533dde6a1277eb8f51f50e85acddd.png" src="_images/f44efd41a08bd9f2bee16c5b1d9fae7d190533dde6a1277eb8f51f50e85acddd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== N,N-diethylacetamide ===
 SMILES: CCN(CC)C(C)=O
 Descriptors [MolWt, LogP, TPSA, NumRings]: [115.18   0.87  20.31   0.  ]
@@ -1150,7 +1164,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [115.18   0.87  20.31   0.  ]
 Fingerprint: 00000000001000001010000000000100
 </pre></div>
 </div>
-<img alt="_images/6ed476e36afd7db09150b19562b125442591abc157693a699a9c8155689091e3.png" src="_images/6ed476e36afd7db09150b19562b125442591abc157693a699a9c8155689091e3.png" />
+<img alt="_images/fed01a0a30fd3a557cdb8a8652e07ca6ac771ce392be695b86273aff0a0948e5.png" src="_images/fed01a0a30fd3a557cdb8a8652e07ca6ac771ce392be695b86273aff0a0948e5.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== cyclohexane ===
 SMILES: C1CCCCC1
 Descriptors [MolWt, LogP, TPSA, NumRings]: [84.16  2.34  0.    1.  ]
@@ -1158,7 +1172,7 @@ Descriptors [MolWt, LogP, TPSA, NumRings]: [84.16  2.34  0.    1.  ]
 Fingerprint: 00101000000000000000000000000010
 </pre></div>
 </div>
-<img alt="_images/ae2e9a2ae742a429f69c6c56b78f99d5c06a5bb1108181c874240c9e29690655.png" src="_images/ae2e9a2ae742a429f69c6c56b78f99d5c06a5bb1108181c874240c9e29690655.png" />
+<img alt="_images/2213a4e731bc48bef777b2b27139a4af0d9fb5151ae6c3f1073951e98064eddd.png" src="_images/2213a4e731bc48bef777b2b27139a4af0d9fb5151ae6c3f1073951e98064eddd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== 1,4-xylene ===
 SMILES: Cc1ccc(C)cc1
 Descriptors [MolWt, LogP, TPSA, NumRings]: [106.17   2.3    0.     1.  ]
@@ -1174,10 +1188,10 @@ Fingerprint: 10000000000000000100001000000001
 </ul>
 <p>With 4-desciptor, it’s easier to visualize:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mpl_toolkits.mplot3d</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes3D</span>
@@ -1216,15 +1230,15 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9bc82e5aea10d257270ddd7c9f0465dd0597c9902388e24040316bfcbcb1df8c.png" src="_images/9bc82e5aea10d257270ddd7c9f0465dd0597c9902388e24040316bfcbcb1df8c.png" />
+<img alt="_images/1207abce85638e0bf5bcce93f1d0e858bdaaa70ee1c2f529b8af099516b7656b.png" src="_images/1207abce85638e0bf5bcce93f1d0e858bdaaa70ee1c2f529b8af099516b7656b.png" />
 </div>
 </div>
 <p>Now we can apply this to the entire C-H oxidation dataset.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
@@ -1249,15 +1263,15 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/ca3ed7b3831a96d657027981d193e4bbfc9e8068a2fcf71c925cd409ce5bea21.png" src="_images/ca3ed7b3831a96d657027981d193e4bbfc9e8068a2fcf71c925cd409ce5bea21.png" />
+<img alt="_images/031c58748ecde9047852e9cf37e1061c5351f8f902f0f6216d79118897e86c0f.png" src="_images/031c58748ecde9047852e9cf37e1061c5351f8f902f0f6216d79118897e86c0f.png" />
 </div>
 </div>
 <p>And depending which three descriptors you used for XYZ, you can have different plottings.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1297,16 +1311,16 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/4684c48eaa56de385445b010f6de8b734f25e2b2eb0070d09e4d7a89ce64b311.png" src="_images/4684c48eaa56de385445b010f6de8b734f25e2b2eb0070d09e4d7a89ce64b311.png" />
+<img alt="_images/8e06cb46bd61c71cf7bf9e8138a4b9f04564ccd545d880fcd5629823ec9b71c4.png" src="_images/8e06cb46bd61c71cf7bf9e8138a4b9f04564ccd545d880fcd5629823ec9b71c4.png" />
 </div>
 </div>
 <p>But when it comes to 10-dimensional descriptors or even something like a 1024-dimensional Morgan fingerprint, it is nearly impossible to directly visualize them. It becomes even harder to know the “neigbors” to a specific molecule.</p>
 <p>Humans can only intuitively grasp two or three axes at once. Once you go beyond that, you can only look at pairs of dimensions at a time, and the relationships quickly become hard to characterize.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -1333,14 +1347,14 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/533d59f0d7df11527c083f3195fc2a28d738e222ac1deb3fed0734a8333fa7a6.png" src="_images/533d59f0d7df11527c083f3195fc2a28d738e222ac1deb3fed0734a8333fa7a6.png" />
+<img alt="_images/9e1a3da5fb65eb78c9b9a863f03e380b9b9aee7386fff87a8a40ebe7565ee857.png" src="_images/9e1a3da5fb65eb78c9b9a863f03e380b9b9aee7386fff87a8a40ebe7565ee857.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># expand &quot;0101...&quot; strings into arrays of integers</span>
@@ -1358,14 +1372,14 @@ Fingerprint: 10000000000000000100001000000001
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/7f7a3bfd1a7b473db4969a85fdefafe22ca09b492234698ca97def44e8f3ffc9.png" src="_images/7f7a3bfd1a7b473db4969a85fdefafe22ca09b492234698ca97def44e8f3ffc9.png" />
+<img alt="_images/48e975408de34a4aa1bae27cc8a3bb4baf0888c47169b890278e8beaddebd56e.png" src="_images/48e975408de34a4aa1bae27cc8a3bb4baf0888c47169b890278e8beaddebd56e.png" />
 </div>
 </div>
 <p>That’s why cheminformatics usually applies <strong>dimension reduction</strong> methods (PCA, t-SNE, UMAP) to compress high-dimensional data into a visualizable 2D or 3D form. We will get to these points today!</p>
 </section>
 <hr class="docutils" />
 <section id="supervised-vs-unsupervised">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Supervised vs unsupervised</a><a class="headerlink" href="#supervised-vs-unsupervised" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">2. Supervised vs unsupervised</a><a class="headerlink" href="#supervised-vs-unsupervised" title="Link to this heading">#</a></h2>
 <p>In Lectures 6 to 8 we learned supervised models that map <span class="math notranslate nohighlight">\(x \to y\)</span> with labeled targets. Today we switch to <strong>unsupervised learning</strong>.</p>
 <ul class="simple">
 <li><p><strong>Dimension reduction</strong>: summarize high dimensional <span class="math notranslate nohighlight">\(x \in \mathbb{R}^p\)</span> to a few coordinates <span class="math notranslate nohighlight">\(z \in \mathbb{R}^k\)</span> with <span class="math notranslate nohighlight">\(k \ll p\)</span>. You do not use <span class="math notranslate nohighlight">\(y\)</span> during the fit.</p></li>
@@ -1383,7 +1397,7 @@ Fingerprint: 10000000000000000100001000000001
 </ul>
 </div>
 <section id="principal-component-analysis-pca">
-<h3>2.1 Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Principal Component Analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading">#</a></h3>
 <p>Feature choices will drive everything downstream. You can use:</p>
 <ul class="simple">
 <li><p>Scalar descriptors like MolWt, LogP, TPSA, ring counts.</p></li>
@@ -1525,9 +1539,9 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f018fcf7b2739de2fd118eefeb5abf3ff33cc8396f8a697fad57c0a2dc507ce.png" src="_images/7f018fcf7b2739de2fd118eefeb5abf3ff33cc8396f8a697fad57c0a2dc507ce.png" />
-<img alt="_images/3f1af266c91c6db598e7ff449e0c653984ec7d84618a87f5e8954b33f9f1a0a8.png" src="_images/3f1af266c91c6db598e7ff449e0c653984ec7d84618a87f5e8954b33f9f1a0a8.png" />
-<img alt="_images/d9c7eb037f49dec18b85499ad956c6d1f2b60946b4a8b0efb0edafc21097ced7.png" src="_images/d9c7eb037f49dec18b85499ad956c6d1f2b60946b4a8b0efb0edafc21097ced7.png" />
+<img alt="_images/f3e177650d70175819522efe8e61dff0d1455da576e029aa5223996628290df2.png" src="_images/f3e177650d70175819522efe8e61dff0d1455da576e029aa5223996628290df2.png" />
+<img alt="_images/16a9328bed2d73f12e2c92dabdf4e5218282746d43827f66c4a7bed5d2c0d320.png" src="_images/16a9328bed2d73f12e2c92dabdf4e5218282746d43827f66c4a7bed5d2c0d320.png" />
+<img alt="_images/83b9eb29d195b4453d69c3272cedbb1e6183575162adf3d66d35dda296a42484.png" src="_images/83b9eb29d195b4453d69c3272cedbb1e6183575162adf3d66d35dda296a42484.png" />
 </div>
 </div>
 <p>Now you can see, the 10D vector is converted to 2D or 3D vector, which become much easier to plot.</p>
@@ -1538,13 +1552,13 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457, -0.10406515],
-       [-0.8662983 , -1.26269482],
-       [-2.08798314, -0.77811   ],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457,  0.10406515],
+       [-0.8662983 ,  1.26269482],
+       [-2.08798314,  0.77811   ],
        ...,
-       [ 0.08373577, -0.58690452],
-       [ 3.19411974, -0.85437761],
-       [ 2.00081897, -0.04085639]])
+       [ 0.08373577,  0.58690452],
+       [ 3.19411974,  0.85437761],
+       [ 2.00081897,  0.04085639]], shape=(575, 2))
 </pre></div>
 </div>
 </div>
@@ -1556,13 +1570,13 @@ This means each molecule is now represented by just 2–3 numbers (PC1, PC2, PC3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457, -0.10406515, -0.76130014],
-       [-0.8662983 , -1.26269482, -1.55622595],
-       [-2.08798314, -0.77811   , -0.75279025],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.85863457,  0.10406515, -0.76130014],
+       [-0.8662983 ,  1.26269482, -1.55622595],
+       [-2.08798314,  0.77811   , -0.75279025],
        ...,
-       [ 0.08373577, -0.58690452,  0.27978755],
-       [ 3.19411974, -0.85437761,  0.07107396],
-       [ 2.00081897, -0.04085639,  0.17583671]])
+       [ 0.08373577,  0.58690452,  0.27978755],
+       [ 3.19411974,  0.85437761,  0.07107396],
+       [ 2.00081897,  0.04085639,  0.17583671]], shape=(575, 3))
 </pre></div>
 </div>
 </div>
@@ -1577,10 +1591,10 @@ To make this more concrete, we can select specific molecules and compare them:</
 <p>We plot all molecules in grey, highlight the pairs with different colors, and draw a line connecting each pair.<br />
 For the selected molecules we also show their <strong>structure, compound name, and PCA coordinates</strong>.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -1642,52 +1656,52 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/53fdf638ef0263ed374502704e6703d6e4318cf05c8f3dbd540ef5968ba74a89.png" src="_images/53fdf638ef0263ed374502704e6703d6e4318cf05c8f3dbd540ef5968ba74a89.png" />
+<img alt="_images/a1b5030032c3816ed6bbf5ff8b092b0074d8834151095cce0cdd0fd049718894.png" src="_images/a1b5030032c3816ed6bbf5ff8b092b0074d8834151095cce0cdd0fd049718894.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Manual pair ===
 </pre></div>
 </div>
-<img alt="_images/f73508fc03c390a73977c3bdf913bd66d4c34673cc71fcc16cce1ed8a1158b84.png" src="_images/f73508fc03c390a73977c3bdf913bd66d4c34673cc71fcc16cce1ed8a1158b84.png" />
+<img alt="_images/e2661c2aec74a535ee1334c5487ebc1f2eb912ed4c6559e64876e2cbac6e1d5a.png" src="_images/e2661c2aec74a535ee1334c5487ebc1f2eb912ed4c6559e64876e2cbac6e1d5a.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1-benzyl-2-phenylbenzimidazole   (index 225)
-  PC1 = 1.936, PC2 = -2.132
+  PC1 = 1.936, PC2 = 2.132
 </pre></div>
 </div>
-<img alt="_images/29dc7153171469a90b903154d7d5c6d5060b52f7a240c23ff8189f913dab93eb.png" src="_images/29dc7153171469a90b903154d7d5c6d5060b52f7a240c23ff8189f913dab93eb.png" />
+<img alt="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" src="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-2,2,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-4a-carboxylate (index 35)
-  PC1 = 3.267, PC2 = -1.618
+  PC1 = 3.267, PC2 = 1.618
 
 === Closest pair ===
 </pre></div>
 </div>
-<img alt="_images/d3b9d6f29b85581b9389e4f2f9bda00f12a3f0d46f2978d1eab67cfc1ae24a37.png" src="_images/d3b9d6f29b85581b9389e4f2f9bda00f12a3f0d46f2978d1eab67cfc1ae24a37.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1S,5S)-6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptane (index 17)
-  PC1 = -2.274, PC2 = -1.042
+<img alt="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" src="_images/cdc799b0885371aa8d8e1300826b613665bf1452392362354bdf99af51716b5e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-2,2,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-4a-carboxylate (index 35)
+  PC1 = 3.267, PC2 = 1.618
 </pre></div>
 </div>
-<img alt="_images/fd9cad0598a64dfcf627480ad07e5b52b777c33ee8c6cabfae9753eb73c8721c.png" src="_images/fd9cad0598a64dfcf627480ad07e5b52b777c33ee8c6cabfae9753eb73c8721c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1R,5R)-2,6,6-trimethylbicyclo[3.1.1]hept-2-ene (index 27)
-  PC1 = -2.274, PC2 = -1.042
+<img alt="_images/c79023310ce2273b4b9888feefb39176557f7a4ec8cb14576be1212e58c8424f.png" src="_images/c79023310ce2273b4b9888feefb39176557f7a4ec8cb14576be1212e58c8424f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>methyl (2S,4aS,6aR,6aS,6bR,8aR,10S,12aR,14bR)-10-hydroxy-2,4a,6a,6b,9,9,12a-heptamethyl-1,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydropicene-2-carboxylate   (index 64)
+  PC1 = 3.267, PC2 = 1.618
 
 === Farthest pair ===
 </pre></div>
 </div>
-<img alt="_images/6c234bd0c3e5683dd514b52cea0b53298542e40e393b3dc2ee5e96fa63728645.png" src="_images/6c234bd0c3e5683dd514b52cea0b53298542e40e393b3dc2ee5e96fa63728645.png" />
+<img alt="_images/2738173470f9625bad5ac32cb50e2075c594ddba56730df176c88bf1372454a7.png" src="_images/2738173470f9625bad5ac32cb50e2075c594ddba56730df176c88bf1372454a7.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-[3,5-bis(1-phenylbenzimidazol-2-yl)phenyl]-1-phenylbenzimidazole (index 338)
-  PC1 = 11.072, PC2 = -4.750
+  PC1 = 11.072, PC2 = 4.750
 </pre></div>
 </div>
-<img alt="_images/983a10c2bef421600af6296ef6a475e0282a6b915f457849d9ef6614e7e47a03.png" src="_images/983a10c2bef421600af6296ef6a475e0282a6b915f457849d9ef6614e7e47a03.png" />
+<img alt="_images/cf224992c0e050a6aeff9447ab11f25d573970eb7499b62c76d9e44d700d1c17.png" src="_images/cf224992c0e050a6aeff9447ab11f25d573970eb7499b62c76d9e44d700d1c17.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sodium;perchlorate (index 462)
-  PC1 = -2.699, PC2 = 5.531
+  PC1 = -2.699, PC2 = -5.531
 </pre></div>
 </div>
 </div>
 </div>
 <p>We can also make this plot to be interactive:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1738,12 +1752,12 @@ For the selected molecules we also show their <strong>structure, compound name, 
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/4fc6846963fc543b4e33d421c9b45107fd5bb62b8d48d3f6d284e4b87f5679ab.png" src="_images/4fc6846963fc543b4e33d421c9b45107fd5bb62b8d48d3f6d284e4b87f5679ab.png" />
+<img alt="_images/a18f4298d6f347498fc6b23b728cb0565a3f265dabe164da03ff9ca41e08257c.png" src="_images/a18f4298d6f347498fc6b23b728cb0565a3f265dabe164da03ff9ca41e08257c.png" />
 </div>
 </div>
 </section>
 <section id="data-leakage-in-unsupervised-settings">
-<h3>2.2 Data leakage in unsupervised settings<a class="headerlink" href="#data-leakage-in-unsupervised-settings" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Data leakage in unsupervised settings<a class="headerlink" href="#data-leakage-in-unsupervised-settings" title="Link to this heading">#</a></h3>
 <p>Even in unsupervised workflows, leakage can happen.<br />
 A common mistake is to <strong>fit the scaler or PCA on the full dataset</strong> before splitting.<br />
 This means the test set has already influenced the scaling or component directions, which is a subtle form of information leak.</p>
@@ -1756,10 +1770,10 @@ This means the test set has already influenced the scaling or component directio
 </ol>
 <p>This way the test set truly remains unseen during model fitting.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
@@ -1808,7 +1822,7 @@ This means the test set has already influenced the scaling or component directio
 Test shape: (173, 2)
 </pre></div>
 </div>
-<img alt="_images/70da5fba2380fd3d773e1d7418c801c08d6bbdeded6902a862fb58045938c98c.png" src="_images/70da5fba2380fd3d773e1d7418c801c08d6bbdeded6902a862fb58045938c98c.png" />
+<img alt="_images/c208b17792832ffc239a73225642c963cc6c835bfb7d8f26d76ad5ae157f4ba4.png" src="_images/c208b17792832ffc239a73225642c963cc6c835bfb7d8f26d76ad5ae157f4ba4.png" />
 </div>
 </div>
 <p>If the test set overlaps reasonably with the distribution of the train set, that’s a sign your train-derived scaling and PCA directions generalize.</p>
@@ -1824,10 +1838,10 @@ Note:</p></li>
 </section>
 <hr class="docutils" />
 <section id="standardization-and-distance">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Standardization and distance</a><a class="headerlink" href="#standardization-and-distance" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">3. Standardization and distance</a><a class="headerlink" href="#standardization-and-distance" title="Link to this heading">#</a></h2>
 <p>Unsupervised methods depend on a distance or similarity rule. The choice of distance and the way you scale features can completely change neighborhoods, clusters, and embeddings. This section covers why we standardize, which distance to use for scalar descriptors vs fingerprints, and how to compute and visualize distance in a leakage safe way.</p>
 <section id="why-standardize">
-<h3>3.1 Why standardize<a class="headerlink" href="#why-standardize" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Why standardize<a class="headerlink" href="#why-standardize" title="Link to this heading">#</a></h3>
 <p>Descriptor columns live on different scales. <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> can be in the hundreds. <code class="docutils literal notranslate"><span class="pre">FractionCSP3</span></code> is in <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If you compute Euclidean distance on the raw matrix, large scale columns dominate. Standardization fixes this by centering and scaling each column so that all features contribute fairly.</p>
 <p>Common scalers:</p>
 <ul class="simple">
@@ -1872,12 +1886,12 @@ Std means: [ 0. -0.]
 Std stds : [1. 1.]
 </pre></div>
 </div>
-<img alt="_images/58918b010fa0c0546fd6784a45ddf8254d3bd3bc19e055c866a1f698d78edcfd.png" src="_images/58918b010fa0c0546fd6784a45ddf8254d3bd3bc19e055c866a1f698d78edcfd.png" />
+<img alt="_images/6aef313774f39ed939cc698b0a97181d3da0cc364690611656b6613c7d3ac025.png" src="_images/6aef313774f39ed939cc698b0a97181d3da0cc364690611656b6613c7d3ac025.png" />
 </div>
 </div>
 </section>
 <section id="which-distance-to-use">
-<h3>3.2 Which distance to use<a class="headerlink" href="#which-distance-to-use" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Which distance to use<a class="headerlink" href="#which-distance-to-use" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Scalar descriptors</strong> (10D):</p>
 <ul>
@@ -1910,10 +1924,10 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 </ul>
 <p>Below we show Euclidean vs Cosine on two standardized columns</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1960,7 +1974,7 @@ d_{\text{Tan}}(i,j)=1-s_{\text{Tan}}(i,j)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5fc9122a547b81d17f30e1b6957553b909ed85390d6373090edeada3c928e34a.png" src="_images/5fc9122a547b81d17f30e1b6957553b909ed85390d6373090edeada3c928e34a.png" />
+<img alt="_images/b1751da669eeb4c70fb6fb80dac1cb203fc5561ac2238970e14e1a6aefebb619.png" src="_images/b1751da669eeb4c70fb6fb80dac1cb203fc5561ac2238970e14e1a6aefebb619.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Euclidean Nearest Neighbor (rows) for sample #10: [23, 28, 21, 22, 11]
 Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
 </pre></div>
@@ -1972,10 +1986,10 @@ Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
 <p>Idea is that, the same query point can have different nearest neighbors under Euclidean vs Cosine because one metric cares about absolute offsets while the other cares about direction.</p>
 </div>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># take first 30 molecules to keep plot compact</span>
@@ -2015,8 +2029,8 @@ Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/9a267b4403b808c4f07ff528eb324cbbeceae715e0ae476aabb244ef51893203.png" src="_images/9a267b4403b808c4f07ff528eb324cbbeceae715e0ae476aabb244ef51893203.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN (rows) for query 10: [7, 15, 11, 8, 29]
+<img alt="_images/b136c8925da3b1d2708ee359eb264978f1ffc4a1d8e111b0ed7f9f7c01470636.png" src="_images/b136c8925da3b1d2708ee359eb264978f1ffc4a1d8e111b0ed7f9f7c01470636.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tanimoto NN (rows) for query 10: [7, 15, 11, 8, 28]
 </pre></div>
 </div>
 </div>
@@ -2028,10 +2042,10 @@ Cosine Nearest Neighbor (rows) for sample #10: [8, 1, 11, 28, 27]
 <p>Below we add a simple 2D plot to <strong>show how nearest neighbors can differ</strong> under different metrics in the same fingerprint space.<br />
 We compute a 2D embedding once (PCA on the 0/1 bit matrix) and then draw neighbor connections for all three kinds of distance calculation methods.</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -2127,15 +2141,15 @@ Cosine   NN for query 196 -&gt; [237, 414, 434, 107, 11]
 Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
 </pre></div>
 </div>
-<img alt="_images/b2e7f07692812430fbea79836b5eddcc93e1871ecdb6df13ac420b8c3ce57cb8.png" src="_images/b2e7f07692812430fbea79836b5eddcc93e1871ecdb6df13ac420b8c3ce57cb8.png" />
+<img alt="_images/097bdc28c08463f681ec189133b4a318f84346c4c187295a89b2a1b10ad80203.png" src="_images/097bdc28c08463f681ec189133b4a318f84346c4c187295a89b2a1b10ad80203.png" />
 </div>
 </div>
 <p>We can plot both the query molecule and the found neighbors to take a look:</p>
 <div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
+<details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1) Draw the query molecule</span>
@@ -2187,14 +2201,14 @@ Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query #196: 3-methylbutylbenzene
 </pre></div>
 </div>
-<img alt="_images/10007613aa44cb4286c1e36bb8c5ffaab5c4b6b0d37b53cc2a95f9f7b2f6f1f1.png" src="_images/10007613aa44cb4286c1e36bb8c5ffaab5c4b6b0d37b53cc2a95f9f7b2f6f1f1.png" />
-<img alt="_images/e59f809b7eaf0d3702fa7b5f4b6fc031fff75eca9f04815b588c5d073cfc7d66.png" src="_images/e59f809b7eaf0d3702fa7b5f4b6fc031fff75eca9f04815b588c5d073cfc7d66.png" />
+<img alt="_images/2b416ceb2693849ee4a28ac56a55b16741a778140c3de8420e3e4528df620a5b.png" src="_images/2b416ceb2693849ee4a28ac56a55b16741a778140c3de8420e3e4528df620a5b.png" />
+<img alt="_images/baccf8ee25dce94066c6d740625c7612be6ee801c3a2722cf21465b57a64b4cb.png" src="_images/baccf8ee25dce94066c6d740625c7612be6ee801c3a2722cf21465b57a64b4cb.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="nonlinear-embeddings-t-sne-and-umap">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Nonlinear embeddings: t-SNE and UMAP</a><a class="headerlink" href="#nonlinear-embeddings-t-sne-and-umap" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">4. Nonlinear embeddings: t-SNE and UMAP</a><a class="headerlink" href="#nonlinear-embeddings-t-sne-and-umap" title="Link to this heading">#</a></h2>
 <p>Linear PCA gives a fast global summary. For curved manifolds or cluster-heavy data, <strong>t-SNE</strong> and <strong>UMAP</strong> often reveal structure that PCA compresses. Both start from a notion of neighborhood in the original feature space and then optimize a 2D or 3D layout that tries to keep neighbors close.</p>
 <p>We will use two feature sets:</p>
 <ul class="simple">
@@ -2202,7 +2216,7 @@ Euclidean NN for query 196 -&gt; [107, 122, 237, 414, 9]
 <li><p><strong>64-bit Morgan fingerprints</strong> from <code class="docutils literal notranslate"><span class="pre">df_morgan[&quot;Fingerprint&quot;]</span></code></p></li>
 </ul>
 <section id="t-sne">
-<h3>4.1 t-SNE<a class="headerlink" href="#t-sne" title="Permalink to this heading">#</a></h3>
+<h3>4.1 t-SNE<a class="headerlink" href="#t-sne" title="Link to this heading">#</a></h3>
 <p><strong>Idea:</strong> Build probabilities that say which points are neighbors in high-dim, then find a low-dim map whose neighbor probabilities match.</p>
 <p><strong>Math:</strong></p>
 <ul class="simple">
@@ -2272,12 +2286,12 @@ q_{ij}=\frac{\left(1+\lVert y_i-y_j\rVert^2\right)^{-1}}{\sum_{k\ne \ell}\left(1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0324707e670f07b1f2a4d53872adf45a0da3bdcf978349bbb8644e4c3116eab4.png" src="_images/0324707e670f07b1f2a4d53872adf45a0da3bdcf978349bbb8644e4c3116eab4.png" />
+<img alt="_images/e39420f04e0c004935b1ad1ae0c126f3393a289337e6ce67b3dfc1749b8969fa.png" src="_images/e39420f04e0c004935b1ad1ae0c126f3393a289337e6ce67b3dfc1749b8969fa.png" />
 </div>
 </div>
 </section>
 <section id="umap">
-<h3>4.2 UMAP<a class="headerlink" href="#umap" title="Permalink to this heading">#</a></h3>
+<h3>4.2 UMAP<a class="headerlink" href="#umap" title="Link to this heading">#</a></h3>
 <p><strong>Idea:</strong> Build a weighted kNN graph in the original space, interpret it as a fuzzy set of edges, then find low dimensional coordinates that preserve this fuzzy structure.</p>
 <p><strong>Math:</strong></p>
 <ul class="simple">
@@ -2322,25 +2336,25 @@ PCA finds orthogonal directions of variance. t-SNE preserves neighbor probabilit
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">5. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-dimension-reduction">dimension reduction<a class="headerlink" href="#term-dimension-reduction" title="Permalink to this term">#</a></dt><dd><p>Map <span class="math notranslate nohighlight">\(p\)</span>-dimensional features to a few coordinates that keep the most structure for your task.</p>
+<dt id="term-dimension-reduction">dimension reduction<a class="headerlink" href="#term-dimension-reduction" title="Link to this term">#</a></dt><dd><p>Map <span class="math notranslate nohighlight">\(p\)</span>-dimensional features to a few coordinates that keep the most structure for your task.</p>
 </dd>
-<dt id="term-PCA">PCA<a class="headerlink" href="#term-PCA" title="Permalink to this term">#</a></dt><dd><p>Linear method that finds orthogonal directions of maximum variance.</p>
+<dt id="term-PCA">PCA<a class="headerlink" href="#term-PCA" title="Link to this term">#</a></dt><dd><p>Linear method that finds orthogonal directions of maximum variance.</p>
 </dd>
-<dt id="term-loading">loading<a class="headerlink" href="#term-loading" title="Permalink to this term">#</a></dt><dd><p>The weight of each original feature for a principal component.</p>
+<dt id="term-loading">loading<a class="headerlink" href="#term-loading" title="Link to this term">#</a></dt><dd><p>The weight of each original feature for a principal component.</p>
 </dd>
-<dt id="term-scree-plot">scree plot<a class="headerlink" href="#term-scree-plot" title="Permalink to this term">#</a></dt><dd><p>Bar or line plot of explained variance ratio per PC.</p>
+<dt id="term-scree-plot">scree plot<a class="headerlink" href="#term-scree-plot" title="Link to this term">#</a></dt><dd><p>Bar or line plot of explained variance ratio per PC.</p>
 </dd>
-<dt id="term-t-SNE">t-SNE<a class="headerlink" href="#term-t-SNE" title="Permalink to this term">#</a></dt><dd><p>Nonlinear embedding that preserves local neighbor relations. Uses a KL divergence objective.</p>
+<dt id="term-t-SNE">t-SNE<a class="headerlink" href="#term-t-SNE" title="Link to this term">#</a></dt><dd><p>Nonlinear embedding that preserves local neighbor relations. Uses a KL divergence objective.</p>
 </dd>
-<dt id="term-UMAP">UMAP<a class="headerlink" href="#term-UMAP" title="Permalink to this term">#</a></dt><dd><p>Graph-based embedding that models fuzzy set cross entropy on a kNN graph.</p>
+<dt id="term-UMAP">UMAP<a class="headerlink" href="#term-UMAP" title="Link to this term">#</a></dt><dd><p>Graph-based embedding that models fuzzy set cross entropy on a kNN graph.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">6. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <p>Scenario:
 You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal is to build quick descriptor and fingerprint views, create 2D maps, and compare nearest neighbors under different distances before moving to assays.</p>
 <div class="cell docutils container">
@@ -2530,7 +2544,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div></div></div>
 </div>
 <section id="q1-build-feature-sets-and-print-compact-summaries">
-<h3><strong>Q1. Build feature sets and print compact summaries</strong><a class="headerlink" href="#q1-build-feature-sets-and-print-compact-summaries" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q1. Build feature sets and print compact summaries</strong><a class="headerlink" href="#q1-build-feature-sets-and-print-compact-summaries" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">calc_descriptors10</span></code> we defined earlier today, create a 20×10 descriptor table <code class="docutils literal notranslate"><span class="pre">df_fp_20</span></code> for these molecules.</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">morgan_bits</span></code> with <code class="docutils literal notranslate"><span class="pre">n_bits=64</span></code> and <code class="docutils literal notranslate"><span class="pre">radius=2</span></code>, create a 64-bit fingerprint string for each molecule.</p></li>
@@ -2541,7 +2555,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q2-pca-on-10-descriptors">
-<h3><strong>Q2. PCA on 10 descriptors</strong><a class="headerlink" href="#q2-pca-on-10-descriptors" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q2. PCA on 10 descriptors</strong><a class="headerlink" href="#q2-pca-on-10-descriptors" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Build a feature matrix <code class="docutils literal notranslate"><span class="pre">X_desc</span></code> from the 10 descriptor columns, then standardize with <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code>, call it <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code>.</p></li>
 <li><p>Fit <code class="docutils literal notranslate"><span class="pre">PCA()</span></code> on standardized data and project to 2D.</p></li>
@@ -2552,7 +2566,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q3-t-sne-on-10-descriptors">
-<h3><strong>Q3. t-SNE on 10 descriptors</strong><a class="headerlink" href="#q3-t-sne-on-10-descriptors" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q3. t-SNE on 10 descriptors</strong><a class="headerlink" href="#q3-t-sne-on-10-descriptors" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Use the same standardized 10D matrix <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code>.</p></li>
 <li><p>Fit t-SNE with <code class="docutils literal notranslate"><span class="pre">n_components=2</span></code>, <code class="docutils literal notranslate"><span class="pre">perplexity=5</span></code>, <code class="docutils literal notranslate"><span class="pre">init=&quot;pca&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">learning_rate=&quot;auto&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">n_iter=1000</span></code>, <code class="docutils literal notranslate"><span class="pre">random_state=0</span></code>.</p></li>
@@ -2564,7 +2578,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q4-pca-and-t-sne-on-morgan-64-fingerprints">
-<h3><strong>Q4. PCA and t-SNE on Morgan-64 fingerprints</strong><a class="headerlink" href="#q4-pca-and-t-sne-on-morgan-64-fingerprints" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q4. PCA and t-SNE on Morgan-64 fingerprints</strong><a class="headerlink" href="#q4-pca-and-t-sne-on-morgan-64-fingerprints" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Convert each 64-bit fingerprint string to a row of 0 or 1 to form a 20×64 matrix ·X_fp·.</p></li>
 <li><p>Run PCA to 2D and plot with labels <strong>and</strong> t-SNE to 2D on <code class="docutils literal notranslate"><span class="pre">X_fp</span></code> with the same t-SNE settings as Q3, and plot with labels.</p></li>
@@ -2575,7 +2589,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q5-nearest-5-neighbors-descriptors-vs-fingerprints">
-<h3><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong><a class="headerlink" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints" title="Permalink to this heading">#</a></h3>
+<h3><strong>Q5. Nearest 5 neighbors - descriptors vs fingerprints</strong><a class="headerlink" href="#q5-nearest-5-neighbors-descriptors-vs-fingerprints" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Pick a query molecule index <code class="docutils literal notranslate"><span class="pre">q</span></code> between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">19</span></code></p></li>
 <li><p>Compute a 20×20 Euclidean distance matrix on <code class="docutils literal notranslate"><span class="pre">X_desc_std</span></code> and list the 5 closest neighbors of <code class="docutils literal notranslate"><span class="pre">q</span></code> (exclude itself).</p></li>
@@ -2589,9 +2603,9 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </section>
 <hr class="docutils" />
 <section id="solution">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Solution</a><a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">7. Solution</a><a class="headerlink" href="#solution" title="Link to this heading">#</a></h2>
 <section id="q1">
-<h3>Q1<a class="headerlink" href="#q1" title="Permalink to this heading">#</a></h3>
+<h3>Q1<a class="headerlink" href="#q1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q1 - Solution</span>
@@ -2952,7 +2966,7 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </section>
 <section id="q2">
-<h3>Q2<a class="headerlink" href="#q2" title="Permalink to this heading">#</a></h3>
+<h3>Q2<a class="headerlink" href="#q2" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q2 - Solution</span>
@@ -2998,13 +3012,13 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e788b72654f54bcc8a9f24d431a4ff4db1c81ee61d8aff98e263c957d57ead7.png" src="_images/7e788b72654f54bcc8a9f24d431a4ff4db1c81ee61d8aff98e263c957d57ead7.png" />
-<img alt="_images/992760836a5b630003fff4f1c4301378e0439cde76005ffd9196f1cd4cd9b8a8.png" src="_images/992760836a5b630003fff4f1c4301378e0439cde76005ffd9196f1cd4cd9b8a8.png" />
+<img alt="_images/8e297a04472ed64c54b93acc9c05034431ef0f713aec053e4a10b2c7d467e475.png" src="_images/8e297a04472ed64c54b93acc9c05034431ef0f713aec053e4a10b2c7d467e475.png" />
+<img alt="_images/341d124d0e0bde880ed68822df12d8fdfe2b004371b2dd29ce81218346f2ff69.png" src="_images/341d124d0e0bde880ed68822df12d8fdfe2b004371b2dd29ce81218346f2ff69.png" />
 </div>
 </div>
 </section>
 <section id="q3">
-<h3>Q3<a class="headerlink" href="#q3" title="Permalink to this heading">#</a></h3>
+<h3>Q3<a class="headerlink" href="#q3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q3 - Solution</span>
@@ -3028,12 +3042,12 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e290a97d33408bff7cd357bd1f49d290d7c76d94442593123e7c547424799edf.png" src="_images/e290a97d33408bff7cd357bd1f49d290d7c76d94442593123e7c547424799edf.png" />
+<img alt="_images/b9e9a812d4269a3ff2e6f6b00fae00845d1a7f2748471c823d266113587dca74.png" src="_images/b9e9a812d4269a3ff2e6f6b00fae00845d1a7f2748471c823d266113587dca74.png" />
 </div>
 </div>
 </section>
 <section id="q4">
-<h3>Q4<a class="headerlink" href="#q4" title="Permalink to this heading">#</a></h3>
+<h3>Q4<a class="headerlink" href="#q4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q4 - Solution</span>
@@ -3073,13 +3087,13 @@ You are screening 20 candidate bio-inhibitors from three chemotypes. Your goal i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/76d49a061ee52131dbf5839a2908900d819ea877641b11f65fed8f83191587c5.png" src="_images/76d49a061ee52131dbf5839a2908900d819ea877641b11f65fed8f83191587c5.png" />
-<img alt="_images/5a7492af60ef4b30d6c7372bcbbe24f1a0430f23a957a810c6cef2a0ee113bf8.png" src="_images/5a7492af60ef4b30d6c7372bcbbe24f1a0430f23a957a810c6cef2a0ee113bf8.png" />
+<img alt="_images/df75cbfd713b42fa836b84dbf3e9ebac4b6f4943fc8e5a7ff43cdc4c44b1189f.png" src="_images/df75cbfd713b42fa836b84dbf3e9ebac4b6f4943fc8e5a7ff43cdc4c44b1189f.png" />
+<img alt="_images/6ba2849e10599430c443d72c0fa95bf66266d0c052dd6fa1b5edb84d5f0db464.png" src="_images/6ba2849e10599430c443d72c0fa95bf66266d0c052dd6fa1b5edb84d5f0db464.png" />
 </div>
 </div>
 </section>
 <section id="q5">
-<h3>Q5<a class="headerlink" href="#q5" title="Permalink to this heading">#</a></h3>
+<h3>Q5<a class="headerlink" href="#q5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Q5 - Solution</span>
@@ -3137,8 +3151,8 @@ Nearest 5 by Tanimoto (Morgan-64):
   Toluene                   group=A_hydrophobic_aromatics  d_tan=0.300
   Mesitylene                group=A_hydrophobic_aromatics  d_tan=0.333
   Dimethylaniline           group=C_N_hetero_amines       d_tan=0.667
-  Ethylbenzene              group=A_hydrophobic_aromatics  d_tan=0.688
   Cumene                    group=A_hydrophobic_aromatics  d_tan=0.688
+  Ethylbenzene              group=A_hydrophobic_aromatics  d_tan=0.688
 </pre></div>
 </div>
 </div>
@@ -3174,7 +3188,7 @@ Nearest 5 by Tanimoto (Morgan-64):
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -3203,6 +3217,7 @@ Nearest 5 by Tanimoto (Morgan-64):
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -3268,7 +3283,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -3292,8 +3307,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
