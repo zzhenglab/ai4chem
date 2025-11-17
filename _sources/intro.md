@@ -11,7 +11,7 @@ Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | 
 **This class is open to everyone and can be taken at your own pace.**
 
 - All tutorials are free and shareable.
-- Created for synthetic chemists with **no background in coding or math**.
+- Created for synthetic chemists with **no background in coding or data science**.
 - Focuses on **practical applications** of AI in wet lab synthesis and experimental data analysis.
 - Lecture slides are available to registered students on Canvas or upon request.
 
