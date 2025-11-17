@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 15 - Multi-objective Bayesian Optimization
+# Lecture 15 - Multi-Objective Bayesian Optimization
 
 ```{contents}
 :local:
