@@ -61,11 +61,6 @@ Please cite the AI4CHEM course or repository if using these materials.
 
 ---
 
-## License
-
-Released under an open-source license. See LICENSE file.
-
----
 
 ## Contact
 
