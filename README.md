@@ -1,6 +1,6 @@
 # AI4CHEM: Artificial Intelligence for Experimental Chemistry
 
-<img src="https://zhenglab.wustl.edu/files/2025/08/ChatGPT-Image-Aug-19-2025-05_54_17-PM.png" width="200">
+<img src="https://zhenglab.wustl.edu/files/2025/08/ChatGPT-Image-Aug-19-2025-05_54_17-PM.png" width="250">
 
 
 This repository contains open educational materials for CHEM 5080 — AI for Experimental Chemistry at Washington University in St. Louis. The course introduces machine learning and AI concepts to experimental and synthetic chemists with no prior programming background.
