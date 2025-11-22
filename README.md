@@ -53,6 +53,10 @@ jupyter-book build book/
 ### Adapt for teaching
 All materials are open source and can be modified freely.
 
+📚If you would like to adapt or extend the course materials, the official Jupyter Book documentation provides clear instructions on how to build new pages, modify content, and copy existing structures for your own courses:
+https://jupyterbook.org/en/stable/intro.html
+
+
 ---
 
 ## Citation
