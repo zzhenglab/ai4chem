@@ -17,6 +17,9 @@ Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | 
 
 If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.
 
+Cite as:  
+Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [arXiv:2511.18244](https://www.arxiv.org/abs/2511.18244), 2025.
+
 ```
 
 
