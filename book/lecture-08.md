@@ -37,6 +37,7 @@ We will stick to a light stack so it runs everywhere.
 :tags: [hide-input]
 import warnings
 warnings.filterwarnings("ignore")
+warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 import numpy as np
 import pandas as pd
@@ -446,7 +447,7 @@ mlp = Pipeline([
                           activation="relu",
                           learning_rate_init=0.05,
                           alpha=1e-4,            # L2 penalty
-                          max_iter=500,
+                          max_iter=2000,
                           random_state=0))
 ])
 mlp
@@ -588,8 +589,9 @@ mlp_deep = Pipeline([
     ("scaler", StandardScaler()),
     ("clf", MLPClassifier(hidden_layer_sizes=(8,5,3),
                           activation="relu",
-                          learning_rate_init=0.05,
-                          max_iter=500,
+                          learning_rate_init=0.01,
+                          max_iter=2000,
+                          early_stopping=True,
                           random_state=0))
 ])
 
@@ -613,7 +615,7 @@ mlp_deep_2 = Pipeline([
     ("clf", MLPClassifier(hidden_layer_sizes=(8,4,6,4),
                           activation="relu",
                           learning_rate_init=0.05,
-                          max_iter=500,
+                          max_iter=2000,
                           random_state=0))
 ])
 
@@ -762,7 +764,7 @@ def run_mlp_grid_search(Xtr, ytr, Xte, yte, layer_choices=None, lr_choices=None)
         estimator=base_mlp,
         param_grid=param_grid,
         scoring="accuracy",
-        n_jobs=-1,
+        n_jobs=1,
         cv=cv,
         refit=True,
         verbose=1

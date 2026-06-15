@@ -3,7 +3,7 @@
 
 
 **Washington University in St. Louis**  
-**Fall 2025**  
+**Fall 2026**  
 **Instructor:** Zhiling "Zach" Zheng (he/him)  
 Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | Email: z.z@wustl.edu 
 
@@ -31,6 +31,7 @@ Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [arXiv:251
 
 ---
 
+###
 ```{admonition} Weekly Schedule
 - **Aug 26 & 28** – Intro + Python basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
@@ -50,7 +51,7 @@ Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [arXiv:251
 - **Nov 27** – Thanksgiving  
 - **Dec 2 & 4** – Final project presentations  
 ```
-
+###
 
 ```{admonition} Assignments & Project Submissions (Canvas)  
 :class: tip
