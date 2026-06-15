@@ -22,7 +22,7 @@ kernelspec:
 
 - Connect single objective Bayesian Optimization to multiobjective problems.
 - Define Pareto dominance, Pareto front, scalarization, hypervolume, and expected hypervolume improvement.
-- Build a simple **multiobjective active learning** loop on a materials.
+- Build a simple **multiobjective active learning** loop on crystalline materials.
 
 [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 
