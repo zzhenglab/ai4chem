@@ -1,5 +1,28 @@
 # Welcome to CHEM 5080: AI for Experimental Chemistry
 
+jupyter-book clean book/ --all
+jupyter-book build book/
+ghp-import -n -p -f book/_build/html
+
+
+jupyter-book clean book/ --all; jupyter-book build book/; ghp-import -n -p -f book/_build/html
+
+
+git add .gitignore book/_config.yml book/_toc.yml book/*.md book/*.ipynb
+git commit -m "update course"
+git pull --rebase origin main
+git push origin main
+
+git add .gitignore book/_config.yml book/_toc.yml book/*.md book/*.ipynb; git commit -m "update course"; git pull --rebase origin main; git push origin main
+
+
+
+
+
+
+
+
+
 
 
 **Washington University in St. Louis**  
@@ -34,6 +57,7 @@ Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [arXiv:251
 ###
 ```{admonition} Weekly Schedule
 - **Aug 26 & 28** – Intro + Python basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
+
 - **Sept 2 & 4** – Molecular representations  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 9 & 11** – Classification & regression  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
 - **Sept 16 & 18** – Supervised machine learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
@@ -110,4 +134,5 @@ By the end of this course, you will be able to:
 ```{dropdown} Acknowledgements
 We thank **Professor Robert Wexler** for his guidance in building this website and for helpful discussions on the course content.  
 We also acknowledge **Bingcui Guo**, whose contributions were tremendously valuable in discussing the material and in testing the code.  
+
 ```git push --force-with-lease
