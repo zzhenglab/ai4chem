@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -64,8 +64,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-18';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 19 - Transformers" href="lecture-19.html" />
-    <link rel="prev" title="Lecture 17 - PU Learning" href="lecture-17.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -167,32 +165,8 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-04.html">Lecture 4 - Chemical Structure Identifier</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-05.html">Lecture 5 - Regression and Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-06.html">Lecture 6 - Cross-Validation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-07.html">Lecture 7 - Decision Trees and Random Forests</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-08.html">Lecture 8 - Neural Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-09.html">Lecture 9 - Graph Neural Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-10.html">Lecture 10 - Property &amp; Reaction Prediction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-11.html">Lecture 11 - Dimension Reduction for Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-12.html">Lecture 12 - Self-Supervised Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-13.html">Lecture 13 - De Novo Molecule Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-14.html">Lecture 14 - Bayesian Optimization for Synthesis Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-15.html">Lecture 15 - Multi-Objective Bayesian Optimization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-16.html">Lecture 16 - Reinforcement Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-17.html">Lecture 17 - PU Learning</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 18 - Contrastive Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-19.html">Lecture 19 - Transformers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-20.html">Lecture 20 - Large Language Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-21.html">Lecture 21 - Computer Vision</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-22.html">Lecture 22 - Vision Languge Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-23.html">Lecture 23 - Prompt Engineering and Function Calling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-24.html">Lecture 24 - Literature Data Mining</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture-25.html">Lecture 25 - Self-Driving Labs</a></li>
 </ul>
 
     </div>
@@ -1796,7 +1770,7 @@ We print shapes to keep it clear.</p>
 xb_b torch.shape: torch.Size([64, 2])
 z_a.shape: torch.Size([64, 2])
 z_b.shape: torch.Size([64, 2])
-Loss (one step): 4.116456031799316
+Loss (one step): 3.9692416191101074
 </pre></div>
 </div>
 </div>
@@ -1861,10 +1835,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.1035
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.9464
 </pre></div>
 </div>
-<img alt="_images/74b97a815b687c1ff44bf1a5d429c0f541aebacd0a9b716868718120de0d8b30.png" src="_images/74b97a815b687c1ff44bf1a5d429c0f541aebacd0a9b716868718120de0d8b30.png" />
+<img alt="_images/96d718aaaf65b0bf306b5977857b5a4eecf8750a0174b44b8b18a7cc9b0037fc.png" src="_images/96d718aaaf65b0bf306b5977857b5a4eecf8750a0174b44b8b18a7cc9b0037fc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1890,10 +1864,10 @@ Then we run a tiny loop and record losses for a simple plot.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.4592
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=3.3703
 </pre></div>
 </div>
-<img alt="_images/f43d3baa090c44273b985b7463ccd5f43faa21c75729b95244ae0b14d58bc79e.png" src="_images/f43d3baa090c44273b985b7463ccd5f43faa21c75729b95244ae0b14d58bc79e.png" />
+<img alt="_images/a7cb8990eae9477f7c4d7ad295112b8bbc5b4edc238a5f6dc2a9446301a97db2.png" src="_images/a7cb8990eae9477f7c4d7ad295112b8bbc5b4edc238a5f6dc2a9446301a97db2.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -1933,7 +1907,7 @@ Then we color by the hidden class to see clusters.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>z_test_np.shape: (60, 2)
 </pre></div>
 </div>
-<img alt="_images/695755ac032602be5e3e9d26b1f647dc175c243a4c7d2f0aa8584e531819d6ec.png" src="_images/695755ac032602be5e3e9d26b1f647dc175c243a4c7d2f0aa8584e531819d6ec.png" />
+<img alt="_images/56cefc7912559f819e0fea5f110737d4f0eb0ef00ffe8906259f7ad9b02fcce2.png" src="_images/56cefc7912559f819e0fea5f110737d4f0eb0ef00ffe8906259f7ad9b02fcce2.png" />
 </div>
 </div>
 </section>
@@ -1991,10 +1965,10 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.6633
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 000  loss=4.5653
 </pre></div>
 </div>
-<img alt="_images/aa99090c8f8443e4b91fe271e01a1f9a41b77aadcf882cf83b70b6c87a9230d4.png" src="_images/aa99090c8f8443e4b91fe271e01a1f9a41b77aadcf882cf83b70b6c87a9230d4.png" />
+<img alt="_images/ad5614ddc37d3281418822ba1ad9096d3eaac04dd28deedcfe134b373cd40a27.png" src="_images/ad5614ddc37d3281418822ba1ad9096d3eaac04dd28deedcfe134b373cd40a27.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -2037,7 +2011,7 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Z_chem.shape: (1500, 8)
 </pre></div>
 </div>
-<img alt="_images/69c7d11dd9c89db9d822c31d2ef2586b8eb0a4127669c102b9228e8e949174c1.png" src="_images/69c7d11dd9c89db9d822c31d2ef2586b8eb0a4127669c102b9228e8e949174c1.png" />
+<img alt="_images/9629415d015e21ca38c13e14c6e74d8dd9eac626407ab2d7283e93c7bc351cd6.png" src="_images/9629415d015e21ca38c13e14c6e74d8dd9eac626407ab2d7283e93c7bc351cd6.png" />
 </div>
 </div>
 <p>Here is how encoded reaction conditions look like.</p>
@@ -2048,13 +2022,13 @@ We monitor the InfoNCE loss and later run a linear probe.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.7294, -0.1864, -0.4106, ..., -0.036 , -0.1729,  0.0679],
-       [ 0.8534, -0.0652, -0.1257, ...,  0.0422, -0.1527,  0.3039],
-       [ 0.8504, -0.0202, -0.1431, ...,  0.0225, -0.1491,  0.318 ],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.5726,  0.0722,  0.1882, ..., -0.084 ,  0.005 ,  0.4467],
+       [ 0.7243, -0.1169, -0.0123, ...,  0.112 ,  0.2341,  0.3356],
+       [ 0.7508, -0.1123, -0.0759, ...,  0.1064,  0.2879,  0.2966],
        ...,
-       [ 0.4976, -0.2181, -0.5985, ...,  0.0107, -0.1029, -0.1787],
-       [ 0.8507, -0.0192, -0.1438, ...,  0.0213, -0.1488,  0.3179],
-       [ 0.8636,  0.0197, -0.0455, ...,  0.0554, -0.1315,  0.3541]],
+       [ 0.4101,  0.2034,  0.3738, ..., -0.2653, -0.1591,  0.3737],
+       [ 0.7516, -0.1112, -0.0808, ...,  0.1052,  0.292 ,  0.2935],
+       [ 0.7635, -0.1498, -0.1281, ...,  0.1521,  0.3562,  0.2184]],
       dtype=float32)
 </pre></div>
 </div>
@@ -2105,9 +2079,9 @@ Z_test.shape: (60, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.9863, -0.1647],
-       [ 0.1155, -0.9933],
-       [-0.0073, -1.    ]], dtype=float32)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.82  , -0.5723],
+       [ 0.9042,  0.4271],
+       [ 0.9746,  0.224 ]], dtype=float32)
 </pre></div>
 </div>
 </div>
@@ -2196,8 +2170,8 @@ This is useful to propose similar conditions or spectra for follow up experiment
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Query is index 2 with class 1
-Top indices: [ 2 42 17 58 15 47]
-Top sims   : [1.    1.    0.999 0.999 0.999 0.999]
+Top indices: [ 2  8 17 47 44 14]
+Top sims   : [1.    1.    1.    1.    0.999 0.999]
 </pre></div>
 </div>
 </div>
@@ -2217,7 +2191,7 @@ Top sims   : [1.    1.    0.999 0.999 0.999 0.999]
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bc909d0d2ba854938c60ad9564f5f828ba99596f7fad39deab0de845b3da3057.png" src="_images/bc909d0d2ba854938c60ad9564f5f828ba99596f7fad39deab0de845b3da3057.png" />
+<img alt="_images/6374b82cb304e7f7255cffd3b7e0675c77a5a202213b6f6a1ae7750b6a7ff3f8.png" src="_images/6374b82cb304e7f7255cffd3b7e0675c77a5a202213b6f6a1ae7750b6a7ff3f8.png" />
 </div>
 </div>
 <div class="admonition-exercise admonition">
@@ -2265,12 +2239,12 @@ We plot ROC and Precision-Recall.</p>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.7
-Chemistry 4D AUC: 0.773
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Chemistry 4D Accuracy: 0.709
+Chemistry 4D AUC: 0.793
 </pre></div>
 </div>
-<img alt="_images/1e32fa100885b1afcd9e064bdd3d295681e60cdb3d527c3944588d16415bc108.png" src="_images/1e32fa100885b1afcd9e064bdd3d295681e60cdb3d527c3944588d16415bc108.png" />
-<img alt="_images/8cf2b2e311ab55921346e6b851f3b32ddd45596c6c6969d98b7ce24dda656227.png" src="_images/8cf2b2e311ab55921346e6b851f3b32ddd45596c6c6969d98b7ce24dda656227.png" />
+<img alt="_images/64557b75413160e7c38764fd6f55ceff70a0852c43c8e1f6d98e94a526c32f94.png" src="_images/64557b75413160e7c38764fd6f55ceff70a0852c43c8e1f6d98e94a526c32f94.png" />
+<img alt="_images/47a08b5916a2832216796966a78082ba10906bbc69b970f2c8b8d8b93cf499f8.png" src="_images/47a08b5916a2832216796966a78082ba10906bbc69b970f2c8b8d8b93cf499f8.png" />
 </div>
 </div>
 </section>
@@ -2671,13 +2645,13 @@ Picked spectrum index: 7 class: 0
   neg view source idx: 8 class: 0
 
 Encoded representations (first 6 of 16):
-  enc(original): [ 0.0173 -0.3777  0.2112 -0.1697  0.1484 -0.0817]
-  enc(pos1):     [ 0.1243 -0.4411  0.2086 -0.2383  0.2715  0.0014]
-  enc(pos2):     [ 0.201  -0.4072  0.1298 -0.3052  0.1153 -0.1165]
-  enc(neg):      [ 0.1896 -0.481   0.1915 -0.2977  0.1993 -0.015 ]
+  enc(original): [-0.1668  0.1403 -0.344   0.1666  0.1194  0.4017]
+  enc(pos1):     [-0.1856  0.1182 -0.3091  0.0459  0.1619  0.4094]
+  enc(pos2):     [-0.0556  0.0971 -0.3146  0.1305  0.1374  0.4979]
+  enc(neg):      [-0.1339  0.1328 -0.2778  0.063   0.1542  0.4555]
 </pre></div>
 </div>
-<img alt="_images/e55d4de050ccb91c05bcd5f1da02397d6ac0e65629fb533c957d4367b3688379.png" src="_images/e55d4de050ccb91c05bcd5f1da02397d6ac0e65629fb533c957d4367b3688379.png" />
+<img alt="_images/c635ad806e80f151b88bc6133be0d832a31bf4046d1b2e685aeef09ade1941c4.png" src="_images/c635ad806e80f151b88bc6133be0d832a31bf4046d1b2e685aeef09ade1941c4.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classifier on embeddings:
   train size: 36 test size: 54
   test accuracy: 1.0
@@ -2808,18 +2782,18 @@ Encoded representations (first 6 of 16):
 </details>
 <div class="cell_output docutils container">
 <img alt="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" src="_images/c9e381a597a5162ce60750ab922a51dcf37e74e79e58a6688667578403235514.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [-0.1368 -0.2386 -0.1131  0.0118  0.2041  0.0593 -0.1003 -0.0698]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Encoded new spectrum (first 8 dims): [-0.2051 -0.1291 -0.2865  0.2771 -0.0944  0.3883 -0.0924  0.0242]
 </pre></div>
 </div>
-<img alt="_images/e7512f48086a0263b1838d8279adf8277dfe96f5d233d35a25af54c0b80b36bb.png" src="_images/e7512f48086a0263b1838d8279adf8277dfe96f5d233d35a25af54c0b80b36bb.png" />
+<img alt="_images/140d68d6be5af5df79a4e4bc5024f4b5128b62348ec57181abe9a795e993bf19.png" src="_images/140d68d6be5af5df79a4e4bc5024f4b5128b62348ec57181abe9a795e993bf19.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Predicted class: 0
-Class probabilities: [0.507, 0.441, 0.052]
-Nearest neighbor index in existing set: 13
+Class probabilities: [0.972, 0.01, 0.019]
+Nearest neighbor index in existing set: 26
 Nearest neighbor label: 0
-Cosine similarity in embedding space: 0.784
+Cosine similarity in embedding space: 0.8767
 </pre></div>
 </div>
-<img alt="_images/0e66eccd6f8c20e3e39d9202d86678e0dd1dec14ed0bbdd43486db1a0e286729.png" src="_images/0e66eccd6f8c20e3e39d9202d86678e0dd1dec14ed0bbdd43486db1a0e286729.png" />
+<img alt="_images/fda833254d1736ed7b1eaf8ff57b25f1c24f316c8e44abd73e4f36f692a68582.png" src="_images/fda833254d1736ed7b1eaf8ff57b25f1c24f316c8e44abd73e4f36f692a68582.png" />
 </div>
 </div>
 </section>
@@ -2882,24 +2856,6 @@ Cosine similarity in embedding space: 0.784
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="lecture-17.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lecture 17 - PU Learning</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="lecture-19.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 19 - Transformers</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               

@@ -59,10 +59,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro-2025-version';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Lecture 1 - Python Primer" href="lecture-01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -138,7 +137,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -158,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     Welcome to CHEM 5080: AI for Experimental Chemistry
                 </a>
             </li>
@@ -237,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro-2025-version.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -267,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/intro-2025-version.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,6 +375,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-chem-5080-ai-for-experimental-chemistry">
 <h1>Welcome to CHEM 5080: AI for Experimental Chemistry<a class="headerlink" href="#welcome-to-chem-5080-ai-for-experimental-chemistry" title="Permalink to this heading">#</a></h1>
+<p>jupyter-book clean book/ –all
+jupyter-book build book/
+ghp-import -n -p -f book/_build/html</p>
+<p>jupyter-book clean book/ –all; jupyter-book build book/; ghp-import -n -p -f book/_build/html</p>
+<p>git add .gitignore book/_config.yml book/_toc.yml book/<em>.md book/</em>.ipynb
+git commit -m “update course”
+git pull –rebase origin main
+git push origin main</p>
+<p>git add .gitignore book/_config.yml book/_toc.yml book/<em>.md book/</em>.ipynb; git commit -m “update course”; git pull –rebase origin main; git push origin main</p>
 <p><strong>Washington University in St. Louis</strong><br />
 <strong>Fall 2026</strong><br />
 <strong>Instructor:</strong> Zhiling “Zach” Zheng (he/him)<br />
@@ -391,37 +399,32 @@ Office: McMillen 411 | Web: <a class="reference external" href="https://zhenglab
 </ul>
 <p class="sd-card-text">If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.</p>
 <p class="sd-card-text">Cite as:<br />
-Z. Zheng. <em>Developing an AI Course for Synthetic Chemistry Students</em>. <a class="reference external" href="https://pubs.acs.org/doi/10.1021/acs.jchemed.5c01699">J. Chem. Educ. 103(5), 2621–2633</a>, 2026.```</p>
+Z. Zheng. <em>Developing an AI Course for Synthetic Chemistry Students</em>. <a class="reference external" href="https://www.arxiv.org/abs/2511.18244">arXiv:2511.18244</a>, 2025.</p>
+</div>
+</div>
 <hr class="docutils" />
-<p class="sd-card-text"><strong>Contents</strong></p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
-</ul>
-</div>
-</div>
-</div>
+<p><strong>Contents</strong></p>
 <hr class="docutils" />
 <section id="id1">
 <h2><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="admonition-weekly-schedule admonition">
 <p class="admonition-title">Weekly Schedule</p>
 <ul class="simple">
-<li><p><strong>Aug 26 &amp; 28</strong> – Intro + Python basics</p></li>
-<li><p><strong>Sept 2 &amp; 4</strong> – Molecular representations</p></li>
-<li><p><strong>Sept 9 &amp; 11</strong> – Classification &amp; regression</p></li>
-<li><p><strong>Sept 16 &amp; 18</strong> – Supervised machine learning</p></li>
-<li><p><strong>Sept 23 &amp; 25</strong> – Molecular property &amp; reaction prediction</p></li>
-<li><p><strong>Sept 30 &amp; Oct 2</strong> – Unsupervised learning  methods</p></li>
+<li><p><strong>Aug 26 &amp; 28</strong> – Intro + Python basics <a class="reference external" href="https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>  &amp;  <a class="reference external" href="https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Sept 2 &amp; 4</strong> – Molecular representations  <a class="reference external" href="https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>  &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Sept 9 &amp; 11</strong> – Classification &amp; regression  <a class="reference external" href="https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>  &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Sept 16 &amp; 18</strong> – Supervised machine learning  <a class="reference external" href="https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>  &amp;  <a class="reference external" href="https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Sept 23 &amp; 25</strong> – Molecular property &amp; reaction prediction  <a class="reference external" href="https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Sept 30 &amp; Oct 2</strong> – Unsupervised learning  methods <a class="reference external" href="https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1CGznPlVhSet10f820k7TyPvk3kcBdHkC?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
 <li><p><strong>Oct 7</strong> - Fall Break</p></li>
-<li><p><strong>Oct 9</strong> – De novo molecule generation</p></li>
-<li><p><strong>Oct 14 &amp; Oct 16</strong> - Chemical reaction optimization</p></li>
-<li><p><strong>Oct 23</strong> – Reinforcement learning</p></li>
-<li><p><strong>Oct 28 &amp; 30</strong> – Semi-supervised learning</p></li>
-<li><p><strong>Nov 4 &amp; 6</strong> –  Transformers &amp; large language models</p></li>
-<li><p><strong>Nov 11 &amp; 13</strong> – Computer vision and multimodal models</p></li>
-<li><p><strong>Nov 18 &amp; 20</strong> – Multi-agent AI and literature data mining</p></li>
-<li><p><strong>Nov 25</strong> – Self-driving labs</p></li>
+<li><p><strong>Oct 9</strong> – De novo molecule generation   <a class="reference external" href="https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Oct 14 &amp; Oct 16</strong> - Chemical reaction optimization    <a class="reference external" href="https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Oct 23</strong> – Reinforcement learning  <a class="reference external" href="https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Oct 28 &amp; 30</strong> – Semi-supervised learning <a class="reference external" href="https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Nov 4 &amp; 6</strong> –  Transformers &amp; large language models  <a class="reference external" href="https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Nov 11 &amp; 13</strong> – Computer vision and multimodal models   <a class="reference external" href="https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Nov 18 &amp; 20</strong> – Multi-agent AI and literature data mining <a class="reference external" href="https://colab.research.google.com/drive/18NZIvGg0hd0P5oOTwfQ61x9K3dS6qdU_?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a>   &amp;  <a class="reference external" href="https://colab.research.google.com/drive/1aQPq-vP0DhK2_CyAK10vfuAmByIymruO?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
+<li><p><strong>Nov 25</strong> – Self-driving labs  <a class="reference external" href="https://colab.research.google.com/drive/1aQPq-vP0DhK2_CyAK10vfuAmByIymruO?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p></li>
 <li><p><strong>Nov 27</strong> – Thanksgiving</p></li>
 <li><p><strong>Dec 2 &amp; 4</strong> – Final project presentations</p></li>
 </ul>
@@ -439,28 +442,28 @@ Z. Zheng. <em>Developing an AI Course for Synthetic Chemistry Students</em>. <a 
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Sept 7</strong></p></td>
-<td><p>Assignment 1 due</p></td>
+<td><p>Assignment 1 due <a class="reference external" href="https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Assignment-red" /></a> <a class="reference external" href="https://colab.research.google.com/drive/1Zel7MlJgwcndDsBfqsk7LFYpdZpJRH3g?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Solution-green" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Sept 21</strong></p></td>
-<td><p>Assignment 2 due</p></td>
+<td><p>Assignment 2 due <a class="reference external" href="https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Assignment-red" /></a> <a class="reference external" href="https://colab.research.google.com/drive/18AIDo3hclJssMQc1hRgUfAsm-SpkFd5t?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Solution-green" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Oct 5</strong></p></td>
-<td><p>Project 1 due</p></td>
+<td><p>Project 1 due <a class="reference external" href="https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Reviewers-blue" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Oct 14</strong></p></td>
-<td><p>Project 1 Evaluation due</p></td>
+<td><p>Project 1 Evaluation due <a class="reference external" href="https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Reviewers-blue" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Oct 26</strong></p></td>
-<td><p>Assignment 3 due</p></td>
+<td><p>Assignment 3 due <a class="reference external" href="https://colab.research.google.com/drive/1l3xeFktRU4kAkkqfMN_wp57BNRGBUXpt?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Assignment-red" /></a> <a class="reference external" href="https://colab.research.google.com/drive/1hxsWsXf4KofWwgCmqwLTvu_NtONS5s6H?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Solution-green" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Nov 9</strong></p></td>
-<td><p>Assignment 4 due</p></td>
+<td><p>Assignment 4 due <a class="reference external" href="https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Assignment-red" /></a></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Nov 30</strong></p></td>
-<td><p>Assignment 5 due</p></td>
+<td><p>Assignment 5 due <a class="reference external" href="https://colab.research.google.com/drive/1aOL9hfP6JmFqkg5eVpDyl6sxYiaTAHEq?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Assignment-red" /></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Dec 7</strong></p></td>
-<td><p>Project 2 Evaluations due</p></td>
+<td><p>Project 2 Evaluations due <a class="reference external" href="https://docs.google.com/document/d/13q21lpcjc1jcU3FSaWJaKAo8WAqIwrCPhRPCqQ4n-mM/edit?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Groups-blue" /></a></p></td>
 </tr>
 </tbody>
 </table>
@@ -575,15 +578,6 @@ We also acknowledge <strong>Bingcui Guo</strong>, whose contributions were treme
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="lecture-01.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture 1 - Python Primer</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
