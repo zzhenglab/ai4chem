@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
   
@@ -417,14 +417,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">10.3 Molar mass from a counts dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">10.4 Read leading integer from a string, then convert C to K</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">10.5 Which sample has more moles</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-solution">11. In-class activity solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.1 Ethanol mass to moles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.2 Classify pH values in a list</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.3 Molar mass from a counts dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.4 Read leading integer from a string, then convert C to K</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.5 Which sample has more moles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2 Classify pH values in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.3 Molar mass from a counts dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.4 Read leading integer from a string, then convert C to K</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.5 Which sample has more moles</a></li>
 </ul>
 </li>
 </ul>
@@ -449,22 +445,21 @@ document.write(`
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#learning-goals" id="id6">Learning goals</a></p></li>
-<li><p><a class="reference internal" href="#setup-choose-your-path" id="id7">1. Setup - choose your path</a></p></li>
-<li><p><a class="reference internal" href="#meet-the-notebook" id="id8">2. Meet the notebook</a></p></li>
-<li><p><a class="reference internal" href="#python-as-a-calculator" id="id9">3. Python as a calculator</a></p></li>
-<li><p><a class="reference internal" href="#variables-names-for-values" id="id10">4. Variables - names for values</a></p></li>
-<li><p><a class="reference internal" href="#quick-chemistry-molar-mass-and-moles" id="id11">5. Quick chemistry - molar mass and moles</a></p></li>
-<li><p><a class="reference internal" href="#tiny-data-structures-lists-and-dictionaries" id="id12">6. Tiny data structures - lists and dictionaries</a></p></li>
-<li><p><a class="reference internal" href="#control-flow-if-for-while" id="id13">7. Control flow - if, for, while</a></p></li>
-<li><p><a class="reference internal" href="#functions-small-reusable-steps" id="id14">8. Functions - small reusable steps</a></p></li>
-<li><p><a class="reference internal" href="#glossary" id="id15">9. Glossary</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity" id="id16">10. In-class activity</a></p></li>
-<li><p><a class="reference internal" href="#in-class-activity-solution" id="id17">11. In-class activity solution</a></p></li>
+<li><p><a class="reference internal" href="#learning-goals" id="id5">Learning goals</a></p></li>
+<li><p><a class="reference internal" href="#setup-choose-your-path" id="id6">1. Setup - choose your path</a></p></li>
+<li><p><a class="reference internal" href="#meet-the-notebook" id="id7">2. Meet the notebook</a></p></li>
+<li><p><a class="reference internal" href="#python-as-a-calculator" id="id8">3. Python as a calculator</a></p></li>
+<li><p><a class="reference internal" href="#variables-names-for-values" id="id9">4. Variables - names for values</a></p></li>
+<li><p><a class="reference internal" href="#quick-chemistry-molar-mass-and-moles" id="id10">5. Quick chemistry - molar mass and moles</a></p></li>
+<li><p><a class="reference internal" href="#tiny-data-structures-lists-and-dictionaries" id="id11">6. Tiny data structures - lists and dictionaries</a></p></li>
+<li><p><a class="reference internal" href="#control-flow-if-for-while" id="id12">7. Control flow - if, for, while</a></p></li>
+<li><p><a class="reference internal" href="#functions-small-reusable-steps" id="id13">8. Functions - small reusable steps</a></p></li>
+<li><p><a class="reference internal" href="#glossary" id="id14">9. Glossary</a></p></li>
+<li><p><a class="reference internal" href="#in-class-activity" id="id15">10. In-class activity</a></p></li>
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Run code cells in a notebook and switch between <strong>Code</strong> and <strong>Markdown</strong>.</p></li>
 <li><p>Use Python as a calculator for quick chemical math.</p></li>
@@ -514,7 +509,7 @@ Section 10</div>
 <hr class="docutils" />
 </section>
 <section id="setup-choose-your-path">
-<span id="content-setup"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">1. Setup - choose your path</a><a class="headerlink" href="#setup-choose-your-path" title="Permalink to this heading">#</a></h2>
+<span id="content-setup"></span><h2><a class="toc-backref" href="#id6" role="doc-backlink">1. Setup - choose your path</a><a class="headerlink" href="#setup-choose-your-path" title="Permalink to this heading">#</a></h2>
 <p>Right-click the badge below and select “<strong>Open link in new tab</strong>”</p>
 <p><a class="reference external" href="https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 <p>Log in to your Google account. Then in the top left menu, go to <strong>File</strong> &gt; <strong>Save a copy</strong> in Drive to keep your own editable version.</p>
@@ -526,7 +521,7 @@ If this is your first time coding, we recommend starting with Google Colab for s
 <hr class="docutils" />
 </section>
 <section id="meet-the-notebook">
-<span id="content-notebooks"></span><h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Meet the notebook</a><a class="headerlink" href="#meet-the-notebook" title="Permalink to this heading">#</a></h2>
+<span id="content-notebooks"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">2. Meet the notebook</a><a class="headerlink" href="#meet-the-notebook" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A notebook has <strong>cells</strong>.</p></li>
 <li><p><strong>Code cells</strong> run Python.</p></li>
@@ -554,7 +549,7 @@ The first run may take a few seconds while the runtime starts.</p>
 </section>
 <hr class="docutils" />
 <section id="python-as-a-calculator">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Python as a calculator</a><a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">3. Python as a calculator</a><a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
 <p>We will run a few short cells and see results right away.</p>
 <section id="run-your-first-cell">
 <h3>3.1 Run your first cell<a class="headerlink" href="#run-your-first-cell" title="Permalink to this heading">#</a></h3>
@@ -724,7 +719,7 @@ In this web page, you will only be able to view input and output.</p>
 </section>
 </section>
 <section id="variables-names-for-values">
-<span id="content-variables"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Variables - names for values</a><a class="headerlink" href="#variables-names-for-values" title="Permalink to this heading">#</a></h2>
+<span id="content-variables"></span><h2><a class="toc-backref" href="#id9" role="doc-backlink">4. Variables - names for values</a><a class="headerlink" href="#variables-names-for-values" title="Permalink to this heading">#</a></h2>
 <p>A variable is a <strong>name</strong> that points to a value. You can reuse it.</p>
 <section id="create-and-read-a-variable">
 <h3>4.1 Create and read a variable<a class="headerlink" href="#create-and-read-a-variable" title="Permalink to this heading">#</a></h3>
@@ -804,7 +799,7 @@ In this web page, you will only be able to view input and output.</p>
 </section>
 </section>
 <section id="quick-chemistry-molar-mass-and-moles">
-<span id="content-chem-quick"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Quick chemistry - molar mass and moles</a><a class="headerlink" href="#quick-chemistry-molar-mass-and-moles" title="Permalink to this heading">#</a></h2>
+<span id="content-chem-quick"></span><h2><a class="toc-backref" href="#id10" role="doc-backlink">5. Quick chemistry - molar mass and moles</a><a class="headerlink" href="#quick-chemistry-molar-mass-and-moles" title="Permalink to this heading">#</a></h2>
 <p>We will compute a molar mass, then convert mass to moles.</p>
 <section id="molar-mass-of-co2">
 <h3>5.1 Molar mass of CO₂<a class="headerlink" href="#molar-mass-of-co2" title="Permalink to this heading">#</a></h3>
@@ -912,7 +907,7 @@ Hint<div class="sd-summary-down docutils">
 </section>
 <hr class="docutils" />
 <section id="tiny-data-structures-lists-and-dictionaries">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. Tiny data structures - lists and dictionaries</a><a class="headerlink" href="#tiny-data-structures-lists-and-dictionaries" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">6. Tiny data structures - lists and dictionaries</a><a class="headerlink" href="#tiny-data-structures-lists-and-dictionaries" title="Permalink to this heading">#</a></h2>
 <p>Lists keep an ordered set of items. Dictionaries map keys to values.</p>
 <section id="make-a-list-and-read-from-it">
 <h3>6.1 Make a list and read from it<a class="headerlink" href="#make-a-list-and-read-from-it" title="Permalink to this heading">#</a></h3>
@@ -1193,7 +1188,7 @@ M_H2O = 18.015 g mol^-1
 </section>
 <hr class="docutils" />
 <section id="control-flow-if-for-while">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">7. Control flow - if, for, while</a><a class="headerlink" href="#control-flow-if-for-while" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">7. Control flow - if, for, while</a><a class="headerlink" href="#control-flow-if-for-while" title="Permalink to this heading">#</a></h2>
 <p>Control flow lets your code make choices and repeat steps.</p>
 <section id="if-pick-a-path">
 <h3>7.1 if - pick a path<a class="headerlink" href="#if-pick-a-path" title="Permalink to this heading">#</a></h3>
@@ -1305,7 +1300,7 @@ i = 3
 </section>
 </section>
 <section id="functions-small-reusable-steps">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">8. Functions - small reusable steps</a><a class="headerlink" href="#functions-small-reusable-steps" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Functions - small reusable steps</a><a class="headerlink" href="#functions-small-reusable-steps" title="Permalink to this heading">#</a></h2>
 <p>A function is a named recipe. Inputs go in parentheses. The result is returned.</p>
 <section id="tiny-functions-without-control-flow">
 <h3>8.1 Tiny functions without control flow<a class="headerlink" href="#tiny-functions-without-control-flow" title="Permalink to this heading">#</a></h3>
@@ -1428,7 +1423,7 @@ i = 3
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
 <dl class="simple glossary">
 <dt id="term-variable">variable<a class="headerlink" href="#term-variable" title="Permalink to this term">#</a></dt><dd><p>A name that points to a value, like a label on a box. Example: <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">10</span></code>.</p>
 </dd>
@@ -1466,7 +1461,7 @@ i = 3
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
 <p>Work in groups of 2 to 3. Each challenge is about 5 minutes. These are new scenarios that mirror what you practiced, and each task is self-contained. Stay within Sections 1 to 8.</p>
 <section id="ethanol-mass-to-moles">
 <h3>10.1 Ethanol mass to moles<a class="headerlink" href="#ethanol-mass-to-moles" title="Permalink to this heading">#</a></h3>
@@ -1624,43 +1619,9 @@ Hint<div class="sd-summary-down docutils">
 <p class="sd-card-text">Section 6.1 lists and tuples, Section 6.4 dictionaries, Section 7.2 for-loops, Section 5.2 for moles = mass / M.</p>
 </div>
 </details></section>
-</section>
 <hr class="docutils" />
-<section id="in-class-activity-solution">
-<h2><a class="toc-backref" href="#id17" role="doc-backlink">11. In-class activity solution</a><a class="headerlink" href="#in-class-activity-solution" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>11.1 Ethanol mass to moles<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>Compute the moles of ethanol C2H6O in 9.2 g using only arithmetic and variables.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Atomic weights (g mol^-1)</span>
-<span class="n">C</span> <span class="o">=</span> <span class="mf">12.011</span>
-<span class="n">H</span> <span class="o">=</span> <span class="mf">1.008</span>
-<span class="n">O</span> <span class="o">=</span> <span class="mf">15.999</span>
-
-<span class="c1"># Molar mass of ethanol: C2H6O</span>
-<span class="n">M_ethanol</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">C</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">H</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">O</span>   <span class="c1"># TODO</span>
-
-<span class="c1"># Mass to moles</span>
-<span class="n">mass_g</span> <span class="o">=</span> <span class="mf">9.2</span>
-<span class="n">moles</span> <span class="o">=</span> <span class="n">mass_g</span> <span class="o">/</span> <span class="n">M_ethanol</span>       <span class="c1"># TODO</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M_ethanol =&quot;</span><span class="p">,</span> <span class="n">M_ethanol</span><span class="p">,</span> <span class="s2">&quot;g mol^-1&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;moles in&quot;</span><span class="p">,</span> <span class="n">mass_g</span><span class="p">,</span> <span class="s2">&quot;g =&quot;</span><span class="p">,</span> <span class="n">moles</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M_ethanol = 46.069 g mol^-1
-moles in 9.2 g = 0.19970044932601097
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="id2">
-<h3>11.2 Classify pH values in a list<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>11.2 Classify pH values in a list<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Given several pH readings “2.5”, “7.0”, “8.1”, “6.9”, “7.3”, print a line for each saying acidic, basic, or neutral. Do not define a helper function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1689,8 +1650,8 @@ moles in 9.2 g = 0.19970044932601097
 </div>
 </section>
 <hr class="docutils" />
-<section id="id3">
-<h3>11.3 Molar mass from a counts dictionary<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>11.3 Molar mass from a counts dictionary<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Compute the molar mass of glucose using a small dictionary of atomic weights and a counts dictionary. Do not reuse any earlier functions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1715,8 +1676,8 @@ moles in 9.2 g = 0.19970044932601097
 </div>
 </div>
 </section>
-<section id="id4">
-<h3>11.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>11.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>A temperature string has digits followed by a letter, for example “25C” or “298K”. Read the leading digits using a while-loop and convert Celsius to Kelvin. If the unit is K, leave it as is.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1750,8 +1711,8 @@ Temperature in K: 298.15
 </div>
 </section>
 <hr class="docutils" />
-<section id="id5">
-<h3>11.5 Which sample has more moles<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3>11.5 Which sample has more moles<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -&gt; count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1786,6 +1747,9 @@ Temperature in K: 298.15
 </pre></div>
 </div>
 </div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -1899,14 +1863,10 @@ Temperature in K: 298.15
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">10.3 Molar mass from a counts dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">10.4 Read leading integer from a string, then convert C to K</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">10.5 Which sample has more moles</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-class-activity-solution">11. In-class activity solution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.1 Ethanol mass to moles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.2 Classify pH values in a list</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.3 Molar mass from a counts dictionary</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.4 Read leading integer from a string, then convert C to K</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">11.5 Which sample has more moles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.2 Classify pH values in a list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.3 Molar mass from a counts dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">11.4 Read leading integer from a string, then convert C to K</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">11.5 Which sample has more moles</a></li>
 </ul>
 </li>
 </ul>

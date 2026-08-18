@@ -17,8 +17,6 @@ Office: McMillen 411 | Web: [Deep Synthesis Lab](https://zhenglab.wustl.edu/) | 
 
 If you enjoy the course, please help spread the word and share the link so more chemists can benefit from it.
 
-Cite as:  
-Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [J. Chem. Educ. 103(5), 2621–2633](https://pubs.acs.org/doi/10.1021/acs.jchemed.5c01699), 2026.```
 
 
 ---
@@ -108,5 +106,7 @@ By the end of this course, you will be able to:
 ```{dropdown} Acknowledgements
 We thank **Professor Robert Wexler** for his guidance in building this website and for helpful discussions on the course content.  
 We also acknowledge **Bingcui Guo**, whose contributions were tremendously valuable in discussing the material and in testing the code.  
+Cite as:  
+Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [J. Chem. Educ. 103, 2621–2633](https://pubs.acs.org/doi/10.1021/acs.jchemed.5c01699), 2026.
 
 ```git push --force-with-lease
