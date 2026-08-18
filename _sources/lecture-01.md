@@ -819,6 +819,7 @@ Section 6.1 lists and tuples, Section 6.4 dictionaries, Section 7.2 for-loops, S
 ```
 
 
+```{comment}
 
 ---
 ## 11. In-class activity solution
@@ -939,3 +940,4 @@ for mass_g, name, counts in mixture:         # TODO
 print("Largest moles:", winner, "with", max_moles, "mol")
 ```
 
+```
