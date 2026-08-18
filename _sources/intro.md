@@ -29,38 +29,38 @@ If you enjoy the course, please help spread the word and share the link so more 
 
 ###
 ```{admonition} Weekly Schedule
-- **Aug 26 & 28** – Intro + Python basics 
-- **Sept 2 & 4** – Molecular representations 
-- **Sept 9 & 11** – Classification & regression  
-- **Sept 16 & 18** – Supervised machine learning  
-- **Sept 23 & 25** – Molecular property & reaction prediction 
-- **Sept 30 & Oct 2** – Unsupervised learning  methods
-- **Oct 7** - Fall Break
-- **Oct 9** – De novo molecule generation   
-- **Oct 14 & Oct 16** - Chemical reaction optimization    
-- **Oct 23** – Reinforcement learning  
-- **Oct 28 & 30** – Semi-supervised learning 
-- **Nov 4 & 6** –  Transformers & large language models 
-- **Nov 11 & 13** – Computer vision and multimodal models  
-- **Nov 18 & 20** – Multi-agent AI and literature data mining 
-- **Nov 25** – Self-driving labs 
-- **Nov 27** – Thanksgiving  
-- **Dec 2 & 4** – Final project presentations  
+- **Aug 25 & 27** – Course introduction + Python coding basics
+- **Sept 1 & 3** – Molecular representations
+- **Sept 8 & 10** – Classification & regression
+- **Sept 15 & 17** – Supervised deep learning
+- **Sept 22 & 24** – Molecular property & reaction prediction
+- **Sept 29 & Oct 1** – Unsupervised learning
+- **Oct 3–6** – Fall Break
+- **Oct 8** – Generative models in molecular design
+- **Oct 13 & 15** – Chemical reaction optimization
+- **Oct 20 & 22** – Semi-supervised learning
+- **Oct 27 & 29, Nov 3** – Transformers & large language models
+- **Nov 5** – Assignment 4 group work
+- **Nov 10 & 12** – Computer vision & multimodal models
+- **Nov 17, 19 & 24** – Multi-agent AI & literature data mining
+- **Nov 24** – Assignment 5 group work
+- **Nov 25–29** – Thanksgiving Break
+- **Dec 1 & 3** – Final project presentations & reflection
 ```
 ###
 
 ```{admonition} Assignments & Project Submissions (Canvas)  
 :class: tip
-| Date | Assignment / Project  |
+| Date | Assignment / Project |
 |------|----------------------|
-| **Sept 7** | Assignment 1 due |  
-| **Sept 21** | Assignment 2 due | 
-| **Oct 5** | Project 1 due |  
-| **Oct 14** | Project 1 Evaluation due |  
-| **Oct 26** | Assignment 3 due  | 
-| **Nov 9** | Assignment 4 due |  
-| **Nov 30** | Assignment 5 due |  
-| **Dec 7** | Project 2 Evaluations due |  
+| **Sept 6** | Assignment 1 due |
+| **Sept 20** | Assignment 2 due |
+| **Oct 4** | Project 1 due |
+| **Oct 11** | Project 1 Peer Review due |
+| **Oct 25** | Assignment 3 due |
+| **Nov 8** | Assignment 4 due |
+| **Nov 29** | Assignment 5 due |
+| **Dec 6** | Project 2 Presentation and Feedback due |
 ```
 
 
@@ -106,7 +106,8 @@ By the end of this course, you will be able to:
 ```{dropdown} Acknowledgements
 We thank **Professor Robert Wexler** for his guidance in building this website and for helpful discussions on the course content.  
 We also acknowledge **Bingcui Guo**, whose contributions were tremendously valuable in discussing the material and in testing the code.  
+
 Cite as:  
 Z. Zheng. *Developing an AI Course for Synthetic Chemistry Students*. [J. Chem. Educ. 103, 2621–2633](https://pubs.acs.org/doi/10.1021/acs.jchemed.5c01699), 2026.
 
-```git push --force-with-lease
+```
