@@ -4,13 +4,16 @@
 # .\.venv\Scripts\Activate.ps1 
 #jupytext --to myst path/to/yourfile
 
+#git add . ; git commit -m "0817" ; git push
+#jupyter-book build book
+#ghp-import -n -p -f book/_build/html
 
 
 format: jb-book
 root: intro
 chapters:
 - file: lecture-01
-#- file: lecture-02
+- file: lecture-02
 #- file: lecture-03
 #- file: lecture-04
 #- file: lecture-05
