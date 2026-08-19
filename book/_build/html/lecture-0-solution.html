@@ -360,12 +360,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">11. In-class activity solution</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethanol-mass-to-moles">11.1 Ethanol mass to moles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classify-ph-values-in-a-list">11.2 Classify pH values in a list</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">11.3 Molar mass from a counts dictionary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">11.4 Read leading integer from a string, then convert C to K</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">11.5 Which sample has more moles</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -400,6 +412,48 @@ document.write(`
 <section id="which-sample-has-more-moles">
 <h2>11.5 Which sample has more moles<a class="headerlink" href="#which-sample-has-more-moles" title="Permalink to this heading">#</a></h2>
 <p>You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -&gt; count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.</p>
+</section>
+</section>
+<section id="solutions">
+<h1>9. Solutions<a class="headerlink" href="#solutions" title="Permalink to this heading">#</a></h1>
+<p>Search for <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> in each block above and compare to the full code here.</p>
+<section id="solution-8-1">
+<h2>Solution 8.1<a class="headerlink" href="#solution-8-1" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="solution-8-2">
+<h2>Solution 8.2<a class="headerlink" href="#solution-8-2" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="solution-8-3">
+<h2>Solution 8.3<a class="headerlink" href="#solution-8-3" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="solution-8-4">
+<h2>Solution 8.4<a class="headerlink" href="#solution-8-4" title="Permalink to this heading">#</a></h2>
+</section>
+<hr class="docutils" />
+<section id="solution-8-5">
+<h2>Solution 8.5<a class="headerlink" href="#solution-8-5" title="Permalink to this heading">#</a></h2>
+<p>In case you are curious how <code class="docutils literal notranslate"><span class="pre">&quot;organic_synthesis_yields.csv&quot;</span></code> is prepared (it’s synthesized dataset of synthesis!), here is the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">temperature_C</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">time_min</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">241</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">temp_scale</span> <span class="o">=</span> <span class="p">(</span><span class="n">temperature_C</span> <span class="o">-</span> <span class="mi">30</span><span class="p">)</span> <span class="o">/</span> <span class="mf">60.0</span>
+<span class="n">time_scale</span> <span class="o">=</span> <span class="n">time_min</span> <span class="o">/</span> <span class="mf">180.0</span>
+<span class="n">base</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">temp_scale</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">time_scale</span><span class="p">))</span>
+<span class="n">noise_normal</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">noise_neg</span> <span class="o">=</span> <span class="o">-</span><span class="n">rng</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+<span class="n">yield_percent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">base</span> <span class="o">+</span> <span class="n">noise_normal</span> <span class="o">+</span> <span class="n">noise_neg</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">96</span><span class="p">)</span>
+<span class="n">df_new</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;reaction_id&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                       <span class="s2">&quot;temperature_C&quot;</span><span class="p">:</span> <span class="n">temperature_C</span><span class="p">,</span>
+                       <span class="s2">&quot;time_min&quot;</span><span class="p">:</span> <span class="n">time_min</span><span class="p">,</span>
+                       <span class="s2">&quot;yield_percent&quot;</span><span class="p">:</span> <span class="n">yield_percent</span><span class="p">})</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_new</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;organic_ssynthesis_yields.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -448,12 +502,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">11. In-class activity solution</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethanol-mass-to-moles">11.1 Ethanol mass to moles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classify-ph-values-in-a-list">11.2 Classify pH values in a list</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">11.3 Molar mass from a counts dictionary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">11.4 Read leading integer from a string, then convert C to K</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">11.5 Which sample has more moles</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
