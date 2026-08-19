@@ -29,10 +29,10 @@ If you enjoy the course, please help spread the word and share the link so more 
 
 ###
 ```{admonition} Weekly Schedule
-- **Aug 25 & 27** – Course introduction + Python coding basics
+- **Aug 25 & 27** – Course introduction + Python coding basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)
 - **Sept 1 & 3** – Molecular representations
 - **Sept 8 & 10** – Classification & regression
-- **Sept 15 & 17** – Supervised deep learning
+- **Sept 15 & 17** – Supervised learning
 - **Sept 22 & 24** – Molecular property & reaction prediction
 - **Sept 29 & Oct 1** – Unsupervised learning
 - **Oct 3–6** – Fall Break

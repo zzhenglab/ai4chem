@@ -278,7 +278,14 @@ print("MolWt", round(mw,2), "LogP", round(logp,2), "HBD", hbd, "HBA", hba, "TPSA
 
 ```{code-cell} ipython3
 # Show atom numbers to plan edits
-img = Draw.MolToImage(mol, size=(350, 250), includeAtomNumbers=True)
+options = Draw.MolDrawOptions()
+options.addAtomIndices = True
+
+img = Draw.MolToImage(
+    mol,
+    size=(350, 250),
+    options=options
+)
 img
 ```
 
@@ -336,7 +343,14 @@ em.AddBond(idx_C, idx_H3, order=Chem.BondType.SINGLE)
 
 mol2 = em.GetMol()
 Chem.SanitizeMol(mol2)
-Draw.MolToImage(mol2, size=(350, 250), includeAtomNumbers=True)
+options = Draw.MolDrawOptions()
+options.addAtomIndices = True
+
+Draw.MolToImage(
+    mol2,
+    size=(350, 250),
+    options=options
+)
 ```
 
 ```{admonition} Tip
