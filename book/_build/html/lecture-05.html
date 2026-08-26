@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-05';</script>
@@ -73,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +109,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -155,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
 </ul>
 
     </div>
@@ -182,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -191,14 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -323,10 +340,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -334,14 +351,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -404,10 +421,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-regression-and-classification">
-<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 5 - Regression and Classification<a class="headerlink" href="#lecture-5-regression-and-classification" title="Link to this heading">#</a></h1>
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#learning-goals" id="id6">Learning goals</a></p></li>
@@ -424,7 +441,7 @@ document.write(`
 </ul>
 </nav>
 <section id="learning-goals">
-<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Learning goals</a><a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tell classification from regression by the target type.</p></li>
 <li><p>Load small chemistry-like datasets with SMILES and simple text features.</p></li>
@@ -470,10 +487,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<details class="hide below-input">
+<details class="admonition hide below-input">
 <summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell output</span>
-<span class="expanded">Hide code cell output</span>
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
 </summary>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: scikit-learn in c:\users\52377\appdata\local\programs\python\python38\lib\site-packages (1.3.2)
@@ -504,7 +521,7 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </section>
 <section id="what-is-supervised-learning">
-<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">1. What is supervised learning</a><a class="headerlink" href="#what-is-supervised-learning" title="Link to this heading">#</a></h2>
 <div class="admonition-definition admonition">
 <p class="admonition-title">Definition</p>
 <ul class="simple">
@@ -521,7 +538,7 @@ Note: you may need to restart the kernel to use updated packages.
 </ul>
 </section>
 <section id="data-preview-and-descriptor-engineering">
-<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">2. Data preview and descriptor engineering</a><a class="headerlink" href="#data-preview-and-descriptor-engineering" title="Link to this heading">#</a></h2>
 <p>We will read a small CSV from a public repository and compute a handful of molecular descriptors from SMILES. These lightweight features are enough to practice the full workflow.</p>
 <div class="admonition-tip admonition">
 <p class="admonition-title">Tip</p>
@@ -957,7 +974,7 @@ Note: you may need to restart the kernel to use updated packages.
 </section>
 <hr class="docutils" />
 <section id="regression-workflow-on-melting-point">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">3. Regression workflow on melting point</a><a class="headerlink" href="#regression-workflow-on-melting-point" title="Link to this heading">#</a></h2>
 <p>We start with a single property, the <strong>Melting Point</strong>, and use four descriptors as features.</p>
 <p>Now let’s first look at regression, we will focus one property prediction at a time. first create a new df”””</p>
 <div class="cell docutils container">
@@ -1100,14 +1117,14 @@ Note: you may need to restart the kernel to use updated packages.
 </div></div></div>
 </div>
 <section id="train-and-test-split">
-<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Train and test split<a class="headerlink" href="#train-and-test-split" title="Link to this heading">#</a></h3>
 <div class="admonition-why-split admonition">
 <p class="admonition-title">Why split?</p>
 <p>We test on <strong>held-out</strong> data to estimate generalization. A common split is 80 percent train, 20 percent test with a fixed <code class="docutils literal notranslate"><span class="pre">random_state</span></code> for reproducibility.</p>
 </div>
 </section>
 <section id="splitting-the-data-and-train">
-<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Splitting the data and train<a class="headerlink" href="#splitting-the-data-and-train" title="Link to this heading">#</a></h3>
 <p>Before training, we need to separate the input features (<code class="docutils literal notranslate"><span class="pre">X</span></code>) from the target (<code class="docutils literal notranslate"><span class="pre">y</span></code>). Then we split into training and test sets to evaluate how well the model generalizes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1292,7 +1309,7 @@ Predicted value: [ 86.80836978 169.99905967  53.35729424]
 </div>
 </section>
 <section id="how-split-choice-affects-accuracy">
-<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Permalink to this heading">#</a></h3>
+<h3>3.3 How split choice affects accuracy<a class="headerlink" href="#how-split-choice-affects-accuracy" title="Link to this heading">#</a></h3>
 <p>Besides, we can examine how different splitting strategies influence the accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1437,7 +1454,7 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </div>
 </section>
 <section id="learning-curves">
-<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Learning curves<a class="headerlink" href="#learning-curves" title="Link to this heading">#</a></h3>
 <p>A random <code class="docutils literal notranslate"><span class="pre">seed</span></code> is simply a number provided to a random number generator to ensure that it produces the same sequence of “random” results each time.</p>
 <p>For example, functions such as <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> shuffle the dataset before dividing it into training and testing sets. If you do not specify a <code class="docutils literal notranslate"><span class="pre">random_state</span></code> (the seed), every run may produce a slightly different split. This variation can lead to different accuracy values across runs.</p>
 <p><strong>Same seed → same split → same results</strong></p>
@@ -1519,7 +1536,7 @@ test_size=0.1, seed=7 -&gt; MSE=361.085, MAE=15.025, R2=0.893
 </div>
 </section>
 <section id="regularization-lasso-and-ridge">
-<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Permalink to this heading">#</a></h3>
+<h3>3.5 Regularization: Lasso and Ridge<a class="headerlink" href="#regularization-lasso-and-ridge" title="Link to this heading">#</a></h3>
 <p>Now, instead of using <strong>Linear Regression</strong>, we can also experiment with other models such as <strong>Lasso Regression</strong>. These alternatives add regularization, which helps prevent overfitting by penalizing overly complex models.</p>
 <p>So, how does <code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code> work?</p>
 <p>When you call <code class="docutils literal notranslate"><span class="pre">model.fit(X,</span> <span class="pre">y)</span></code>, the following steps occur:</p>
@@ -1662,7 +1679,7 @@ R2: 0.8741026174988968
 </section>
 <hr class="docutils" />
 <section id="another-regression-target-solubility-in-log-space">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">4. Another regression target: solubility in log space</a><a class="headerlink" href="#another-regression-target-solubility-in-log-space" title="Link to this heading">#</a></h2>
 <p>Let’s try doing the same process by defining the following molecular descriptors as our input features (<strong>X</strong>):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">molwt</span></code> (molecular weight)</p></li>
@@ -1846,7 +1863,7 @@ R2: 0.95879044442042
 </section>
 <hr class="docutils" />
 <section id="binary-classification-toxicity">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">5. Binary classification: toxicity</a><a class="headerlink" href="#binary-classification-toxicity" title="Link to this heading">#</a></h2>
 <p>We turn to a yes or no outcome, using the same four descriptors. Logistic Regression outputs probabilities. A threshold converts those into class predictions.</p>
 <p>We will build a binary classifier for <strong>Toxicity</strong> using the pre-built table:</p>
 <div class="cell docutils container">
@@ -2313,7 +2330,7 @@ AUC: 0.992
 </section>
 <hr class="docutils" />
 <section id="from-regression-to-classes-melting-point-bins">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">6. From regression to classes: melting point bins</a><a class="headerlink" href="#from-regression-to-classes-melting-point-bins" title="Link to this heading">#</a></h2>
 <p>Now, let’s think about this:
 <strong>Can regression question be turning into classificiation?</strong></p>
 <blockquote>
@@ -2435,7 +2452,7 @@ F1:        0.794
 <p>Note: When moving from <strong>binary classification</strong> to <strong>multi-class classification</strong>, metrics like precision, recall, and F1 score cannot be defined in just one way.<br />
 You need to decide <strong>how to average</strong> them across multiple classes. This is where strategies such as <strong>macro</strong>, <strong>micro</strong>, and <strong>weighted</strong> averaging come into play.</p>
 <section id="macro-averaging">
-<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Permalink to this heading">#</a></h3>
+<h3>Macro Averaging<a class="headerlink" href="#macro-averaging" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Compute the metric (precision, recall, or F1) <strong>for each class separately</strong>.</p></li>
 <li><p>Take the <strong>simple, unweighted average</strong> across all classes.</p></li>
@@ -2507,7 +2524,7 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="quick-reference">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">8. Quick reference</a><a class="headerlink" href="#quick-reference" title="Link to this heading">#</a></h2>
 <div class="admonition-model-recipes admonition">
 <p class="admonition-title">Model recipes</p>
 <ul class="simple">
@@ -2535,35 +2552,35 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 <hr class="docutils" />
 <section id="glossary">
-<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">9. Glossary</a><a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <dl class="simple glossary">
-<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Permalink to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
+<dt id="term-supervised-learning">supervised learning<a class="headerlink" href="#term-supervised-learning" title="Link to this term">#</a></dt><dd><p>A setup with features <code class="docutils literal notranslate"><span class="pre">X</span></code> and a labeled target <code class="docutils literal notranslate"><span class="pre">y</span></code> for each example.</p>
 </dd>
-<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Permalink to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
+<dt id="term-regression">regression<a class="headerlink" href="#term-regression" title="Link to this term">#</a></dt><dd><p>Predicting a continuous number, such as a melting point.</p>
 </dd>
-<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Permalink to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
+<dt id="term-classification">classification<a class="headerlink" href="#term-classification" title="Link to this term">#</a></dt><dd><p>Predicting a category, such as toxic vs non_toxic.</p>
 </dd>
-<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Permalink to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
+<dt id="term-descriptor">descriptor<a class="headerlink" href="#term-descriptor" title="Link to this term">#</a></dt><dd><p>A numeric feature computed from a molecule. Examples: molecular weight, logP, TPSA, ring count.</p>
 </dd>
-<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Permalink to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
+<dt id="term-train-test-split">train test split<a class="headerlink" href="#term-train-test-split" title="Link to this term">#</a></dt><dd><p>Partition the data into a part to fit the model and a separate part to estimate performance.</p>
 </dd>
-<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Permalink to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
+<dt id="term-regularization">regularization<a class="headerlink" href="#term-regularization" title="Link to this term">#</a></dt><dd><p>Penalty added to the loss to discourage large weights. Lasso uses L1, Ridge uses L2.</p>
 </dd>
-<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Permalink to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
+<dt id="term-residual">residual<a class="headerlink" href="#term-residual" title="Link to this term">#</a></dt><dd><p>The difference <code class="docutils literal notranslate"><span class="pre">y_true</span> <span class="pre">-</span> <span class="pre">y_pred</span></code> for a sample.</p>
 </dd>
-<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Permalink to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
+<dt id="term-ROC-AUC">ROC AUC<a class="headerlink" href="#term-ROC-AUC" title="Link to this term">#</a></dt><dd><p>Area under the ROC curve, a threshold independent ranking score for binary classification.</p>
 </dd>
-<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Permalink to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
+<dt id="term-macro-averaging">macro averaging<a class="headerlink" href="#term-macro-averaging" title="Link to this term">#</a></dt><dd><p>Average the metric per class, then take the unweighted mean across classes.</p>
 </dd>
-<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Permalink to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
+<dt id="term-parity-plot">parity plot<a class="headerlink" href="#term-parity-plot" title="Link to this term">#</a></dt><dd><p>Scatter of predicted vs true values. Ideal points lie on the diagonal.</p>
 </dd>
 </dl>
 </section>
 <hr class="docutils" />
 <section id="in-class-activity">
-<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id15" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#in-class-activity" title="Link to this heading">#</a></h2>
 <section id="linear-regression-with-two-features">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#linear-regression-with-two-features" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[[</span><span class="s2">&quot;MolWt&quot;</span><span class="p">,</span> <span class="s2">&quot;TPSA&quot;</span><span class="p">]]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_reg_mp</span><span class="p">[</span><span class="s2">&quot;Melting Point&quot;</span><span class="p">]</span>
@@ -2581,7 +2598,7 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="ridge-across-splits">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#ridge-across-splits" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
 <span class="n">y</span> <span class="o">=</span> <span class="o">...</span> <span class="c1">#TO DO</span>
@@ -2608,14 +2625,14 @@ This is because each class’s F1 score contributes equally to the final average
 </div>
 </section>
 <section id="pka-regression-two-ways">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#pka-regression-two-ways" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="c1">#TO DO</span>
 </pre></div>
 </div>
 </section>
 <section id="pka-to-classification">
-<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#pka-to-classification" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2627,9 +2644,9 @@ This is because each class’s F1 score contributes equally to the final average
 </section>
 </section>
 <section id="id1">
-<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><a class="toc-backref" href="#id16" role="doc-backlink">10. In-class activity</a><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>10.1 Linear Regression with two features<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Use only <code class="docutils literal notranslate"><span class="pre">MolWt</span></code> and <code class="docutils literal notranslate"><span class="pre">TPSA</span></code> to predict <strong>Melting Point</strong> with Linear Regression. Use a 90/10 split and report <strong>MSE</strong>, <strong>MAE</strong>, and <strong>R²</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2665,7 +2682,7 @@ R2:  0.729
 </div>
 </section>
 <section id="id3">
-<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>10.2 Ridge across splits<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>Train a Ridge model (<code class="docutils literal notranslate"><span class="pre">alpha=1.0</span></code>) for <strong>Melting Point</strong> using <code class="docutils literal notranslate"><span class="pre">MolWt,</span> <span class="pre">LogP,</span> <span class="pre">TPSA,</span> <span class="pre">NumRings</span></code>. Compare test <strong>R²</strong> for train sizes 60, 70, 80, 90 percent with <code class="docutils literal notranslate"><span class="pre">random_state=42</span></code>. Plot <strong>R²</strong> vs train percent.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2699,7 +2716,7 @@ R2:  0.729
 </div>
 </section>
 <section id="id4">
-<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>10.3 pKa regression two ways<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Build Ridge regression for <strong>pKa</strong> and for <strong>exp(pKa)</strong> using the same four descriptors. Report <strong>R²</strong> and <strong>MSE</strong> for each.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2746,7 +2763,7 @@ Test MSE: 1.478
 </div>
 </section>
 <section id="id5">
-<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>10.4 pKa to classification<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>Turn <strong>pKa</strong> into a binary label and train Logistic Regression with the same descriptors. Report Accuracy, Precision, Recall, F1, and AUC, and draw the ROC. You may pick either rule.</p>
 <ul class="simple">
 <li><p>Option A: acidic if pKa ≤ 7</p></li>
@@ -2859,7 +2876,7 @@ AUC:       0.743
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -2870,6 +2887,7 @@ AUC:       0.743
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2934,7 +2952,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2958,8 +2976,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

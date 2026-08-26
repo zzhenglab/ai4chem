@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
@@ -14,51 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css?v=6ad1a40c" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2b91c5f0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lecture-25';</script>
@@ -73,28 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -116,12 +109,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -155,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
 </ul>
 
     </div>
@@ -182,7 +199,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -191,14 +208,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -323,10 +340,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -334,14 +351,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -388,12 +405,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-25-self-driving-labs">
-<h1>Lecture 25 - Self-Driving Labs<a class="headerlink" href="#lecture-25-self-driving-labs" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 25 - Self-Driving Labs<a class="headerlink" href="#lecture-25-self-driving-labs" title="Link to this heading">#</a></h1>
 <section id="learning-goals">
-<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Permalink to this heading">#</a></h2>
+<h2>Learning goals<a class="headerlink" href="#learning-goals" title="Link to this heading">#</a></h2>
 <p>After working through this notebook you should be able to</p>
 <ul class="simple">
 <li><p>Explain what a <strong>self driving lab</strong> is and list its main components.</p></li>
@@ -404,7 +421,7 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/drive/14JeDtDkgp2O3P9Xg7oZdGDj-E2EBazGU?usp=sharing"><img alt="Colab" src="https://img.shields.io/badge/Open-Colab-orange" /></a></p>
 </section>
 <section id="setup-and-api-key">
-<h2>1. Setup and API key<a class="headerlink" href="#setup-and-api-key" title="Permalink to this heading">#</a></h2>
+<h2>1. Setup and API key<a class="headerlink" href="#setup-and-api-key" title="Link to this heading">#</a></h2>
 <p>We begin with imports and an API key placeholder.</p>
 <p>For security in real projects you should read your key from an environment variable or a local <code class="docutils literal notranslate"><span class="pre">.env</span></code> file, not hard code it into notebooks.</p>
 <p>For classroom use we place a placeholder here so that the rest of the code is easier to read. When you adapt this notebook for your own work, replace this section with your preferred way of storing secrets.</p>
@@ -444,7 +461,7 @@ document.write(`
 </div>
 </section>
 <section id="what-is-a-self-driving-lab">
-<h2>2. What is a self driving lab<a class="headerlink" href="#what-is-a-self-driving-lab" title="Permalink to this heading">#</a></h2>
+<h2>2. What is a self driving lab<a class="headerlink" href="#what-is-a-self-driving-lab" title="Link to this heading">#</a></h2>
 <p>In this lecture we will connect everything you have seen so far about data, models, and large language models to the idea of a <strong>self driving laboratory</strong>.</p>
 <p>A <strong>self driving lab</strong> is a closed loop system that</p>
 <ul class="simple">
@@ -534,7 +551,7 @@ OPTIMIZER
 <p>In the next sections we gradually make these ideas concrete with small code examples.</p>
 </section>
 <section id="representing-an-experimental-design-space">
-<h2>3. Representing an experimental design space<a class="headerlink" href="#representing-an-experimental-design-space" title="Permalink to this heading">#</a></h2>
+<h2>3. Representing an experimental design space<a class="headerlink" href="#representing-an-experimental-design-space" title="Link to this heading">#</a></h2>
 <p>A self driving lab has to pick experiments from some <strong>design space</strong>.</p>
 <p>Mathematically, the design space is often a Cartesian product</p>
 <div class="math notranslate nohighlight">
@@ -912,7 +929,7 @@ Solvent choices: [&#39;MeCN&#39;, &#39;DMF&#39;]
 <p>The planner part of a self driving lab will repeatedly choose rows from <code class="docutils literal notranslate"><span class="pre">design_df</span></code> based on past outcomes. In the next section we create a simple synthetic function that plays the role of the real experiment.</p>
 </section>
 <section id="a-toy-closed-loop-optimizer">
-<h2>4. A toy closed loop optimizer<a class="headerlink" href="#a-toy-closed-loop-optimizer" title="Permalink to this heading">#</a></h2>
+<h2>4. A toy closed loop optimizer<a class="headerlink" href="#a-toy-closed-loop-optimizer" title="Link to this heading">#</a></h2>
 <p>Real experiments can be slow and expensive, so it is common to test ideas with <strong>simulated objectives</strong>.</p>
 <p>We now define a simple function that maps a temperature and time to a “yield” between 0 and 1. This function acts as our hidden ground truth.</p>
 <p>You can think of it as</p>
@@ -1095,7 +1112,7 @@ Step  9 -&gt; new T =  60.7 C, t =  3.7 h, yield = 0.719
 <p>In the next sections we move from abstract numbers to more realistic details, such as plates and instrument files.</p>
 </section>
 <section id="mapping-conditions-to-plates-and-wells">
-<h2>5. Mapping conditions to plates and wells<a class="headerlink" href="#mapping-conditions-to-plates-and-wells" title="Permalink to this heading">#</a></h2>
+<h2>5. Mapping conditions to plates and wells<a class="headerlink" href="#mapping-conditions-to-plates-and-wells" title="Link to this heading">#</a></h2>
 <p>Most experimental chemistry today still runs in batches of vials, tubes, or wells.</p>
 <p>In high throughput experimentation we often use 96 well plates. Each well is addressed by a row letter and column number, such as <code class="docutils literal notranslate"><span class="pre">A1</span></code> or <code class="docutils literal notranslate"><span class="pre">H12</span></code>.</p>
 <p>A self driving lab has to map abstract conditions like</p>
@@ -1483,7 +1500,7 @@ Step  9 -&gt; new T =  60.7 C, t =  3.7 h, yield = 0.719
 <p>All of this logic can be expressed in Python before sending a final CSV or XML file to the instrument.</p>
 </section>
 <section id="generating-a-liquid-handler-csv">
-<h2>6. Generating a liquid handler CSV<a class="headerlink" href="#generating-a-liquid-handler-csv" title="Permalink to this heading">#</a></h2>
+<h2>6. Generating a liquid handler CSV<a class="headerlink" href="#generating-a-liquid-handler-csv" title="Link to this heading">#</a></h2>
 <p>Many commercial liquid handlers accept CSV files that describe how much volume to transfer from which stock positions to which wells.</p>
 <p>The exact format is instrument specific. Here we use a simplified version inspired by the <code class="docutils literal notranslate"><span class="pre">generate_tecan_csv</span></code> helper shown in the class notes.</p>
 <p>The idea is to</p>
@@ -1938,7 +1955,7 @@ Number of pipetting actions: 20
 </div></blockquote>
 <p>In real self driving labs the planner might propose a batch of experiments, then the executor would call a function like <code class="docutils literal notranslate"><span class="pre">generate_tecan_csv</span></code> to materialize those plans as robot commands.</p>
 <section id="stock-consumption-summary">
-<h3>6.3 Stock consumption summary<a class="headerlink" href="#stock-consumption-summary" title="Permalink to this heading">#</a></h3>
+<h3>6.3 Stock consumption summary<a class="headerlink" href="#stock-consumption-summary" title="Link to this heading">#</a></h3>
 <p>Before running a large batch of experiments, it is wise to check how much volume of each stock solution will be consumed.</p>
 <p>Given a CSV like the one produced by <code class="docutils literal notranslate"><span class="pre">generate_tecan_csv</span></code>, you can group by stock position and sum the requested volume. If some stock would run dry, you can adjust your design before sending commands to the robot.</p>
 <p>The small helper below computes stock level summaries and visualizes them as a bar chart.</p>
@@ -2301,7 +2318,7 @@ Number of pipetting actions: 20
 </div>
 </section>
 <section id="rough-estimate-of-schedule-time">
-<h3>6.4 Rough estimate of schedule time<a class="headerlink" href="#rough-estimate-of-schedule-time" title="Permalink to this heading">#</a></h3>
+<h3>6.4 Rough estimate of schedule time<a class="headerlink" href="#rough-estimate-of-schedule-time" title="Link to this heading">#</a></h3>
 <p>Liquid handlers and other robots have finite speed.</p>
 <p>If you know approximately how long one pipetting action takes, you can estimate how long a batch of experiments will require. This is helpful when planning overnight runs or deciding whether to split a campaign into several smaller batches.</p>
 <p>The calculation is simple</p>
@@ -2340,7 +2357,7 @@ Estimated total time: 3.3 minutes
 </section>
 </section>
 <section id="monitoring-experiments-with-cameras">
-<h2>7. Monitoring experiments with cameras<a class="headerlink" href="#monitoring-experiments-with-cameras" title="Permalink to this heading">#</a></h2>
+<h2>7. Monitoring experiments with cameras<a class="headerlink" href="#monitoring-experiments-with-cameras" title="Link to this heading">#</a></h2>
 <p>Self driving labs often use cameras to monitor instruments and experiments.</p>
 <p>Examples include</p>
 <ul class="simple">
@@ -2537,7 +2554,7 @@ Estimated total time: 3.3 minutes
 <p>Next we combine these monitoring ideas with language models so that an agent can decide when to capture images or query the web.</p>
 </section>
 <section id="llm-based-planners-and-custom-tools">
-<h2>8. LLM based planners and custom tools<a class="headerlink" href="#llm-based-planners-and-custom-tools" title="Permalink to this heading">#</a></h2>
+<h2>8. LLM based planners and custom tools<a class="headerlink" href="#llm-based-planners-and-custom-tools" title="Link to this heading">#</a></h2>
 <p>So far our planner for the synthetic reaction has been very simple and hard coded.</p>
 <p>Modern language models give us an interesting alternative: we can ask a model to <strong>propose new experiments</strong> in natural language, and even give it access to external tools such as</p>
 <ul class="simple">
@@ -3072,7 +3089,7 @@ Tool execution result:
 </div>
 </div>
 <section id="multimodal-examples-images-and-audio">
-<h3>8.6 Multimodal examples: images and audio<a class="headerlink" href="#multimodal-examples-images-and-audio" title="Permalink to this heading">#</a></h3>
+<h3>8.6 Multimodal examples: images and audio<a class="headerlink" href="#multimodal-examples-images-and-audio" title="Link to this heading">#</a></h3>
 <p>Recent models can also understand images and audio. Two short examples illustrate the syntax.</p>
 <p>First, to generate an image you can call the Responses API with an <code class="docutils literal notranslate"><span class="pre">image_generation</span></code> tool.</p>
 <div class="cell docutils container">
@@ -3568,7 +3585,7 @@ Tool execution result:
 </section>
 </section>
 <section id="glossary">
-<h2>10 Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">#</a></h2>
+<h2>10 Glossary<a class="headerlink" href="#glossary" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Self driving lab</strong></p></li>
 </ul>
@@ -3635,7 +3652,7 @@ Tool execution result:
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -3646,6 +3663,7 @@ Tool execution result:
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -3694,7 +3712,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -3718,8 +3736,8 @@ By The Jupyter Book Community
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
