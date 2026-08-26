@@ -29,7 +29,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 
 ###
 ```{admonition} Weekly Schedule
-- **Aug 25 & 27** – Course introduction + Python coding basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing)
+- **Aug 25 & 27** – Course introduction + Python coding basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing) & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 1 & 3** – Molecular representations
 - **Sept 8 & 10** – Classification & regression
 - **Sept 15 & 17** – Supervised learning
@@ -53,7 +53,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 :class: tip
 | Date | Assignment / Project |
 |------|----------------------|
-| **Sept 6** | Assignment 1 due |
+| **Sept 6** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing)|
 | **Sept 20** | Assignment 2 due |
 | **Oct 4** | Project 1 due |
 | **Oct 11** | Project 1 Peer Review due |
