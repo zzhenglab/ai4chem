@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. In-class activity solution &#8212; My sample book</title>
+    <title>9. Solutions &#8212; My sample book</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -182,6 +182,7 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture-01.html">Lecture 1 - Python Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture-02.html">Lecture 2 - Pandas and Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture-03.html">Lecture 3 - SMILES and RDKit</a></li>
 </ul>
 
     </div>
@@ -367,7 +368,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>11. In-class activity solution</h1>
+    <h1>9. Solutions</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,24 +378,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">11. In-class activity solution</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethanol-mass-to-moles">11.1 Ethanol mass to moles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classify-ph-values-in-a-list">11.2 Classify pH values in a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">11.3 Molar mass from a counts dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">11.4 Read leading integer from a string, then convert C to K</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">11.5 Which sample has more moles</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -405,33 +394,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="in-class-activity-solution">
-<h1>11. In-class activity solution<a class="headerlink" href="#in-class-activity-solution" title="Link to this heading">#</a></h1>
-<section id="ethanol-mass-to-moles">
-<h2>11.1 Ethanol mass to moles<a class="headerlink" href="#ethanol-mass-to-moles" title="Link to this heading">#</a></h2>
-<p>Compute the moles of ethanol C2H6O in 9.2 g using only arithmetic and variables.</p>
-</section>
-<hr class="docutils" />
-<section id="classify-ph-values-in-a-list">
-<h2>11.2 Classify pH values in a list<a class="headerlink" href="#classify-ph-values-in-a-list" title="Link to this heading">#</a></h2>
-<p>Given several pH readings “2.5”, “7.0”, “8.1”, “6.9”, “7.3”, print a line for each saying acidic, basic, or neutral. Do not define a helper function.</p>
-</section>
-<hr class="docutils" />
-<section id="molar-mass-from-a-counts-dictionary">
-<h2>11.3 Molar mass from a counts dictionary<a class="headerlink" href="#molar-mass-from-a-counts-dictionary" title="Link to this heading">#</a></h2>
-<p>Compute the molar mass of glucose using a small dictionary of atomic weights and a counts dictionary. Do not reuse any earlier functions.</p>
-</section>
-<section id="read-leading-integer-from-a-string-then-convert-c-to-k">
-<h2>11.4 Read leading integer from a string, then convert C to K<a class="headerlink" href="#read-leading-integer-from-a-string-then-convert-c-to-k" title="Link to this heading">#</a></h2>
-<p>A temperature string has digits followed by a letter, for example “25C” or “298K”. Read the leading digits using a while-loop and convert Celsius to Kelvin. If the unit is K, leave it as is.</p>
-</section>
-<hr class="docutils" />
-<section id="which-sample-has-more-moles">
-<h2>11.5 Which sample has more moles<a class="headerlink" href="#which-sample-has-more-moles" title="Link to this heading">#</a></h2>
-<p>You are given a mixture as a list of (mass_g, name, counts) where counts is a dictionary of element -&gt; count in the formula. Compute the moles for each, then print the name of the sample with the largest moles. Do not call any functions from above; write the few lines you need here.</p>
-</section>
-</section>
-<section id="solutions">
+  <section id="solutions">
 <h1>9. Solutions<a class="headerlink" href="#solutions" title="Link to this heading">#</a></h1>
 <p>Search for <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TO</span> <span class="pre">DO:</span></code> in each block above and compare to the full code here.</p>
 <section id="solution-8-1">
@@ -520,24 +483,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">11. In-class activity solution</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethanol-mass-to-moles">11.1 Ethanol mass to moles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classify-ph-values-in-a-list">11.2 Classify pH values in a list</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#molar-mass-from-a-counts-dictionary">11.3 Molar mass from a counts dictionary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-leading-integer-from-a-string-then-convert-c-to-k">11.4 Read leading integer from a string, then convert C to K</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-sample-has-more-moles">11.5 Which sample has more moles</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#solutions">9. Solutions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-1">Solution 8.1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-2">Solution 8.2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-3">Solution 8.3</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-4">Solution 8.4</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-8-5">Solution 8.5</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
