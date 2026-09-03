@@ -31,8 +31,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 ```{admonition} Weekly Schedule
 - **Aug 25 & 27** – Course introduction + Python coding basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing) & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 1 & 3** – Molecular representations [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
-
-- **Sept 8 & 10** – Classification & regression
+- **Sept 8 & 10** – Classification & regression   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing) 
 - **Sept 15 & 17** – Supervised learning
 - **Sept 22 & 24** – Molecular property & reaction prediction
 - **Sept 29 & Oct 1** – Unsupervised learning
