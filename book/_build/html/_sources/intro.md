@@ -53,8 +53,8 @@ If you enjoy the course, please help spread the word and share the link so more 
 :class: tip
 | Date | Assignment / Project |
 |------|----------------------|
-| **Sept 6** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing)|
-| **Sept 20** | Assignment 2 due |
+| **Sept 6** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1Zel7MlJgwcndDsBfqsk7LFYpdZpJRH3g?usp=sharing) |  
+| **Sept 20** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) |
 | **Oct 4** | Project 1 due |
 | **Oct 11** | Project 1 Peer Review due |
 | **Oct 25** | Assignment 3 due |
