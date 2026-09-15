@@ -32,7 +32,8 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Aug 25 & 27** – Course introduction + Python coding basics [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1GjDnelQwhJ7Dq2zNGlkQRzkto_2du637?usp=sharing) & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/158enk5itjJyrI2c9J0i5_o0q58MKmlFU?usp=sharing) 
 - **Sept 1 & 3** – Molecular representations [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 8 & 10** – Classification & regression   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
-- **Sept 15 & 17** – Supervised learning   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing)
+- **Sept 15 & 17** – Supervised learning   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing) & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
+
 - **Sept 22 & 24** – Molecular property & reaction prediction
 - **Sept 29 & Oct 1** – Unsupervised learning
 - **Oct 3–6** – Fall Break
