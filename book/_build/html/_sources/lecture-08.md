@@ -37,7 +37,6 @@ We will stick to a light stack so it runs everywhere.
 :tags: [hide-input]
 import warnings
 warnings.filterwarnings("ignore")
-warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 import numpy as np
 import pandas as pd
