@@ -528,6 +528,7 @@ Now let's look at a few examples. We first define a helper function called `draw
 def draw_graph_structure(adjacency_matrix, color=None, edge_attr=None):
     G = nx.Graph()
     n_node = adjacency_matrix.shape[0]
+    G.add_notes_from(range(n_node))
     for i in range(n_node):
         for j in range(i):
             if adjacency_matrix[i, j]:
