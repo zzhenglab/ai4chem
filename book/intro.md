@@ -33,8 +33,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Sept 1 & 3** – Molecular representations [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/184RYVf-aXx2PfOauFp7xw8LIrqJiiWW6?usp=sharing) &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ARO7FjUB-GoDZJV96E5d3QtSpOHa-oc8?usp=sharing) 
 - **Sept 8 & 10** – Classification & regression   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1UYUb5xw7lxDQrZYjJPixfILLrhFCYBlb?usp=sharing)  &    [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1vjb0L9j2XJ76u5xcmuGrl0P2O8tX-tzf?usp=sharing) 
 - **Sept 15 & 17** – Supervised learning   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1gok-fXtkuhjkI3zn5s17E02B-tcvek8h?usp=sharing) & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/14-maUiOWGRvYAG04Y2gGsSTnDHS_x6Z-?usp=sharing)
-
-- **Sept 22 & 24** – Molecular property & reaction prediction
+- **Sept 22 & 24** – Molecular property & reaction prediction [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing) 
 - **Sept 29 & Oct 1** – Unsupervised learning
 - **Oct 3–6** – Fall Break
 - **Oct 8** – Generative models in molecular design
@@ -56,7 +55,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 |------|----------------------|
 | **Sept 6** | Assignment 1 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1T72_lb89i_qOY8AWHnSH5jDQLbwYVFJB?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1Zel7MlJgwcndDsBfqsk7LFYpdZpJRH3g?usp=sharing) |  
 | **Sept 20** | Assignment 2 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/10ZRqJxwFNBmCWhHIvnKgM0wtlyx-NGNQ?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/18AIDo3hclJssMQc1hRgUfAsm-SpkFd5t?usp=sharing)|
-| **Oct 4** | Project 1 due |
+| **Oct 4** | Project 1 due [![Colab](https://img.shields.io/badge/Reviewers-blue)](https://docs.google.com/document/d/13uUcznC8W8jQv3u5jw4u7FdTMQHNJdBZmZIE8z1wi5A/edit?usp=sharing)|
 | **Oct 11** | Project 1 Peer Review due |
 | **Oct 25** | Assignment 3 due |
 | **Nov 8** | Assignment 4 due |
