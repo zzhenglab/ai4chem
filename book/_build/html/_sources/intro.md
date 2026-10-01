@@ -36,7 +36,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Sept 22 & 24** – Molecular property & reaction prediction [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/11-ZfqnPV1QSG5VM1I-3CAGa9pqu1nT4B?usp=sharing)   &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/12KCDkXb9IHCs9TO9zGK4zMONmbqheplK?usp=sharing) 
 - **Sept 29 & Oct 1** – Unsupervised learning [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)   & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/15nKl8LM8bkO7e4o4JjQ-hLQHxpW37kVh?usp=sharing)
 - **Oct 3–6** – Fall Break
-- **Oct 8** – Generative models in molecular design
+- **Oct 8** – Generative models in molecular design  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 13 & 15** – Chemical reaction optimization
 - **Oct 20 & 22** – Semi-supervised learning
 - **Oct 27 & 29, Nov 3** – Transformers & large language models
