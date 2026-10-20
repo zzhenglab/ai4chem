@@ -38,7 +38,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 3–6** – Fall Break
 - **Oct 8** – Generative models in molecular design  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 13 & 15** – Chemical reaction optimization   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
-- **Oct 20 & 22** – Semi-supervised learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)
+- **Oct 20 & 22** – Semi-supervised learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)   &   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)  
 - **Oct 27 & 29, Nov 3** – Transformers & large language models
 - **Nov 5** – Assignment 4 group work
 - **Nov 10 & 12** – Computer vision & multimodal models
