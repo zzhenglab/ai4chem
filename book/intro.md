@@ -39,7 +39,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 8** – Generative models in molecular design  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1uFA0HFGqZ71MP02VM3wDn_TUacgXYCJ4?usp=sharing)
 - **Oct 13 & 15** – Chemical reaction optimization   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1rmLQ2MKbReYka9tDFUZYK9u9xbcARNS8?usp=sharing)  &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1QvnxeGN3JpZl1viIaQ9WxQrNJ6gYFkya?usp=sharing)
 - **Oct 20 & 22** – Semi-supervised learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)   &   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)  & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
-- **Oct 27 & 29, Nov 3** – Transformers & large language models
+- **Oct 27 & 29, Nov 3** – Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)     
 - **Nov 5** – Assignment 4 group work
 - **Nov 10 & 12** – Computer vision & multimodal models
 - **Nov 17, 19 & 24** – Multi-agent AI & literature data mining
@@ -58,7 +58,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 | **Oct 4** | Project 1 due |
 | **Oct 11** | Project 1 Peer Review due |
 | **Oct 25** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1l3xeFktRU4kAkkqfMN_wp57BNRGBUXpt?usp=sharing) |
-| **Nov 8** | Assignment 4 due |
+| **Nov 8** | Assignment 4 due  [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing)|  
 | **Nov 29** | Assignment 5 due |
 | **Dec 6** | Project 2 Presentation and Feedback due |
 ```
