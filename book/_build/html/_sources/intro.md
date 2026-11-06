@@ -41,7 +41,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 20 & 22** – Semi-supervised learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)   &   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)  & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
 - **Oct 27 & 29, Nov 3** – Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)     &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)    
 - **Nov 5** – Assignment 4 group work
-- **Nov 10 & 12** – Computer vision & multimodal models
+- **Nov 10 & 12** – Computer vision & multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing) 
 - **Nov 17, 19 & 24** – Multi-agent AI & literature data mining
 - **Nov 24** – Assignment 5 group work
 - **Nov 25–29** – Thanksgiving Break
