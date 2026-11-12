@@ -41,7 +41,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 20 & 22** – Semi-supervised learning  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1dLok-Ve2VyvyKwLRY-08n-MCCKd88XiN?usp=sharing)   &   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1fgX-_4YDnCRNl7QZsw_Cy2ZMtzv55txH?usp=sharing)  & [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1EJqZIdStTwhshi348NqQyYiuX-WVBdP5?usp=sharing)     
 - **Oct 27 & 29, Nov 3** – Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)     &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)    
 - **Nov 5** – Assignment 4 group work
-- **Nov 10 & 12** – Computer vision & multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing) 
+- **Nov 10 & 12** – Computer vision & multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing) &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing) 
 - **Nov 17, 19 & 24** – Multi-agent AI & literature data mining
 - **Nov 24** – Assignment 5 group work
 - **Nov 25–29** – Thanksgiving Break
@@ -59,7 +59,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 | **Oct 11** | Project 1 Peer Review due |
 | **Oct 25** | Assignment 3 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1l3xeFktRU4kAkkqfMN_wp57BNRGBUXpt?usp=sharing) [![Colab](https://img.shields.io/badge/Solution-green)](https://colab.research.google.com/drive/1hxsWsXf4KofWwgCmqwLTvu_NtONS5s6H?usp=sharing) | 
 | **Nov 8** | Assignment 4 due  [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1VhYRgET_-9oUyt5cJnxEjjNrYW9kEIqZ?usp=sharing)|  
-| **Nov 29** | Assignment 5 due |
+| **Nov 29** | Assignment 5 due [![Colab](https://img.shields.io/badge/Assignment-red)](https://colab.research.google.com/drive/1aOL9hfP6JmFqkg5eVpDyl6sxYiaTAHEq?usp=sharing)|
 | **Dec 6** | Project 2 Presentation and Feedback due |
 ```
 
