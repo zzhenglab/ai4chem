@@ -42,7 +42,7 @@ If you enjoy the course, please help spread the word and share the link so more 
 - **Oct 27 & 29, Nov 3** – Transformers & large language models  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1LL15O48eHY08B9gQu14ui3zYushfLyCj?usp=sharing)     &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1miAN-emFKsUcH6rdULwp7rhJFbjR5fcF?usp=sharing)    
 - **Nov 5** – Assignment 4 group work
 - **Nov 10 & 12** – Computer vision & multimodal models   [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1VP9tfiiBU8e40iG3qaQlCefkkofVbXiT?usp=sharing) &  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/1ihq56j_5Khl2PY1pDqUlTb1QDu2Uf1Ck?usp=sharing) 
-- **Nov 17, 19 & 24** – Multi-agent AI & literature data mining
+- **Nov 17, 19 & 24** – Multi-agent AI & literature data mining  [![Colab](https://img.shields.io/badge/Open-Colab-orange)](https://colab.research.google.com/drive/18NZIvGg0hd0P5oOTwfQ61x9K3dS6qdU_?usp=sharing)  
 - **Nov 24** – Assignment 5 group work
 - **Nov 25–29** – Thanksgiving Break
 - **Dec 1 & 3** – Final project presentations & reflection
